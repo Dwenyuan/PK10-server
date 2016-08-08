@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.GoodsDao">
+	<resultMap type="com.pk10.bean.Goods" id="Goods">
+		<result column="id" property="id" />
+		<result column="goodname" property="goodname" />
+		<result column="price" property="price" />
+		<result column="goodsimg" property="goodsimg" />
+		<result column="goodsnum" property="goodsnum" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.Goods">
+		insert into goods(id,price,goodname,goodsimg,goodsnum)
+		values(#{id},#{price},#{goodname},#{goodsimg},#{goodsnum})
+	</insert>
+
+	<update id="update" parameterType="com.pk10.bean.Goods">
+		update goods g set g.price = #{price},g.goodname =#{goodname},g.goodsimg =#{goodsimg},g.goodsnum =#{goodsnum} where g.id = #{id}
+	</update>
+
+	<select id="getAll" resultMap="Goods">
+		select id,price,goodname,goodsimg,goodsnum from goods
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.Goods" resultMap="Goods">
+		select id,price,goodname,goodsimg,goodsnum from goods g where g.id = #{id}
+	</select>
+
+	<delete id="deleteOneById" parameterType="com.pk10.bean.Goods">
+		delete from goods where id = #{id}
+	</delete>
+</mapper>

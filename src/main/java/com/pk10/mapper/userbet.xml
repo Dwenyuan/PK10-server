@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.UserBetDao">
+	<resultMap type="com.pk10.bean.UserBet" id="UserBet">
+		<result column="id" property="id" />
+		<result column="type" property="type" />
+		<result column="betmoney" property="betmoney" />
+		<result column="mulit" property="mulit" />
+		<result column="betnum" property="betnum" />
+		<result column="createdAt" property="createdAt" />
+		<result column="userinfo_openid" property="userinfoOpenid" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.UserBet">
+		insert into userbet(type,betmoney,mulit,betnum,createdAt,userinfo_openid)
+		values(#{type},#{betmoney},#{mulit},#{betnum},#{createdAt},#{userinfoOpenid})
+	</insert>
+
+	<insert id="saveList" parameterType="list">
+		insert into userbet(type,betmoney,mulit,betnum,createdAt,userinfo_openid)
+		values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.type},#{item.betmoney},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userinfoOpenid})
+		</foreach>
+	</insert>
+
+	<select id="update" parameterType="com.pk10.bean.UserBet" resultType="int">
+		select 0
+	</select>
+
+	<select id="getAll" resultMap="UserBet">
+		select id,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
+		select id,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.id = #{id}
+	</select>
+
+	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
+		select id,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.userinfo_openid =
+		#{openid}
+	</select>
+
+	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
+		delete from userbet where id = #{id}
+	</delete>
+</mapper>

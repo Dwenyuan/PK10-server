@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.TokenInfoDao">
+	<resultMap type="com.pk10.bean.TokenInfo" id="tokeninfo">
+		<result column="tokenid" property="tokenid"/>
+		<result column="id" property="id"/>
+		<result column="createdAt" property="createdAt"/>
+		<result column="updatedAt" property="updatedAt"/>
+	</resultMap>
+	<insert id="save" parameterType="com.pk10.bean.TokenInfo">
+		insert into tokeninfo(tokenid,id,createdAt,updatedAt)
+		values(#{tokenid},#{id},#{createdAt},#{updatedAt})
+	</insert>
+	<update id="update" parameterType="com.pk10.bean.TokenInfo">
+		update tokeninfo t set t.tokenid = #{tokenid},t.updatedAt = #{updatedAt} where t.id = #{id}
+	</update>
+	<select id="getOneById" parameterType="com.pk10.bean.TokenInfo" resultMap="tokeninfo">
+		select t.id,t.tokenid,t.createdAt,t.updatedAt from tokeninfo t where t.id = #{id}
+	</select>
+</mapper>

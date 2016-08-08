@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.NoticeDao">
+	<resultMap type="com.pk10.bean.Notice" id="Notice">
+		<result column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="createdAt" property="createdAt" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.Notice">
+		insert into notice(id,title,content,createdAt)
+		values(#{id},#{title},#{content},#{createdAt})
+	</insert>
+	<!-- 暂时不需要update方法 -->
+	<select id="update" parameterType="com.pk10.bean.Notice" resultType="int">
+		select 0
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.Notice" resultMap="Notice">
+		select id,title,content,createdAt from notice n where n.id = #{id}
+	</select>
+	
+	<select id="getLastNotice" resultMap="Notice">
+		select id,title,content,createdAt from notice n,
+			(select max(createdAt) c from notice) m where n.createdAt = m.c
+	</select>
+	
+	<select id="getAll" resultMap="Notice">
+		select id,title,content,createdAt from notice
+	</select>
+	<delete id="deleteOneById" parameterType="com.pk10.bean.Notice">
+		delete from notice where id = #{id}
+	</delete>
+</mapper>

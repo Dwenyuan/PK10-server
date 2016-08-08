@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.LotteryHistoryDao">
+	<resultMap type="com.pk10.bean.LotteryHistory" id="LotteryHistory">
+		<result column="id" property="id" />
+		<result column="createdAt" property="createdAt" />
+		<result column="lotterynum1" property="lotterynum1" />
+		<result column="lotterynum2" property="lotterynum2" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.LotteryHistory">
+		insert into lotteryhistory(id,createdAt,lotterynum1,lotterynum2)
+		values(#{id},#{createdAt},#{lotterynum1},#{lotterynum2})
+	</insert>
+	<!-- 暂时不需要update方法 -->
+	<select id="update" parameterType="com.pk10.bean.LotteryHistory" resultType="int">
+		select 0
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.LotteryHistory" resultMap="LotteryHistory">
+		select id,createdAt,lotterynum1,lotterynum2 from lotteryhistory n where n.id = #{id}
+	</select>
+	
+	<select id="getLastLottery" resultMap="LotteryHistory">
+		select id,createdAt,lotterynum1,lotterynum2 from lotteryhistory n,
+			(select max(createdAt) c from lotteryhistory) m where n.createdAt = m.c
+	</select>
+	
+	<select id="getAll" resultMap="LotteryHistory">
+		select id,createdAt,lotterynum1,lotterynum2 from lotteryhistory
+	</select>
+	<delete id="deleteOneById" parameterType="com.pk10.bean.LotteryHistory">
+		delete from lotteryhistory where id = #{id}
+	</delete>
+</mapper>

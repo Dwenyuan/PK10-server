@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.UserInfoDao">
+	<resultMap type="com.pk10.bean.UserInfo" id="UserInfo">
+		<result column="openid" property="openid" />
+		<result column="nickname" property="nickname" />
+		<result column="money" property="money" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.UserInfo">
+		insert into userinfo(openid,nickname,money,createdAt)
+		values(#{openid},#{nickname},#{money},#{createdAt})
+	</insert>
+
+	<update id="update" parameterType="com.pk10.bean.UserInfo">
+		update userinfo u set u.money = #{money},u.nickname =#{nickname} where u.openid = #{openid}
+	</update>
+
+	<select id="getAll" resultMap="UserInfo">
+		select openid,nickname,money,createdAt from userinfo
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
+		select openid,nickname,money,createdAt from userinfo u where u.openid = #{openid}
+	</select>
+	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
+		delete from userinfo where openid = #{openid}
+	</delete>
+</mapper>
