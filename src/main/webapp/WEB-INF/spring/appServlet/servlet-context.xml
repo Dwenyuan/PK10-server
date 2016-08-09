@@ -12,7 +12,8 @@
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<beans:ref bean="stringHttpMessageConverter" />
-			<beans:ref bean="fastJsonHttpMessageConverter" /><!-- <ref bean="marshallingHttpMessageConverter" /> -->
+			<!-- <beans:ref bean="fastJsonHttpMessageConverter" /> --><!-- <ref bean="marshallingHttpMessageConverter" /> -->
+			<beans:ref bean="jacksonHttpMessageConverter" />
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
@@ -25,7 +26,15 @@
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+<!-- 	<beans:bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+		<beans:property name="supportedMediaTypes">
+			<beans:list>
+				<beans:value>application/json;charset=UTF-8</beans:value>
+				<beans:value>text/html;charset=UTF-8</beans:value>避免IE出现下载JSON文件的情况
+			</beans:list>
+		</beans:property>
+	</beans:bean> -->
+	<beans:bean id="jacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<beans:property name="supportedMediaTypes">
 			<beans:list>
 				<beans:value>application/json;charset=UTF-8</beans:value>
@@ -33,7 +42,6 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 

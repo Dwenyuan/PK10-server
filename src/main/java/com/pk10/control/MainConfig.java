@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.pk10.bean.CreateBonus;
 import com.pk10.bean.TokenConfig;
 import com.pk10.service.LotteryHistoryService;
@@ -46,10 +47,11 @@ public class MainConfig {
 	 * 
 	 * @return
 	 */
+	@SuppressWarnings("static-access")
 	@RequestMapping("getCount")
 	@ResponseBody
 	public Object getCount() {
-		return JSON.parse("{countDown:" + createBonus.getCount() + ",countNum:" + createBonus.getCountNum() + "}");
+		return JSON.parse("{\"idnum\":\"" + createBonus.getIdnum() + "\",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
 	}
 
 	/**

@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class UserBet {
 	private Integer id;
+	private String idnum; // 开奖期数
 	private String type;// ` VARCHAR(45) NULL COMMENT '玩法，主要分 ‘单双’ ‘数字’ ‘大小’'
 	private Double betmoney;// '下注金额',
 	private Integer mulit;// '下注倍数',
@@ -13,8 +14,8 @@ public class UserBet {
 
 	@Override
 	public String toString() {
-		return "UserBet [id=" + id + ", type=" + type + ", betmoney=" + betmoney + ", mulit=" + mulit + ", betnum="
-				+ betnum + ", createdAt=" + createdAt + ", userinfoOpenid=" + userinfoOpenid + "]";
+		return "UserBet [id=" + id + ", type=" + type + ", betmoney=" + betmoney + ", mulit=" + mulit + ", betnum=" + betnum + ", createdAt=" + createdAt + ", userinfoOpenid="
+				+ userinfoOpenid + "]";
 	}
 
 	public Integer getId() {
@@ -23,6 +24,14 @@ public class UserBet {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getIdnum() {
+		return idnum;
+	}
+
+	public void setIdnum(String idnum) {
+		this.idnum = idnum;
 	}
 
 	public String getType() {
@@ -75,13 +84,23 @@ public class UserBet {
 
 	public UserBet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public UserBet(Integer id, String type, Double betmoney, Integer mulit, String betnum, Date createdAt,
-			String userinfoOpenid) {
+	public UserBet(Integer id, String type, Double betmoney, Integer mulit, String betnum, Date createdAt, String userinfoOpenid) {
 		super();
 		this.id = id;
+		this.type = type;
+		this.betmoney = betmoney;
+		this.mulit = mulit;
+		this.betnum = betnum;
+		this.createdAt = createdAt;
+		this.userinfoOpenid = userinfoOpenid;
+	}
+
+	public UserBet(Integer id, String idnum, String type, Double betmoney, Integer mulit, String betnum, Date createdAt, String userinfoOpenid) {
+		super();
+		this.id = id;
+		this.idnum = idnum;
 		this.type = type;
 		this.betmoney = betmoney;
 		this.mulit = mulit;

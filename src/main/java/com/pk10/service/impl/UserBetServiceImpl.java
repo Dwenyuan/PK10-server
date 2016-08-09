@@ -61,7 +61,20 @@ public class UserBetServiceImpl implements UserBetService {
 	public Integer saveList(List<UserBet> userBets) throws Exception {
 		if (userBets.size() < 0)
 			throw new Exception("没有下注,或者下注出错");
+		for (UserBet userBet : userBets) {
+			UserInfo userInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserinfoOpenid()));
+			Double balance = userInfo.getMoney() - userBet.getBetmoney();
+			if (balance < 0)
+				throw new Exception("余额不足");
+			userInfo.setMoney(balance);
+			userInfoDao.update(userInfo);
+		}
 		return userBetDao.saveList(userBets);
+	}
+
+	@Override
+	public UserBet getOneByIdnum(UserBet userBet) throws Exception {
+		return userBetDao.getOneByIdnum(userBet);
 	}
 
 }

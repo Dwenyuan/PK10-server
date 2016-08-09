@@ -3,6 +3,7 @@
 <mapper namespace="com.pk10.dao.UserBetDao">
 	<resultMap type="com.pk10.bean.UserBet" id="UserBet">
 		<result column="id" property="id" />
+		<result column="idnum" property="idnum" />
 		<result column="type" property="type" />
 		<result column="betmoney" property="betmoney" />
 		<result column="mulit" property="mulit" />
@@ -12,15 +13,15 @@
 	</resultMap>
 
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
-		insert into userbet(type,betmoney,mulit,betnum,createdAt,userinfo_openid)
-		values(#{type},#{betmoney},#{mulit},#{betnum},#{createdAt},#{userinfoOpenid})
+		insert into userbet(id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid)
+		values(#{id},#{idnum},#{type},#{betmoney},#{mulit},#{betnum},#{createdAt},#{userinfoOpenid})
 	</insert>
 
 	<insert id="saveList" parameterType="list">
-		insert into userbet(type,betmoney,mulit,betnum,createdAt,userinfo_openid)
+		insert into userbet(id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid)
 		values
 		<foreach collection="list" item="item" separator=",">
-			(#{item.type},#{item.betmoney},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userinfoOpenid})
+			(#{id},#{idnum},#{item.type},#{item.betmoney},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userinfoOpenid})
 		</foreach>
 	</insert>
 
@@ -29,15 +30,19 @@
 	</select>
 
 	<select id="getAll" resultMap="UserBet">
-		select id,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet
+		select id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet
 	</select>
 
 	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
-		select id,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.id = #{id}
+		select id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.id = #{id}
+	</select>
+
+	<select id="getOneByIdnum">
+		select id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.id = #{idnum}
 	</select>
 
 	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
-		select id,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.userinfo_openid =
+		select id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid from userbet ub where ub.userinfo_openid =
 		#{openid}
 	</select>
 

@@ -3,14 +3,14 @@ package com.pk10.bean;
 import java.util.Date;
 
 public class LotteryHistory {
-	private Integer id;
+	private String id;
 	private Date createdAt;
 	private Integer lotterynum1;
 	private Integer lotterynum2;
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Date getCreatedAt() {
@@ -36,7 +36,7 @@ public class LotteryHistory {
 		return "LotteryHistory [id=" + id + ", createdAt=" + createdAt + ", lotterynum1=" + lotterynum1
 				+ ", lotterynum2=" + lotterynum2 + "]";
 	}
-	public LotteryHistory(Integer id, Date createdAt, Integer lotterynum1, Integer lotterynum2) {
+	public LotteryHistory(String id, Date createdAt, Integer lotterynum1, Integer lotterynum2) {
 		super();
 		this.id = id;
 		this.createdAt = createdAt;
