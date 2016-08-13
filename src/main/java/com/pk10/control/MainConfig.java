@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.pk10.bean.CreateBonus;
 import com.pk10.bean.TokenConfig;
 import com.pk10.service.LotteryHistoryService;
@@ -51,7 +50,15 @@ public class MainConfig {
 	@RequestMapping("getCount")
 	@ResponseBody
 	public Object getCount() {
-		return JSON.parse("{\"idnum\":\"" + createBonus.getIdnum() + "\",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
+		Integer idnum = null;
+		try {
+			Integer id = lotteryHistoryService.getLastLottery().getId();
+			idnum = id + 1; // 当前开奖期数
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
 	}
 
 	/**
@@ -64,6 +71,25 @@ public class MainConfig {
 	public Object getBonusNum() {
 		try {
 			return lotteryHistoryService.getLastLottery();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "{errmsg:" + e.getMessage() + "}";
+		}
+	}
+
+	/**
+	 * 获取开奖记录，
+	 * @param num 需要获取的记录条数，如果没有此参数，默认获取20条
+	 * @return
+	 */
+	@RequestMapping("getBonusRecord")
+	@ResponseBody
+	public Object getLotteryHistory(Integer num) {
+		try {
+			if (num == null) {
+				num = 20;
+			}
+			return lotteryHistoryService.getLastLottery(num);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return "{errmsg:" + e.getMessage() + "}";

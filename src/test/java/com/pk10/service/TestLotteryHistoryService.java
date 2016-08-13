@@ -17,8 +17,7 @@ public class TestLotteryHistoryService {
 	@Autowired
 	private LotteryHistoryService lotteryHistoryService;
 
-	private LotteryHistory lotteryHistory = new LotteryHistory(new Date(), (int) (Math.random() * 10),
-			(int) (Math.random() * 10));
+	private LotteryHistory lotteryHistory = new LotteryHistory(0001, new Date(), "06,04,01,02,08,10,05,09,07,03");
 
 	@Test
 	public void TestSave() throws Exception {
@@ -45,6 +44,11 @@ public class TestLotteryHistoryService {
 		System.out.println(lotteryHistoryService.getLastLottery());
 	}
 
+	@Test
+	public void TestGetNumLastLotteryHistory() {
+		System.out.println(lotteryHistoryService.getLastLottery(5));
+	}
+	
 	@Test
 	public void TestdeleteOneById() throws Exception {
 		System.out.println(lotteryHistoryService.deleteOneById(lotteryHistory));

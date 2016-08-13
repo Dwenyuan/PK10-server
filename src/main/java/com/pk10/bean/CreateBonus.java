@@ -2,14 +2,11 @@ package com.pk10.bean;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.pk10.service.LotteryHistoryService;
 
 /**
  * 自动生成中奖码以及倒计时
@@ -27,9 +24,6 @@ public class CreateBonus implements InitializingBean {
 
 	@Autowired
 	private TokenConfig tokenConfig;
-
-	@Autowired
-	private LotteryHistoryService lotteryHistoryService;
 
 	public static String getIdnum() {
 		return idnum;
@@ -55,44 +49,41 @@ public class CreateBonus implements InitializingBean {
 		CreateBonus.count = count;
 	}
 
-	public static Logger getLogger() {
-		return logger;
-	}
-
 	public CreateBonus() {
 		super();
 	}
 
 	public void run() {
 		countNum = tokenConfig.getLotteryTime();
-		count = tokenConfig.getLotteryTime();
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					idnum = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());// 开奖期数
-					while (true) {
-						Thread.sleep(1000);// 一秒钟倒计时 减一
-						if (count > 0) {
-							count--;
-							System.out.println(Thread.currentThread().getName() + "count number is " + count);
-						} else {
-							lotteryHistoryService.update(new LotteryHistory(idnum, new Date(), new Random().nextInt(10), new Random().nextInt(10)));
-							idnum = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());// 开奖期数
-							lotteryHistoryService.save(new LotteryHistory(idnum, null, null, null));
-							logger.info("开奖时间到，数据库写入开奖结果");
-							count = tokenConfig.getLotteryTime();
-						}
-					}
-				} catch (Exception e) {
-					logger.error(e.getMessage());
-				}
+		getCount(new Date());
+		logger.info("执行倒计时任务，当前count ==" + count);
+	}
+
+	/**
+	 * 距离当前最近的开奖时间的倒计时
+	 * 
+	 * @param date
+	 *            当前时间
+	 * @return
+	 */
+	public static void getCount(Date date) {
+		Integer hour = Integer.parseInt(new SimpleDateFormat("HH").format(date));
+		Integer min = Integer.parseInt(new SimpleDateFormat("mm").format(date));
+		Integer sec = Integer.parseInt(new SimpleDateFormat("ss").format(date));
+		if (hour >= 0 && hour < 9) {// 不在开奖时间
+			count = (9 * 60 * 60 + 7 * 60) - (hour * 60 + min * 60 + sec);
+		} else { // 寻找最近的开奖时间
+			if (min % 10 < 2) {// 否则为逢2
+				count = (2 - min) * 60 + (60 - sec);
+			} else if (min % 10 < 7 && min % 10 > 2) { // 在2和7之间，则下次开奖为逢7
+				count = (7 - min) * 60 + (60 - sec);
+			} else { // 否则为逢2
+				count = (12 - min) * 60 + (60 - sec);
 			}
-		}).start();
+		}
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		this.run();
 	}
 }

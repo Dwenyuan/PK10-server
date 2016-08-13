@@ -21,7 +21,7 @@
 		insert into userbet(id,idnum,type,betmoney,mulit,betnum,createdAt,userinfo_openid)
 		values
 		<foreach collection="list" item="item" separator=",">
-			(#{id},#{idnum},#{item.type},#{item.betmoney},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userinfoOpenid})
+			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userinfoOpenid})
 		</foreach>
 	</insert>
 

@@ -17,7 +17,11 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 
 	@Override
 	public Integer save(LotteryHistory t) throws Exception {
-		return lotteryHistoryDao.save(t);
+		if (lotteryHistoryDao.update(t)>0) {
+			return 0;
+		}else{			
+			return lotteryHistoryDao.save(t);
+		}
 	}
 
 	@Override
@@ -43,6 +47,11 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 	@Override
 	public LotteryHistory getLastLottery() throws Exception {
 		return lotteryHistoryDao.getLastLottery();
+	}
+
+	@Override
+	public List<LotteryHistory> getLastLottery(Integer num) {
+		return lotteryHistoryDao.getLastNumLottery(num);
 	}
 	
 }

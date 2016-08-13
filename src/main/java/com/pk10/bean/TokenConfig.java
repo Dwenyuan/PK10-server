@@ -40,7 +40,6 @@ public class TokenConfig {
 	}
 	public TokenConfig() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public TokenConfig(String tokenUrl, String appID, String appsecret) {
 		super();
