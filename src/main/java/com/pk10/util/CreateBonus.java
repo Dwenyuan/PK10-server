@@ -58,7 +58,7 @@ public class CreateBonus implements InitializingBean {
 	public void run() {
 		countNum = tokenConfig.getLotteryTime();
 		getCount(new Date());
-		logger.info("执行倒计时任务，当前count ==" + count);
+		// logger.info("执行倒计时任务，当前count ==" + count);
 	}
 
 	/**

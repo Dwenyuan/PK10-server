@@ -1,15 +1,12 @@
 package com.pk10.service.impl;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
@@ -21,7 +18,6 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.TokenInfo;
-import com.pk10.control.HomeController;
 import com.pk10.dao.TokenInfoDao;
 import com.pk10.service.TokenInfoService;
 
