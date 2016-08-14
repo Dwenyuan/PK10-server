@@ -82,6 +82,7 @@ public class UserInfoControl {
 		try {
 			logger.error("code:" + code);
 			userinfo = userInfoFormWeChat.getUserInfoFromWechat(code);
+			logger.info(userinfo.toString());
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
