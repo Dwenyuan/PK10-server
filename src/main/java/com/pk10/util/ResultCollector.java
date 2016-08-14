@@ -47,7 +47,6 @@ public class ResultCollector implements InitializingBean {
 				lotteryHistoryService.save(new LotteryHistory(Integer.parseInt(tds.get(0).text()), simpleDateFormat.parse(tds.get(2).text()), tds.get(1).text()));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 		logger.info("task - 执行收集开奖结果");

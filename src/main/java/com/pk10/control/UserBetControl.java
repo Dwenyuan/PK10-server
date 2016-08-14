@@ -40,7 +40,6 @@ public class UserBetControl {
 			return userBetService.saveList(userBets);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			e.printStackTrace();
 			return "{errmsg:" + e.getMessage() + "}";
 		}
 	}

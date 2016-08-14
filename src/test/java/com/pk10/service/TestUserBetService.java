@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.pk10.bean.BetType;
+import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 
@@ -20,16 +22,24 @@ public class TestUserBetService {
 	@Autowired
 	private UserBetService userBetService;
 
-	private UserBet userBet = new UserBet(10, "单双", 1000D, 5, "单", new Date(), "xxxxxxxxxxxx");
+	@Autowired
+	private TokenConfig tokenConfig;
 
+	// private UserBet userBet = new UserBet(10, BetType.NUMBER, 1000D, 5, "单",
+	// new Date(), "xxxxxxxxxxxx",tokenConfig);
+
+	private UserBet userBet = new UserBet(10, null, BetType.NUMBER, 1000D, 5, "单", new Date(), "xxxxxxxxxxxx", tokenConfig);
+	
 	private List<UserBet> list = new ArrayList<UserBet>();
-	
+
 	private UserInfo UserInfo = new UserInfo("xxxxxxxxxxxx");
-	
+
 	@Test
 	public void TestSave() throws Exception {
+		System.out.println("");
 		System.out.println(userBetService.save(userBet));
 	}
+
 	@Test
 	public void TestSaves() throws Exception {
 		list.add(userBet);
@@ -56,9 +66,9 @@ public class TestUserBetService {
 	public void TestdeleteOneById() throws Exception {
 		System.out.println(userBetService.deleteOneById(userBet));
 	}
-	
+
 	@Test
-	public void TestgetUserBetByOpenid() throws Exception{
+	public void TestgetUserBetByOpenid() throws Exception {
 		System.out.println(userBetService.getUserBetByOpenid(UserInfo));
 	}
 }

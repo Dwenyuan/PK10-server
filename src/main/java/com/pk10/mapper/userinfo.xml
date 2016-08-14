@@ -26,4 +26,5 @@
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
 		delete from userinfo where openid = #{openid}
 	</delete>
+	
 </mapper>

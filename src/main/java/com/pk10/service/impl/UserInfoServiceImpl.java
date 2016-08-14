@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pk10.bean.LotteryHistory;
 import com.pk10.bean.UserInfo;
 import com.pk10.dao.UserInfoDao;
 import com.pk10.service.UserInfoService;
@@ -14,11 +15,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private UserInfoDao userInfoDao;
+
 	@Override
 	public Integer save(UserInfo t) throws Exception {
-		if (userInfoDao.update(t)==0) {
+		if (userInfoDao.update(t) == 0) {
 			return userInfoDao.save(t);
-		}else{
+		} else {
 			return 0;
 		}
 	}
@@ -41,6 +43,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public Integer deleteOneById(UserInfo t) throws Exception {
 		return userInfoDao.deleteOneById(t);
+	}
+
+	@Override
+	public String cashPrize(LotteryHistory lotteryHistory, UserInfo userInfo) {
+		return userInfoDao.cashPrize(lotteryHistory, userInfo);
 	}
 
 }

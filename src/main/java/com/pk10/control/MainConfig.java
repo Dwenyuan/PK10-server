@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.pk10.bean.CreateBonus;
 import com.pk10.bean.TokenConfig;
 import com.pk10.service.LotteryHistoryService;
+import com.pk10.util.CreateBonus;
 
 @Controller
 public class MainConfig {
@@ -61,38 +61,5 @@ public class MainConfig {
 		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
 	}
 
-	/**
-	 * 获取开奖结果
-	 * 
-	 * @return
-	 */
-	@RequestMapping("getBonusNum")
-	@ResponseBody
-	public Object getBonusNum() {
-		try {
-			return lotteryHistoryService.getLastLottery();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
-		}
-	}
 
-	/**
-	 * 获取开奖记录，
-	 * @param num 需要获取的记录条数，如果没有此参数，默认获取20条
-	 * @return
-	 */
-	@RequestMapping("getBonusRecord")
-	@ResponseBody
-	public Object getLotteryHistory(Integer num) {
-		try {
-			if (num == null) {
-				num = 20;
-			}
-			return lotteryHistoryService.getLastLottery(num);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
-		}
-	}
 }
