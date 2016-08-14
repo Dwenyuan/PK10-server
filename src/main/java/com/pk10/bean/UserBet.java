@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserBet {
 	private Integer id;
-	private String idnum; // 开奖期数
+	private Integer idnum; // 开奖期数
 	private BetType type;// ` VARCHAR(45) NULL COMMENT '玩法，主要分 ‘单双’ ‘数字’ ‘大小’'
 	private Double betmoney;// '下注金额',
 	private Integer mulit;// '下注倍数',
@@ -29,11 +29,11 @@ public class UserBet {
 		this.id = id;
 	}
 
-	public String getIdnum() {
+	public Integer getIdnum() {
 		return idnum;
 	}
 
-	public void setIdnum(String idnum) {
+	public void setIdnum(Integer idnum) {
 		this.idnum = idnum;
 	}
 
@@ -117,7 +117,7 @@ public class UserBet {
 		super();
 	}
 
-	public UserBet(Integer id, String idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, String userinfoOpenid, TokenConfig tokenConfig) {
+	public UserBet(Integer id, Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, String userinfoOpenid, TokenConfig tokenConfig) {
 		super();
 		this.id = id;
 		this.idnum = idnum;

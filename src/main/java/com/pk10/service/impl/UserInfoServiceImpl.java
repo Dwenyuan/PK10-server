@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pk10.bean.LotteryHistory;
+import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
+import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserInfoDao;
+import com.pk10.service.LotteryHistoryService;
 import com.pk10.service.UserInfoService;
 
 @Service
@@ -16,6 +19,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 
+	@Autowired
+	private LotteryHistoryDao lotteryHistoryDao;
+	
 	@Override
 	public Integer save(UserInfo t) throws Exception {
 		if (userInfoDao.update(t) == 0) {
@@ -46,8 +52,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public String cashPrize(LotteryHistory lotteryHistory, UserInfo userInfo) {
-		return userInfoDao.cashPrize(lotteryHistory, userInfo);
+	public String cashPrize(List<UserBet> userBets, UserInfo userInfo) throws Exception {
+		for (UserBet userBet : userBets) {
+			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
+			
+		}
+		return null;
 	}
 
 }

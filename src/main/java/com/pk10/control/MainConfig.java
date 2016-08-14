@@ -28,8 +28,8 @@ public class MainConfig {
 
 	@RequestMapping("checkToken")
 	@ResponseBody
-	public Object checkToken(String token) {
-		return token;
+	public Object checkToken(String echostr) {
+		return echostr;
 	}
 
 	/**
