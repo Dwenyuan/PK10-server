@@ -1,5 +1,9 @@
 package com.pk10.control;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +31,12 @@ public class MainConfig {
 	private LotteryHistoryService lotteryHistoryService;
 
 	@RequestMapping("checkToken")
-	@ResponseBody
-	public Object checkToken(String echostr) {
-		return echostr;
+	public void checkToken(String echostr, HttpServletResponse response) {
+		try {
+			response.getWriter().write(echostr);
+		} catch (IOException e) {
+			logger.error(e.getMessage());
+		}
 	}
 
 	/**

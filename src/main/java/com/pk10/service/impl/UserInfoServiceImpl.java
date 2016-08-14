@@ -21,7 +21,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private LotteryHistoryDao lotteryHistoryDao;
-	
+
 	@Override
 	public Integer save(UserInfo t) throws Exception {
 		if (userInfoDao.update(t) == 0) {
@@ -55,7 +55,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public String cashPrize(List<UserBet> userBets, UserInfo userInfo) throws Exception {
 		for (UserBet userBet : userBets) {
 			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
-			
+			String[] split = lotteryHistory.getLotterynums().split(",");
+			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10;
 		}
 		return null;
 	}
