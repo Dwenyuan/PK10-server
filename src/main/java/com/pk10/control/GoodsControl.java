@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.pk10.bean.Goods;
 import com.pk10.service.GoodsService;
 import com.pk10.util.ConverBase64ToImg;
@@ -34,7 +35,7 @@ public class GoodsControl {
 			return goodsService.save(goods);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 
@@ -45,7 +46,7 @@ public class GoodsControl {
 			return goodsService.getAll();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 }

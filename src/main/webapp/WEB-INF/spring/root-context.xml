@@ -74,7 +74,7 @@
 	</bean>
 	<task:scheduled-tasks scheduler="resultcollector">
 		<!-- 每天九点零八分-23去收集新的开奖结果 -->
-		<task:scheduled ref="createBonus" method="run" cron="* * 0-23 * * *"/>
+		<task:scheduled ref="createBonus" method="run" cron="* * * * * *"/>
 		<task:scheduled ref="resultCollector" method="collector" cron="0-10 7/5 9-23 * * *" />
 	</task:scheduled-tasks>
 	<task:scheduler id="resultcollector" pool-size="10" />

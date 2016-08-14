@@ -23,7 +23,7 @@ public class NoticeControl {
 			return JSON.toJSON(noticeService.getLastNotice());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 }

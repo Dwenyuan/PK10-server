@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserBetService;
@@ -29,7 +30,7 @@ public class UserBetControl {
 			return userBetService.save(userBet);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 
@@ -40,7 +41,7 @@ public class UserBetControl {
 			return userBetService.saveList(userBets);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 	
@@ -51,7 +52,7 @@ public class UserBetControl {
 			return userBetService.getUserBetByOpenid(userInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 }

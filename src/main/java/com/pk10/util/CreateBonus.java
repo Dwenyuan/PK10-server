@@ -76,11 +76,11 @@ public class CreateBonus implements InitializingBean {
 			count = (9 * 60 * 60 + 7 * 60) - (hour * 60 * 60 + min * 60 + sec);
 		} else { // 寻找最近的开奖时间
 			if (min % 10 < 2) {// 否则为逢2
-				count = (2 - (min % 10)) * 60 + (60 - sec);
-			} else if (min % 10 < 7 && min % 10 > 2) { // 在2和7之间，则下次开奖为逢7
-				count = (7 - (min % 10)) * 60 + (60 - sec);
+				count = (1 - (min % 10)) * 60 + (60 - sec);
+			} else if (min % 10 < 7 && min % 10 >= 2) { // 在2和7之间，则下次开奖为逢7
+				count = (6 - (min % 10)) * 60 + (60 - sec);
 			} else { // 否则为逢2
-				count = (12 - (min % 10)) * 60 + (60 - sec);
+				count = (11 - (min % 10)) * 60 + (60 - sec);
 			}
 		}
 	}

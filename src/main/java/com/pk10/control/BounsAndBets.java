@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.LotteryHistoryService;
@@ -47,7 +48,8 @@ public class BounsAndBets {
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			JSON.parse("{errmsg:" + e.getMessage() + "}");
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 
@@ -68,7 +70,7 @@ public class BounsAndBets {
 			return lotteryHistoryService.getLastLottery(num);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "{errmsg:" + e.getMessage() + "}";
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 
