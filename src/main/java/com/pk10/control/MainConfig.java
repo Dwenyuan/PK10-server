@@ -26,6 +26,12 @@ public class MainConfig {
 	@Autowired
 	private LotteryHistoryService lotteryHistoryService;
 
+	@RequestMapping("checkToken")
+	@ResponseBody
+	public Object checkToken(String token) {
+		return token;
+	}
+
 	/**
 	 * 获取注册参数 主要包括 <br>
 	 * appId: <br>
@@ -60,6 +66,5 @@ public class MainConfig {
 		}
 		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
 	}
-
 
 }
