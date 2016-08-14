@@ -210,6 +210,7 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>com.sinacloud.sc2</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
