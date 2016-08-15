@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.TokenConfig;
+import com.sina.sae.fetchurl.SaeFetchurl;
 
 /**
  * 从微信获取用户数据相关
@@ -24,8 +25,10 @@ public class UserInfoFormWeChat {
 	private TokenConfig tokenConfig;
 
 	public Map<String, Object> getUserInfoFromWechat(String code) throws ClientProtocolException, IOException {
-		String userinfostr = Request.Get("https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code="
-				+ code + "&grant_type=authorization_code").execute().returnContent().asString();
+		String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code="
+				+ code + "&grant_type=authorization_code";
+//		String userinfostr = Request.Get(url).execute().returnContent().asString();
+		String userinfostr = new SaeFetchurl().fetch(url);
 		return JSON.parseObject(userinfostr);
 	}
 }
