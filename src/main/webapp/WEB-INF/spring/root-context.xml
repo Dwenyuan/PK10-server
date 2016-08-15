@@ -24,6 +24,10 @@
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
+		<property name="maxPoolSize" value="10" />
+		<property name="minPoolSize" value="1" />
+		<property name="initialPoolSize" value="1" />
+
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -75,7 +79,7 @@
 	</bean>
 	<task:scheduled-tasks scheduler="resultcollector">
 		<!-- 每天九点零八分-23去收集新的开奖结果 -->
-		<task:scheduled ref="createBonus" method="run" cron="* * * * * *"/>
+		<task:scheduled ref="createBonus" method="run" cron="* * * * * *" />
 		<task:scheduled ref="resultCollector" method="collector" cron="0-10 7/5 9-23 * * *" />
 	</task:scheduled-tasks>
 	<task:scheduler id="resultcollector" pool-size="10" />
