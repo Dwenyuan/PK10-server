@@ -215,6 +215,11 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/sae-local-1.1.0.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.3.6</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>pk10</finalName>

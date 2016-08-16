@@ -10,7 +10,6 @@ import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserInfoDao;
-import com.pk10.service.LotteryHistoryService;
 import com.pk10.service.UserInfoService;
 
 @Service
