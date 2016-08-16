@@ -25,13 +25,14 @@ public class UserInfoFormWeChat {
 	private TokenConfig tokenConfig;
 
 	public Map<String, Object> getUserInfoFromWechat(String code) throws ClientProtocolException, IOException {
-		String codeToOpenid = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code="
-				+ "031NzCda1QOagU1JJOda1izAda1NzCdH" + "&grant_type=authorization_code";
-//		String userinfostr = Request.Get(url).execute().returnContent().asString();
+		String codeToOpenid = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code=" + code
+				+ "&grant_type=authorization_code";
+		// String userinfostr =
+		// Request.Get(url).execute().returnContent().asString();
 		SaeFetchurl fetchurl = new SaeFetchurl();
 		String openidStr = fetchurl.fetch(codeToOpenid);
 		JSONObject openidInfo = JSON.parseObject(openidStr);
-		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token="+openidInfo.get("access_token")+"&openid="+openidInfo.get("openid")+"&lang=zh_CN";
+		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + openidInfo.get("access_token") + "&openid=" + openidInfo.get("openid") + "&lang=zh_CN";
 		String userinfo = fetchurl.fetch(getUserInfo);
 		return JSON.parseObject(new String(userinfo.getBytes(), "utf-8"));
 	}
