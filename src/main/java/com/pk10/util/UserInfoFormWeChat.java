@@ -34,6 +34,6 @@ public class UserInfoFormWeChat {
 		JSONObject openidInfo = JSON.parseObject(openidStr);
 		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + openidInfo.get("access_token") + "&openid=" + openidInfo.get("openid") + "&lang=zh_CN";
 		String userinfo = fetchurl.fetch(getUserInfo);
-		return JSON.parseObject(new String(userinfo.getBytes(), "utf-8"));
+		return JSON.parseObject(userinfo);
 	}
 }
