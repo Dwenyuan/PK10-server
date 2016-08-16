@@ -63,6 +63,16 @@ public class UserInfo {
 		this.createdAt = createdAt;
 	}
 
+	
+
+	public UserInfo(String openid, String nickname, String headimgurl, Double money, Date createdAt) {
+		super();
+		this.openid = openid;
+		this.nickname = nickname;
+		this.headimgurl = headimgurl;
+		this.money = money;
+		this.createdAt = createdAt;
+	}
 
 	public UserInfo(String openid) {
 		super();

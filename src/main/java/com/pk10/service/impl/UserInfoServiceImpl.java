@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pk10.bean.LotteryHistory;
+import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.dao.LotteryHistoryDao;
@@ -17,6 +18,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private UserInfoDao userInfoDao;
+
+	@Autowired
+	private TokenConfig tokenConfig;
 
 	@Autowired
 	private LotteryHistoryDao lotteryHistoryDao;
@@ -42,7 +46,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public UserInfo getOneById(UserInfo t) throws Exception {
-		return userInfoDao.getOneById(t);
+		UserInfo userInfo = userInfoDao.getOneById(t);
+		if (userInfo == null) {
+			t.setMoney(tokenConfig.getMoney());// 如果用户第一次登录则赠送 默认数的金币
+			userInfoDao.save(t);
+			return t;
+		} else {
+			return userInfo;
+		}
 	}
 
 	@Override

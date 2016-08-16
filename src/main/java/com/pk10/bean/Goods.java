@@ -48,7 +48,6 @@ public class Goods {
 	}
 	public Goods() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Goods(Integer id, String goodname, Double price, String goodsimg, Integer goodsnum) {
 		super();

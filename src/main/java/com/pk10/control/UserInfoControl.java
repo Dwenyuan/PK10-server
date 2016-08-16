@@ -38,9 +38,9 @@ public class UserInfoControl {
 
 	@RequestMapping("getuserinfo")
 	@ResponseBody
-	public Object getUserInfo(@Param(value = "openid") String openid) {
+	public Object getUserInfo(@RequestBody UserInfo userInfo) {
 		try {
-			return userInfoService.getOneById(new UserInfo(openid));
+			return userInfoService.getOneById(userInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -78,9 +78,8 @@ public class UserInfoControl {
 	@RequestMapping("getUserCode")
 	@ResponseBody
 	public Object getUserCode(String code, String state) {
-		Map<String, Object> userinfo = null;
+		UserInfo userinfo = null;
 		try {
-			logger.error("code:" + code);
 			userinfo = userInfoFormWeChat.getUserInfoFromWechat(code);
 			logger.info(userinfo.toString());
 		} catch (ClientProtocolException e) {

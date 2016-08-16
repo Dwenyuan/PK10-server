@@ -25,7 +25,6 @@ public class OrdersHasGoods {
 	}
 	public OrdersHasGoods() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public OrdersHasGoods(Integer orderId, Integer goodsId) {
 		super();

@@ -42,7 +42,6 @@ public class Notice {
 	}
 	public Notice() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Notice(String title, String content, Date createdAt) {
 		super();

@@ -71,6 +71,7 @@
 		<property name="appID" value="${appid}"></property>
 		<property name="appsecret" value="${appsecret}"></property>
 		<property name="lotteryTime" value="${lotteryTime}"></property>
+		<property name="money" value="${money}"></property>
 	</bean>
 	<bean id="createBonus" class="com.pk10.util.CreateBonus" scope="singleton"></bean>
 

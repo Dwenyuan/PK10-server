@@ -42,7 +42,6 @@ public class TokenInfo {
 	}
 	public TokenInfo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public TokenInfo(String tokenid, Date createdAt, Date updatedAt) {
 		super();
