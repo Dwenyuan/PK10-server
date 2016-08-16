@@ -11,8 +11,17 @@ import java.util.Date;
 public class UserInfo {
 	String openid;
 	String nickname;
+	String headimgurl;//用户头像路径，不保存到数据库中
 	Double money = 0D;
 	Date createdAt;
+
+	public String getHeadimgurl() {
+		return headimgurl;
+	}
+
+	public void setHeadimgurl(String headimgurl) {
+		this.headimgurl = headimgurl;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;
