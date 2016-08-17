@@ -2,6 +2,8 @@ package com.pk10.control;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,10 +77,17 @@ public class UserInfoControl {
 	 */
 	@RequestMapping("getUserCode")
 	@ResponseBody
-	public Object getUserCode(String code, String state) {
+	public Object getUserCode(String code, String state, HttpServletRequest request) {
 		UserInfo userinfo = null;
 		try {
-			userinfo = userInfoFormWeChat.getUserInfoFromWechat(code);
+			// 如果session 中没有保存用户信息，则重新从微信服务器读取
+			userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
+			if (userinfo == null) {
+				userinfo = userInfoFormWeChat.getUserInfoFromWechat(code);
+				if (userinfo != null && userinfo.getOpenid() != null) { //用户信息中openid为空，说明获取信息失败了，不添加到session中，刷新后重新获取
+					request.getSession().setAttribute("userinfo", userinfo);
+				}
+			}
 			logger.info(userinfo.toString());
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
