@@ -1,9 +1,12 @@
 package com.pk10.control;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.io.IOException;
 import java.util.Map;
 
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.fluent.Request;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +39,7 @@ public class UserInfoControl {
 	@Autowired
 	private UserInfoFormWeChat userInfoFormWeChat;
 
-	@RequestMapping("getuserinfo")
+	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
 	@ResponseBody
 	public Object getUserInfo(@RequestBody UserInfo userInfo) {
 		try {
