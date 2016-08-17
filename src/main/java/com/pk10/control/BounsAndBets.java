@@ -30,6 +30,7 @@ public class BounsAndBets {
 
 	@Autowired
 	private UserInfoService userInfoService;
+
 	/**
 	 * 获取开奖结果
 	 * 
@@ -81,7 +82,7 @@ public class BounsAndBets {
 	 * @param userInfo
 	 * @return
 	 */
-	public Object cashPrize(@RequestBody LotteryHistory lotteryHistory, @RequestBody UserInfo userInfo) {
+	public Object cashPrize(@RequestBody UserInfo userInfo) {
 		// TODO 用户兑奖操作
 		return lotteryHistoryService;
 	}
