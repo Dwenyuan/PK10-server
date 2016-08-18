@@ -35,14 +35,14 @@ public class UserInfoFormWeChat {
 				+ "&grant_type=authorization_code";
 		SaeFetchurl fetchurl = new SaeFetchurl();
 		String openidStr = fetchurl.fetch(codeToOpenid);
-		logger.info("获取openid所用的URL ===> " + codeToOpenid);
+		logger.info("get openid URL ===> " + codeToOpenid);
 		JSONObject openidInfo = JSON.parseObject(openidStr);
-		logger.error("获取openid数据 ===>   " + openidStr);
+		logger.error("get openid data ===>   " + openidStr);
 		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + openidInfo.get("access_token") + "&openid=" + openidInfo.get("openid") + "&lang=zh_CN";
 		String userinfo = fetchurl.fetch(getUserInfo);
 		// 解决读取乱码的问题
 		userinfo = new String(userinfo.getBytes("ISO-8859-1"), "utf-8");
-		logger.error("获取用户信息 ===>" + userinfo);
+		logger.error("get user info ===>" + userinfo);
 		JSONObject userInfoObj = JSON.parseObject(userinfo);
 		return new UserInfo(userInfoObj.getString("openid"), userInfoObj.getString("nickname"), userInfoObj.getString("headimgurl"), null, new Date());
 	}

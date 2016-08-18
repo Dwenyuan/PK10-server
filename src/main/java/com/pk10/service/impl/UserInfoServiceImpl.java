@@ -19,7 +19,7 @@ import com.pk10.service.UserInfoService;
 public class UserInfoServiceImpl implements UserInfoService {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoServiceImpl.class);
-	
+
 	@Autowired
 	private UserInfoDao userInfoDao;
 
@@ -75,22 +75,21 @@ public class UserInfoServiceImpl implements UserInfoService {
 			switch (userBet.getType()) {
 			case NUMBER:
 				if (Integer.parseInt(userBet.getBetnum()) == lotterynum) { // 中奖了
-					logger.info("中奖");
-					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+					cashUpdateUser(safeUserInfo, userBet);
 				}
 				break;
 			case BIG_OR_SMALL:
 				if ("single".equals(userBet.getBetnum()) && lotterynum % 2 == 1) {
-					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
-					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+					cashUpdateUser(safeUserInfo, userBet);
 				}
 				break;
 			case SINGLE_OR_DOUBLE:
 				if ("big".equals(userBet.getBetnum()) && lotterynum >= 5) {
-					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
-					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+					cashUpdateUser(safeUserInfo, userBet);
 				}
 				break;
 			default:
@@ -98,6 +97,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 			}
 		}
 		return null;
+	}
+
+	private void cashUpdateUser(UserInfo safeUserInfo, UserBet userBet) throws Exception {
+		logger.info("中奖号码：" + userBet.getBetnum() + "正在兑奖");
+		safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+		userInfoDao.update(safeUserInfo);
+		logger.info("中奖号码：" + userBet.getBetnum() + "兑奖完成");
 	}
 
 }
