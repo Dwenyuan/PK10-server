@@ -66,7 +66,20 @@ public class UserInfoServiceImpl implements UserInfoService {
 		for (UserBet userBet : userBets) {
 			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
 			String[] split = lotteryHistory.getLotterynums().split(",");
-			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10;
+			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10; // 计算中奖号码
+			switch (userBet.getType()) {
+			case NUMBER:
+				if (Integer.parseInt(userBet.getBetnum())==lotterynum) { //中奖了
+					
+				}
+				break;
+			case BIG_OR_SMALL:
+				break;
+			case SINGLE_OR_DOUBLE:
+				break;
+			default:
+				break;
+			}
 		}
 		return null;
 	}
