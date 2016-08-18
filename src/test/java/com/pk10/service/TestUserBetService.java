@@ -28,7 +28,7 @@ public class TestUserBetService {
 	// private UserBet userBet = new UserBet(10, BetType.NUMBER, 1000D, 5, "单",
 	// new Date(), "xxxxxxxxxxxx",tokenConfig);
 
-	private UserBet userBet = new UserBet(10, null, BetType.NUMBER, 1000D, 5, "单", new Date(), "xxxxxxxxxxxx", tokenConfig);
+	private UserBet userBet;
 	
 	private List<UserBet> list = new ArrayList<UserBet>();
 
@@ -37,6 +37,7 @@ public class TestUserBetService {
 	@Test
 	public void TestSave() throws Exception {
 		System.out.println("");
+		userBet = new UserBet(10, null, BetType.NUMBER, 1000D, 5, "单", new Date(), "og7UbwBp0jhUHvfqcsKEY3T7dTLk", tokenConfig);
 		System.out.println(userBetService.save(userBet));
 	}
 

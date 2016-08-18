@@ -13,7 +13,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserInfo;
-import com.pk10.control.UserInfoControl;
 import com.sina.sae.fetchurl.SaeFetchurl;
 
 /**
