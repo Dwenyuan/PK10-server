@@ -63,6 +63,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public String cashPrize(List<UserBet> userBets, UserInfo userInfo) throws Exception {
+		UserInfo safeUserInfo = userInfoDao.getOneById(userInfo);
 		for (UserBet userBet : userBets) {
 			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
 			String[] split = lotteryHistory.getLotterynums().split(",");
@@ -70,12 +71,22 @@ public class UserInfoServiceImpl implements UserInfoService {
 			switch (userBet.getType()) {
 			case NUMBER:
 				if (Integer.parseInt(userBet.getBetnum())==lotterynum) { //中奖了
-					
+
 				}
 				break;
 			case BIG_OR_SMALL:
+				if ("single".equals(userBet.getBetnum())) {
+					
+				}else if("double".equals(userBet.getBetnum())){
+					
+				}
 				break;
 			case SINGLE_OR_DOUBLE:
+				if ("big".equals(userBet.getBetnum())) {
+					
+				}else if ("small".equals(userBet.getBetnum())) {
+					
+				}
 				break;
 			default:
 				break;
