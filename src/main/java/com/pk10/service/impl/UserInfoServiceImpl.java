@@ -2,6 +2,8 @@ package com.pk10.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import com.pk10.service.UserInfoService;
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
 
+	private static final Logger logger = LoggerFactory.getLogger(UserInfoServiceImpl.class);
+	
 	@Autowired
 	private UserInfoDao userInfoDao;
 
@@ -70,22 +74,23 @@ public class UserInfoServiceImpl implements UserInfoService {
 			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10; // 计算中奖号码
 			switch (userBet.getType()) {
 			case NUMBER:
-				if (Integer.parseInt(userBet.getBetnum())==lotterynum) { //中奖了
-
+				if (Integer.parseInt(userBet.getBetnum()) == lotterynum) { // 中奖了
+					logger.info("中奖");
+					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
 				}
 				break;
 			case BIG_OR_SMALL:
-				if ("single".equals(userBet.getBetnum())) {
-					
-				}else if("double".equals(userBet.getBetnum())){
-					
+				if ("single".equals(userBet.getBetnum()) && lotterynum % 2 == 1) {
+					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
+					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
 				}
 				break;
 			case SINGLE_OR_DOUBLE:
-				if ("big".equals(userBet.getBetnum())) {
-					
-				}else if ("small".equals(userBet.getBetnum())) {
-					
+				if ("big".equals(userBet.getBetnum()) && lotterynum >= 5) {
+					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
+					safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
 				}
 				break;
 			default:
