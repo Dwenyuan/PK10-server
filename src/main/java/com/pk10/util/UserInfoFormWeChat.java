@@ -34,11 +34,13 @@ public class UserInfoFormWeChat {
 				+ "&grant_type=authorization_code";
 		SaeFetchurl fetchurl = new SaeFetchurl();
 		String openidStr = fetchurl.fetch(codeToOpenid);
+		fetchurl.clean();
 		logger.info("get openid URL ===> " + codeToOpenid);
 		JSONObject openidInfo = JSON.parseObject(openidStr);
 		logger.error("get openid data ===>   " + openidStr);
 		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + openidInfo.get("access_token") + "&openid=" + openidInfo.get("openid") + "&lang=zh_CN";
 		String userinfo = fetchurl.fetch(getUserInfo);
+		fetchurl.clean();
 		// 解决读取乱码的问题
 		userinfo = new String(userinfo.getBytes("ISO-8859-1"), "utf-8");
 		logger.error("get user info ===>" + userinfo);

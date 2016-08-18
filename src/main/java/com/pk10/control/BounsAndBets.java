@@ -83,7 +83,11 @@ public class BounsAndBets {
 	 * @return
 	 */
 	public Object cashPrize(@RequestBody UserInfo userInfo) {
-		// TODO 用户兑奖操作
-		return lotteryHistoryService;
+		try {
+			return userInfoService.cashPrize(null, userInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -1,5 +1,7 @@
 package com.pk10.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -67,6 +69,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public String cashPrize(List<UserBet> userBets, UserInfo userInfo) throws Exception {
+		LotteryHistory safeLotteryHistory = lotteryHistoryDao.getLastLottery();
+		while ((new Date().getTime() - safeLotteryHistory.getCreatedAt().getTime()) / (1000 * 60) > 3) {
+			Thread.sleep(5000); //如果获取的最新的开奖结果分钟数大于3，说明还没有读取到最新的开奖结果，等待结果
+		}
 		UserInfo safeUserInfo = userInfoDao.getOneById(userInfo);
 		for (UserBet userBet : userBets) {
 			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
