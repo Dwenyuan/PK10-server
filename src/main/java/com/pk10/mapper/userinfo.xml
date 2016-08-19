@@ -5,23 +5,24 @@
 		<result column="openid" property="openid" />
 		<result column="nickname" property="nickname" />
 		<result column="money" property="money" />
+		<result column="createdAt" property="createdAt"/>
 	</resultMap>
 
 	<insert id="save" parameterType="com.pk10.bean.UserInfo">
-		insert into userinfo(openid,nickname,headimgurl,money,createdAt)
-		values(#{openid},#{nickname},#{money},#{headimgurl},#{createdAt})
+		insert into userinfo(openid,nickname,money,createdAt)
+		values(#{openid},#{nickname},#{money},#{createdAt})
 	</insert>
 
 	<update id="update" parameterType="com.pk10.bean.UserInfo">
-		update userinfo u set u.money = #{money},u.nickname =#{nickname},headimgurl=#{headimgurl} where u.openid = #{openid}
+		update userinfo u set u.money = #{money},u.nickname =#{nickname} where u.openid = #{openid}
 	</update>
 
 	<select id="getAll" resultMap="UserInfo">
-		select openid,nickname,headimgurl,money,createdAt from userinfo
+		select openid,nickname,money,createdAt from userinfo
 	</select>
 
 	<select id="getOneById" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select openid,nickname,headimgurl,money,createdAt from userinfo u where u.openid = #{openid}
+		select openid,nickname,money,createdAt from userinfo u where u.openid = #{openid}
 	</select>
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
 		delete from userinfo where openid = #{openid}

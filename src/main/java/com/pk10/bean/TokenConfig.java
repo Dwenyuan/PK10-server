@@ -13,8 +13,8 @@ public class TokenConfig {
 	Double numberOdd;// 选择数字的赔率
 	Double singleOdd;// 选择单双的赔率
 	Double bigOdd;// 选择大小的赔率
-	
-	Double money;//初始化用户时 赠送金币的数量
+
+	Double money;// 初始化用户时 赠送金币的数量
 	Integer lotteryTime;// 开奖时间间隔 单位 分钟
 
 	public TokenConfig(String tokenUrl, String appID, String appsecret, Double numberOdd, Double singleOdd, Double bigOdd, Double money, Integer lotteryTime) {
@@ -95,7 +95,8 @@ public class TokenConfig {
 
 	@Override
 	public String toString() {
-		return "TokenConfig [tokenUrl=" + tokenUrl + ", appID=" + appID + ", appsecret=" + appsecret + "]";
+		return "TokenConfig [tokenUrl=" + tokenUrl + ", appID=" + appID + ", appsecret=" + appsecret + ", numberOdd=" + numberOdd + ", singleOdd=" + singleOdd + ", bigOdd="
+				+ bigOdd + ", money=" + money + ", lotteryTime=" + lotteryTime + "]";
 	}
 
 	public TokenConfig() {

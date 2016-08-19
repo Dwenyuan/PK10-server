@@ -62,11 +62,6 @@
 			<value>100</value>
 		</property>
 
-		<!--Strongly disrecommended. Setting this to true may lead to subtle and bizarre bugs. （文档原文）作者强烈建议不使用的一个属性 -->
-		<property name="forceIgnoreUnresolvedTransactions">
-			<value>false</value>
-		</property>
-
 		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
 		<property name="idleConnectionTestPeriod">
 			<value>60</value>
@@ -77,10 +72,6 @@
 			<value>60</value>
 		</property>
 
-		<!--JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements 属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。 如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0 -->
-		<property name="maxStatements">
-			<value>100</value>
-		</property>
 
 		<!--c3p0是异步操作的，缓慢的JDBC操作通过帮助进程完成。扩展这些操作可以有效的提升性能 通过多线程实现多个操作同时被执行。Default: 3 -->
 		<property name="numHelperThreads">
@@ -151,6 +142,9 @@
 		<property name="appsecret" value="${appsecret}"></property>
 		<property name="lotteryTime" value="${lotteryTime}"></property>
 		<property name="money" value="${money}"></property>
+		<property name="numberOdd" value="${numberOdd}"></property>
+		<property name="singleOdd" value="${singleOdd}"></property>
+		<property name="bigOdd" value="${bigOdd}"></property>
 	</bean>
 	<bean id="createBonus" class="com.pk10.util.CreateBonus" scope="singleton"></bean>
 

@@ -8,17 +8,26 @@ public class UserBet {
 	private BetType type;// ` VARCHAR(45) NULL COMMENT '玩法，主要分 ‘单双’ ‘数字’ ‘大小’'
 	private Double betmoney;// '下注金额',
 	private Integer mulit;// '下注倍数',
-	private Double Odds; // 此次下注赔率 此处根据玩法自动添加
+	private Double odds; // 此次下注赔率 此处根据玩法自动添加
 	private String betnum;// '下注号码, 也可以是 \'single\' \'double\' \'big\' \'small\'
 	private Date createdAt;// ` DATETIME NULL,
 	private String userinfoOpenid;// ` VARCHAR(255) NOT NULL,
-
+	private Integer state;
 	private TokenConfig tokenConfig;
+
 
 	@Override
 	public String toString() {
-		return "UserBet [id=" + id + ", type=" + type + ", betmoney=" + betmoney + ", mulit=" + mulit + ", betnum=" + betnum + ", createdAt=" + createdAt + ", userinfoOpenid="
-				+ userinfoOpenid + "]";
+		return "UserBet [id=" + id + ", idnum=" + idnum + ", type=" + type + ", betmoney=" + betmoney + ", mulit=" + mulit + ", odds=" + odds + ", betnum=" + betnum
+				+ ", createdAt=" + createdAt + ", userinfoOpenid=" + userinfoOpenid + ", state=" + state + ", tokenConfig=" + tokenConfig + "]";
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
 	}
 
 	public Integer getId() {
@@ -94,19 +103,19 @@ public class UserBet {
 	}
 
 	public Double getOdds() {
-		return this.Odds;
+		return this.odds;
 	}
 
 	public void setOdds() {
 		switch (this.type) {
 		case NUMBER:
-			this.Odds = tokenConfig.getNumberOdd();
+			this.odds = tokenConfig.getNumberOdd();
 			break;
 		case SINGLE_OR_DOUBLE:
-			this.Odds = tokenConfig.getSingleOdd();
+			this.odds = tokenConfig.getSingleOdd();
 			break;
 		case BIG_OR_SMALL:
-			this.Odds = tokenConfig.getBigOdd();
+			this.odds = tokenConfig.getBigOdd();
 			break;
 		default:
 			break;

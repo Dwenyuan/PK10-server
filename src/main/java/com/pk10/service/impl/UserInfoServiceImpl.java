@@ -1,6 +1,5 @@
 package com.pk10.service.impl;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -9,12 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.dao.LotteryHistoryDao;
+import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
+import com.pk10.service.UserBetService;
 import com.pk10.service.UserInfoService;
 
 @Service
@@ -24,7 +26,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private UserInfoDao userInfoDao;
-
+	@Autowired
+	private UserBetDao userBetDao;
 	@Autowired
 	private TokenConfig tokenConfig;
 
@@ -68,12 +71,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public String cashPrize(List<UserBet> userBets, UserInfo userInfo) throws Exception {
-		LotteryHistory safeLotteryHistory = lotteryHistoryDao.getLastLottery();
-		while ((new Date().getTime() - safeLotteryHistory.getCreatedAt().getTime()) / (1000 * 60) > 3) {
-			Thread.sleep(5000); //如果获取的最新的开奖结果分钟数大于3，说明还没有读取到最新的开奖结果，等待结果
-		}
+	public String cashPrize(UserInfo userInfo) throws Exception {
 		UserInfo safeUserInfo = userInfoDao.getOneById(userInfo);
+		List<UserBet> userBets = userBetDao.getUnCashPrize(safeUserInfo);
 		for (UserBet userBet : userBets) {
 			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
 			String[] split = lotteryHistory.getLotterynums().split(",");
@@ -102,13 +102,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 				break;
 			}
 		}
-		return null;
+		return JSON.toJSONString(safeUserInfo);
 	}
 
 	private void cashUpdateUser(UserInfo safeUserInfo, UserBet userBet) throws Exception {
 		logger.info("中奖号码：" + userBet.getBetnum() + "正在兑奖");
 		safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
 		userInfoDao.update(safeUserInfo);
+		userBetDao.update(userBet);// 兑奖后重置标志位表示已兑奖
 		logger.info("中奖号码：" + userBet.getBetnum() + "兑奖完成");
 	}
 

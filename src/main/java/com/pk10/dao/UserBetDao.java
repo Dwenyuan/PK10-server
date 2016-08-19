@@ -12,4 +12,6 @@ public interface UserBetDao extends BaseDao<UserBet> {
 	Integer saveList(List<UserBet> userBets);
 
 	UserBet getOneByIdnum(UserBet userBet);
+
+	List<UserBet> getUnCashPrize(UserInfo userInfo);
 }

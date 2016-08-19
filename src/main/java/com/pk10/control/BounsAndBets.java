@@ -75,19 +75,4 @@ public class BounsAndBets {
 		}
 	}
 
-	/**
-	 * 用户兑奖
-	 * 
-	 * @param lotteryHistory
-	 * @param userInfo
-	 * @return
-	 */
-	public Object cashPrize(@RequestBody UserInfo userInfo) {
-		try {
-			return userInfoService.cashPrize(null, userInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

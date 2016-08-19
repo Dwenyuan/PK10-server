@@ -9,6 +9,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pk10.bean.TokenConfig;
+import com.pk10.service.TokenConfigService;
 
 /**
  * 自动生成中奖码以及倒计时
@@ -26,6 +27,9 @@ public class CreateBonus implements InitializingBean {
 
 	@Autowired
 	private TokenConfig tokenConfig;
+
+	@Autowired
+	private TokenConfigService tokenConfigService;
 
 	public static String getIdnum() {
 		return idnum;
@@ -87,5 +91,9 @@ public class CreateBonus implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		Integer update = tokenConfigService.update(tokenConfig);
+		if (update < 1) {
+			tokenConfigService.save(tokenConfig);
+		}
 	}
 }

@@ -36,7 +36,7 @@ public class UserBetControl {
 
 	@RequestMapping(value = "createUserBets", method = RequestMethod.POST)
 	@ResponseBody
-	public Object createUserBets(@RequestBody List<UserBet> userBets){
+	public Object createUserBets(@RequestBody List<UserBet> userBets) {
 		try {
 			return userBetService.saveList(userBets);
 		} catch (Exception e) {
@@ -44,7 +44,7 @@ public class UserBetControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-	
+
 	@RequestMapping("getUserBetByOpenid")
 	@ResponseBody
 	public Object getUserBetByOpenid(UserInfo userInfo) {

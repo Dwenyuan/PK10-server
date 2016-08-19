@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
+import com.pk10.service.TokenConfigService;
 import com.pk10.service.UserBetService;
 
 @Service
@@ -20,6 +22,12 @@ public class UserBetServiceImpl implements UserBetService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 
+	@Autowired
+	private TokenConfig tokenConfig;
+
+	@Autowired
+	private TokenConfigService tokenConfigService;
+	
 	@Override
 	public Integer save(UserBet t) throws Exception {
 		// 下注的同时，减去用户的金币
@@ -59,15 +67,18 @@ public class UserBetServiceImpl implements UserBetService {
 
 	@Override
 	public Integer saveList(List<UserBet> userBets) throws Exception {
+		TokenConfig safeTokenConfig = tokenConfigService.getLastTokenConfig();
 		if (userBets.size() < 0)
 			throw new Exception("没有下注,或者下注出错");
 		for (UserBet userBet : userBets) {
-			UserInfo userInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserinfoOpenid()));
-			Double balance = userInfo.getMoney() - userBet.getBetmoney();
+			userBet.setTokenConfig(safeTokenConfig);
+			userBet.setOdds(); // 设置倍率
+			UserInfo safeUserInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserinfoOpenid()));
+			Double balance = safeUserInfo.getMoney() - userBet.getBetmoney();
 			if (balance < 0)
 				throw new Exception("余额不足");
-			userInfo.setMoney(balance);
-			userInfoDao.update(userInfo);
+			safeUserInfo.setMoney(balance);
+			userInfoDao.update(safeUserInfo);
 		}
 		return userBetDao.saveList(userBets);
 	}
@@ -75,6 +86,11 @@ public class UserBetServiceImpl implements UserBetService {
 	@Override
 	public UserBet getOneByIdnum(UserBet userBet) throws Exception {
 		return userBetDao.getOneByIdnum(userBet);
+	}
+
+	@Override
+	public List<UserBet> getUnCashPrize(UserInfo userInfo) throws Exception {
+		return userBetDao.getUnCashPrize(userInfo);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.pk10.service;
 
+import static org.hamcrest.CoreMatchers.endsWith;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -71,5 +73,9 @@ public class TestUserBetService {
 	@Test
 	public void TestgetUserBetByOpenid() throws Exception {
 		System.out.println(userBetService.getUserBetByOpenid(UserInfo));
+	}
+	@Test
+	public void TestGetUnCashPrize() throws Exception{
+		System.out.println(userBetService.getUnCashPrize(new UserInfo("og7UbwBp0jhUHvfqcsKEY3T7dTLk")));
 	}
 }

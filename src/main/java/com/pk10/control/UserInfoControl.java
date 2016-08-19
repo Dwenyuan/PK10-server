@@ -1,6 +1,7 @@
 package com.pk10.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
@@ -84,7 +86,7 @@ public class UserInfoControl {
 			userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
 			if (userinfo == null) {
 				userinfo = userInfoFormWeChat.getUserInfoFromWechat(code);
-				if (userinfo != null && userinfo.getOpenid() != null) { //用户信息中openid为空，说明获取信息失败了，不添加到session中，刷新后重新获取
+				if (userinfo != null && userinfo.getOpenid() != null) { // 用户信息中openid为空，说明获取信息失败了，不添加到session中，刷新后重新获取
 					request.getSession().setAttribute("userinfo", userinfo);
 				}
 			}
@@ -95,5 +97,16 @@ public class UserInfoControl {
 			e.printStackTrace();
 		}
 		return userinfo;
+	}
+
+	@RequestMapping("cashPrize")
+	@ResponseBody
+	public Object cashPrize(@RequestBody UserInfo userInfo) {
+		try {
+			 return userInfoService.cashPrize(userInfo);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
 	}
 }

@@ -66,7 +66,7 @@ public class MainConfig {
 		Integer idnum = null;
 		try {
 			Integer id = lotteryHistoryService.getLastLottery().getId();
-			idnum = id + 1; // 当前开奖期数
+			idnum = id; // 当前开奖期数
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
