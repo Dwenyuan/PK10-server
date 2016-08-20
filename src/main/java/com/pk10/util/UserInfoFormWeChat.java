@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserInfo;
+import com.pk10.service.TokenConfigService;
 import com.sina.sae.fetchurl.SaeFetchurl;
 
 /**
@@ -27,9 +28,14 @@ public class UserInfoFormWeChat {
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoFormWeChat.class);
 
 	@Autowired
+	private TokenConfigService tokenConfigService;
+	
 	private TokenConfig tokenConfig;
 
 	public UserInfo getUserInfoFromWechat(String code) throws ClientProtocolException, IOException {
+		if (tokenConfig==null) {
+			tokenConfig = tokenConfigService.getLastTokenConfig();
+		}
 		String codeToOpenid = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code=" + code
 				+ "&grant_type=authorization_code";
 		String openidStr = new SaeFetchurl().fetch(codeToOpenid);
