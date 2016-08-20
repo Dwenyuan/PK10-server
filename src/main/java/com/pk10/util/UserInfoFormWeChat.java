@@ -32,13 +32,12 @@ public class UserInfoFormWeChat {
 	public UserInfo getUserInfoFromWechat(String code) throws ClientProtocolException, IOException {
 		String codeToOpenid = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code=" + code
 				+ "&grant_type=authorization_code";
-		SaeFetchurl fetchurl = new SaeFetchurl();
-		String openidStr = fetchurl.fetch(codeToOpenid);
+		String openidStr = new SaeFetchurl().fetch(codeToOpenid);
 		logger.info("get openid URL ===> " + codeToOpenid);
 		JSONObject openidInfo = JSON.parseObject(openidStr);
 		logger.error("get openid data ===>   " + openidStr);
 		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + openidInfo.get("access_token") + "&openid=" + openidInfo.get("openid") + "&lang=zh_CN";
-		String userinfo = fetchurl.fetch(getUserInfo);
+		String userinfo = new SaeFetchurl().fetch(getUserInfo);
 		// 解决读取乱码的问题
 		userinfo = new String(userinfo.getBytes("ISO-8859-1"), "utf-8");
 		logger.error("get user info ===>" + userinfo);
