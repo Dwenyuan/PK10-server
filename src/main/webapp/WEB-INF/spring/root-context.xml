@@ -69,7 +69,7 @@
 
 		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
 		<property name="maxIdleTime">
-			<value>60</value>
+			<value>20</value>
 		</property>
 
 
