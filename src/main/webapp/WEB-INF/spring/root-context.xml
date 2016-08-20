@@ -24,9 +24,9 @@
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<property name="maxPoolSize" value="20" />
-		<property name="minPoolSize" value="1" />
-		<property name="initialPoolSize" value="1" />
+		<property name="maxPoolSize" value="50" />
+		<property name="minPoolSize" value="5" />
+		<property name="initialPoolSize" value="10" />
 		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
 		<property name="acquireIncrement">
 			<value>3</value>
