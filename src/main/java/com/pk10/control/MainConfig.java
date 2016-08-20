@@ -2,6 +2,7 @@ package com.pk10.control;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.annotations.Param;
@@ -16,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.pk10.bean.TokenConfig;
 import com.pk10.service.LotteryHistoryService;
 import com.pk10.util.CreateBonus;
+import com.pk10.util.WeChatSign;
 
 @Controller
 public class MainConfig {
@@ -74,4 +76,11 @@ public class MainConfig {
 		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
 	}
 
+	@RequestMapping("getSign")
+	@ResponseBody
+	public Object getSign(HttpServletRequest request) {
+		String jsapi_ticket = "jsapi_ticket";
+		String url = request.getRequestURL().toString();
+		return WeChatSign.sign(jsapi_ticket, url);
+	}
 }
