@@ -41,12 +41,12 @@ public class UserInfoFormWeChat {
 		String openidStr = new SaeFetchurl().fetch(codeToOpenid);
 		logger.info("get openid URL ===> " + codeToOpenid);
 		JSONObject openidInfo = JSON.parseObject(openidStr);
-		logger.error("get openid data ===>   " + openidStr);
+		logger.info("get openid data ===>   " + openidStr);
 		String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + openidInfo.get("access_token") + "&openid=" + openidInfo.get("openid") + "&lang=zh_CN";
 		String userinfo = new SaeFetchurl().fetch(getUserInfo);
 		// 解决读取乱码的问题
 		userinfo = new String(userinfo.getBytes("ISO-8859-1"), "utf-8");
-		logger.error("get user info ===>" + userinfo);
+		logger.info("get user info ===>" + userinfo);
 		JSONObject userInfoObj = JSON.parseObject(userinfo);
 		return new UserInfo(userInfoObj.getString("openid"), userInfoObj.getString("nickname"), userInfoObj.getString("headimgurl"), null, new Date());
 	}

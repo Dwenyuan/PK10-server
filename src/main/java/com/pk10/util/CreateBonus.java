@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.scheduling.annotation.Schedules;
 
 import com.pk10.bean.TokenConfig;
 import com.pk10.service.TokenConfigService;
@@ -89,8 +91,16 @@ public class CreateBonus implements InitializingBean {
 		}
 	}
 
+	/**
+	 * 每隔2个小时获取一次全局的token票据 并存储起来
+	 */
+	public void getTokenAccess(){
+		
+	}
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		// 储存全局票据
 		Integer update = tokenConfigService.update(tokenConfig);
 		if (update < 1) {
 			tokenConfigService.save(tokenConfig);
