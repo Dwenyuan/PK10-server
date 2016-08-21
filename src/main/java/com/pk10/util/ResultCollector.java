@@ -25,7 +25,7 @@ public class ResultCollector implements InitializingBean {
 
 	private String url;
 
-	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 	public String getUrl() {
 		return url;
