@@ -29,7 +29,7 @@
 		<property name="initialPoolSize" value="10" />
 		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
 		<property name="acquireIncrement">
-			<value>3</value>
+			<value>5</value>
 		</property>
 
 		<!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
