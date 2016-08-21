@@ -1,7 +1,6 @@
 package com.pk10.control;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;

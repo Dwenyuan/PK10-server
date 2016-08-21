@@ -1,6 +1,5 @@
 package com.pk10.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,7 +15,6 @@ import com.pk10.bean.UserInfo;
 import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
-import com.pk10.service.UserBetService;
 import com.pk10.service.UserInfoService;
 
 @Service
