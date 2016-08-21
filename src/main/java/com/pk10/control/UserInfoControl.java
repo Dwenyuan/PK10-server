@@ -82,6 +82,7 @@ public class UserInfoControl {
 		try {
 			// 如果session 中没有保存用户信息，则重新从微信服务器读取
 			userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
+			logger.info("get userinfo by code ====> code :" + code);
 			if (userinfo == null) {
 				userinfo = userInfoFormWeChat.getUserInfoFromWechat(code);
 				if (userinfo != null && userinfo.getOpenid() != null) { // 用户信息中openid为空，说明获取信息失败了，不添加到session中，刷新后重新获取
@@ -101,7 +102,7 @@ public class UserInfoControl {
 	@ResponseBody
 	public Object cashPrize(@RequestBody UserInfo userInfo) {
 		try {
-			 return userInfoService.cashPrize(userInfo);
+			return userInfoService.cashPrize(userInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
