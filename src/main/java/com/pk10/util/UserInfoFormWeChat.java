@@ -38,7 +38,10 @@ public class UserInfoFormWeChat {
 		}
 		String codeToOpenid = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + tokenConfig.getAppID() + "&secret=" + tokenConfig.getAppsecret() + "&code=" + code
 				+ "&grant_type=authorization_code";
-		String openidStr = new SaeFetchurl().fetch(codeToOpenid);
+		SaeFetchurl fetchurl = new SaeFetchurl();
+		String openidStr = fetchurl.fetch(codeToOpenid);
+		logger.error("error code ====> "+fetchurl.getErrno());
+		logger.error("error code ====> "+fetchurl.getErrmsg());
 		logger.info("get openid URL ===> " + codeToOpenid);
 		JSONObject openidInfo = JSON.parseObject(openidStr);
 		logger.info("get openid data ===>   " + openidStr);
