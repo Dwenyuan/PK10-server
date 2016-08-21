@@ -104,11 +104,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	private void cashUpdateUser(UserInfo safeUserInfo, UserBet userBet) throws Exception {
-		logger.info("中奖号码：" + userBet.getBetnum() + "正在兑奖");
+		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");
 		safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
 		userInfoDao.update(safeUserInfo);
 		userBetDao.update(userBet);// 兑奖后重置标志位表示已兑奖
-		logger.info("中奖号码：" + userBet.getBetnum() + "兑奖完成");
+		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");
 	}
 
 }

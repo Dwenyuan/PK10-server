@@ -26,9 +26,6 @@ public class BounsAndBets {
 	@Autowired
 	private LotteryHistoryService lotteryHistoryService;
 
-	@Autowired
-	private UserInfoService userInfoService;
-
 	/**
 	 * 获取开奖结果
 	 * 
