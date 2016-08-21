@@ -58,9 +58,9 @@
 		</property>
 
 		<!--当连接池用完时客户端调用getConnection()后等待获取新连接的时间，超时后将抛出 SQLException,如设为0则无限期等待。单位毫秒。Default: 0 -->
-		<property name="checkoutTimeout">
+	<!-- 	<property name="checkoutTimeout">
 			<value>100</value>
-		</property>
+		</property> -->
 
 		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
 		<property name="idleConnectionTestPeriod">
