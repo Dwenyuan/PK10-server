@@ -2,7 +2,9 @@ package com.pk10.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -10,8 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.annotation.Schedules;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.pk10.bean.TokenConfig;
+import com.pk10.bean.TokenInfo;
 import com.pk10.service.TokenConfigService;
+import com.pk10.service.TokenInfoService;
+import com.sina.sae.fetchurl.SaeFetchurl;
 
 /**
  * 自动生成中奖码以及倒计时
@@ -32,6 +39,9 @@ public class CreateBonus implements InitializingBean {
 
 	@Autowired
 	private TokenConfigService tokenConfigService;
+
+	@Autowired
+	private TokenInfoService tokenInfoService;
 
 	public static String getIdnum() {
 		return idnum;
@@ -93,11 +103,33 @@ public class CreateBonus implements InitializingBean {
 
 	/**
 	 * 每隔2个小时获取一次全局的token票据 并存储起来
+	 * 
+	 * @throws Exception
 	 */
-	public void getTokenAccess(){
-		
+	public void getTokenAccess() throws Exception {
+		TokenConfig safeTokenConfig = tokenConfigService.getLastTokenConfig();
+		logger.info("start task get access-token ....");
+		String accessToken = new SaeFetchurl()
+				.fetch("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + safeTokenConfig.getAppID() + "&secret=" + safeTokenConfig.getAppsecret());
+		JSONObject message = JSON.parseObject(accessToken);
+		if (message != null && message.getString("access_token") != null) { // 如果获取的内容都不为空则保存起来
+			String jsapiTicket = this.getJsapiTicket(message.getString("access_token"));
+			Integer save = tokenInfoService.save(new TokenInfo(message.getString("access_token"),jsapiTicket, new Date(), new Date()));
+		} else {
+			throw new Exception("access_token get has a error");
+		}
 	}
-	
+
+	public String getJsapiTicket(String tokenAccess) throws Exception {
+		String jsapiToken = new SaeFetchurl().fetch("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + tokenAccess + "&type=jsapi");
+		JSONObject jsapi = JSON.parseObject(jsapiToken);
+		if (jsapi != null && jsapi.getString("ticket") != null) {
+			return jsapi.getString("ticket");
+		} else {
+			throw new Exception("get jsapi ticket has a error");
+		}
+	}
+
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// 储存全局票据

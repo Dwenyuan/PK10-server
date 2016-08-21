@@ -9,8 +9,15 @@ import java.util.Date;
 public class TokenInfo {
 	String tokenid;
 	String id = "access_token";//标志 用以更新token
+	String jsapiToken;
 	Date createdAt;
 	Date updatedAt;
+	public String getJsapiToken() {
+		return jsapiToken;
+	}
+	public void setJsapiToken(String jsapiToken) {
+		this.jsapiToken = jsapiToken;
+	}
 	public String getTokenid() {
 		return tokenid;
 	}
@@ -46,6 +53,21 @@ public class TokenInfo {
 	public TokenInfo(String tokenid, Date createdAt, Date updatedAt) {
 		super();
 		this.tokenid = tokenid;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+	public TokenInfo(String tokenid, String id, String jsapiToken, Date createdAt, Date updatedAt) {
+		super();
+		this.tokenid = tokenid;
+		this.id = id;
+		this.jsapiToken = jsapiToken;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+	public TokenInfo(String tokenid, String jsapiToken, Date createdAt, Date updatedAt) {
+		super();
+		this.tokenid = tokenid;
+		this.jsapiToken = jsapiToken;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}

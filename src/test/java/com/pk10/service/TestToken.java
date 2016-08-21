@@ -31,4 +31,10 @@ public class TestToken {
 	public void TestGetTokenFromNet() throws Exception{
 		TokenInfo geTokenInfoFormNet = tokenInfoService.geTokenInfoFormNet();
 	}
+	
+	@Test
+	public void TestGetLastToken() throws Exception{
+		TokenInfo lastTokenInfo = tokenInfoService.getLastTokenInfo();
+		System.out.println(lastTokenInfo);
+	}
 }

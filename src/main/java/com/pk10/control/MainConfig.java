@@ -1,6 +1,7 @@
 package com.pk10.control;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.TokenConfig;
+import com.pk10.bean.TokenInfo;
 import com.pk10.service.LotteryHistoryService;
+import com.pk10.service.TokenInfoService;
 import com.pk10.util.CreateBonus;
 import com.pk10.util.WeChatSign;
 
@@ -29,6 +32,9 @@ public class MainConfig {
 	@Autowired
 	private CreateBonus createBonus;
 
+	@Autowired
+	private TokenInfoService tokenInfoService;
+	
 	@Autowired
 	private LotteryHistoryService lotteryHistoryService;
 
@@ -53,7 +59,9 @@ public class MainConfig {
 	@RequestMapping("getMainConfig")
 	@ResponseBody
 	public Object getMainConfig(@Param(value = "url") String url) {
-		return tokenConfig;
+		Map<String, String> sign = this.getSign(url);
+		sign.put("appId", tokenConfig.getAppID());
+		return sign;
 	}
 
 	/**
@@ -76,11 +84,15 @@ public class MainConfig {
 		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
 	}
 
-	@RequestMapping("getSign")
-	@ResponseBody
-	public Object getSign(HttpServletRequest request) {
-		String jsapi_ticket = "jsapi_ticket";
-		String url = request.getRequestURL().toString();
+	public Map<String, String> getSign(String url) {
+		String jsapi_ticket = "";
+		try {
+			TokenInfo safeTokenInfo = tokenInfoService.getLastTokenInfo();
+			jsapi_ticket = safeTokenInfo.getJsapiToken();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}
 		return WeChatSign.sign(jsapi_ticket, url);
 	}
 }
