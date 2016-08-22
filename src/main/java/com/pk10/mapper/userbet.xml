@@ -10,20 +10,20 @@
 		<result column="mulit" property="mulit" />
 		<result column="betnum" property="betnum" />
 		<result column="createdAt" property="createdAt" />
-		<result column="userinfo_openid" property="userinfoOpenid" />
+		<result column="userid" property="userid" />
 		<result column="state" property="state" />
 	</resultMap>
 
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
-		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid)
-		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userinfoOpenid})
+		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid})
 	</insert>
 
 	<insert id="saveList" parameterType="list">
-		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid)
+		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
 		values
 		<foreach collection="list" item="item" separator=",">
-			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userinfoOpenid})
+			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid})
 		</foreach>
 	</insert>
 
@@ -32,27 +32,28 @@
 	</update>
 
 	<select id="getAll" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid,state from userbet
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet
 	</select>
 
 	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid,state from userbet ub where ub.id = #{id}
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{id}
 	</select>
 
 	<select id="getOneByIdnum">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid,state from userbet ub where ub.id = #{idnum}
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{idnum}
 	</select>
 
 	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid,state from userbet ub where
-		ub.userinfo_openid =
-		#{openid}
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
+		ub.userid =
+		#{id}
 	</select>
-
+	<!-- 获取指定用户未兑奖的订单 -->
 	<select id="getUnCashPrize" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userinfo_openid,state from userbet ub where
-		ub.userinfo_openid =
-		#{openid} and ub.state = 0
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
+		ub.userid =
+		#{id} and
+		ub.state = 0
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">

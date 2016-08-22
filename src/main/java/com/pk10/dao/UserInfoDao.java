@@ -13,4 +13,20 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
 	 * @return
 	 */
 	String cashPrize(LotteryHistory lotteryHistory, UserInfo userInfo);
+	
+	/**
+	 * 检测手机是否占用
+	 * @param userInfo
+	 * @return
+	 */
+	UserInfo getUserInfoByTel(UserInfo userInfo);
+	
+	/**
+	 * 检测用户名是否占用
+	 * @param userInfo
+	 * @return
+	 */
+	UserInfo getUserInfoByUsername(UserInfo userInfo);
+	
+	UserInfo login(UserInfo userInfo);
 }

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.service.LotteryHistoryService;
-import com.pk10.service.UserInfoService;
 
 /**
  * 下注和获奖相关

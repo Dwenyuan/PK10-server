@@ -17,9 +17,14 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	
-	@RequestMapping("/getpath")
+	@RequestMapping("getpath")
 	@ResponseBody
 	public String getPath(HttpServletRequest request){
 		return request.getRequestURL().toString();
+	}
+	
+	@RequestMapping("error")
+	public String main(){
+		return "redirect:/userlogin.html";
 	}
 }

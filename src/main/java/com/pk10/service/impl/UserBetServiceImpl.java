@@ -1,5 +1,6 @@
 package com.pk10.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class UserBetServiceImpl implements UserBetService {
 	@Override
 	public Integer save(UserBet t) throws Exception {
 		// 下注的同时，减去用户的金币
-		UserInfo userInfo = userInfoDao.getOneById(new UserInfo(t.getUserinfoOpenid()));
+		UserInfo userInfo = userInfoDao.getOneById(new UserInfo(t.getUserid()));
 		Double balance = userInfo.getMoney() - t.getBetmoney();
 		if (balance < 0)
 			throw new Exception("余额不足");
@@ -69,14 +70,15 @@ public class UserBetServiceImpl implements UserBetService {
 	public Integer saveList(List<UserBet> userBets) throws Exception {
 		TokenConfig safeTokenConfig = tokenConfigService.getLastTokenConfig();
 		if (userBets.size() < 0)
-			throw new Exception("没有下注,或者下注出错");
+			throw new Exception("user bet nothing or has a mistake");
 		for (UserBet userBet : userBets) {
 			userBet.setTokenConfig(safeTokenConfig);
-			userBet.setOdds(); // 设置倍率
-			UserInfo safeUserInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserinfoOpenid()));
+			userBet.setOdds(); // 设置倍率single
+			userBet.setCreatedAt(new Date());
+			UserInfo safeUserInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserid()));
 			Double balance = safeUserInfo.getMoney() - userBet.getBetmoney();
 			if (balance < 0)
-				throw new Exception("余额不足");
+				throw new Exception("balance is not enough");
 			safeUserInfo.setMoney(balance);
 			userInfoDao.update(safeUserInfo);
 		}

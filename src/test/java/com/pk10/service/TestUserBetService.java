@@ -25,26 +25,23 @@ public class TestUserBetService {
 	@Autowired
 	private TokenConfig tokenConfig;
 
-	// private UserBet userBet = new UserBet(10, BetType.NUMBER, 1000D, 5, "单",
-	// new Date(), "xxxxxxxxxxxx",tokenConfig);
-
 	private UserBet userBet;
 	
 	private List<UserBet> list = new ArrayList<UserBet>();
 
-	private UserInfo UserInfo = new UserInfo("xxxxxxxxxxxx");
+	private UserInfo UserInfo = new UserInfo(29);
 
 	@Test
 	public void TestSave() throws Exception {
 		System.out.println("");
-		userBet = new UserBet(10, null, BetType.NUMBER, 1000D, 5, "单", new Date(), "og7UbwBp0jhUHvfqcsKEY3T7dTLk", tokenConfig);
+		userBet = new UserBet(10, null, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig);
 		System.out.println(userBetService.save(userBet));
 	}
 
 	@Test
 	public void TestSaves() throws Exception {
-		list.add(userBet);
-		list.add(userBet);
+		list.add(new UserBet(571175, BetType.NUMBER, 1000D, 5, "single", new Date(), 29, tokenConfig));
+		list.add(new UserBet(571175, BetType.NUMBER, 1000D, 5, "single", new Date(), 29, tokenConfig));
 		System.out.println(userBetService.saveList(list));
 	}
 
@@ -74,6 +71,6 @@ public class TestUserBetService {
 	}
 	@Test
 	public void TestGetUnCashPrize() throws Exception{
-		System.out.println(userBetService.getUnCashPrize(new UserInfo("og7UbwBp0jhUHvfqcsKEY3T7dTLk")));
+		System.out.println(userBetService.getUnCashPrize(new UserInfo(29)));
 	}
 }

@@ -11,15 +11,14 @@ public class UserBet {
 	private Double odds; // 此次下注赔率 此处根据玩法自动添加
 	private String betnum;// '下注号码, 也可以是 \'single\' \'double\' \'big\' \'small\'
 	private Date createdAt;// ` DATETIME NULL,
-	private String userinfoOpenid;// ` VARCHAR(255) NOT NULL,
+	private Integer userid;// ` VARCHAR(255) NOT NULL,
 	private Integer state;
 	private TokenConfig tokenConfig;
-
 
 	@Override
 	public String toString() {
 		return "UserBet [id=" + id + ", idnum=" + idnum + ", type=" + type + ", betmoney=" + betmoney + ", mulit=" + mulit + ", odds=" + odds + ", betnum=" + betnum
-				+ ", createdAt=" + createdAt + ", userinfoOpenid=" + userinfoOpenid + ", state=" + state + ", tokenConfig=" + tokenConfig + "]";
+				+ ", createdAt=" + createdAt + ", userid=" + userid + ", state=" + state + ", tokenConfig=" + tokenConfig + "]";
 	}
 
 	public Integer getState() {
@@ -86,8 +85,8 @@ public class UserBet {
 		this.createdAt = createdAt;
 	}
 
-	public String getUserinfoOpenid() {
-		return userinfoOpenid;
+	public Integer getUserid() {
+		return userid;
 	}
 
 	public TokenConfig getTokenConfig() {
@@ -98,8 +97,8 @@ public class UserBet {
 		this.tokenConfig = tokenConfig;
 	}
 
-	public void setUserinfoOpenid(String userinfoOpenid) {
-		this.userinfoOpenid = userinfoOpenid;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	public Double getOdds() {
@@ -126,7 +125,7 @@ public class UserBet {
 		super();
 	}
 
-	public UserBet(Integer id, Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, String userinfoOpenid, TokenConfig tokenConfig) {
+	public UserBet(Integer id, Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, Integer userid, TokenConfig tokenConfig) {
 		super();
 		this.id = id;
 		this.idnum = idnum;
@@ -135,9 +134,21 @@ public class UserBet {
 		this.mulit = mulit;
 		this.betnum = betnum;
 		this.createdAt = createdAt;
-		this.userinfoOpenid = userinfoOpenid;
+		this.userid = userid;
 		this.tokenConfig = tokenConfig;
 		this.setOdds();
+	}
+
+	public UserBet(Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, Integer userid, TokenConfig tokenConfig) {
+		super();
+		this.idnum = idnum;
+		this.type = type;
+		this.betmoney = betmoney;
+		this.mulit = mulit;
+		this.betnum = betnum;
+		this.createdAt = createdAt;
+		this.userid = userid;
+		this.tokenConfig = tokenConfig;
 	}
 
 }

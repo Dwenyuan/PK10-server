@@ -13,5 +13,11 @@ public interface UserBetDao extends BaseDao<UserBet> {
 
 	UserBet getOneByIdnum(UserBet userBet);
 
+	/**
+	 * 获取指定用户未兑奖的订单
+	 * 
+	 * @param userInfo
+	 * @return
+	 */
 	List<UserBet> getUnCashPrize(UserInfo userInfo);
 }

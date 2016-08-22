@@ -111,4 +111,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");
 	}
 
+	@Override
+	public UserInfo getUserInfoByTel(UserInfo userInfo) {
+		return userInfoDao.getUserInfoByTel(userInfo);
+	}
+
+	@Override
+	public UserInfo getUserInfoByUsername(UserInfo userInfo) {
+		return userInfoDao.getUserInfoByUsername(userInfo);
+	}
+
+	@Override
+	public UserInfo login(UserInfo userInfo) {
+		return userInfoDao.login(userInfo);
+	}
+
 }

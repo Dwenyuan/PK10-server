@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -56,5 +58,13 @@ public class TestDate {
 //		System.out.println(sec);
 		// System.out.println(new SimpleDateFormat("yyyy-MM-dd
 		// HH:mm:ss").format(this.getLastDate(list)));
+	}
+	
+	@Test
+	public void TestRegix(){
+		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/\\w+\\.\\w+");
+		Matcher matcher = compile.matcher("/getLastNotice");
+		boolean find = matcher.find();
+		System.out.println(find);
 	}
 }

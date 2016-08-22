@@ -7,5 +7,5 @@ package com.pk10.util;
  *
  */
 public class WeChatPaySign {
-
+	
 }

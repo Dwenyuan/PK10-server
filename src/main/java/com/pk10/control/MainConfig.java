@@ -33,7 +33,7 @@ public class MainConfig {
 
 	@Autowired
 	private TokenInfoService tokenInfoService;
-	
+
 	@Autowired
 	private LotteryHistoryService lotteryHistoryService;
 
@@ -75,7 +75,7 @@ public class MainConfig {
 		Integer idnum = null;
 		try {
 			Integer id = lotteryHistoryService.getLastLottery().getId();
-			idnum = id; // 当前开奖期数
+			idnum = id + 1; // 测试期间 开奖期数为上一期 当前开奖期数
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

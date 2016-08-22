@@ -21,7 +21,8 @@ public class TestUserInfoService {
 	
 	@Test
 	public void Testsave() throws Exception {
-		System.out.println(userInfoService.save(userInfo));
+		UserInfo info = new UserInfo("liushao", "1234321", "1233333");
+		System.out.println(userInfoService.save(info));
 	}
 
 	@Test
@@ -42,5 +43,9 @@ public class TestUserInfoService {
 	@Test
 	public void TestdeleteOneById() throws Exception {
 		System.out.println(userInfoService.deleteOneById(userInfo));
+	}
+	@Test
+	public void TestLogin(){
+		System.out.println(userInfoService.login(new UserInfo("liushao121", "12333333")));
 	}
 }

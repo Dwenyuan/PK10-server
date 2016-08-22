@@ -1,6 +1,7 @@
 package com.pk10.control;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
@@ -36,11 +38,21 @@ public class UserInfoControl {
 	@Autowired
 	private UserInfoFormWeChat userInfoFormWeChat;
 
+	@Autowired
+	private TokenConfig tokenConfig;
+
+	/**
+	 * 获取用户信息 在1.0 版本中直接从session中获取
+	 * 
+	 * @param userInfo
+	 * @return
+	 */
 	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Object getUserInfo(@RequestBody UserInfo userInfo) {
+	public Object getUserInfo(@RequestBody UserInfo userInfo, HttpServletRequest request) {
 		try {
-			return userInfoService.getOneById(userInfo);
+			return request.getSession().getAttribute("userinfo");
+			// return userInfoService.getOneById(userInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -100,12 +112,75 @@ public class UserInfoControl {
 
 	@RequestMapping("cashPrize")
 	@ResponseBody
-	public Object cashPrize(@RequestBody UserInfo userInfo) {
+	public Object cashPrize(@RequestBody UserInfo userInfo,HttpServletRequest request) {
 		try {
-			return userInfoService.cashPrize(userInfo);
+			String safeUserInfo = userInfoService.cashPrize(userInfo);
+			request.getSession().setAttribute("userinfo", safeUserInfo); //兑奖后更新 session 中的用户
+			return safeUserInfo;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+	@RequestMapping("register")
+	@ResponseBody
+	public Object register(@RequestBody UserInfo userInfo) {
+		try {
+			UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(userInfo);
+			if (safeUserInfo != null) { // 账号已经占用
+				return false;
+			} else {
+				userInfo.setCreatedAt(new Date());
+				userInfo.setMoney(tokenConfig.getMoney());
+				Integer save = userInfoService.save(userInfo);
+				if (save > 0) { // 保存成功
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+		return userInfo;
+	}
+
+	@RequestMapping("checkTel")
+	@ResponseBody
+	public Object checkTel(String tel) {
+		UserInfo safeUserInfo = userInfoService.getUserInfoByTel(new UserInfo(null, null, tel));
+		if (safeUserInfo != null) { // 查找到记录，表示已经占用
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@RequestMapping("checkusername")
+	@ResponseBody
+	public Object checkusername(String username) {
+		UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(new UserInfo(username, null));
+		if (safeUserInfo != null) {
+			return false; // 用户名占用
+		} else {
+			return true;
+		}
+	}
+
+	@RequestMapping("login")
+	public Object login(@RequestBody UserInfo userInfo, HttpServletRequest request) {
+		UserInfo safeUserinfo;
+		try {
+			safeUserinfo = userInfoService.login(userInfo);
+			if (safeUserinfo != null) {
+				request.getSession().setAttribute("userinfo", safeUserinfo);
+				return "redirect:index.html";
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return false;
 		}
 	}
 }
