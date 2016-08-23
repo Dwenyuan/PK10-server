@@ -36,18 +36,13 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		Object userinfo = req.getSession().getAttribute("userinfo");
 		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/.+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
-		if (isFilter) {
+		if (isFilter||req.getSession().getAttribute("userinfo") != null) { //出去不需要过滤的静态资源 或者 已登录。。。
 			chain.doFilter(request, response);
-		}
-		if (userinfo == null) { // 未登录
+		}else{
 			res.sendRedirect("userlogin.html");
-			return;
-		} else {
-			chain.doFilter(request, response);
 		}
 	}
 
