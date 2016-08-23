@@ -80,7 +80,7 @@ public class MainConfig {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + createBonus.getCount() + ",\"countNum\":" + createBonus.getCountNum() + "}");
+		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + CreateBonus.getCount() + ",\"countNum\":" + CreateBonus.getCountNum() + "}");
 	}
 
 	public Map<String, String> getSign(String url) {
