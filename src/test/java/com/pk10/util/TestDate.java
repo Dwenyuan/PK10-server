@@ -67,4 +67,10 @@ public class TestDate {
 		boolean find = matcher.find();
 		System.out.println(find);
 	}
+	
+	@Test
+	public void TestTime() throws ParseException{
+		Date now = new SimpleDateFormat("HH:mm:ss").parse(new SimpleDateFormat("HH:mm:ss").format(new Date()));
+		System.out.println(new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(now));
+	}
 }

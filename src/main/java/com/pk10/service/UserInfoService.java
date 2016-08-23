@@ -11,7 +11,7 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	 * @return
 	 * @throws Exception
 	 */
-	public String cashPrize(UserInfo userInfo) throws Exception;
+	public UserInfo cashPrize(UserInfo userInfo) throws Exception;
 
 	/**
 	 * 检测手机是否占用

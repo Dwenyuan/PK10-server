@@ -69,7 +69,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public String cashPrize(UserInfo userInfo) throws Exception {
+	public UserInfo cashPrize(UserInfo userInfo) throws Exception {
 		UserInfo safeUserInfo = userInfoDao.getOneById(userInfo);
 		List<UserBet> userBets = userBetDao.getUnCashPrize(safeUserInfo);
 		for (UserBet userBet : userBets) {
@@ -80,6 +80,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 			case NUMBER:
 				if (Integer.parseInt(userBet.getBetnum()) == lotterynum) { // 中奖了
 					cashUpdateUser(safeUserInfo, userBet);
+				}else{ //未中奖
+					userBetDao.update(userBet); //重置兑奖标志位
 				}
 				break;
 			case BIG_OR_SMALL:
@@ -87,6 +89,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
 					cashUpdateUser(safeUserInfo, userBet);
+				}else {
+					userBetDao.update(userBet);
 				}
 				break;
 			case SINGLE_OR_DOUBLE:
@@ -94,13 +98,15 @@ public class UserInfoServiceImpl implements UserInfoService {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
 					cashUpdateUser(safeUserInfo, userBet);
+				}else{
+					userBetDao.update(userBet);
 				}
 				break;
 			default:
 				break;
 			}
 		}
-		return JSON.toJSONString(safeUserInfo);
+		return safeUserInfo;
 	}
 
 	private void cashUpdateUser(UserInfo safeUserInfo, UserBet userBet) throws Exception {

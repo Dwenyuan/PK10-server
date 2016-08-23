@@ -112,10 +112,13 @@ public class UserInfoControl {
 
 	@RequestMapping("cashPrize")
 	@ResponseBody
-	public Object cashPrize(@RequestBody UserInfo userInfo,HttpServletRequest request) {
+	public Object cashPrize(@RequestBody UserInfo userInfo, HttpServletRequest request) {
 		try {
-			String safeUserInfo = userInfoService.cashPrize(userInfo);
-			request.getSession().setAttribute("userinfo", safeUserInfo); //兑奖后更新 session 中的用户
+			UserInfo safeUserInfo = userInfoService.cashPrize(userInfo);
+			if (safeUserInfo != null) {
+				// 兑奖后更新 session 中的用户
+				request.getSession().setAttribute("userinfo", safeUserInfo);
+			}
 			return safeUserInfo;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
