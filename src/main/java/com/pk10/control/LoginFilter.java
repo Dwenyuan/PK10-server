@@ -10,14 +10,12 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(description = "登录过滤器", urlPatterns = { "/" })
 public class LoginFilter implements Filter {
 
 	/**
@@ -39,7 +37,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		Object userinfo = req.getSession().getAttribute("userinfo");
-		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/\\w+\\.\\w+");
+		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/.+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
 		if (isFilter) {
@@ -47,6 +45,7 @@ public class LoginFilter implements Filter {
 		}
 		if (userinfo == null) { // 未登录
 			res.sendRedirect("userlogin.html");
+			return;
 		} else {
 			chain.doFilter(request, response);
 		}
