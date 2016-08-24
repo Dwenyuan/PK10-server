@@ -9,8 +9,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +20,6 @@ import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * 获取用户信息
