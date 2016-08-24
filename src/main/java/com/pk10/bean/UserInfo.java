@@ -113,10 +113,11 @@ public class UserInfo {
 		this.id = id;
 	}
 
+
 	@Override
 	public String toString() {
-		return "UserInfo [openid=" + openid + ", nickname=" + nickname + ", headimgurl=" + headimgurl + ", money=" + money + ", createdAt=" + createdAt + ", username=" + username
-				+ ", password=" + password + "]";
+		return "UserInfo [id=" + id + ", openid=" + openid + ", nickname=" + nickname + ", headimgurl=" + headimgurl + ", money=" + money + ", createdAt=" + createdAt
+				+ ", username=" + username + ", password=" + password + ", tel=" + tel + "]";
 	}
 
 	public UserInfo() {
