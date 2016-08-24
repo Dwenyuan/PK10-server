@@ -39,9 +39,12 @@ public class LoginFilter implements Filter {
 		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/.+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
-		if (isFilter||req.getSession().getAttribute("userinfo") != null) { //出去不需要过滤的静态资源 或者 已登录。。。
+		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 出去不需要过滤的静态资源或者已登录。。。
+			// 当用户已登录时，再进入登录界面会直接跳转
+			res.sendRedirect("index.html");
+		} else if (isFilter || req.getSession().getAttribute("userinfo") != null) {
 			chain.doFilter(request, response);
-		}else{
+		} else {
 			res.sendRedirect("userlogin.html");
 		}
 	}
