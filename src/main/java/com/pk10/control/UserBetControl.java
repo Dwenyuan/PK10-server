@@ -55,4 +55,15 @@ public class UserBetControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+	@RequestMapping("getRecentlyBets")
+	@ResponseBody
+	public Object getRecentlyBets(Integer num) {
+		try {
+			return userBetService.getRecentlyBets(num);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
 }

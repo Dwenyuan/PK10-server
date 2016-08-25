@@ -28,7 +28,7 @@ public class UserBetServiceImpl implements UserBetService {
 
 	@Autowired
 	private TokenConfigService tokenConfigService;
-	
+
 	@Override
 	public Integer save(UserBet t) throws Exception {
 		// 下注的同时，减去用户的金币
@@ -93,6 +93,11 @@ public class UserBetServiceImpl implements UserBetService {
 	@Override
 	public List<UserBet> getUnCashPrize(UserInfo userInfo) throws Exception {
 		return userBetDao.getUnCashPrize(userInfo);
+	}
+
+	@Override
+	public List<UserBet> getRecentlyBets(Integer limit) {
+		return userBetDao.getRecentlyBets(limit);
 	}
 
 }

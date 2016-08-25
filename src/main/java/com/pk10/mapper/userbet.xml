@@ -55,6 +55,13 @@
 		#{id} and
 		ub.state = 0
 	</select>
+	<select id="getRecentlyBets" resultMap="UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state
+		from userbet order by idnum desc
+		limit
+		<if test="limit">#{limit},</if>
+		100
+	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
 		delete from userbet where id = #{id}

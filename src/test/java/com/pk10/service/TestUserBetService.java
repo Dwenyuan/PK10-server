@@ -73,4 +73,9 @@ public class TestUserBetService {
 	public void TestGetUnCashPrize() throws Exception{
 		System.out.println(userBetService.getUnCashPrize(new UserInfo(29)));
 	}
+	
+	@Test
+	public void TestgetRecentlyBets(){
+		System.out.println(userBetService.getRecentlyBets(5));
+	}
 }
