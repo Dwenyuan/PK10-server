@@ -43,6 +43,9 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <session-config>   
+<session-timeout>3600</session-timeout>   
+</session-config>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>

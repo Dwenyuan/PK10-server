@@ -75,7 +75,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		for (UserBet userBet : userBets) {
 			// 获取档期开奖结果 如果获取不到说明还没有从网上下载下来，则等待3秒钟再去查询
 			LotteryHistory lotteryHistory = null;
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 30; i++) {
 				lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
 				if (lotteryHistory == null) {
 					Thread.sleep(3000);

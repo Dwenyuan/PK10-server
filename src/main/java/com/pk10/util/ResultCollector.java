@@ -65,7 +65,6 @@ public class ResultCollector implements InitializingBean {
 				}
 				Boolean isReadSuccess = this.getIsLastDate(list);
 				if (!isReadSuccess) {
-					Thread.sleep(5000);
 					continue;
 				}
 				for (int i = 1; i < elements.size(); i++) {

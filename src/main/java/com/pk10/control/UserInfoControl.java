@@ -9,6 +9,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ import com.pk10.util.UserInfoFormWeChat;
  *
  */
 @Controller
+@Scope("prototype")
 public class UserInfoControl {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
@@ -122,7 +124,7 @@ public class UserInfoControl {
 			return safeUserInfo;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+			return JSON.parse("{\"errmsg\":" + e.getMessage() + "}");
 		}
 	}
 
