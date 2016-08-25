@@ -73,15 +73,29 @@ public class UserInfoServiceImpl implements UserInfoService {
 		UserInfo safeUserInfo = userInfoDao.getOneById(userInfo);
 		List<UserBet> userBets = userBetDao.getUnCashPrize(safeUserInfo);
 		for (UserBet userBet : userBets) {
-			LotteryHistory lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
+			// 获取档期开奖结果 如果获取不到说明还没有从网上下载下来，则等待3秒钟再去查询
+			LotteryHistory lotteryHistory = null;
+			for (int i = 0; i < 20; i++) {
+				lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
+				if (lotteryHistory == null) {
+					Thread.sleep(3000);
+					continue;
+				} else {
+					break;
+				}
+			}
+			// 如果60秒后还是查不到 则放弃
+			if (lotteryHistory == null) {
+				throw new Exception("get bouns result error");
+			}
 			String[] split = lotteryHistory.getLotterynums().split(",");
 			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10; // 计算中奖号码
 			switch (userBet.getType()) {
 			case NUMBER:
 				if (Integer.parseInt(userBet.getBetnum()) == lotterynum) { // 中奖了
 					cashUpdateUser(safeUserInfo, userBet);
-				}else{ //未中奖
-					userBetDao.update(userBet); //重置兑奖标志位
+				} else { // 未中奖
+					userBetDao.update(userBet); // 重置兑奖标志位
 				}
 				break;
 			case BIG_OR_SMALL:
@@ -89,7 +103,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
 					cashUpdateUser(safeUserInfo, userBet);
-				}else {
+				} else {
 					userBetDao.update(userBet);
 				}
 				break;
@@ -98,7 +112,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
 					cashUpdateUser(safeUserInfo, userBet);
-				}else{
+				} else {
 					userBetDao.update(userBet);
 				}
 				break;
