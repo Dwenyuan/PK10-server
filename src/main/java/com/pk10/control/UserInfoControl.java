@@ -63,9 +63,13 @@ public class UserInfoControl {
 
 	@RequestMapping(value = "updateuserinfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateUserInfo(@RequestBody UserInfo userInfo) {
+	public Object updateUserInfo(@RequestBody UserInfo userInfo,HttpServletRequest request) {
 		try {
-			return userInfoService.update(userInfo);
+			Integer update = userInfoService.update(userInfo);
+			if(update>0){
+				request.getSession().setAttribute("userinfo", userInfo);
+			}
+			return update;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");

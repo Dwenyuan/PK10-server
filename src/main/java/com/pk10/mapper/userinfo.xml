@@ -11,12 +11,12 @@
 		<result column="createdAt" property="createdAt" />
 	</resultMap>
 
-	<insert id="save" parameterType="com.pk10.bean.UserInfo">
+	<insert id="save" parameterType="com.pk10.bean.UserInfo" flushCache="true">
 		insert into userinfo(openid,nickname,money,createdAt,username,password,tel)
 		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel})
 	</insert>
 
-	<update id="update" parameterType="com.pk10.bean.UserInfo">
+	<update id="update" parameterType="com.pk10.bean.UserInfo" flushCache="true">
 		update userinfo u set u.money = #{money},u.nickname =#{nickname},username=#{username},password=#{password},tel=#{tel} where u.id = #{id}
 	</update>
 
