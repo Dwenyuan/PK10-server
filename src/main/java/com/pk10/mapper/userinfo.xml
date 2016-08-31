@@ -36,8 +36,7 @@
 		u.password = #{password}
 	</select>
 	<select id="getUserInfoByUsername" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel from userinfo u where u.username =
-		#{username}
+		select id from userinfo u where u.username = #{username}
 	</select>
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
 		delete from userinfo where username = #{username}
