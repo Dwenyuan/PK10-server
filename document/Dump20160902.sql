@@ -1,0 +1,9437 @@
+-- MySQL dump 10.13  Distrib 5.7.12, for linux-glibc2.5 (x86_64)
+--
+-- Host: localhost    Database: lemon
+-- ------------------------------------------------------
+-- Server version	5.7.13-0ubuntu0.16.04.2
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `account_avatar`
+--
+
+DROP TABLE IF EXISTS `account_avatar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_avatar` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `ACCOUNT_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ACCOUNT_AVATAR_ACCOUNT` (`ACCOUNT_ID`),
+  CONSTRAINT `FK_ACCOUNT_AVATAR_ACCOUNT` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_avatar`
+--
+
+LOCK TABLES `account_avatar` WRITE;
+/*!40000 ALTER TABLE `account_avatar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_avatar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_credential`
+--
+
+DROP TABLE IF EXISTS `account_credential`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_credential` (
+  `ID` bigint(20) NOT NULL,
+  `PASSWORD` varchar(50) DEFAULT NULL,
+  `MODIFY_TIME` datetime DEFAULT NULL,
+  `EXPIRE_TIME` datetime DEFAULT NULL,
+  `EXPIRE_STATUS` varchar(50) DEFAULT NULL,
+  `REQUIRED` varchar(50) DEFAULT NULL,
+  `COULD_MODIFY` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CATALOG` varchar(50) DEFAULT NULL,
+  `DATA` varchar(200) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `ACCOUNT_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ACCOUNT_CREDENTIAL_ACCOUNT` (`ACCOUNT_ID`),
+  CONSTRAINT `FK_ACCOUNT_CREDENTIAL_ACCOUNT` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_credential`
+--
+
+LOCK TABLES `account_credential` WRITE;
+/*!40000 ALTER TABLE `account_credential` DISABLE KEYS */;
+INSERT INTO `account_credential` VALUES (1,'2e034a7e6842abdb1dac6c2aad61fb0d','2016-08-22 14:17:47','2016-11-22 14:17:47','normal',NULL,'yes','normal','default',NULL,'active',1,'1'),(2,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',2,'1'),(4,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',4,'1'),(5,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',5,'1'),(6,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',6,'1'),(7,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',7,'1'),(8,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',8,'1'),(9,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',9,'1'),(10,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',10,'1'),(11,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',11,'1'),(12,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',12,'1'),(13,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',13,'1'),(14,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',14,'1'),(15,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',15,'1'),(16,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',16,'1'),(17,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',17,'1'),(18,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',18,'1'),(19,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',19,'1'),(20,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',20,'1'),(21,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',21,'1'),(22,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',22,'1'),(23,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',23,'1'),(24,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',24,'1'),(25,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',25,'1'),(26,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',26,'1'),(27,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',27,'1'),(28,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',28,'1'),(29,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',29,'1'),(30,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',30,'1'),(31,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',31,'1'),(32,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',32,'1'),(33,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',33,'1'),(34,'a1ccdbc7f295e0aeda5dc4e0f2677ea3','2015-02-27 00:00:00','2017-04-28 00:00:00','normal',NULL,'yes','normal','default',NULL,'active',34,'1'),(247688773648384,'934f78bf13a1fbc5ffc68decf348ca6b',NULL,NULL,NULL,NULL,NULL,'normal','default',NULL,NULL,247688773386240,NULL),(247689000943616,'3278ab7b435013424ef98d818d47de5a',NULL,NULL,NULL,NULL,NULL,'normal','default',NULL,NULL,247689000714240,NULL),(247689264644096,'a3e8d8e7598f944de5343b2c2984afe4',NULL,NULL,NULL,NULL,NULL,'normal','default',NULL,NULL,247689264381952,NULL),(247689637871616,'75da309307041a0c861c7a1191f963e9',NULL,NULL,NULL,NULL,NULL,'normal','default',NULL,NULL,247689637478400,NULL),(267713810366464,'a1ccdbc7f295e0aeda5dc4e0f2677ea3',NULL,NULL,NULL,NULL,NULL,'normal','default',NULL,NULL,267713809711104,NULL),(267768848465920,'5ff1e1f0d621c0411364403db2f1842e',NULL,NULL,NULL,NULL,NULL,'normal','default',NULL,NULL,267768847958016,NULL);
+/*!40000 ALTER TABLE `account_credential` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_device`
+--
+
+DROP TABLE IF EXISTS `account_device`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_device` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(64) DEFAULT NULL,
+  `TYPE` varchar(64) DEFAULT NULL,
+  `OS` varchar(100) DEFAULT NULL,
+  `CLIENT` varchar(100) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `LAST_LOGIN_TIME` datetime DEFAULT NULL,
+  `ATTRIBUTE1` varchar(200) DEFAULT NULL,
+  `ACCOUNT_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ACCOUNT_DEVICE_ACCOUNT` (`ACCOUNT_ID`),
+  CONSTRAINT `FK_ACCOUNT_DEVICE_ACCOUNT` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_device`
+--
+
+LOCK TABLES `account_device` WRITE;
+/*!40000 ALTER TABLE `account_device` DISABLE KEYS */;
+INSERT INTO `account_device` VALUES (246665434038272,'f2948cc4-0332-4ff5-8232-7cfb22c39966','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-06 17:09:24','2016-08-06 17:09:24',NULL,1,'1'),(247683822272512,'fce9138d-343e-4cd4-82bc-06d92d852352','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-07 10:25:22','2016-08-07 11:12:08',NULL,1,'1'),(251790637121536,'73797bbd-3e1d-4957-a6fb-d2f73132d653','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-10 08:03:02','2016-08-10 08:03:02',NULL,1,'1'),(253344700121088,'a5fa8b21-d111-498a-a63a-23c535ec8f0a','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-11 10:23:54','2016-08-11 17:07:28',NULL,1,'1'),(254787446685696,'b78b698b-99a5-45fd-9112-3cd167f8a214','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-12 10:51:32','2016-08-12 14:14:37',NULL,1,'1'),(255011647537152,'9025fc2f-b8c6-4fa3-b04f-f207ea1ae8a3','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-12 14:39:36','2016-08-12 22:06:07',NULL,1,'1'),(256176469917696,'c4e86782-d623-4427-a52f-4c8f5122d472','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-13 10:24:32','2016-08-13 16:13:21',NULL,1,'1'),(256534167945216,'e6498cbd-5ecb-4440-a6a6-c1aef4cfa10c','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-13 16:28:24','2016-08-13 16:37:10',NULL,1,'1'),(256548514185216,'d8af4401-92c2-45b3-8bf9-c99e641b9c05','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-13 16:42:59','2016-08-13 16:42:59',NULL,1,'1'),(256577895923712,'adcdf93a-833a-4599-9386-d4e18e3e76e8','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-13 17:12:53','2016-08-13 20:40:29',NULL,1,'1'),(256785344708608,'2f7dd1c7-8b87-44f9-90f7-a8c592fb666a','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-13 20:43:54','2016-08-13 20:55:07',NULL,1,'1'),(256824484904960,'cb7aef04-2adc-4c3e-bb17-6f13b8e5e595','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-13 21:23:43','2016-08-13 21:34:04',NULL,1,'1'),(260360601075712,'5ed33ec8-a88c-42fc-9888-b0335e464de8','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-16 09:20:51','2016-08-16 09:20:51',NULL,1,'1'),(260378720763904,'b7718be6-4a33-440d-8e38-399d3e226712','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-16 09:39:17','2016-08-16 14:27:38',NULL,1,'1'),(260666838122496,'31e2ed68-26a2-4310-af0b-1e91ce229028','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-16 14:32:22','2016-08-16 15:20:08',NULL,1,'1'),(260719511453696,'e36699b9-3f08-4b24-8833-bdc98004d556','COMPUTER','WINDOWS_10','CHROME49','new','2016-08-16 15:25:57','2016-08-16 15:47:12',NULL,1,'1'),(260752080175104,'54dfe5a6-44d8-4ded-a7fe-ba813979b6cd','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-16 15:59:05','2016-08-16 15:59:05',NULL,1,'1'),(260759009165312,'d4c0ab33-8d43-4286-93b9-b3b9b2188721','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-16 16:06:08','2016-08-16 17:29:03',NULL,1,'1'),(260949063581696,'46b7f225-a947-4575-8e5d-e39a5c0a51f6','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-16 19:19:28','2016-08-16 19:43:18',NULL,1,'1'),(261844775403520,'1687d381-0d79-478d-aa04-9c8b8e433e27','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-17 10:30:37','2016-08-17 15:54:40',NULL,1,'1'),(263273731375104,'546ffdf0-046a-4164-b0ea-dde492376a6b','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-18 10:44:14','2016-08-18 16:34:41',NULL,1,'1'),(264677462671360,'36d3abd3-45a7-4f07-a9d1-ef40f93bbaee','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-19 10:32:11','2016-08-19 11:13:01',NULL,1,'1'),(264717920550912,'f7e8e593-a470-4aa4-a399-c561a7d5ff25','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-19 11:13:20','2016-08-19 11:34:56',NULL,1,'1'),(264973106315264,'f559e0a1-3c83-412e-87aa-6dba9a90ac26','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-19 15:32:56','2016-08-19 15:32:56',NULL,1,'1'),(267683251142656,'1d32ded6-485a-4e75-af21-4cc4976029a8','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-21 13:29:50','2016-08-21 16:27:58',NULL,1,'1'),(267879796801536,'904d0172-d1c7-49c7-a31c-0fb9bb5ba1e3','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-21 16:49:46','2016-08-21 16:49:46',NULL,247688773386240,'1'),(267889007001600,'b95cc8b6-06c8-4ab6-9d1f-16ea030c9ef6','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-21 16:59:08','2016-08-21 20:06:14',NULL,247688773386240,'1'),(268057323487232,'cbd8fe02-28b7-4d6b-926a-97dc9134b8eb','COMPUTER','WINDOWS_10','CHROME49','new','2016-08-21 19:50:21','2016-08-21 19:50:21',NULL,247689000714240,'1'),(268861726654464,'ce6832c9-0659-4dc9-8b90-13d3bde6be68','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-22 09:28:38','2016-08-22 09:36:35',NULL,267768847958016,'1'),(268887599775744,'03b2ec22-1583-4a70-aa2e-1781ffd9fcd6','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-22 09:54:57','2016-08-22 09:54:57',NULL,247688773386240,'1'),(268904870199296,'c7dc82b0-d6da-44c4-ad6c-70140f536aca','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-22 10:12:31','2016-08-22 15:20:28',NULL,247688773386240,'1'),(269426762121216,'53b6b00a-eaac-41f6-b412-78a9473b1bc8','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-22 19:03:25','2016-08-22 19:03:25',NULL,1,'1'),(270346417340416,'4e459eda-305c-4347-b686-85e0bf4ea182','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-23 10:38:57','2016-08-23 15:40:56',NULL,1,'1'),(270699662557184,'7a0ce19b-c159-4d35-9700-88c365752344','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-23 16:38:17','2016-08-23 16:38:17',NULL,1,'1'),(270736039985152,'48965ab3-2b8c-435e-8190-11ee78c6a86f','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-23 17:15:17','2016-08-23 17:36:01',NULL,1,'1'),(271693819871232,'d7a39343-1f99-44e1-9d1f-36dc67b7e5a0','COMPUTER','WINDOWS_10','FIREFOX47','new','2016-08-24 09:29:35','2016-08-24 11:46:53',NULL,1,'1'),(276261382209536,'f41c207e-b8db-45d2-80a0-fbba8cf59537','COMPUTER','WINDOWS_10','FIREFOX48','new','2016-08-27 14:55:57','2016-08-27 14:55:57',NULL,1,'1'),(276487995719680,'4d8c5e42-2f91-48e0-b9da-074f64bc679b','COMPUTER','WINDOWS_10','FIREFOX48','new','2016-08-27 18:46:29','2016-08-27 18:46:29',NULL,1,'1'),(277351059980288,'8fe2ced4-a909-4304-87fb-4400bcfef7ea','COMPUTER','WINDOWS_10','FIREFOX48','new','2016-08-28 09:24:26','2016-08-28 18:08:46',NULL,1,'1'),(279033609027584,'c1236089-c854-4168-b2a7-2d693013ca82','COMPUTER','WINDOWS_10','FIREFOX48','new','2016-08-29 13:56:01','2016-08-29 13:56:01',NULL,1,'1'),(280548262445056,'fd86941f-2be1-4918-9761-3ef005a16efc','COMPUTER','MAC_OS_X','FIREFOX48','new','2016-08-30 15:36:48','2016-08-30 15:41:41',NULL,1,'1'),(280559178645504,'9ff2cab0-57ce-49b0-b03d-610c0dc36df0','COMPUTER','MAC_OS_X','FIREFOX48','new','2016-08-30 15:47:54','2016-08-30 15:47:54',NULL,1,'1'),(280559828058112,'069eb32d-53d7-42d0-a71a-d342a163373a','COMPUTER','MAC_OS_X','FIREFOX48','new','2016-08-30 15:48:34','2016-08-30 15:48:34',NULL,1,'1'),(281940201013248,'ebe3a855-8d06-4d09-891b-beebecb5953f','COMPUTER','MAC_OS_X','FIREFOX48','new','2016-08-31 15:12:45','2016-08-31 15:12:45',NULL,1,'1');
+/*!40000 ALTER TABLE `account_device` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_history_credential`
+--
+
+DROP TABLE IF EXISTS `account_history_credential`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_history_credential` (
+  `ID` bigint(20) NOT NULL,
+  `MODIFY_TIME` datetime DEFAULT NULL,
+  `PASSWORD` varchar(100) DEFAULT NULL,
+  `CREDENTIAL_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ACCOUNT_HISTORY_CREDENTIAL_CREDENTIAL` (`CREDENTIAL_ID`),
+  CONSTRAINT `FK_ACCOUNT_HISTORY_CREDENTIAL_CREDENTIAL` FOREIGN KEY (`CREDENTIAL_ID`) REFERENCES `account_credential` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_history_credential`
+--
+
+LOCK TABLES `account_history_credential` WRITE;
+/*!40000 ALTER TABLE `account_history_credential` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_history_credential` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_info`
+--
+
+DROP TABLE IF EXISTS `account_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_info` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `USERNAME` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `DISPLAY_NAME` varchar(200) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `PASSWORD_REQUIRED` varchar(50) DEFAULT NULL,
+  `LOCKED` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `CLOSE_TIME` datetime DEFAULT NULL,
+  `LOGIN_TIME` datetime DEFAULT NULL,
+  `NICK_NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `LANGUAGE` varchar(50) DEFAULT NULL,
+  `TIMEZONE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_info`
+--
+
+LOCK TABLES `account_info` WRITE;
+/*!40000 ALTER TABLE `account_info` DISABLE KEYS */;
+INSERT INTO `account_info` VALUES (1,'1','lingo','employee','ä¸´è¿œ','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ä¸´è¿œ',NULL,NULL,NULL,'1'),(2,'2','vivian','employee','è–‡è–‡å®‰','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'è–‡è–‡å®‰',NULL,NULL,NULL,'1'),(4,'4','king','employee','é‡‘','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'é‡‘',NULL,NULL,NULL,'1'),(5,'5','john','employee','çº¦ç¿°','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'çº¦ç¿°',NULL,NULL,NULL,'1'),(6,'6','william','employee','å¨å»‰','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'å¨å»‰',NULL,NULL,NULL,'1'),(7,'7','adam','employee','äºšå½“','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'äºšå½“',NULL,NULL,NULL,'1'),(8,'8','robot','employee','ç½—ä¼¯ç‰¹','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ç½—ä¼¯ç‰¹',NULL,NULL,NULL,'1'),(9,'9','bob','employee','é²å‹ƒ','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'é²å‹ƒ',NULL,NULL,NULL,'1'),(10,'10','alice','employee','çˆ±ä¸½ä¸','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'çˆ±ä¸½ä¸',NULL,NULL,NULL,'1'),(11,'11','mike','employee','éº¦å…‹','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'éº¦å…‹',NULL,NULL,NULL,'1'),(12,'12','justin','employee','è´¾æ–¯æ±€','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'è´¾æ–¯æ±€',NULL,NULL,NULL,'1'),(13,'13','tom','employee','æ±¤å§†','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'æ±¤å§†',NULL,NULL,NULL,'1'),(14,'14','james','employee','è©¹å§†æ–¯','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'è©¹å§†æ–¯',NULL,NULL,NULL,'1'),(15,'15','joe','employee','ä¹”ä¼Š','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ä¹”ä¼Š',NULL,NULL,NULL,'1'),(16,'16','paul','employee','ä¿ç½—','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ä¿ç½—',NULL,NULL,NULL,'1'),(17,'17','jane','employee','ç®€','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ç®€',NULL,NULL,NULL,'1'),(18,'18','marry','employee','ç›ä¸½','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ç›ä¸½',NULL,NULL,NULL,'1'),(19,'19','ben','employee','æœ¬','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'æœ¬',NULL,NULL,NULL,'1'),(20,'20','bot','bot','ç³»ç»Ÿæœºå™¨äºº','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ç³»ç»Ÿæœºå™¨äºº',NULL,NULL,NULL,'1'),(21,'21','jack','employee','æ°å…‹','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'æ°å…‹',NULL,NULL,NULL,'1'),(22,'22','martin','employee','é©¬ä¸','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'é©¬ä¸',NULL,NULL,NULL,'1'),(23,'23','alex','employee','é˜¿è±å…‹æ–¯','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'é˜¿è±å…‹æ–¯',NULL,NULL,NULL,'1'),(24,'24','daniel','employee','ä¸¹å°¼å°”','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'ä¸¹å°¼å°”',NULL,NULL,NULL,'1'),(25,'25','eric','employee','è‰¾ç‘å…‹','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'è‰¾ç‘å…‹',NULL,NULL,NULL,'1'),(26,'26','leon','employee','é‡Œæ˜‚','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'é‡Œæ˜‚',NULL,NULL,NULL,'1'),(27,'27','clark','employee','å…‹æ‹‰å…‹','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'å…‹æ‹‰å…‹',NULL,NULL,NULL,'1'),(28,'28','david','employee','å¤§å«','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'å¤§å«',NULL,NULL,NULL,'1'),(29,'29','henry','employee','äº¨åˆ©','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'äº¨åˆ©',NULL,NULL,NULL,'1'),(30,'30','helen','employee','æµ·ä¼¦','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'æµ·ä¼¦',NULL,NULL,NULL,'1'),(31,'31','sarah','employee','èæ‹‰','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'èæ‹‰',NULL,NULL,NULL,'1'),(32,'32','sam','employee','è¨å§†','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'è¨å§†',NULL,NULL,NULL,'1'),(33,'33','claire','employee','å…‹è±å°”','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'å…‹è±å°”',NULL,NULL,NULL,'1'),(34,'34','thomas','employee','æ‰˜é©¬æ–¯','active','required','unlocked','2015-02-27 00:00:00',NULL,NULL,'æ‰˜é©¬æ–¯',NULL,NULL,NULL,'1'),(39,'39','hh','hh','hh','active',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(247688773386240,'247688773386240','ww','student','ww','active',NULL,NULL,'2016-08-07 10:30:24',NULL,NULL,NULL,NULL,NULL,NULL,'1'),(247689000714240,'247689000714240','ee','student','ee','active',NULL,NULL,'2016-08-07 10:30:38',NULL,NULL,NULL,NULL,NULL,NULL,'1'),(247689264381952,'247689264381952','rr','student','rr','active',NULL,NULL,'2016-08-07 10:30:54',NULL,NULL,NULL,NULL,NULL,NULL,'1'),(247689637478400,'247689637478400','tt','student','tt','active',NULL,NULL,'2016-08-07 10:31:16',NULL,NULL,NULL,NULL,NULL,NULL,'1'),(267713809711104,'267713809711104','ron','ee','ron','active',NULL,NULL,'2016-08-21 14:00:55',NULL,NULL,NULL,NULL,NULL,NULL,'1'),(267768847958016,'267768847958016','2013034531','student','å¼ ä¸‰','active','required','unlocked','2016-08-21 14:56:51',NULL,NULL,'å¼ ä¸‰',NULL,NULL,NULL,'1');
+/*!40000 ALTER TABLE `account_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_lock_info`
+--
+
+DROP TABLE IF EXISTS `account_lock_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_lock_info` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `USERNAME` varchar(64) DEFAULT NULL,
+  `LOCK_TIME` datetime DEFAULT NULL,
+  `RELEASE_TIME` datetime DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_lock_info`
+--
+
+LOCK TABLES `account_lock_info` WRITE;
+/*!40000 ALTER TABLE `account_lock_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_lock_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_lock_log`
+--
+
+DROP TABLE IF EXISTS `account_lock_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_lock_log` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `USERNAME` varchar(64) DEFAULT NULL,
+  `LOCK_TIME` datetime DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_lock_log`
+--
+
+LOCK TABLES `account_lock_log` WRITE;
+/*!40000 ALTER TABLE `account_lock_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_lock_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_log`
+--
+
+DROP TABLE IF EXISTS `account_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_log` (
+  `ID` bigint(20) NOT NULL,
+  `USERNAME` varchar(64) DEFAULT NULL,
+  `RESULT` varchar(64) DEFAULT NULL,
+  `REASON` varchar(200) DEFAULT NULL,
+  `APPLICATION` varchar(200) DEFAULT NULL,
+  `LOG_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `CLIENT` varchar(200) DEFAULT NULL,
+  `SERVER` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_log`
+--
+
+LOCK TABLES `account_log` WRITE;
+/*!40000 ALTER TABLE `account_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_online`
+--
+
+DROP TABLE IF EXISTS `account_online`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_online` (
+  `ID` bigint(20) NOT NULL,
+  `ACCOUNT` varchar(200) DEFAULT NULL,
+  `SESSION_ID` varchar(200) DEFAULT NULL,
+  `LOGIN_TIME` datetime DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_online`
+--
+
+LOCK TABLES `account_online` WRITE;
+/*!40000 ALTER TABLE `account_online` DISABLE KEYS */;
+INSERT INTO `account_online` VALUES (255029862432768,'lingo','e6824bad-0608-4382-a265-faf471c7aa3a','2016-08-12 14:58:08',''),(260719299051520,'2013034611','9429a1f5-7672-4683-82fe-6ba36288ca45','2016-08-16 15:25:44',''),(260719509569536,'1','9429a1f5-7672-4683-82fe-6ba36288ca45','2016-08-16 15:25:57','1'),(260723641253888,'1','c693f473-0c8d-499b-9851-3f150ee010bf','2016-08-16 15:30:09','1'),(260728177852416,'1','79b3b528-58cf-4a8c-b8cf-517433f52584','2016-08-16 15:34:46','1'),(260740405542912,'1','e8366f93-5bf0-4b76-a1c6-579c008ec85c','2016-08-16 15:47:12','1'),(260752076275712,'1','b23df7dc-80bf-4b02-89ed-7f5259555343','2016-08-16 15:59:04','1'),(260759008182272,'1','303a2c74-ed64-45f9-b893-d0542af2b10c','2016-08-16 16:06:08','1'),(260774041468928,'1','48858ad0-5a9a-4c4b-9fe6-83be435bfc80','2016-08-16 16:21:25','1'),(260787017482240,'1','b24f6295-49ad-488a-bc12-f2b9ef6d4833','2016-08-16 16:34:37','1'),(260795817541632,'1','c9e05bf3-8718-4c80-ab06-e8f51d4a998c','2016-08-16 16:43:34','1'),(260810687250432,'1','8aa35f02-6b18-4ee3-b722-69cb392a852e','2016-08-16 16:58:42','1'),(260815498362880,'1','b55fd573-0071-4e24-ba15-01ad566efc7a','2016-08-16 17:03:35','1'),(260825963888640,'1','4b09cde2-e94f-4673-9df2-eb405ff78af0','2016-08-16 17:14:14','1'),(260840515747840,'1','8aafd20a-76dc-40f7-b8d7-56855d1f9757','2016-08-16 17:29:02','1'),(260949060468736,'1','876bd647-e1e4-44e3-81b8-85f5547fd388','2016-08-16 19:19:27','1'),(260958074257408,'1','849fec95-c9b9-46fd-87c1-97ca9e38128f','2016-08-16 19:28:38','1'),(260972491112448,'1','f3c47eff-ae17-48dc-834f-18200ee92e7c','2016-08-16 19:43:17','1'),(261844774207488,'1','89284861-85f2-4b70-a942-c272f2774dff','2016-08-17 10:30:37','1'),(261904297820160,'1','98584848-6ee9-40a7-add3-3068834e4af0','2016-08-17 11:31:10','1'),(261917128065024,'1','594a7065-01b3-4257-b856-951b113d78cf','2016-08-17 11:44:14','1'),(262066466455552,'1','10f88d41-1df9-42cf-9629-0cc143a912b1','2016-08-17 14:16:08','1'),(262102779985920,'rrr','329a1c08-0cdf-434d-ba65-a5866ca02487','2016-08-17 14:53:05',''),(262129713086464,'1','ab729991-ffca-4596-9aa5-dbcf832d098b','2016-08-17 15:20:29','1'),(262143830327296,'1','9d74f1af-94ce-4268-bf67-60868240d81a','2016-08-17 15:34:50','1'),(262146443182080,'1','aa14ffb0-9251-43ef-9407-38b745c5a069','2016-08-17 15:37:30','1'),(262150259081216,'1','024f0459-75de-4e02-bbd9-9a84b00649e4','2016-08-17 15:41:23','1'),(262158917992448,'1','62797732-1599-4acc-acaa-5b4e843a5c59','2016-08-17 15:50:11','1'),(262163325714432,'1','3fe9518d-ea2a-47a2-8d8e-1bffefba8ec9','2016-08-17 15:54:40','1'),(263273730244608,'1','445f7c16-c2eb-40ff-95b1-167fd182a843','2016-08-18 10:44:14','1'),(263358348345344,'1','cae6adf8-ace5-4e46-98ca-5c88723023f0','2016-08-18 12:10:19','1'),(263473451614208,'1','7469210a-5f99-4d62-900e-2f942cc728a4','2016-08-18 14:07:24','1'),(263483056340992,'2013034531','8b3fa194-8e5f-434b-901e-802002c5f90c','2016-08-18 14:17:10',''),(263483856191488,'2013034531','8b3fa194-8e5f-434b-901e-802002c5f90c','2016-08-18 14:17:59',''),(263484135194624,'1','8b3fa194-8e5f-434b-901e-802002c5f90c','2016-08-18 14:18:16','1'),(263488217972736,'1','abe6ea10-efe5-4016-8675-4055518694cf','2016-08-18 14:22:25','1'),(263546000162816,'1','65bc3108-1b4a-40b5-8bf5-eef9ecc561d1','2016-08-18 15:21:12','1'),(263552553254912,'1','8466e14e-ba3a-4eb1-894b-f89b88768419','2016-08-18 15:27:52','1'),(263618235891712,'1','71632492-216d-4b95-93de-50198aa63d1a','2016-08-18 16:34:41','1'),(264677461622784,'1','2ffa6286-6758-4398-acf8-aebaf4cefb7d','2016-08-19 10:32:11','1'),(264703418974208,'1','423ba3e5-c1f9-4d9b-888c-4386f10a689f','2016-08-19 10:58:35','1'),(264717450084352,'1','b715e1a0-e0e7-4064-92c7-91f6be3c7cf5','2016-08-19 11:12:52','1'),(264717594755072,'1','5eabbf4a-c39c-44e7-bf9e-96b0e3eaef8c','2016-08-19 11:13:00','1'),(264717918748673,'1','40b22972-fae7-4cd7-b94d-7314fe86cd9b','2016-08-19 11:13:20','1'),(264722973491200,'1','e7ef5ca6-0823-4f61-b7b0-bfd34065542b','2016-08-19 11:18:29','1'),(264739140288512,'1','86d4c1d0-5d86-41b4-9d56-4757d846844b','2016-08-19 11:34:56','1'),(264973105594368,'1','08477e76-c48f-46d2-afae-a58ae2f1ecb3','2016-08-19 15:32:56','1'),(267683249750016,'1','87845278-d6dc-4c71-8de6-befc4366f648','2016-08-21 13:29:50','1'),(267714521137152,'1','c315be5d-2f4f-4080-981c-bb37737e4f46','2016-08-21 14:01:38','1'),(267715768483840,'267713809711104','55c39885-d021-4609-b164-c09c096c3063','2016-08-21 14:02:54','1'),(267763256000512,'1','00c560fd-021b-4d2a-8a46-0f12448c4790','2016-08-21 14:51:13','1'),(267773132046336,'1','4dcf4505-91b5-47a8-90d7-44bcc5ccecae','2016-08-21 15:01:16','1'),(267811361603584,'267768847958016','baee3f1b-6158-4215-9e70-97f6d20c7ca1','2016-08-21 15:40:09','1'),(267823120859136,'267768847958016','5b387fcc-63c1-4c72-8756-c4abcf44f0c3','2016-08-21 15:52:07','1'),(267840164413440,'1','93b67d1f-aa2d-4c73-b3cc-5d6d6cf1beaa','2016-08-21 16:09:27','1'),(268072929378304,'247688773386240','bc695449-79cf-447d-ba28-e00572abb747','2016-08-21 20:06:14','1'),(268861725507584,'267768847958016','ce13bf57-28d5-426f-ab18-c4d389f03c5c','2016-08-22 09:28:38','1'),(268869382520832,'1','f053e82d-a1b6-41e8-a952-8a761fe373dd','2016-08-22 09:36:26','1'),(268869531402240,'247688773386240','6595a932-4ccd-4daa-ab72-b344c3950ebe','2016-08-22 09:36:35','1'),(268887598579712,'247688773386240','5968db43-e2a1-45fc-a022-7fadb6c3c8f6','2016-08-22 09:54:57','1'),(268904869167104,'247688773386240','cdfa3066-09d1-4669-94e2-0989daa39658','2016-08-22 10:12:31','1'),(268943965405184,'247688773386240','8e04b6c9-5bc9-48e2-a3e1-aa56633eda13','2016-08-22 10:52:18','1'),(269026884026368,'1','9e497d2d-64f0-4031-a98a-3a751c1c1f2f','2016-08-22 12:16:39','1'),(269146249084928,'1','5d3fec19-4336-41ba-b3f0-dfd801489dbe','2016-08-22 14:18:04','1'),(269146348158976,'lingo','7ccbc06b-9344-4323-8499-5d093e71ac57','2016-08-22 14:18:10',''),(269146393952256,'1','7ccbc06b-9344-4323-8499-5d093e71ac57','2016-08-22 14:18:13','1'),(269202842730496,'1','22ab5d97-2143-4822-b46c-58d81e2ea39e','2016-08-22 15:15:38','1'),(269207583162368,'1','c7311dc6-310d-4eb9-bc6f-63799b123bf0','2016-08-22 15:20:28','1'),(269426759172096,'1','9e7da0dc-3e31-4648-ba1f-56d673ec1971','2016-08-22 19:03:25','1'),(270346416340992,'1','0e67f320-54fd-4b9f-98e6-f005752d0845','2016-08-23 10:38:56','1'),(270379469570048,'1','fa788240-ad1c-4dd1-ad76-f922c8d45e08','2016-08-23 11:12:34','1'),(270381834813440,'lingo','81981cf7-e6a1-46d1-8b90-172f0b523a69','2016-08-23 11:14:58',''),(270381890584576,'1','81981cf7-e6a1-46d1-8b90-172f0b523a69','2016-08-23 11:15:02','1'),(270388951941120,'lingo','84e89537-34a7-4633-893e-35c185b61b6a','2016-08-23 11:22:13',''),(270389010481152,'1','84e89537-34a7-4633-893e-35c185b61b6a','2016-08-23 11:22:16','1'),(270614642114560,'1','0cfb9c92-ebb1-445b-879c-12e20239c6dc','2016-08-23 15:11:48','1'),(270617130123264,'1','b90b6525-052b-4c0c-ae46-a43838b93c96','2016-08-23 15:14:20','1'),(270619752595456,'1','181c3b07-81d3-4b6d-bacf-f9563217c298','2016-08-23 15:17:00','1'),(270622531846144,'1','f52101bd-7404-4f2f-9060-4974472a5baa','2016-08-23 15:19:49','1'),(270623679381504,'1','b2fedfe2-fa72-455b-a2a9-c6462d3f9fe8','2016-08-23 15:20:59','1'),(270631173734400,'lingo','3643de9a-e219-4fb9-9c37-ddef1ef7c3f9','2016-08-23 15:28:37',''),(270631212843008,'1','3643de9a-e219-4fb9-9c37-ddef1ef7c3f9','2016-08-23 15:28:39','1'),(270633033498624,'king','053c7d8c-fed4-4e54-a4ab-cbd5354acf06','2016-08-23 15:30:30',''),(270633501966336,'1','f69eb961-9c99-48e4-9ed6-a0b87479eb06','2016-08-23 15:30:59','1'),(270634604298240,'1','133edbf0-b65b-4773-92bb-c610f99736a7','2016-08-23 15:32:06','1'),(270634826088448,'king','f4e0d4bf-126e-48bc-bcd6-9364b0471779','2016-08-23 15:32:20',''),(270643285262336,'1','7a6e15a4-7e6b-4a83-abfd-9445bfa57b25','2016-08-23 15:40:56','1'),(270699662229504,'1','c866f222-4727-40ad-bd21-19ded82ef0bf','2016-08-23 16:38:17','1'),(270736039755776,'1','e0752200-b5b3-49d4-baa9-d9377f21fe2d','2016-08-23 17:15:17','1'),(270752610123776,'247688773386240','a5c87195-ab84-479e-8f84-6a0f2a04d211','2016-08-23 17:32:09','1'),(270753916698624,'1','ae55aecf-5960-4510-a4a1-74aec8e2452b','2016-08-23 17:33:28','1'),(270755560931328,'1','df58cc62-e0cc-492f-8629-64d0cab1ae49','2016-08-23 17:35:09','1'),(270756041605120,'247688773386240','e87fb478-bcf1-4dfa-b239-64df854d86d1','2016-08-23 17:35:38','1'),(270756412538880,'1','a424216b-1e84-40e4-b96e-7cc19a5aac01','2016-08-23 17:36:01','1'),(271693818806272,'1','adff817e-94f6-48cf-b714-eb5314ec0831','2016-08-24 09:29:35','1'),(271695938781184,'1','914c4675-07dc-47fe-bfa5-948df8bf78aa','2016-08-24 09:31:45','1'),(271696565125120,'1','e0cd3d83-8b05-4df0-9e2e-bf645c53353a','2016-08-24 09:32:23','1'),(271697000071168,'1','181fd7b9-16d9-4a12-abaf-5486358e88d2','2016-08-24 09:32:50','1'),(271757247447041,'247688773386240','e014fbfc-4833-439b-b445-4fb17136e2f7','2016-08-24 10:34:07','1'),(271757717618689,'1','38d1cb81-20bd-42a8-a594-9968513c447c','2016-08-24 10:34:35','1'),(271760058761217,'247688773386240','fbb4f429-d8d2-42a8-9df7-a8883b582b7a','2016-08-24 10:36:58','1'),(271762643386369,'lingo','330cf59c-ff4c-452b-91ac-5954292590b2','2016-08-24 10:39:36',''),(271762688409601,'1','330cf59c-ff4c-452b-91ac-5954292590b2','2016-08-24 10:39:39','1'),(271766974726145,'247688773386240','9897a84d-c153-4311-a17b-6fa51ac10112','2016-08-24 10:44:01','1'),(271772102197248,'1','21721e30-c055-4870-accc-49857826f916','2016-08-24 10:49:13','1'),(271782659440641,'247688773386240','e39f99ef-e7f0-4464-9b91-04b1dc59cd79','2016-08-24 10:59:58','1'),(271784059551745,'1','cfae2714-a619-4903-aad2-f63b27083bf0','2016-08-24 11:01:23','1'),(271799720804352,'247688773386240','7fdc8250-606c-426a-913e-f4912144c6b0','2016-08-24 11:17:19','1'),(271812780933120,'lingo','cdf2ff2f-56ba-479a-bb3f-62a469780ae3','2016-08-24 11:30:36',''),(271812999495680,'1','cdf2ff2f-56ba-479a-bb3f-62a469780ae3','2016-08-24 11:30:50','1'),(271828786348033,'247688773386240','6f24e020-6e56-49e8-86bf-51751933f23c','2016-08-24 11:46:53','1'),(276261381210112,'1','9d45386d-13b8-4309-b68f-b84a44fee0c0','2016-08-27 14:55:57','1'),(276487994769408,'1','67f5ae6e-fa3e-418b-9b23-d8147c48bbec','2016-08-27 18:46:29','1'),(277351058931712,'1','b5e12997-7fc6-4df3-ab20-e24a4ccbbbb5','2016-08-28 09:24:26','1'),(277388893241344,'1','8873b84d-88ba-4c1a-b844-1aed60291dd6','2016-08-28 10:02:55','1'),(277392333553664,'1','50175761-8497-4783-b64f-12e5f5f6312a','2016-08-28 10:06:25','1'),(277395549880320,'1','f02124fb-b9c0-4021-9e87-3d215e805cc9','2016-08-28 10:09:41','1'),(277403224752128,'1','ab951f62-d863-494b-b162-8426767021d8','2016-08-28 10:17:30','1'),(277416536244224,'1','8650f4d6-2bc1-4a09-9348-cb3d14b9f3d0','2016-08-28 10:31:02','1'),(277416821948416,'e','caf9a472-6908-451b-9a9c-52228d27f24b','2016-08-28 10:31:20',''),(277417087041536,'1','cd58b85e-5648-47ba-b57b-3c99aab4d92e','2016-08-28 10:31:36','1'),(277434047725568,'247689000714240','2e80afda-0a67-4518-8a19-559171218c0d','2016-08-28 10:48:51','1'),(277434272464896,'1','380f4c87-c1fc-4ec5-8c6e-9647e44e0f3d','2016-08-28 10:49:05','1'),(277436959752192,'1','0d39bc06-9925-4c03-a48f-39729fe575f8','2016-08-28 10:51:49','1'),(277438800084992,'247689000714240','4c8294bd-1d61-4568-b697-36cb6629277c','2016-08-28 10:53:41','1'),(277438988353536,'lingo','0abfe49b-7e38-42ad-8605-b11a81384a36','2016-08-28 10:53:53',''),(277439026708480,'1','0abfe49b-7e38-42ad-8605-b11a81384a36','2016-08-28 10:53:55','1'),(277439419957248,'lingo','4bd4361d-bc25-4f8c-a822-654a6ffffc72','2016-08-28 10:54:19',''),(277439454265344,'1','4bd4361d-bc25-4f8c-a822-654a6ffffc72','2016-08-28 10:54:21','1'),(277588373225472,'1','fc4000e1-43f8-4f35-8379-a4a3d1acbdd1','2016-08-28 13:25:50','1'),(277590456287232,'4','1c67a0d0-e1a5-4eb7-b81c-412a5fe9d859','2016-08-28 13:27:58','1'),(277594290700288,'1','fa4b91f2-09f2-496c-89b5-dbaae1b5406a','2016-08-28 13:31:52','1'),(277599933628416,'247689000714240','7108850c-94ed-49b2-8f18-9579629a4ac8','2016-08-28 13:37:36','1'),(277601817919488,'1','0ead1154-7116-44f0-9862-cfcc677f5ee8','2016-08-28 13:39:31','1'),(277706575642624,'1','43bbd8c7-fd38-4531-8a1e-5e6518ffbc27','2016-08-28 15:26:05','1'),(277836503973888,'1','c205dcca-94ac-47c2-8e08-8a4d485c2e1c','2016-08-28 17:38:15','1'),(277849324994560,'1','b820aa8d-cbec-49ce-a4f2-2f63fb47e75a','2016-08-28 17:51:18','1'),(277866134454272,'1','1341a10a-4135-42ac-be36-34f11f3cb6b9','2016-08-28 18:08:24','1'),(277866494476288,'1','f20e23d7-5fe2-4f2c-9377-2d8d25286cb1','2016-08-28 18:08:46','1'),(279033607733248,'1','f1847935-0ec8-4ef1-ad20-fb0170d34f61','2016-08-29 13:56:01','1'),(280548261249024,'1','ea0c9dc1-4214-4ef8-96c5-00f16ab2b07f','2016-08-30 15:36:48','1'),(280553063612416,'1','69f48573-4ca9-4cbe-bfea-f4061974e526','2016-08-30 15:41:41','1'),(280559177793536,'1','6b6a41e8-32d7-4c47-9d73-0cf4113101c2','2016-08-30 15:47:54','1'),(280559827845120,'1','0cd1de0f-a052-4e58-a9cb-eefe8c2699ba','2016-08-30 15:48:34','1'),(281940199931904,'1','3df68b30-ec3a-4daf-830d-be9d71c32046','2016-08-31 15:12:45','1');
+/*!40000 ALTER TABLE `account_online` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_evt_log`
+--
+
+DROP TABLE IF EXISTS `act_evt_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_evt_log` (
+  `LOG_NR_` bigint(20) NOT NULL AUTO_INCREMENT,
+  `TYPE_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TIME_STAMP_` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  `USER_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `DATA_` longblob,
+  `LOCK_OWNER_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `LOCK_TIME_` timestamp(3) NULL DEFAULT NULL,
+  `IS_PROCESSED_` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`LOG_NR_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_evt_log`
+--
+
+LOCK TABLES `act_evt_log` WRITE;
+/*!40000 ALTER TABLE `act_evt_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_evt_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ge_bytearray`
+--
+
+DROP TABLE IF EXISTS `act_ge_bytearray`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ge_bytearray` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `REV_` int(11) DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `DEPLOYMENT_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `BYTES_` longblob,
+  `GENERATED_` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_FK_BYTEARR_DEPL` (`DEPLOYMENT_ID_`),
+  CONSTRAINT `ACT_FK_BYTEARR_DEPL` FOREIGN KEY (`DEPLOYMENT_ID_`) REFERENCES `act_re_deployment` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ge_bytearray`
+--
+
+LOCK TABLES `act_ge_bytearray` WRITE;
+/*!40000 ALTER TABLE `act_ge_bytearray` DISABLE KEYS */;
+INSERT INTO `act_ge_bytearray` VALUES ('10',1,'D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\vacation.bpmn20.xml','9','<definitions\r\n  xmlns=\'http://www.omg.org/spec/BPMN/20100524/MODEL\'\r\n  xmlns:xsi=\'http://www.w3.org/2001/XMLSchema-instance\'\r\n  xmlns:activiti=\'http://activiti.org/bpmn\'\r\n  xmlns:bpmndi=\'http://www.omg.org/spec/BPMN/20100524/DI\'\r\n  xmlns:omgdc=\'http://www.omg.org/spec/DD/20100524/DC\'\r\n  xmlns:omgdi=\'http://www.omg.org/spec/DD/20100524/DI\'\r\n  typeLanguage=\'http://www.w3.org/2001/XMLSchema\'\r\n  expressionLanguage=\'http://www.w3.org/1999/XPath\'\r\n  targetNamespace=\'http://www.mossle.com\'>\r\n<process id=\'vacation\' name=\'è¯·å‡æµç¨‹\' isExecutable=\'true\'>\r\n  <documentation>è¯·å‡æµç¨‹</documentation>\r\n  <startEvent id=\'vacation_1\' name=\'å¡«å†™è¯·å‡å•\'/>\r\n  <sequenceFlow id=\'transition-1\' sourceRef=\'vacation_1\' targetRef=\'taskuser-1\'/>\r\n  <userTask id=\'taskuser-1\' name=\'å¡«å†™è¯·å‡å•\' activiti:formKey=\'vacation-request\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-2\' sourceRef=\'taskuser-1\' targetRef=\'taskuser-2\'/>\r\n  <userTask id=\'taskuser-2\' name=\'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\' activiti:formKey=\'vacation-department\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-3\' sourceRef=\'taskuser-2\' targetRef=\'exclusive-1\'/>\r\n  <exclusiveGateway id=\'exclusive-1\' name=\'exclusive-1\'/>\r\n  <sequenceFlow id=\'transition-4\' name=\"åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-3\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-9\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-3\' name=\'äººäº‹å®¡æ‰¹\' activiti:formKey=\'vacation-hr\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>7</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-8\' sourceRef=\'taskuser-3\' targetRef=\'exclusive-2\'/>\r\n  <exclusiveGateway id=\'exclusive-2\' name=\'exclusive-2\'/>\r\n  <sequenceFlow id=\'transition-10\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-13\' name=\"åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-6\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-5\' name=\'è°ƒæ•´ç”³è¯·\' activiti:formKey=\'vacation-modify\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-11\' sourceRef=\'taskuser-5\' targetRef=\'exclusive-3\'/>\r\n  <exclusiveGateway id=\'exclusive-3\' name=\'exclusive-3\'/>\r\n  <sequenceFlow id=\'transition-12\' name=\"é‡æ–°ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'taskuser-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;é‡æ–°ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-15\' name=\"æ’¤é”€ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'endnone-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;æ’¤é”€ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-6\' name=\'é”€å‡\' activiti:formKey=\'vacation-finish\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-14\' sourceRef=\'taskuser-6\' targetRef=\'endnone-2\'/>\r\n  <endEvent id=\'endnone-2\' name=\'ç»“æŸ\'/>\r\n</process>\r\n<bpmndi:BPMNDiagram id=\'BPMNDiagram_vacation\'>\r\n  <bpmndi:BPMNPlane bpmnElement=\'vacation\' id=\'BPMNPlane_vacation\'>\r\n    <bpmndi:BPMNShape bpmnElement=\'vacation_1\' id=\'BPMNShape_vacation_1\'>\r\n      <omgdc:Bounds height=\'35\' width=\'35\' x=\'29\' y=\'208\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-1\' id=\'BPMNShape_taskuser-1\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'109\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-2\' id=\'BPMNShape_taskuser-2\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'279\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-1\' id=\'BPMNShape_exclusive-1\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'445\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-3\' id=\'BPMNShape_taskuser-3\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-2\' id=\'BPMNShape_exclusive-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'681\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-5\' id=\'BPMNShape_taskuser-5\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'80\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-3\' id=\'BPMNShape_exclusive-3\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'571\' y=\'12\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-6\' id=\'BPMNShape_taskuser-6\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'764\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'endnone-2\' id=\'BPMNShape_endnone-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'926\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-1\' id=\'BPMNShape_transition-1\'>\r\n      <omgdi:waypoint x=\'69\' y=\'227\'/>\r\n      <omgdi:waypoint x=\'109\' y=\'226\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-2\' id=\'BPMNShape_transition-2\'>\r\n      <omgdi:waypoint x=\'229\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'279\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-3\' id=\'BPMNShape_transition-3\'>\r\n      <omgdi:waypoint x=\'399\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'445\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-4\' id=\'BPMNShape_transition-4\'>\r\n      <omgdi:waypoint x=\'485\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"505\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-9\' id=\'BPMNShape_transition-9\'>\r\n      <omgdi:waypoint x=\'464\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'464\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"464\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-8\' id=\'BPMNShape_transition-8\'>\r\n      <omgdi:waypoint x=\'651\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'681\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-10\' id=\'BPMNShape_transition-10\'>\r\n      <omgdi:waypoint x=\'700\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'700\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'651\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"700\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-13\' id=\'BPMNShape_transition-13\'>\r\n      <omgdi:waypoint x=\'721\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'764\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"740\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-11\' id=\'BPMNShape_transition-11\'>\r\n      <omgdi:waypoint x=\'591\' y=\'80\'/>\r\n      <omgdi:waypoint x=\'591\' y=\'52\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-12\' id=\'BPMNShape_transition-12\'>\r\n      <omgdi:waypoint x=\'571\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'185\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"338\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-15\' id=\'BPMNShape_transition-15\'>\r\n      <omgdi:waypoint x=\'611\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'205\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"945\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-14\' id=\'BPMNShape_transition-14\'>\r\n      <omgdi:waypoint x=\'884\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'926\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n  </bpmndi:BPMNPlane>\r\n</bpmndi:BPMNDiagram>\r\n</definitions>',0),('11',1,'D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\vacation.vacation.png','9','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Ğ\0\0\0\0\0\ŞM\î\Û\0\0=VIDATx\Ú\í\r|T\å•ÿ³Õ¶ú·õeW×º\ÔZ[\×u[ÛºVW]µRW+V\Ö\":¹¹“\âb\n&A¨f‰\"\ÕR+$\Ôú‚RµZªVñ…JfF V|¡ŠReQ$R\ê¢EA½ÿsnæ‰—\ÉL’\É$7ó\Ì|¿Ÿ\Ïù\Ìd\æ\Î$9÷9\ç9¿û¼Ü’\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0°ˆ}q\0\0\0\0\0\0@\çó’\0\0\0\0\0\0\0†\ÓÄ¶ŠMK>\Æ%\0\0\0\0\0\0\0\éÅ³\Í:İŠˆ\0\0\0\0\0\0\È,»z\0\0\0\0\0\0 \èÔ…H6\ï³&\Z\0\0\0\0\0\0Š^<w%‰\0\0\0\0\0€¢å´’\ìF–³=\0\0\0\0\0\0 `\Äó\à|n\"\Z\0\0\0\0\0\0\Ï}ÿy\0\0\0\0\0\0€¼§«\r\Ã\Âş\0\0\0\0\0\0€¼Ï½5ıš‘h\0\0\0\0\0\0(8R7\0û;±\á\É\ÇlHı‹\0\0\0\0\0@Á‰\çÁ|»˜—|ì®ˆ\Îô9D4\0\0\0\0\0\0œxV†\'E°—…ˆŠgc\Ã\ï³&\Z\0\0\0\0\0\0¬%“¨M\'†;\Ñé¿-\Íñ¬‰\0\0\0\0\0\0k\Åó ,Dq:\İ]ñœ*¢™\Î\r\0\0\0\0\0\0yOwElW\":[ñüı­%ŒD\0\0\0\0\0€â¹»\â5“ˆşLÅ³5\Ñ\0\0\0\0\0\0P0\â¹3ır\â9×¿\0\0\0\0\0\0 \Ï\Èu\Ä7ˆ\ÎE<§Šh\ÖD\0\0\0@qPVV\æa–\ß&¡:-\ÇP\×iÛ©#\Ï/\'_Ï…iœÃ°\åu\0\0°T@R’º¼9qÄ˜Æ–\ïiŒÿ°®11¨¦9\á\Ô5%&7\ÌN\ìü\Ì\è¦E\Ô6\Å\Ü\Ô\ï\ÒÏ¦k¨mŠ\ÏH÷z\Íô–o‹¸\ËkM‰ñ\r\r\rŸ\á\ì\0øtµ\ëvWt6İûDg‚h\0€k/©§jı\ZlF\ì\Ú\æ\ÄSO\Õ6\ÇOÜµ6Š_¦µQõ\Ì\ÄüŸ›\ãgûõÚ±\r\r‰İ³©½\0\0 ·$şQ$\ÙM“µˆ\å\Ó\ÔT\×5Å¯6?«ˆ\Öc5q›\×jšc¿Ö¤¯bº\í\Øø)¾\èNŠa\íüÄ®\Ç\Ë\ë\Ò\Ü\Òö\Ù\ØL¡Œ¸e\Şÿ\Ó¯\Çúûø¿C„ôg´üg	À«\ÛJúf\rtOD4k \0z^{}¬5•š\ã):˜\ĞV/\ÅG¨0®iŒ\ßHh¸ˆß®\"ºvZ\â(­›ô¹\Ö\\\æ1›\Ú\0\0rK\â;¸»&jM®¾€mNLªkL\n\åHğxMòš¼\ëšZNö\í\Æ\Ø\0©NıŞ¶\ïj9YŸk2WK}nD¹|\ë\Õ\Óö„\ßŸ%6TE9g ƒh\í\îˆo¦[U¥Û…;\Í.\Ü\0\09\Ö^\ç}«m¦_|ª6‹\Õûƒ\ÓZ¾¦Y\ë(\Ä~MÕ”(7Ÿõk¯\æ\Øùò\Ú\ãş€Gs¼:\Û\Ú\0\0rK\âF\"‘\Ï%ô\ãm#Àñ\Û\ÛGš›b£‚\â9ysRmc|¢@ûWK›\ãı\Ï5\ÆÆš)\Üşk\"†“W>¯W!\Şö}ñ)fT¹vF\Ë	\Ú	hg\Ñ.õ{¥1#\Ğ\r\r¿ùg	 ƒˆ\îJ¼vuŸ\ç®\î‰cJ¸4\0@®µ×#F|VF7µ|\ÃÑ±\éRÿ,\Ô\è61¯÷³\n\êd]¤‚9uZ¶:´\×iİ¨½\0\0 ÷$¾½ªªj13Z\×d›\Ğwñ\\3#\Ñ^(\ëHqòıY*¤õª§/šuôZƒß«A ¹\ÏH÷¼m\Ô;Ş¤\ÏG7=¾÷§I\ßã•¬ƒHKW#À]‰\ç’Šh3œi€\0\0¹\Õ^œyæ™Ÿ÷güµ	\ãÚ¶\Z)V«?·\Õd‰\Ó\ÚDqü2=\ÎlJ”\ëô\îO—\Ó\Å\Ï\Öz)›\Ú\0\0rO\â‹D\"{\êTl:”L\ÖSüD,¯]:kñ~Á\ãuš‘®‰®¶è ¶Ÿ“ü\ÏHBO9\î–v1,\"9u=uûqI\á­S‹\Ì\Ö6¸’³‘L#\Ñ\İ\ÏÙŠhóû\Ï\0\09RQ9lû»7Z÷“I\nÜ»\Ì\Ì;\rss\ì|sl\Ûş3ñ«Í ‚ûh ¾ª.w\ën\í\0\0¹	\è÷<\Ï;$dõJ\è­fı³\n›cÛ¦\ÅO\ÑD®\Â\×\Ş¯\Öi\Û5Í‰ƒ\ß+Ÿ\É\ÓÛ¿#0¢\ìf\è•Vı|û\Æ\É\éFœ€N\Ñ\ØLN=¼$ûû<§\Ñ\ÃR~k\0z‰\Ê\Êa\ïK\íõ6aü›\Ï\éÈ±?š¬k˜“wA	¯5‘\\øû\Ğ\î‚R\Û\\\ê\Ö\İ\Ú\0\0r\àü‹.\İ&IülJvr\Úö.#ÁÍ‰I—5&Ô‘hMÀºk¶^!Õ-\Ì-:Ûœb\ÌÌ…§»å•ŸÜ¥3¨kŒÿV¿?˜\èu$<\İ\Æd\0VD7Š\á\îˆ\ç’.>Ç­ª\0\0z™\ä\à\Åu0¢\í.(-\'û\âyf\â0­Á‚5‘/Œ›\âK’K\è†\êş1\íuT`ıswk/\0\0È‘\Ê\Ê\Êw\Ë\Ë\Ë÷\î\ê8\Ğ\É5\Ëõš\àuô\Ùl¦krt\rs\Ú$.ÂºfzË±\é\ŞÓ3´\ãğ;‡\Æø}ôÅ´®±¾16€³\Ğ-R§s«øV’ı­©R?—\ëı§\0 \r\Ã/¼d\Û]‹¶Üªõ”\ÖIZC\é\Ò5}ö§l\ë0\ÓZ¾öi-\ÕV+\é GûT\î\Æø\Ä\à\Üİ­½\0\0 G\Ç\ÙZUUµ/\0((+é¦‡\0@/PVVÖ­Á\0\0\È\Ï$¾%‰ü=\0@D÷‘\0€\0^\0\0\Ø- \ß6l÷(rvÍ´m\0€¾¯½şF÷\Ã\0\0v&ñÍ‘H\ä\0<Pp\":\Ûd6\0§öbö\0€\ÅI|“\ëº\â	€‚\"\Ûi\ØL\Û\0¯öj•\Úk<\0`g+‰|	O\0­ˆ>Fl›\Ø\\\0J\í\Å\ì?\0\0‹“øF±\Â\0É ¤8\Ô\Éû­ˆg\0€Pk/fÿ\0Xœ\Ä7”——O\0,™F¢™¶\r\0\Ğ?µ³ÿ\0\0,Nâ¯‹Œ\'\0ŠJD#\0ú¯öbö\0€\ÅIü£\Ñ\è!x hDô4\Ä3\0@¿\Ö^oD\"‘x\0À\Î$şš$ñCñ@\áó•¯|e´<x%Üª\n\0 ?k/fÿ\0Xœ\Ä_F£_\Ã\0E\ïó†\ê\r8pw¼\0\Ğo¹x}$ù\n\0\0°3‰¯•$~\0(l\Ç9^\â}§˜\çº.#\Ğ\0\0ıW{­û*\0\0°3‰¿,…õ\áx \àôC*“¶\0\0ô[\í\Åò9\0\0[q]w$ñÁ\0]¬cFŸ‰ f1\0€ş\É\É–üu<\0`gQ’ø¿\â	€‚óyAñlF¡Y\r\0\Ğ/9™\ås\0\0\'ñU®\ë~O\0lŒw}6&±?\0„—Y>\0`qA’ø‘x `cü‰t\â9iKñ\0@¸°|\0À\î\âúO’È¿\'\0\n2¾3>³\Z\0 \ßr3\Ë\ç\0\0lEøó\Ñhô(<PEÚ¼\Î\Ä3;r\0„ëº«#‘\È7ğ\0€ösbÿ†\'\0Š&\æ=¼\0\0Ğ¯y˜\ås\0\0\'ñg¢\Ñ\èwñ\0\Z\0\0ú\Ï+\Ë\ËË¿…\'\0\0\ì,¦Ÿ–D~,\0@@\0@(yx…\Ô^\ßÁ\0\0v&ñÿ‰F£ÿ\'\0\Ğ\0\0\Ğ÷°ÿ\0€\İ\ÅôRI\ä\Ç\ã	\04\0\0„’‡Ÿ•\Ú\ëh<\0`g_\"öx\0\r\0\0¡\äaöŸ\0°8‰ÿ¡´´ôD<€€\0€Pò0û\Ï\0\0Xœ\Ä‰Œ\'\0\Ğ\0\0Jfÿ\0\0‹“øS®ë‚\'\0\Ğ\0\0J^&v\0\0°3‰\'JKK¿\'\0\Ğ\0\0Jş£\ëº\'\à	\0\0;“xL’ø©x\0\r\0\0¡\äa6p\0°\ÏJKKO\Ã\0h\0\0%/–ú\ë$<\0`gÿ½\ã8?À\0h\0\0%³+\0€­ˆxF\ÏÀ\0h\0\0%³+\0€\ÅIüq\Ñg\â	\04\0\0„’‡bñ\0€IüQ±³ğ\0\Z\0\0B\É\Ãl\à\n\0`qŸ\ç8\Î`<€€\0€Pòp‹\Ø\â	\0\0;“ø\Ãbg\ã	\04\0\0„’‡Ÿt]÷t<\0`!\ã<$I|€b\Åó¼\İ_{íµ¹Ë–-û8‹y,(hS]\èÿcKK‹·hÑ¢w\Ä*h\á\0‡š; \0\0Xœ\Ä;O@±¢\âyñ\â\Å\Ş\æÍ›½?ü+kmmõ.\\ø®ˆ\éóh\å\0gµ\×®\ë\Â\0\0\â8\Îo%‰Ÿ‹\' XÑ‘g\ÄsÁŠ\è,Xğ­\0òL@s\0\0[ñüI\â<ÅŠN\ÛFl®‰€\ŞI+€<\Ğ\Ü\0À\â$~¿ˆ\èR<ÅŠ®™Eh´€f\Ó4\0È·Ú‹; \0\0ØŠˆ\ç_K/\Ã€€\î\Ü\Şû\ë[\Şk\Ëg{«[®ñMŸ\ëkˆT4\0@–š; \0\0Xœ\Ä\ï‹\â	@@g¶m[7z«~_\ïı\é±q»˜¾¦\ï!T\Ğ\0\0Y\Ô^¿s\çGx\0ÀB\\×½[’x9\0tfÛ°ú‘\â\Ù\Ø«\ç!T\Ğ\0\0\Ùh\î€\0`qŸ#V‰\'\0\Ù^Jü,£€\Ö÷ªh\0€,j¯\ÇŠ\'\0\0\ìL\âwº®;O\0:³­ZĞQ@\ë{U4\0@µ\×\\1\îQ\0`iŸ-V…\'\0€F@\0ô=\ÜB\0Àn}»\ØxĞ™Mw\İ\Î$ õ=„*\Z\0 ‹\Ú\ë>1O\0\0Xˆ\ã8·º®{\0tf[»dFF­\ï!T\Ğ\0\0İ…[ˆ\0XLYY\Ù/\Å.\Æ€€\Îl[6®ôV=9©\ãômyM\ßC¨\" \0²¨½¸…(\0€­8s³ëº—\à	@@wnë™\ÓA@\ëkˆT4\0@6pQ\0\0‹)++›%IüR<\èN\ìƒ¼µ¼©\ãômyM\ßC¨\" \0²¨½~%\"ºO\0\0Xˆˆç™’Ä«ñ  \ÓÛ¶­½W–4g\\­\ï\é1ˆU4\0@wº\ë.©¿†\á	\0\0)++k–$>\nO\0º\ã¨ó[k\ã\Şó’Q<\ÓcôXF£\Ğ\0\0İ¨½\î=O\0\0Ø™\Ä\Å.\Ã€€\îş¨3£\Ñh\0€\"\âù\Çq\Î\Ç\0\0v&ñ\é’\Äkğ  ?µ\îŒ:w6\ZpE@\0d¢¬¬\ìv±ğ\0€IüF±:<\èO­§\â\Ù\Â\r\0	\Çqnu]÷\"<\0`g¿A’ø\åx\Ğ\Z\0 \ï)++û¥\Ø\Åx\0À\Î$şs±±x\Ğ\Z\0 \ïq\çf\×u/Á\0\0v&ñŸI¿O\0\ZC@\0ô=eee7‰\Ä\0\0\"\âù:\Ñğ  14\0@\ß#u\×L©¿ªñ\0€…”••ıT’øD<h\r\0J\í5C\ì\Çx\0ÀBD<_\ë8Î•x\Ğ\Z\0 ï‘º«I\ê¯\Ñx\0ÀB\Ê\ÊÊ®«\Ç€€\Æ\Ğ\0\0¡\Ô^b—\á	\0\0q]÷j\ÇqşO\0\ZC@\0ô=RwM“ú«O\0\0XHYY\Ù$±<h\r\0J\íu£X\0\0°3‰\×\ë4n<h\r\0\Ğ÷8sƒëº—\ã	\0\0;ôUb“ñ  14\0@(µ\×\Ï\Å\Æ\â	\0\0;“øOÄ¦\à	@@ch\0€¾\ÇqœŸ¹®{\0\0°3‰O$~\04†€\0\è{\Ê\ÊÊ®\'\0\0\ìL\â\ã5‘\ã	@@ch\0€Pj¯Ÿº®;O\0\0Xˆ\ã8\ã$‰O\ÅPhH»^ v\Z\İE!{Œ\äÁ‡ˆ\0Q@O\Ñ%tx\0ÀN‘q¹\î‰\' \0OM…´´ñ\ã\Ğ\èT\á,6Ol§¶\"\0B\ìŸ&\ë&®x\0ÀBDXŒñ<…* öDºitq	\èT\álŒˆ€û§kô6¢x\0ÀBDPÔŠˆ†\' tûˆtPH# ‹C@\ë,ª*œ\Ğ\0\ĞıSƒ\Ø$<\0`g¿L¬O@±\è\àˆ´Š*t\á\èt#\Îh\0\è\Çşi’Šh<\0`!®\ëÑ„\'—\Åj\è¢\Ğ\ÖY pºë¿¥şº\ZO\0\0\Ø)¤~,6O\İyÿ\Øó¼\İ\ëš§e²\Ú\Æø\ÄÚ¦˜«\Ç\ë\Ï5\Íñ³3W7­\åk\æ»\Ç4¶|\ß½91¤¶)>\ÃÿlSb|õ\Ì\Äò\ä\"Ár)^8pw=._tkk«Š&o\îÜ¹\Şû\ï¿\ïr\È!Ş©§\ê\r6Ì·‡~\Ø?õsú\Úõ\×_Ÿñ\çLö\ĞCy|p\Æ÷_|ñEoÍš5ißwŞ™÷S¸KKKO“s¿\ÔFZñ\nPd}ğUº‘\0\0°—JŸ…\'Š®ó\Ş1bÄˆ\Ï64$v7¯]>#vˆ\Ğé¯mŒU\ÖNKµK!Ş”(\×\â;\İg\êšb?¸¬1ş]ışš¦ø”~ú;Î†|~úé§½ƒ:\ÈÛ¾}»/TU\Ä\êcsss»x5\Ç{\ì±\í¢ú;\îğö\ß\ï™gñ>ë¬³\Ú\ß\Ó\ï0Ÿ\Ùk¯½¼3\Î8\Ã¯¾¾\Ş\Ûo¿ı¼+¯¼²ıØ¥K—v\Ëú7\Åb1/\Z\îòûx\àÿùo¼‘×›ˆ¹®;H\Ú\Âb\ËtÁ\Ç+@‘\Õ^WJ.ºO\0\0Xˆ$ğK$‘ßŒ\'ŠN@o¯ªª\Úc—¢»)3£\åğ´ysÜŸ\æ\ß\Ğ\Ğğ™4\ÅúX}¬™\Şr )\Öuô\Ë\ÑjŒO¬™‘\Ü6ª»!(\0B\ĞK¥I\Î6\èTñ:g\ÎÿQşoñ\âÅ»\èµk\×ú£\ÈFĞp\Â	Ş¼yó¼»ï¾»ıó÷\ß‡\ï¼÷\Ş{ı\ç*†u”;ø^\êñK–,i×¿!( õQ…µ-·±JH/¶D@|¼Y\í5Q\âú§x\0ÀN!5B\ì<Qt\çı½\Ê\ÊÊ½>-¸“\ê\Z\ã¿\İôø\Şc\Z\ã?L=^§t&‹ö¡Á¢;ù\ÚS¬û#X\É¼\İ\Zƒ.oN\Ñÿc\Úg´\âª8\İs\Ï=}¡l\í\Í7\ß\Ü.Xu:( \Í(²Ú»í¶›7yòd_@ªğ\Õ\×Ud§\nè£>:\ãt\"‘hŸ¾m^Û°aƒÿü\Üs\Ïm-ø\Ü|&\ßt \Õ\é¥\Äkÿ\Æ+@1!}\Ó\É=\×\á	\0\0‘~‘$ò[ñD\Ñ	\èw\Ë\Ë\Ë÷n+¶\ã—\étO)¬ı©üu7\Æh‘\İ0;\Ñ>\â\åÿ,·½j;&\æ\ê(–N\r5\Ç\Õ\ÍL&Eø\ä]¦J±Ÿi¤,\È\×h3m[§F±«#Ì©\Ø<_·n?Ú¬¯yä‘¾ \Õ×·l\Ù\â¿VZZšvTÛŒ2w6­k°\Ík+W®ô0`€wú\é§ûŸ3b_Åµ-#\ĞÄ«ñ\nP µ\×R{ıO\0\0\ØY˜] v;(ºóş\Ïó¨kŒ3s\áÁm…y\ì†@>Ô¬…\ÔQ®º\æ\ØH]#Y\×¿º­È\×K1~¬Nû”\×N	~®®9^½\ë\Ú\Ëx^·¯|\Â\Í%\É\é\Ö*Vu]ô¦M›v\Ğ\Çwœ÷\Øcµ¯C>üğ\Ãı)ÜºÁ—ÙLM?—­€¾¦›š™\çú;ƒš™\Ñr4ñ\n\0™ñ<NDôT<\0`g?_’øx¢¸8ÿüZ¥ l~Ö©œRX\ïÒ™\ë\è”>\êQµ\Ú-\'\èH–_x7\ÇOláŠihø\Í\ç\Ìg´h\×ÍF7µ|ÃŒt\ÕL§E=ºgzÕªUŞ»\ï¾\Û>}ÛŒ(\ë\ëF@\ëÈ¯\n«\Õõ¼úxè¡‡z\Õ\Õ\Õşs³ÁW\ê\Z\å’nN\á¯#\Ğ:Ú­\Ï.\\˜V\\# ‰W\0ÈŒ\Ô]—Kıu\0\0°3‰—‚ûN<Q\\\È9\ß$\çş@ó³\Ø5\Í	\'İ±µM±\ÚL·´1›ù|sl¤W\Û›®?ûEù´Eù\ï5\Æ~•¯å»€V\á|\ÄG´o\Z¦£\ÂúhDl\ê´o\İ9[\ÖG]m6Kı~#ªSG o»í¶´\Ç\ï³\Ï>\í£ßº‘#\Ğ\Ä+\0d‡ˆ\ç1Ó¿À\0\0vf•bsğDÑ÷bÿd~\Öb\\\×U¦;6\İmmF7-:@Šñ[\äs¶ıüø\Şş(\×\ì\Ä:Ô¿ZS|Ö¥³ï§–¯¾\Èw­S°õQG˜õqıúõŞ“O>\Ùa\rtğ3+V¬\è ˆ»²\î¯ß­#\Ü\æ¹YŸ\Í4ñ\n\0\İG\Äs­ˆ\èix\0À\Î$^!…Ù¯ğD\Ñ	\è\×\Å\Æù- ·m\Û\æ­Y³ÆŸ®|\İ\Ü\ßY\ïıœ\î>\Ğ*º\'Mš\ä\ß\ÚL\É6B\\\×C§û]:•û\ä“O\îô\ï	~V¿Kÿ6]omn¯\\_€&^ =\"k¤şš\'\0\0\ì,Ì¢b÷\à‰¢;\ï\ëÄ¾Š\'\ì¹twv\í.„ÿM¼:\"G‹ˆn\Â\0\0\"	¼Lù¯ñD\Ñ	\è?Ë¹ÿ:(´€&^\n«ö\Z%qİŒ\'\0\0\ì,\Ì±ûğDÑ÷—¥\ç^¯h4ñ\n\0!\ãºnµ\ÄôL<\0`!’À#’\Èƒ\'ŠN@¿(\çş_ñ\ZM¼@\èµ×¥×³ğ\0€…ˆx>WùoñD\Ñ	\è\ä¼‰\'\Ğh\â\0B¯½.‘˜¾O\0\0Xˆ$ğ¡Rœ=€\'ŠN@¯sÿ<€F@¯\0zL»O\0\0Xˆ\ëºC¤0{O]\çı¬œ÷£ñ\ZM¼@\èµ\×EÓ·\â	\0\0;³³\Å\ÆEwŞŸ–\ÎûX<€F@¯\0zL_(v\0\0°\×uÿK\n³GğD\Ñu\ŞK\å¼\'\Ğh\â\0\ÂE\âù|©¿\îÀ\0\0vfg‰=Š\'Š\î¼ÿ¡´´ôD<€F@¯\0zLW‰\Í\Æ\0\0\â8Î™’\Ä\ÇÅ…\ëº\ÅNÁh4ñ\n\0¡\×^\Ã$¦\ï\Â\0\0vfƒD@?\'Š\î¼\Ç\ÅN\Åh4ñ\n\0\á\"uW¥\Ø<\0`!\ãü@’ø\ïñD\Ñu\ŞOJA~:@@# ‰W\0‰\ç\n±»ñ\0€…”––&I|(:ı„\Î>Àh4ñ\n\0¡\ÇtT\ì<\0`gÿO±<Qt\çıQ\İ@O  \Ğ\Ä+\0„‹+HLß‹\'\0\0,¤´´ôûº¾O€~X\ï\'\Ğh\â\0BiG\ì><\0`!º³«$ñ§ğD\Ñu\ŞŠƒ\'\Ğh\â\0B¯½J%¦\ï\Ç\0\0RZZú=½E\n(:=W\ì<<€F@¯\0zLŸ§q\'\0\0,D\ÄóI’\Äã‰¢\ë¼\ï\Ó)dx€&^ ô\Ú\ë\\\Çq~‹\'\0\0\ì,\ÌşCl	(ºó~\îŠ\'\Ğh\â\0B\ésti\0\0°\×uO$şG<Qt÷±J<€F@¯\0z\í5\Äqœ‡ğ\0€…\Ùqb\ËğDÑ÷\ÙbUx€&^ ô˜>[w\×\Ç\0\0\â8Î±’ÄŸ\ÆE\×y\ß&v!@@# ‰W\0\×uÿK\ê¯Gğ\0€…\Ù1b\ËñDÑ÷[\ÄF\à	4šx€\Ğcú,±Gñ\0€…8s´$ñgñD\ÑuŞ³\ä\Ü_Š\'\Ğh\â\0\Â%\ZşPbú1<\0`g?J’øóx¢\èt³œ÷Qx€&^ \\\\\×$qı\0\0°)Ê¾#I|(º\Î{ºœû\Z<QR‹\Åš…k\ÛE@\ï$^ ŸˆF£gHL\Ï\Ç\0\0R^^ş-I\â+ñD\Ñ	\è_\Èyƒ\'JJ-Zô\Ö\æÍ››h7n¼OôK\Ä+\0\äYLŸ^VVö$\0\0°3‰S’ø*<Qt\ç}ª\ä\ãğDII<ÿ\ÑSO=õ×·\ß~ûoˆ\Î\ÂyVñ\Ü\ÒÒ²^\ì<\â\0ò‰\Ò\Ò\Ò\Ó$®\à	\0\0‰D\"ß$¾\ZO€¾N\nò	x¢\rYƒ,X°\\§û\êšY\Ìz\ÓóøR!ˆg\â  û\àS\Ë\Ê\Êbx\0À\Î$~„$ñ—ğDÑ÷k¥ ¿O\0¯\0.¥¥¥ß—¸\ã	\0\0‘¢\ìp\Ğ/ã‰¢+È¯–sÿ\ßx€x€\Ğcú©½\Â\0\0FÿY’ø+x¢¸\Ğb\\‹r<@¼@¸”––~Obz!\0\0°³0ûº\è?ã‰¢;\ïW\ê´P<@¼@¸H<Ÿ$µ\×b<\0`!‘H\äPI\â¯á‰¢+\È\'\è\ÆDx€x€p)--=Qj¯?\à	\0\0‘şU±ux¢\è\nòqzk<@¼@¸H<Ÿ µ\×ñ\0€…D\"‘¯H_\'Š® #ø/ğ\0ñ\n\0¡\ÇôñR{-\Å\0\0R^^şeI\âğD\Ñu\Ş5RO\Ç\0\Ä+\0„‹\Ô]Ç‰-\Ã\0\0‰DHO]A>J\Î{3\0 ^ ô˜>Vbúi<\0`!IO]\ç}©œ÷Yx€x€p‘x>Fl9\0\0°\×u”$¾	O]\ç=B\ì<@¼@¸8s´\Äô³x\0ÀB*++ÿQ’ø\Ûx¢\è\nò\Ån\Ã\0\Ä+\0„\Óÿ&ö\0\0°\×u÷—$ŞŠ\'Š®ó®›\'\0ˆW\0\Çq¾#1½O\0\0XH$ù{I\â[ğD\Ñ\ä•bsğ\0ñ\n\0\á\âº\î·%¦ÿ„\'\0\0\ì(\Ä^óº°¹xª\à\ÛAT\ì<@¼@¸8s¤\Öcx\0À\\\×Ò•€\ÖÄ§\n¾ w\Ä\î\Ã\0\Ä+\0„^‹}Sbz\0\0°§\Ë8\n-Iı\×x¨(\ÚÀy\Ì4\0 ^ |\ÇùW‰\éñ\0€]\ÅXZF\ÂCE\Ñ\Î{O\0¯\0.®\ë!1ı\0\0°« [šF@\Ï\Ã3Esş\Ï{O\0¯\0.\ã.1ı2\0\0°\×u¥™¾})š‚ü,±Gñ\0ñ\n\0\áFÿYbú<\0`_Q¶8 \à‘\â!y\å	<@¼@¸8óu‰\é?\ã	\0\0ûôÀÀô@<RTù\érÎŸ\Ä\0\Ä+\0„K4\Zıš\Äô«x\0ÀB\Çùƒ$ñOğD\Ñ\ä§\Êy\á	\0\â\0\ÂE\âù«b\ëğ\0€…D\"‘\ÓED# ‹¯ ?E:\ï§ğ\0ñ\n\0\áF‘˜ş_<\İ\Âó¼\İ_{íµ¹Ë–-û8‹y,À,·––oÑ¢E\ïˆU\ĞN\í4\ÂM;-º‚ü$]\'è—ˆw\â•Åˆ\Ñp‘x>X\ìuz`\èš\0/^\ìmŞ¼\Ùûğ\Ã±±\Ö\ÖVo\áÂ…\ïJB<vŠ\ÑN­(\ÈO\ÎûôJ\Ä;ñN¼£1\Z.\å\å\å_–˜\Ş@\İB¯’\06~¸`Á‚—h§\í4ÿ‰F£ÿ.÷ÿ\Ğ+\ï\Ä;ñJŒb\Äh\è#\Ğÿ$¶‘º…N½!a®I\ÜI;\Åh§V\äß•\Îûz%\âx\'^‰QŒ\r—ŠŠŠƒ$¦ß¤†n¡\ëH=\Ú)F;µ¢ ?\Êqœ\çé•ˆw\âx%F1b4\\\\\×=Pô&z`\è\Õ$ø\Ş_\ßò^[>\Û[\İroú\\_#Ñi§\í4w\Ê\ËË¿%ùJz%\âx\'^‰QŒ\r—\Ê\Ê\Êı6=0ôZÜ¶u£·\ê÷õŞŸ·‹\ékúÉ†$H;\Åh§¹‰D¾\áº\îjz%\âx\'^‰QŒ\r}zĞ­ôÀ\ĞkIp\Ã\êG:$@co¬G²!	\ÒN1\Úi\îù¿H¾†^‰x\'Ş‰Wb#F\ÃeØ°aÿ úz`\èµ$øR\âg“ ¾G²!	\ÒN1\Úi\Îùa\Òy¯¥W\"Ş‰w\â•Åˆ\Ñ\Ğcú\ï%¦·\ĞC¯%ÁU\Z2&A}dC¤b´Óœ;\ïC¥ó~^‰x\'Ş‰Wb#FÃ¥ªªj_\Çq¶\ÒIC@\ÓNi§ö\ä_‘‚|=½ñN¼¯\Ä(FŒö-¿óÄ¼.l9=2ô8	\êÎ‰™’ ¾G²!	\ÒN1\Úi\Îù\0\é¬ß W\"Ş‰w\â•Åˆ\Ñ>\ĞÇˆ\í\ìL@;3˜zœ\×.™‘1	\ê{$’ \í£\æ\\I:\ì·è•ˆw\âx%F1b4ıD\'z\éÀw§G†\'Á-Wz«œ\Ôq\n¼¦\ï‘lH‚´SŒvšsA~€tØ›é•ˆw\âx%F1b4´Q\è´\Úu\İ!ôÆST[÷ÌœIP_#Ñi§\í´W\nrv\0%Ş‰w\â•Åˆ\ÑpEtºµ\Ğ\Ë}†Ü“\àxkÿxS\Ç)8òš¾G²!	\ÒN1\Úi\Îù>\Òiÿ•^‰x\'Ş‰Wb#FC…\Ş\É\Úg\è\Õ$¸m\ëF\ï•%\Í×±\è{z	‡$H;\Å\è¬s*È¿ ÷6z%\âx\'^‰QŒ\r\Ì1ú½“?øÀ{km\Ü{aşO2&@czŒ\ËE’ \í£³\îqA¾§t\Ü£W\"Ş‰w\â•Åˆ\ÑPôñµÏƒè…¡GI°«+‡\\Q$	\ÒN1\Úi¯äŸ“\ÎûCz%\âx\'^‰QŒ\r‰\çG\Å>aôzœ»så°³+Š$’ \í£³Îº \ßM:\ïè•ˆw\âx%F1b´\ï(//ÿ²\Ä\ïX\Çqn\Õ)\Ûb\ëô‚XrZ\×Co÷—Ç›\\×­\Ğ\ãé™¡\Ë$\Ø\ÓhŒ\äC¤bt\ÖY3H;o}¤_\"Ş‰w\â•Åˆ\Ñ\ŞC„ğş\"ŠG\É\ã*±:¹ÿsZSA-Ÿ«\Õı(W Û·\"ÀH‚´SŒv\Úgœ&¶UlZòq0ıqA¼¯\Ä(FŒ\æFrÃ¿¿\ïe+š3\Ø6±ŸWUUí‹Š¤PÁH‚´SŒvÚ¿Å¸)\ÂuD«µ˜E4ñN¼¯\Ä(FŒöÂ¨s…\Ø\ÆT\\YY\éM™2\Åû\İ\ï~\ç­^½\ÚÛ¼y³÷\ÑGy†­[·z¯¼òŠ7ş|\ïº\ë®óO#¤[ÅªŠ\"\à\Z\Zö9sæµ“\'O~¦¾¾¾µººzGyyy»3FŒñ\ÑW\\±õšk®Y1kÖ¬[®ºêª¯“1’ \í£†TŒwõ:\Å9F¼¯\Ä(FŒv‚n¦\ë—SE\ï˜1cüÿ\íı÷\ß÷²aÇ\Ş\âÅ‹½q\ãÆ¥Ò³v4zÊ”)gLš4\éùŠŠŠOD8ûWV®\\\Ù\áŠÃ–-[¼5k\ÖøWn¸\áOA½A>3¢Pwe#	’i§\í´_\ÔE\Ñm\Ş/º5–\Ä;ñN¼£1\Ú\"‘È—\\\×]¹µµµ¾\0j¾²l\Ù2oô\èÑ©\"úù½‡L€‹Ã¾:q\â\Ä]t\Ñ\'s\ç\Îõr¶W–,Y\â]u\ÕUŸTWWoºø\â‹\Ï&	b$A\Ú)F;\í¥b¼«b»(G¢‰w\âx%F1b´‡\âùƒ\âvö\ì\Ù\Şö\íÛ½\ŞD…ø]wİ•*¢\×„ˆ®¯¯u\á…\î\Ô0Û¡út,_¾\Ü½c\äÈ‘¿+¤\ØH‚$A\Ú)F;\r•Ó²©\Êöx\â#Ş‰Wb+ª>99mûF\Ğ\ê]ı?úış”õ\Ñ/X­\'L˜pËüã}ö\Ù^u\Ôÿı\ßÿy3g\Î\ÜQUUõ¦^\å 	b$A\Ú)F;\íA1>¸Ÿ\ÛV\ÂôPŒx\'^‰QŒ\í@pÍ³Šg²:¥;¸Ÿ–\Ø\\k\Åó¨Q£>\Öõ\Í}Å½÷\ŞûqEEÅ»…0TO$	\ÒN1\Úi^\ã½õy\â#Ş‰Wb+¸>Yw\ÛN§\î\ë‘\çt#\ÑÁ\ß/\ÏEV´N\ÛÖ‘\ç¾Ï†‡~ø\Ñm‰&	’i§\í´\Ï\éj¢°¿‡xÇˆw\â•Å¬\ï“u\ÊtğVUº\æ¹?¸ûî»ƒ\"ú-k¦r\ë†aº\æyÅŠ¡9\ë{\îy3\Z>bó\İ$A’ \í£†RŒ÷\ÖtÎ‚‰&Ş‰w\â•Åˆ\Ñ\î bµ!¸\Ûvoo–\Í\Æbúû\"ºÁ\nN˜0\á\İ0,ljjj\ŞtgI#	\ÒN1t†\â\Ù\ã\'6<ù˜\r©Ÿ+èŠˆw\âx%F1b´+\\\×\İ_\ì=#Zõ\ÎIı‰®‡6‹hÃ­ú÷\åµõ>\Ïz«ª\Ş\Øm;[6n\ÜøQ4\ZıK\Ş;‰$H¤³\Æh§ıQŒÕ·‹y\É\Ç\î\å™>W°\"šx\'Ş‰Wb#F»B0`3fL¯\Ü\ç9WÆo\Ï(ô¤I“ğÁû\ÍY\×_ıj\Ğ×‘1’ \íC@—¤Ÿ¶9<YT{Y\åÁb\ÜØ°Àû¹Æ’x\'Ş‰Wb#F»1½Êˆ\Õx<\î\åºûw@@¯\Í[\ç544\ì[QQñÉ–-[ú\ÍY7n\Ü,\'ñ\×B“I‚´SŒvÚ«d*’\Ó×\åé¿-\Íñ·Æ’x\'Ş‰Wb#F;£¼¼üË¢½>R¡ª÷b\îY\È\éØ±c\Ç.÷†F£G\å¥oº\é¦\ë\ê\ë\ëû\İa—^z\é\Ër\"OÊ£«2ºó÷I‚´SŒvÚ³v\ÙI1>(‹\";]Q\Ş\İb<µ(D¼c\Å\ï\Ä+1ŠVŸÜv(\ât¬©S¦Lñò‰©S§\×BO\È\Ëyò\ä\É\ÏÌ›7¯ß5}úô%ù4;p/²rò\'	’ó\Ú)–í´»í²‡EqWEy¶\Åxğ÷·\æó\ÈñõE¼¯\Ä(VX}rwÚ¡¼~«9.t`ùó\ç§qÿ*/;\äúúúÖ•+Wö»³–-[¶Bœ”È·$°\'\Ò]\Í!	’i§\í´g\í2‡i™™Šò\Ïô°\ïj:*ñ¼€&^‰Q¬°tg\íP^[n\Ş_½zu^	\èW^y%8ı|^\à\Õ\Õ\Õ;6o\Ş\Ü\ï\ÎÚ´i\Ó[z\ã\ì<N‚\íWs‚$H¤b´Óµ\Ë\ã\å/\çPŒ\çú÷\ïX¡h\â•\Å\nK@wh‡òó:óz>\èÀ [·n\rşİ­yY€———\çÅ¶\åŠ:*\ß•\à\ÕA$	\ÒN1\Úi\Ï\Úe/Œ ¥+\Ês)Æ³J¼c+ ‰Wb+,l‡bšŸóE¦jBcy[€ç£³l1’`a›m’vJ;µÁ†j\n\çi9vcŸI3’õròõ\\˜F¼c\Ä;ñJŒb…\Ş\'\ç#y/ \Îú\ê\Ír\Çq›[nõw\Ô\Î\ç\Æo\ìğ\Ú\äÉ“;»}ûvÿ½3\Î8\Ã6l\Ø.öğ\Ã{s\æ\Ìñ\ß7Ç¿ø\â‹Şš5k\Òş\Î;\ï¼3\íß³d\É\ï°\Ãó\Ä?şw~û\Û\ßö–.]ê•––ú?\ïµ\×^>³j\Õ*ÿ;\ß|ó\Íö\ï×¿‰«ˆv¶S=ºƒbĞ‡\Ñh\Ô?ÿ_ü\âıóm\Ş\Ós®\Ç\ëkk×®õ\Î:\ë,\ßôØƒ>\Øû\å/¹\Ëwk{4mÅ´+5Ó†õ½\àg~úi\ïœs\Îi?&\Óq™şn¸¡\ËcÆ\ë?¿ÿşûı3¯\ß}÷İŒ@w\Ñ.Kº\Ş\Å7—­\î\Üw¶_F´\êš§\Õ4\Ç\Ï\Ö\ÇT«mŒO¬›\Öò5s\ì˜Æ–\ïû¯7\'†ŒøI³7|\äX\ï\ÂË¯÷\ÜòÊ¼í—º›\'4/t÷x\Û\Ã?<«\ï·%~óxº\è\ã5\ÛX\Õø^=ÁK«\Ö\Åhw\ã,µ/\ÕX2±j\êº\\jDF û&¦\åùvKF w\æe/k [[[\ß\Ìó5Ğ©I^¬c\Ñä¥›À­[·\Î;ó\Ì3\ÛÅ&£‡z\È.¾õUArè¡‡ú¯?ó\Ì3i¿kÌ˜1^S‹\Å\ÚE¾v\Çwx<ğ€ÿü7\Ş\Ø\åxın}|õ\ÕWıÇ¹s\çzÛ¶mk_¿9^Ÿ›\ï\Ô\ãô{÷\Ûo?ÿuı[\Ğö´Ó…ú\çR/\Ş\èù\ÔNT;Iµ\à\ÅS˜ªN$\Şq\Ç\ç{\î¹ş=M«¦©^\ì	ş\Ï~ö³\Ş>û\ì£{&´û\Øcùß«ŸOı›8\à\0\ï\ÔSOM\Û\ÖSdó÷‘}\ĞAy\'Ÿ|²ÿ\\M\Û{j›\Ô\ï¹\í¶\ÛÚŸ\ëE(ó\\ÿt\ç\í2Pün\ë£5•=)\Êû|Memc¬²vZ\â¨]Šñ¦D¹\àµMñ‹ø\Ø.kŒ\×u£\ŞEWü\"\ïû¥\îö]\éb\Ó\\\ìÕ¼ ŒG5\ÚWû›\ã74ñ\Ú\ÃXU\Ñ\\q\á(/«\Ö\Æh6ZO?ıt¿m\Ş{\ï½~=gG´~\ìiˆ€î»˜¶h\rô†¼,À¯¼ò\Êwòa÷µ\ä.Ü‹ó°\0\\\êº\îI¿%AFxÎœ9\Ó;ö\Øc}1¸*4V¬X±K\âÚ²e‹ÿx\ÔQG\íRlh\Ó\×Uˆ§^-\ÔG\áæŠ¡ùş\Ô\Äh~‡\\›¿\Ëü ¸\×÷ƒÇ›BEŸWUUù\Ï\Íß©ŸE@\Û\ÑNµ4\íE\í‰\'h?¯:º¬\ï™×‚£\ÏO>ùd\Ú\ïK\ĞúıÁö¥±¿\ÚÎ«««\Û\ÛWPHkA¬dô\ÂP\ê´~O\êÅŸ`Ñœ:“C\ÅûÄ‰ı\ç\Z\'\æ{¾÷½\ïµ\Ï\Ş036L\Û\Õ\Ç\Æ\Æ\ÆbĞ¶\ËF2\İú&İ®¾\Ù\å¡\ì\ê[\Ûo\ÒÇ†††Ï¤)\Ø\Ç\êc\Íô–MÁ®#`:­£YÃ«\Ç{uWM}±\éÁ?ıNº\Î=ò©_Ê¶ğ\Ö\\™\Ş\×8Ö¼¡9 U@ku\ÄGtø>[\ã74ñšc¬j|\êt\í5·¼>ÿ\Ù7¯•=£¦)vCCC¢\à´/^¼x—˜\Õs¨±©1º\ç{z\ï¾ûnN5\"º\ïbš]¸sD\ïıø\ã\ç\Å} \ÅQ?Ï£°³+°y‘ P!¡?«P8\á„Ú¯¸\ë{Á\ä\Ö\Ù\è[ªi3ß±a\Ãÿ¹š×‚\ÏU¸\ëgô;õ\çõ\ë×·\'E-€t4ÁŒ–ù[N<ñDÿ»v\Ûm7:>\×BHÿF \íj§fú½¨Á¶ \íÀ´¥\àE }-\Óß–* õ\Ø\Ë.»\Ìÿ.ı\ŞK.¹\ÄM;hm3\é®^r\È!~œn©^\á`i<\é¡`ü\\pÁşsnYA\êÖ\è_\Ğ\ç:Ú¥£bE:İ­v\ÙÃ‘¤®\î\Û\Õ}g3qLIH÷•­iJŒ÷ğ¦øĞ HN¾6\Ã\ìZt\×\ÌHnùú\Éõ/Ç{’t™\ß\Ì\×~©;f–}şóŸ\ïô8-\Âu\ÙGª€\Şÿıı˜L\ím\ß<\Ğ\Äk/Åª\Æ\è\ÂU\ï\\¥Â¹®11\èò\æ\Ä¶^\ä\êN¯£\ÍZƒªh\ÖG\ÖU\Z«Zc¼\'5\"º\ïbZ5—%÷¾)/ğ™3g\Ş0eÊ”~wÖ¨Q£V‰“–XF>L\á6Wİ»# u$Ùˆ\Ö\Ô5\Ğ*6ôŠ ¹’¼¯?0ÀŸ¢c¾_¯.\ZA¤\Å\Ë\Í7ß¼\Ë(·~—6~bk~‡C©¿I™F Ó­ÁF@\ç_;\Õ\Ñd=¿Gy¤\×\Ü\Ü\ì‹_\íLµMiÇª\ïkq«§ùŒ9\Ç\İ\Öv K	L;\Ñ©#E:\Û\"U@\ë\ï\Ô\×4.´\íj=ú\è£ıGm¿ú¼³öh„¹œ\ëHwºøSn¦¤\éyóºúvš5](uUŒ—ô°(7\ÓR‡„ñOj\á­E·Áª»16 ¶)\æ\êH–NmŸº=3q˜\ì“w™>Úœ˜4fF\Ë\á6h=\'\Úg—m¤š.;RK\Ğz¡5U@\Û¿\Ç{Á\Çk_Åª\íZûds¡<8\ÛL—]˜\ZQkS3³±§5\"ºOEöyF¤\æƒ¢û\èn½U‘—7nÜ—†ş‰\n¤~¼ôfq\Ğ{\"ö@˜ô­€V\Óu\'\İ\İt%µ 	®I~¿ùÎ’\ä†P©ŸS\á®#\Õú<X01]8\íT;E\ËfÊ¥N™L¦\ìl³\Ğjz¥Z¿W—¨6‚9x5\Ûh\Íg\ZÁx¶[–©r\ê¨x°=G°´pÿÑ~\Ô~œş.\İ|¨$°Jj›/\æ5\Ğ9’id«»\Åx¶E¹ù}¡ˆ\ç\ÑM\ï]\×©kš\ëš\âW·\Úñz)È\Õi\Úò\Ú)\â}h]s¼z\×õ—ñ\Ûó½_\ê\îúg\Ó\'t6\Û<×¾A\Íl(–Ú—\Ø¿–\Ç{Á\Æk_Æª\í\Ú\\47³8&Mš\Ôaúµ\é\ãõ\íiˆ€\î;\"‘È—tƒ.©•••^\êÀ ;v\ìğ***>1º¼¼ü\Ëy\ë\Äñ\ã\Çÿù©§\ê7gÍ˜1\ã\ÇqnE˜dg\æêŸ¢©UÁ¢\"#øMİ”%u=\ès\Ï=·\Ët\ìt›”\éó\à”¶\à÷_3\ÉQ¯.j\á¢ÇŒš5\ÙfZxIr\'\ÖT­£—f3ª\àºY’`ş¶SJ*–¨5K‚Ï³\ĞÁM\ÆJ‘˜ö\\:‹\"\ØNK:Y\×\Ø\İ\\§Ÿ›\rP‚\ÓÇƒùßƒ\ë¬i§Yl¥N\Ï^’ı}c\Ó\åÃ²A\ëu\Æ4\Æ¨V;£\å\Íò‹\ï\æø‰m£\\ñ1\r\r¿ùœ9V÷\Ëg\Ä\İ\Ôò\r3\ÚU3=~œö¶\nh3};8‹\äú\ë¯\ïĞ·\éšHµt›ˆ\Õ\×\×{µµµ\íño{ü@¼d¼öe¬\Ân³\æ9¸M¦\èlkDth£\ĞKP\Ç\ãy! U\Ï\äıúgÃ„	Ü±c\Ç~\ÜÛ˜K\0\îõ—¼¾Â‡…Š\é\ÜuJŒşl\Öm™b\ÃÁ \İ.\Å]­\Ö\×Ì®\Çú\\7K7.9¦Š–\ÔM_\Òı~3…›$h_;5kòƒ¬¹ğ¢bwüøñ»\\¡\ÎV@\ëj]§£TL‡¬\Ó;õ¢‹ik\é¾ËŒT›µU	\è\àÅš`q­\Ó\Õ\ÒmlR’²†R\ã\Ò{ıõ\ï\n\ãjz\n\è`±<(Mqİb¼¤‹\Ïõé­ª2O	\ÕV\ÏL|!\í{\É\r‹ü)¡Í±‘z\\mclz\Ûh˜\æ\Ó\ä¿\×ûU\ê¦D¶\ç%)·)4ñivÀ6\"[-8µ³«5\Ğ6\Ço\Ä{Á\Åk_\Æj!\íÂ­1l.`kÌ¦\î\Z\İ\'z¤«\ãÆ\Ë}\ÅW|˜¾]›÷N¬®®Ş¤b(l&O¼RœÔŒ0\ÉıJ +:µ\ÆL\Õ)¬}N¯üi\Ñayºhm\Ä\æ¹\İ\ël\Ú|—yOª™.«¨»…IĞ®vj6\å2;³—6\Ó3Ú™¦N+I³“»¶É¤\ßıİµƒ\ï\é:\è’\ä\Æ%f³»’\ä4l³¾*u\'y5]\ï¬\ëÍ…¦`;\î¬=š<\İ\ÅsÁÀ\Ü\İ\\°2#lfJ›\Ùù—v\Ú+\ÓCÿ.9\"•\í­nR?—\ëıl{LMS|J\êk£› ù-5Í‰\Û~~|o¤kvb\ê\ßJG­)>\ë\ÒY‹÷S³qZ\ã!ğ5›\é\Ú\à…\Ş\à\æB:šeú-À»Ú©×¦ø- x/¨x\í\ËX-$]X\×lú\æ\à,\É\à\Æ`¹Ôˆ\è\ŞG—\Î:³\ÕV=Wı|G¦\à\æa\Û\"‘\ÈòŞ‰#FŒøÁ\Å_¼C‹\à°x\î¹\çÖº®ûg+”Ç…Š&.ssútÉ­+±`DIEEE‡÷\Ì=¤\Íw\é•|\Ñ6·ıĞ‘\éL·(\Ğ+ù::h\n#˜Ìš³t«®K#	V;M½*Ü„¤$y/\È\Ô÷\Ì(™\æ™z/h™\Ö\å©\â[;_½¥[¦©£\æ~•ºd!­f\îƒ\Üx\È<§öiQ\Ş#e¡\ì¶]\ìv\é.\İáº³û»\ê…Ü’4»ò\ë\Ò\Ó\ß\è\Æ2\Ù\ä[\â·À\âxµ0F{j\Ú\ï\álD±Y\"QZZ\Úk5\"ºov­#Gôk¥ş@gA\×\Ô\Ô|\Ğ?·& \Åq¿>}ú\Î0¦rK ¼¯S·%¸N#	b$A\Ú)F;\r¡(\ï\í\âxÇˆw\â•Å¬\í“uS\Ä\ê#\\gÏ\İ/Zg\"\ÄskUUÕ¾\Ö´\Ş/\ìüó\Ï_7gÎœ}\é¤Í›7$yÓŠ¹\í$A’ 5F;\Ír\Æ\ÙoÓ¶‰w¬\ãx%F‰Q{F¡+\â\Õÿû\ÃD_ğ÷‹UY\Ô\â\Äı+++·<ø\àƒö\Õ\ÈsR<_G\ÄH‚´SŒvÚƒ¢:\Û©~\Ù0ŒxÇŠ<Ş‰Wb”µ½R\à\ÖQ¡­‡\Öu\Ïòû>\nˆ\ç\Ù\Ö¶\îˆ]QQ±ñ;\î\Ø\Ô\Ûku\Úv!Œ<“I‚´SŒv\Ú/d;­³(¦m\ï\Ä;ñJŒb\ÄhOIN\å~!(¢ûz$Z¿?E<¿`\Õ\Ô\íL#\Ñ\"v\Ñİ¹×¯_ÿA®·ª\Òİ¶u\Ã0\Û\×<“I‚´SŒvjMQ~Œ\Ø6±!\Å\ä\âx\'^‰QŒ\í\É\0ªˆ\ØuÁ\éÔº&zÇ½¾aXÊšgµu\"\â+˜ wg”é·¯½ö\Ú^}õÕ¬F¤7mÚ´y\æÌ™\Ëu\ÔYs“Í»m“I‚´SŒvšWJÛƒ:y¿µ\Ø\Ä3ñN¼¯\Ä(FŒ\æ\"¢Eû=·º;·Nµ\î­)\Ûuuu§ˆ\ç\nJ<§\ë7\è.m#FŒxy\êÔ©K‰\Äs¯¿şúú S¶l\Ùò¶8f\Åô\éÓ—Œ\Z5j•\ëº\ï\éœz=$AŒ$H;\Åh§!lİ´m\âx\'^‰QŒ\í\rtSi\Ñp¿N¹Ş¸q\ã¼x<õ­®t[\×T_q\Å©\Â\Ù_ólı´\ínHŸ\ÓO$‡ùwœğ–\ØR½w—\Ø@½A7I#	\ÒN1\ÚiˆEyQ‹g\âx\'^‰QŒ\í\r’»soH½•••Ş”)S¼yó\æy«W¯Ö»+yÁ[ oİº\Õ{\å•W¼ùó\ç{S§Nõ***>I#œ[­\ÜmH‚\Z£˜ˆV\ì\â™x\'Ş‰Wb#F{ÕS\Çq¶¦Á=±m:\ĞZ£\Î@$	\ÒN1\Úi£k(½’\"¹UñN¼¯\Ä(FŒ†(¤÷=!¹S÷\Îl…³®«Ö»0\â~X@\Ä\Ğ\í\Ôf¸¢M¼\ï\Ä+1Š£}ˆˆ\á#U\'\ï½<9Ûˆe\×’‘İ¤\ÓÀy/, 	bhŒv\n\Ä;F¼1Š£\0$A\Íù¤ıF¼1Š£\0$AŒ$H;¥\ï\Ä;£1\n@\ÄH‚´SŒ\Î\ZˆwŒx\'F1b€$ˆ‘i§\íˆwŒx\'F1b€$ˆ‘i§\íˆwŒxb”\0’ IvŠ\ÑNxÇˆw F1b€$ˆ! 1\Ú)\ïñ\Ä(FŒ14F;ú%Œxb#FH‚IvJ;ú%\â‚xb#FH‚IvŠ\ÑYñN¼1Š£\0$AŒ$H;\Åè¬xÇˆwb#FH‚IvŠ\ÑNxÇˆwb”%FH‚$’ \í£ñ\ï@Œ£\Ä(\0I$H;\Åh§@¼c\Ä;£1\n+±XŒdQ¸¶]’\àN\Ú)F;\â#ŞÅˆQ€^`Ñ¢EomŞ¼™„Q€¶q\ã\Æû$	¾D;\Åh§@¼c\Ä;£1\n\Ğ\Ä\ãñ=õ\ÔS}û\í·ÿF\â(œ«‡š\0[ZZÖ‹G;\Åh§@¼c\Ä;£1\n\ĞKH ^°`Ár²¡\ë0\ëM\Ï\ãK…–\0i§´S _Âˆw F1b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0„ÿ\Ú\Òœ;>\0\0\0\0IEND®B`‚',1),('15029',1,'hist.var-countersignUsers',NULL,'¬\í\0sr\0java.util.ArrayListx\Ò™\Ça\0I\0sizexp\0\0\0w\0\0\0t\0247689637478400x',NULL),('15048',7,'source',NULL,'{\"resourceId\":\"15047\",\"properties\":{\"process_id\":\"vacation-student\",\"name\":\"å­¦ç”Ÿè¯·å‡æµç¨‹\",\"documentation\":\"\",\"process_author\":\"\",\"process_version\":\"\",\"process_namespace\":\"http://www.activiti.org/processdef\",\"executionlisteners\":\"\",\"eventlisteners\":\"\",\"signaldefinitions\":\"\",\"messagedefinitions\":\"\",\"conditionsequenceflow\":\"${totalDays}==\'å¤§äºä¸‰å¤©\'\"},\"stencil\":{\"id\":\"BPMNDiagram\"},\"childShapes\":[{\"resourceId\":\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"executionlisteners\":\"\",\"initiator\":\"\",\"formkeydefinition\":\"\",\"formproperties\":\"\"},\"stencil\":{\"id\":\"StartNoneEvent\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\"}],\"bounds\":{\"lowerRight\":{\"x\":60,\"y\":325},\"upperLeft\":{\"x\":30,\"y\":295}},\"dockers\":[]},{\"resourceId\":\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\",\"properties\":{\"overrideid\":\"\",\"name\":\"å¡«å†™è¯·å‡å•\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\"}],\"bounds\":{\"lowerRight\":{\"x\":205,\"y\":350},\"upperLeft\":{\"x\":105,\"y\":270}},\"dockers\":[]},{\"resourceId\":\"sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\"}],\"bounds\":{\"lowerRight\":{\"x\":104.15625,\"y\":310},\"upperLeft\":{\"x\":60.609375,\"y\":310}},\"dockers\":[{\"x\":15,\"y\":15},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\"}},{\"resourceId\":\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\",\"properties\":{\"overrideid\":\"\",\"name\":\"è¾…å¯¼å‘˜å®¡æ‰¹\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\"}],\"bounds\":{\"lowerRight\":{\"x\":355,\"y\":350},\"upperLeft\":{\"x\":255,\"y\":270}},\"dockers\":[]},{\"resourceId\":\"sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\"}],\"bounds\":{\"lowerRight\":{\"x\":254.78125,\"y\":310},\"upperLeft\":{\"x\":205.21875,\"y\":310}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\"}},{\"resourceId\":\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"sequencefloworder\":\"\"},\"stencil\":{\"id\":\"ExclusiveGateway\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\"},{\"resourceId\":\"sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\"}],\"bounds\":{\"lowerRight\":{\"x\":670,\"y\":330},\"upperLeft\":{\"x\":630,\"y\":290}},\"dockers\":[]},{\"resourceId\":\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\",\"properties\":{\"overrideid\":\"\",\"name\":\"é™¢ç³»é¢†å¯¼å®¡æ‰¹\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å²—ä½:ä¹¦è®°\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-B8177C51-129D-41C9-8C81-662566DE5F8C\"}],\"bounds\":{\"lowerRight\":{\"x\":820,\"y\":350},\"upperLeft\":{\"x\":720,\"y\":270}},\"dockers\":[]},{\"resourceId\":\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\",\"properties\":{\"overrideid\":\"\",\"name\":\"é”€å‡\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-2DB5C664-03AB-430D-B175-80AAA711D14C\"}],\"bounds\":{\"lowerRight\":{\"x\":1030,\"y\":350},\"upperLeft\":{\"x\":930,\"y\":270}},\"dockers\":[]},{\"resourceId\":\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"executionlisteners\":\"\"},\"stencil\":{\"id\":\"EndNoneEvent\"},\"childShapes\":[],\"outgoing\":[],\"bounds\":{\"lowerRight\":{\"x\":1123,\"y\":324},\"upperLeft\":{\"x\":1095,\"y\":296}},\"dockers\":[]},{\"resourceId\":\"sid-2DB5C664-03AB-430D-B175-80AAA711D14C\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"}],\"bounds\":{\"lowerRight\":{\"x\":1094.8984375,\"y\":310},\"upperLeft\":{\"x\":1030.3828125,\"y\":310}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":14,\"y\":14}],\"target\":{\"resourceId\":\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"}},{\"resourceId\":\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"sequencefloworder\":\"\"},\"stencil\":{\"id\":\"ExclusiveGateway\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\"},{\"resourceId\":\"sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\"}],\"bounds\":{\"lowerRight\":{\"x\":895,\"y\":330},\"upperLeft\":{\"x\":855,\"y\":290}},\"dockers\":[]},{\"resourceId\":\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"sequencefloworder\":\"\"},\"stencil\":{\"id\":\"ExclusiveGateway\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\"},{\"resourceId\":\"sid-D7847956-F11B-4CDB-AB1E-F76514746007\"}],\"bounds\":{\"lowerRight\":{\"x\":440,\"y\":330},\"upperLeft\":{\"x\":400,\"y\":290}},\"dockers\":[]},{\"resourceId\":\"sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\"}],\"bounds\":{\"lowerRight\":{\"x\":399.64844687000755,\"y\":310.4097335362338},\"upperLeft\":{\"x\":355.62889687999245,\"y\":310.2191727137662}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":20.5,\"y\":20.5}],\"target\":{\"resourceId\":\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\"}},{\"resourceId\":\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"sequencefloworder\":\"\"},\"stencil\":{\"id\":\"ExclusiveGateway\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\"},{\"resourceId\":\"sid-534C09CC-528F-4038-9CF9-6E4B748C1255\"}],\"bounds\":{\"lowerRight\":{\"x\":440,\"y\":55},\"upperLeft\":{\"x\":400,\"y\":15}},\"dockers\":[]},{\"resourceId\":\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\",\"properties\":{\"overrideid\":\"\",\"name\":\"è°ƒæ•´ç”³è¯·\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\"}],\"bounds\":{\"lowerRight\":{\"x\":470,\"y\":200},\"upperLeft\":{\"x\":370,\"y\":120}},\"dockers\":[]},{\"resourceId\":\"sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\"}],\"bounds\":{\"lowerRight\":{\"x\":420.4217652181297,\"y\":119.12110181428851},\"upperLeft\":{\"x\":420.1641722818703,\"y\":54.98046068571149}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":20.5,\"y\":20.5}],\"target\":{\"resourceId\":\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\"}},{\"resourceId\":\"sid-B8177C51-129D-41C9-8C81-662566DE5F8C\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\"}],\"bounds\":{\"lowerRight\":{\"x\":854.718761230466,\"y\":310.40151071673205},\"upperLeft\":{\"x\":820.453113769534,\"y\":310.23911428326795}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":20.5,\"y\":20.5}],\"target\":{\"resourceId\":\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\"}},{\"resourceId\":\"sid-D7847956-F11B-4CDB-AB1E-F76514746007\",\"properties\":{\"overrideid\":\"\",\"name\":\"åŒæ„\",\"documentation\":\"\",\"conditionsequenceflow\":\"${leaderComment==\'åŒæ„\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\"}],\"bounds\":{\"lowerRight\":{\"x\":629.734375,\"y\":310.5},\"upperLeft\":{\"x\":440.3671875,\"y\":310.5}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":20.5,\"y\":20.5}],\"target\":{\"resourceId\":\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\"}},{\"resourceId\":\"sid-534C09CC-528F-4038-9CF9-6E4B748C1255\",\"properties\":{\"overrideid\":\"\",\"name\":\"é‡æ–°ç”³è¯·\",\"documentation\":\"\",\"conditionsequenceflow\":\"${initiatorComment==\'é‡æ–°ç”³è¯·\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\"}],\"bounds\":{\"lowerRight\":{\"x\":399.6484375,\"y\":269.326171875},\"upperLeft\":{\"x\":305,\"y\":35.5}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":305,\"y\":35.5},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\"}},{\"resourceId\":\"sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\",\"properties\":{\"overrideid\":\"\",\"name\":\"æ’¤é”€ç”³è¯·\",\"documentation\":\"\",\"conditionsequenceflow\":\"${initiatorComment==\'æ’¤é”€ç”³è¯·\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"}],\"bounds\":{\"lowerRight\":{\"x\":1109,\"y\":295.060546875},\"upperLeft\":{\"x\":440.326171875,\"y\":35.5}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":1109,\"y\":35.5},{\"x\":14,\"y\":14}],\"target\":{\"resourceId\":\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"}},{\"resourceId\":\"sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\",\"properties\":{\"overrideid\":\"\",\"name\":\"ä¸åŒæ„\",\"documentation\":\"\",\"conditionsequenceflow\":\"${hrComment==\'ä¸åŒæ„\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\"}],\"bounds\":{\"lowerRight\":{\"x\":875.5,\"y\":289.51171875},\"upperLeft\":{\"x\":470.7939453125,\"y\":160}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":875.5,\"y\":160},{\"x\":99,\"y\":40}],\"target\":{\"resourceId\":\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\"}},{\"resourceId\":\"sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\",\"properties\":{\"overrideid\":\"\",\"name\":\"åŒæ„\",\"documentation\":\"\",\"conditionsequenceflow\":\"${hrComment==\'åŒæ„\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\"}],\"bounds\":{\"lowerRight\":{\"x\":929.1992301964278,\"y\":310.40537161577237},\"upperLeft\":{\"x\":895.2773323035722,\"y\":310.24306588422763}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\"}},{\"resourceId\":\"sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\",\"properties\":{\"overrideid\":\"\",\"name\":\"å°äºä¸‰å¤©\",\"documentation\":\"\",\"conditionsequenceflow\":\"${totalDays==\'å°äºä¸‰å¤©\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\"}],\"bounds\":{\"lowerRight\":{\"x\":980,\"y\":421},\"upperLeft\":{\"x\":650.5,\"y\":330.4921875}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":650.5,\"y\":421},{\"x\":980,\"y\":421},{\"x\":50,\"y\":79}],\"target\":{\"resourceId\":\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\"}},{\"resourceId\":\"sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\",\"properties\":{\"overrideid\":\"\",\"name\":\"å¤§äºä¸‰å¤©\",\"documentation\":\"\",\"conditionsequenceflow\":\"${totalDays==\'å¤§äºä¸‰å¤©\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\"}],\"bounds\":{\"lowerRight\":{\"x\":719.5195400032333,\"y\":310.417690936206},\"upperLeft\":{\"x\":670.1718662467667,\"y\":310.211215313794}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\"}},{\"resourceId\":\"sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\",\"properties\":{\"overrideid\":\"\",\"name\":\"ä¸åŒæ„\",\"documentation\":\"\",\"conditionsequenceflow\":\"${leaderComment==\'ä¸åŒæ„\'}\",\"executionlisteners\":\"\",\"defaultflow\":\"false\",\"showdiamondmarker\":false},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\"}],\"bounds\":{\"lowerRight\":{\"x\":420.405671990154,\"y\":289.4648538043437},\"upperLeft\":{\"x\":420.008390509846,\"y\":200.87108369565627}},\"dockers\":[{\"x\":20.5,\"y\":20.5},{\"x\":50,\"y\":79}],\"target\":{\"resourceId\":\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\"}}],\"bounds\":{\"lowerRight\":{\"x\":1223,\"y\":1050},\"upperLeft\":{\"x\":0,\"y\":0}},\"stencilset\":{\"url\":\"stencilsets/bpmn2.0/bpmn2.0.json\",\"namespace\":\"http://b3mn.org/stencilset/bpmn2.0#\"},\"ssextensions\":[]}',NULL),('15054',4,'source',NULL,'{\"resourceId\":\"15053\",\"properties\":{\"process_id\":\"process\",\"name\":\"\",\"documentation\":\"\",\"process_author\":\"\",\"process_version\":\"\",\"process_namespace\":\"http://www.activiti.org/processdef\",\"executionlisteners\":\"\",\"eventlisteners\":\"\",\"signaldefinitions\":\"\",\"messagedefinitions\":\"\"},\"stencil\":{\"id\":\"BPMNDiagram\"},\"childShapes\":[{\"resourceId\":\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"executionlisteners\":\"\",\"initiator\":\"\",\"formkeydefinition\":\"\",\"formproperties\":\"\"},\"stencil\":{\"id\":\"StartNoneEvent\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\"}],\"bounds\":{\"lowerRight\":{\"x\":80.5,\"y\":178},\"upperLeft\":{\"x\":50.5,\"y\":148}},\"dockers\":[]},{\"resourceId\":\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\",\"properties\":{\"overrideid\":\"\",\"name\":\"è¯·å‡\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\"}],\"bounds\":{\"lowerRight\":{\"x\":225.5,\"y\":203},\"upperLeft\":{\"x\":125.5,\"y\":123}},\"dockers\":[]},{\"resourceId\":\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\"}],\"bounds\":{\"lowerRight\":{\"x\":124.65625,\"y\":163},\"upperLeft\":{\"x\":81.109375,\"y\":163}},\"dockers\":[{\"x\":15,\"y\":15},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\"}},{\"resourceId\":\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\",\"properties\":{\"overrideid\":\"\",\"name\":\"ä¸Šçº§å®¡æ‰¹\",\"documentation\":\"\",\"asynchronousdefinition\":\"false\",\"exclusivedefinition\":\"false\",\"executionlisteners\":\"\",\"multiinstance_type\":\"None\",\"multiinstance_cardinality\":\"\",\"multiinstance_collection\":\"\",\"multiinstance_variable\":\"\",\"multiinstance_condition\":\"\",\"isforcompensation\":\"false\",\"usertaskassignment\":{\"assignment\":{\"assignee\":\"å²—ä½:é™¢é•¿\"}},\"formkeydefinition\":\"\",\"duedatedefinition\":\"\",\"prioritydefinition\":\"\",\"formproperties\":\"\",\"tasklisteners\":\"\"},\"stencil\":{\"id\":\"UserTask\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\"}],\"bounds\":{\"lowerRight\":{\"x\":370.5,\"y\":203},\"upperLeft\":{\"x\":270.5,\"y\":123}},\"dockers\":[]},{\"resourceId\":\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\"}],\"bounds\":{\"lowerRight\":{\"x\":269.65625,\"y\":163},\"upperLeft\":{\"x\":226.34375,\"y\":163}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":50,\"y\":40}],\"target\":{\"resourceId\":\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\"}},{\"resourceId\":\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"executionlisteners\":\"\"},\"stencil\":{\"id\":\"EndNoneEvent\"},\"childShapes\":[],\"outgoing\":[],\"bounds\":{\"lowerRight\":{\"x\":443.5,\"y\":177},\"upperLeft\":{\"x\":415.5,\"y\":149}},\"dockers\":[]},{\"resourceId\":\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\",\"properties\":{\"overrideid\":\"\",\"name\":\"\",\"documentation\":\"\",\"conditionsequenceflow\":\"\",\"executionlisteners\":\"\",\"defaultflow\":\"false\"},\"stencil\":{\"id\":\"SequenceFlow\"},\"childShapes\":[],\"outgoing\":[{\"resourceId\":\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"}],\"bounds\":{\"lowerRight\":{\"x\":414.875,\"y\":163},\"upperLeft\":{\"x\":370.890625,\"y\":163}},\"dockers\":[{\"x\":50,\"y\":40},{\"x\":14,\"y\":14}],\"target\":{\"resourceId\":\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"}}],\"bounds\":{\"lowerRight\":{\"x\":1200,\"y\":1050},\"upperLeft\":{\"x\":0,\"y\":0}},\"stencilset\":{\"url\":\"stencilsets/bpmn2.0/bpmn2.0.json\",\"namespace\":\"http://b3mn.org/stencilset/bpmn2.0#\"},\"ssextensions\":[]}',NULL),('15056',1,'è¯·å‡demo.bpmn20.xml','15055','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\r\n  <process id=\"process\" isExecutable=\"true\">\r\n    <startEvent id=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\"></startEvent>\r\n    <userTask id=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" name=\"è¯·å‡\">\r\n       <humanPerformer> \r\n           <resourceAssignmentExpression>\r\n               <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>  \r\n          </resourceAssignmentExpression></humanPerformer>\r\n    </userTask>\r\n    \r\n    <sequenceFlow id=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" sourceRef=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" targetRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\"></sequenceFlow>\r\n    <userTask id=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" name=\"ä¸Šçº§å®¡æ‰¹\">\r\n          <humanPerformer>\r\n            <resourceAssignmentExpression>\r\n               <formalExpression>å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§</formalExpression>        \r\n            </resourceAssignmentExpression>\r\n         </humanPerformer>\r\n    </userTask>\r\n    \r\n    <sequenceFlow id=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" sourceRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" targetRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\"></sequenceFlow>\r\n    <endEvent id=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></endEvent>\r\n    <sequenceFlow id=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" sourceRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" targetRef=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_process\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"process\" id=\"BPMNPlane_process\">\r\n      <bpmndi:BPMNShape bpmnElement=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" id=\"BPMNShape_sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\">\r\n        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"50.5\" y=\"148.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" id=\"BPMNShape_sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\">\r\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"125.5\" y=\"123.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" id=\"BPMNShape_sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\">\r\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"270.5\" y=\"123.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\" id=\"BPMNShape_sid-AE528184-10E4-4D80-ADDE-21ED7729462E\">\r\n        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"415.5\" y=\"149.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" id=\"BPMNEdge_sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\">\r\n        <omgdi:waypoint x=\"80.5\" y=\"163.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"125.5\" y=\"163.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" id=\"BPMNEdge_sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\">\r\n        <omgdi:waypoint x=\"370.5\" y=\"163.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"415.5\" y=\"163.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" id=\"BPMNEdge_sid-506B6480-6BE6-4445-A056-6FFC19A48998\">\r\n        <omgdi:waypoint x=\"225.5\" y=\"163.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"270.5\" y=\"163.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('15057',1,'è¯·å‡demo.process.png','15055','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Å\0\0\0\Õ\0\0\0&`\ë«\0\0›IDATx\Ú\í\İklU\åšp?cŒ1~2\Æ8‰šñƒŒó\É8‰£1cr5^Š€Ta(ˆbrÀi` DTˆ7\Ì\à%1\Ä‡.-\ĞpIE€@­´0œcu¸\êšõ¬°v–›¶hw÷\îşı’7{w\ßZvÿ<\Ïzßµö\ê\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÀÀH’\ä»v\íZ²yó\æ_×¬Y“¬ZµÊ¨ğX½zu²~ıúƒ\é-CF=fªF³\Ö\ÖÖ¤³³39v\ì˜1D£««+Y·n\İ\ß\Ò\âö€õ–!¨\Z±u¯˜UMQ;–nõo—!£\Ş2U#–»“\êiA;!CF½eªF\ìPHªª %2d\Ô[† \æ\n\Ú\Ï\íHv}ö\ï\É×«ge#®\ÇmŠ‚&C2u\Õ»·\'\Ûş³)ùrù³¿q[Ü§iŠ2$CP7Mq\ß\×ÿqZ1\Ë\Çş¯—)Dš¢\É\ÔOS\Ü\ŞòB¯-\îSˆ4E’!¨›¦¸m\Õ\Ì^ZÜ§iŠ2$C )*h\nš\É\Ô[SŒ#{+hqŸB¤)ÊA\İ4ÅôZ\Ğ\â>…HS”!‚ºiŠ‡Ú¿J¶­œqú²Wz[Ü§iŠ2$CP7M1\Æ\î-\ïŸV\Ğ\â6EHA“!‚újŠG&;7ş\Û\é\Ë^\émqŸB¤)ÊA]4\Å8\ÛÈ\r¯÷º?(\îsFMQ†d†wSL·\Ş;v6\'ÿı\éô^‹Y>\â1ñX[üš¢\É»¦x¦-{[ü\nš\É\ÔMS\ìÏ–}_[ü\n“¦(C2Ã¦)k1Ë‡Â¤)ÊÁğÚ§h(h2$C )\Z\nš\ÉhŠ†‚&C2š¢B¢ ÉÁ+W®ü\ãÂ…—Î=»cÒ¤I\Ç1bDò\È#$\'N<1kÖ¬\Î,onn¾KS44’¡¡3jÔ¨¿khhx*­\ÑKÒ±3\İQ¯\Óq$»\Óû–¦—S\ãqº\ÛYš?şÔ¦¦¦\ÃS¦LI\Ş|ó\Ídó\æ\ÍI{{{r\äÈ‘$\Äegggòù\çŸ\'‹-J\âq\Ï=÷\ÜO/¼ğ\Â,M\ÑP\ĞdH†*\ç\á‡¾7«Ò†wôT\ì\ÏhIŸ3Z·;ƒ—^z\é\ÆiÓ¦µO:õ·hx\'OLúk\ëÖ­\Éô\éÓ“ô¹]ó\æÍ»IS44’¡Á“6¶kÒ±\â,\ZaO£õÁ¼N÷\ë¹!Î˜0aÂ¯Ë–-;«fX\î\ÓO?M\âu\Ò\Æ8GS44’¡\×\ĞĞö³]\Å7jÔ¨\äù\çŸOš››“½{÷&?ıôSV“ù\å—l¥oÃ†\r\É\Ë/¿œ\íş*kŒ\İfe.\\ø/O=õ\Ôo;v\ìHÂ={’x½ùóç¿¦)\Zš¢\ÉĞ€6\Ä?¥\ìD±~ğÁ\Ù.­ş8|øpöøx^±9¦ñŸu\ÃTSS\Ó\Óiûµ¿oh\Å\ë\Å\ëÎœ9óÏš¢¡)ú\İ\ÉĞ€\ÍK\rñé§Ÿ\Îf…\ç\"÷\ì³Ï–7\Æú1>şø\ã?~üø\ã5C\ìi\Æ¯Ÿş\âşAS44EC†\Î{bi\ÉtÆŒ¥%\ÒsK«s\æ\Ì)_J½¾n›\â”)Sv\Ä>\ÄÁû\'Mš´GS44EC†\Îİ©#LK3\Äómˆ\Å\ÆX6cl­Ë†˜6ªQ\Ï<ó\Ì\É\ãÇ\'ƒ-}\ÃO¦\ß\ï	M\Ñ\Ğ\r:§†xoq\â¹.™öµ”Z\Ü\ÇX—Ë¨\é–\Æ_\âc•ğ\ÕW_%“\'OŞ«)\Zš¢!C\ç7KŒƒdÃ‡~X¿³\Å8£ÁO<q\ì|>zq¶\âŒ8±&^mAK\Ç?)h\nš\ÉPµf(\êu~pM\Ì\æ:4(5:J-û¸\Æ5u\Ó\'Nœ8ı\í·\ßş5© ØºIñ¿VÙ\ë|©`UCC\Ã?*h\nš\ÉPµe\èÔ©Û²Ç¼øâ‹ƒZ§\ãsŒ…¦8µnš\â\äÉ“7Å©\Û*)–j\Ó\Ù\â–jca¬(\ßbS\Ğ4’¡¡\ÌĞ©s™f÷­]»vP\ët|À¿ğs,«›¦8v\ì\ØmŠñ¹\Å\Æ\Æ\Æÿ­ò0–¶\ØòP*h\nš\É\ĞPf\è\ÔÉ½³\Ûú\0›rq\æ›\ÂÏ°¯nš\â\èÑ£\å\'÷®”ø~#G<Qa,n±)h\nš\É\Ğg\èd~} >†\Ñ\×\Ç3\n\ß÷H\İ4\Åø…ó<q\í­ú\nšõ–¡|TºN\×\ÓLñ\è\Í\×\È\Úgq~Á\Ûo¿ı\Õ\\Ğ¾ù\æ›\ä\Ûo¿=\íöôŸ–¼÷\Ş{=>\'ö\\w\İuIúoK>ù\ä“\ä\ÆoL6mÚ”<ô\ĞC\Ù×—\\r‰­üa”¡\ÈBSSSŸ‰\ß<nß¾}Y.bŒ3&\ËCÜ¾{÷\î>_Ş¼ygü¦Nš]ÿè£²Z\ß\à\ÉP\ß*ü]D3\ÅÁò\Øcu\Å>\Åô?\ÚÁ*c©\Õ\ÊAQX\Ú\ÚÚ’5k\Ö\ÄFG©½û\î»\É\Çœ]ß¿ÿ\ï¿eË–\ìò»\ï¾\Ë.—,Y’tww—\î_ºt©¦8L2¿\ÏW^yåŒyıõ×³ë‘ƒ<q\è\\F–?vİºuY\Æò¦y\å•W&·\Şzkv=Fd\î\Úk¯=\íõ\ßy\ç\Òõ÷\ß¿t½ø\Ú2\Ôs†\ìS¬€\Æ\Æ\Æe\é\Ö\á\ÉJ6\Å8ú4ı¾+«4Œ›\âŒ\ÅBV+M1f~q\Ù\Õ\ÕUšı\åM1.£Y–¨˜a\Æ\åo¼‘]\Æ\É\î¾û\î\Òs\ã~Mqxd\èLM±µµ5Y¾|ùiL1;,\ÎğŠ¯Wldñõ\ìÙ³K__x\á…É´iÓ²\ëñ\Zy¦n»í¶¬\Æõ|u#\Ï^\\¾ú\ê«2\ÔK†}Zñ¹—ªdSL‹ô\ájû\ÜKO[õµ\Ò£q\å\'–½\âúı÷\ß_º­x½¥¥%{N,U\Å\×\ßÿ}© \íÜ¹3[\ÎÊ—´ò&«)\Å\ïùú\ë¯Ï²ÿş¿ø\â‹\ì¾\ÈM>s»üòË³ói\æÏ‰\Ì\äNÅ™_\Ì$cC+Ÿ\ÆcÆ›]¿\ï¾û²dO?Cq¦x\ÅW$+W®Ì®\Çk\Ç\ìS†zÏ\Ï)V@œ!aÜ¸q‡+yF›ñ\ã\Çª\Å3$TkSŒµÿ\â\Öv|}\ÕUW%w\Şyg©`]|ñ\ÅY\áË‹\ÙÂ…³\Ç\ç\ËbQğ\"ü1SÈ—\Ã.½ôRMqe\èL3\ÅØ¸Š\r¡x\\|Gù\nCd\çê«¯\Î2Uşš±\ä_\Ü\Äõ+V$—]vY?C\ÌóYh\ì\Ã,_¶•¡¾\ëµ3\ÚT\æ`›–¶¶¶¿U¢!nİºµ;ı~›kñ}ª…}Š\Åuó\Í7ÿ\î ‰X‹ûbQş˜mÛ¶ö¼X~\Ígù¬QSşM1ß¯ñ‡~(-g\Şr\Ë-½“\ß_>SŒı‹÷\ÜsO\éqñZ±ü\Zyë­·zÌ«}Šı\ãÜ§•y“\ï0aBG%f‹O>ù\äşZ=\ëz-4\Å(>ù> \âRT±\0oË›b\Ì£\Årj\Ì\â¶t\ÆL±Nšb¬.\ÄıyN¢)\Æ>Á|\ã(n›;wn¯ÙŸ¦ø\ã?–šn>›,oŠy.&C=\×k%£2oô\ÚÅ‹\ïÌ†¸t\é\Ò}\é÷\Ù\Ğ\×>\íüŠ^,YEŠ\ë\å‡\Ó\ç3Åšb±a\æû|ğº¾fŠù’\é\r7Ü\ík\Ì÷9\ç\×{ZŞŒe\Ò\â\ë\ç\r/ \é\é ­ò}Š\Ñ‹ôD+¹:Q\Ãd¸¥RO±V\ëõ@¼\É×¤[]i˜»£!¦ÿ%^¿–ÿ’s-4\År~=‰?\ÓL1\ß:\Ï\ï‹}ŠQü\â¶ø£Óšbmf(ö\Şu\×]\Ù(n\İq\Ç¥¯\ãw/[æ³¸\Ø÷œ|Ksù8ñY\×N\É\ÜWşò¦X>b?vşüs³ù\Ì4\ßw=>.ó#Ve¨\ïz®¼y\Å{w¾1\Z\âœ9sŠ\r±»–\ëõ€hhh\Ñ\Ø\Øø\ãdCŒ\×K_÷@­OÃ«½)Æ¾ÀbŠ­õXŠ\ÊdoÉˆ­õøğ~^°bù¬¸ÿGS¬½\íŒ+\ß\×|\ÑEe¹ˆŸõ¦›n*İŸ\Ï\è\âòl›bŒü³²Åƒkò\ë2tnõ:?\è&Ÿ1\ëRj<¯l†X¿Ë¦=l<šnIvlß¾ı\à@4\Ä]»vŒ\×K®õ÷\Æ)º4E’¡j«\×\Å\Æûc†Kõ÷(\Ó8¨¦¸1\Æp¨\×¾’n%\\´h\Ñ\ÏÁ7‹/şr\äÈ‘\â7\ŞMA“!ª\Æz\ÃÅ¦M.>\ÇğY`¾´\ZK¤q¦šø\è\Ík¯½–<ú\è£\åg\Ğ\é.õzPÖ¬\ã\Ğ\ß\Æ\ÆÆ¿lÜ¸q\Û\Ù4Ã¶¶¶ÿ7nÜ¶\ØI;œÖ¤4M†d¨š\ëõyd¼µ\î÷!öó\Í~ \Ş\ìÑ£G·Ïœ9scKK\ËûSGùù\ÔÉ½\î\è\èØ—6\Î/\çÎ\Û:fÌ˜½ñ\æ\Æ\Ö\Æp;jIAS\ĞdH†j¡^—Tû\Ó‡c½tq&…ôÍr\ê\Ü{»\ã¬\éù\Ù\Ó\ãd±qn¼8\Ğp>ó‚¦ É©×  )h2$C€‚¦ É\nš‚&C2(h\nš\É  )h2$C€‚¦ É\nš‚&C2¤)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚fhŠ†¦\nš¡)\Zš\"(h†¦h\È(h†¦h\È(h†¦h\ÈT¯5k\Ö($\Õ3¤\í„õ–!¨\Z\ë×¯\ï\è\ì\ìTLª`´··/N\Úv2\ê-CP5š››\ïY»v\í_8ğŠ\Ê\Ğm\İG1[½zõ÷\éx@†Œz\ËT•ô?ÑŸÒ­\Ë\Ïb\Ù%öGñ¾o¯\åb&C2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0pšÿ\ß#²\è£\Z\0\0\0\0IEND®B`‚',1),('15112',1,'hist.var-countersignUsers',NULL,'¬\í\0sr\0java.util.ArrayListx\Ò™\Ça\0I\0sizexp\0\0\0w\0\0\0t\04x',NULL),('15158',1,'1name.bpmn20.xml','15157','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n  <process id=\"process\" isExecutable=\"true\">\n    <startEvent id=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\"></startEvent>\n    <userTask id=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" name=\"è¯·å‡\" activiti:assignee=\"3\" activiti:candidateUsers=\"4\" activiti:candidateGroups=\"5\" activiti:priority=\"6\"></userTask>\n    <sequenceFlow id=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" sourceRef=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" targetRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\"></sequenceFlow>\n    <userTask id=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" name=\"ä¸Šçº§å®¡æ‰¹\"></userTask>\n    <sequenceFlow id=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" sourceRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" targetRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\"></sequenceFlow>\n    <endEvent id=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></endEvent>\n    <sequenceFlow id=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" sourceRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" targetRef=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></sequenceFlow>\n  </process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_process\">\n    <bpmndi:BPMNPlane bpmnElement=\"process\" id=\"BPMNPlane_process\">\n      <bpmndi:BPMNShape bpmnElement=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" id=\"BPMNShape_sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\">\n        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"50.5\" y=\"148.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" id=\"BPMNShape_sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"125.5\" y=\"123.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" id=\"BPMNShape_sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"270.5\" y=\"123.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\" id=\"BPMNShape_sid-AE528184-10E4-4D80-ADDE-21ED7729462E\">\n        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"415.5\" y=\"149.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" id=\"BPMNEdge_sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\">\n        <omgdi:waypoint x=\"80.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"125.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" id=\"BPMNEdge_sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\">\n        <omgdi:waypoint x=\"370.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"415.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" id=\"BPMNEdge_sid-506B6480-6BE6-4445-A056-6FFC19A48998\">\n        <omgdi:waypoint x=\"225.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"270.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</definitions>',0),('15159',1,'1name.process.png','15157','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Å\0\0\0\Õ\0\0\0&`\ë«\0\0›IDATx\Ú\í\İklU\åšp?cŒ1~2\Æ8‰šñƒŒó\É8‰£1cr5^Š€Ta(ˆbrÀi` DTˆ7\Ì\à%1\Ä‡.-\ĞpIE€@­´0œcu¸\êšõ¬°v–›¶hw÷\îşı’7{w\ßZvÿ<\Ïzßµö\ê\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÀÀH’\ä»v\íZ²yó\æ_×¬Y“¬ZµÊ¨ğX½zu²~ıúƒ\é-CF=fªF³\Ö\ÖÖ¤³³39v\ì˜1D£««+Y·n\İ\ß\Ò\âö€õ–!¨\Z±u¯˜UMQ;–nõo—!£\Ş2U#–»“\êiA;!CF½eªF\ìPHªª %2d\Ô[† \æ\n\Ú\Ï\íHv}ö\ï\É×«ge#®\ÇmŠ‚&C2u\Õ»·\'\Ûş³)ùrù³¿q[Ü§iŠ2$CP7Mq\ß\×ÿqZ1\Ë\Çş¯—)Dš¢\É\ÔOS\Ü\ŞòB¯-\îSˆ4E’!¨›¦¸m\Õ\Ì^ZÜ§iŠ2$C )*h\nš\É\Ô[SŒ#{+hqŸB¤)ÊA\İ4ÅôZ\Ğ\â>…HS”!‚ºiŠ‡Ú¿J¶­œqú²Wz[Ü§iŠ2$CP7M1\Æ\î-\ïŸV\Ğ\â6EHA“!‚újŠG&;7ş\Û\é\Ë^\émqŸB¤)ÊA]4\Å8\ÛÈ\r¯÷º?(\îsFMQ†d†wSL·\Ş;v6\'ÿı\éô^‹Y>\â1ñX[üš¢\É»¦x¦-{[ü\nš\É\ÔMS\ìÏ–}_[ü\n“¦(C2Ã¦)k1Ë‡Â¤)ÊÁğÚ§h(h2$C )\Z\nš\ÉhŠ†‚&C2š¢B¢ ÉÁ+W®ü\ãÂ…—Î=»cÒ¤I\Ç1bDò\È#$\'N<1kÖ¬\Î,onn¾KS44’¡¡3jÔ¨¿khhx*­\ÑKÒ±3\İQ¯\Óq$»\Óû–¦—S\ãqº\ÛYš?şÔ¦¦¦\ÃS¦LI\Ş|ó\Ídó\æ\ÍI{{{r\äÈ‘$\Äegggòù\çŸ\'‹-J\âq\Ï=÷\ÜO/¼ğ\Â,M\ÑP\ĞdH†*\ç\á‡¾7«Ò†wôT\ì\ÏhIŸ3Z·;ƒ—^z\é\ÆiÓ¦µO:õ·hx\'OLúk\ëÖ­\Éô\éÓ“ô¹]ó\æÍ»IS44’¡Á“6¶kÒ±\â,\ZaO£õÁ¼N÷\ë¹!Î˜0aÂ¯Ë–-;«fX\î\ÓO?M\âu\Ò\Æ8GS44’¡\×\ĞĞö³]\Å7jÔ¨\äù\çŸOš››“½{÷&?ıôSV“ù\å—l¥oÃ†\r\É\Ë/¿œ\íş*kŒ\İfe.\\ø/O=õ\Ôo;v\ìHÂ={’x½ùóç¿¦)\Zš¢\ÉĞ€6\Ä?¥\ìD±~ğÁ\Ù.­ş8|øpöøx^±9¦ñŸu\ÃTSS\Ó\Óiûµ¿oh\Å\ë\Å\ëÎœ9óÏš¢¡)ú\İ\ÉĞ€\ÍK\rñé§Ÿ\Îf…\ç\"÷\ì³Ï–7\Æú1>şø\ã?~üø\ã5C\ìi\Æ¯Ÿş\âşAS44EC†\Î{bi\ÉtÆŒ¥%\ÒsK«s\æ\Ì)_J½¾n›\â”)Sv\Ä>\ÄÁû\'Mš´GS44EC†\Îİ©#LK3\Äómˆ\Å\ÆX6cl­Ë†˜6ªQ\Ï<ó\Ì\É\ãÇ\'ƒ-}\ÃO¦\ß\ï	M\Ñ\Ğ\r:§†xoq\â¹.™öµ”Z\Ü\ÇX—Ë¨\é–\Æ_\âc•ğ\ÕW_%“\'OŞ«)\Zš¢!C\ç7KŒƒdÃ‡~X¿³\Å8£ÁO<q\ì|>zq¶\âŒ8±&^mAK\Ç?)h\nš\ÉPµf(\êu~pM\Ì\æ:4(5:J-û¸\Æ5u\Ó\'Nœ8ı\í·\ßş5© ØºIñ¿VÙ\ë|©`UCC\Ã?*h\nš\ÉPµe\èÔ©Û²Ç¼øâ‹ƒZ§\ãsŒ…¦8µnš\â\äÉ“7Å©\Û*)–j\Ó\Ù\â–jca¬(\ßbS\Ğ4’¡¡\ÌĞ©s™f÷­]»vP\ët|À¿ğs,«›¦8v\ì\ØmŠñ¹\Å\Æ\Æ\Æÿ­ò0–¶\ØòP*h\nš\É\ĞPf\è\ÔÉ½³\Ûú\0›rq\æ›\ÂÏ°¯nš\â\èÑ£\å\'÷®”ø~#G<Qa,n±)h\nš\É\Ğg\èd~} >†\Ñ\×\Ç3\n\ß÷H\İ4\Åø…ó<q\í­ú\nšõ–¡|TºN\×\ÓLñ\è\Í\×\È\Úgq~Á\Ûo¿ı\Õ\\Ğ¾ù\æ›\ä\Ûo¿=\íöôŸ–¼÷\Ş{=>\'ö\\w\İuIúoK>ù\ä“\ä\ÆoL6mÚ”<ô\ĞC\Ù×—\\r‰­üa”¡\ÈBSSSŸ‰\ß<nß¾}Y.bŒ3&\ËCÜ¾{÷\î>_Ş¼ygü¦Nš]ÿè£²Z\ß\à\ÉP\ß*ü]D3\ÅÁò\Øcu\Å>\Åô?\ÚÁ*c©\Õ\ÊAQX\Ú\ÚÚ’5k\Ö\ÄFG©½û\î»\É\Çœ]ß¿ÿ\ï¿eË–\ìò»\ï¾\Ë.—,Y’tww—\î_ºt©¦8L2¿\ÏW^yåŒyıõ×³ë‘ƒ<q\è\\F–?vİºuY\Æò¦y\å•W&·\Şzkv=Fd\î\Úk¯=\íõ\ßy\ç\Òõ÷\ß¿t½ø\Ú2\Ôs†\ìS¬€\Æ\Æ\Æe\é\Ö\á\ÉJ6\Å8ú4ı¾+«4Œ›\âŒ\ÅBV+M1f~q\Ù\Õ\ÕUšı\åM1.£Y–¨˜a\Æ\åo¼‘]\Æ\É\î¾û\î\Òs\ã~Mqxd\èLM±µµ5Y¾|ùiL1;,\ÎğŠ¯Wldñõ\ìÙ³K__x\á…É´iÓ²\ëñ\Zy¦n»í¶¬\Æõ|u#\Ï^\\¾ú\ê«2\ÔK†}Zñ¹—ªdSL‹ô\ájû\ÜKO[õµ\Ò£q\å\'–½\âúı÷\ß_º­x½¥¥%{N,U\Å\×\ßÿ}© \íÜ¹3[\ÎÊ—´ò&«)\Å\ïùú\ë¯Ï²ÿş¿ø\â‹\ì¾\ÈM>s»üòË³ói\æÏ‰\Ì\äNÅ™_\Ì$cC+Ÿ\ÆcÆ›]¿\ï¾û²dO?Cq¦x\ÅW$+W®Ì®\Çk\Ç\ìS†zÏ\Ï)V@œ!aÜ¸q‡+yF›ñ\ã\Çª\Å3$TkSŒµÿ\â\Öv|}\ÕUW%w\Şyg©`]|ñ\ÅY\áË‹\ÙÂ…³\Ç\ç\ËbQğ\"ü1SÈ—\Ã.½ôRMqe\èL3\ÅØ¸Š\r¡x\\|Gù\nCd\çê«¯\Î2Uşš±\ä_\Ü\Äõ+V$—]vY?C\ÌóYh\ì\Ã,_¶•¡¾\ëµ3\ÚT\æ`›–¶¶¶¿U¢!nİºµ;ı~›kñ}ª…}Š\Åuó\Í7ÿ\î ‰X‹ûbQş˜mÛ¶ö¼X~\Ígù¬QSşM1ß¯ñ‡~(-g\Şr\Ë-½“\ß_>SŒı‹÷\ÜsO\éqñZ±ü\Zyë­·zÌ«}Šı\ãÜ§•y“\ï0aBG%f‹O>ù\äşZ=\ëz-4\Å(>ù> \âRT±\0oË›b\Ì£\Årj\Ì\â¶t\ÆL±Nšb¬.\ÄıyN¢)\Æ>Á|\ã(n›;wn¯ÙŸ¦ø\ã?–šn>›,oŠy.&C=\×k%£2oô\ÚÅ‹\ïÌ†¸t\é\Ò}\é÷\Ù\Ğ\×>\íüŠ^,YEŠ\ë\å‡\Ó\ç3Åšb±a\æû|ğº¾fŠù’\é\r7Ü\ík\Ì÷9\ç\×{ZŞŒe\Ò\â\ë\ç\r/ \é\é ­ò}Š\Ñ‹ôD+¹:Q\Ãd¸¥RO±V\ëõ@¼\É×¤[]i˜»£!¦ÿ%^¿–ÿ’s-4\År~=‰?\ÓL1\ß:\Ï\ï‹}ŠQü\â¶ø£Óšbmf(ö\Şu\×]\Ù(n\İq\Ç¥¯\ãw/[æ³¸\Ø÷œ|Ksù8ñY\×N\É\ÜWşò¦X>b?vşüs³ù\Ì4\ßw=>.ó#Ve¨\ïz®¼y\Å{w¾1\Z\âœ9sŠ\r±»–\ëõ€hhh\Ñ\Ø\Øø\ãdCŒ\×K_÷@­OÃ«½)Æ¾ÀbŠ­õXŠ\ÊdoÉˆ­õøğ~^°bù¬¸ÿGS¬½\íŒ+\ß\×|\ÑEe¹ˆŸõ¦›n*İŸ\Ï\è\âòl›bŒü³²Åƒkò\ë2tnõ:?\è&Ÿ1\ëRj<¯l†X¿Ë¦=l<šnIvlß¾ı\à@4\Ä]»vŒ\×K®õ÷\Æ)º4E’¡j«\×\Å\Æûc†Kõ÷(\Ó8¨¦¸1\Æp¨\×¾’n%\\´h\Ñ\ÏÁ7‹/şr\äÈ‘\â7\ŞMA“!ª\Æz\ÃÅ¦M.>\ÇğY`¾´\ZK¤q¦šø\è\Ík¯½–<ú\è£\åg\Ğ\é.õzPÖ¬\ã\Ğ\ß\Æ\ÆÆ¿lÜ¸q\Û\Ù4Ã¶¶¶ÿ7nÜ¶\ØI;œÖ¤4M†d¨š\ëõyd¼µ\î÷!öó\Í~ \Ş\ìÑ£G·Ïœ9scKK\ËûSGùù\ÔÉ½\î\è\èØ—6\Î/\çÎ\Û:fÌ˜½ñ\æ\Æ\Ö\Æp;jIAS\ĞdH†j¡^—Tû\Ó‡c½tq&…ôÍr\ê\Ü{»\ã¬\éù\Ù\Ó\ãd±qn¼8\Ğp>ó‚¦ É©×  )h2$C€‚¦ É\nš‚&C2(h\nš\É  )h2$C€‚¦ É\nš‚&C2¤)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚fhŠ†¦\nš¡)\Zš\"(h†¦h\È(h†¦h\È(h†¦h\ÈT¯5k\Ö($\Õ3¤\í„õ–!¨\Z\ë×¯\ï\è\ì\ìTLª`´··/N\Úv2\ê-CP5š››\ïY»v\í_8ğŠ\Ê\Ğm\İG1[½zõ÷\éx@†Œz\ËT•ô?ÑŸÒ­\Ë\Ïb\Ù%öGñ¾o¯\åb&C2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0pšÿ\ß#²\è£\Z\0\0\0\0IEND®B`‚',1),('15162',1,'name.bpmn20.xml','15161','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n  <process id=\"process\" isExecutable=\"true\">\n    <startEvent id=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\"></startEvent>\n    <userTask id=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" name=\"è¯·å‡\" activiti:candidateGroups=\"test,tes\"></userTask>\n    <sequenceFlow id=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" sourceRef=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" targetRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\"></sequenceFlow>\n    <userTask id=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" name=\"ä¸Šçº§å®¡æ‰¹\"></userTask>\n    <sequenceFlow id=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" sourceRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" targetRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\"></sequenceFlow>\n    <endEvent id=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></endEvent>\n    <sequenceFlow id=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" sourceRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" targetRef=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></sequenceFlow>\n  </process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_process\">\n    <bpmndi:BPMNPlane bpmnElement=\"process\" id=\"BPMNPlane_process\">\n      <bpmndi:BPMNShape bpmnElement=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" id=\"BPMNShape_sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\">\n        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"50.5\" y=\"148.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" id=\"BPMNShape_sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"125.5\" y=\"123.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" id=\"BPMNShape_sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"270.5\" y=\"123.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\" id=\"BPMNShape_sid-AE528184-10E4-4D80-ADDE-21ED7729462E\">\n        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"415.5\" y=\"149.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" id=\"BPMNEdge_sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\">\n        <omgdi:waypoint x=\"80.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"125.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" id=\"BPMNEdge_sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\">\n        <omgdi:waypoint x=\"370.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"415.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" id=\"BPMNEdge_sid-506B6480-6BE6-4445-A056-6FFC19A48998\">\n        <omgdi:waypoint x=\"225.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"270.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</definitions>',0),('15163',1,'name.process.png','15161','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Å\0\0\0\Õ\0\0\0&`\ë«\0\0›IDATx\Ú\í\İklU\åšp?cŒ1~2\Æ8‰šñƒŒó\É8‰£1cr5^Š€Ta(ˆbrÀi` DTˆ7\Ì\à%1\Ä‡.-\ĞpIE€@­´0œcu¸\êšõ¬°v–›¶hw÷\îşı’7{w\ßZvÿ<\Ïzßµö\ê\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÀÀH’\ä»v\íZ²yó\æ_×¬Y“¬ZµÊ¨ğX½zu²~ıúƒ\é-CF=fªF³\Ö\ÖÖ¤³³39v\ì˜1D£««+Y·n\İ\ß\Ò\âö€õ–!¨\Z±u¯˜UMQ;–nõo—!£\Ş2U#–»“\êiA;!CF½eªF\ìPHªª %2d\Ô[† \æ\n\Ú\Ï\íHv}ö\ï\É×«ge#®\ÇmŠ‚&C2u\Õ»·\'\Ûş³)ùrù³¿q[Ü§iŠ2$CP7Mq\ß\×ÿqZ1\Ë\Çş¯—)Dš¢\É\ÔOS\Ü\ŞòB¯-\îSˆ4E’!¨›¦¸m\Õ\Ì^ZÜ§iŠ2$C )*h\nš\É\Ô[SŒ#{+hqŸB¤)ÊA\İ4ÅôZ\Ğ\â>…HS”!‚ºiŠ‡Ú¿J¶­œqú²Wz[Ü§iŠ2$CP7M1\Æ\î-\ïŸV\Ğ\â6EHA“!‚újŠG&;7ş\Û\é\Ë^\émqŸB¤)ÊA]4\Å8\ÛÈ\r¯÷º?(\îsFMQ†d†wSL·\Ş;v6\'ÿı\éô^‹Y>\â1ñX[üš¢\É»¦x¦-{[ü\nš\É\ÔMS\ìÏ–}_[ü\n“¦(C2Ã¦)k1Ë‡Â¤)ÊÁğÚ§h(h2$C )\Z\nš\ÉhŠ†‚&C2š¢B¢ ÉÁ+W®ü\ãÂ…—Î=»cÒ¤I\Ç1bDò\È#$\'N<1kÖ¬\Î,onn¾KS44’¡¡3jÔ¨¿khhx*­\ÑKÒ±3\İQ¯\Óq$»\Óû–¦—S\ãqº\ÛYš?şÔ¦¦¦\ÃS¦LI\Ş|ó\Ídó\æ\ÍI{{{r\äÈ‘$\Äegggòù\çŸ\'‹-J\âq\Ï=÷\ÜO/¼ğ\Â,M\ÑP\ĞdH†*\ç\á‡¾7«Ò†wôT\ì\ÏhIŸ3Z·;ƒ—^z\é\ÆiÓ¦µO:õ·hx\'OLúk\ëÖ­\Éô\éÓ“ô¹]ó\æÍ»IS44’¡Á“6¶kÒ±\â,\ZaO£õÁ¼N÷\ë¹!Î˜0aÂ¯Ë–-;«fX\î\ÓO?M\âu\Ò\Æ8GS44’¡\×\ĞĞö³]\Å7jÔ¨\äù\çŸOš››“½{÷&?ıôSV“ù\å—l¥oÃ†\r\É\Ë/¿œ\íş*kŒ\İfe.\\ø/O=õ\Ôo;v\ìHÂ={’x½ùóç¿¦)\Zš¢\ÉĞ€6\Ä?¥\ìD±~ğÁ\Ù.­ş8|øpöøx^±9¦ñŸu\ÃTSS\Ó\Óiûµ¿oh\Å\ë\Å\ëÎœ9óÏš¢¡)ú\İ\ÉĞ€\ÍK\rñé§Ÿ\Îf…\ç\"÷\ì³Ï–7\Æú1>şø\ã?~üø\ã5C\ìi\Æ¯Ÿş\âşAS44EC†\Î{bi\ÉtÆŒ¥%\ÒsK«s\æ\Ì)_J½¾n›\â”)Sv\Ä>\ÄÁû\'Mš´GS44EC†\Îİ©#LK3\Äómˆ\Å\ÆX6cl­Ë†˜6ªQ\Ï<ó\Ì\É\ãÇ\'ƒ-}\ÃO¦\ß\ï	M\Ñ\Ğ\r:§†xoq\â¹.™öµ”Z\Ü\ÇX—Ë¨\é–\Æ_\âc•ğ\ÕW_%“\'OŞ«)\Zš¢!C\ç7KŒƒdÃ‡~X¿³\Å8£ÁO<q\ì|>zq¶\âŒ8±&^mAK\Ç?)h\nš\ÉPµf(\êu~pM\Ì\æ:4(5:J-û¸\Æ5u\Ó\'Nœ8ı\í·\ßş5© ØºIñ¿VÙ\ë|©`UCC\Ã?*h\nš\ÉPµe\èÔ©Û²Ç¼øâ‹ƒZ§\ãsŒ…¦8µnš\â\äÉ“7Å©\Û*)–j\Ó\Ù\â–jca¬(\ßbS\Ğ4’¡¡\ÌĞ©s™f÷­]»vP\ët|À¿ğs,«›¦8v\ì\ØmŠñ¹\Å\Æ\Æ\Æÿ­ò0–¶\ØòP*h\nš\É\ĞPf\è\ÔÉ½³\Ûú\0›rq\æ›\ÂÏ°¯nš\â\èÑ£\å\'÷®”ø~#G<Qa,n±)h\nš\É\Ğg\èd~} >†\Ñ\×\Ç3\n\ß÷H\İ4\Åø…ó<q\í­ú\nšõ–¡|TºN\×\ÓLñ\è\Í\×\È\Úgq~Á\Ûo¿ı\Õ\\Ğ¾ù\æ›\ä\Ûo¿=\íöôŸ–¼÷\Ş{=>\'ö\\w\İuIúoK>ù\ä“\ä\ÆoL6mÚ”<ô\ĞC\Ù×—\\r‰­üa”¡\ÈBSSSŸ‰\ß<nß¾}Y.bŒ3&\ËCÜ¾{÷\î>_Ş¼ygü¦Nš]ÿè£²Z\ß\à\ÉP\ß*ü]D3\ÅÁò\Øcu\Å>\Åô?\ÚÁ*c©\Õ\ÊAQX\Ú\ÚÚ’5k\Ö\ÄFG©½û\î»\É\Çœ]ß¿ÿ\ï¿eË–\ìò»\ï¾\Ë.—,Y’tww—\î_ºt©¦8L2¿\ÏW^yåŒyıõ×³ë‘ƒ<q\è\\F–?vİºuY\Æò¦y\å•W&·\Şzkv=Fd\î\Úk¯=\íõ\ßy\ç\Òõ÷\ß¿t½ø\Ú2\Ôs†\ìS¬€\Æ\Æ\Æe\é\Ö\á\ÉJ6\Å8ú4ı¾+«4Œ›\âŒ\ÅBV+M1f~q\Ù\Õ\ÕUšı\åM1.£Y–¨˜a\Æ\åo¼‘]\Æ\É\î¾û\î\Òs\ã~Mqxd\èLM±µµ5Y¾|ùiL1;,\ÎğŠ¯Wldñõ\ìÙ³K__x\á…É´iÓ²\ëñ\Zy¦n»í¶¬\Æõ|u#\Ï^\\¾ú\ê«2\ÔK†}Zñ¹—ªdSL‹ô\ájû\ÜKO[õµ\Ò£q\å\'–½\âúı÷\ß_º­x½¥¥%{N,U\Å\×\ßÿ}© \íÜ¹3[\ÎÊ—´ò&«)\Å\ïùú\ë¯Ï²ÿş¿ø\â‹\ì¾\ÈM>s»üòË³ói\æÏ‰\Ì\äNÅ™_\Ì$cC+Ÿ\ÆcÆ›]¿\ï¾û²dO?Cq¦x\ÅW$+W®Ì®\Çk\Ç\ìS†zÏ\Ï)V@œ!aÜ¸q‡+yF›ñ\ã\Çª\Å3$TkSŒµÿ\â\Öv|}\ÕUW%w\Şyg©`]|ñ\ÅY\áË‹\ÙÂ…³\Ç\ç\ËbQğ\"ü1SÈ—\Ã.½ôRMqe\èL3\ÅØ¸Š\r¡x\\|Gù\nCd\çê«¯\Î2Uşš±\ä_\Ü\Äõ+V$—]vY?C\ÌóYh\ì\Ã,_¶•¡¾\ëµ3\ÚT\æ`›–¶¶¶¿U¢!nİºµ;ı~›kñ}ª…}Š\Åuó\Í7ÿ\î ‰X‹ûbQş˜mÛ¶ö¼X~\Ígù¬QSşM1ß¯ñ‡~(-g\Şr\Ë-½“\ß_>SŒı‹÷\ÜsO\éqñZ±ü\Zyë­·zÌ«}Šı\ãÜ§•y“\ï0aBG%f‹O>ù\äşZ=\ëz-4\Å(>ù> \âRT±\0oË›b\Ì£\Årj\Ì\â¶t\ÆL±Nšb¬.\ÄıyN¢)\Æ>Á|\ã(n›;wn¯ÙŸ¦ø\ã?–šn>›,oŠy.&C=\×k%£2oô\ÚÅ‹\ïÌ†¸t\é\Ò}\é÷\Ù\Ğ\×>\íüŠ^,YEŠ\ë\å‡\Ó\ç3Åšb±a\æû|ğº¾fŠù’\é\r7Ü\ík\Ì÷9\ç\×{ZŞŒe\Ò\â\ë\ç\r/ \é\é ­ò}Š\Ñ‹ôD+¹:Q\Ãd¸¥RO±V\ëõ@¼\É×¤[]i˜»£!¦ÿ%^¿–ÿ’s-4\År~=‰?\ÓL1\ß:\Ï\ï‹}ŠQü\â¶ø£Óšbmf(ö\Şu\×]\Ù(n\İq\Ç¥¯\ãw/[æ³¸\Ø÷œ|Ksù8ñY\×N\É\ÜWşò¦X>b?vşüs³ù\Ì4\ßw=>.ó#Ve¨\ïz®¼y\Å{w¾1\Z\âœ9sŠ\r±»–\ëõ€hhh\Ñ\Ø\Øø\ãdCŒ\×K_÷@­OÃ«½)Æ¾ÀbŠ­õXŠ\ÊdoÉˆ­õøğ~^°bù¬¸ÿGS¬½\íŒ+\ß\×|\ÑEe¹ˆŸõ¦›n*İŸ\Ï\è\âòl›bŒü³²Åƒkò\ë2tnõ:?\è&Ÿ1\ëRj<¯l†X¿Ë¦=l<šnIvlß¾ı\à@4\Ä]»vŒ\×K®õ÷\Æ)º4E’¡j«\×\Å\Æûc†Kõ÷(\Ó8¨¦¸1\Æp¨\×¾’n%\\´h\Ñ\ÏÁ7‹/şr\äÈ‘\â7\ŞMA“!ª\Æz\ÃÅ¦M.>\ÇğY`¾´\ZK¤q¦šø\è\Ík¯½–<ú\è£\åg\Ğ\é.õzPÖ¬\ã\Ğ\ß\Æ\ÆÆ¿lÜ¸q\Û\Ù4Ã¶¶¶ÿ7nÜ¶\ØI;œÖ¤4M†d¨š\ëõyd¼µ\î÷!öó\Í~ \Ş\ìÑ£G·Ïœ9scKK\ËûSGùù\ÔÉ½\î\è\èØ—6\Î/\çÎ\Û:fÌ˜½ñ\æ\Æ\Ö\Æp;jIAS\ĞdH†j¡^—Tû\Ó‡c½tq&…ôÍr\ê\Ü{»\ã¬\éù\Ù\Ó\ãd±qn¼8\Ğp>ó‚¦ É©×  )h2$C€‚¦ É\nš‚&C2(h\nš\É  )h2$C€‚¦ É\nš‚&C2¤)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚fhŠ†¦\nš¡)\Zš\"(h†¦h\È(h†¦h\È(h†¦h\ÈT¯5k\Ö($\Õ3¤\í„õ–!¨\Z\ë×¯\ï\è\ì\ìTLª`´··/N\Úv2\ê-CP5š››\ïY»v\í_8ğŠ\Ê\Ğm\İG1[½zõ÷\éx@†Œz\ËT•ô?ÑŸÒ­\Ë\Ïb\Ù%öGñ¾o¯\åb&C2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0pšÿ\ß#²\è£\Z\0\0\0\0IEND®B`‚',1),('15166',1,'s.bpmn','15165','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/test\">\n  <process id=\"myProcess\" name=\"My process\" isExecutable=\"true\">\n    <startEvent id=\"startevent1\" name=\"Start\"></startEvent>\n    <userTask id=\"usertask1\" name=\"User Task\" activiti:candidateGroups=\"å¼ ä¸‰ï¼Œæå››\"></userTask>\n    <userTask id=\"usertask2\" name=\"User Task\"></userTask>\n    <sequenceFlow id=\"flow1\" sourceRef=\"startevent1\" targetRef=\"usertask1\"></sequenceFlow>\n    <sequenceFlow id=\"flow2\" sourceRef=\"usertask1\" targetRef=\"usertask2\"></sequenceFlow>\n    <endEvent id=\"endevent1\" name=\"End\"></endEvent>\n    <sequenceFlow id=\"flow3\" sourceRef=\"usertask2\" targetRef=\"endevent1\"></sequenceFlow>\n    <userTask id=\"usertask3\" name=\"User Task\"></userTask>\n    <sequenceFlow id=\"flow4\" sourceRef=\"usertask1\" targetRef=\"usertask3\"></sequenceFlow>\n  </process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_myProcess\">\n    <bpmndi:BPMNPlane bpmnElement=\"myProcess\" id=\"BPMNPlane_myProcess\">\n      <bpmndi:BPMNShape bpmnElement=\"startevent1\" id=\"BPMNShape_startevent1\">\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"140.0\" y=\"200.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"usertask1\" id=\"BPMNShape_usertask1\">\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"260.0\" y=\"190.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"usertask2\" id=\"BPMNShape_usertask2\">\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"410.0\" y=\"190.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"endevent1\" id=\"BPMNShape_endevent1\">\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"590.0\" y=\"200.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"usertask3\" id=\"BPMNShape_usertask3\">\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"410.0\" y=\"190.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\n        <omgdi:waypoint x=\"175.0\" y=\"217.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"260.0\" y=\"217.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\n        <omgdi:waypoint x=\"365.0\" y=\"217.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"410.0\" y=\"217.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\n        <omgdi:waypoint x=\"515.0\" y=\"217.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"590.0\" y=\"217.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"flow4\" id=\"BPMNEdge_flow4\">\n        <omgdi:waypoint x=\"365.0\" y=\"217.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"410.0\" y=\"217.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</definitions>',0),('15167',1,'s.myProcess.png','15165','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0{\0\0\0ÿ\0\0\0‰Šp\0\0OIDATx\Ú\í\İ_l•eš\0p\ç\Â\ÄIœ‹1jœD“õbböb/\æB\ã^311³s!«ÁŠ‘Qi`@WI–+N&A%şY\ãQ²\èZ¤\éB‚2]´\Â\è biV†\ìòŸoß§rš\ÓE\n\ç_\Û\ß/yıÎ¡=œ\ï\é÷<\çı\Ş\ïı.»\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0(±,\Ë~òõ\×_¿½iÓ¦Sk×®Íš››E\rÄš5k²\r6|—¢n˜\æ\Õ)¯:6nÜ˜É«šË«\Ó)–:úŒ\Ñèµ´´d\İ\İ\İÙ±c\ÇD\rEOOOöñ\ÇLúa˜Wòªvójıúõ§S^-rbDOA®\é\Â|¬¹¹y\ÛpË«Ñ“Wµ\İğ¥¼:\æ0\n\Ä)6Å¯¶#\åòJ”!¯2G@€Q ø\nŸ¢,¯\ä\0£¼\Ùûş\ï{²¯7¿œµ¯™\×ñ÷Ø¦h*\ÊòJ^0Ì‹ò\á\Ù\çÿİ˜ı\ï\Í±-S8ey%¯\0\ÆE¹£ı½³\nr>v·¯R8ey%¯\0\ÎEyÛº´(\Çc\n§¢,¯\ä\0Ã¸(\Ş<wĞ¢)œŠ²¼’Wü`üøñ?\Ï\år÷&Ï§X—¢#EV{RlL\ÏùSz\î\äô÷½k+s\ç\ÎıYSS\Ó3ó\ç\Ïÿ¤±±±§¡¡\áøÄ‰û“|\êÔ©\'Ÿx\â‰ó\æ\Ík{ñ\Åÿ8{ö\ìğ®)\ÊB³\'¯\ä\Õp7nÜ¸_§\îT\ë5w?\'¢ùKQ?fÌ˜Ÿx\'©Y,¸sÎœ9®««;š¼l\åÊ•\ÙÖ­[ûU=yòd–·ÿşlûö\í\Ù|-Z´(‹\ç§\æ¯#ı›©’¼v‹r\\%9XQ\ÇNEY^É«\Ñ*5i¿J±yˆ\r\Ş`±-Fû¼«Ô”3f\Üø\ÔSOµM<ùô\Ûo¿\İ\×\Ì\r\Åñ\ãÇ³\Ö\Ö\Ölö\ìÙ§\Z\ZöN™2\å·\Ş\Õ\Ú+\Ê_µ¾0hQ\ÇNEY^É«\Ñ(5fÏŒ\Ìõ7lq6k\áÂ…Y\Ô\ÄööölÏ=Ù‘#Gúk^‚|ù\å—ÙŠ+ú7iÒ¤s5}\ï§\ïó\ï0U\×\Ø\Ø8ıÁ<ñê«¯f½½½Ù¥Ú¼ys–š½\ãÓ¦M[9v\ìØŸz‡k§(\ï\ïÜš}şáœ³Oµ¥mñ˜Â©(\Ë+y5šD:3¯¿A«¯¯\Ï^{íµ¾fn(¢~\ÆÙ°3fhør¹Üô\ç\ï6U3kÖ¬?>üğ\Ã\'?ıôÓ¬”:”555O¿4]\é—\éZ\ïtmåˆŸ,?«(\Ç6ESQ–Wòj6z-…YL_Š¼KSV¯^\ÎsOq8\Å=\Şuª\Ò\èMŸ>ı\ÔP?½\Åo¼qª®®\î`ú¥º\É;^Eù\è\Ñ\ì«ÿYzö©¶´-S8ey%¯F‹\â½8][87ıRuvvf3g\Î,lø\är¹»½óTLœº½r6zy\ï¾û\î\Ñ\Ôğu\Z\á«nQ;|ÙºdĞ¹Uñ˜»(\ÊòJ^g\æ\èõ7b›6m*Kı‹9~1Ÿ¯p„/ı\ì_\Ú”]\\Œsô\Ú\ÚÚ²Jyıõ×»&L˜ğ+u«P”\Íö|õQö\Ù¿´ \ç#\Ï5\Z£(\Ë+y5‚Gô~Ux1FŒ\è•S\\Ì±`Á‚\ëó\Å\Z~öe5kÖ¬\Ï\âbŒJ{ô\ÑG»r¹\Üt{ rEù\ÇF]Œ\Æ(\ÊòJ^6©ı¹p^)Oİoû”)S\n/\Úøw{‚²‰uôby•R\\u{óNN˜0\áo>\ÑT®(_È¨\ËùFcREY^É«‘$L.¼\êöR/\ÆŠ¸²è‚\í\Ê\"L5ª\å\ÙgŸm¹öDeŠò\Å\ä|(¤Š²¼’W#Ij°V\å®X^¥\Ò\â&\r\ßóö%·@‹;]uÁ\ä\îu§f\ï;s÷*S”…¢,¯\ä?ˆ³Jù[ Å²(•¸@±Ø;¬¿W__ÿ3{†’Zºt\éÂ˜ŸPm=ô\Ğ_\Ò/\İ?\Û#Š²¢,¯„f¯RRsuo¾ÑŠ+d«¥p\Ñ\åTg\ÏPRó\ç\ÏÿdÕªUUoö/^\Ü\êT\î>6_Hs¬(+\ÊC<µ?\åUƒ¼’W£\å8§M+u\îù¼õ\Ö[.Ô |\Z{¶n\İZõfoÓ¦Mm±˜¥=rÁE9ÿ	°9nQ”\åR\æU4})¯&\Ë+y5Ò“…‹(oß¾½š5°pd¯Y•£¤\Z\Z\ZWcB±½{÷\î‰u†\ì‘!\åşkŸ\ë¬¢¬(_b^õœk¤O^É«‘rœL\Û:òWò*\Üb\ß~û\í€5÷T9J*&¤Vb=¡In\\ôA¬ÿa\áÁLQV”K‘WÅ§wå•¼\Z)\Ç\É\Â\íqg‹j‰E–_‹*G\Éj…/IQ\îÿ§-eE¹\Äy\Õ§wå•¼\Z)\Ç\ÉÂ¯k¡jö#{¢´¡(\×~\È+Q®f\Ï1phad«V\æ\ìõôôt™§P’O¬›s¹\Ü\İù5å‹‹x ¶\Ù\í·\ßnd\ï‡ø>\å\ÕR^]!¯\ä\ÕH:Nš³Ç¨ğô\ÓO\×\Ş\Ş^+W\ã¶\Ø#}\Ğ\äå•«(O›6­¯hE\Ä\×w\İu×€¯+=2–ÿ\Ùùˆµ#/õû\Æ÷¹şú\ëG{³7 É“Wòj¤\']Ë¨\ë\ì­^½º&\Ö\Ùs›˜‹:ˆmŒ8»ûH9G`\n‹V¬_¯[·®\âE9~n¤\ãÏ«¯¾:;xğ`IšƒQ\Ş\ìu/‹›<y%¯F\Úq2=¶¤\ÖÙ‹Ÿ]ğz—¨r”TSSÓ¢T½Ù›>}ú\ç)Á\Ç\Ø#|;\çH^µŠr¨\â\ë\Ö\ÖÖ¾¯—/_\İp\Ã\r\Ù\å—_~\Ö\È\Ì\îİ»³;ï¼³{|\Û>Ü¿í¥—^\ZòˆN<÷º\ë®°-\îsy\ÓM7õ¯/¾øbÀ\ã\ç{ùÿ_\ÜJ°œ£K5\Ö\ìs$O^É«‘zœLM`]-\ÜAc\æÌ™…\Í\Ş=ª%•\ì\Úû\î»\ïtooo5\×Ø‹{\ã~___…=RZ\Õ*\Ê\ç+b…ÍŸ?ÿ¬\ç\å\ï\ê\ê\Zò\ë).Ê±-…°\×2\ØÿoË–-}7*\ÉÛŠ²¼’W#\ËÄ‰Qxo\ÜC‡U{¾Ş‘¸_¯=C\É=ù\ä“]¿~}Õš½^x\á“ô\é\ëOö\Ä\È)\Ê;w\î\ÌR^õm‹Ñ¸\Ñwş\ß\İz\ë­gÍ…*ş¾q\Ú\ìb^OqQ~\çw²›o¾¹o”\å\\?\ë|¯3_\Ğ\ã\Ï\ÂíŠ²¼’W#n°\ŞŞŠ+*^—.]Z\Ø\ì½lP³f\Í\ZÿøãŸª\Æ,½½½\'&L˜ğ·øteO¿¢#\r\r\rısœŠŸW<\ÊRø\ï\"\Ú\Ú\Ú\Îú¾W]u\ÕE½+¯¼òœ…:~N¾À6²s®×™o:\â\ïK–,Q”å•¼\Z\nO\åF\ÎUr	–\Î\ÎÎ¾\Åü\ÏOõğŸ\ì\Ê&%øŞ–––Š7{\é@¸\Õd\Ô\áY”?üğ\Ã\ì¶\Ûn\ë/²ñuş±Â«(¯¹\æš\ì•W^\é¬££#»\ã;ú_»vm\ßö\Â9Lùˆ\ÓdCY\Ò\"bÙ²eı\ÛW­ZÕ¿½ğ\ï?ö:‹¯\n½\Ì\Ü*y%¯F¬3K°|–o¸V®\\Y±\Z8oŞ¼şF/—Ë½coPVS§NıÍ”)S8p bI¾eË–¯\Ò\'ª¿;ö§öÀğ+\ÊB³\'\ä\ÕHİ‹‘¶o¾ù¦\ì50V\Â(8}{\"5{ÿhOPv\éS\ç.^¼øD%N\çvuuõ\Æ\é\Ûq\ã\Æı\Ú;¯(+\ÊòJÈ«jK\r×ª|óõ\Øce\å¼p1\æ¡¾M1\Í bC\Ù÷\ßÿ\Î\åË—/g£\×\İ\İ}²¾¾¾+}’š\á]W”eÍWµ`\ìØ±\×\ÆıŸó\rX,K·1+G£—j ‹2¨\êPö\Ï\'Mš´ÅŠ\Ç\Ê5¢w¦\Ñ[\è\İV”…fOÈ«Z’\Ë\ånIq ßˆÅœº˜÷Y\ÊS·E#z\ï›\ÊDUÄ•±uuuË–-\Û[\ê9zq\êÖˆ¢,4{B^\Õğ \Ç\ïòk\ïE\Ä(\\\Ü\Î\ìR¯º3gNñ\í\Û4zT„/5f\ï\ÅUº»v\í:z©Ë«\ÄU·q1†9zŠ²\Ğ\ì	yU\ë¢V\Åm›³¸\Ã\ÆP\ïŸ&\Ç:zE£y}§n5z\ÔÒöô\Ôô\í{\æ™g>Û±cÇFú\â\ÎMMM›c4/%öR‰­(ÍW\Ãh\Ğã—©vu5i\Ù#<’½ù\æ›Y,WW\í\æ\çõÅŸ\Ñ\Ü\Å(`,kÿÛ¸\ê\Ö\ÅÔ¤h\ÒRrÎ¤Ÿ:u\ê_{î¹\ëÖ­Û’’zWas·ÿş})\É\Û/^\Ü\Z÷º[ Å1,˜¬(ÍWÃµş\Åó\âQ¾‹‰XG\Ïò*—‘¾[\Î4~\ï§\Øy\æSJ>™÷¤Ø˜\âùc\Ü\ëVQš=!¯F‚3÷Ğ_xñ\ÆF\Ìı{Ù1\0EYQ–WB³7\Ä Æ™ù|ÏŸô(>Í»güøñ\Íqg¨\Ô\Şóß½k€¢¬(kö„¼@QV”\å•\Ğ\ì (+\ÊòJhö\04{BQ–Wò\n\0ÍP”å•¼ –­]»V\á«\í8’Šò	y%4{\0\\”\r6\ì\é\î\îVüj4:;;ÿ#\åm\Ã-¯ZZZNÉ«Úİ»w\ïJyu\Ì`øè£şeıúõß·o\ßÿ)‚µ5¢Şš5kv¥¸g\æÕ¿¦¼:òÊ¾¬ÁF/\åÔ‰‹F‰tĞ¿;}\Ê\ß§\ãÔ¨‰ˆ}±m86zyõ‡ôøŞ¾¬¹8¦\Ñ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 &ü?]\æšM\Ó¾F\0\0\0\0IEND®B`‚',1),('15171',1,'name.bpmn20.xml','15170','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n  <process id=\"process\" isExecutable=\"true\">\n    <startEvent id=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\"></startEvent>\n    <userTask id=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" name=\"è¯·å‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <sequenceFlow id=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" sourceRef=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" targetRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\"></sequenceFlow>\n    <userTask id=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" name=\"ä¸Šçº§å®¡æ‰¹\" activiti:assignee=\"å²—ä½:é™¢é•¿\"></userTask>\n    <sequenceFlow id=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" sourceRef=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" targetRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\"></sequenceFlow>\n    <endEvent id=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></endEvent>\n    <sequenceFlow id=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" sourceRef=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" targetRef=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\"></sequenceFlow>\n  </process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_process\">\n    <bpmndi:BPMNPlane bpmnElement=\"process\" id=\"BPMNPlane_process\">\n      <bpmndi:BPMNShape bpmnElement=\"sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\" id=\"BPMNShape_sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60\">\n        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"50.5\" y=\"148.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\" id=\"BPMNShape_sid-B42805EC-3B82-4E88-BCEB-E93869BF5284\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"125.5\" y=\"123.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\" id=\"BPMNShape_sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"270.5\" y=\"123.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-AE528184-10E4-4D80-ADDE-21ED7729462E\" id=\"BPMNShape_sid-AE528184-10E4-4D80-ADDE-21ED7729462E\">\n        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"415.5\" y=\"149.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\" id=\"BPMNEdge_sid-72D0EAA2-538F-4028-A8E4-9DE6E3CD613A\">\n        <omgdi:waypoint x=\"80.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"125.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\" id=\"BPMNEdge_sid-84F7E499-62B9-45BE-A76F-55DE231C6E6D\">\n        <omgdi:waypoint x=\"370.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"415.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-506B6480-6BE6-4445-A056-6FFC19A48998\" id=\"BPMNEdge_sid-506B6480-6BE6-4445-A056-6FFC19A48998\">\n        <omgdi:waypoint x=\"225.5\" y=\"163.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"270.5\" y=\"163.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</definitions>',0),('15172',1,'name.process.png','15170','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Å\0\0\0\Õ\0\0\0&`\ë«\0\0›IDATx\Ú\í\İklU\åšp?cŒ1~2\Æ8‰šñƒŒó\É8‰£1cr5^Š€Ta(ˆbrÀi` DTˆ7\Ì\à%1\Ä‡.-\ĞpIE€@­´0œcu¸\êšõ¬°v–›¶hw÷\îşı’7{w\ßZvÿ<\Ïzßµö\ê\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÀÀH’\ä»v\íZ²yó\æ_×¬Y“¬ZµÊ¨ğX½zu²~ıúƒ\é-CF=fªF³\Ö\ÖÖ¤³³39v\ì˜1D£««+Y·n\İ\ß\Ò\âö€õ–!¨\Z±u¯˜UMQ;–nõo—!£\Ş2U#–»“\êiA;!CF½eªF\ìPHªª %2d\Ô[† \æ\n\Ú\Ï\íHv}ö\ï\É×«ge#®\ÇmŠ‚&C2u\Õ»·\'\Ûş³)ùrù³¿q[Ü§iŠ2$CP7Mq\ß\×ÿqZ1\Ë\Çş¯—)Dš¢\É\ÔOS\Ü\ŞòB¯-\îSˆ4E’!¨›¦¸m\Õ\Ì^ZÜ§iŠ2$C )*h\nš\É\Ô[SŒ#{+hqŸB¤)ÊA\İ4ÅôZ\Ğ\â>…HS”!‚ºiŠ‡Ú¿J¶­œqú²Wz[Ü§iŠ2$CP7M1\Æ\î-\ïŸV\Ğ\â6EHA“!‚újŠG&;7ş\Û\é\Ë^\émqŸB¤)ÊA]4\Å8\ÛÈ\r¯÷º?(\îsFMQ†d†wSL·\Ş;v6\'ÿı\éô^‹Y>\â1ñX[üš¢\É»¦x¦-{[ü\nš\É\ÔMS\ìÏ–}_[ü\n“¦(C2Ã¦)k1Ë‡Â¤)ÊÁğÚ§h(h2$C )\Z\nš\ÉhŠ†‚&C2š¢B¢ ÉÁ+W®ü\ãÂ…—Î=»cÒ¤I\Ç1bDò\È#$\'N<1kÖ¬\Î,onn¾KS44’¡¡3jÔ¨¿khhx*­\ÑKÒ±3\İQ¯\Óq$»\Óû–¦—S\ãqº\ÛYš?şÔ¦¦¦\ÃS¦LI\Ş|ó\Ídó\æ\ÍI{{{r\äÈ‘$\Äegggòù\çŸ\'‹-J\âq\Ï=÷\ÜO/¼ğ\Â,M\ÑP\ĞdH†*\ç\á‡¾7«Ò†wôT\ì\ÏhIŸ3Z·;ƒ—^z\é\ÆiÓ¦µO:õ·hx\'OLúk\ëÖ­\Éô\éÓ“ô¹]ó\æÍ»IS44’¡Á“6¶kÒ±\â,\ZaO£õÁ¼N÷\ë¹!Î˜0aÂ¯Ë–-;«fX\î\ÓO?M\âu\Ò\Æ8GS44’¡\×\ĞĞö³]\Å7jÔ¨\äù\çŸOš››“½{÷&?ıôSV“ù\å—l¥oÃ†\r\É\Ë/¿œ\íş*kŒ\İfe.\\ø/O=õ\Ôo;v\ìHÂ={’x½ùóç¿¦)\Zš¢\ÉĞ€6\Ä?¥\ìD±~ğÁ\Ù.­ş8|øpöøx^±9¦ñŸu\ÃTSS\Ó\Óiûµ¿oh\Å\ë\Å\ëÎœ9óÏš¢¡)ú\İ\ÉĞ€\ÍK\rñé§Ÿ\Îf…\ç\"÷\ì³Ï–7\Æú1>şø\ã?~üø\ã5C\ìi\Æ¯Ÿş\âşAS44EC†\Î{bi\ÉtÆŒ¥%\ÒsK«s\æ\Ì)_J½¾n›\â”)Sv\Ä>\ÄÁû\'Mš´GS44EC†\Îİ©#LK3\Äómˆ\Å\ÆX6cl­Ë†˜6ªQ\Ï<ó\Ì\É\ãÇ\'ƒ-}\ÃO¦\ß\ï	M\Ñ\Ğ\r:§†xoq\â¹.™öµ”Z\Ü\ÇX—Ë¨\é–\Æ_\âc•ğ\ÕW_%“\'OŞ«)\Zš¢!C\ç7KŒƒdÃ‡~X¿³\Å8£ÁO<q\ì|>zq¶\âŒ8±&^mAK\Ç?)h\nš\ÉPµf(\êu~pM\Ì\æ:4(5:J-û¸\Æ5u\Ó\'Nœ8ı\í·\ßş5© ØºIñ¿VÙ\ë|©`UCC\Ã?*h\nš\ÉPµe\èÔ©Û²Ç¼øâ‹ƒZ§\ãsŒ…¦8µnš\â\äÉ“7Å©\Û*)–j\Ó\Ù\â–jca¬(\ßbS\Ğ4’¡¡\ÌĞ©s™f÷­]»vP\ët|À¿ğs,«›¦8v\ì\ØmŠñ¹\Å\Æ\Æ\Æÿ­ò0–¶\ØòP*h\nš\É\ĞPf\è\ÔÉ½³\Ûú\0›rq\æ›\ÂÏ°¯nš\â\èÑ£\å\'÷®”ø~#G<Qa,n±)h\nš\É\Ğg\èd~} >†\Ñ\×\Ç3\n\ß÷H\İ4\Åø…ó<q\í­ú\nšõ–¡|TºN\×\ÓLñ\è\Í\×\È\Úgq~Á\Ûo¿ı\Õ\\Ğ¾ù\æ›\ä\Ûo¿=\íöôŸ–¼÷\Ş{=>\'ö\\w\İuIúoK>ù\ä“\ä\ÆoL6mÚ”<ô\ĞC\Ù×—\\r‰­üa”¡\ÈBSSSŸ‰\ß<nß¾}Y.bŒ3&\ËCÜ¾{÷\î>_Ş¼ygü¦Nš]ÿè£²Z\ß\à\ÉP\ß*ü]D3\ÅÁò\Øcu\Å>\Åô?\ÚÁ*c©\Õ\ÊAQX\Ú\ÚÚ’5k\Ö\ÄFG©½û\î»\É\Çœ]ß¿ÿ\ï¿eË–\ìò»\ï¾\Ë.—,Y’tww—\î_ºt©¦8L2¿\ÏW^yåŒyıõ×³ë‘ƒ<q\è\\F–?vİºuY\Æò¦y\å•W&·\Şzkv=Fd\î\Úk¯=\íõ\ßy\ç\Òõ÷\ß¿t½ø\Ú2\Ôs†\ìS¬€\Æ\Æ\Æe\é\Ö\á\ÉJ6\Å8ú4ı¾+«4Œ›\âŒ\ÅBV+M1f~q\Ù\Õ\ÕUšı\åM1.£Y–¨˜a\Æ\åo¼‘]\Æ\É\î¾û\î\Òs\ã~Mqxd\èLM±µµ5Y¾|ùiL1;,\ÎğŠ¯Wldñõ\ìÙ³K__x\á…É´iÓ²\ëñ\Zy¦n»í¶¬\Æõ|u#\Ï^\\¾ú\ê«2\ÔK†}Zñ¹—ªdSL‹ô\ájû\ÜKO[õµ\Ò£q\å\'–½\âúı÷\ß_º­x½¥¥%{N,U\Å\×\ßÿ}© \íÜ¹3[\ÎÊ—´ò&«)\Å\ïùú\ë¯Ï²ÿş¿ø\â‹\ì¾\ÈM>s»üòË³ói\æÏ‰\Ì\äNÅ™_\Ì$cC+Ÿ\ÆcÆ›]¿\ï¾û²dO?Cq¦x\ÅW$+W®Ì®\Çk\Ç\ìS†zÏ\Ï)V@œ!aÜ¸q‡+yF›ñ\ã\Çª\Å3$TkSŒµÿ\â\Öv|}\ÕUW%w\Şyg©`]|ñ\ÅY\áË‹\ÙÂ…³\Ç\ç\ËbQğ\"ü1SÈ—\Ã.½ôRMqe\èL3\ÅØ¸Š\r¡x\\|Gù\nCd\çê«¯\Î2Uşš±\ä_\Ü\Äõ+V$—]vY?C\ÌóYh\ì\Ã,_¶•¡¾\ëµ3\ÚT\æ`›–¶¶¶¿U¢!nİºµ;ı~›kñ}ª…}Š\Åuó\Í7ÿ\î ‰X‹ûbQş˜mÛ¶ö¼X~\Ígù¬QSşM1ß¯ñ‡~(-g\Şr\Ë-½“\ß_>SŒı‹÷\ÜsO\éqñZ±ü\Zyë­·zÌ«}Šı\ãÜ§•y“\ï0aBG%f‹O>ù\äşZ=\ëz-4\Å(>ù> \âRT±\0oË›b\Ì£\Årj\Ì\â¶t\ÆL±Nšb¬.\ÄıyN¢)\Æ>Á|\ã(n›;wn¯ÙŸ¦ø\ã?–šn>›,oŠy.&C=\×k%£2oô\ÚÅ‹\ïÌ†¸t\é\Ò}\é÷\Ù\Ğ\×>\íüŠ^,YEŠ\ë\å‡\Ó\ç3Åšb±a\æû|ğº¾fŠù’\é\r7Ü\ík\Ì÷9\ç\×{ZŞŒe\Ò\â\ë\ç\r/ \é\é ­ò}Š\Ñ‹ôD+¹:Q\Ãd¸¥RO±V\ëõ@¼\É×¤[]i˜»£!¦ÿ%^¿–ÿ’s-4\År~=‰?\ÓL1\ß:\Ï\ï‹}ŠQü\â¶ø£Óšbmf(ö\Şu\×]\Ù(n\İq\Ç¥¯\ãw/[æ³¸\Ø÷œ|Ksù8ñY\×N\É\ÜWşò¦X>b?vşüs³ù\Ì4\ßw=>.ó#Ve¨\ïz®¼y\Å{w¾1\Z\âœ9sŠ\r±»–\ëõ€hhh\Ñ\Ø\Øø\ãdCŒ\×K_÷@­OÃ«½)Æ¾ÀbŠ­õXŠ\ÊdoÉˆ­õøğ~^°bù¬¸ÿGS¬½\íŒ+\ß\×|\ÑEe¹ˆŸõ¦›n*İŸ\Ï\è\âòl›bŒü³²Åƒkò\ë2tnõ:?\è&Ÿ1\ëRj<¯l†X¿Ë¦=l<šnIvlß¾ı\à@4\Ä]»vŒ\×K®õ÷\Æ)º4E’¡j«\×\Å\Æûc†Kõ÷(\Ó8¨¦¸1\Æp¨\×¾’n%\\´h\Ñ\ÏÁ7‹/şr\äÈ‘\â7\ŞMA“!ª\Æz\ÃÅ¦M.>\ÇğY`¾´\ZK¤q¦šø\è\Ík¯½–<ú\è£\åg\Ğ\é.õzPÖ¬\ã\Ğ\ß\Æ\ÆÆ¿lÜ¸q\Û\Ù4Ã¶¶¶ÿ7nÜ¶\ØI;œÖ¤4M†d¨š\ëõyd¼µ\î÷!öó\Í~ \Ş\ìÑ£G·Ïœ9scKK\ËûSGùù\ÔÉ½\î\è\èØ—6\Î/\çÎ\Û:fÌ˜½ñ\æ\Æ\Ö\Æp;jIAS\ĞdH†j¡^—Tû\Ó‡c½tq&…ôÍr\ê\Ü{»\ã¬\éù\Ù\Ó\ãd±qn¼8\Ğp>ó‚¦ É©×  )h2$C€‚¦ É\nš‚&C2(h\nš\É  )h2$C€‚¦ É\nš‚&C2¤)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚¦ É¡)‚‚fhŠ†¦\nš¡)\Zš\"(h†¦h\È(h†¦h\È(h†¦h\ÈT¯5k\Ö($\Õ3¤\í„õ–!¨\Z\ë×¯\ï\è\ì\ìTLª`´··/N\Úv2\ê-CP5š››\ïY»v\í_8ğŠ\Ê\Ğm\İG1[½zõ÷\éx@†Œz\ËT•ô?ÑŸÒ­\Ë\Ïb\Ù%öGñ¾o¯\åb&C2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0pšÿ\ß#²\è£\Z\0\0\0\0IEND®B`‚',1),('2',1,'D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\permission.bpmn20.xml','1','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions\r\n  xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\"\r\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n  xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\r\n  xmlns:activiti=\"http://activiti.org/bpmn\"\r\n  xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\"\r\n  xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\"\r\n  xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\"\r\n  typeLanguage=\"http://www.w3.org/2001/XMLSchema\"\r\n  expressionLanguage=\"http://www.w3.org/1999/XPath\"\r\n  targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"permission\" name=\"å®¡æ‰¹æƒé™\" isExecutable=\"true\">\r\n    <documentation>å®¡æ‰¹æƒé™</documentation>\r\n  <dataObject id=\"dObj123\" name=\"StringTest123\" itemSubjectRef=\"xsd:string\">\r\n    <extensionElements>\r\n      <activiti:value>Testing123</activiti:value>\r\n    </extensionElements>\r\n  </dataObject>\r\n    <startEvent id=\"startEvent-1\"></startEvent>\r\n    <userTask id=\"usertask1\" name=\"å‘èµ·ç”³è¯·\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"permission-request\"></userTask>\r\n    <sequenceFlow id=\"flow1\" sourceRef=\"startEvent-1\" targetRef=\"usertask1\"></sequenceFlow>\r\n    <userTask id=\"usertask2\" name=\"éƒ¨é—¨ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:ç»ç†\" activiti:formKey=\"permission-department\"></userTask>\r\n    <sequenceFlow id=\"flow2\" sourceRef=\"usertask1\" targetRef=\"usertask2\"></sequenceFlow>\r\n    <userTask id=\"usertask3\" name=\"æ€»ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:æ€»ç»ç†\" activiti:formKey=\"permission-manager\"></userTask>\r\n    <sequenceFlow id=\"flow3\" sourceRef=\"usertask2\" targetRef=\"usertask3\"></sequenceFlow>\r\n    <endEvent id=\"endevent1\" name=\"End\"></endEvent>\r\n    <sequenceFlow id=\"flow4\" sourceRef=\"usertask3\" targetRef=\"endevent1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_permission\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"permission\" id=\"BPMNPlane_permission\">\r\n      <bpmndi:BPMNShape bpmnElement=\"startEvent-1\" id=\"BPMNShape_startEvent-1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"40.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask1\" id=\"BPMNShape_usertask1\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"120.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask2\" id=\"BPMNShape_usertask2\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"280.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask3\" id=\"BPMNShape_usertask3\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"440.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endevent1\" id=\"BPMNShape_endevent1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"600.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"75.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"120.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"225.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"280.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"385.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"440.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow4\" id=\"BPMNEdge_flow4\">\r\n        <omgdi:waypoint x=\"545.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"600.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('20111',1,'å­¦ç”Ÿè¯·å‡æµç¨‹.bpmn20.xml','20110','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n  <process id=\"vacation-student\" name=\"å­¦ç”Ÿè¯·å‡æµç¨‹\" isExecutable=\"true\">\n    <startEvent id=\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\"></startEvent>\n    <userTask id=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\" name=\"å¡«å†™è¯·å‡å•\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <sequenceFlow id=\"sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\" sourceRef=\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\" targetRef=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\"></sequenceFlow>\n    <userTask id=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\" name=\"è¾…å¯¼å‘˜å®¡æ‰¹\" activiti:assignee=\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\"></userTask>\n    <sequenceFlow id=\"sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\" sourceRef=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\" targetRef=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\"></sequenceFlow>\n    <exclusiveGateway id=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\"></exclusiveGateway>\n    <userTask id=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\" name=\"é™¢ç³»é¢†å¯¼å®¡æ‰¹\" activiti:assignee=\"å²—ä½:ä¹¦è®°\"></userTask>\n    <userTask id=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\" name=\"é”€å‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <endEvent id=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"></endEvent>\n    <sequenceFlow id=\"sid-2DB5C664-03AB-430D-B175-80AAA711D14C\" sourceRef=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\" targetRef=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"></sequenceFlow>\n    <exclusiveGateway id=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\"></exclusiveGateway>\n    <exclusiveGateway id=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\"></exclusiveGateway>\n    <sequenceFlow id=\"sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\" sourceRef=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\" targetRef=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\"></sequenceFlow>\n    <exclusiveGateway id=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\"></exclusiveGateway>\n    <userTask id=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\" name=\"è°ƒæ•´ç”³è¯·\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <sequenceFlow id=\"sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\" sourceRef=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\" targetRef=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\"></sequenceFlow>\n    <sequenceFlow id=\"sid-B8177C51-129D-41C9-8C81-662566DE5F8C\" sourceRef=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\" targetRef=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\"></sequenceFlow>\n    <sequenceFlow id=\"sid-D7847956-F11B-4CDB-AB1E-F76514746007\" name=\"åŒæ„\" sourceRef=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\" targetRef=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${leaderComment==\'åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-534C09CC-528F-4038-9CF9-6E4B748C1255\" name=\"é‡æ–°ç”³è¯·\" sourceRef=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\" targetRef=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${initiatorComment==\'é‡æ–°ç”³è¯·\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\" name=\"æ’¤é”€ç”³è¯·\" sourceRef=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\" targetRef=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${initiatorComment==\'æ’¤é”€ç”³è¯·\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\" name=\"ä¸åŒæ„\" sourceRef=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\" targetRef=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${hrComment==\'ä¸åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\" name=\"åŒæ„\" sourceRef=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\" targetRef=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${hrComment==\'åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\" name=\"å°äºä¸‰å¤©\" sourceRef=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\" targetRef=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${totalDays==\'å°äºä¸‰å¤©\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\" name=\"å¤§äºä¸‰å¤©\" sourceRef=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\" targetRef=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${totalDays==\'å¤§äºä¸‰å¤©\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\" name=\"ä¸åŒæ„\" sourceRef=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\" targetRef=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${leaderComment==\'ä¸åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n  </process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_vacation-student\">\n    <bpmndi:BPMNPlane bpmnElement=\"vacation-student\" id=\"BPMNPlane_vacation-student\">\n      <bpmndi:BPMNShape bpmnElement=\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\" id=\"BPMNShape_sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\">\n        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"30.0\" y=\"295.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\" id=\"BPMNShape_sid-92464D4A-380E-4D73-875E-E77E82399CEC\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"105.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\" id=\"BPMNShape_sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"255.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\" id=\"BPMNShape_sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"630.0\" y=\"290.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\" id=\"BPMNShape_sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"720.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\" id=\"BPMNShape_sid-5732769D-2626-4CE0-98E5-40B1E96645C9\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"930.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\" id=\"BPMNShape_sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\">\n        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"1095.0\" y=\"296.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\" id=\"BPMNShape_sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"855.0\" y=\"290.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\" id=\"BPMNShape_sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"400.0\" y=\"290.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\" id=\"BPMNShape_sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"400.0\" y=\"15.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\" id=\"BPMNShape_sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"370.0\" y=\"120.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\" id=\"BPMNEdge_sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\">\n        <omgdi:waypoint x=\"355.0\" y=\"310.2164502164502\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"400.4130434782609\" y=\"310.4130434782609\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-D7847956-F11B-4CDB-AB1E-F76514746007\" id=\"BPMNEdge_sid-D7847956-F11B-4CDB-AB1E-F76514746007\">\n        <omgdi:waypoint x=\"439.5\" y=\"310.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"630.5\" y=\"310.5\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"439.5\" y=\"310.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\" id=\"BPMNEdge_sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\">\n        <omgdi:waypoint x=\"439.5\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"1109.0\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"1109.0\" y=\"296.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"439.5\" y=\"35.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\" id=\"BPMNEdge_sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\">\n        <omgdi:waypoint x=\"60.0\" y=\"310.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"105.0\" y=\"310.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\" id=\"BPMNEdge_sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\">\n        <omgdi:waypoint x=\"420.4099099099099\" y=\"290.4099099099099\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"420.0044843049327\" y=\"200.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"420.4099099099099\" y=\"290.4099099099099\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-534C09CC-528F-4038-9CF9-6E4B748C1255\" id=\"BPMNEdge_sid-534C09CC-528F-4038-9CF9-6E4B748C1255\">\n        <omgdi:waypoint x=\"400.5\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"305.0\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"305.0\" y=\"270.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"400.5\" y=\"35.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\" id=\"BPMNEdge_sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\">\n        <omgdi:waypoint x=\"420.16064257028114\" y=\"120.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"420.4233870967742\" y=\"54.57661290322581\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\" id=\"BPMNEdge_sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\">\n        <omgdi:waypoint x=\"894.5913461538462\" y=\"310.40865384615387\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"930.0\" y=\"310.2392344497608\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"894.5913461538462\" y=\"310.40865384615387\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\" id=\"BPMNEdge_sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\">\n        <omgdi:waypoint x=\"205.0\" y=\"310.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"255.0\" y=\"310.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-B8177C51-129D-41C9-8C81-662566DE5F8C\" id=\"BPMNEdge_sid-B8177C51-129D-41C9-8C81-662566DE5F8C\">\n        <omgdi:waypoint x=\"820.0\" y=\"310.2369668246445\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"855.4047619047619\" y=\"310.4047619047619\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\" id=\"BPMNEdge_sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\">\n        <omgdi:waypoint x=\"875.5\" y=\"290.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"875.5\" y=\"160.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"470.0\" y=\"160.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"875.5\" y=\"290.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-2DB5C664-03AB-430D-B175-80AAA711D14C\" id=\"BPMNEdge_sid-2DB5C664-03AB-430D-B175-80AAA711D14C\">\n        <omgdi:waypoint x=\"1030.0\" y=\"310.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"1095.0\" y=\"310.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\" id=\"BPMNEdge_sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\">\n        <omgdi:waypoint x=\"650.5\" y=\"329.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"650.5\" y=\"421.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"980.0\" y=\"421.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"980.0\" y=\"350.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"650.5\" y=\"329.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\" id=\"BPMNEdge_sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\">\n        <omgdi:waypoint x=\"669.5798319327731\" y=\"310.4201680672269\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"720.0\" y=\"310.20920502092054\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"669.5798319327731\" y=\"310.4201680672269\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</definitions>',0),('20112',1,'å­¦ç”Ÿè¯·å‡æµç¨‹.vacation-student.png','20110','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0m\0\0¯\0\0\0\áv(\ß\0\0=7IDATx\Ú\í\İ˜œe}(úSª\Õj9\â\Ã\ÃEŠ(¥\Çr\nÔ¢‘5)›Mp¢‡@$\Ùİ€\×R\ä$šr\Z©e³³£-ŠP*U.¥Qvw†$E¸‚^ä  œ‚\"˜oŠQ\r\íw\çÿe\ßÍ—\Ù\Ù\Ín²»3»ûû=\Ïû\ìfvfv3\ßûşÿ\ïûŸ÷û¦¥\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \Ñ~\ËK\0\0\0\0\Ğ\\\æT[6ğ\0\0\0€&pZµm­¶®¯s½$\0\0\0\0•\n6©P;m¶´(\Ü\0\0\0\04LmÁfO·\0\0\00ÁbG\ÍH…™ôs×¸\0\0\0˜$£-\È\Øq\0\0\00IR!f\Î\İ\0\0\0€1\ÚÛ3ñ¸m-\n7\0\0\0\0\ãn_Ourª\0\0\0À8\Û\ÓE‡\'ûy\0\0\0\0f¼ñş(;n\0\0\0\0öQ\íE„÷«¶…_Ç¢öq.N\0\0\0°—jw\ÄDÁ\å‹Õ–\r|m\áf¸\Ç)\Ü\0\0\0\0ŒQ½S˜b§LVh£)\Ü6©]Pø¹k\Ü\0\0\0\0Œ\Òp…”z˜‘\n7õ\îCû»\Æ\r\0\0\0À\ì\é¢Ã£-ÜŒ¶`“8U\n\0\0\0`£-œ\ì©p3Ö‚Mñ÷oi±\ã\0\0\0`\ĞXOQ\Z®p³\Ë\Şl×¸\0\0\0°·×”©W¸ùQ\Ë\Şlöõ\ï\0\0\0˜6öugK½\ÂÍ¾l×¸\0\0€F›7o^¦5®UA\×>\Â8%ªv‡Ín\ß]¦iš¦iš6Isb\0†+\Úx\ZfğÓ¢.\ë©½¼»\ï½Ë»\Ë\è\ì®\Ìiï©´v–*«V\ŞXyuñKK\Ş\ÔQ\êoø\ç\àN›\Ã~\ç\ØlÖ¯P÷\â\Ä¥ò\Úz¿¼}M\ß;ª\í\à\İn+U>9kÖ¬\Ó[\n;mª¿¯#¾^¶¶ÿğ\ÊYñ}ü­=\åw\íş\Øò²•+W\î¿\äº\Ê\ëò÷”\Ï\Ìÿ?\×öºreeV½¿a¬[<¿n\0`= H2Nûí£{ñ\İg]ò©\ÎR\å´(\Èt–ÊŸ\ïÚª¸S+\Òm\í=ı·¶¯\é\í|ıù›“?paö\æ#/{Ë¿ÿı\ìuo8\èUïš½ş\ßœqÌ‰\Ù1¿\Æ\İ]ı\ï\ï\è)a\çcûß—Š.\á¢/¬û(šD1&=÷\ÇV}\íş\Ãÿı\ïoûğ¥\×~ù\ãkû\Ş¿·½T¾:Š(ù}º\ËE1¦½»|m±€²³˜Tşbn:º*\Ç\Æó\Æ÷QxI_\ã~ñ»òBNş\\•9cù\Û:J•¿\Ïÿÿ¥\Ê\'\ão\Óu\0\0¬G\0I&T\ìlùc\ßó\Ë÷œıñ+:z*+:{ú/(Îœ[¼_N¢ Ò¾\æ[\ï>\ê¸\Ù_\İÊ:\î½\Åk\Ø\äŸõ¶wüav\è\Ûşc~ûüƒ¹\ß\ê\è\êı`<>Š%\Ñ\ÒóE\Ñ%vø\Ä.˜ø}§\Óş©\Ó\æ]ö\Ò\ém—ÿ÷\ÎRù=KK}\Ç\ì\ÜñS¾&v\ÕT\ÛUQœ\é\ì\ê{kT¢\ÈE•x®ReAz\Ş\ÎR\ß)\Õÿ\Ã©\Şö¼\ÕS^’~‰Ÿ\×ş={ú\ÛòO©|}µ›^\0`= H2)ş\ëŸ\Şşÿ\Ä—…W~ùÁ5¥şK\Ó\Ïw\ît\é_Gwÿ\ÊS\Ï\ë|\è?\Íşpd²\ãOkË9ñŒo´¯\éı\ÄÀ©Tû½÷Üc\ç\Íoÿ\î;³?<ó¿fÇzn¹úø\Óc\ÇLÚ¡Ò±¶\ï\ä(¬D&~\×/üoKOœsÁ/\Ï\ë\è¾%\ífY¹òkD‘$Š7yá¦»MGOy}\ì´ÉŸ£§|U|Í‹8\Õ\ï\ÓN¡\ÚS¢\Ø2øÿ¨>o`v×¬\Â\Ô\Î\ß7üß–lº\ËW¤ß‘ş6½\0Àz@dB-_\ÛwT0b§\Íû/¸ò\å8U*\n6\ík+ƒŸ*»N¢ğr\æEW?vø\Ñ\Çg¿wÊ‡²wz^¶ÿşû1\n6\Å\ç‹K\ËÀµn\Ş{\î²Ák\Ü‹)±“¥£§\\Š\ïú?8óˆÿpÒ‹x\æE+ò\ÂKwÿGÒ©OùÎŸÅ˜üº6ñ5ş½óo®Ä§L\å×²‰û\å_K•q\êÔ®S¹\Êg\Æó\Õüm-;Ÿk\×\ß3\Üß¶´ô\×\ï*ò\ìş·\0`= H2¡\âB½q\ÚQ|\ßö‰\Ï¥úe\ë[şı…—\\¿ñÀ\Â\İöûc\ßıõ?ø\à¢ìµ¯c^ˆyß‚ÿ\ë»q{IŠ\Ï×‰‰O\\\Ófö9Kó7\Ñ\Î8ÿŠÿ·¥ğ1\à\İı—W¿œöÖ·Ÿü\ËsÚ»¾²«0R¹2v\í\ÄiZqıœü¾¥òMi—K~Mšşÿ’g\çõvÊŸ,ô”\Ê_|®|wÌ®Ó™v]\Ã&ÿY©ö\Ú=5[~\ÚT\Úa“ş6=\0Àz@d\Â\å×ˆ\ÙU¸ˆ-;n~÷øS1û\ìKW¤û\Í>g\éÚ¸\àp\\x8v\Øı\Îÿüõî¾Gq¥½§ò\Ñ\âsvvW|»\ßÜ~úÑ–O”:\â\í\'\Ç\×\Òı>ò\'_úûwğo¿0÷cŸ\é¼8ğÀ©Jqú\Ñ\Î\İ4QŒù\Ú±C&\ß5×¤øt«\â\ïŒ\Çttm8$¿\îÎ®O·j\é\è.//\ÊTøÛ¢0³fğñ…]Eù\ÏJ\åµñû\ãÿVû·\é5\0\0\Ö#\0‚$*vØ¤ONJ×°I»J¢pó\\´ı÷Nù£‹c\Ç\Í\ÒRÿÿyÀo¼ö¦¸†Í›}\Û\ß.\ë\îk-µğ-Z~\İúÃ–­\é\ß2pªT\ËÎ‹\ç;m8\æ¤ó\ÎüØª‰\ç/O¢ˆ”\n2ùiJ\İı—\Ç\Ç{\ÇÅƒó‚\Íu•#\ão,>&ÿ¿”\Ê÷\í,:•ÏkÒ¤Û‹×³©ıÛŠÅ¢(ştv—ÿ\ïeİ•·÷·\0`= H2aFqm–¸f\ÌÖƒ;j\ŞÎ\Ş\îûoo{Ç»>\Ñ\Ñ\Õ;{\à¢\Ãù§6\Åu_\ê=8Š9\íkúNh\ÙY¨¹ e×©Qs\Şx\È¿x÷‡2ş\ã_ó\"I©|}:]+ÿşºÊ‘ñ<ñ;\âÔ¤\Øe“Ÿ×™\é\ê{\ë®\ß\Õ÷\Şø\Z…§ÁÓ¤º\ËW?9j˜¿mˆ¸ğqz¾z›\0`= H\Òò\ÂMµ\Í§\ç›Sm[\Æñù\0\0Àz@œ±Æ«p3\Ş \0\0°$g¼\Ø!³u\àk#\0\0\Ö#\0‚$\ÃH…—±\î”I;ll\0\0°$™ c=\Å\É)Q\0\0X\0’L’\Ñb¯¶m\Õv–—\0\0\ë\0A’\É§:mkş”§ô)Q\n6\0\0X\0’L²\áv\Ü8%\n\0\0\ë\0A’«-\Ğ(\Ø\0\0`= H\Ò$R¡¦«EÁ\0\0\ë\0A’\æq\Ì1\Ç,8–>\Ö\0\0\ë\0A’&:\ë\âXÎ={–W\0\0\ë\0A’&\Ğ\Ú\ÚzRõ8\îˆc\Ù\Ö\Öf§\r\0\0\Ö#\0‚$Í µµõ8\íA¯\0\0\Ö#\0‚$?~Ç§]6©µ¶¶º1\0\0\Ö#\0‚$\r>~\ëŠ›´\ÛÆµm\0\0°$iÜ±²\Ë&µ¶¶¶³¼B\0\0X\0’4\æ\Ø\İ]¯`3\Ğ\î÷\n\0`= H2ù\Çm\Ø]6®m\0€õ€ I\ãÛº‘\n6>I\n\0\0\ë\0A\Ç\0\0\ÌaIK\0\0\ÌaIK\0\00‡$q,\00‡@t,\0À@Ä±\0\0sX\0AÒ±\0\0sX\0A\Ç\0\0\ÌaIK\0\0\ÌaIK\0\00‡$q,\00‡@t,\0À@Ä±\0\0sX\0AÒ±\0\0sX\0A\Ç\0\0\ÌaIK\0\0\ÌaIK\0\00‡$q,\00‡$I\Ç\0\0\ÌaIK\0\00‡$K\0\00‡$q,\0À@Ä±\0À@Ä±\0\0sX\0A\Ç\0\0sX\0AÒ«\àX\0€9,€ ‰c	\0\0\æ°\0‚¤c	\0\0\æ°\0‚$%\0\0˜\Ã’8–\0\0˜\Ã’8–\0\0` H\âX\0` H\âX\0€9,€ ‰c	\0\0\æ°\0‚¤c	\0\0\æ°\0‚$%\0\0˜\Ã’8–\0\0˜\Ã’8–\0\0` H\âX\0` H\âX\0€9,€ ‰c	\0€9¬9,€ \éX\0€9,€ ‰c	\0\0\æ°\0‚$%\0\0\æ°\0‚$%\0\0˜\Ã’8–\0\0˜\Ã’8–\0\0` H\âX\0`\ëU\0$K\0\00‡$q,\0À@Ä±\0À@Ä±\0\0sX\0A\Ç\0\0sX\0A\Ç\0\0\ÌaIK\0\0\Ìa$\ëË²lÖ“O>y\Û<ğ¯ıııYoo\ï”lq,§\ê\ß\Ş\××—mØ°\áW\ÛùF%\0€õ\0‚d.\n67n\Ì6oŞœ½üò\ËZƒÚ–-[²õ\ë×¿\Ğ\×\×w‘	\0`= H\n’-±\ÃFÁ¦i\n7/÷öö>fd\0X\0’‚dKœ¥`\Ò<­··w‡‘	\0`= H\n’-qMÅ’¦*\ÚH\Ü\0\0\Ö#\0’£/\ÚüòŸŸË|ğ\Æ\ì}Ÿ\É[|·)´(\Ú\0\0`= HN€\Ñm¶mİ”=ú­«²\ï\ßõ‰\İZ\Ü?SlQ´\0Àz@g£)\Ú<óƒ¿R°I\í\Ù¬SlQ´\0Àz@o£)\Ú<Vù\ì°E›ø™b‹¢\r\0\0\Ö#\0‚\ä8M\Ñ\æ\ÑŞ•\Ãm\âgŠ-Š6\0\0X\0’\ãL\ÑF\Ñ\0\0\ë\0A²	¦hŸ5\\\Ñ&~¦Ø¢h\0€õ€ 9\ÎFS´yâ¾µ\Ãm\âgŠ-Š6\0\0X\0’\ãl4E›Ÿoz${ôCOª\Ş?SlQ´\0Àz@g£)\ÚD{ê¡›‡m\â6…E\0\0¬G\0\É	0ª¢\ÍK/eO|û=5ªz[üL±E\Ñ\0\0\ë\0Arœ\í©h³m\ë¦\ì\Ç÷õ{M›øY\ÜGÁE\Ñ\0\0\ë\0Ar\r[´y\é¥\ì¹\'\Ê\Ùÿü\æŸ[°I-\î÷µ\ëF\Ñ\0\0\ë\0Arœ\Ô+\Ú\ìiw]7Š6\0\0X\0’¬^\Ñf4»kF\Úu£ø¢h\0€õ€ ¹\êmö¶`“šâ‹¢\r\0\0\Ö#\0‚\ä>\Z\íG~kŠ6\0\0X\0’“H\ÑF\Ñ\0\0\ë\0A²	)\Ú(\Ú\0\0`= H6!EE\0\0¬G\0\É&¤h£h\0€õ€ Ù„mm\0\0°$›¢¢\r\0\0\Ö#\0‚dR´Q´\0Àz@lBŠ6Š6\0\0X\0’MH\ÑF\Ñ\0\0\ë\0A²	)\Ú(\Ú\0\0`= H6!EE\0\0¬G\0\É&¤h£h\0€õ€ Ù„mm\0\0°$›¢\Í\Ô*\ÚTû\ìñ­­­w½\0\0\Ö#\0‚\ä4§h35Š6Q¬©¶uÕ¶C¿\0°$g\0E›\æ.\Ú\ÔkR3z\0¬G\0IE­E›\Ö\ÖÖ“\â4¨\Úb¢\r\0€õ€ ©h£5¨hSog¢\r\0€õ€ ©h£5¾h£iš¦i\ã\Ò\ÌöÀz@T´uÛ²eK¼\æ\Ùm·İ–ı\êW¿\Ê?üğ\ì\ÔSO\Í.¸\à‚¼\İy\çù\Ïk·­^½z\Ø\×\î¸\ã\ì°\Ãö\ç?ü\á³\Ç¼\î\ïûò—¿Ü°Ó£\Î;\ï¼Óªıó~“p\0\ÌsÀ8$m&­}\ç;\ß\É9\älûö\íyq$\n\'ñµ§§g°`’\î{\Â	\'r¾ô¥/etPö\ĞC\åÿş\à?8ø³xô˜×¾öµ\Ùgœ‘ÿìª«®\Ê<ğÀ\ì\Ê+¯¼\ïı÷\ß?¤@S6şü\İ~\ß\í·ßÿ\ì³\Ï6\äB\Ämmmsªıt£¢\r\0\æ9`œ’Š6“Ú¢ ró\Í7\ç_gÏmÜ¸q·¢\ÍO<‘\ï–IE”“O>9[·n]v\Ë-·>ş«_ı\ê\çü\ÊW¾’˜\Ø\ÍSüY\íı\ï»\ï¾Á]@ñ7‹6ñ5Š9ş\Èï7m\00\Ï\ã@œ!&³h»U¢ òš×¼&/Î¤\"\Ê\ç?ÿùÁ\"I\ì¶i)m\Òn™–\âÎ«^õªlÕªUyq#Š-q{vj‹6\ÇwÜ°;m*•\Ê\à©Q\é¶gy&ÿş\Ãşğ\àm\Å\ï\Óc\ZU´Iv\Ş\Üoô`\Æ)€ 9\ÍMöN›tJTœv”\n,±“¦¶è’¾ê©§ò]5q\Û\Û\ßşö¼ˆ·ÿü\ç?\Ïo;\ï¼ó\ê\î\ŞI»iF\Úi\×\ÔI·=ò\È#ù¿=ô\Ğ\ìô\ÓO\Ï—\nLQ\ĞiôN\00\Ï\ã@œa\ZqzTK¡P\Ó2p*SH\â:7\Ï?ÿünE›O<1»ë®»¯+s\ÔQG\å§G\ÅE‚\ÓE£\Å\ã\ÆZ´)\ŞFN\ß\Ç\ï,^9\í\nR´À<0N\ÉIÓ¨¢Í£>š½ğ\Âƒ§F¥3q{\Ë@\Ñ&v¸\Ä\î—(Ä±Š¯GqD¶dÉ’üût‘\à\ÚkÎ´Œòô¨\âıc§M\ì\ê‰\ï×¯__· £h€y`œ’“¦QE›(\Ö}ôÑƒ\İ/ñ5NjO©ŠO|Š¯©ğ_\ãú6\é‚ÄµÏŸ\n9µ;mn¸á†º÷\Ã\Ş0¸\Ë\'.Fl§\r\0\æ9€q\n H6T£Š6qzS|4ñõé§Ÿ\Î\î¹\ç!×´)>\æ\á‡R„\ÙS\Íıã¹£/¤\ï\Óõv\ì´À<0NÉ†iD\ÑfÛ¶m\Ù\ã?Ÿ\nU¼ı¡‡Ê‹$\'œp\Â\àmñ}\Úñ…+Vdt\Ğ\à\éN©ø×·©÷»\â4©SN9eÄ¿§ø\Øx®ø\Û\âú9\é£È‹\×\ËQ´À<0N\ÉIÑˆ¢\ÍX?mª™ÿ>E\0\Ìs\0\ã@œ\Í^´™iM\Ñ\0ó0N$sŠ6Š6\0˜\ç\0\Æ)€ Ù„mm\00\ÏŒS\0A²	)\Ú(\Ú\0`§\0‚dR´Q´À<0N\É&¤h£h€y`œ’MH\ÑF\Ñ\0óÀ8$›¢¢\r\0\æ9€q\n H6!EE\0\Ìs\0\ã@lBŠ6Š6\0˜\ç\0\Æ)€ Ù„mm\00\ÏŒS\0A²	)\Ú(\Ú\0`§\0‚dR´Q´À<0N\É&¤h£h€y`œ’MH\ÑF\Ñ\0óÀ8$›¢¢\r\0\æ9€q\n H6!EE\0\Ìs\0\ã@lBŠ6Š6\0˜\ç\0\Æ)€ Ù„mm\00\ÏŒS\0A²	)\Ú(\Ú\0`§\0‚dR´Q´À<0N\É&¤h£h€y`œ’MH\ÑF\Ñ\0óÀ8$›¢¢\r\0\æ9€q\n H6!EE\0\Ìs\0\ã@lBıııŠ%\ÍÓ¶÷öö\î020\Ï\ã@$[6l\Øğ\Ü\æÍ›Lš mÚ´\éo{{{320\Ï\ã@$[\Ê\åò‡\î½÷\Şş\Ù\Ï~ö¢\ÂI\ãv\ØDÁ¦¯¯\ï\éj;\Ç\ÈÀ<ŒS\0AR\Ìõõõ\Í\í\í\í}0NÍ‰kªh“\Ş\âuLÁ\0ó0N$§\Ûq\\\Çrö\ìÙ³¼\Z\0`\Æ)€ Ihmm=©zwÄ±lkk›\ã\0ó0NIš@kk\ëqÚƒ^\00\Ï\ã@¤ñ\Ç\ïø´\Ë&µ\Ö\ÖÖ¹^\00\Ï\ã@¤±\Ço]±`“vÛ¸¶\r\0˜\ç€q\n HÒ¸c7d—Mjmmmgy…\0+\ÍsÀ8$iÌ±»»^Áf \İ\ï@®4\Ï\ã@dòÛ°»l\\\Û\0\ÌsÀ8$i\Üq[7RÁ\Æ\'I€y§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7‚q\n€ \éX€\Ü§\0‚$%\0È€q\n H:–\0 7Ê`œ’8–\0 7\Æ)€ ‰c	\0r#§\0‚$%\0È€q\n H\âX€\Ü\Æ)\0‚¤c	\0r#`œ’8–\0 7\Æ)€ \éX€\Ü\èU\0\ã@Ä±\0¹0NIK\0Á8$q,@nŒS\0A\Ç\0\äF0NIAÒ±\0¹0NIK\0\ã@t,@nŒS\0A\Ç\0\äFÀ8$q,@n\ã@Ä±\0¹0NIK\0Á8$½\n%\0È€q\n H\âX€\Ü§\0‚¤c	\0r#`œ’8–\0 7\Æ)€ ‰c	\0r#§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7\Æ)€ \éX€\Ü§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7‚q\n H\âX€\Ü§\0‚$%\0È`œ\Z§\0‚¤c	\0r#`œ’8–\0 7\Æ)€ ‰c	\0r#§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7‚q\êU\0$K\0\ã@Ä±\0¹0NF\×EP\ÜC{\Ğ+%\á€\Ü§\0“¯¶#mZ[[\çz¥$<\0\ã`òƒ\â\İ#m\îŸ={ö,¯’„\0r#`œL~P<~¸¢M[[\ÛY^!	\0\äFÀ8h\\`¬wm›í²‘ğ\0@nŒS€\Æ\Æ!×¶q-	\0\äFÀ8h­­­w\Øe#\á€\Ü§\0M¦µµõ¤Âµl\æxE$<\0\ã yd~m»l$<\0\ã ¹\äñ‚¤„\0r#`œ\Ò0Y–\Ízò\É\'o{\àşµ¿¿?\ë\í\í\Õ&¹õõõe6lø\ß\Õv¾~\Õ\\-‚¤~%\áÈ¡\æfr£q¤G\Æ)\rÁl\ãÆ\Ù\æÍ›³—_~YkPÛ²eK¶~ıúªÁ\íıJÓ¯$<À\ÜL•C\åF\ã\È8\Â––¨>fM\Ô^\î\í\í}L¿\Òô+	07“\Ã\äP¹\Ñ820‡¥%¶\n&\ÍÓªm‡~¥\éW`n¦É¡r£qdaKKœo(4U@\Ëô+M¿’ğ\0s3M•#\ãsXF\Ğ~ù\Ï\ÏeO>xcöƒ¾\Ï\ä-¾\Û!M¿Ò¯$<\09T•#\Í\\\Ô8¥Am\Û\ÖMÙ£ßº*ûş]ŸØ­\Åmñ3H@Ó¯ô+	@•C\åF\ãH35Ni@@{\æ?$˜¥ö\ì\Ö	Dš~¥_Ix\0r¨*7\ZGš¹¨qJ#\Úc•\Ï\Ğ\âg‘€¦_\éW€*‡ÊÆ‘f.jœÒ€€öh\ï\ÊaZüL \Ğô+ıJ\ÂC\åP¹\Ñ8\Ò\ÌES4M¿\Ò$J	07“C\åP¹\Ñ82\Ìa11ˆWR. \Å\Ï\"M¿Ò¯$<\09T•#\Í\\\Ô8¥\í‰û\Ö\Ğ\âg‘€¦_\éW€*‡ÊÆ‘f.jœÒ€€öóMdŞ³b\è¶Á\êmñ3H@Ó¯ô+	@•C\åF\ãH35Ni@@‹ö\ÔC7	hq› $ \éWú•„ ‡Ê¡r£q¤™‹\Z§4* ½ôRöÄ·ÿ\Ç\Ğmƒ\Õ\Û\âg‘€¦_\éW€*‡ÊÆ‘f.jœ2\Ém\Û\ÖMÙ\ï\ëö|\ÏøY\ÜG0\Ğô+ıJ\ÂC\åP¹\Ñ8\Ò\ÌE÷zL®‹q¹‡ö W\Ê\Ä`°òü\Ü\å\ì~óO†\rf©\Å}\â¾*\Òš~¥_™˜È¡r¨\Ühi\æ¢{5&¯¶#mZ[[\çz¥LöXyV‘\Ğô+ı\Ê\Ä@•C\åF\ãH3÷qy÷E›ûgÏ=Ë«db0ª\ÊóHiI@Ó¯ô+S`~\ËK ‡Ê¡r£qd±Û¸<~¸¢M[[\ÛY^!ƒ¼\ím0KM`\Ğô+ıª\É\Ì˜˜\Îõ¡y\Æeµ—r¨*7\ZG\ÆC7õ®mó ]6&š€¦_\éW\Ó\ÑiÕ¶µÚºö\Ûo¿­\ï>\ë’Ou–*§\Õk\İ\å+:Jımñ øw{Où\Ì\á\î\×\Ù\Õ÷\Öô–w÷½7¿½§rVG©¼6l©ò\É%\×U^\'\ËÀ\È\ãr\à«óó\åP9Tn4Œ#vm†\\\ÛÆµlL4M¿Ò¯¦ó\Â0%¹9û\ïÿª-\éß—­\í?<&’õ\Ø\Ñ\İÿ‘®Ê±»MHK•1	­÷˜\ÎRÿû–u—ß¹reeV{©|µ\ì£—Õ¶E\áF•C\åF\ã\È8b—\Ö\Ö\Ö;\ì²A@\Ğô+ıj&-‡\Ü^`ö/_\ÛwTİ‰iO¹_W®\\¹I\ë\åñµ}M\ßÁi\Ò\Z\ï<\æ\ï&v—¯h_[™»ó\Åş\Ï\ÅDU¦ÑK/‘*‡ÊÆ‘qD^´9©p-§›$š~¥_M+sö°\0œó\\´ı£+oİ¸´ô\×/\ï. ö±…;Ÿ„–\Êg\'Ÿ·­M“\Öü\İÃ‰\è`\ë®Ì¹¬§r´c—?ŸñS9T•#ãˆ®m3cw\ÙdYö\êGydñM7İ´~õ\ê\Õ/,[¶lÇ…^˜W²\Î?ÿü»\ä’K^¾ò\Ê+Ÿü\ìg?{Kµı®‰& \éWúÕ”š”»ğk/•—ÿŸ\ÛŸ6ï²—bò\Úymÿ¡1\Ù\\yc\åÕƒ\ïÆ¿«\Ïô\Î\á\Îûô·\Å;ˆ±<İ¯óºÊ‘\Õ\É\èªİ¶Š÷TV÷.%\Ìğ‚Í\n2v\ÜÈ¡r¨\ÜhG3Ö‚\Ş\Ü\Ú\Úz\é¼yón«¶\'ª\íW»m¶W\ÛS§L]÷›öÅš\Ûo¿ı\æU«V\í\è\è\èÈ¾ğ…/d<ğ@¶iÓ¦lûö\íYˆ¯›7oÎ¾û\İ\ïf7\İtS\Ö\Ş\Şşo?¹è¢‹>fb 	hú•~Õ´NiR\Z\ïüuv—/Z~\İú\Ãò\ÄøÉ¿º-\İ?\Ş5L\ç\Û\Ç;Œ=ı\Çyø¥ò§wN6\ËWU\'¥\'\Ä6\ï\êm\ï)L`\Ï\î\ì)/\ÙıüşòM;`t\ãr\î¯h£É¡r£qdMiñQ\Ş\Õ\Ö[m/÷q\ßuZ¥zÿó§İ‹ñÀ,ú\Ó?ıÓ—>ñ‰O\ä™W^y%­‡~8û\ã?ş\ãW/^üØ¹\ç{¤‰& \éWúUSNJ\çÖŸ”~\í€\ÎR\ß)»MRK\åk·-&§ñ\Î`ü,¶„G\ëX\Ûwr¼‹˜O@{\Ê\ï\Úù\îbyy<Wz˜¼\ÆE—–úI\ï2¶¯)Ÿ“[S\Ø\ë3ƒ\ãR\ÑF“C\åF\ã\È8š®\æÍ›÷–¶¶¶o¡PS¯mœõ‰,\Ëf\İy\ç\å‹/¾8[·nİ˜Š5µ¾ù\Íof‹-zqº\ìº\Ğ4ıJ¿š‰Ã˜h¶÷TZ\ë=¾£\Ô\ß1\ÜG’¦‹0†x\Ç1\î\×\Ñİ¿fç»\Õ\Éi×†CòŸu÷ÿµ‹£`³O§:\Í\ØS¥\äP9Tn4Œ£é¯µµu\Şüùóÿ¿bfÁ‚ÙŸıÙŸe\år9û§ú§\ì¿øE^ƒøÕ¯~•Ÿt\ß}÷e]]]\ÙG>ò‘\Ú\ÂÍ¶)½\ë&\n6÷\Ş{\ïw–.]šıø\Ç?\Î\Æ\ÃO~ò“\ì\â‹/~ñcû\Ø\ÇM4M¿Ò¯\ZjOV¬+&¥ñ±¥õ§\ŞÇ’.-mxSuRú…\ê\ã>ºó\ß\ßx}şã•WÇ–\ïücP£•\Ê\×_rı\Æ£™0ƒ\íÕ¸œÀ\ç‘Cµ™–Cg|n4Œ£&/\Ø\Ìmkk{¥X¬¹\å–[òK´Œ\ÆÖ­[óû\Ç\ãŠÅ›\êsNÍ%±\Ã&\n6£}F+ï¢‹.\Ú6\Õ\Ï#\Ğ4ıJ¿š\Ãñ:…\ÂEPÁ¸”Cµ©CA\ã\È8j\î‚Í¼bÁfùò\åù®š½‹K¿\Ôn¦V}\"®a§D\×›z;n.¸\à‚­\Õf\Ê~´«€& \éWú\ÕU{a\Åıªm\áÀ×±¨}ÜŒ¿*—r¨6es¨1hGM,®aS<%jÅŠƒ§@\í­8u\êê«¯®=Ujj\Ô\'\âS¢>ó™Ï¼×°™Hw\İu×‹,¸\ß\Ä@\Ğô+ıj\Ò\'¥s“\ËøTŠl\à\ëh\'§\Ã=N\áŒK9T›j9\Ô4Œ£&7şü¾\â›}-\Ø75;n6N‰\ä;\îø›ø\Ãÿ\å_ş%›hK–,y~ª&% 	hú•~5\Å†-\ïf…6š\ÉiqRš\Ú…Ÿ\Ï\Èki€q)‡jS2‡\ZƒÆ‘q\Ô\ä\âc½‹×°\Ù\ÛS¢F:Uªx›¦¯O\Ä.›U«Víˆõ\ßÿş÷_ª»m4M¿Ò¯¦\á&‹õ&™#MN\ë\İÿ†:÷w0.\åP943§\Ş4Œ£&,\Úô¦‚J\\Dx\"\Üz\ë­Sg·\Í#<²8.>¼/\í=V‹-z>\ÎQk¦NQm( 	hú•\ÖLıj´}h„I\éœ1L6\ëMNG;)­œ:UŠi=‘4.\åP­q9\Ô4Œ£\éC,Xğ\ætñ\á\Ø\róóŸÿ|Bjñ©R5ş–¦}\ánº\é¦õ7\ÜpC6™ººº®¾(—7\ËkP\Ø\Õ\Û\Ú\Úz’€& \éWú\ÕT\êC{99\Ü\Ó\ät¬“\Ò\â\ï\ß\Òb\Ç\rÓ”q)‡jÍ¡Æ qdM\ïZ½ı\Òt¿k®¹f¢\ëÅ¢\Í\åMûÂ­^½ú…x`R‹6\ßşö·R}Q\Ö5[\ç)´»\ëU\04M¿Ò¯š±Õ™”vR8\Ü\ätÿ½œ”Ö¾›©pÃ´p\Z—r¨\ÖØ¢1hG\Ó3‡Vo»-ıü\Ş{\ïĞº\Ä}÷\İWü[\Ö5\í·lÙ²\Ï=÷Ü¤mşù\Í\Õ\å™&\î<ƒÀb\'\Ğ4ıJ¿j\Æ>´—“Ò‘&§?Ú‡I\é¾ş=\Ğ2b»q)‡Ê¡\Æ`£Ç qdM\Å\Ø^ı÷\éöñ¾\0q­M›6ÿgšö…»ğ\Â³\íÛ·Oj\Ñ&~_õE\Ù\Şì§XŒ\í[š€¦_\éW\ÍØ‡\Æ\áİ»z“\Ó}™”\ÖNN]\ã†i?\á4.\åP­±Ec\Ğ82¦G­¶Ó¿\Ç\ëc¾Gúø\ï\Â\ï\Ş\Ş\Ô/\\#Œ\â€5]Ğš«M\Å>¤_\éW\ã\İ\Î>û\ì4\ì\Ú\Çt°w4pû¾\èš.cU\Ó\ÆÚŒK9T•§\Ê\Ô£fl“]—hÚ¢\ÍÂ…ÿm²wÚ¼ø\â‹\ÏO‘6¶¶¶Î={ö¬‰\Ü:	\à\Úk¯rÛªU«†\Ü7Uü\ìŒ3\Î\È.¸\à‚\İÚwŞ™\İ|ó\Íù\Ï\Óıø\Ãf?şx\İ\ßù\å/¹\î\ß\çöy\ä‘Yõÿ?\ç;\Şñ\ìşû\ï\Ï\Î;\ï¼üß¯}\ík‡<\æ\ÑGÍŸó§?ı\é\àó\Ç\ßd§M\ãúÕ¯ÿú¯\çÇ¬ö¸GŸˆc\\{ÿ\ï|\ç;\Ùı\Ñ\å)ö©x\Ì_ş\å_{\â>µ÷¯T*{\ìóŸû\Ü\çöxŸ\Ë/¿<ÿş«_ıj\Ş÷\Ó\íñ\Ñ3|§\Ín}¨eÏŸˆ±/\ï&~q<\ŞM\ì,UNk\ï)Ÿ_k[GwùŠÎ®¾·¦-\ï\î{o~{Oå¬Rymş\ØR\å“K®«¼\Î>Œ\Ëñ—\Å?¾¶ï=\å%\Ã=¨³\Ôw\Ê\ĞñÛ¿:n\ë°r\å\×¨ú/¯¶Lf½û\î»ó\Üu\ÄG\ä_\ã¶x\çu4¹,ò\ÒO<‘?nõ\ê\Õ\Ùk^óšì ƒ\Z\ÌW©\Å<,Í‘\Ò|*\å\Úzyvoòq³\ä\×ï´‘›l.:k¥Ú¾}÷¨£Ê¿O\ë}Y\Ë\Øi\Ó<9´úı6;mj,]ºô\åÉ¾¦Mu`ı¨É¯iSô[&ºhó\È#dO=õTöş÷¿01G`¹\ã;ò\ï·lÙ’\ß÷°\Ã\Ë\'qûC=T÷¹–/_>ä¶˜\0ô÷÷gó\ç\Ï|ş/}\éK\Ù\í·ßÿ\ì³\Ï\îvÿx\îøúÿøù\×\Ûn»-Û¶m\Û\à\Ï\ã÷§û\Ç÷\é9\ã~ñ¼x`~{ü­Š6“Û¯\"q¥\ã…¹SN9%»\ç{oû\ÊW¾’öüó\Ï>\îMozSvê©§\Ö\íS\ÃM\â\Ò1¯½­\Ø?¢­_¿~°¸_9\äü\ïŠ\ï£E?¬\í+ñ<ñ\Év\éû(H¦\ï#Q\ÏĞ¢M\İ>T˜nk™˜óö÷frº\Ûyû±\ë\èª»Û„´TY“Ğ˜|] ö¿oYwù+WVfµ—\ÊW+`\\ÿ¸,Z\Ş]ş@´\á-+ó\Ë\×ö\Õ\Ù]YX\ï>Ëº+o¯·ø¬\ŞN{wùov¾Jşzµ÷ôŸ[¯ğ3Y94^\Ëô\ÆS\Ì\Åbş’òeü\Şøş7ó7w{L,şÖ­[7x¿˜[ô;~\í\×~-{\ÃŞ\ç\ÜT ¹ë®»ò\ÇÆ‚¡öşc\É\ÇÍ–_T´‘›t3\ŞE›øzú\é§\çı,\æ³1M\ã7\Ö9{»–Q´i®\êš6u\\u\ÕUOLö§G}\ë[\ßúF“~z\Ôımmmg\rô\Ç= EòN	ÿº\ë®\ËN8\á„ü]bQ%’ü\Ã?¼[ŠÏª¯\Ç{\ìn‰:‚Q\ÜÅŸ\Újs|\ÂOª8§\ç¯\rr\Å\İ\é\ïJ™bA)~^¼Jòñ}\\\')¾Og<v†m&µ_E‹\×<^û§Ÿ~:ÿw1I¥wk[L\Úb²\ZE¿\Úwö\âx{\Åcÿ®w½k\Èıkwò\ÔN[jv’Å„öŠ+®È¿ş›\ç\İ\ï~÷\àî±´c,õ©ø\Ú\İ\İ=SŠ6#ö¡=½ƒ>\ÆIiœ§_\ï2\Æ29rr©¸ğ+Šw\×ó\ÅÛš¾ƒÓ¤5\Şy\Ì\ßM\ì._Ñ¾¶2w\ç;ŠıŸK=0.÷m\\vtm8d÷\âJùšR\Û\à\ì._»´´\áMC\Æk©|vaF*\ìŒEÄ†z›¬šrJfR±£øóxƒ#\íJ)¶´§¸«8şrYj‘‹óª(¢DÁ$\æwK–,\Ìw\Å\â\ÍXòq³\å\×I.\ÚÈ{Èœ‹W‹\"\éÆ‡Œ½£>:_û\Ä·^xaŸ\Ö2Š6Í•C}zTş\ç~C$É´bÅŠ»š\és\Ğ÷P¡ŸĞ€–’y$ñøw$\é“O>yğ’øY1Pf÷CñÔ¨ô\Ï<óLşı‡?ü\áÁÛŠß§-Àñœi±Ÿ\\lıw†Ò»Cõ\ä±p\çzÕ«^•Op\âû˜D\Äÿg\ï´iX¿*¾\Ã;oŠ;m-Z”ğÁ\ïö˜\Ã?<Ÿ\Ä\Õ;]n\ëÖ­CvdE±/=_qR\ïF\"­\í\çqÿb¿NGl¯w*]\í;ñ÷\Æÿ#¾w\r\ã\İ\Å°\ÓfT}h´ï¤rRº\ß?\Í\äôøj\ÛRûûc÷\à‚¯0ù¸mmš´\æ\ïLD‹\ï\Ò_\ÖS9Z¹\0\ãrü\Æe\í\"±:oª·p¬\İ=S½\ßcGNaÍµcyıò:…\ç‹8…±¾0ÅŠ\ÉÊ¡)\Å<)\æ91\ïùĞ‡>”\ç§(\â\\z\é¥Co¦¥\×?\æ:Ÿşô§ó\âH½yY\ÜgÙ²eù\\*\æV‹/\Îo‹Ef*Õ¾\ë?–|\Ülùu’Š6r\ã(sc#\ç¢\ã9§]5±VŠùe|]7QŒŒe1\î\â’\0\éş{³–Q´i®Zıù¥©r\Í5\×Lh]¢«««X´¹¼i_¸O}\êSo«&¤}\å•W&\íÃ£\æÏŸÿ\Õ\å-S­“M\ä\éQ\é]’\Ñmb\ÇLK\Í‡´`D\åT‰.¾sÿ>ô\ĞCóm…\éù£:•”ø?ÿù\Ïï¶›\'+:ql\ãM¿£v›pK\á™–:;m\ê]SG@›¸~;¸\âuO\ÇrÍš5ù1«\Ì\Å÷‘\Äj‹0\Ñÿ¢\Ä\ã;\î¸ükô“ø¾ö¸§\É`l=­\İ}Uï´©b?I“Õ¸@¼\ãXo\\Ä¤5Ÿâ–t{OOD9\Æwó\Æ8)m\Ù\Ë\ÉiÚ†~Vw\ç\×\Æ\Ä3½s\Øymÿ¡ñ®~¼ƒ[Á\Óı:¯«YŒ®\Úm‘\ØSY=\åŒ\Ëñ—\ÉE_X÷ñn}ûšò‰µ?«S\ÜY;\Üó,-õS\çÔ¨…± ­÷|y§§¼d¸;“‘C[\n§GE‰a:\í;ZÌµ\Î?ÿüº§\"\Ç\Ü*‹igK<®ø\æF\Ì\âôôô{b‡sí–T\0*mö&7K~mò*7N±¢MŒ¡\Ø!¯qô\ç\ÔOO<ñ\ÄÁ1\Zk¨–3\röv-£h\Ó\\,Xğ\æ\ê1\ÛÇ­ú}~,\'BÁ«ñı\ß\nE›\æ®O,_¾ü}÷»ß¬S£n©¾ -®÷¾h“É£½\0]m2@W\Üj›?=gqS|\\‹bGN|_¼\È^‹6M×¯Š„N\ÛCS\Ò+¾³\ßG1/ú\\±\ßûGl‘I\\\ËÀ­\âqOº\Øb]œW´Iı¤X<ŠwI\â]\Í\â©]±½¥pÑ¹Ú¾8S®i³†{Wq´“Ò±NN\Ó\ï;k\èB\î¯\ï\ì\é¿8\Î\Ã\ï,•?½s²Y¾ª:)=!¶yWo{Oa{v¾ˆ«yg\ßz\ãr|\Ç\å\î\Çş\Ë\Öö\Ş\ŞSù\èş#\í¬\ë\éQ;O\ëø\Úq]›FmR#\ídIÅ”´P,¶´+%\n6‘¢\Ğo‚¤\ÓÔ‹9-]¨8NiLz\Ş\â.€T´Ù—|\Ü,ùu\n\äP¹q\nmŠ\×iŒ\İa+V¬rjS*\Î\Äÿao\×2Š6Í§­­­7Sb÷\ÔD¸õ\Ö[‹»lš¿>ñÑ~ô\Ü\Ë.»l\Ç$\ì¶\Ù:şü\ïU\Âù\×/_#\Ş5‰\âIl¯-\î~(›.QpIE—\Úóœ¿÷½\ï\Õı´ƒ–Â…\ãû\â¶\×\á\×)\ĞEu:’~L.\Ò;?\é\Z;é”«–‹ğ\Õmb\ï>\r7\é\Ğ&6Q¦‰a:F#\í´)\î\Ê*ö‡–\Îko)\ì´i©¹\0ö¾mb§Pºh\\±ÀTLºi’[\ï:;úÕwk·c/Ã¤t¤\É\é£}÷2]\à´cm\ß\Éñ.b>\í)¿kç»‹\å\å±hK÷\Ék,\ãûô.c¼û“[\ë}Œ\Ëñ—ƒ‹Á®Ê±©Xc.N‡\Z¾(S™×¾¡ú;[\Óˆ\ÛK\åe±³ QE›tm—bNKy&½\Ó_|Lxb^“-»[\ÓÜ¨8‹üZüt¦TJó¬\âµnö%7K~\"9Tnœ\"E›\â5lŠ\×\Ïn§\ÍX\×2Š6M]´9+Tb·\Íx_8¯º~\Üe3e\ê‹/~$®„?‘\âú9Q\Å\Z\ã9¨\ÓvqcJôé›TˆIÉ·˜<\ë}\ÊÀ®u·¥O-ˆ\ï\ãb\Äõv\Ú\Ôtµ†\Úk•\Ôûıi÷…€Ö˜~•Ş½KŸ–ûp;m\êzÒ¹¾{š$\Æ\ïH\ïpDüˆ\ë\Ù\Ä\ïO\ÛÁk?Vµø\Øô»cB\\\ïbp-5\ç\Ü\ÇxI“\İø¿DßœˆwI¦a¢¬ı\È\Ó\â$s4“Ò–=<nxŒwñ‡ûH\Òt\Æ\ï8\Æı:ºû\×\ì|²:9\í\ÚpHş³\îş¿vbŒ\Ëñ—ù¸*•\ß§b\ì^L\é¿5v¾\Ô\îš\Ùù1\İ}§\Ô\Û‹ÉºŸ\Z5x\Z\Ç\Î\İ»~G|\Äñ®OŒ\Ê\Ç}©\\‰R#Š61\ç‰7¾Šy0\å\Î\ÈQõvŸÄ›l\Ñ\Òs\Ä)F±ó&®ƒS{J{\ä\ÇÈiQŸ\Zop¥9V\Ìÿ†{\ãe4ù¸™ò\ëÊ¡r\ã)Ú¤~\Zc\"9\ãT§z;m\Æc-£h\Ó<\æÍ›WIE•xsx¼>ş;\ÖÓ—]v\Ù+\Å]6S¦>\çp-Z´\è\Åÿø\ÇR°©&„;«¿ã¹¶¶¶){1É‰hÑ\Ò\Â:¶Fk8§yO‹ôHØ©To§Mt\È\âB{O;\"\Òs¥ŸEpL[rcò1RP­w\Ñ;­1ıª˜´FS´‰\ç\Ë\Ç\ä3‹ıe¸Q\\7\'½\Ã\çş·\Ôù©Ú¿k¸O±Šó‘\Óº\ã#\Ë\Óı[¶²\Æ×´=¶öS:ô«a\Õn\ßo\à\İÀ±~Ti\í\ã\æŒfaX\ïcI\ãSiª“\Ò/¤wø\ã\İ\Âü\Æ+¯-\ßùÇ F+•¯¿\äúF3}Á¸Ÿq¹óú}§,¿nıaµ?\Ë\Ç`w\å\ÊÚŸ\Å;ı\Õñ¸ñ\ãkû\Ş8\ä1£<-j\ç§\à”\ßSo<\Ç\ï«.bo\ì\ì\ê{\ëdm\ÒõdÒ¼+\æ<)\ß\ÄE†[.„Z\\ ^y\å•y®J÷Kó¥¸=ş]üñFFñ9\Ò\Â3rfºşF\ín±\æ\ãfÉ¯S,‡ÊS¨h\ÓR¸NM\ZKÅ³Šó\Î}Y\Ë(\Ú4W}¢Ú¶¤\âJÄ§}-\Ü\Äzûê«¯.^\ÇfÛ”«OT[/^ü«Í›7kÁ\æ\ÙgŸı‡ùó\ç?=UO‹šŒ€A(‚Í‘G9ì†‘Ÿ&õ.–\ïòŸ+\Şy‰;i;p¼›4\Ü\Ç\ä\Å;/ñnPJ\îiB“Î…®÷·\ÖûhLmòûUš€¥d“\ÃH`ikô©§:\âc\ã·œvWû³\Ø^\ZI0.|]û1‹©ttt\ìÕ¤2Z\Ú%T¼8bú^¿\Z·\É\éx¼K¹eŸnŒ\ËIÏ¡‘_\"/\ÆÜ¨ø\îıpú/\îNN»qb\çLm«·3\çŒ3\Î\ÈOQZüY, O8\á„1\ç\ãfÌ¯S0‡\ZƒS hc&\nµo8§9\íy\ç7nkE›\æ\Ò\Ú\Ú:/]”8\í¸\Ù\ÛS¥\âq5;l²)[ŸX°`Á¢‹.ºh\Ûxí¸‰6Q°©¾\àlq­	hú•~5-&§\ã=\É…\ãR•CA\ãHS´bŞ¼y7q›¸H\\8~´Ÿ.^\Ã&Ú”¯ODE\ëüó\Ï\á\ïş\î\ï~¹\'\Şúñ7\Æ)QñB›hš~¥_5…QmÛÀ\ÇÆ¥*‡\ZƒÆ‘¦h3¦úDµm-]¢xs\Í5\×d÷\Ş{o¾‹&:§@mÚ´)?‹¥T*e.ü\×\â\ãâ”¨\éRŸ\È\Ï!›?~ÿ\âÅ‹Ÿÿ\Ş÷¾÷\âŠ5\Û\ï¹\ç[\Ï?ÿü\ã¢>Sù\Z6š€¦_\éW\Ó|8\ÖwGuqSÀ¸”C\åPc\Ğ8\Ò\ÌEÇ»>Qü(ğ½lÓª>Q|qÎ‰\âÍ…^¸yõ\ê\Õ?ø‡ø‡§7m\Úô\\œc^|ñ\Å\çúÓŸş¨¯¯\ï\ë+W®¼{Á‚OÆ‹Õ«©ú)Qš€¦_\éW3ÀX·q;%\nŒK9T›\î9tFA\ã\È8šjõ‰\âÍ±k¦c}bˆ¼¹ú\âtTÿ³·U\ÛSÕ¶}\àˆ¯\ÏTÛºj»<*`&š€¦_\éW\Ójrz|µm«¶³LÀ¸”CµiCg\Ü4Œ#õ	L4M¿Ò¯š×œI\çœ~¾EÁŒK9T›A9tFA\ã\È8M@Ó¯ô«\æ6Ü»ŠN‰\ãR\Õfj1c\Ğ82À\Ä@\Ğô+ıj\êMN-Á¸”Cµ™Cg\Ä4Œ#\Ğ4M¿Ò¯¦\Ö\ä´\Ë\ÂŒK9T“Cg\Æ4Œ#\Ğ4M¿Ò¯¦8O?kñ±\Ş\ĞT\ã2.®Xo\\vv÷ÿõÊ•+÷¯÷ \ÎR\ß)¥\Êi»·ş\ÕqûXÿ€•+¿vÀ\Ğçªœ\Ö\Ñ\İyµ}DÕ¦yÖ¹\Ñ82@@\Ó4ıJ¿šZ~\ËK\0\Íe hS¯²jøB\Ë\Îb\Îòµ}GuvWÖ»Ï²\î\Ê\Û\ëcª÷Ÿ\Ó\Ş]ş›İŸ¯’Tj{Oÿ¹{Sø‘C\åP¹\Ñ\\T3M@Ó¯4ı\n˜\ÖE›¥¥\roZ~\İú\Ã:\Öö\ÜQ*Ÿÿ\é±qŸ(ÂŒT\Ø‹rio\'‡Ê¡˜‹j\Æhš~¥\éWÀ´.Ú´w—¯\İY°©,XZ\ê;¦}M\ß;ŠE™\Ú\İ3¥ò—w—?P\ØAs\íX~w¾S§ğ|±§°#ga{©òI9T“C\ÍE5\ã4M\ÑFÓ¯€]´\é,•\ß\Ó\ÑS9+¾\ï(•×¦ŸÇµm¢X\ß\×\î‚)Ş¯V}\êœ\Zµ0v\ç¤ûŸ//\àô”—·sG•CVsQ\Í8MS´\Ñô+`\Æm.[\Ûx\ì˜,\Ô®gE”Rùúzig\ÍXOsj/õ.®¥×µ‘C59\Ô\ZG3@@\Óm4ı\nP´‰¢MO\å\è\âm¥ş¿\ÚU|©ÌŠ¢\ÎĞ¢LeVg©|\Íxü\r\í=•\Öt\âöRyYûš¾ƒ\åPM5ÕŒ#\Ğ4EM¿f|\ÑfW!\ækttm8¤£»¼|¤\Ç\ìüt©¾S\êíŠ‰O\İOJ\×Á\é)_Õ¾¦\ï„]›ò™\ÅOŒZr]\åu¥r¥£«r¬ªÉ¡æ¢šqš¦h£\éW€¢M\Ë\Î\ë\Ğt”Ê½{\Úé²¬»ü\Î\êı6~|m\ß‡tFwZTü¸\Î%\×o<°ögù\'X•úo\ì\ì\ê{«ªÉ¡æ¢šqš¦h£\éWÀŒ/\Ú ‡Ê¡G\Æ  	hú•~ h#‡jr¨q¤G  iŠ6š~ h#‡Ê¡GÆ‘^	š€¦_i% h#‡jr(Æ‘qš& \éWú€¢*‡bi\Æhš~¥\éW€¢¹™&‡bG  iš~¥_(\ÚÈ¡šji\Æhš¢¦_Š6È¡r(Æ‘q\Ô\ê\ï\ïHš§m¯´ú•¦_Š6\æfšŠqd-6lxnó\æÍ‚I´M›6ım5 =¦_iú hcn&‡É¡G\Æ\ĞR.—?t\ï½÷şó\Ï~ö³•\ÆUŸ#˜õõõ=]m\ç\èWš~(Ú˜›É¡r(Æ‘qäªƒhnooïƒ±m-\Î7\Ô&½\Å\ëş\Øtfú•~ h#‡Ê¡GÆ‘\Ş\0\0Š6\0\Ó)F®‹89{ö\ìY^\r\0\0`²$Š6\0u´¶¶T‘;\"N¶µµ\ÍñŠ\0\0\0“J\Ñ ¾\Ö\Ö\Ö;\"F´½\"\0\0À¤R´¨O»lRkmm\ë•\0\0&sa¢h046®+l\Òn×¶\0\0&sa¢h°{\\²\Ë&µ¶¶¶³¼B\0\0Àd-Nm\0v‹w\×+\Ø´û½B\0\0Àd-Nm\0v\Å\ÄawÙ¸¶\r\0\00\ÙE€]1q\İHŸ$\0\0L\æE\Ñ@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0`:,F4MÓ´‘›l\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\04\Ôÿ\çka\ÛW4\ï\0\0\0\0IEND®B`‚',1),('20115',1,'å­¦ç”Ÿè¯·å‡æµç¨‹.bpmn20.xml','20114','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.activiti.org/processdef\">\n  <process id=\"vacation-student\" name=\"å­¦ç”Ÿè¯·å‡æµç¨‹\" isExecutable=\"true\">\n    <startEvent id=\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\"></startEvent>\n    <userTask id=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\" name=\"å¡«å†™è¯·å‡å•\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <sequenceFlow id=\"sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\" sourceRef=\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\" targetRef=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\"></sequenceFlow>\n    <userTask id=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\" name=\"è¾…å¯¼å‘˜å®¡æ‰¹\" activiti:assignee=\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\"></userTask>\n    <sequenceFlow id=\"sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\" sourceRef=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\" targetRef=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\"></sequenceFlow>\n    <exclusiveGateway id=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\"></exclusiveGateway>\n    <userTask id=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\" name=\"é™¢ç³»é¢†å¯¼å®¡æ‰¹\" activiti:assignee=\"å²—ä½:ä¹¦è®°\"></userTask>\n    <userTask id=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\" name=\"é”€å‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <endEvent id=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"></endEvent>\n    <sequenceFlow id=\"sid-2DB5C664-03AB-430D-B175-80AAA711D14C\" sourceRef=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\" targetRef=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\"></sequenceFlow>\n    <exclusiveGateway id=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\"></exclusiveGateway>\n    <exclusiveGateway id=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\"></exclusiveGateway>\n    <sequenceFlow id=\"sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\" sourceRef=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\" targetRef=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\"></sequenceFlow>\n    <exclusiveGateway id=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\"></exclusiveGateway>\n    <userTask id=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\" name=\"è°ƒæ•´ç”³è¯·\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\"></userTask>\n    <sequenceFlow id=\"sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\" sourceRef=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\" targetRef=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\"></sequenceFlow>\n    <sequenceFlow id=\"sid-B8177C51-129D-41C9-8C81-662566DE5F8C\" sourceRef=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\" targetRef=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\"></sequenceFlow>\n    <sequenceFlow id=\"sid-D7847956-F11B-4CDB-AB1E-F76514746007\" name=\"åŒæ„\" sourceRef=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\" targetRef=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${leaderComment==\'åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-534C09CC-528F-4038-9CF9-6E4B748C1255\" name=\"é‡æ–°ç”³è¯·\" sourceRef=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\" targetRef=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${initiatorComment==\'é‡æ–°ç”³è¯·\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\" name=\"æ’¤é”€ç”³è¯·\" sourceRef=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\" targetRef=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${initiatorComment==\'æ’¤é”€ç”³è¯·\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\" name=\"ä¸åŒæ„\" sourceRef=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\" targetRef=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${hrComment==\'ä¸åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\" name=\"åŒæ„\" sourceRef=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\" targetRef=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${hrComment==\'åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\" name=\"å°äºä¸‰å¤©\" sourceRef=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\" targetRef=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${totalDays==\'å°äºä¸‰å¤©\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\" name=\"å¤§äºä¸‰å¤©\" sourceRef=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\" targetRef=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${totalDays==\'å¤§äºä¸‰å¤©\'}]]></conditionExpression>\n    </sequenceFlow>\n    <sequenceFlow id=\"sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\" name=\"ä¸åŒæ„\" sourceRef=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\" targetRef=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\">\n      <conditionExpression xsi:type=\"tFormalExpression\"><![CDATA[${leaderComment==\'ä¸åŒæ„\'}]]></conditionExpression>\n    </sequenceFlow>\n  </process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_vacation-student\">\n    <bpmndi:BPMNPlane bpmnElement=\"vacation-student\" id=\"BPMNPlane_vacation-student\">\n      <bpmndi:BPMNShape bpmnElement=\"sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\" id=\"BPMNShape_sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04\">\n        <omgdc:Bounds height=\"30.0\" width=\"30.0\" x=\"30.0\" y=\"295.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-92464D4A-380E-4D73-875E-E77E82399CEC\" id=\"BPMNShape_sid-92464D4A-380E-4D73-875E-E77E82399CEC\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"105.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\" id=\"BPMNShape_sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"255.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\" id=\"BPMNShape_sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"630.0\" y=\"290.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\" id=\"BPMNShape_sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"720.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-5732769D-2626-4CE0-98E5-40B1E96645C9\" id=\"BPMNShape_sid-5732769D-2626-4CE0-98E5-40B1E96645C9\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"930.0\" y=\"270.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\" id=\"BPMNShape_sid-23B845EA-CBD0-4089-91D8-5A593FD8D038\">\n        <omgdc:Bounds height=\"28.0\" width=\"28.0\" x=\"1095.0\" y=\"296.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\" id=\"BPMNShape_sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"855.0\" y=\"290.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\" id=\"BPMNShape_sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"400.0\" y=\"290.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\" id=\"BPMNShape_sid-0582E0A9-D35A-4DD6-B6A2-742D5FB7D17B\">\n        <omgdc:Bounds height=\"40.0\" width=\"40.0\" x=\"400.0\" y=\"15.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape bpmnElement=\"sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\" id=\"BPMNShape_sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF\">\n        <omgdc:Bounds height=\"80.0\" width=\"100.0\" x=\"370.0\" y=\"120.0\"></omgdc:Bounds>\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\" id=\"BPMNEdge_sid-F118A20C-A055-45C1-BB61-4EDCD47960EF\">\n        <omgdi:waypoint x=\"355.0\" y=\"310.2164502164502\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"400.4130434782609\" y=\"310.4130434782609\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-D7847956-F11B-4CDB-AB1E-F76514746007\" id=\"BPMNEdge_sid-D7847956-F11B-4CDB-AB1E-F76514746007\">\n        <omgdi:waypoint x=\"439.5\" y=\"310.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"630.5\" y=\"310.5\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"439.5\" y=\"310.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\" id=\"BPMNEdge_sid-62FE7A3C-C072-4D89-A3CA-0E1FF979D7AF\">\n        <omgdi:waypoint x=\"439.5\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"1109.0\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"1109.0\" y=\"296.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"439.5\" y=\"35.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\" id=\"BPMNEdge_sid-7ED9884A-39A2-4D1C-9C62-DA613AA5D0AC\">\n        <omgdi:waypoint x=\"60.0\" y=\"310.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"105.0\" y=\"310.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\" id=\"BPMNEdge_sid-C3AC032E-7815-4B5B-8ED3-6C2584194A79\">\n        <omgdi:waypoint x=\"420.4099099099099\" y=\"290.4099099099099\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"420.0044843049327\" y=\"200.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"420.4099099099099\" y=\"290.4099099099099\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-534C09CC-528F-4038-9CF9-6E4B748C1255\" id=\"BPMNEdge_sid-534C09CC-528F-4038-9CF9-6E4B748C1255\">\n        <omgdi:waypoint x=\"400.5\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"305.0\" y=\"35.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"305.0\" y=\"270.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"400.5\" y=\"35.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\" id=\"BPMNEdge_sid-1B8EB751-F882-45BA-BBFA-F0EA5B43EF9E\">\n        <omgdi:waypoint x=\"420.16064257028114\" y=\"120.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"420.4233870967742\" y=\"54.57661290322581\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\" id=\"BPMNEdge_sid-313F050C-11CF-4E23-A92B-5FCA58D2B2CF\">\n        <omgdi:waypoint x=\"894.5913461538462\" y=\"310.40865384615387\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"930.0\" y=\"310.2392344497608\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"894.5913461538462\" y=\"310.40865384615387\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\" id=\"BPMNEdge_sid-F7CA57B3-3251-4F32-9BB6-A3CCA9EAEBE8\">\n        <omgdi:waypoint x=\"205.0\" y=\"310.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"255.0\" y=\"310.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-B8177C51-129D-41C9-8C81-662566DE5F8C\" id=\"BPMNEdge_sid-B8177C51-129D-41C9-8C81-662566DE5F8C\">\n        <omgdi:waypoint x=\"820.0\" y=\"310.2369668246445\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"855.4047619047619\" y=\"310.4047619047619\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\" id=\"BPMNEdge_sid-9AA5012C-364A-4AB7-B01F-290F43FEEAD8\">\n        <omgdi:waypoint x=\"875.5\" y=\"290.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"875.5\" y=\"160.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"470.0\" y=\"160.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"875.5\" y=\"290.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-2DB5C664-03AB-430D-B175-80AAA711D14C\" id=\"BPMNEdge_sid-2DB5C664-03AB-430D-B175-80AAA711D14C\">\n        <omgdi:waypoint x=\"1030.0\" y=\"310.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"1095.0\" y=\"310.0\"></omgdi:waypoint>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\" id=\"BPMNEdge_sid-42DB22EB-E24B-47E4-9CE4-49AD267BDE77\">\n        <omgdi:waypoint x=\"650.5\" y=\"329.5\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"650.5\" y=\"421.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"980.0\" y=\"421.0\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"980.0\" y=\"350.0\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"650.5\" y=\"329.5\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge bpmnElement=\"sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\" id=\"BPMNEdge_sid-E65132CA-E43C-45B1-A3CD-68D6893C6BE3\">\n        <omgdi:waypoint x=\"669.5798319327731\" y=\"310.4201680672269\"></omgdi:waypoint>\n        <omgdi:waypoint x=\"720.0\" y=\"310.20920502092054\"></omgdi:waypoint>\n        <bpmndi:BPMNLabel>\n          <omgdc:Bounds height=\"0.0\" width=\"0.0\" x=\"669.5798319327731\" y=\"310.4201680672269\"></omgdc:Bounds>\n        </bpmndi:BPMNLabel>\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</definitions>',0),('20116',1,'å­¦ç”Ÿè¯·å‡æµç¨‹.vacation-student.png','20114','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0m\0\0¯\0\0\0\áv(\ß\0\0=7IDATx\Ú\í\İ˜œe}(úSª\Õj9\â\Ã\ÃEŠ(¥\Çr\nÔ¢‘5)›Mp¢‡@$\Ùİ€\×R\ä$šr\Z©e³³£-ŠP*U.¥Qvw†$E¸‚^ä  œ‚\"˜oŠQ\r\íw\çÿe\ßÍ—\Ù\Ù\Ín²»3»ûû=\Ïû\ìfvfv3\ßûşÿ\ïûŸ÷û¦¥\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \Ñ~\ËK\0\0\0\0\Ğ\\\æT[6ğ\0\0\0€&pZµm­¶®¯s½$\0\0\0\0•\n6©P;m¶´(\Ü\0\0\0\04LmÁfO·\0\0\00ÁbG\ÍH…™ôs×¸\0\0\0˜$£-\È\Øq\0\0\00IR!f\Î\İ\0\0\0€1\ÚÛ3ñ¸m-\n7\0\0\0\0\ãn_Ourª\0\0\0À8\Û\ÓE‡\'ûy\0\0\0\0f¼ñş(;n\0\0\0\0öQ\íE„÷«¶…_Ç¢öq.N\0\0\0°—jw\ÄDÁ\å‹Õ–\r|m\áf¸\Ç)\Ü\0\0\0\0ŒQ½S˜b§LVh£)\Ü6©]Pø¹k\Ü\0\0\0\0Œ\Òp…”z˜‘\n7õ\îCû»\Æ\r\0\0\0À\ì\é¢Ã£-ÜŒ¶`“8U\n\0\0\0`£-œ\ì©p3Ö‚Mñ÷oi±\ã\0\0\0`\ĞXOQ\Z®p³\Ë\Şl×¸\0\0\0°·×”©W¸ùQ\Ë\Şlöõ\ï\0\0\0˜6öugK½\ÂÍ¾l×¸\0\0€F›7o^¦5®UA\×>\Â8%ªv‡Ín\ß]¦iš¦iš6Isb\0†+\Úx\ZfğÓ¢.\ë©½¼»\ï½Ë»\Ë\è\ì®\Ìiï©´v–*«V\ŞXyuñKK\Ş\ÔQ\êoø\ç\àN›\Ã~\ç\ØlÖ¯P÷\â\Ä¥ò\Úz¿¼}M\ß;ª\í\à\İn+U>9kÖ¬\Ó[\n;mª¿¯#¾^¶¶ÿğ\ÊYñ}ü­=\åw\íş\Øò²•+W\î¿\äº\Ê\ëò÷”\Ï\Ìÿ?\×öºreeV½¿a¬[<¿n\0`= H2Nûí£{ñ\İg]ò©\ÎR\å´(\Èt–ÊŸ\ïÚª¸S+\Òm\í=ı·¶¯\é\í|ıù›“?paö\æ#/{Ë¿ÿı\ìuo8\èUïš½ş\ßœqÌ‰\Ù1¿\Æ\İ]ı\ï\ï\è)a\çcûß—Š.\á¢/¬û(šD1&=÷\ÇV}\íş\Ãÿı\ïoûğ¥\×~ù\ãkû\Ş¿·½T¾:Š(ù}º\ËE1¦½»|m±€²³˜Tşbn:º*\Ç\Æó\Æ÷QxI_\ã~ñ»òBNş\\•9cù\Û:J•¿\Ïÿÿ¥\Ê\'\ão\Óu\0\0¬G\0I&T\ìlùc\ßó\Ë÷œıñ+:z*+:{ú/(Îœ[¼_N¢ Ò¾\æ[\ï>\ê¸\Ù_\İÊ:\î½\Åk\Ø\äŸõ¶wüav\è\Ûşc~ûüƒ¹\ß\ê\è\êı`<>Š%\Ñ\ÒóE\Ñ%vø\Ä.˜ø}§\Óş©\Ó\æ]ö\Ò\ém—ÿ÷\ÎRù=KK}\Ç\ì\ÜñS¾&v\ÕT\ÛUQœ\é\ì\ê{kT¢\ÈE•x®ReAz\Ş\ÎR\ß)\Õÿ\Ã©\Şö¼\ÕS^’~‰Ÿ\×ş={ú\ÛòO©|}µ›^\0`= H2)ş\ëŸ\Şşÿ\Ä—…W~ùÁ5¥şK\Ó\Ïw\ît\é_Gwÿ\ÊS\Ï\ë|\è?\Íşpd²\ãOkË9ñŒo´¯\éı\ÄÀ©Tû½÷Üc\ç\Íoÿ\î;³?<ó¿fÇzn¹úø\Óc\ÇLÚ¡Ò±¶\ï\ä(¬D&~\×/üoKOœsÁ/\Ï\ë\è¾%\ífY¹òkD‘$Š7yá¦»MGOy}\ì´ÉŸ£§|U|Í‹8\Õ\ï\ÓN¡\ÚS¢\Ø2øÿ¨>o`v×¬\Â\Ô\Î\ß7üß–lº\ËW¤ß‘ş6½\0Àz@dB-_\ÛwT0b§\Íû/¸ò\å8U*\n6\ík+ƒŸ*»N¢ğr\æEW?vø\Ñ\Çg¿wÊ‡²wz^¶ÿşû1\n6\Å\ç‹K\ËÀµn\Ş{\î²Ák\Ü‹)±“¥£§\\Š\ïú?8óˆÿpÒ‹x\æE+ò\ÂKwÿGÒ©OùÎŸÅ˜üº6ñ5ş½óo®Ä§L\å×²‰û\å_K•q\êÔ®S¹\Êg\Æó\Õüm-;Ÿk\×\ß3\Üß¶´ô\×\ï*ò\ìş·\0`= H2¡\âB½q\ÚQ|\ßö‰\Ï¥úe\ë[şı…—\\¿ñÀ\Â\İöûc\ßıõ?ø\à¢ìµ¯c^ˆyß‚ÿ\ë»q{IŠ\Ï×‰‰O\\\Ófö9Kó7\Ñ\Î8ÿŠÿ·¥ğ1\à\İı—W¿œöÖ·Ÿü\ËsÚ»¾²«0R¹2v\í\ÄiZqıœü¾¥òMi—K~Mšşÿ’g\çõvÊŸ,ô”\Ê_|®|wÌ®Ó™v]\Ã&ÿY©ö\Ú=5[~\ÚT\Úa“ş6=\0Àz@d\Â\å×ˆ\ÙU¸ˆ-;n~÷øS1û\ìKW¤û\Í>g\éÚ¸\àp\\x8v\Øı\Îÿüõî¾Gq¥½§ò\Ñ\âsvvW|»\ßÜ~úÑ–O”:\â\í\'\Ç\×\Òı>ò\'_úûwğo¿0÷cŸ\é¼8ğÀ©Jqú\Ñ\Î\İ4QŒù\Ú±C&\ß5×¤øt«\â\ïŒ\Çttm8$¿\îÎ®O·j\é\è.//\ÊTøÛ¢0³fğñ…]Eù\ÏJ\åµñû\ãÿVû·\é5\0\0\Ö#\0‚$*vØ¤ONJ×°I»J¢pó\\´ı÷Nù£‹c\Ç\Í\ÒRÿÿyÀo¼ö¦¸†Í›}\Û\ß.\ë\îk-µğ-Z~\İúÃ–­\é\ß2pªT\ËÎ‹\ç;m8\æ¤ó\ÎüØª‰\ç/O¢ˆ”\n2ùiJ\İı—\Ç\Ç{\ÇÅƒó‚\Íu•#\ão,>&ÿ¿”\Ê÷\í,:•ÏkÒ¤Û‹×³©ıÛŠÅ¢(ştv—ÿ\ïeİ•·÷·\0`= H2aFqm–¸f\ÌÖƒ;j\ŞÎ\Ş\îûoo{Ç»>\Ñ\Ñ\Õ;{\à¢\Ãù§6\Åu_\ê=8Š9\íkúNh\ÙY¨¹ e×©Qs\Şx\È¿x÷‡2ş\ã_ó\"I©|}:]+ÿşºÊ‘ñ<ñ;\âÔ¤\Øe“Ÿ×™\é\ê{\ë®\ß\Õ÷\Şø\Z…§ÁÓ¤º\ËW?9j˜¿mˆ¸ğqz¾z›\0`= H\Òò\ÂMµ\Í§\ç›Sm[\Æñù\0\0Àz@œ±Æ«p3\Ş \0\0°$g¼\Ø!³u\àk#\0\0\Ö#\0‚$\ÃH…—±\î”I;ll\0\0°$™ c=\Å\É)Q\0\0X\0’L’\Ñb¯¶m\Õv–—\0\0\ë\0A’\É§:mkş”§ô)Q\n6\0\0X\0’L²\áv\Ü8%\n\0\0\ë\0A’«-\Ğ(\Ø\0\0`= H\Ò$R¡¦«EÁ\0\0\ë\0A’\æq\Ì1\Ç,8–>\Ö\0\0\ë\0A’&:\ë\âXÎ={–W\0\0\ë\0A’&\Ğ\Ú\ÚzRõ8\îˆc\Ù\Ö\Öf§\r\0\0\Ö#\0‚$Í µµõ8\íA¯\0\0\Ö#\0‚$?~Ç§]6©µ¶¶º1\0\0\Ö#\0‚$\r>~\ëŠ›´\ÛÆµm\0\0°$iÜ±²\Ë&µ¶¶¶³¼B\0\0X\0’4\æ\Ø\İ]¯`3\Ğ\î÷\n\0`= H2ù\Çm\Ø]6®m\0€õ€ I\ãÛº‘\n6>I\n\0\0\ë\0A\Ç\0\0\ÌaIK\0\0\ÌaIK\0\00‡$q,\00‡@t,\0À@Ä±\0\0sX\0AÒ±\0\0sX\0A\Ç\0\0\ÌaIK\0\0\ÌaIK\0\00‡$q,\00‡@t,\0À@Ä±\0\0sX\0AÒ±\0\0sX\0A\Ç\0\0\ÌaIK\0\0\ÌaIK\0\00‡$q,\00‡$I\Ç\0\0\ÌaIK\0\00‡$K\0\00‡$q,\0À@Ä±\0À@Ä±\0\0sX\0A\Ç\0\0sX\0AÒ«\àX\0€9,€ ‰c	\0\0\æ°\0‚¤c	\0\0\æ°\0‚$%\0\0˜\Ã’8–\0\0˜\Ã’8–\0\0` H\âX\0` H\âX\0€9,€ ‰c	\0\0\æ°\0‚¤c	\0\0\æ°\0‚$%\0\0˜\Ã’8–\0\0˜\Ã’8–\0\0` H\âX\0` H\âX\0€9,€ ‰c	\0€9¬9,€ \éX\0€9,€ ‰c	\0\0\æ°\0‚$%\0\0\æ°\0‚$%\0\0˜\Ã’8–\0\0˜\Ã’8–\0\0` H\âX\0`\ëU\0$K\0\00‡$q,\0À@Ä±\0À@Ä±\0\0sX\0A\Ç\0\0sX\0A\Ç\0\0\ÌaIK\0\0\Ìa$\ëË²lÖ“O>y\Û<ğ¯ıııYoo\ï”lq,§\ê\ß\Ş\××—mØ°\áW\ÛùF%\0€õ\0‚d.\n67n\Ì6oŞœ½üò\ËZƒÚ–-[²õ\ë×¿\Ğ\×\×w‘	\0`= H\n’-±\ÃFÁ¦i\n7/÷öö>fd\0X\0’‚dKœ¥`\Ò<­··w‡‘	\0`= H\n’-qMÅ’¦*\ÚH\Ü\0\0\Ö#\0’£/\ÚüòŸŸË|ğ\Æ\ì}Ÿ\É[|·)´(\Ú\0\0`= HN€\Ñm¶mİ”=ú­«²\ï\ßõ‰\İZ\Ü?SlQ´\0Àz@g£)\Ú<óƒ¿R°I\í\Ù¬SlQ´\0Àz@o£)\Ú<Vù\ì°E›ø™b‹¢\r\0\0\Ö#\0‚\ä8M\Ñ\æ\ÑŞ•\Ãm\âgŠ-Š6\0\0X\0’\ãL\ÑF\Ñ\0\0\ë\0A²	¦hŸ5\\\Ñ&~¦Ø¢h\0€õ€ 9\ÎFS´yâ¾µ\Ãm\âgŠ-Š6\0\0X\0’\ãl4E›Ÿoz${ôCOª\Ş?SlQ´\0Àz@g£)\ÚD{ê¡›‡m\â6…E\0\0¬G\0\É	0ª¢\ÍK/eO|û=5ªz[üL±E\Ñ\0\0\ë\0Arœ\í©h³m\ë¦\ì\Ç÷õ{M›øY\ÜGÁE\Ñ\0\0\ë\0Ar\r[´y\é¥\ì¹\'\Ê\Ùÿü\æŸ[°I-\î÷µ\ëF\Ñ\0\0\ë\0Arœ\Ô+\Ú\ìiw]7Š6\0\0X\0’¬^\Ñf4»kF\Úu£ø¢h\0€õ€ ¹\êmö¶`“šâ‹¢\r\0\0\Ö#\0‚\ä>\Z\íG~kŠ6\0\0X\0’“H\ÑF\Ñ\0\0\ë\0A²	)\Ú(\Ú\0\0`= H6!EE\0\0¬G\0\É&¤h£h\0€õ€ Ù„mm\0\0°$›¢¢\r\0\0\Ö#\0‚dR´Q´\0Àz@lBŠ6Š6\0\0X\0’MH\ÑF\Ñ\0\0\ë\0A²	)\Ú(\Ú\0\0`= H6!EE\0\0¬G\0\É&¤h£h\0€õ€ Ù„mm\0\0°$›¢\Í\Ô*\ÚTû\ìñ­­­w½\0\0\Ö#\0‚\ä4§h35Š6Q¬©¶uÕ¶C¿\0°$g\0E›\æ.\Ú\ÔkR3z\0¬G\0IE­E›\Ö\ÖÖ“\â4¨\Úb¢\r\0€õ€ ©h£5¨hSog¢\r\0€õ€ ©h£5¾h£iš¦i\ã\Ò\ÌöÀz@T´uÛ²eK¼\æ\Ùm·İ–ı\êW¿\Ê?üğ\ì\ÔSO\Í.¸\à‚¼\İy\çù\Ïk·­^½z\Ø\×\î¸\ã\ì°\Ãö\ç?ü\á³\Ç¼\î\ïûò—¿Ü°Ó£\Î;\ï¼Óªıó~“p\0\ÌsÀ8$m&­}\ç;\ß\É9\älûö\íyq$\n\'ñµ§§g°`’\î{\Â	\'r¾ô¥/etPö\ĞC\åÿş\à?8ø³xô˜×¾öµ\Ùgœ‘ÿìª«®\Ê<ğÀ\ì\Ê+¯¼\ïı÷\ß?¤@S6şü\İ~\ß\í·ßÿ\ì³\Ï6\äB\Ämmmsªıt£¢\r\0\æ9`œ’Š6“Ú¢ ró\Í7\ç_gÏmÜ¸q·¢\ÍO<‘\ï–IE”“O>9[·n]v\Ë-·>ş«_ı\ê\çü\ÊW¾’˜\Ø\ÍSüY\íı\ï»\ï¾Á]@ñ7‹6ñ5Š9ş\Èï7m\00\Ï\ã@œ!&³h»U¢ òš×¼&/Î¤\"\Ê\ç?ÿùÁ\"I\ì¶i)m\Òn™–\âÎ«^õªlÕªUyq#Š-q{vj‹6\ÇwÜ°;m*•\Ê\à©Q\é¶gy&ÿş\Ãşğ\àm\Å\ï\Óc\ZU´Iv\Ş\Üoô`\Æ)€ 9\ÍMöN›tJTœv”\n,±“¦¶è’¾ê©§ò]5q\Û\Û\ßşö¼ˆ·ÿü\ç?\Ïo;\ï¼ó\ê\î\ŞI»iF\Úi\×\ÔI·=ò\È#ù¿=ô\Ğ\ìô\ÓO\Ï—\nLQ\ĞiôN\00\Ï\ã@œa\ZqzTK¡P\Ó2p*SH\â:7\Ï?ÿünE›O<1»ë®»¯+s\ÔQG\å§G\ÅE‚\ÓE£\Å\ã\ÆZ´)\ŞFN\ß\Ç\ï,^9\í\nR´À<0N\ÉIÓ¨¢Í£>š½ğ\Âƒ§F¥3q{\Ë@\Ñ&v¸\Ä\î—(Ä±Š¯GqD¶dÉ’üût‘\à\ÚkÎ´Œòô¨\âıc§M\ì\ê‰\ï×¯__· £h€y`œ’“¦QE›(\Ö}ôÑƒ\İ/ñ5NjO©ŠO|Š¯©ğ_\ãú6\é‚ÄµÏŸ\n9µ;mn¸á†º÷\Ã\Ş0¸\Ë\'.Fl§\r\0\æ9€q\n H6T£Š6qzS|4ñõé§Ÿ\Î\î¹\ç!×´)>\æ\á‡R„\ÙS\Íıã¹£/¤\ï\Óõv\ì´À<0NÉ†iD\ÑfÛ¶m\Ù\ã?Ÿ\nU¼ı¡‡Ê‹$\'œp\Â\àmñ}\Úñ…+Vdt\Ğ\à\éN©ø×·©÷»\â4©SN9eÄ¿§ø\Øx®ø\Û\âú9\é£È‹\×\ËQ´À<0N\ÉIÑˆ¢\ÍX?mª™ÿ>E\0\Ìs\0\ã@œ\Í^´™iM\Ñ\0ó0N$sŠ6Š6\0˜\ç\0\Æ)€ Ù„mm\00\ÏŒS\0A²	)\Ú(\Ú\0`§\0‚dR´Q´À<0N\É&¤h£h€y`œ’MH\ÑF\Ñ\0óÀ8$›¢¢\r\0\æ9€q\n H6!EE\0\Ìs\0\ã@lBŠ6Š6\0˜\ç\0\Æ)€ Ù„mm\00\ÏŒS\0A²	)\Ú(\Ú\0`§\0‚dR´Q´À<0N\É&¤h£h€y`œ’MH\ÑF\Ñ\0óÀ8$›¢¢\r\0\æ9€q\n H6!EE\0\Ìs\0\ã@lBŠ6Š6\0˜\ç\0\Æ)€ Ù„mm\00\ÏŒS\0A²	)\Ú(\Ú\0`§\0‚dR´Q´À<0N\É&¤h£h€y`œ’MH\ÑF\Ñ\0óÀ8$›¢¢\r\0\æ9€q\n H6!EE\0\Ìs\0\ã@lBıııŠ%\ÍÓ¶÷öö\î020\Ï\ã@$[6l\Øğ\Ü\æÍ›Lš mÚ´\éo{{{320\Ï\ã@$[\Ê\åò‡\î½÷\Şş\Ù\Ï~ö¢\ÂI\ãv\ØDÁ¦¯¯\ï\éj;\Ç\ÈÀ<ŒS\0AR\Ìõõõ\Í\í\í\í}0NÍ‰kªh“\Ş\âuLÁ\0ó0N$§\Ûq\\\Çrö\ìÙ³¼\Z\0`\Æ)€ Ihmm=©zwÄ±lkk›\ã\0ó0NIš@kk\ëqÚƒ^\00\Ï\ã@¤ñ\Ç\ïø´\Ë&µ\Ö\ÖÖ¹^\00\Ï\ã@¤±\Ço]±`“vÛ¸¶\r\0˜\ç€q\n HÒ¸c7d—Mjmmmgy…\0+\ÍsÀ8$iÌ±»»^Áf \İ\ï@®4\Ï\ã@dòÛ°»l\\\Û\0\ÌsÀ8$i\Üq[7RÁ\Æ\'I€y§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7‚q\n€ \éX€\Ü§\0‚$%\0È€q\n H:–\0 7Ê`œ’8–\0 7\Æ)€ ‰c	\0r#§\0‚$%\0È€q\n H\âX€\Ü\Æ)\0‚¤c	\0r#`œ’8–\0 7\Æ)€ \éX€\Ü\èU\0\ã@Ä±\0¹0NIK\0Á8$q,@nŒS\0A\Ç\0\äF0NIAÒ±\0¹0NIK\0\ã@t,@nŒS\0A\Ç\0\äFÀ8$q,@n\ã@Ä±\0¹0NIK\0Á8$½\n%\0È€q\n H\âX€\Ü§\0‚¤c	\0r#`œ’8–\0 7\Æ)€ ‰c	\0r#§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7\Æ)€ \éX€\Ü§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7‚q\n H\âX€\Ü§\0‚$%\0È`œ\Z§\0‚¤c	\0r#`œ’8–\0 7\Æ)€ ‰c	\0r#§\0‚$%\0È€q\n H\âX€\Ü\Æ)€ ‰c	\0r#`œ’8–\0 7‚q\êU\0$K\0\ã@Ä±\0¹0NF\×EP\ÜC{\Ğ+%\á€\Ü§\0“¯¶#mZ[[\çz¥$<\0\ã`òƒ\â\İ#m\îŸ={ö,¯’„\0r#`œL~P<~¸¢M[[\ÛY^!	\0\äFÀ8h\\`¬wm›í²‘ğ\0@nŒS€\Æ\Æ!×¶q-	\0\äFÀ8h­­­w\Øe#\á€\Ü§\0M¦µµõ¤Âµl\æxE$<\0\ã yd~m»l$<\0\ã ¹\äñ‚¤„\0r#`œ\Ò0Y–\Ízò\É\'o{\àşµ¿¿?\ë\í\í\Õ&¹õõõe6lø\ß\Õv¾~\Õ\\-‚¤~%\áÈ¡\æfr£q¤G\Æ)\rÁl\ãÆ\Ù\æÍ›³—_~YkPÛ²eK¶~ıúªÁ\íıJÓ¯$<À\ÜL•C\åF\ã\È8\Â––¨>fM\Ô^\î\í\í}L¿\Òô+	07“\Ã\äP¹\Ñ820‡¥%¶\n&\ÍÓªm‡~¥\éW`n¦É¡r£qdaKKœo(4U@\Ëô+M¿’ğ\0s3M•#\ãsXF\Ğ~ù\Ï\ÏeO>xcöƒ¾\Ï\ä-¾\Û!M¿Ò¯$<\09T•#\Í\\\Ô8¥Am\Û\ÖMÙ£ßº*ûş]ŸØ­\Åmñ3H@Ó¯ô+	@•C\åF\ãH35Ni@@{\æ?$˜¥ö\ì\Ö	Dš~¥_Ix\0r¨*7\ZGš¹¨qJ#\Úc•\Ï\Ğ\âg‘€¦_\éW€*‡ÊÆ‘f.jœÒ€€öh\ï\ÊaZüL \Ğô+ıJ\ÂC\åP¹\Ñ8\Ò\ÌES4M¿\Ò$J	07“C\åP¹\Ñ82\Ìa11ˆWR. \Å\Ï\"M¿Ò¯$<\09T•#\Í\\\Ô8¥\í‰û\Ö\Ğ\âg‘€¦_\éW€*‡ÊÆ‘f.jœÒ€€öóMdŞ³b\è¶Á\êmñ3H@Ó¯ô+	@•C\åF\ãH35Ni@@‹ö\ÔC7	hq› $ \éWú•„ ‡Ê¡r£q¤™‹\Z§4* ½ôRöÄ·ÿ\Ç\Ğmƒ\Õ\Û\âg‘€¦_\éW€*‡ÊÆ‘f.jœ2\Ém\Û\ÖMÙ\ï\ëö|\ÏøY\ÜG0\Ğô+ıJ\ÂC\åP¹\Ñ8\Ò\ÌE÷zL®‹q¹‡ö W\Ê\Ä`°òü\Ü\å\ì~óO†\rf©\Å}\â¾*\Òš~¥_™˜È¡r¨\Ühi\æ¢{5&¯¶#mZ[[\çz¥LöXyV‘\Ğô+ı\Ê\Ä@•C\åF\ãH3÷qy÷E›ûgÏ=Ë«db0ª\ÊóHiI@Ó¯ô+S`~\ËK ‡Ê¡r£qd±Û¸<~¸¢M[[\ÛY^!ƒ¼\ím0KM`\Ğô+ıª\É\Ì˜˜\Îõ¡y\Æeµ—r¨*7\ZG\ÆC7õ®mó ]6&š€¦_\éW\Ó\ÑiÕ¶µÚºö\Ûo¿­\ï>\ë’Ou–*§\Õk\İ\å+:Jımñ øw{Où\Ì\á\î\×\Ù\Õ÷\Öô–w÷½7¿½§rVG©¼6l©ò\É%\×U^\'\ËÀ\È\ãr\à«óó\åP9Tn4Œ#vm†\\\ÛÆµlL4M¿Ò¯¦ó\Â0%¹9û\ïÿª-\éß—­\í?<&’õ\Ø\Ñ\İÿ‘®Ê±»MHK•1	­÷˜\ÎRÿû–u—ß¹reeV{©|µ\ì£—Õ¶E\áF•C\åF\ã\È8b—\Ö\Ö\Ö;\ì²A@\Ğô+ıj&-‡\Ü^`ö/_\ÛwTİ‰iO¹_W®\\¹I\ë\åñµ}M\ßÁi\Ò\Z\ï<\æ\ï&v—¯h_[™»ó\Åş\Ï\ÅDU¦ÑK/‘*‡ÊÆ‘qD^´9©p-§›$š~¥_M+sö°\0œó\\´ı£+oİ¸´ô\×/\ï. ö±…;Ÿ„–\Êg\'Ÿ·­M“\Öü\İÃ‰\è`\ë®Ì¹¬§r´c—?ŸñS9T•#ãˆ®m3cw\ÙdYö\êGydñM7İ´~õ\ê\Õ/,[¶lÇ…^˜W²\Î?ÿü»\ä’K^¾ò\Ê+Ÿü\ìg?{Kµı®‰& \éWúÕ”š”»ğk/•—ÿŸ\ÛŸ6ï²—bò\Úymÿ¡1\Ù\\yc\åÕƒ\ïÆ¿«\Ïô\Î\á\Îûô·\Å;ˆ±<İ¯óºÊ‘\Õ\É\èªİ¶Š÷TV÷.%\Ìğ‚Í\n2v\ÜÈ¡r¨\ÜhG3Ö‚\Ş\Ü\Ú\Úz\é¼yón«¶\'ª\íW»m¶W\ÛS§L]÷›öÅš\Ûo¿ı\æU«V\í\è\è\èÈ¾ğ…/d<ğ@¶iÓ¦lûö\íYˆ¯›7oÎ¾û\İ\ïf7\İtS\Ö\Ş\Şşo?¹è¢‹>fb 	hú•~Õ´NiR\Z\ïüuv—/Z~\İú\Ãò\ÄøÉ¿º-\İ?\Ş5L\ç\Û\Ç;Œ=ı\Çyø¥ò§wN6\ËWU\'¥\'\Ä6\ï\êm\ï)L`\Ï\î\ì)/\ÙıüşòM;`t\ãr\î¯h£É¡r£qdMiñQ\Ş\Õ\Ö[m/÷q\ßuZ¥zÿó§İ‹ñÀ,ú\Ó?ıÓ—>ñ‰O\ä™W^y%­‡~8û\ã?ş\ãW/^üØ¹\ç{¤‰& \éWúUSNJ\çÖŸ”~\í€\ÎR\ß)»MRK\åk·-&§ñ\Î`ü,¶„G\ëX\Ûwr¼‹˜O@{\Ê\ï\Úù\îbyy<Wz˜¼\ÆE—–úI\ï2¶¯)Ÿ“[S\Ø\ë3ƒ\ãR\ÑF“C\åF\ã\È8š®\æÍ›÷–¶¶¶o¡PS¯mœõ‰,\Ëf\İy\ç\å‹/¾8[·nİ˜Š5µ¾ù\Íof‹-zqº\ìº\Ğ4ıJ¿š‰Ã˜h¶÷TZ\ë=¾£\Ô\ß1\ÜG’¦‹0†x\Ç1\î\×\Ñİ¿fç»\Õ\Éi×†CòŸu÷ÿµ‹£`³O§:\Í\ØS¥\äP9Tn4Œ£é¯µµu\Şüùóÿ¿bfÁ‚ÙŸıÙŸe\år9û§ú§\ì¿øE^ƒøÕ¯~•Ÿt\ß}÷e]]]\ÙG>ò‘\Ú\ÂÍ¶)½\ë&\n6÷\Ş{\ïw–.]šıø\Ç?\Î\Æ\ÃO~ò“\ì\â‹/~ñcû\Ø\ÇM4M¿Ò¯\ZjOV¬+&¥ñ±¥õ§\ŞÇ’.-mxSuRú…\ê\ã>ºó\ß\ßx}şã•WÇ–\ïücP£•\Ê\×_rı\Æ£™0ƒ\íÕ¸œÀ\ç‘Cµ™–Cg|n4Œ£&/\Ø\Ìmkk{¥X¬¹\å–[òK´Œ\ÆÖ­[óû\Ç\ãŠÅ›\êsNÍ%±\Ã&\n6£}F+ï¢‹.\Ú6\Õ\Ï#\Ğ4ıJ¿š\Ãñ:…\ÂEPÁ¸”Cµ©CA\ã\È8j\î‚Í¼bÁfùò\åù®š½‹K¿\Ôn¦V}\"®a§D\×›z;n.¸\à‚­\Õf\Ê~´«€& \éWú\ÕU{a\Åıªm\áÀ×±¨}ÜŒ¿*—r¨6es¨1hGM,®aS<%jÅŠƒ§@\í­8u\êê«¯®=Ujj\Ô\'\âS¢>ó™Ï¼×°™Hw\İu×‹,¸\ß\Ä@\Ğô+ıj\Ò\'¥s“\ËøTŠl\à\ëh\'§\Ã=N\áŒK9T›j9\Ô4Œ£&7şü¾\â›}-\Ø75;n6N‰\ä;\îø›ø\Ãÿ\å_ş%›hK–,y~ª&% 	hú•~5\Å†-\ïf…6š\ÉiqRš\Ú…Ÿ\Ï\Èki€q)‡jS2‡\ZƒÆ‘q\Ô\ä\âc½‹×°\Ù\ÛS¢F:Uªx›¦¯O\Ä.›U«Víˆõ\ßÿş÷_ª»m4M¿Ò¯¦\á&‹õ&™#MN\ë\İÿ†:÷w0.\åP943§\Ş4Œ£&,\Úô¦‚J\\Dx\"\Üz\ë­Sg·\Í#<²8.>¼/\í=V‹-z>\ÎQk¦NQm( 	hú•\ÖLıj´}h„I\éœ1L6\ëMNG;)­œ:UŠi=‘4.\åP­q9\Ô4Œ£\éC,Xğ\ætñ\á\Ø\róóŸÿ|Bjñ©R5ş–¦}\ánº\é¦õ7\ÜpC6™ººº®¾(—7\ËkP\Ø\Õ\Û\Ú\Úz’€& \éWú\ÕT\êC{99\Ü\Ó\ät¬“\Ò\â\ï\ß\Òb\Ç\rÓ”q)‡jÍ¡Æ qdM\ïZ½ı\Òt¿k®¹f¢\ëÅ¢\Í\åMûÂ­^½ú…x`R‹6\ßşö·R}Q\Ö5[\ç)´»\ëU\04M¿Ò¯š±Õ™”vR8\Ü\ätÿ½œ”Ö¾›©pÃ´p\Z—r¨\ÖØ¢1hG\Ó3‡Vo»-ıü\Ş{\ïĞº\Ä}÷\İWü[\Ö5\í·lÙ²\Ï=÷Ü¤mşù\Í\Õ\å™&\î<ƒÀb\'\Ğ4ıJ¿j\Æ>´—“Ò‘&§?Ú‡I\é¾ş=\Ğ2b»q)‡Ê¡\Æ`£Ç qdM\Å\Ø^ı÷\éöñ¾\0q­M›6ÿgšö…»ğ\Â³\íÛ·Oj\Ñ&~_õE\Ù\Şì§XŒ\í[š€¦_\éW\ÍØ‡\Æ\áİ»z“\Ó}™”\ÖNN]\ã†i?\á4.\åP­±Ec\Ğ82¦G­¶Ó¿\Ç\ëc¾Gúø\ï\Â\ï\Ş\Ş\Ô/\\#Œ\â€5]Ğš«M\Å>¤_\éW\ã\İ\Î>û\ì4\ì\Ú\Çt°w4pû¾\èš.cU\Ó\ÆÚŒK9T•§\Ê\Ô£fl“]—hÚ¢\ÍÂ…ÿm²wÚ¼ø\â‹\ÏO‘6¶¶¶Î={ö¬‰\Ü:	\à\Úk¯rÛªU«†\Ü7Uü\ìŒ3\Î\È.¸\à‚\İÚwŞ™\İ|ó\Íù\Ï\Óıø\Ãf?şx\İ\ßù\å/¹\î\ß\çöy\ä‘Yõÿ?\ç;\Şñ\ìşû\ï\Ï\Î;\ï¼üß¯}\ík‡<\æ\ÑGÍŸó§?ı\é\àó\Ç\ßd§M\ãúÕ¯ÿú¯\çÇ¬ö¸GŸˆc\\{ÿ\ï|\ç;\Ùı\Ñ\å)ö©x\Ì_ş\å_{\â>µ÷¯T*{\ìóŸû\Ü\çöxŸ\Ë/¿<ÿş«_ıj\Ş÷\Ó\íñ\Ñ3|§\Ín}¨eÏŸˆ±/\ï&~q<\ŞM\ì,UNk\ï)Ÿ_k[GwùŠÎ®¾·¦-\ï\î{o~{Oå¬Rymş\ØR\å“K®«¼\Î>Œ\Ëñ—\Å?¾¶ï=\å%\Ã=¨³\Ôw\Ê\ĞñÛ¿:n\ë°r\å\×¨ú/¯¶Lf½û\î»ó\Üu\ÄG\ä_\ã¶x\çu4¹,ò\ÒO<‘?nõ\ê\Õ\Ùk^óšì ƒ\Z\ÌW©\Å<,Í‘\Ò|*\å\Úzyvoòq³\ä\×ï´‘›l.:k¥Ú¾}÷¨£Ê¿O\ë}Y\Ë\Øi\Ó<9´úı6;mj,]ºô\åÉ¾¦Mu`ı¨É¯iSô[&ºhó\È#dO=õTöş÷¿01G`¹\ã;ò\ï·lÙ’\ß÷°\Ã\Ë\'qûC=T÷¹–/_>ä¶˜\0ô÷÷gó\ç\Ï|ş/}\éK\Ù\í·ßÿ\ì³\Ï\îvÿx\îøúÿøù\×\Ûn»-Û¶m\Û\à\Ï\ã÷§û\Ç÷\é9\ã~ñ¼x`~{ü­Š6“Û¯\"q¥\ã…¹SN9%»\ç{oû\ÊW¾’öüó\Ï>\îMozSvê©§\Ö\íS\ÃM\â\Ò1¯½­\Ø?¢­_¿~°¸_9\äü\ïŠ\ï£E?¬\í+ñ<ñ\Év\éû(H¦\ï#Q\ÏĞ¢M\İ>T˜nk™˜óö÷frº\Ûyû±\ë\èª»Û„´TY“Ğ˜|] ö¿oYwù+WVfµ—\ÊW+`\\ÿ¸,Z\Ş]ş@´\á-+ó\Ë\×ö\Õ\Ù]YX\ï>Ëº+o¯·ø¬\ŞN{wùov¾Jşzµ÷ôŸ[¯ğ3Y94^\Ëô\ÆS\Ì\Åbş’òeü\Şøş7ó7w{L,şÖ­[7x¿˜[ô;~\í\×~-{\ÃŞ\ç\ÜT ¹ë®»ò\ÇÆ‚¡öşc\É\ÇÍ–_T´‘›t3\ŞE›øzú\é§\çı,\æ³1M\ã7\Ö9{»–Q´i®\êš6u\\u\ÕUOLö§G}\ë[\ßúF“~z\Ôımmmg\rô\Ç= EòN	ÿº\ë®\ËN8\á„ü]bQ%’ü\Ã?¼[ŠÏª¯\Ç{\ìn‰:‚Q\ÜÅŸ\Újs|\ÂOª8§\ç¯\rr\Å\İ\é\ïJ™bA)~^¼Jòñ}\\\')¾Og<v†m&µ_E‹\×<^û§Ÿ~:ÿw1I¥wk[L\Úb²\ZE¿\Úwö\âx{\Åcÿ®w½k\Èıkwò\ÔN[jv’Å„öŠ+®È¿ş›\ç\İ\ï~÷\àî±´c,õ©ø\Ú\İ\İ=SŠ6#ö¡=½ƒ>\ÆIiœ§_\ï2\Æ29rr©¸ğ+Šw\×ó\ÅÛš¾ƒÓ¤5\Şy\Ì\ßM\ì._Ñ¾¶2w\ç;ŠıŸK=0.÷m\\vtm8d÷\âJùšR\Û\à\ì._»´´\áMC\Æk©|vaF*\ìŒEÄ†z›¬šrJfR±£øóxƒ#\íJ)¶´§¸«8şrYj‘‹óª(¢DÁ$\æwK–,\Ìw\Å\â\ÍXòq³\å\×I.\ÚÈ{Èœ‹W‹\"\éÆ‡Œ½£>:_û\Ä·^xaŸ\Ö2Š6Í•C}zTş\ç~C$É´bÅŠ»š\és\Ğ÷P¡ŸĞ€–’y$ñøw$\é“O>yğ’øY1Pf÷CñÔ¨ô\Ï<óLşı‡?ü\áÁÛŠß§-Àñœi±Ÿ\\lıw†Ò»Cõ\ä±p\çzÕ«^•Op\âû˜D\Äÿg\ï´iX¿*¾\Ã;oŠ;m-Z”ğÁ\ïö˜\Ã?<Ÿ\Ä\Õ;]n\ëÖ­CvdE±/=_qR\ïF\"­\í\çqÿb¿NGl¯w*]\í;ñ÷\Æÿ#¾w\r\ã\İ\Å°\ÓfT}h´ï¤rRº\ß?\Í\äôøj\ÛRûûc÷\à‚¯0ù¸mmš´\æ\ïLD‹\ï\Ò_\ÖS9Z¹\0\ãrü\Æe\í\"±:oª·p¬\İ=S½\ßcGNaÍµcyıò:…\ç‹8…±¾0ÅŠ\ÉÊ¡)\Å<)\æ91\ïùĞ‡>”\ç§(\â\\z\é¥Co¦¥\×?\æ:Ÿşô§ó\âH½yY\ÜgÙ²eù\\*\æV‹/\Îo‹Ef*Õ¾\ë?–|\Ülùu’Š6r\ã(sc#\ç¢\ã9§]5±VŠùe|]7QŒŒe1\î\â’\0\éş{³–Q´i®Zıù¥©r\Í5\×Lh]¢«««X´¹¼i_¸O}\êSo«&¤}\å•W&\íÃ£\æÏŸÿ\Õ\å-S­“M\ä\éQ\é]’\Ñmb\ÇLK\Í‡´`D\åT‰.¾sÿ>ô\ĞCóm…\éù£:•”ø?ÿù\Ïï¶›\'+:ql\ãM¿£v›pK\á™–:;m\ê]SG@›¸~;¸\âuO\ÇrÍš5ù1«\Ì\Å÷‘\Äj‹0\Ñÿ¢\Ä\ã;\î¸ükô“ø¾ö¸§\É`l=­\İ}Uï´©b?I“Õ¸@¼\ãXo\\Ä¤5Ÿâ–t{OOD9\Æwó\Æ8)m\Ù\Ë\ÉiÚ†~Vw\ç\×\Æ\Ä3½s\Øymÿ¡ñ®~¼ƒ[Á\Óı:¯«YŒ®\Úm‘\ØSY=\åŒ\Ëñ—\ÉE_X÷ñn}ûšò‰µ?«S\ÜY;\Üó,-õS\çÔ¨…± ­÷|y§§¼d¸;“‘C[\n§GE‰a:\í;ZÌµ\Î?ÿüº§\"\Ç\Ü*‹igK<®ø\æF\Ì\âôôô{b‡sí–T\0*mö&7K~mò*7N±¢MŒ¡\Ø!¯qô\ç\ÔOO<ñ\ÄÁ1\Zk¨–3\röv-£h\Ó\\,Xğ\æ\ê1\ÛÇ­ú}~,\'BÁ«ñı\ß\nE›\æ®O,_¾ü}÷»ß¬S£n©¾ -®÷¾h“É£½\0]m2@W\Üj›?=gqS|\\‹bGN|_¼\È^‹6M×¯Š„N\ÛCS\Ò+¾³\ßG1/ú\\±\ßûGl‘I\\\ËÀ­\âqOº\Øb]œW´Iı¤X<ŠwI\â]\Í\â©]±½¥pÑ¹Ú¾8S®i³†{Wq´“Ò±NN\Ó\ï;k\èB\î¯\ï\ì\é¿8\Î\Ã\ï,•?½s²Y¾ª:)=!¶yWo{Oa{v¾ˆ«yg\ßz\ãr|\Ç\å\î\Çş\Ë\Öö\Ş\ŞSù\èş#\í¬\ë\éQ;O\ëø\Úq]›FmR#\ídIÅ”´P,¶´+%\n6‘¢\Ğo‚¤\ÓÔ‹9-]¨8NiLz\Ş\â.€T´Ù—|\Ü,ùu\n\äP¹q\nmŠ\×iŒ\İa+V¬rjS*\Î\Äÿao\×2Š6Í§­­­7Sb÷\ÔD¸õ\Ö[‹»lš¿>ñÑ~ô\Ü\Ë.»l\Ç$\ì¶\Ù:şü\ïU\Âù\×/_#\Ş5‰\âIl¯-\î~(›.QpIE—\Úóœ¿÷½\ï\Õı´ƒ–Â…\ãû\â¶\×\á\×)\ĞEu:’~L.\Ò;?\é\Z;é”«–‹ğ\Õmb\ï>\r7\é\Ğ&6Q¦‰a:F#\í´)\î\Ê*ö‡–\Îko)\ì´i©¹\0ö¾mb§Pºh\\±ÀTLºi’[\ï:;úÕwk·c/Ã¤t¤\É\é£}÷2]\à´cm\ß\Éñ.b>\í)¿kç»‹\å\å±hK÷\Ék,\ãûô.c¼û“[\ë}Œ\Ëñ—ƒ‹Á®Ê±©Xc.N‡\Z¾(S™×¾¡ú;[\Óˆ\ÛK\åe±³ QE›tm—bNKy&½\Ó_|Lxb^“-»[\ÓÜ¨8‹üZüt¦TJó¬\âµnö%7K~\"9Tnœ\"E›\â5lŠ\×\Ïn§\ÍX\×2Š6M]´9+Tb·\Íx_8¯º~\Üe3e\ê‹/~$®„?‘\âú9Q\Å\Z\ã9¨\ÓvqcJôé›TˆIÉ·˜<\ë}\ÊÀ®u·¥O-ˆ\ï\ãb\Äõv\Ú\Ôtµ†\Úk•\Ôûıi÷…€Ö˜~•Ş½KŸ–ûp;m\êzÒ¹¾{š$\Æ\ïH\ïpDüˆ\ë\Ù\Ä\ïO\ÛÁk?Vµø\Øô»cB\\\ïbp-5\ç\Ü\ÇxI“\İø¿DßœˆwI¦a¢¬ı\È\Ó\â$s4“Ò–=<nxŒwñ‡ûH\Òt\Æ\ï8\Æı:ºû\×\ì|²:9\í\ÚpHş³\îş¿vbŒ\Ëñ—ù¸*•\ß§b\ì^L\é¿5v¾\Ô\îš\Ùù1\İ}§\Ô\Û‹ÉºŸ\Z5x\Z\Ç\Î\İ»~G|\Äñ®OŒ\Ê\Ç}©\\‰R#Š61\ç‰7¾Šy0\å\Î\ÈQõvŸÄ›l\Ñ\Òs\Ä)F±ó&®ƒS{J{\ä\ÇÈiQŸ\Zop¥9V\Ìÿ†{\ãe4ù¸™ò\ëÊ¡r\ã)Ú¤~\Zc\"9\ãT§z;m\Æc-£h\Ó<\æÍ›WIE•xsx¼>ş;\ÖÓ—]v\Ù+\Å]6S¦>\çp-Z´\è\Åÿø\ÇR°©&„;«¿ã¹¶¶¶){1É‰hÑ\Ò\Â:¶Fk8§yO‹ôHØ©To§Mt\È\âB{O;\"\Òs¥ŸEpL[rcò1RP­w\Ñ;­1ıª˜´FS´‰\ç\Ë\Ç\ä3‹ıe¸Q\\7\'½\Ã\çş·\Ôù©Ú¿k¸O±Šó‘\Óº\ã#\Ë\Óı[¶²\Æ×´=¶öS:ô«a\Õn\ßo\à\İÀ±~Ti\í\ã\æŒfaX\ïcI\ãSiª“\Ò/¤wø\ã\İ\Âü\Æ+¯-\ßùÇ F+•¯¿\äúF3}Á¸Ÿq¹óú}§,¿nıaµ?\Ë\Ç`w\å\ÊÚŸ\Å;ı\Õñ¸ñ\ãkû\Ş8\ä1£<-j\ç§\à”\ßSo<\Ç\ï«.bo\ì\ì\ê{\ëdm\ÒõdÒ¼+\æ<)\ß\ÄE†[.„Z\\ ^y\å•y®J÷Kó¥¸=ş]üñFFñ9\Ò\Â3rfºşF\ín±\æ\ãfÉ¯S,‡ÊS¨h\ÓR¸NM\ZKÅ³Šó\Î}Y\Ë(\Ú4W}¢Ú¶¤\âJÄ§}-\Ü\Äzûê«¯.^\ÇfÛ”«OT[/^ü«Í›7kÁ\æ\ÙgŸı‡ùó\ç?=UO‹šŒ€A(‚Í‘G9ì†‘Ÿ&õ.–\ïòŸ+\Şy‰;i;p¼›4\Ü\Ç\ä\Å;/ñnPJ\îiB“Î…®÷·\ÖûhLmòûUš€¥d“\ÃH`ikô©§:\âc\ã·œvWû³\Ø^\ZI0.|]û1‹©ttt\ìÕ¤2Z\Ú%T¼8bú^¿\Z·\É\éx¼K¹eŸnŒ\ËIÏ¡‘_\"/\ÆÜ¨ø\îıpú/\îNN»qb\çLm«·3\çŒ3\Î\ÈOQZüY, O8\á„1\ç\ãfÌ¯S0‡\ZƒS hc&\nµo8§9\íy\ç7nkE›\æ\Ò\Ú\Ú:/]”8\í¸\Ù\ÛS¥\âq5;l²)[ŸX°`Á¢‹.ºh\Ûxí¸‰6Q°©¾\àlq­	hú•~5-&§\ã=\É…\ãR•CA\ãHS´bŞ¼y7q›¸H\\8~´Ÿ.^\Ã&Ú”¯ODE\ëüó\Ï\á\ïş\î\ï~¹\'\Şúñ7\Æ)QñB›hš~¥_5…QmÛÀ\ÇÆ¥*‡\ZƒÆ‘¦h3¦úDµm-]¢xs\Í5\×d÷\Ş{o¾‹&:§@mÚ´)?‹¥T*e.ü\×\â\ãâ”¨\éRŸ\È\Ï!›?~ÿ\âÅ‹Ÿÿ\Ş÷¾÷\âŠ5\Û\ï¹\ç[\Ï?ÿü\ã¢>Sù\Z6š€¦_\éW\Ó|8\ÖwGuqSÀ¸”C\åPc\Ğ8\Ò\ÌEÇ»>Qü(ğ½lÓª>Q|qÎ‰\âÍ…^¸yõ\ê\Õ?ø‡ø‡§7m\Úô\\œc^|ñ\Å\çúÓŸş¨¯¯\ï\ë+W®¼{Á‚OÆ‹Õ«©ú)Qš€¦_\éW3ÀX·q;%\nŒK9T›\î9tFA\ã\È8šjõ‰\âÍ±k¦c}bˆ¼¹ú\âtTÿ³·U\ÛSÕ¶}\àˆ¯\ÏTÛºj»<*`&š€¦_\éW\Ójrz|µm«¶³LÀ¸”CµiCg\Ü4Œ#õ	L4M¿Ò¯š×œI\çœ~¾EÁŒK9T›A9tFA\ã\È8M@Ó¯ô«\æ6Ü»ŠN‰\ãR\Õfj1c\Ğ82À\Ä@\Ğô+ıj\êMN-Á¸”Cµ™Cg\Ä4Œ#\Ğ4M¿Ò¯¦\Ö\ä´\Ë\ÂŒK9T“Cg\Æ4Œ#\Ğ4M¿Ò¯¦8O?kñ±\Ş\ĞT\ã2.®Xo\\vv÷ÿõÊ•+÷¯÷ \ÎR\ß)¥\Êi»·ş\ÕqûXÿ€•+¿vÀ\Ğçªœ\Ö\Ñ\İyµ}DÕ¦yÖ¹\Ñ82@@\Ó4ıJ¿šZ~\ËK\0\Íe hS¯²jøB\Ë\Îb\Îòµ}GuvWÖ»Ï²\î\Ê\Û\ëcª÷Ÿ\Ó\Ş]ş›İŸ¯’Tj{Oÿ¹{Sø‘C\åP¹\Ñ\\T3M@Ó¯4ı\n˜\ÖE›¥¥\roZ~\İú\Ã:\Öö\ÜQ*Ÿÿ\é±qŸ(ÂŒT\Ø‹rio\'‡Ê¡˜‹j\Æhš~¥\éWÀ´.Ú´w—¯\İY°©,XZ\ê;¦}M\ß;ŠE™\Ú\İ3¥ò—w—?P\ØAs\íX~w¾S§ğ|±§°#ga{©òI9T“C\ÍE5\ã4M\ÑFÓ¯€]´\é,•\ß\Ó\ÑS9+¾\ï(•×¦ŸÇµm¢X\ß\×\î‚)Ş¯V}\êœ\Zµ0v\ç¤ûŸ//\àô”—·sG•CVsQ\Í8MS´\Ñô+`\Æm.[\Ûx\ì˜,\Ô®gE”Rùúzig\ÍXOsj/õ.®¥×µ‘C59\Ô\ZG3@@\Óm4ı\nP´‰¢MO\å\è\âm¥ş¿\ÚU|©ÌŠ¢\ÎĞ¢LeVg©|\Íxü\r\í=•\Öt\âöRyYûš¾ƒ\åPM5ÕŒ#\Ğ4EM¿f|\ÑfW!\ækttm8¤£»¼|¤\Ç\ìüt©¾S\êíŠ‰O\İOJ\×Á\é)_Õ¾¦\ï„]›ò™\ÅOŒZr]\åu¥r¥£«r¬ªÉ¡æ¢šqš¦h£\éW€¢M\Ë\Î\ë\Ğt”Ê½{\Úé²¬»ü\Î\êı6~|m\ß‡tFwZTü¸\Î%\×o<°ögù\'X•úo\ì\ì\ê{«ªÉ¡æ¢šqš¦h£\éWÀŒ/\Ú ‡Ê¡G\Æ  	hú•~ h#‡jr¨q¤G  iŠ6š~ h#‡Ê¡GÆ‘^	š€¦_i% h#‡jr(Æ‘qš& \éWú€¢*‡bi\Æhš~¥\éW€¢¹™&‡bG  iš~¥_(\ÚÈ¡šji\Æhš¢¦_Š6È¡r(Æ‘q\Ô\ê\ï\ïHš§m¯´ú•¦_Š6\æfšŠqd-6lxnó\æÍ‚I´M›6ım5 =¦_iú hcn&‡É¡G\Æ\ĞR.—?t\ï½÷şó\Ï~ö³•\ÆUŸ#˜õõõ=]m\ç\èWš~(Ú˜›É¡r(Æ‘qäªƒhnooïƒ±m-\Î7\Ô&½\Å\ëş\Øtfú•~ h#‡Ê¡GÆ‘\Ş\0\0Š6\0\Ó)F®‹89{ö\ìY^\r\0\0`²$Š6\0u´¶¶T‘;\"N¶µµ\ÍñŠ\0\0\0“J\Ñ ¾\Ö\Ö\Ö;\"F´½\"\0\0À¤R´¨O»lRkmm\ë•\0\0&sa¢h046®+l\Òn×¶\0\0&sa¢h°{\\²\Ë&µ¶¶¶³¼B\0\0Àd-Nm\0v‹w\×+\Ø´û½B\0\0Àd-Nm\0v\Å\ÄawÙ¸¶\r\0\00\ÙE€]1q\İHŸ$\0\0L\æE\Ñ@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0\ÄI\0\0Àb@œ\0\0°\'\0\0‹\0q\0\0Àb@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°@œ\0\0,F\0\ÄI\0\0\0‹\0q\0\0°\'\0\0,F\0\ÄI\0\0`:,F4MÓ´‘›l\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\04\Ôÿ\çka\ÛW4\ï\0\0\0\0IEND®B`‚',1),('22502',1,'/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.bpmn20.xml','22501','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions\r\n  xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\"\r\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n  xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\r\n  xmlns:activiti=\"http://activiti.org/bpmn\"\r\n  xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\"\r\n  xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\"\r\n  xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\"\r\n  typeLanguage=\"http://www.w3.org/2001/XMLSchema\"\r\n  expressionLanguage=\"http://www.w3.org/1999/XPath\"\r\n  targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"permission\" name=\"å®¡æ‰¹æƒé™\" isExecutable=\"true\">\r\n    <documentation>å®¡æ‰¹æƒé™</documentation>\r\n  <dataObject id=\"dObj123\" name=\"StringTest123\" itemSubjectRef=\"xsd:string\">\r\n    <extensionElements>\r\n      <activiti:value>Testing123</activiti:value>\r\n    </extensionElements>\r\n  </dataObject>\r\n    <startEvent id=\"startEvent-1\"></startEvent>\r\n    <userTask id=\"usertask1\" name=\"å‘èµ·ç”³è¯·\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"permission-request\"></userTask>\r\n    <sequenceFlow id=\"flow1\" sourceRef=\"startEvent-1\" targetRef=\"usertask1\"></sequenceFlow>\r\n    <userTask id=\"usertask2\" name=\"éƒ¨é—¨ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:ç»ç†\" activiti:formKey=\"permission-department\"></userTask>\r\n    <sequenceFlow id=\"flow2\" sourceRef=\"usertask1\" targetRef=\"usertask2\"></sequenceFlow>\r\n    <userTask id=\"usertask3\" name=\"æ€»ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:æ€»ç»ç†\" activiti:formKey=\"permission-manager\"></userTask>\r\n    <sequenceFlow id=\"flow3\" sourceRef=\"usertask2\" targetRef=\"usertask3\"></sequenceFlow>\r\n    <endEvent id=\"endevent1\" name=\"End\"></endEvent>\r\n    <sequenceFlow id=\"flow4\" sourceRef=\"usertask3\" targetRef=\"endevent1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_permission\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"permission\" id=\"BPMNPlane_permission\">\r\n      <bpmndi:BPMNShape bpmnElement=\"startEvent-1\" id=\"BPMNShape_startEvent-1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"40.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask1\" id=\"BPMNShape_usertask1\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"120.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask2\" id=\"BPMNShape_usertask2\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"280.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask3\" id=\"BPMNShape_usertask3\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"440.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endevent1\" id=\"BPMNShape_endevent1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"600.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"75.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"120.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"225.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"280.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"385.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"440.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow4\" id=\"BPMNEdge_flow4\">\r\n        <omgdi:waypoint x=\"545.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"600.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('22503',1,'/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.permission.png','22501','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0…\0\0\0s\0\0\0\î}xù\0\0\åIDATx\Ú\ípTU\Ç?{WTT\ìX‡±;cÁŠeKˆ„ Q BˆŠŠ%‚\Ä,(D\ëğQP:‚‚€ˆ¡7EEŠ\Ş\ïş\ïpw^–\É&ow¿™3yo\ßÛ’·ÿ=÷\ÜsÏ½\ï?ÿ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0(‚1f\ßE‹}<}úôÆgÆŒƒ…ÀÆk&O¼\ÆZ:ú\Ã\ĞúC\0s\ä§L™bV­Ze6oŞŒ…\ÈV¯^m&Mšô›u÷¡?ı¡?ô\01E=db¨\ãf\Ûs‹ş0ô‡ş\Ğ\0\Ä\r™\à|\Âm\Ö)nEúC\è\0bŠ\ê7p<¡wŠıa\èı¡?\0…Süc\Ãr³(¿¿)\ÛÑ™¶õN§ˆş\Ğú\Ã\Ğ@’8Å\ëÍœ\Ïs\Ì÷Ÿ=]\Äô˜\á¸pŠ\èı¡?ı$S\\Z0|‡\è\í×‚8.œ\"úC\èC\0\É\à\çNøo‰NQ\Çp\\8Eô‡ş\Ğ†ş\0’À)\ÎÓ¡D§¨c8.œ\"úC\èC±£~ıúUSSS\ï·t³6Á\ÚRk&`Ë­M³\çôµ\ç6¶\ÛÕ¹j» C‡Uòòò:\å\æ\æ\Î\È\É\ÉY••µ¥Aƒ‘‹š™™¹­U«V\ë;v\ì8³W¯^}ÚµkwA!N§ˆş\ĞúC\è¯2¨W¯^m\èı\Ï\Æ(›¢‚À]\ÙV‰\Ö2jÕªµ/`€Î;\ßÒ¾}û\ï\Ò\Ó\ÓÿµÁ :t¨™5k–[\Å~Û¶mÆ³v\íZ3o\Ş<3zôhó\ÒK/oƒÄ¥ö9™‰zQw\Ç)j¶]INQ\Çp\\8Eô‡ş\Ğ†ş\Ê\Ì]b-¿”`I6W\ÙÃ¤[´hQ½mÛ¶37nü\ï\Çì‚¾Ò°e\Ë3u\êTÓ®]»³²²V4i\Ò\ä\ÎdtŠ¦ö,\Ñ)\ê§ˆş\Ğú\Ã\Ğ_¹\rwÙ\é‹v\Z\Õ\ìÒ¥‹Q,SPP`–/_n6m\Ú‰U”\äš?¾2dˆ;¯aÃ†\Å‡£\ìëœ””aNNNv£F¶0ÀüùçŸ¦¬\ä\ç\çniÚ´\éĞ”””C“\É)®-œe\æ|\Ñ~Ç¡û˜\á¸pŠ\èı¡?ı•\r\Å\Û\ë#\\FF†y\ï½÷\\\ĞW\Z÷hT´E‹E\Ã\Ô\Ô\Ôõöo­¤\nÛ´iÓ§yó\æÛ¾ù\æSüşû\ï&//o‹ı’–\Ù/¯Z²8E\Ù\âwpŠz§…SD\èıa\è¯\\\Â)Á\0N\ån\Ê–•È9\Ò\çOX\Ûhí¾¤	³³³ÿ)mT]\ZüOzzúoöK<3)œ\â\ß›_ö\Şq\è\Ä>¦c8.œ\"úC\èC{Nt†P\Ã\ÄÁ9e¥°°\Ğ<ıô\ÓÁÀpSjjj„2V†0–¡gØ°a\ÛÀ°0\Ş3†»rŠZ±ş\Ô%\Ö\Ô\è«ú\ã\ÑúCú\Û3¶\×F¶\éÓ§\Ç$nQ\r¢\ê\rƒCû\Ş5ò¢jR‰jgÎœi*ŠAƒ-KKK\Ï3“KtŠ¶¼|Áx3{ô3%:Do:G\ç\Òk\Æ)¢?ô‡ş0ôWª\á%ÁI%\Ê\ÆMJ\éÜ¹s‘õ\rµb\"\ÏÖ¤’Š\æñ\Ç_–šššHNqW½cz\Í8Eô‡ş\ĞúCe\Ç\Æ\ßk\Ës\Èxgó#š4iœ|òjB]T­C¨eg\Êc–ñŒ\ÓoKKK[¯‘vqNqwz\Ç;\ë5\ã\ÈpŠ\èı¡?ı\í-Lœe\\\ÖI%¥Aq£&TO˜«…©µ6Oeñ\â‹/¨& Qœ\â:Do82œ\"úC\èC»:\á3-;S\Ñ\è&À°[B\\TİºNw)\í\Â\Ô\åœ-\\eƒ\Â5ñX[¸»K2`8Eô‡ş\Ğ†ş\Ê.ú[\×i¹˜Š˜ \ÍÂ…‹¬_˜‘‘Q%\î/l\ïŞ½»h¾²iÖ¬ÙöK¾\Z§ˆ\á\ÑúCú\ÛE-\áı> ÓŒ\à\Ê\"¸¸µa\ê\Æı…\Í\ÍÍ1bÄˆJ\n»w\ï>5LC\Èö³ŒÙ §ˆSDú\Ã\Ğ_\Å\êOÃµ5\ãxg|øá‡‰5\á$\'\'gõ¬Y³*=(œ>}úL->¢Zù±_tMœ\"Nıa\èı¡¿p\è/¸Xõ¼yó*3v	f\n\Ç\Ä}P˜••µ¥2\Æ\â£Y±b\År­÷6Qo„]\\\Ï§ˆSDú\Ã\Ğ_\Å\ê\Ï>¶\Ô¯\ÈY\Ç\Ñüò\Ë/E\Ö,Œû Pš±®\Ïî ‹\ZbQFzAq\âqŠ\èCú«Xı×F*-fü,q\êŸñ{.Jk‡\É)jI¿ıw	wø\í·\ß\ÌÊ•+cşYşú\ë/ó\Ç\à\ãX6lØ­ó¤©\Ò\è\"\Ö\ß÷\Îô­\Æc\ãÆ\è/NıŸ\r\îk\Õt–œú\î‡!vI˜ 0l™\Âx³\Ê\n/^\ì\íT@˜mz\è!³n\İ:s\Şy\ç™Ñ£G\ïp~\ïŞ½Íµ\×^ë¶—-[f^{íµˆ½ñ\ÆÅ¾‡\Êö\Ùgóó\Ï?{üù\çŸ7:ur\Û={ö4¯¾úª¹\ç{\ÜgĞ¶lşüù•v\âQW•¥?ò\ZŠy\æ™g\Ì-·\Ü\â¶eo½õ–¹\ã;\"6v\ì\ØH@x\ÒI\'­súë¯¿š¦M›\î`>¸\\±b…9ö\Øc\İ2_|ñ…III)b\ï¿ÿ¾;\ï\Ë/¿,¢KYğ½½­Y³\Æİ¤^E\æ\Şt\Ãú\Ã?\Ü|ô\ÑGE÷\røÈ‘#\ÍYg\å¶\Ï<óLwı@XWh~ú\é\'ôbÿ§[°üñn¸Nû‹-2‡z¨™={v‘ó’UgÉ¨?2…	\\S¸zõ\êe!¯)ô–o{\ÈuüšŠ•¾ù\æ›æ¢‹.r\Û\×\\s[LS\Ûıû÷7|°+‚õ]İºuİ¹U«VuÛƒ\r\Òl)g7\ß|³9ò\È##¯ûé§Ÿº@OÖ®];\ç\ÌZµjyL\Çı¹_}õ•9\î¸\ãL×®]\Ís\Ï=gz\ê)s\Ã\r7˜3\Î8\Ãm·l\Ù\Ò\ĞSıi%}\×AS\Ãû\ÄO˜Úµk›^½z™½÷\Ş\ÛLœ8\ÑuDÔ°¾şúë®±V%777b\Ï>û¬{¾o(_~ùesıõ×»\ío¿ı\Öt\ë\ÖÍ™ô±\×^{™>øÀ<x°¹ò\Ê+\ÍAd\î¾ûn\×\ÑQ\ã,ıp\Â	N·z]ujôÿ\ë¼o¼±D\Ûo¿ı\ÌÔ©S]V©_¿~¦zõê®ƒs\Ê)§˜\Ï?ÿ<\æ5ú+»)\ë6e\Ê§Au4´]¯^=\çó´\Ì\Ê%«Î’M\Ô\Æ\ë¸×¨Á\É\ì\ã)!eg–š\Zt\\psxj¼•¡Ó¶L™‚2\Í\ÌÒ°\Ë;\ï¼c~øaS£F\r·­´¯¿şºHP˜™™\é^·q\ã\Æ\æp\Î,--\Í\í\ëq~eõ\Ã\ìŞ½»9ıô\Ó]à© TÛ—^z)\Ã\'q¢?•ô\é\Ó\Ç8\Ğ5´ZƒKg…Í›7wY–SO=Õ§Ì t¡L\àœ9svx-\Û\Ñ+Jw\Ê0\êu\Ôxúlõ¹\ç\ë\Zû\è\àô\ä“OvÛ=ö˜¹üò\Ë]–\çè£v¶o¬\'Ol®¾ú\ê\"C\Ù\Ê\Ì\è³ùÇ”ÿ\î»\ïLß¾}]\Æ[Ï½ø\â‹wh¬G\Z\åò.¯@e7RúN;\í4\çS¼i?:\ĞJV%›ş˜}#´N¡R\İaX§0L·‰	ˆqš¤,\én+•*##g¦LŸ‚BmG\ÛÜ¹s]o\æ\İw\ß5\Z5rNS\Û³zÇ²;\ï¼s‡ Pk\éÒ¥®Á—3S\à¨}=\îƒB½¿‚¾«®º\Êõ\Ê\ï½÷^g\ÊH*{\ä÷5üHP~ı)À\Ó0š\ZÀ¸ìˆ¾w\Ş~û\í¦M›6\î\\–TS\n\ÕPv\Øa&==\İs\Ì1n8NYG5\È\çŸ¾k„µŞ—\Ï\n\é–U\ÊÖ¨A–†•jØ°¡{nÇ#µ\ÎWƒ+\í{Ó±C9$²?`À€\Èg\në©±\Ö\ë\éõ}FT\ÚV\Æı…\Ëÿù 0º\ÎUûÁ 0™u–lú³\Çz„aB½w\àóöˆû 0//\ï¥Î;WzP˜=\Ç^\ĞZ!e±=\ã°…\Ş\ÔXk¸Bw§	šŸp¢!\Ş[o½\Õõf5„¢m\Õ\ÊIµn\İ\Ú9@\rÿƒ\Â<\ĞŠUªTq\ç\é¯öõ¸\n0høğ€p™B>úhS}š\Ö\Â$(¿ş4ü=|,\Ó÷­ ğ²\Ë.3¯¼òJ©ƒBeZT† \Ûú\ç@U^ š,û\É\'Ÿ¸cªMT6Ò¿¯ScªúFı­V­š+™6\Öj€•1\ÒP:@:¦ökÖ¬Y¤C¢s•\á\Ñ\èˆ\Zk\r5J›zN¬4Šş\Ê/(”vøy\Ó~0(Lf%›şl°˜†;š¨¾4\Ş÷A¡ı‡ª=ø\àƒÿª>¨\×(Ô½ÿ\È\È\È80Ş®_‚\Â\ï¿ÿ\Şzûï¿¿\Â4t¬ Q½\Ó\à,d\r5Oš4\É\ì»ï¾®Áöº‘ƒó=qO>ùd¤Q\çù‰&z<8|ü\Ã?¸ P\Ûr\È\ê!û\Éu\×]\ç&œ0|ú\Ó—Šó?ûì³ˆ\å\ç\çG2…*\ê?ê¨£\\\æ¹4A¡ö\Õñ°N\Şu$ô\n.{ô\è1MXòC\ØC‡uX\ä—T\ê -©C£\â~¯-?óT\r°ô¯†=˜ÁÑ¾†ñ|c­úÇ»\îº\Ë\×oš\Âøñ\Ò\Úm·\İ1oÁı\à0n²\ê,\Ùô× Aƒ“‚÷>V‰T%\×n\Òı˜\â\â¶n\İú\'W={öœa<}qŠ{^W¨úA9\Â:u\ê¸a	9\"_P-“x\åTc£¿\n _x\á·­z9\Ås\Î9\'23OAŸ†\\ôš\ZR\Ñy*\ÊÖ¾/.(\Ô0…\nF5|,S/ 0¾ô§!6\é\ç\ì³\Ïv\Û\Ö\ÑE‚B\×Ğ²\êK\êsªÿˆ#0^x¡\ÂSc®Ì£2\Ï\ÚÖ_t­—\Z\Ğ	&¸a>uFT’ m™2Ó¾±V}™2:š‘ª÷T)ƒö¥Y\ßX«\ÎLµ4\é‡õ\n\ã\Ãÿi\âÜŒ3œ\ÏRYƒ´\égÀ¿ıö\Ûn\"‰¿\ÖÉª³d\Ô_°®P\ÙßŠF£m °\Â\\\Ø6m\Ú\ÔoÙ²\å?•±4\rF¶¦¥¥­SÔS,½ib‡2fj„U/¨^¬œ_ğ<õˆ\å$be\n}VHœö\åHµŒƒ\Ïª\æEu†š\ç‡Q\Ô\ËÖ¾‚e#ƒA¡¯÷ÔŒ\Ó+®¸Â¥óeªW$(Œ¿ pÚ´i‘Ì¯\nUk¥`P\r£\Z¹\Ò…ê¨¨uÉ’%®!ö™\Íb?ñ\Ä‹<Oï­¿f9«amß¾½›  N†23Ú–ù\É-j¬‹òö=¬¬õŠn¬Û¶m\ëj„\Ğ_xüŸ–„‘OS	Œ\ÊWÆ\ït©‰o\Zù\Ğ2X\Ê^k”#™u–Œú!geeU\è\Ò4ªW•~üû[=^”P\×^\Ğš\Ú_\Ñ\ä\æ\æÎŠ\ç\â\Ì\Ê\n5‹M\êø”Ô„õ†µ<‚şªnpØ°aî‡¢Z1Õ¸(ğ\ÓP‡2Ãª‹QÍ‹«zÉšA†	®S>6\r1\êø#<\â\êƒA¡z\å…ñjB’|\r¥ù °Y³f.ğ\×z˜*\Ò\ßYP¨¡9eQt\\Á¡¶•]Ö¬t\Í\È\ÔP²Òš´¢÷Ó¶\ì\ÇtU¡ÿmıúõ\î¯LÃ‚\Ê\êø}¿Ì‘\Ê\'ôYµÆ¢×ª²I\ÚW§\É\Ï@\Õ\ï@Ë¨±V\æ\\†–5ñsı”\×\Ìkôÿ§‰\"š9¬m\éGÁ—2uÒŸF.ôıÉ·©\Æ0™u–ŒúÛ¾4\Íl˜)ùQQH\'ş}SSSÿ—p\×şnnÒ¤\Éı8*\nû^`œŸRRR\Å)–\Ş\Ô•£\Ñğ…j`´tŒœ_\ØUO\Ã(\ê\éjıB;\ËÁiY\ÍV\ÆG\Ã$\ê}«.F¦\ÙÄ¥\r\nõšZ \Úg–<h{øğ\á\î5µAa|…\ê`([|\É%—\ì0|¬ó*)(ô\ëjV¼öÕ\ë5\Ôhk_š\ĞkG[töD½qeqŠ3M¤Š~_ù¯’´ªIª	SöZ41K®\Zó›nº\É=O\Ë\í(Ë„ş\Â\ãÿ\ä¿44¨mu<•\Ùó\Ù9ù/Õ¼ªF™¸d\ÖY2\ê/:[¨Ì¾“X£¶70l¼\Õ…\ç%\äÅµÀ\'¶Ç³µ\"†‘m ó§†mª6N±\ì¦ÀmW·*\Û\Ó\Û\Îù5\é\Ô\ŞÕ¹ª¿ñ\ÙF9i\İ]€\Û<Å—şÔ¡ğ‹KWj05ı]\êû\ÕÄ“\ân©¨\ÇJºY,M\ï«	\Åi}WzTp[\Ò\í!\Ñ_xüŸü¾ËŠ¸•]<\é,YƒBa³>HSMh,\'\Î*¸[kš°V©XÛ»Y<p\àÀ-±mC³-##c™ğ[\à1œ\"úC\èC{JJJJ5œ­öš–\Ù\Ó\í\çbê¶²	9¹d\'©Øª\r6\\;dÈÍ±\Ên»\à1œ\"úC\èCe%55µ¦µõ>`SÍŸF+\Ês\È8*C8*K\ßJ…f§§§ö\ë\×oEy\×j\È82„8Eœ\"ú\Ã\ĞúC¡Jj\ÕõkÊ”\Õ\Óú»ee¬™\éQ·\İK€0˜1´\Üp\ÍJ^²d\É\ße]vF³Œ5©$\ŞkqŠ8Eô‡¡?ô‡şÂ‰b´mqZ	£´÷G\Ö\Ìq-\á•tC\ÆIF¥d³mp¸²S§N³.\\XªÌ¡\îT’———¯ì ½½ñB\âqŠ\èCúUR«†9–FsnE-E¤\å÷4K\Ù\×ê¯‚@e53]·~~®f\'ô¤’Ò `\Î^ŒºÈ™™™?v\í\ÚuÚ„	¾µqI0\\»v\íJ{Qgv\ï\Ş}ª\îe¬[\×\éN%ñº05N§ˆş0ô‡ş\Ğ_|\Æ-š»5\Ü\Ó:„	»\ìL9dknGY[¼=zöo¹µiÖºY«÷2\Æ)\â\Ñ†ş\ĞúK¶\ß#978	e7Mµ‰ı\îN%€S\Ä)\Ò(c\èı¡¿dFIª\íõ†İ¶\'µ¢‡——×¯_Œ\î°f\Èû5¯‚«8Eœ\"ú\Ã\ĞúC\0€S\Ä)¢?ı¡?ô\08Eœ\"ú\Ã\ĞúC\0€S\Ä)¢?ı¡?ô\08Eœ\"ú\Ã\ĞúC\0°gŒ7\Çn\Ûd\âVô‡¡?ô‡ş\0 ¦L<yùªU«p>!µ\Â\Â\Â¬Sœ‹ş0ô‡ş\Ğ\0Ä”ñ\ã\Ç\ß5q\â\Ä\r+W®ü\'®²\âØ±c—X»ıa\èı¡?\0ˆ9öGW\Çö\Æò•¦Wı\n\Ów17\"úC\èKVı\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\Ä-ÿ\à³jo\ã)@\0\0\0\0IEND®B`‚',1),('22506',1,'/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.bpmn20.xml','22505','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"publish\" name=\"å…¬æ–‡å‘å¸ƒ\" isExecutable=\"true\">\r\n    <documentation>å…¬æ–‡å‘å¸ƒ</documentation>\r\n    <userTask id=\"taskuser-1\" name=\"å‘æ–‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-request\"></userTask>\r\n    <userTask id=\"taskuser-2\" name=\"éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\" activiti:assignee=\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\" activiti:formKey=\"publish-manager\"></userTask>\r\n    <userTask id=\"taskuser-3\" name=\"ä¼šç­¾\" activiti:formKey=\"publish-countersign\">\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>${countersignUser}</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n    <multiInstanceLoopCharacteristics isSequential=\"false\" activiti:collection=\"${countersignUsers}\" activiti:elementVariable=\"countersignUser\">\r\n      <completionCondition>\r\n	    ${counterSignService.canComplete(\r\n			execution,\r\n			nrOfInstances,\r\n			nrOfActiveInstances,\r\n			nrOfCompletedInstances,\r\n			loopCounter)}\r\n	  </completionCondition>\r\n    </multiInstanceLoopCharacteristics>\r\n	</userTask>\r\n    <userTask id=\"taskuser-6\" name=\"å½’æ¡£\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-finish\"></userTask>\r\n    <endEvent id=\"endnone-2\" name=\"endnone-2\"></endEvent>\r\n    <sequenceFlow id=\"transition-2\" name=\"\" sourceRef=\"taskuser-1\" targetRef=\"taskuser-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"transition-14\" name=\"\" sourceRef=\"taskuser-6\" targetRef=\"endnone-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow1\" name=\"\" sourceRef=\"taskuser-2\" targetRef=\"taskuser-3\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow2\" name=\"\" sourceRef=\"taskuser-3\" targetRef=\"taskuser-6\"></sequenceFlow>\r\n    <startEvent id=\"startevent1\" name=\"Start\"></startEvent>\r\n    <sequenceFlow id=\"flow3\" name=\"\" sourceRef=\"startevent1\" targetRef=\"taskuser-1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_publish\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"publish\" id=\"BPMNPlane_publish\">\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-1\" id=\"BPMNShape_taskuser-1\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"109\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-2\" id=\"BPMNShape_taskuser-2\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"279\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-3\" id=\"BPMNShape_taskuser-3\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"470\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-6\" id=\"BPMNShape_taskuser-6\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"660\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endnone-2\" id=\"BPMNShape_endnone-2\">\r\n        <omgdc:Bounds height=\"40\" width=\"40\" x=\"830\" y=\"206\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"startevent1\" id=\"BPMNShape_startevent1\">\r\n        <omgdc:Bounds height=\"35\" width=\"35\" x=\"20\" y=\"207\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-2\" id=\"BPMNEdge_transition-2\">\r\n        <omgdi:waypoint x=\"229\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"279\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-14\" id=\"BPMNEdge_transition-14\">\r\n        <omgdi:waypoint x=\"780\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"830\" y=\"226\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"399\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"470\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"590\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"660\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"55\" y=\"224\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"109\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('22507',1,'/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.publish.png','22505','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0p\0\0\0\0\0w\ä\n\0\0lIDATx\Ú\í\İ	”Wuı7ğ\Û7++;YY\Ú\î\Óò\Ô)[,[m±\å)€!é¨¤ˆ‰%Š\ÉQ‰´²ş\"™¥\Ç\\²,r9%Å¢B$E*	¤\âBJ(‚ˆn€\Ş\ç¾\ï3w\Îe`@f~3¼^\ç|\Îü~3\Ãö\ã=Ÿ\ßı\Üû½÷>\å)\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\ĞİŠ¢\Ø\î–[n¹`ö\ìÙN›6­˜2eŠ\ê\å5u\ê\ÔbÆŒw•\Õ&§JNe_É¾\Ü+¹‡>$\rr\æÌ™Å²eËŠGyDõ‘Z¾|yq\ÅW\Ü[6\Ì}\äTÉ©\ì+Ù—{%÷\ĞGd\ï–\Ùg\å#S¦L¹NN•œÊ¾’}¹Wr}D–&h(}·\Ê&¹FN•œÊ¾’}¹Wr}D\Ö%k&}ºIrª\äTö•\ìË½’{\ØÆš\äª{\î(n™sf±`\êqU\åq>§i’rª\äTö•\ìË½’{h¡&yÿ\Ê%\Åü?.şõ\Ç\ëT>—¯iFš¤œ*9•}%ûr¯\äZ¤I.^pñz\r²®ÿ.¸D3\Ò$\åTÉ©\ì+Ù—{%÷\Ğ*Mòº\Ëşo—M2_ÓŒ4I9Ur*ûJö\å^\É=´H“œ?eL—M2_ÓŒ4I9Ur*ûJö\å^\É=h’J“”S9Õ£e_ö\å^\î\åØœ&™+;u\Õ$ó5\ÍH“”S%§²¯d_\î•\ÜC‹4\Ég\Òe“\Ì\×4#MRN•œÊ¾’}¹Wr-\Ò$W,¹¶˜ÿ—c\×_¢P~._ÓŒ4I9Ur*ûJö\å^\É=´H“L-ú\ç¯\Ök’ùœF¤IÊ©’S\ÙW²/÷Jî¡•š\ä\Ã7şm\âúK\Ê\Ï\åkš‘&)§JNe_É¾\Ü+¹‡h’÷¯\\R,œõ?]®3\Ï\×ò=\Z’&)§Ê›¹\ì+Ù—{%÷\ĞSMòá‡‹;nœ^Ì›|L—\r²®|O¾\×/MRN•7s\ÙW²/÷Jî¡››\ä¦öl\Ù\ã¥IÊ©’S\ÙW²/÷J\î¡Eš\ä\ãÙ³µ±=^š“&)§Ê›¹\ì+Ù—{%÷\ĞMMò‰6Èº4\'MRN•7s\ÙW²/÷J\î\×7p\àÀ¾öµ¯Ñ¯_¿\ÓËs\ÊZT\ÖCee­)kqùµkÊû÷\ïß–\ï\×\Ød“Tš¤œ*9•}%ûr¯\ä~\Ë(±Ê¡lXùq~YkÛ‡µ\Ç]\è\Ê_7|\ß}÷}~ŸzaÆŒ³ı„	N8şø\ãÿ9zô\è\åC‡]]N¬ÿğ!C†¬=ò\È#Ww\ÜqsO=õ\Ô\ÓF\Zµ‹©Ij’rª\äTö•\ìË½’û­!W9‡Œ)‡¯U›;´uQ÷—u\â\àÁƒ·\ï\Õ/\ÌØ±c÷:ö\Øc¯ikk{¬ÜŠ/¼°¸ö\Úk‹eË–k×®-j+V¬(®¿şúbò\ä\É\ÅI\'T\äûËnqùk†\ì¹\ç\Ûi’J“”S%§²¯d_\î•\Üo¡£nme-\é<„\r\Z4¨(\ç—jfY°`Áz3\ËÊ•+‹…V3Ë¸q\ãª\ï\ßÀ ·¼¬Á½\îE>|ø\ÎG}ô\Ü8\à±.¸ \Z\Ğ6\Ç\êÕ«‹Y³f£Fzl\èĞ¡K<ğÀ/h’J“”S%§²¯d_\î•\Ü?Q90”ó\×:]\ßşö·«û<°\Ù3\ËÌ™3‹#Flh;³\×=zô°ı÷\ß\ÍYgµ\Ù/Â†Ì™3§(¸\ÕtĞ…}nm©&©IÊ©’S\ÙW²/÷Jî·ºrØ±ÿş³›C\Öğ\áÃ«¬y”í‰š={vqè¡‡v\â\æ•\î®-ıÂŒ9ò´C9d\íUW]UlI÷\İw_1aÂ„\Õ\å{{^|MRi’rª\äTö•\ìË½’û\Í\Şş\Ó®\Î<ó\Ìâ¡‡Ú¢3KÁ\Ä\ê4\Ä-j\Ù!.\ÃÛ°a\Ã\ÍZÑ­\å¼ó\Î{´­­\íŞ–Ÿd5Ie€SrªG+Ù—{%÷­²lò¯õ@•)\æß¹5\å÷\ït~Ü¼–[I˜e“9ò¶5‡·\ÚE]ôp9\Ä-\Ù\Äi’š¤œ*9•}%ûr¯\äş‰kó–\á-K&»C–T6¯º_\Ö-ó¢\ä‚%9\çm\îÜ¹Ew9÷\Üso0`À\Å}ı\n•š¤&)§JNe_É¾\Ü+¹brµ\É\ærÆ­}\ämCG\âš~ù÷9 U–N\Î\ËZ\Ï\îv\Øa‡İ›\îi’J“”S%§²¯d_\î•\Ü7e\ÉbóV9\ç­\'œs\Î9\Í!\î_J™û¼\åV[\âj“›kÉ’%kpwî®I*MRN•œÊ¾’}¹Wr\ßX:9¦yµ\É-}Á’Í¹°Işü\Æ7¦G_˜Ü¤{Ò¤IEOùÁ~° \à\Æi’J“”S%§²¯d_\î•Ü·/Ü¡¬UõĞ”ûK÷¤œWÿ]úõë·²\Ç@3fû¶¶¶\Ç6÷&\İ[ø(Ü²ò¸«¯§Ij’rª\äTö•\ìË½’ûÍ“Ó¬š7\é\Ş÷y{²:ê¨?\n7q\â\Äq£G\îñ\ã\àƒ¾¡\â>¤I*MRN•œÊ¾’}¹Wr_\Îó\ëaiúô\éE+\È\Õ/Ü=ò\Âüñÿ¼\ä’Kzü\Å8ù\ä“gõ¶e”\å\ßw\Ê\ã:5IMRN•œÊ¾’}¹Wrÿÿ\r<xûM}\ÏÀw*³¼6ƒR\î\Å\Ö\×\êØÕ«W¯so¸¼³\Û_ÀÑ£G/¿ö\Úk{üÅ˜={ö\ÜòE¸¬75\ÉÆ¥D§ô\ë\×owMR“”S%§²¯d_\î•\Üo2§×•u\â\Æ¹ò\ëG\Ôy;vl\ÑJÆ\ß<nd·¿€C‡]\İ7\îŞ”¥K—Ş‘Krö\Æ&Ù¨K7´\×K“\Ô$\åTÉ©\ì+Ù—{%÷9]T_¤ü8jC—\ä/¿vz\ãVX-\Ø4yò\ä\æ\Ï\Ø\Ù\İş\æ\Î\â­pB`\äE\è\åM²c¯W³Yj’š¤œ*9•}%ûr¯\ä¾#§Ë›ùl\ä7/hX>ŸS}Á‚-5À-\\¸°ùw¿¦G~\Ğ[E_\àš{½²|A“\Ô$\åTÉ©\ì+Ù—{%÷›\Ì\éuıû÷ÿtó(]ªV6­\\¹²ùw^¾\Í\ë«\Õ\×\ZCN$­?üğÃ›ü\ŞU«Võ\Ù&\ÙW2Ú“o\æ÷\Üs\Ï\ãú¾{ï½·¥ş\ï\ï¼ó\Î.¿–\Şÿır*û=VË—/\ïòk\éÛ{w2«G\Ë}o®û\î»o“\Û$õ÷uş\\_\ÛN)‡ ü?¯)\ëÁ²\îi?\âu{Y·–uS¥r¿¶üxUYW–5£¬i\å\ç&—/)kRY¿)Ÿs\Ê:£||ZY§”_ÿqù||ùxl.¡_>ÿnùüÈ²†—\Ï)kHù¹o”\Ï\Û\Ê\Ç\å\Ã~_.~À€{•?V~n\ì@x\Í\ßkuı¼Uf•®\æ–mö¸ò\æö>p\\]s\Êp\î]\î+MrÑ¢E\Å\àÁƒ«lØ°a\Å7¾ñ\â\î»\ï.v\Ûm·j-pW¿®|Šc9\Æ^.9]\ï\Íò;î¨²±\×^{US¿ø\Å/Š\Ïşó5u\êÔ\ám§v*&MšTü÷¿ÿ-:\è õªóñ\Ío~sñ©O}ª\Ú(\İÿı\×ù=S^xaõ½\çŸşz_«\ë+_ùJ\Ç\ßwÉ’%\Å\\\ĞQ#FŒ(^ø\Â¿ı\ío\×ù|=\Ôı\éO*\Şğ†7Tw\İu\×*\'>ø`²R\Üt\ÓMrªGo\Õ:\âˆ#ª¬\å\ã†6hO;\í´\âÕ¯~uuSÚ¿ÿı\ï\Åm·\İV|ô£-9\ä\êy*?gz´\Ü÷¦z\æ3ŸYüù\Ï®Î—\ê\\\Ù^\É÷\Üu\×]\Õ\Ï\ÆşóŸª¯_w\İu\Å5\×\\S}._\Ï{\Î\Æv\Îõ¦\Ü\çÿº|/{\î¾û\îû¢\Üpº­­\í•\å\ã×”9Ø¥|ş\æş¯òñÿn¨öÈ€•A+9)ŸÿŸòùW\Ë\Ç3e0Ë€–A­|>¢||LYÇ–\ÏO\È@—Á.^½ö\ï\ì²\Î/\ë÷\å\×.n§µŠW>nmóy+\ê\Ñ\î»\ßı\î]­°®´ı*”3{y“\\§9öµu\æ?ÿùÏ‹w¾ó\Õ\ã=öØ£8é¤“ª\Çgyfñ\Ü\ç>·\Ú\Èó›o¾¹\ÚÈ®kÌ˜1Å³Ÿı\ì\âœs\ÎY\çóù>\ÛnNó†š7\Ìf=ÿù\Ï/?üğ\âŸøDqê©§O{\ÚÓŠ\Ë/¿¼\Úiğ·¿ı­ø\éOZ¼ò•¯¬v&üñUö±\ê\×\×oº\æ²1ú¥/}©\Z\Ï=÷\Ü\âg?ûYõk³ó!\çÎ[}\ï	\'œP¼\ç=\ï)\Î>û\ìu*W¼Jn›ÿ\Ï\Ïy\ÎsŠü\ã]\Ö3ñŒbÖ¬YÅŠ+Š3\Î8£\Øyç«„×¼\æ5\ÕF…Nö»cu\Ä~û\íW¼\å-o©~fòñ\ë_ÿú:«&\ê!\É\åv\ÛmW¼şõ¯/\Ê\r»\ê\ç\ío|c•\Ñ\ì˜û\å/©G\Ë}\Ë\×e—]Võ\Úz€ûÑ~T\íÀ«\ëMozS•\éyó\æUß“ƒy÷‘£>ºø\Ø\Ç>\Ö1À¥w¿\ä%/©úµ\Ü÷Ø†\ÊÚ³ı{\ê%G\à\Ötû˜ûÀeOq+\Ü.—\í¥Mò\Êşıû©ss\ìkM²|(\Şşö·W{t³¡ı\å/¹zœJü\Îw¾S\\ıõ\ÕQˆ4\Ì¼\à\Å\Ë_şò\êq]/}\éK«\Ï\çq¾\Ï\ÆÁ¶›\Ó\ÈQ€_ı\êW\ÕR\Ã\áÃ‡WGr3À\å(À¯ı\ëâµ¯}mõ}97\×Y›?ş—Š\Õ\\¬%g\çw^õ¦œ¡mÈ!UFó\æa-ÿõ¯up\Ù‘\Ùf\í¸\ã\ëp3f\Ì(>ô¡­³œ#kÍ£şğ‡«?óô\ÓO/şô§W§w½\ë]\ë\rp—^zi5dv\ç^\Şm|€\Û&zô´iÓŠ·½\ímÅ»\ßı\î\âö\Ûo\ï8rœ¦wggH>—h\Éw6d\ÓÇ³³$}<?ƒ\Éh6†û\ÒP»\rp\ÛL\î_ñŠWtp\éÁÍ¯\×}7\ÜO~ò“uv\Zft¶I²ƒ9\Ïó³ğş÷¿_î·²\\q²\Ó\ĞöP\à•µ[§,÷–s\àwû‹8aÂ„“Z\á\Ş\nÃ†\r›_OÜ½¨Inp¯V_m’9\Òñ­o}«Z––.;W–\"\ÔßŸF™\ïm\î\Î\Ş\àÿøÇ–P\Êi5Œ%#Šn¼ñ\Æ\ê\è\Ö?şñ\îsŸû\\1r\ä\È\ê{\ë®«s\àš\\\ÙÓªe\ÉkÀ\å\Èp~Ÿ|\ä#\Åø\Ãjh\Ü~ûí«¬à²›.÷\ÄlV\Şğówù\ë_ÿZ}o†°d¿®ü™\Ï{\Şó:Ÿu\ÖY§\æ\Êp/{\ÙËªŸ‘úHc¸\ì–S=zKÔ‰\'X<õ©O­6>3\Ä\í¾û\î•\çY=‘¯\çg.ßŸ/=ù”SN©6~Ó«³!›#\Ôõ‘\n=Z\îû\Ú\0—e”YM”\çY2gÎœj5Q\î\é•\ÏeõE\Ş\'²\ãC\î·jFwn|\îo?§n‡®²\ì*”]1bÄû\í·\ßc=ywó¥K—.+ÿóV\r<ø\Ù}±™öµu\æÙ°\Î\ÚÑ£G¯SÏ³\ÈR„½\èE\ÅW\\\Ñ1\Ğe!\ë\Ïm\È\é÷¾÷½õ–P¦r´,C\Ó{\ßû\Şj)\Ì\æpy³Î¿%Ô¾û\î[=\Î\Ë,#Kvó\æ7ûz€\ËÑˆ,Ë²™Y\ÍÊ‘¼vØ¡c¹e~\Ï×½\îuÕ²\È\ì¬ÈŸ™1Ï³¡œó÷š\\\Ğ\åM\'\\6\n2\æ\×ä£œ\ê\Ñ[²’Ñ¿ü\å/y?]g©z]\Ù M&³J\";Lrg~2ğe#6¿Gv ¼\ï}\ï«6‚s\Şh¾O–û\Ş4Àeû\ÕW_]pÀ•,7—P&\ãy\å\Â\'Ÿ|rñÁ~p\Ê\ï‘\ßS\î·\ê¸s”\İÄ»}€;±—\Ünb¼Gu\ÔMYZ\ÑSN9\å”\æf}šd\ëWRd/n\Ş\à=ô\Ğj\ÙM6Š³±»¡\å3´\åDùl\ÄfCxÜ¸q.b\"§{E³Áù\Ç?ş±£²!YË›m†ª\\\\as¸ú\Â:©\ìh\È9>e«¸\Ï|\æ3ÕUp9\n˜\r\Şÿû\ßÕ¹k\Íú\â¿Xüş÷¿¯\ÎW«/’\r\à\ä?;\"šG\àò<K&\ë.\ç\å\×\ç\ëYz\ì8\Ù\ï\ÊÈƒ>¸\ËJÏ®—\ç\"=9W®\Îo]y«Sö³Ÿ\íXr©G\Ë}o\àrD$ı>\ï£Fê¨œ]pyŸ\ÉÊˆ<4hPµT¿ó\ï—\ß\Ë\0\×2G\êö©‡¤VX-Ø”£¶{,¶õ\È4r\ä\Èş\å†ø£=q‚\à<°fÀ€w—o;i’½\ã<¸œ?”+K\î½÷\Ş\Õ°lœ\æJ~»”m6\nrQ‰\Çsy_Mr\Û\Éip%?\Ùš\Ç\ÉJ=À\å\ëY^™%›3À\ÕW\Ë\Õ\'s\Õ\Ô\Ã;¬z\Ï\0—s\êru½z€\Ëí†v®l\×\\.ø\åg·\ÜrKõµ\ì\í\Íó|\à\\®b–n—]v\éXBi€“ı­]\ÙQ‘¬¾õ­o­\çq*½:³Ã­yj–§‡ÿ\îw¿«~\îrNG†¶z\é²-÷½\å\n\ÙY\nœó\Ø\Şñwlpga=ÀeGF\ŞSò<_>×¼\àI*C ®¥\Ô\åV\ÕÀİ“«›V¯^?=Vp=:\Ã:t\éÌ™3»ıE(\ß@rŠÿ\Ñ$[¿²\Ô\àY\ÏzVu´\"\Ìit9\n‘=µ;b—¥e9’’‹IdCÁ\0\'§\Í\î\Ê+¯¬gÈª¸4\ê¼\ÉfX\Êà³¹\\~Ÿ,…yÕ«^U\rs¹¨H\Î9Ë¹o9?\"ƒ]rœ{\å\ëù·\ï³\Ï>\Õ2³<Oåœ¼\éÓ§W\ë{e€\ÛØ \×y	eó¸\Î\\®~Öò±»m\ìd\Ëò\Ü\ÜŞ¢ş¹\Ê\Ò\Ê¿ø\ÅÏ›•«½\æÜ¹,L\Î\ÆQ~6rN–û\ŞV\Ém–Lnl€\Ëj ú*”Yú£uyš•Ÿ\\K…\ë¸\å@Ş“[A\æ¥=ÿ­iÈ!Ÿ:ğÀWg\\w¹ú\ê«o,7´n\Ê\Õh4\ÉÖ®\\5/{¥²$2\Ë\Ër¬\\¡/—N\Ï\ÇOú\Ó\ÅE]\Ôq#\Ø\İø\æ7¿Ym\ç\\‹l\0\ç\êNY¢“\ï\Í\Ò9rš.\ç\'\äµ\\Á±à²—4;rA…\\¡rc\\$\ä(X¾^ß¸8GÄ²\'6W\ãKOË¯Ï‘\ãAş\Â¾P]°¡y#\×[o½µº2j}Ñl\È&\×9Z\×y‡Dş®¹‡]½ó„ò<;8ò³Q\ß9WÁ\Ì\0—% \Ù\ÑñÕ¯~µøş÷¿_ıš\\ö:·\â\È8\åT\ŞR•\r\Ò\\\'9\Ïòß‰\'\Çw\\õ³\Éb}¡ô\è,Ê<\ÎrÊ‹/¾¸º\"k²œ\Ï\Õ÷\ÍÒ£\å¾\Õ+YÎ©7\ÜpCu!«œ\çVWÎ§~J\ã¸\æ}\à²!‹O5+;úp-5ÀTKÙlGyä£\å“\Ã{üE*ù\ï\ÊÆ½¦;–R–Xd\éd¹Qó	M²õ+G²ñ™\r\ã\ì\İ\Ír´4\Ê|-KÉ²-,\É%\Şó›\ßT¬\Ù0¯Oon`d=¿G.\ßk\ãÀ\0—Ùˆ\Ì\åı;/¡¬kc\\}?¹\æOS¹)x¸?ü\á\ÕòÆœ«™/o\Şù|óhYjñ\â\Å\Õ-²Á›ó5³ó!\ç\Çuõw\Ï`XotşZ4\ç\\¹\Ü\ì>\Â9/\Ãh¼O~ò“Õ¯\Ër\ÎrªGo©Ê±\ìˆ\È\Ñ\ç\ì¨\ÈÑˆ\ä9¥\êrO\Î|_Bd\Ùò¦ª¾x-÷­\\\é\ÓY\åP_-8;ô²œ²®\ì(Ë¹ø¹€O\ç.W!Î…|š\å\"&­%8,û\×\Êz`\Êûhß·ºyñ’û[\â T.9[np,*Ã¾zkş\ã—-[¶¶ü¹½%¦VMr³+Gºº,|ıxS{n³!]­\Ó$·İœfø\Ï¶:WYÂ˜e§,\É\Ş\Ó\rC™\ÏåŠ§]](eCy\Ìğµ±«®ºj“WKÍŸ›¥g9ú¶¡?wc\Ã_\Ñ\î>\ÔF\ì¶Ó£»ºÁw_ÿ7\Êş¶›ûú}\äñŞƒ4\ï=]mƒ\ä\n\Ã\Í\í¹\ïy\å¼0®š²\Ã7ÿw=!¸;\ì°GÜ‰­ô\"\í0hĞ “&Mzdkyk\Ş\Æi’\ÊÆœ*9•}%ûr¯\ä¾+\í7ş^\\NYÁ\ÕrD·1¼-\ß\Ômº]®¦\Ò\ÖÖ¶\äŒ3\ÎXº¥\ÏyË²\Ém\åÈ›&©IÊ©’S\ÙW²/÷J\îŸô¦¶\ÆğTıûºSş¼\æŸ_\Ö\àV}¡v(‡­‹su\Ê[o½õ\á\'{«€\\m2,\Ù\Îy\Ó$5I9Ur*ûJö\å^\Éı–“{F7.\İ\ßm\ç\Ãå¼·ò\Ï[\Û\Ş\Î\ì\r/Ö°r»ó„N˜wó\Í7o\Ö¹¥K—.›0aÂœu\Ë]\Êûú\Õ&5IMRN•œÊ¾’}¹Wr¿Õ–R\Îkq[ûH\\~ÿN\ÃÛ¼–[:¹‰lLÖŸ2\ä†ñ\ã\Ç_y\Ùe—]}\Ûm·\İ\ÚüG®X±\â\ÎrJ{ò\É\'\Ï\Z6l\Øüşıû¯Ê´Ü—oÒ­I*œ’S\ÙW²/÷Jî·¾\Ì\å<²¨¹œ1\ç\Ä\å\æ\Ú[ú‚%\ÎyK-*g¢]{\ë\á\Ë\İÛ‡¹K\Û_À5\Ø\í7\Ü;±¬=s\éO-R“\Ô$\åTÉ©\ì+Ù—{%÷[jˆ\Ë\r´›\ÃU®N™¥[j\É\ä\á‡şh§\ám^¯\Ş\Ğ$•NÉ©­d_\î•\Ü÷¤\Üú¬ÿş¿\î4dU7û>}úf\ßj GğrN]ó&\İ\Ís\ŞzÍ²I4Ie€SrªG+Ù—{%÷­ªıê”‹;]ƒ\r*Æ[\\r\É%Å‚ª{\ÍfYd-÷ƒ]¸pa1yò\äbüøñE[[\ÛcÜ–·\ì\Õ&\Ñ$•&)§rªGËˆ\ìË½’û\Ş(§l\åô®~ıú­\ÜÀöD\êşœæ¨›&©™h’rª\äTö•\ìË½’û­7\Èm_q#Û¯T¹fs·œW—{Uo«W\ÍG“\Ô$\åTÉ©\ì+Ù—{%÷=¢\Æv\Ë0\Ö~\ï¸9\í\Ë!\ëa-\Ã\İ\âö¡L\Ì2\ÌmıŠùh’š¤œ*9•}%ûr¯\ä4I¥IÊ©òf.û§V­ZUÌŸ?¿úød>/ûr¯\ä4I¥IÊ©’S\Ù\ßÊ•a¬ü§UŸ\Ì\çe_\î•Üƒ&©4I9Ur*û8Ù—{%÷ I*MRN•7s\Ù7ÀÉ¾¯\ä4Ie€SrªG\àd_\î•Üƒ&©4I9Ur*û8Ù—{%÷ I*MRN•7sœNöõ|=\Ğ$•NÉ©m€“}¹Wrš¤\Ò$\åTÉ©\ì\àd_\î•Üƒ&©4I9•Sp8ô|=\Ğ$5Iœ’S\Ù7ÀÉ¾\Ü+¹MRi’rª\äTö\rp²/÷J\îA“Tš¤œ\Ê)8œ\Ü+=Xß´i\Ó4“¾[•Mrœ*9•}œ\ìË½’{\è#fÌ˜qÇ²e\Ë4”>XK–,9¿l’\×É©’S\Ùo¥ZµjU5Œ\å\ã“ù¼\ìË½’{\Ø&MŸ>ı‹—_~ù=w\Şy\çƒ\ZK\ßÙ»•9u\ê\Ô[\Ë\ÚGN•œÊ¾’}¹Wr}Hùƒ´÷”)S\æ\äv\Ö%«^_ù¼®¯5H9•S=Zöe_\î•\Ü\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0l\Òÿ„m\Ñ\ë§É¾\0\0\0\0IEND®B`‚',1),('22510',1,'/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.bpmn20.xml','22509','<definitions\r\n  xmlns=\'http://www.omg.org/spec/BPMN/20100524/MODEL\'\r\n  xmlns:xsi=\'http://www.w3.org/2001/XMLSchema-instance\'\r\n  xmlns:activiti=\'http://activiti.org/bpmn\'\r\n  xmlns:bpmndi=\'http://www.omg.org/spec/BPMN/20100524/DI\'\r\n  xmlns:omgdc=\'http://www.omg.org/spec/DD/20100524/DC\'\r\n  xmlns:omgdi=\'http://www.omg.org/spec/DD/20100524/DI\'\r\n  typeLanguage=\'http://www.w3.org/2001/XMLSchema\'\r\n  expressionLanguage=\'http://www.w3.org/1999/XPath\'\r\n  targetNamespace=\'http://www.mossle.com\'>\r\n<process id=\'vacation\' name=\'è¯·å‡æµç¨‹\' isExecutable=\'true\'>\r\n  <documentation>è¯·å‡æµç¨‹</documentation>\r\n  <startEvent id=\'vacation_1\' name=\'å¡«å†™è¯·å‡å•\'/>\r\n  <sequenceFlow id=\'transition-1\' sourceRef=\'vacation_1\' targetRef=\'taskuser-1\'/>\r\n  <userTask id=\'taskuser-1\' name=\'å¡«å†™è¯·å‡å•\' activiti:formKey=\'vacation-request\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-2\' sourceRef=\'taskuser-1\' targetRef=\'taskuser-2\'/>\r\n  <userTask id=\'taskuser-2\' name=\'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\' activiti:formKey=\'vacation-department\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-3\' sourceRef=\'taskuser-2\' targetRef=\'exclusive-1\'/>\r\n  <exclusiveGateway id=\'exclusive-1\' name=\'exclusive-1\'/>\r\n  <sequenceFlow id=\'transition-4\' name=\"åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-3\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-9\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-3\' name=\'äººäº‹å®¡æ‰¹\' activiti:formKey=\'vacation-hr\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>7</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-8\' sourceRef=\'taskuser-3\' targetRef=\'exclusive-2\'/>\r\n  <exclusiveGateway id=\'exclusive-2\' name=\'exclusive-2\'/>\r\n  <sequenceFlow id=\'transition-10\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-13\' name=\"åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-6\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-5\' name=\'è°ƒæ•´ç”³è¯·\' activiti:formKey=\'vacation-modify\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-11\' sourceRef=\'taskuser-5\' targetRef=\'exclusive-3\'/>\r\n  <exclusiveGateway id=\'exclusive-3\' name=\'exclusive-3\'/>\r\n  <sequenceFlow id=\'transition-12\' name=\"é‡æ–°ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'taskuser-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;é‡æ–°ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-15\' name=\"æ’¤é”€ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'endnone-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;æ’¤é”€ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-6\' name=\'é”€å‡\' activiti:formKey=\'vacation-finish\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-14\' sourceRef=\'taskuser-6\' targetRef=\'endnone-2\'/>\r\n  <endEvent id=\'endnone-2\' name=\'ç»“æŸ\'/>\r\n</process>\r\n<bpmndi:BPMNDiagram id=\'BPMNDiagram_vacation\'>\r\n  <bpmndi:BPMNPlane bpmnElement=\'vacation\' id=\'BPMNPlane_vacation\'>\r\n    <bpmndi:BPMNShape bpmnElement=\'vacation_1\' id=\'BPMNShape_vacation_1\'>\r\n      <omgdc:Bounds height=\'35\' width=\'35\' x=\'29\' y=\'208\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-1\' id=\'BPMNShape_taskuser-1\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'109\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-2\' id=\'BPMNShape_taskuser-2\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'279\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-1\' id=\'BPMNShape_exclusive-1\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'445\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-3\' id=\'BPMNShape_taskuser-3\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-2\' id=\'BPMNShape_exclusive-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'681\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-5\' id=\'BPMNShape_taskuser-5\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'80\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-3\' id=\'BPMNShape_exclusive-3\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'571\' y=\'12\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-6\' id=\'BPMNShape_taskuser-6\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'764\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'endnone-2\' id=\'BPMNShape_endnone-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'926\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-1\' id=\'BPMNShape_transition-1\'>\r\n      <omgdi:waypoint x=\'69\' y=\'227\'/>\r\n      <omgdi:waypoint x=\'109\' y=\'226\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-2\' id=\'BPMNShape_transition-2\'>\r\n      <omgdi:waypoint x=\'229\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'279\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-3\' id=\'BPMNShape_transition-3\'>\r\n      <omgdi:waypoint x=\'399\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'445\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-4\' id=\'BPMNShape_transition-4\'>\r\n      <omgdi:waypoint x=\'485\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"505\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-9\' id=\'BPMNShape_transition-9\'>\r\n      <omgdi:waypoint x=\'464\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'464\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"464\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-8\' id=\'BPMNShape_transition-8\'>\r\n      <omgdi:waypoint x=\'651\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'681\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-10\' id=\'BPMNShape_transition-10\'>\r\n      <omgdi:waypoint x=\'700\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'700\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'651\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"700\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-13\' id=\'BPMNShape_transition-13\'>\r\n      <omgdi:waypoint x=\'721\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'764\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"740\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-11\' id=\'BPMNShape_transition-11\'>\r\n      <omgdi:waypoint x=\'591\' y=\'80\'/>\r\n      <omgdi:waypoint x=\'591\' y=\'52\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-12\' id=\'BPMNShape_transition-12\'>\r\n      <omgdi:waypoint x=\'571\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'185\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"338\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-15\' id=\'BPMNShape_transition-15\'>\r\n      <omgdi:waypoint x=\'611\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'205\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"945\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-14\' id=\'BPMNShape_transition-14\'>\r\n      <omgdi:waypoint x=\'884\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'926\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n  </bpmndi:BPMNPlane>\r\n</bpmndi:BPMNDiagram>\r\n</definitions>',0),('22511',1,'/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.vacation.png','22509','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Ğ\0\0\0\0\0\ŞM\î\Û\0\0D\ÔIDATx\Ú\í	xT\åõ‡q_k­û¾¶\ÚZµ\îûB]Z¬¸TM&7	QHˆ¨ Q´(*â†»şÁ”\Ì‹Š\n*¸\×Ai‹\ârÿ\çw\ÉM‡0Y&\Ëd\î\Ìû>\Ïyf\æ\Î\Í$9óó\ßı–Û®\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ˆ-q\0\0\0\0\0\0@ıt0s«\0\0\0\0\0\0 	§˜-7Qı\Ø—\0\0\0\0\0\0\0$Ï¾h\ÖôRD4\0\0\0\0\0\0@\İâ¹¡\ã\0\0\0\0\0\0\09G‡D²ÿ>k¢\0\0\0\0\0 \ç\ÅsCâ˜‘h\0\0\0\0\0\0\ÈYNi—\Ú\Èrª\ç\0\0\0\0\0\0dx\îØ„Ÿ[ˆ\0\0\0\0\0\0\Äs\ëÿ<\0\0\0\0\0\0@\Æ\ÓĞ†a\éş\0\0\0\0\0\0€Œ\Ï-5ıš‘h\0\0\0\0\0\0\È:jo\0¶Y—\ê\ÇT¨ısl,\0\0\0\0\0\0Y\';&ˆ\à;\Í\Ü\ê\ÇÆŠ\èº~\r\0\0\0\0\0\0Y\'E—j\ì¦ ¢Å³o\ŞgM4\0\0\0\0\0\0–ºDm21\\ŸˆNvşI\ÎgM4\0\0\0\0\0\0V<wHA\'ÑÏµE4Ó¹\0\0\0\0\0 \ãi¬ˆmHD§*ÿ\ÒvŒD\0\0\0\0\0@\0\Äsc\Åk]\"z\İ&Šg\ÖD\0\0\0\0\0@Öˆ\çúDô»\Í\Ï\Íı{\0\0\0\0\0\0\0Z\æø&\Ñ\ÍÏµE4k¢\0\0\0 7(((p\ë5\Çq¢Nk\Ó\ë¢.\Õy~²ã…/¨÷w¬ùùÅ®S\Ü\ÅmğoÃ°1\Õ\ÍuMÛ®=òünõñ\æ0‚\ï\Ã0¬Iyİ£W8¾‹+*\Æo\è?\Ï?~½>£§íš˜l/;\å×µpÙˆ\é;Ö— {Fß‰J\0 \åô/ö°Nùğ\É[•V\ÆÇ”…c·V\ÛT³\ÊJÃ±«k’u$zZi8z‘®tT¼c¯p\Õ~e•\Ñ^¥‘\èCvì‰²\ÊXŸd¿\ÇŞ‹&=>\"¾‡½÷´:û=½Í®/G\'è˜\ëwñ-A\ÓĞ®\Û\rQ\ßtc\î]Œ@\04£ö\ê~v#«w\î™¶gy8zFY8şly¸\êø\ÒH\ì\\{^\âŸ\Ù\èøª£º¸iùğ7ñj-\×]GµR¿›\Û\Ìj¥©\Ô^\0\0Ğ¼$ş“\ëº•Ebƒj¬2ZaI÷5E¢\'UTT¬k\ÏÿQV\ïZ\Z‰—‡\ã‘Ò‘±#-\É?¥¤^KT^½OfŸu¿‰\áEşk\êCÏµÏº\Ğ>£\È>ûX{<\Ï\ÎRbZ\Ï\Õiğ-xbuE»\ÖY\İ\Í\Zh\0€¦\×^?[íµ„pye\ì«{N/\Ç^±\×7–Gb\å& ŸñGbı«…ğıfÿ§\Zªwe\ìP«‘&•G¦`u\Ò\Õbe#¦ı!\Õ\Ú\0\0š\Ä¬\Ğ\ÇJ\Ë$’5¢\ì¿\Ö\ÕPMÒ”\"\ÏWY>\Î\ŞÏ“ğ\ÕóòHt@\íÏµ¤}Yé¨ªSuuµ<ı‹D¹÷ó\Üvú\ì\êD¿¥¦+ùÓ’zWF±$ÿw\ë^Ö£g\Ã_Ü„o	`\r\Ñ\Ú\ØßºnU•l\îTD4»p\04¿öÚ£´2ö@Y$zfò™€®´\×w•…£e«+b7jdºOeÕŸ53°\Û\ØW6¨¨ˆ¯¯©İ‰ç—†£=UO5¶ö\0€\æ\'ñòòò6\ÔULK\Ú\İ\ÍKÔz£\Îz‰Õ£—˜#ñ\Ğ\ê\äûÀ\Øz¾z´zªD¯;\×^wòÄ±®”†c\ÃVN\ìI½\ÖsMW‚¯Nôu•UEye¼‹÷»j™¦‰ó-¬%¢Š‹†\îó\Ü\Ğ}¢\ë\â°v\Ü\Z\0 ¹µ×ªnİºmP^»£td\ÕöZ®¶ºÆŠgõÒ›\Õõ\Ø¯\ZUu´*\ìõ{z,\Çûš¸¾\Â~ö,™\ê¯£\ã›7¶ö\0€\æ\'ñ\ïKJJ6\Öt ¿#W\é\Øûf£¼\ç&ŠûŒª\Ú\Ç¼#«\ÔTn{\ï%K\à§x\ëŸ#±»µ~\ÚK\èöÿ¹v\Îä¾‘ø\ïez\Ş\'?ªúù-‰\ç\é\ç4Â­©\Ú\Öy<\æ%y³\ÕÓş·ş\0jhh¸!ñÜ®‰\"ÚŸF~6_\0@³j¯•®\ë\î]-–5\â<\ÍDñµ&¤_\ëv°W[…\ãCtî¥£ª¶.\Ä\ÎÔˆt¯ğôm\íg4»wu\æÙŒTk/\0\0h^ÿÎ’øf–XßªY\ï,]ó<ş²6ªğÄ®7½ZWEc¯—G\â¥¾\Ú8\Ì×š†T=…H\Ù\Ş\ÕT3{>\ß^\Z\Çüóª“ııºrª‘f	h¯#Yİ™Ü­+«|C\0uŠ\Ùd\"º±\â9U\íÿ>\Ä3\0@3)\î\Ô\åû‡fÿ÷\Ş\ÕSv[=0¦uÏ½\Â\Ïna¯—ù;lkº¶\Õb/V/­»P\ÂXû\Î\ÈúŠ\î®‡Tk/\0\0h€ş\Æô!ÿ›\n\äM\á~\á¯c§WŒ‹o\\-vo\Ñ\Æ^¥\á\è\Í\ŞNÙ‘x{mv\á	\èH\ì™\ZQ¼z”ú\Î\ÕI;z‘u\n3z<ñ÷K€û\ët$ÎµvG¦\ãş\í\0 )\Z‰®=ºK»\Ô\ïóœLDw®õ{Xó\0\Ğrµ×·V{oõÑ•«\'b£L\ä^\ì\İ}ddl_{œµF­T=Û¯Z\\\à­}^½¤nŠR­½\0\0 8ó_K\âgú†YB®D]ó\ÚLºtd\Õ\á&toĞºe‰l\í\æ¨+§}oo£„¾\Æ\æ\Z±®µ–\È\ÖHv²\ß]><º³%õ\Å\Ş\Æe&\È\Ë#\ÑK|³\ã¯ò\í\04JD\'n,–(†#\Û5ğsÜª\n\0 \åô7ŸºnŸ\ÒHì¯h\Ö\àA8~yye¬\Û\ê\Ùx±\'µ\Ëv€Ç¢z\Ï\Û<,a\ãV\İfT³S©½\0\0 ™t\í=\è\Û{¦/\Ózš{dš>T÷_{\Ç\Â\Ñ#\Ê#±Bo¤8›­\İ\Ë#ñ\Ã\Ê+\ã~¢®ks\n/\ÙWÆ“\ßZS­+­Õƒ7¼ú\ê\êƒ\å\á\Ø5|;\0¢ötnPÛ¥~kª\Ú?\×\ÜûO\0@²Ú«üš\ï‡?ö\î$\rPh‡\í\Õ÷~?¦ZJS·%­\Ë÷\ê£ñ=4ó¯O8ö\'-Ÿ\ë];YÇ«oU5Y;s§R{\0@3	…B\ËKJJ\Zµ.F·±Ò½ k×±d\Ç \ÍDtsI6=\0\0Z€‚‚‚ÿm\'\0\0‚™Ä—\å\å\åm…\'\0Ñ­$\Æ\0 T/\0\0 óôW;w\Ş\ZO\0dÍvÍ´m\0€Ö¯½¾.,,ü\r\0\0f_’——·-\0\È:\ê2†\0¤§öbö\0@€“øb\Çq¶\Ç\0YEªÓ°™¶\r\0¾\Úk©\Õ^\Û\à	\0€`&ñEyyy;\à	€œÑ‡™­0;—\0¤¥öbö\0@€“øB³ğ@VÒ¡Zw¨\çı¥ˆg\0€´\Ö^\Ìş\0pÿ¬¨¨h<µ\Ô5Í´m\0€¶©½˜ı\0\à$ş©Ù®x §D4\â\0 \íj/fÿ\08‰\\XX¸;\0\È=ñ\0Ğ¦µ\×\çyyy;\ã	\0€`&ñ-‰\ï‰\'\0²Ÿ\İvÛ­—=¸\í¸U\0@[\Ö^\Ìş\0pÿWaa\á^x \'\â}\â9\çœ\ã¶o\ß~}¼\0\Ğf¹ø“¼¼¼\İğ\0@0“øû–\Ä‹\'\0²›P(t”\Åûf®\ã8Œ@\0´]\íõ‘\Ùx\0 ˜Iü]+¬÷Á\0Y/ —x®¶9x\0 \Íj/–\Ï\0\ÇqŞ±$¾/\0\È\êb\í0ô\Ù7\Ôl\"\0\Ğ69ù\ËÁ{\ã	\0€`&ñ·,‰ÿO\0duœOL\Ïş(4k¡\0\Ú$\'³|\0 ÀI|¾\ã8\Ä\0Y\ãk>ûf±6\0H{^fù\0@€“ø›–\Ä÷\Ç\0Yã“’‰\çj›…‡\0\0\Ò\Ë\ç\0\0‚]\\¿n‰ü@<•ñ]\ç\è3k¡\0\Ú,7³|\0 ¨XŸ[XXx\0\È\Ê\"mb}\â™¹\0Ò\ã8òòòö\Ã\0\0Á,°_3;O\0\äLÌ»x\0 Mó0\Ë\ç\0\0œ\Ä_),,<O\0  \0 õ1ñüFQQ\Ñx\0 ˜\ÅôË–\È\Ç\0h\0\0HKgµ×Ÿğ\0@0“øK………G\à	\04\0\0´>\ì?\0\ìbz–%ò£ğ\0\Z\0\0Ò’‡_µ\Ú\ë<\0\Ì$>\Ó\ì<€€\0€´\äaöŸ\0p!??ÿX<€€\0€´\äaöŸ\0pŸnv<\0@@\0@Zò0û\Ï\0\08‰Ou\çD<€€\0€´\ä\á\ÙfG\â	\0€`&ñx~~şŸñ\0\Z\0\0Ò’‡_t\çh<\0\Ì$µ$~\0@@\0@Zò0¸\0\ÏSòóóOÁ\0h\0\0HKaõ\×qx\0 ˜Iü¹P(ô<€€\0€´\äa6p\0*&\'şO\0  \0 -y˜\r\\\0œÄŸ5}\Z\0@@\0@ZòpÜ¬=\0\0f\Ú\ìt<€€\0€´\äa6p\0pŸ\n…:\â	\04\0\0¤%W™Œ\'\0\0‚™ÄŸ4;O\0  \0 -yøy\ÇqN\Å\0\0$\n=nIül<¹Š\ëº\ëø\á‡fÏıs4\Zu§L™’\Õ&\íÿcUU•;}úô¯ÌŠi\á\0š; \0\08‰?föw<¹Š\ÄóŒ3\Ü%K–¸?üğ–%¶t\éRwÚ´iÿ11}­\02¬öš\ä8N<\0@B¡\Ğ#–\Ä\Ï\Å«h\äñœµ\"ú‡)S¦¼M+€\Ğ\Ü\0 ¨˜xoI<O@®¢iÛˆ\Í\ì5\Ğ?\Ò\Ê \Ã4w@\0pÿ?\Ñùxr­™Ehfµ€f\Ó4\0È´Ú‹; \0\0\ÏY/À€€®ß¾ù÷\"÷\Ã9\ã\ÜU\×z¦\ç:†HE@\0¤( ¹\n\0@€“øf…x\ĞuÛŠ\å\İù\Ï\rr_\æ²5L\ÇôB\r\0B\íõD(:O\0\0\Çq\î·$^„\'\0]·}¶à©µÄ³oŸ/˜ˆPE@\0¤\" ¹\n\0@€“ø½fğ  ë¶·\ã7\Ö) õB\r\0B\íõh(:O\0\03‰\ß\í8N<\èºmş”Š:´\ŞC¨\" \0R¨½&˜qz\0€€&ñqf%x\Ğh4\0@\ë\Ã-D\0‚- \ï4»\0O\0ºnÓ®\Ûu	h½‡PE@\0¤P{=l\Â\0\0$\n\İ\î8NW<\èº\íı™£\ê\Ğz¡Š€\0h,\ÜB\0 À\Üfv\0tİ¶l\á\îü\ç¯=}Û\é=„*\Z\0 …Ú‹[ˆ\0•P(ôO\Çq.\Æ€€®\ß>z\åŞµ´!R\Ğ\0\0©À-D\0LAAÁ­–Ä»\ã	@@\×c+Wº\ï¿8f\í\é\ÛvL\ï!T\Ğ\0\0)\Ô^÷™ˆ.\Æ\0\0\Ä\ÄóhK\â=ğ  “ÛŠ\å\İ÷fF\ê\\­÷tb\r\0\Ğ¬\îº\Ç\ê¯\Îx\0 €D,‰÷\Ä€€^{\Ôy\Ñû1÷\Í\ÉW\Ö)}\Ó9:—\Ñh4\0@#j¯»MDwÁ\0\0ÁL\â•f½ñ  ?\ê\Ìh4\Z\0 ©˜x¾+\n\'\0\0‚™\ÄGZ/\Å€€şŸ5fÔ¹¾\Ñh„+\Z\0 .\n\n\n\î4»\0O\0\03‰7+\Ç€€şŸ5U<û†pE@\0\ÔE(º\İqœ®x\0 ˜IüfK\â}ñ  14\0@\ëSPPp›\ÙEx\0 ˜Iü&³~x\Ğ\Z\0 õ	…Bÿt\çb<\0\Ì$~£%ñşx\Ğ\Z\0 õ)((cv	\0\0 &‡šˆ€\'\0! \0Z«»F[ı\ÕO\0\0‚‚‚X¿O\0\ZC@\0¤¥ö\Zev)\0\0 &¯…BW\á	@@ch\0€\Ö\Çê®°\Õ_½ğ\0@\0)((¸\Öl\04†€\0HK\íUi\ÖO\0\0\Çq®	…BW\ã	@@ch\0€\Ö\Ç\ê®V•\á	\0€\0RPP0Ø¬O\0\ZC@\0¤¥ö\ZnV\'\0\0‚™\Äi\Z7\04†€\0h}B¡\ĞÍ\ãô\Å\0\0Á\ĞÍ†\à	@@ch\0€´\Ô^7™õ\Ã\0\0ÁL\âWš]\'\0! \0ZŸP(t£\ã8ıñ\0@0“ø\0K\âCñ  14\0@\ëSPPpƒ\Ù\åx\0 ˜Iür%r<h\r\0–\Ú\ë\ã\\\'\0\0H(ºÌ’ø0<Ù†µ\ë)f\Ç! \Ğ\r²‡Y|œˆ€4\n\èëµ„O\0\0Sdô\Õnx²°@qe\Ò\ÖÆB@# kg³‰f?ª1\0\Æşiˆ6q\Å\0\0Ä„E·\à	\ÈV`“’H# sK@\×Î¾1\0\Æş\éZ\İFO\0\0e&¢G\à	\È]3\"(¤Ğ¹! 5ASµkg4\0´AÿTa6O\0\03‰÷6«\Ä+:qDZ¢\nı:Ùˆ3\Z\0Ú°\Z,\'\0\0ˆ\ã8½LD„ñ\â²\Å\Íq\Ü\âó/v\Óò»ša\Ù$ ¿û\î;÷\Ûo¿­y½r\å\ÊVû=\ß|óMtà­µsB\Şøñ\ëõUµ\Ù õ±º\ëj«¿®Á\0\0ÁR—š\Â9÷½ÿ\\QQ±nYe\ìÚ²p\ìÁº¬4÷\îSY‰õ(Ä)¯ŒN¬mv\Şs\å‘\èù:¯,;¶,\áYet¤½·¸\æµY\éÈª3\à\"Á+^:¶o\ß~}—\ÉzÈ!\î\Í7\ß\ì=ÿû\ßÿ\îş\ío[\Ë\æÌ™\ãNš4\É\íÖ­›{\Â	\'¸ûì³÷ü¡‡róòò\ÜÎ;»S§Nõ\ì\Ë/¿\\\ëw,Y²\Ä]o½õÜ?ş8\é\ßp\Í5×¸\×]w÷|Ô¨Q\îˆ#\Üs\Î9\Ç\İÿı½\ç²÷\Ş{/\ã§p\ç\ç\çŸb\ßı¬ @\çB¼\äX<P‰\á	\0€\0bB¢»%ñ[ñD\ÎuŞ«Ldm\Ğÿ\Æ~uù\Ø)¿–õŒ<¿“\Ô\ÓúF\â¿÷•q¯\ĞÇ\è~v£dŸUv/¯ŒUQ_¿<2\í\0+º/\Ç^)G\Ğó\Òp\ìzû\ÜAz^6búm( \×\Î>™, _|ñEwë­·vÇ\çn²\É&n$q\ì	\ä|\Ğ\İe—]\ÜÉ“\'»ó\ç\Ïw/¹\äO@\ï»\ï¾\Şó\Ê\ÊJw\İu\×uO<ñD÷ü£»\í¶Ûº³f\Íò>÷é§ŸöD±l\àÀnÿşık\é}ÿoxé¥—\Ü\í·\ß\Ş6l˜{õ\ÕW»}ûöuO:\é$w\ï½÷ö÷\ë\×\Ï]°`A`6s§ƒµ…\ĞY¯\09V{]e¹\è:<\0@,_l‰üŸx\"\çô÷%%%û¯»}e+œ\'•†£“İ±\Éf§[ñ=a\r‹\Äú[1~G¯p|+¸··Bü\Êú¬´2~\\\ZÿG_Í²v~vm\á-“8^¾|¹\' o¹\å÷°\Ãó„³„¯„±ô\'Ÿ|\â\î´\ÓN\ŞÈ°\Ş?ú\è£\İ\İw\ß\İ]guÜ‡~Øµ\ï\Ú=zt\ÍgJ€x\àn×®]½j	\è\Â\ÂBïµ\ëıÄ¿A#Ì‹-rG\é\îµ\×^\î6\Ûl\ãnº\é¦\Şó\Ã?<·±ª‘õñ\ncµ\×\×ÿÀ\0\0ÁR\İ\Ì\Æâ‰œûŞ¿\éÔ©\Ófz®Q++–o3›Y:ª\êT+¼\ï\é3zÚ®ş¹*¶UtWŒ‹o¬)¾ù\ë%U¬\×\î‘\èi\Zı²ÏªL4+\Ü\çöó\Üviş“8E@kú¶\Ä\é\É\'Ÿì½–€®ªªr{ö\ì\éw\Üq\Şh²/ ¿ø\â÷˜cñ„\í[l\á½\ß}÷y#\É\ZÁ\Ö\èó\×_½†€\Ö(õgŸ}\æ	t	\è—_~\Ù{­ã¾€öÿ†c=\Ö}\íµ\×\Üs\Ï=×³ƒ:\È\İq\Çk^\ßq\Ç\Ğ	…¬F¤g¯m¯\0¹„õM,÷\Å\0\0\ÄxWK\ä·ã‰œ\Ğÿ)**Ú¢tdô+ \ï/Qµ—F¨Ê‡OŞªweô;6G\ÓE½‚½2vVy$zI\é¨xG;ş°=\àMñŒÄ\Ñ4Q\à5ye´B}ie|h¢Ù±W3\Õ™* %h‡\înµ\ÕV5ú”SNqõ«_¹›o¾¹7\Â\ì\èx<\î‰\Üıö\Û\Ï\İm·\İ\ÜC=\Ô\Ğ\ßz­kM\ï;wn€\Şx\ã\İ\ßü\æ7\î–[n\é	h=êµûZC8v7\Úh#oZ\Ó\Â{õêµ†]y\å•\îo¼XM¼+^²¤ö\êoµ×x\0 ˜…\Ùfw\â‰Ü¢s\ç\Î_Oxù\ÛÛ´\ŞQk!½b:‹ú\ïk“!{ı\è\ê\";v­·ÒŠ\íŞ•±C½c#\âı\ïx\ìÚšŸ«ŒN,­Œ\r¯][Qÿ:uÓ¨o¢€~üñ\Ç=Á*?~|€\ÖZim6&Á]ZZê­•\Ö\Ôí²²27‹y\"²{÷\î5£\Ğ\È}úô©\ÙDL\Ú\ßDL\Ç§p¿õ\Ö[€\ÖsMÿ\İ\ï~W³nXë«µ™X§p¯ÁŒW€lÀ\Äóe&¢‡\á	\0€`&ñó-‰ß…\'r\î\Â\ÉR\×u¯)¤‡OŞª<Ÿx¦‚V\êŞ†D«wğ+‹\Ä\ÆÚ±)\Z\éò7$\Òy\Z	\ë™¶gi$š\×÷\æø6\å\á\è\rú¹nc\'nZ! ›. ukª\r6\ØÀ½\á†\Ü#<\Ò[Ó¬µË¾€öw\é\Ö4n\ÙÁ\ì‰bÿµ\ìŒ3\ÎXc\n÷®»\î\ê¶o\ß\Ş=şø\ãk\Î\ÕkO& ¿ÿş{O@k:¸¦pË´‘šx€Ô°º«¯\Õ_7\ã	\0€`&ñ.Vœİ\'rN@/¶\ï~{ÿµ\ÖRjªg²sı5“ZS©\â\Ú7\ï¶:V «p\ï¾­\n÷ŠŠñjg`\ï3\ÃÑ½\ÂÑ½Wo\\X>*öGt\êZSª5={\Ã\r7t\ïº\ë.÷ˆ#p;uê´–€–v\Úin4\Z­Y×¬ó|“ö\Ï\Ó:\ç3\Ï<\Ó}\à\Ü\Ûn»\Í;W£\Özm\í\Â\ÛY;Q@K¼\ë–YW]u•·A\ÙĞ¡C=;ÿüó\Ğ\Ä+\0¤ˆ‰\ç>Ó·\à	\0€`f\Ì\î\Å9÷½/4\Û\É­b\\Ey\íóÊ‡GwÖ†EIŠôÓµ¦²4}\È{‰T:2¶o;\×]\ÇÎ¯\Òñ\Õ÷¦N\Ğ4\ÒŞ•ñıu»tjvÿı÷{S·5\Ú{À¸¯¾úªw+)™\îó\ì\ß\ÆjÅŠ\îÒ¥K\İC9\Ä}ô\ÑG\İÙ³g{¢ø\Ö[o­±w\Şy\Ç;/\Ù} \Û%L\á®m\Ï<óŒ÷ş\Å_\ìMO\Ğ\Å\Å\Åh\â\0R\Ä\Äs™‰\èx\0 ˜I¼\Ø\n³ûğD\Î	\èO\Íjv\î\Õ\èT®ú\"“´D\íÌ™3½{?k/ÿ¸6ôò7ıúüóÏ½\Ñ\ã\Í6Û¬A\Óy©\nh\İ\ãyÄˆ5k µ–ZÏŸz\ê)oC³.¸\0M¼@\n˜x.µúk$\0\0faVhö\0È¹\ïı#³=ğD\æ\ß\Ú7­ƒN|-\á\\ûXSl\åÊ•\ŞgisC\çJ¸\ë\\=ÿ\î»\ï\ÜÅ‹g¼ß²D@¯\0Y„‰\ç^&¢\Ãx\0 €X/°Dş\È9ı}÷{\ã‰\àh,§4ñ\n]µWO‹\ë\0\0fa2{O\ä\Ü÷ş®u\àû\à	4šx€ô\â8N‹\é\Ñx\0 €XÏ³D>Oäœ€~Ë¾û?\à	4šx€´\×^\İ-®o\Å\0\0\Ä\Äó¹–\ÈÁ9\' ß´\ï}<€F@¯\0ö\Ú\ëb‹\é\â	\0€\0b	ü+\Î\Å9\' \ç\Ùwÿ\'<€F@¯\0ö˜\îf6O\0\0\ÇqÎ¶\Â\ìq<‘s÷«ö½‚\'\Ğh\â\0\Ò^{uµ˜¾O\0\0³0;\Ó\ìI<‘s\ßû\Ë\Öy\'\Ğh\â\0\Ò\Óšİ\'\0\0ˆ\ã8gXaöÈ¹\Î{–}\ïG\á	4šx€ôbñ|¾\Õ_w\á	\0€`f§›=\'r\î{!??ÿX<€F@¯\0ö˜.1‡\'\0\0H(:Í’ø³x\"·pgšÙ‰x€&^ \íµWg‹\é{ğ\0@0³& \'á‰œû\Şcf\'\á	4šx€ôbuW\'³{ñ\0@\0	…B±$şÈ¹\Îûy+\ÈO\Åh4ñ\n\0\é\Å\â¹\Ø\ì~<\0@òóóO±$>Oäœ€¤\Ùx€&^ \í1]hö\0\0\0f?Ù¬\nO\ä\Ü÷ş´6\Ãh4ñ\n\0\é\Å1,¦\Ä\0\0$??ÿ\ÏZ_‡\'rN@?©{€\ã	4šx€´\Çt\È\ìa<\0@´³«%ñ©x\"\ç:\ï\Ç\Ìş\'\Ğh\â\0\Ò^{\å[Lÿ\0\0 ùùù\'\è)x\"\çô³óğ\ZM¼@\Úcú<\Å5\0\0 &³$>O\ä\\\çı°¦\á	4šx€´\×^\ç†B¡Gğ\0@0³c\Ìfâ‰œû\Ş\Ğ. x€&^ \í1ıw-\ÍÀ\0\0\Äqœ£-‰¿ˆ\'r®ó¾×¬@@# ‰W\0H{\íuv(zO\0\0³0;\Òl6È¹\ï}œY	@@# ‰W\0H{LŸ©\İõñ\0@\0	…B‡[O\ä\\\ç}‡Ù…x€&^ ½8s†\Õ_O\á	\0€`f‡™\ÍÁ9÷½5\ë†\'\Ğh\â\0\ÒÓ§›=\'\0\0H(:Ä’ø«x\"\ç:\ï[\í»\ï\'\Ğh\â\0\ÒKaa\á\ß,¦ŸÁ\0\0ÁL\âYŸ‹\'rN@G\ì{\ï‰\'\Ğh\â\0Ò‹\ã8,®\'\á	\0€\0bEÙŸ,‰\Ï\Ã9\×y´\ï¾O´kFš\Ùkß›€ş‘x€L¢°°ğ¯Ó“ñ\0@\0)**:À’øx\"\çô-ö½÷Á\í\ÚMŸ>}Ñ’%K›Yh.|\Øô\Û\Ä+\0dXLŸZPPğ<\0\0fÿ£%ñùx\"\ç¾÷aV_†\'Úµ‹\ÅbgM:õ\ß_~ù\åwˆ\Î\ìy–x®ªªú\Ä\ì<\â\02‰üüüS,®§\à	\0€\0’——·Ÿ%ñx\"\çôP+\È\à‰Õ˜\È\ê8eÊ”9š\î«5³X\àM\ß\ã\Û\Ù ‰W€¬\ìƒO*((ˆ\â	\0€`&ñ\ß[O\ä\Ü÷~\äW\á	\0\â\0\ÒK~~şŸ-®cx\0 €XQ¶	\èwñD\Î\ä\×\Øw5\0 ^ \í1}¢\Õ^Sñ\0@\0),,ü%ñ÷ğDn¡b\\E9\0 ^ ½\ä\ç\çŸ`1=\rO\0\0³0\Û\Ûôx\"\ç¾÷«4-O\0¯\0^,³\Úk\0\0 yyy{ZÿO\ä\\A>@\á	\0\â\0\ÒK~~ş±V{½€\'\0\0ˆ%ğ=\Ì>\Â9W_¦[\ã\à	\0\â\0Ò‹\Åó\ÑV{½ˆ\'\0\0H^^\Şn–\Ä?Á9W÷±ü<@¼@\Úcú(«½f\á	\0€\0RTT´‹%ñ\ÏğD\ÎuŞ¥V\Ä\0\Ä+\0¤«»4›\'\0\0H^^\ŞÎ–\Ä?\Ç9W÷´\ï=‚\'\0ˆW\0H{Ln1ı2\0\0 \Å\Å\Å;ZÿO\ä\\\ç\İİ¾÷[ñ\0ñ\n\0\é\Å\âù0³9x\0 €8³½%ñ\Åx\"\ç:\ïnfcñ\0ñ\n\0\é%\nb1ı*\0\0 :u\ÚÎ’ø—x\"\ç\nò\Í\îÀ\0\Ä+\0¤=¦6{\rO\0\0\Çq¶±$¾O\ä\\\ç]b6O\0¯\0^B¡ĞŸ,¦\ç\á	\0€\0’——·•%ñex\"\ç\nòNf÷\â	\0\â\0Ò‹\ã8ZL¿\'\0\0‚Qˆ½i\æ6`ğTÖ·ƒB³ğ\0ñ\n\0\é%\n\í¯zO\0\0\0\Çq\ÎnH@+±ã©¬/\ÈCf\ã	\0\â\0\Ò^‹ı\Ñbz>\0\0N1V\ç(´%õ‡ğPN´ó˜i\0@¼@ú	…B°˜~O\0\0«K* \ÂC9\Ñşnö\0 ^ ½8ó{‹\é·ñ\0@°\n²YIôD<“3\ßÿ™fO\â	\0\â\0\ÒK(\Ú\Çbú]<\0 \Ç\édúöqx&g\nò\ÓÍ\Æ\0\Ä+\0¤—\Â\Â\Â\ßYL¿‡\'\0\0‚W”\ÍH\ÏSğH\îP}e\0 ^ ½„B¡½-¦?À\0\0Á\Ğ\íF \Ûã‘œ*\ÈOµ\ïüy<@¼@z),,\Ü\Ëbú_x\0 €„B¡,‰ÿ‚\'r® ?É¾÷(\0 ^ ½X<\ïaö\0\0 yyy§šˆF@\ç^A~¢u\ŞSñ\0ñ\n\0é¥°°pw‹\éñ4\n\×u\×ÿğ\Ã\'Ì=û\çh4\êN™2¸UUU¹Ó§OÿÊ¬˜v\ZL\Ón\Úi\Î\ä\Çi\r< _\"Ş‰Wb#FÓ‹\Åó®fŸ\ÒC£Pœ1c†»d\É÷‡~À²Ä–.]\êN›6\í?–Ï£b´\Ó@\äG[\çı\"½ñN¼¯\Ä(FŒ¦—¢¢¢],¦?£†F¡«‡$À¬M„?L™2\åm\Ú)F;\Í|\n°\Îû%z%\âx\'^‰QŒMûôNfé¡Qh\ê\r	#{Í’\à´SŒv\Zˆ‚üP\ë¼_¡W\"Ş‰w\â•Åˆ\ÑôR\\\\¼£\ÅôôÀ\Ğ(´\îd‘\ÕIĞ¥b´\Ó@\ä…B¡¹ôJ\Ä;ñN¼£1š^\Ç\Ù\Şôbz`h\Ñ$øÍ¿¹\Î\ç.¨º\Ö3=\×1\rIvŠ\ÑN›OQQ\ÑV¿A¯D¼\ï\Ä+1Š£\é¥S§NÛ™€ş’Z,	®X¾Ğÿ\Ü ÷õg.[\ÃtL\ï‘lH‚´SŒv\Ú<òòòösg½ñN¼¯\Ä(FŒ¦}z\ĞKé¡Å’\àgZ+úöù‚‰$’ \í£6¿ \ß\×:ğwè•ˆw\âx%F1b4½t\î\Üyk\Ğ_\ÑC‹%Á·\ã7Ö™õÉ†$H;\Åh§\Í.\Èk÷ûôJ\Ä;ñN¼£1šö˜\Ş\Êbz=0´Xœ?¥¢\Î$¨÷H6$A\Ú)F;mvç½§u\Ş\Ò+\ï\Ä;ñJŒb\Ähz)))\Ù2\n-§’ †€¦\ÒNƒS\ïfù\'ôJ\Ä;ñN¼£1ÚºXüN4s°9ô\È\Ğ\ä$¨\ëJ‚zdC¤b´\Óf\ä;[gı9½ñN¼¯\Ä(FŒ¶º€>\Ì\ì\Çút(\êHMN‚\ï\ÏUg\Ô{$’ \í£6» \ßÁ:\ìEôJ\Ä;ñN¼£1š=©=«}ûö\ë\Ó#C““à²…o¸óŸ¼ö;¦÷H6$A\Ú)F;mvA¾­u\ØKè•ˆw\âx%F1b4m£\ĞI´\ã8g\ÓC³’ \ì£W\î]+	\ê‰†$H;\Åh§-R³(ñN¼¯\Ä(FŒ¦WD\'[=‡\Ñgh~\\¹\Ò}ÿ\Å1kOÁ±czdC¤b´\Ófä¿¶Nû\ßôJ\Ä;ñN¼£1š\ÖQ\èYû-šW,_\è¾73R\ç:½§sH8$A\Ú)Fgİ¬‚|s\ë¸W\Ğ+\ï\Ä;ñJŒb\Ähú0Áü8£\Ï\Ğ2Ip\åJw\Ñû1÷\Í\ÉWÖ™\0}\Ó9:—+Š$A\Ú)Fg\İ\ä‚|ë¸¿£W\"Ş‰w\â•ÅˆÑ´\n\è£\Ö>w †&%Á†®rE‘$H;\Åh§-^oh÷ôJ\Ä;ñN¼£1š^,Ÿ6û…\ÑghrlÌ•\Ãú®(’|H‚´SŒ\Î:\å‚|=\ë¼¢W\"Ş‰w\â•Åˆ\ÑÖ£¨¨h‹\ß~¡P\èvM\Ù6ûHÄªG¡µú3{o®=q§X\ç\Ó3CƒI°©	\Ğ7’IvŠ\ÑY§Lu\Şz¤_\"Ş‰w\â•ÅˆÑ–Ã„ğ6&Š{\Ú\ã|³Ÿ\ê¹ÿsR“ ¶Ÿ+\Óş”+\Ğ\è[`$A\Ú)F;m5N1[n6¢ú±#ıqA¼¯\Ä(FŒ6\ê\rÿ*Lü~“ªh®\ÃV˜\İTRR²%*’B#	\ÒN1\Úi\Û\ã~®­¥¹,¢‰w\âx%F1b´F‹\Í\ÖÁ:ur¯¿şz÷‰\'p,X\à.Y²\Äıé§Ÿ\\Ÿ\åË—»\ï½÷;yòdw\èĞ¡\ŞùI„ôR³’œøŠŠŠ-G}İ!C^4h\Ğ\Ò=z¬***ªqF·n\İ~\êß¿ÿòk¯½vŞ­·\Ş:v\àÀ{“1’ \í£¦©o\è8\Å9F¼¯\Ä(FŒÖƒ6\Óú\åÚ¢·OŸ>\Şÿö\í·ßº©°j\Õ*wÆŒ\îe—]–LH\Ë\Ú\Ñ\èë¯¿ş¯ƒ[\\\\ü‹	g\ïŠ\Ão¼±\Ö‡eË–¹\ï¼ów\Å\á\æ›ovu¾	\ê\Ï\ìgºe\ë®l$A’ \í£¶	\Z(ºı÷sn%ñN¼¯\Ä(FŒ6…¼¼¼Ç™(r\Ë\Ê\Ê<œ¨ùš\Ê\ìÙ³\İ^½z\Õ\Ño\Ú\ïım\Ö¸9l+®¸b^×®]™0a‚\'S½\â0s\æLw\àÀ¿ô\è\ÑcñE]t&I#	\ÒN1\Úi\ã\r\Û99M¼\ï\Ä+1Š£M\Ï\'Š\Ûq\ãÆ¹\ßÿ½Û’Hˆ\ßs\Ï=µEôGY!¢\r\Z\Ôó\Â/üQÿ`ªCõÉ˜3gkz\Õ%—\\òD6\íÀF$	\ÒN1\ÚiZ9%Å‘ªT\Ï\'\Ş1\âx%F±œê“«§m¿\àZ-\Ñ\ÕÿÑš\èók­~3\Ğ\ZqÀ€c/½ôÒŸ^}õ\Õu\Ôÿû_wô\èÑ«JJJ¾\ĞU’ F¤b´\Ó&\ã›ğs+\Ú1=#Ş‰Wb#F\×\"qÍ³Ä³¦l§M\éN\ÜO\ËlB`\ÅsÏ=\Öú\æ\Ö\âÁü¹¸¸ø?\Ù0TO$	\ÒN1\ÚiF\ã-õó\Ä;F¼¯\Ä(–u}²v\ÛNœN\İ\Ú#\Ï\ÉF¢¿ı=]Ğš¶­‘\ç\Ö\Ï>O>ù\äJ\Ñƒ>M$	\ÒN1\Úi«\Ó\ĞD\éş\â#Ş‰Wb|Ÿ¬)Ó‰·ªÒš\ç¶\àşû\ïOÑ‹3•[†i\Íó¼yó\Ò\æ¬x\à‹\Â\ÂÂ§‚¼C7I$H;\Åh§i)\Æ[j:gÖD\ï\Ä;ñJŒb\Ähc0±Z‘¸\ÛvKo–\Ê\Æbúı	\"º\"0`À›\Ú0,İ”––~\n…z’1’ \íC@\×Q<û\Åø:f]ªS¡ö\ÏeõFE\Ä;ñN¼£1\Ú\ãlcö/Zuç¤¶D\ë¡ı¿Å´\árı}\í@\İ\çY·ªj‰İ¶Se\áÂ…?~ñN\"	’\é¬1\Úi[\ãŠ\ê;\Í\Ü\ê\Ç\Æ\åuı\\ÖŠh\âx\'^‰QŒm\r`ú‚µOŸ>-rŸ\ç\ærù\å—gzğ\àÁs{\ì±6s\Ö\r7Ü°ÀôP’ F¤b\èvÉ§mv©.ª\İŠò\ÄbÜ·\Î	\ïg\å\ZK\âx\'^‰QŒm\Äô|_¬\Æb17\Ğ\î\ß	úıŒu^EEÅ–\Å\ÅÅ¿,[¶¬Íœµp\á\Â%ö%~Äµ\Ğ$A’ \í£¶(u\ÉÉŠ\ëúŠòd\çß‘\äü¬[cI¼\ï\Ä+1Š£õQTT´‹i¯Ÿ$Tu/æ¶˜…œŒU«V­qo\è\Â\ÂÂƒ2ÒcÆŒ:hĞ 6wX÷\î\İßµ/ò¸º*3¥1I$H;\Åh§Mk—õ\ãR(²“\å-\Æk\åˆw,\×\âx%F±\ì\ê“\ÓMœöóE\êõ\×_\ïfÃ†\rK\\= #;\ä!C†¼2q\â\Ä6w\ÖÈ‘#gf\Ò4\î„{‘M±/\ï(’ I0¡b™\ØN\Û.›X7T”§ZŒ\'şş¥™<²E¼c­\ï\Ä+1ŠeWŸÜ˜vh\Ço÷\Ï\Ë˜\È\äÉ“§qß—‘ò Aƒ–¾ñ\Æm\î¬Ù³g\Ï3\'\Å3-	&Ø¤dWsH‚$A\Ú)F;mZ»lÆ´ÌºŠòu›XŒ74•xÇ²^@¯\Ä(–]º¾vh\Ç\æø\ï/X° £ô{ï½—8=7#ğ=z¬Z²dI›;kñ\âÅ‹t\ã\ìN‚5Ws!I$H;\Åh§Mk—M,\Æ\ë+\Ê\ßmF1\ŞÜ¿‡xÇ²E@¯\Ä(–]z­vh¯?òg‚Ldùò\å‰÷ÒŒ,À‹ŠŠ2b\Ûr!Gez¡’x5G\Ó\"H‚$A\Ú)F;mZ»l¤dEysŠñT§§\ïX\Ö\nh\â•Å²K@\'¶C³ü×™¢kkB\ß2¶\0\ÏDg\Å29	~ó\Í7\îw\ß}\×âŸ«\Ï\Ôg\'{oÅŠ)V\â\ëÿü\ç?\å\Ã ¶\ÉLk§ÿş÷¿u^¦}÷_~ùe\ï}ÿı÷)·u\Ú\éšv\Î9\çø…óˆfvc\ë&\Éz·úxs‘Q>s·øü‹\ß/%\ë§\Zs\ŞÊ•+½˜\Ôc¶\Åo\âxm\ÙX\ÍU\ä¸\Ë\æ>9\Éx\Ít\ÊWo\æ„B¡ş-·2%	şóŸÿt;t\è\à<ğ€geee\î\Ş{\ï]óúó\Ï?wÿû\ßÿzaC¦óô¹\×\\s{\İu\×y\ÏG\Z\å1\Â{ÿı÷÷Ë´VA\ï¿şú\ë\î¶\Ûn\ë^}õ\Õ\îgœ\áY$ñ\Î÷_ñ\Å5ó\×_\í\î¹\ç\îÌ™3½\×/¾ø¢»ıö\Û7Zp1¹\íTEñ¢E‹\Ü+¯¼\Òı\ë_ÿ\ê=—\İq\Ç5mAVUUU#w\ÙeW÷£W;½\ä’K\Ö2¿]\èñ÷¿ÿ½û—¿ü\Åk\ï^x\á\ZŸ){\â‰\'¼s~ø\áµ\Şó\í\ÜsÏ­ù{.\\\èN˜0¡\Æ.»\ì2w‹-¶pÇ¿\Æq¿(ö\Ùg\İ\ßı\îw\Şó\ßşö·^;\Ñ\Å ƒ|ğ#Ğl—\í\Z\ŞÅ·9#Z¹\ïl›Œh•Gb=J#±g\Ê+£k[Y8ö\\y$z¾\Î+‹Ä-\ÇGxV\Ùû–g\ÜnW„k¬ø‚\İ/5d\ï¾û®÷]%\Ñz¯ÿş5Ö«W/\ï\\=&\×yA\ß\ÎùxM5V—\r¨tk\ÇjiÿŠùAŒÑ†\ìÿø‡¦{Ï¿ú\ê+÷\Î;\ïôo´\ÑF^M¨\ZpşüùMªnİ˜¶\ç\ßdúÇŒ,À3e\rôÒ¥K¿\Èğ5Ğµ;’ŒZ\Ç2f\ÌOP\è>nJf²<\Ğ\Ğşk%/‰VuVJzú¿\ì%0\ßt\\\ï\ë<}\îK/½\ä‰Zm)¯¤×·o_÷¤“Nò>W\Ïûõ\ë\çm> s{ö\ì\ézè¡®.Êœu\ÖY\î™g\é^|ñ\Å\î=÷\Ü\ã	\'}\îG}\äû\á‡z‰öoû›{\Ì1\Çx\ÏO>ùd÷„Nğ\ë}’`pÛ©vt¬] m¾ù\ænyy¹{\Ê)§¸·\Şz«»\îº\ëºS§NõÚ¬.„\Ãaw\Çwô\ÚÈ!Cjìª«®ò~\Ş/~%¦ÿü\ç?»gŸ}¶\'\ĞuqHô³jƒz>o\Ş<\ï\\]ü9\ì°\Ã\Üû\î»o\r\Ó-6\Şx\ã5¾\çM6\Ù\Äkƒu\Ùl\à]\ìY¶l™{\×]w¹{ì±‡ûñ\Ç»»í¶›û\Üs\Ï! ›\Ğ.Š\ß­´¦²)Ey«¯©´\Âû‰^\ág7Jş^´{yeì¬ŠŠøú\å‘i”¬:¼<{¥<=¢S\×^n\×ş·¸]/\æ\êy\ï>\æer¿Ô½õ\Ö[^Höú\0õGŠYŸ>}¼\ïTş1½¯ó‚¿( ‰\×&\ÆjÏ¡\ã½\Øôcµl\ÈmŸ\Ïû\è›r+sw\rbŒ64+d¯½öòbo»\í¶s‡\îÕ‹\Ñh\Ô\ĞO>ù¤w!Ë¯\çR©Ğ­\ÓZıYF\à\Ö	}•	»¯U\ï\Â=#ÀY&>Ï®£#Éˆ$8m\Ú4\ï\n\Ş>û\ì\ã>ô\ĞCVQğ\ë_ÿ\ÚıÕ¯~\å=/))ñ\ÎU£T‚S\á°\Ùf›y$QX<ÿüó\ŞB\ç¾F˜5z8r\äH/Yn³\Í6î¦›n\ê=?üğ\ÃkF·\ÜrK\ïó”»v\í\êşù^r”T $&GJPw\ŞynÇ½÷ô¨\×:\î \" ƒ\ÙNÕ±;Ö½÷\Ş{½)[š\r¡\ÛH@_z\é¥^;\İ}÷İ½ó4\â¬\ï_mÈ¿RhK—.­\Ğj[o½µû\àƒºs\ç\ÎõDs·nİ¼‹:n¸¡\'–õ\\‹|­¶ªH´v\Øa\r=}út÷¸\ã[c:¹F¦ô·ù\ÇtqG¿óö\Ûow\×[o=\ïo:ø\àƒ\×*À\'Mš\ä‰üú¦æ€®·]6c©®[\ß$\Û\Õ7•¢<-»úZQ>\Ù\ìt+À\'¬a‘X+\È\ï\è\ïb\Åøö&œ¯L´®ınte\åCnÿôö§\Üo]ç‰™\Ú/5\Æ\Ô\ß(–ü¶µM3H¿Gq„{\È!‡xß§õZ\Çõ~6\Äo	hâµ™±Z;F\'\Îw\êxieü¸lĞšÉ¡~7‹¹¯¼òŠ7z|\Ûm·y\ÂY\Ç\ï¾ûnoğE±•jˆ€nı˜f\îf¢û@+2\á>\Ğæ¨›2¨\0¬\ï\nlF%ÁG}\Ô=ú\è£İv\Ú\ÉKV\Z]\Ûo¿ı¼©n2øi¤7ñg\âñ¸w…Pb#\Ñü\é72şI {\ì±\îk¯½\æMy•t\ĞApñ_\ëÊ¡Š%?ıŒ’£Dú\àMW‘¢Ÿ‘ù„„¸şV%Tı¬õZ\Ç\ĞÁn§\ê,+++½¢öı÷\ß÷®P¿üò\Ë5úô\ÓOw\à\ë\èº\Ö@\'\n\èÑ£G{\Ó2\Õ\Î4={öl\ïsN<ñD÷–[nñD»:iÔ¾€Vû“ \Ö\íú\í\Í7\ßôş–^xÁ;W¸.\Şø¦ß©‹Lşk]%O,ü) *ÀuÑ©w\ï\Ş5#\í*À\ÓYd €nT»l\âHRC÷]§‰Eùa\í\Òp_Y\Ü*¼+\Æ\Å7¶\Âû@\ßúŒª\Ú\Ç/\ØkŠ÷Hô4€Y^)+»\î\î/Ã¾ş\Ô\Õ÷¼2¯ß˜\ç¶\Ë\ä~©1¦eAú~”+\êĞº`¦\"»K—.Ş¹z\Ôk÷t\Ğ\ã74ñ\ÚB±\ê\Ç\è\İÓ¾Šx1‰\ÍM«\Ù  Õ¿*~\Ô\Ë4ó+\Ùôü9s\æ¤\\#\" [?¦¥¹r\è1Y€[Az³DK[Ó³g\Ïù\æ¤ö\íF¦M\á\Öó\ÆèŠŠ\nO\ëªSmó¯¼KğhZ­„¶F U\äøŸ\é›D¯\Ä\ÈE]\äM\Õñ“£F\ßy\çwÖ¬Y\îM7\İTcşT	ä­¶\ÚÊ½üòË½i=J¬z\ÔkG@»jº²T£\Å­\ZA\Òt¯T´®d\ëQœ——\ç=\×T\ÎÎ;{¢\\W¿\Õ1ûZkª5ETmJEr¢©\0\×\Å\Zº·>Skò5;\ã\í·\ßö~§º^u\ÔQŞ…¢\Ä\\#\\Š\ïŠıŒi§M¦¡¥†ŠñvM,\Êıi©g·ö?¨)Ÿ\å‘\è%¥£\â­\à~Ø°\"{\ÖYjª¨Šğš¢¼2Za¯\ï)­ŒM4;öjú¥†Lû#h\ïƒ}÷\İ7\é\æ`3f\Ìğr‰L\ëšõ=\ê\Ñ?¦øLŒÉ \Æo€\ã=«\ãµ5c5[\Ö@kV‡.Z+ı¾\\¥õ\\¦‹\çĞ©Öˆè´ˆ\ìó|‘š	:0\r&\Üz«8#h\Ñ]ºtùE\ë\Ûğ\ĞK\ÌAß”””lŒ0i­M¾” d:^[@kª´Ö¬\Ô6M»\Ñ\Æ`‰k\Ô$ õ|\àÀ\ŞU{¿Qk\ÔO¿ÇŸ\æ­i\ä~r\Ô\Ï(Yª\ØYıõ\İN:y£şhŸ²’n÷\îİ½i<Jºz\ÔkG@»J\èjz\æ3\Ï<Sc\êDıhşJ\Ô~ú\é§)	hMõT›“i\r£Ú–.ºH@Ÿv\Úi^‘\ìh‚[nñÚ°\Ö>&š\Ö_i\æ†\Ö;ú›“©¨^gu¼e‰#Xz­)Ÿ~®õ\Úúy½\n…X\İò\Ô5²\Õ\Øb<Õ¢\Üÿ}g§\ãŸ+«Œ]«µ’*¸{W\Æõˆô¿\ã±kÿWÀG\'–VÆ†\×.Ê­°$\èZBUËŒ/š=õô\ÓO¯u–©?‘©\Ï\Òw¨G½\Ö\"ƒË \ÇoÀ\ã=k\ãµ5c5ô«¯¾\ê\Í‘HVÿ«`ú\ŞtZ³eŠIõı©Öˆ\è\Ö\'//omĞ¥z^şoK˜ÈªU«\Ü\â\â\â_|­a\íe—Œu¢ h3Ÿ¶bÔ¨Q¯XGv;Â¤yS\á´ZW\Ò% %.ü)\ÖZ\êh‰]õKf\ÚAQ›3iƒ§\ÚZ»K@+1úSm´‘˜/ e‰\Éñ\Úk¯­9.¯\ã\ZğG´sªşV™¦ğ(\é\ê\Ñ?¦÷I‚Án§\Z\áUqªv©\ç\Ú\È\Î\Ğz_Ó»\Õ\á¦\" ı>\Õµ®¿´´\Ôk—\ĞZS\íoz\'\í\ï\ÚÛ\é\"“_€«(\×:.]\×{Zº \×\Ú\è\Î/Àµs¸\npµ\n(ºUF¶jO\Ï\ì\Ò.õû\Æ&+\Ê;§0‚\ÖòEyõ¦D«wñ+‹\Ä\ÆÚ±)\Z\íò7%\Òy½+£\ÇôŒLÛ³4\Í\ë{s|›òpôı\\·±7-Ç‹‚, u—‡#<²¦Ÿ\ĞôNõ)š\éäŸ£m„\é›fU\éûÓ£^ÿ\æ7¿©\Ù\à2\èñ›ñ•ñÚš±š\rZË³T¯Ik¡bPß™f~i£L{H@§Z#\" \Ó6\n=\ËªZË	h\æQÆ¯ö0`€Ó¯_¿Ÿ\Ûbóo¿ıö\Ç\Â\ÂÂ¯3ú\nC†*7\Şx£\'rµÓ¨\ZœÄŠ®º«@Iôj\Ã	Jh\ÉL\Ó_µ\æY<%\nh\í^*®©²Zk=t\èP\Ï4b\\—€\Ö\Ï\èwj³\'\íxªi´şh6–¨¯0òM\ç‘ƒ- 5=ËŸ½\àh]\é”pV±«\Â5U­\Ï\Ñòƒw\Ş\Ù\Ó*¾µfQ34L\ÂZ\íVEº\Ş\×ÿ®Q+\İ\êF¯eºb®\ÎB\Ïı[¶ù]V{\nh\â\Z\Ê\ÚøW\\\á\İ6‡v\Ú\"\ÓC;$)®SŒ·k\à\çZõVUõ\åŞºI­«T\í[EEÅº*Òµ\î²Wxú¶*\Ş+*\ÆohEû4_\Z\ì\î½zó¢\è\ÄòQ±?Q@ûwŠ\Ğj³J]Ó…\Ş?ü\á5k›?şxM3h\Ğ /¾ô¨\×\Ú\ÍW³Ot^\Ğ\ã7K\â=\ë\âµ5c5›\î­M9µ™­\âX\ßÛŸşô\'\ï™Lµ_2]_ˆ€N«€¾\Ä«š\r	ô\ï\ßÿ\ç„\é\Ûe\ï\Ä=z,–\êO7Lo˜“\"“¦›¦Áú\âB*\nô¨\éªz®jW\ß\çh­˜®\ê«ø\Ç4õV	Q›¶h½s¢€...®S@\ëöV*„4MOS½õ\ášR«©<Ú°À7M\Ó\ÓûzL<\î\ß_š$\\­{4\ëÂ‹vÀõ´¦\é«-èŠµv\è®O@\ëj´F‘ô¾„´iDI´\nh\àúym€§é˜º-†®fû¢Xö\É\'Ÿxk,ı%*\àuÁH£Õ‰¿K\éo\Õ=iuKıN]a\×k\í@\ïß¯\\E‚:}\àŠ)M\Í\ÏÏ¯¹œ6\è;şø\ã½\Èi§->=t\ê©TouSû\çš{?\Û&Q><ºsy8v[’Bıt­«,Dò^G¢\'•Œ\í\Û\Îu×±ó«t\Ü\ÎyP»ÿj*i\ï\Êøş}#ñ\ßM@Kœj=².\Ô\Ö\Ş,H}—FŠw\İu×š\İø5’¥\Û%Ê”K_V«\ÔKü?ƒ¿Y\ïY¯­«\Ù\" \ÕkÀFwQQ\í§\Ò~LK(kªw*5\":}h\é¬\ÕN\Ë}Áª<\Ù\ÆwdJ\Ü<lE^^\Ş\æ\ï\Änİºıå¢‹.Z¥‚4]Xaü¾\Õ\ÂA)T\Ôùkc¤Ä«\íº-‡Ö¢\Ôõ·j#`\ë\n ¦\ÕJ\Ô$¾ç¯‰\Ö(¢Ä?õ\ÔS^Ò¼\à‚\êÂ­Ï“°\Ñ\ç(9\ê3jÿ~_@e\â\î‹\è\æ	h-!\Ğ\è°F—jO\á®ıı\'\Ğşı¤}ñë›¦zJ@k„JE·6“À\Öh”\'¶\ÙgŸ}æ­«W»T|hº¾ZyP¿W•j¿÷\È#x\ëº4CSÅµ\\B\Ôñœz\ê©\Ş\Ïi:¹„;\í´UŠòÖ˜nšUdjq®½:Th\'\Ş&±v\Üic±\Ú\âU##ºšQ%\Ü\Ğ\ï	ZüfY¼¯\ÑTMı·f„i\ÃYõË¾€\Ö-­mV,\é\"VsjDt\ëbµ\ÙP_´ª^Sm4º´´ô\ç}S`\Ú÷\ÈÈ‘#L\ÇT\î/¾ø\â[M\İ\Î\Ï\Ï?…$Ø²–\ìş•ş\è]}W…s2SrôE®¦»\Õ Zw¦i²*<üµl‰¿W£‰\ÉD’Fu\ÕI$Á\ìi§j~›ÒˆÚ†\Úf\ív£¶¤MÅ’­}Ò±eË–Õ¹Q™k\ßC¶®\â\\¦ß­«\áş´\Ïú\îc­õ[~\Ç_û÷\Ö\'¾\Õ\ÆÓ½+\ËtK\å-]\Ü\ï)ZC8\ÙûŠqõ+\ÏAŒ\ß,Œw\â5GtmSœú}³\ê\ÊÄ˜mjˆ€n]4ˆibõ3_¸7®Môı÷ßŸ8ú¼´¤¤d\ËÀ´\îvşù\çt\ï½÷®jM\'Y1ı“9\æ‹@\Ìm\Ï\Ñ$ˆ! 1\Úi†\Ñ\Üiœm2m›x\Çr4Ş‰Wb”\r\Î(tq‚xõşşt¢ß—øû\ÍJ\Ô\æ\Äm:u\ê´\ì±\Çû¡µF«\ÅóP’ F¤b´\Ó&Õ©HµÉ†a\Ä;–\ãñN¼£\Äh@\Ğİn•¶õĞšj¿\ï§ñ<.°­±‹‹‹\Şu\×]‹[zÍ³¦mg\Ã\È3I$H;\Åh§mBª\Ó:sb\Ú6ñN¼¯\Ä(FŒ6•\ê©\Üo&Š\è\Ö‰\Ö\ç\×\Ïoj\êv]#\Ñ&vŸ\Ò\îÜŸ|ò\É\Ê\æŞªJ»mkÃ° ¯y&	’i§\í40Eùaf+\Ì\Î\Î%\ç\ï\Ä;ñJŒb\ÄhSPM\Ä~”8Zk¢W­Z\Õ\â†\ÕZó,û\ÈDüo³&\ÈC¡PO\Ò_^w\İuoş\ë_ÿJiDzñ\â\ÅKF=G£\Î\æ˜1A\Şm›$H¤b´ÓŒ¢Cu±İ¡÷—\æšx&Ş‰w\â•Åˆ\Ñ\æˆh\Ó~sÅ­v\ç\ÖTë–š²]^^şs-ñüfV‰\çZ\ÃúÚ¥­[·n\ï6lV<\í\ÓO?ı$\Ñ)Ë–-û\Ò3o\äÈ‘3{ö\ì9\ßqœo4§^_I#	\ÒN1\ÚišF¶rn\Ú6ñN¼¯\Ä(FŒ¶\ÚT\Ú4\ÜCµD®wKÁX,–ò­®4‚­5\Õıû÷¯-œ½5ÏŸ¶\İ\Èé£ª\Åô¤\êaşœ°\Èl–\î\İe\Ö^7\è&	b$A\Ú)F;McQ\Ó\â™x\'Ş‰Wb#F[‚\êİ¹?«-z;u\ê\ä^ıõ\îÄ‰½{x\ëV¥‰·@\Ö\íD\ß{\ï=wò\ä\É\î°a\Ã\Ü\â\â\â_’ç¥\ÜmH‚\Z£f™ˆ‘\ë\â™x\'Ş‰Wb#F[\n\r†j\à4\n-O\"‚›b+4Ğš£\Î@$	\ÒN1\Úi†£5”n»¹UñN¼¯\Ä(FŒ¦QHoi\"z@õN\İ?¦*œµ®Zwa\Ê\Æı°€$ˆ! 1\Úi\áŠ6ñN¼¯\Ä(FŒ¶\"&†÷—®¾wôœ\ê\éØ¾X–¸ş¬z#²1š\Í{aIC@c´S \Ş1\âˆQŒ 	bh¾O\Ú)\Ğ/a\Ä;£1\n@\ÄH‚´S\Ú)\0ñN¼1Š£\0$AŒ$H;\Åè¬xÇˆwb#FH‚IvŠ\ÑNxÇˆwb#FH‚IvŠ\ÑNxÇˆw F‰Q\0 	’i§\íˆwŒxb#FH‚\Z£ñ\ï@Œb\Ä(\0IC@c´S _Âˆw F1b€$ˆ‘i§´S _\".ˆw F1b€$ˆ‘i§5\ï\Ä;£1\n@\ÄH‚´SŒ\Î\ZˆwŒx\'F1b€$ˆ‘i§\íˆwŒx\'F‰Qb€$H² 	\ÒN1\Ú)\ïñ\Ä(1JŒI‚´SŒv\n\Ä;F¼1Š£\0\Í%\Z’,²×¾·$ø#\í£ñ\ï@Œb\Ä(@0}úôEK–,!ad¡-\\¸ğaK‚o\ÓN1\Ú)\ïñ\Ä(FŒ´\0±Xì¬©S§şû\Ë/¿üÄ‘=W•\0«ªª>1;vŠ\ÑNxÇˆw F1b …°@\é8eÊ”9š²¡uX\àM\ß\ã\ÛÙ–\0i§´S _Âˆw F1b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0Œÿ2·z‘÷\ç\ÕR\0\0\0\0IEND®B`‚',1),('25002',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.bpmn20.xml','25001','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions\r\n  xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\"\r\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n  xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\r\n  xmlns:activiti=\"http://activiti.org/bpmn\"\r\n  xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\"\r\n  xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\"\r\n  xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\"\r\n  typeLanguage=\"http://www.w3.org/2001/XMLSchema\"\r\n  expressionLanguage=\"http://www.w3.org/1999/XPath\"\r\n  targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"permission\" name=\"å®¡æ‰¹æƒé™\" isExecutable=\"true\">\r\n    <documentation>å®¡æ‰¹æƒé™</documentation>\r\n  <dataObject id=\"dObj123\" name=\"StringTest123\" itemSubjectRef=\"xsd:string\">\r\n    <extensionElements>\r\n      <activiti:value>Testing123</activiti:value>\r\n    </extensionElements>\r\n  </dataObject>\r\n    <startEvent id=\"startEvent-1\"></startEvent>\r\n    <userTask id=\"usertask1\" name=\"å‘èµ·ç”³è¯·\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"permission-request\"></userTask>\r\n    <sequenceFlow id=\"flow1\" sourceRef=\"startEvent-1\" targetRef=\"usertask1\"></sequenceFlow>\r\n    <userTask id=\"usertask2\" name=\"éƒ¨é—¨ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:ç»ç†\" activiti:formKey=\"permission-department\"></userTask>\r\n    <sequenceFlow id=\"flow2\" sourceRef=\"usertask1\" targetRef=\"usertask2\"></sequenceFlow>\r\n    <userTask id=\"usertask3\" name=\"æ€»ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:æ€»ç»ç†\" activiti:formKey=\"permission-manager\"></userTask>\r\n    <sequenceFlow id=\"flow3\" sourceRef=\"usertask2\" targetRef=\"usertask3\"></sequenceFlow>\r\n    <endEvent id=\"endevent1\" name=\"End\"></endEvent>\r\n    <sequenceFlow id=\"flow4\" sourceRef=\"usertask3\" targetRef=\"endevent1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_permission\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"permission\" id=\"BPMNPlane_permission\">\r\n      <bpmndi:BPMNShape bpmnElement=\"startEvent-1\" id=\"BPMNShape_startEvent-1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"40.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask1\" id=\"BPMNShape_usertask1\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"120.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask2\" id=\"BPMNShape_usertask2\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"280.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask3\" id=\"BPMNShape_usertask3\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"440.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endevent1\" id=\"BPMNShape_endevent1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"600.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"75.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"120.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"225.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"280.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"385.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"440.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow4\" id=\"BPMNEdge_flow4\">\r\n        <omgdi:waypoint x=\"545.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"600.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('25003',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.permission.png','25001','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0…\0\0\0s\0\0\0\î}xù\0\0\åIDATx\Ú\ípTU\Ç?{WTT\ìX‡±;cÁŠeKˆ„ Q BˆŠŠ%‚\Ä,(D\ëğQP:‚‚€ˆ¡7EEŠ\Ş\ïş\ïpw^–\É&ow¿™3yo\ßÛ’·ÿ=÷\ÜsÏ½\ï?ÿ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0(‚1f\ßE‹}<}úôÆgÆŒƒ…ÀÆk&O¼\ÆZ:ú\Ã\ĞúC\0s\ä§L™bV­Ze6oŞŒ…\ÈV¯^m&Mšô›u÷¡?ı¡?ô\01E=db¨\ãf\Ûs‹ş0ô‡ş\Ğ\0\Ä\r™\à|\Âm\Ö)nEúC\è\0bŠ\ê7p<¡wŠıa\èı¡?\0…Süc\Ãr³(¿¿)\ÛÑ™¶õN§ˆş\Ğú\Ã\Ğ@’8Å\ëÍœ\Ïs\Ì÷Ÿ=]\Äô˜\á¸pŠ\èı¡?ı$S\\Z0|‡\è\í×‚8.œ\"úC\èC\0\É\à\çNøo‰NQ\Çp\\8Eô‡ş\Ğ†ş\0’À)\ÎÓ¡D§¨c8.œ\"úC\èC±£~ıúUSSS\ï·t³6Á\ÚRk&`Ë­M³\çôµ\ç6¶\ÛÕ¹j» C‡Uòòò:\å\æ\æ\Î\È\É\ÉY••µ¥Aƒ‘‹š™™¹­U«V\ë;v\ì8³W¯^}ÚµkwA!N§ˆş\ĞúC\è¯2¨W¯^m\èı\Ï\Æ(›¢‚À]\ÙV‰\Ö2jÕªµ/`€Î;\ßÒ¾}û\ï\Ò\Ó\ÓÿµÁ :t¨™5k–[\Å~Û¶mÆ³v\íZ3o\Ş<3zôhó\ÒK/oƒÄ¥ö9™‰zQw\Ç)j¶]INQ\Çp\\8Eô‡ş\Ğ†ş\Ê\Ì]b-¿”`I6W\ÙÃ¤[´hQ½mÛ¶37nü\ï\Çì‚¾Ò°e\Ë3u\êTÓ®]»³²²V4i\Ò\ä\ÎdtŠ¦ö,\Ñ)\ê§ˆş\Ğú\Ã\Ğ_¹\rwÙ\é‹v\Z\Õ\ìÒ¥‹Q,SPP`–/_n6m\Ú‰U”\äš?¾2dˆ;¯aÃ†\Å‡£\ìëœ””aNNNv£F¶0ÀüùçŸ¦¬\ä\ç\çniÚ´\éĞ”””C“\É)®-œe\æ|\Ñ~Ç¡û˜\á¸pŠ\èı¡?ı•\r\Å\Û\ë#\\FF†y\ï½÷\\\ĞW\Z÷hT´E‹E\Ã\Ô\Ô\Ôõöo­¤\nÛ´iÓ§yó\æÛ¾ù\æSüşû\ï&//o‹ı’–\Ù/¯Z²8E\Ù\âwpŠz§…SD\èıa\è¯\\\Â)Á\0N\ån\Ê–•È9\Ò\çOX\Ûhí¾¤	³³³ÿ)mT]\ZüOzzúoöK<3)œ\â\ß›_ö\Şq\è\Ä>¦c8.œ\"úC\èC{Nt†P\Ã\ÄÁ9e¥°°\Ğ<ıô\ÓÁÀpSjjj„2V†0–¡gØ°a\ÛÀ°0\Ş3†»rŠZ±ş\Ô%\Ö\Ô\è«ú\ã\ÑúCú\Û3¶\×F¶\éÓ§\Ç$nQ\r¢\ê\rƒCû\Ş5ò¢jR‰jgÎœi*ŠAƒ-KKK\Ï3“KtŠ¶¼|Áx3{ô3%:Do:G\ç\Òk\Æ)¢?ô‡ş0ôWª\á%ÁI%\Ê\ÆMJ\éÜ¹s‘õ\rµb\"\ÏÖ¤’Š\æñ\Ç_–šššHNqW½cz\Í8Eô‡ş\ĞúCe\Ç\Æ\ßk\Ës\Èxgó#š4iœ|òjB]T­C¨eg\Êc–ñŒ\ÓoKKK[¯‘vqNqwz\Ç;\ë5\ã\ÈpŠ\èı¡?ı\í-Lœe\\\ÖI%¥Aq£&TO˜«…©µ6Oeñ\â‹/¨& Qœ\â:Do82œ\"úC\èC»:\á3-;S\Ñ\è&À°[B\\TİºNw)\í\Â\Ô\åœ-\\eƒ\Â5ñX[¸»K2`8Eô‡ş\Ğ†ş\Ê.ú[\×i¹˜Š˜ \ÍÂ…‹¬_˜‘‘Q%\î/l\ïŞ½»h¾²iÖ¬ÙöK¾\Z§ˆ\á\ÑúCú\ÛE-\áı> ÓŒ\à\Ê\"¸¸µa\ê\Æı…\Í\ÍÍ1bÄˆJ\n»w\ï>5LC\Èö³ŒÙ §ˆSDú\Ã\Ğ_\Å\êOÃµ5\ãxg|øá‡‰5\á$\'\'gõ¬Y³*=(œ>}úL->¢Zù±_tMœ\"Nıa\èı¡¿p\è/¸Xõ¼yó*3v	f\n\Ç\Ä}P˜••µ¥2\Æ\â£Y±b\År­÷6Qo„]\\\Ï§ˆSDú\Ã\Ğ_\Å\ê\Ï>¶\Ô¯\ÈY\Ç\Ñüò\Ë/E\Ö,Œû Pš±®\Ïî ‹\ZbQFzAq\âqŠ\èCú«Xı×F*-fü,q\êŸñ{.Jk‡\É)jI¿ıw	wø\í·\ß\ÌÊ•+cşYşú\ë/ó\Ç\à\ãX6lØ­ó¤©\Ò\è\"\Ö\ß÷\Îô­\Æc\ãÆ\è/NıŸ\r\îk\Õt–œú\î‡!vI˜ 0l™\Âx³\Ê\n/^\ì\íT@˜mz\è!³n\İ:s\Şy\ç™Ñ£G\ïp~\ïŞ½Íµ\×^ë¶—-[f^{íµˆ½ñ\ÆÅ¾‡\Êö\Ùgóó\Ï?{üù\çŸ7:ur\Û={ö4¯¾úª¹\ç{\ÜgĞ¶lşüù•v\âQW•¥?ò\ZŠy\æ™g\Ì-·\Ü\â¶eo½õ–¹\ã;\"6v\ì\ØH@x\ÒI\'­súë¯¿š¦M›\î`>¸\\±b…9ö\Øc\İ2_|ñ…III)b\ï¿ÿ¾;\ï\Ë/¿,¢KYğ½½­Y³\Æİ¤^E\æ\Şt\Ãú\Ã?\Ü|ô\ÑGE÷\røÈ‘#\ÍYg\å¶\Ï<óLwı@XWh~ú\é\'ôbÿ§[°üñn¸Nû‹-2‡z¨™={v‘ó’UgÉ¨?2…	\\S¸zõ\êe!¯)ô–o{\ÈuüšŠ•¾ù\æ›æ¢‹.r\Û\×\\s[LS\Ûıû÷7|°+‚õ]İºuİ¹U«VuÛƒ\r\Òl)g7\ß|³9ò\È##¯ûé§Ÿº@OÖ®];\ç\ÌZµjyL\Çı¹_}õ•9\î¸\ãL×®]\Ís\Ï=gz\ê)s\Ã\r7˜3\Î8\Ãm·l\Ù\Ò\ĞSıi%}\×AS\Ãû\ÄO˜Úµk›^½z™½÷\Ş\ÛLœ8\ÑuDÔ°¾şúë®±V%777b\Ï>û¬{¾o(_~ùesıõ×»\ío¿ı\Öt\ë\ÖÍ™ô±\×^{™>øÀ<x°¹ò\Ê+\ÍAd\î¾ûn\×\ÑQ\ã,ıp\Â	N·z]ujôÿ\ë¼o¼±D\Ûo¿ı\ÌÔ©S]V©_¿~¦zõê®ƒs\Ê)§˜\Ï?ÿ<\æ5ú+»)\ë6e\Ê§Au4´]¯^=\çó´\Ì\Ê%«Î’M\Ô\Æ\ë¸×¨Á\É\ì\ã)!eg–š\Zt\\psxj¼•¡Ó¶L™‚2\Í\ÌÒ°\Ë;\ï¼c~øaS£F\r·­´¯¿şºHP˜™™\é^·q\ã\Æ\æp\Î,--\Í\í\ëq~eõ\Ã\ìŞ½»9ıô\Ó]à© TÛ—^z)\Ã\'q¢?•ô\é\Ó\Ç8\Ğ5´ZƒKg…Í›7wY–SO=Õ§Ì t¡L\àœ9svx-\Û\Ñ+Jw\Ê0\êu\Ôxúlõ¹\ç\ë\Zû\è\àô\ä“OvÛ=ö˜¹üò\Ë]–\çè£v¶o¬\'Ol®¾ú\ê\"C\Ù\Ê\Ì\è³ùÇ”ÿ\î»\ïLß¾}]\Æ[Ï½ø\â‹wh¬G\Z\åò.¯@e7RúN;\í4\çS¼i?:\ĞJV%›ş˜}#´N¡R\İaX§0L·‰	ˆqš¤,\én+•*##g¦LŸ‚BmG\ÛÜ¹s]o\æ\İw\ß5\Z5rNS\Û³zÇ²;\ï¼s‡ Pk\éÒ¥®Á—3S\à¨}=\îƒB½¿‚¾«®º\Êõ\Ê\ï½÷^g\ÊH*{\ä÷5üHP~ı)À\Ó0š\ZÀ¸ìˆ¾w\Ş~û\í¦M›6\î\\–TS\n\ÕPv\Øa&==\İs\Ì1n8NYG5\È\çŸ¾k„µŞ—\Ï\n\é–U\ÊÖ¨A–†•jØ°¡{nÇ#µ\ÎWƒ+\í{Ó±C9$²?`À€\Èg\në©±\Ö\ë\éõ}FT\ÚV\Æı…\Ëÿù 0º\ÎUûÁ 0™u–lú³\Çz„aB½w\àóöˆû 0//\ï¥Î;WzP˜=\Ç^\ĞZ!e±=\ã°…\Ş\ÔXk¸Bw§	šŸp¢!\Ş[o½\Õõf5„¢m\Õ\ÊIµn\İ\Ú9@\rÿƒ\Â<\ĞŠUªTq\ç\é¯öõ¸\n0høğ€p™B>úhS}š\Ö\Â$(¿ş4ü=|,\Ó÷­ ğ²\Ë.3¯¼òJ©ƒBeZT† \Ûú\ç@U^ š,û\É\'Ÿ¸cªMT6Ò¿¯ScªúFı­V­š+™6\Öj€•1\ÒP:@:¦ökÖ¬Y¤C¢s•\á\Ñ\èˆ\Zk\r5J›zN¬4Šş\Ê/(”vøy\Ó~0(Lf%›şl°˜†;š¨¾4\Ş÷A¡ı‡ª=ø\àƒÿª>¨\×(Ô½ÿ\È\È\È80Ş®_‚\Â\ï¿ÿ\Şzûï¿¿\Â4t¬ Q½\Ó\à,d\r5Oš4\É\ì»ï¾®Áöº‘ƒó=qO>ùd¤Q\çù‰&z<8|ü\Ã?¸ P\Ûr\È\ê!û\Éu\×]\ç&œ0|ú\Ó—Šó?ûì³ˆ\å\ç\çG2…*\ê?ê¨£\\\æ¹4A¡ö\Õñ°N\Şu$ô\n.{ô\è1MXòC\ØC‡uX\ä—T\ê -©C£\â~¯-?óT\r°ô¯†=˜ÁÑ¾†ñ|c­úÇ»\îº\Ë\×oš\Âøñ\Ò\Úm·\İ1oÁı\à0n²\ê,\Ùô× Aƒ“‚÷>V‰T%\×n\Òı˜\â\â¶n\İú\'W={öœa<}qŠ{^W¨úA9\Â:u\ê¸a	9\"_P-“x\åTc£¿\n _x\á·­z9\Ås\Î9\'23OAŸ†\\ôš\ZR\Ñy*\ÊÖ¾/.(\Ô0…\nF5|,S/ 0¾ô§!6\é\ç\ì³\Ïv\Û\Ö\ÑE‚B\×Ğ²\êK\êsªÿˆ#0^x¡\ÂSc®Ì£2\Ï\ÚÖ_t­—\Z\Ğ	&¸a>uFT’ m™2Ó¾±V}™2:š‘ª÷T)ƒö¥Y\ßX«\ÎLµ4\é‡õ\n\ã\Ãÿi\âÜŒ3œ\ÏRYƒ´\égÀ¿ıö\Ûn\"‰¿\ÖÉª³d\Ô_°®P\ÙßŠF£m °\Â\\\Ø6m\Ú\ÔoÙ²\å?•±4\rF¶¦¥¥­SÔS,½ib‡2fj„U/¨^¬œ_ğ<õˆ\å$be\n}VHœö\åHµŒƒ\Ïª\æEu†š\ç‡Q\Ô\ËÖ¾‚e#ƒA¡¯÷ÔŒ\Ó+®¸Â¥óeªW$(Œ¿ pÚ´i‘Ì¯\nUk¥`P\r£\Z¹\Ò…ê¨¨uÉ’%®!ö™\Íb?ñ\Ä‹<Oï­¿f9«amß¾½›  N†23Ú–ù\É-j¬‹òö=¬¬õŠn¬Û¶m\ëj„\Ğ_xüŸ–„‘OS	Œ\ÊWÆ\ït©‰o\Zù\Ğ2X\Ê^k”#™u–Œú!geeU\è\Ò4ªW•~üû[=^”P\×^\Ğš\Ú_\Ñ\ä\æ\æÎŠ\ç\â\Ì\Ê\n5‹M\êø”Ô„õ†µ<‚şªnpØ°aî‡¢Z1Õ¸(ğ\ÓP‡2Ãª‹QÍ‹«zÉšA†	®S>6\r1\êø#<\â\êƒA¡z\å…ñjB’|\r¥ù °Y³f.ğ\×z˜*\Ò\ßYP¨¡9eQt\\Á¡¶•]Ö¬t\Í\È\ÔP²Òš´¢÷Ó¶\ì\ÇtU¡ÿmıúõ\î¯LÃ‚\Ê\êø}¿Ì‘\Ê\'ôYµÆ¢×ª²I\ÚW§\É\Ï@\Õ\ï@Ë¨±V\æ\\†–5ñsı”\×\Ìkôÿ§‰\"š9¬m\éGÁ—2uÒŸF.ôıÉ·©\Æ0™u–ŒúÛ¾4\Íl˜)ùQQH\'ş}SSSÿ—p\×şnnÒ¤\Éı8*\nû^`œŸRRR\Å)–\Ş\Ô•£\Ñğ…j`´tŒœ_\ØUO\Ã(\ê\éjıB;\ËÁiY\ÍV\ÆG\Ã$\ê}«.F¦\ÙÄ¥\r\nõšZ \Úg–<h{øğ\á\î5µAa|…\ê`([|\É%—\ì0|¬ó*)(ô\ëjV¼öÕ\ë5\Ôhk_š\ĞkG[töD½qeqŠ3M¤Š~_ù¯’´ªIª	SöZ41K®\Zó›nº\É=O\Ë\í(Ë„ş\Â\ãÿ\ä¿44¨mu<•\Ùó\Ù9ù/Õ¼ªF™¸d\ÖY2\ê/:[¨Ì¾“X£¶70l¼\Õ…\ç%\äÅµÀ\'¶Ç³µ\"†‘m ó§†mª6N±\ì¦ÀmW·*\Û\Ó\Û\Îù5\é\Ô\ŞÕ¹ª¿ñ\ÙF9i\İ]€\Û<Å—şÔ¡ğ‹KWj05ı]\êû\ÕÄ“\ân©¨\ÇJºY,M\ï«	\Åi}WzTp[\Ò\í!\Ñ_xüŸü¾ËŠ¸•]<\é,YƒBa³>HSMh,\'\Î*¸[kš°V©XÛ»Y<p\àÀ-±mC³-##c™ğ[\à1œ\"úC\èC{JJJJ5œ­öš–\Ù\Ó\í\çbê¶²	9¹d\'©Øª\r6\\;dÈÍ±\Ên»\à1œ\"úC\èCe%55µ¦µõ>`SÍŸF+\Ês\È8*C8*K\ßJ…f§§§ö\ë\×oEy\×j\È82„8Eœ\"ú\Ã\ĞúC¡Jj\ÕõkÊ”\Õ\Óú»ee¬™\éQ·\İK€0˜1´\Üp\ÍJ^²d\É\ße]vF³Œ5©$\ŞkqŠ8Eô‡¡?ô‡şÂ‰b´mqZ	£´÷G\Ö\Ìq-\á•tC\ÆIF¥d³mp¸²S§N³.\\XªÌ¡\îT’———¯ì ½½ñB\âqŠ\èCúUR«†9–FsnE-E¤\å÷4K\Ù\×ê¯‚@e53]·~~®f\'ô¤’Ò `\Î^ŒºÈ™™™?v\í\ÚuÚ„	¾µqI0\\»v\íJ{Qgv\ï\Ş}ª\îe¬[\×\éN%ñº05N§ˆş0ô‡ş\Ğ_|\Æ-š»5\Ü\Ó:„	»\ìL9dknGY[¼=zöo¹µiÖºY«÷2\Æ)\â\Ñ†ş\ĞúK¶\ß#978	e7Mµ‰ı\îN%€S\Ä)\Ò(c\èı¡¿dFIª\íõ†İ¶\'µ¢‡——×¯_Œ\î°f\Èû5¯‚«8Eœ\"ú\Ã\ĞúC\0€S\Ä)¢?ı¡?ô\08Eœ\"ú\Ã\ĞúC\0€S\Ä)¢?ı¡?ô\08Eœ\"ú\Ã\ĞúC\0°gŒ7\Çn\Ûd\âVô‡¡?ô‡ş\0 ¦L<yùªU«p>!µ\Â\Â\Â¬Sœ‹ş0ô‡ş\Ğ\0Ä”ñ\ã\Ç\ß5q\â\Ä\r+W®ü\'®²\âØ±c—X»ıa\èı¡?\0ˆ9öGW\Çö\Æò•¦Wı\n\Ów17\"úC\èKVı\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\Ä-ÿ\à³jo\ã)@\0\0\0\0IEND®B`‚',1),('25006',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.bpmn20.xml','25005','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"publish\" name=\"å…¬æ–‡å‘å¸ƒ\" isExecutable=\"true\">\r\n    <documentation>å…¬æ–‡å‘å¸ƒ</documentation>\r\n    <userTask id=\"taskuser-1\" name=\"å‘æ–‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-request\"></userTask>\r\n    <userTask id=\"taskuser-2\" name=\"éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\" activiti:assignee=\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\" activiti:formKey=\"publish-manager\"></userTask>\r\n    <userTask id=\"taskuser-3\" name=\"ä¼šç­¾\" activiti:formKey=\"publish-countersign\">\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>${countersignUser}</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n    <multiInstanceLoopCharacteristics isSequential=\"false\" activiti:collection=\"${countersignUsers}\" activiti:elementVariable=\"countersignUser\">\r\n      <completionCondition>\r\n	    ${counterSignService.canComplete(\r\n			execution,\r\n			nrOfInstances,\r\n			nrOfActiveInstances,\r\n			nrOfCompletedInstances,\r\n			loopCounter)}\r\n	  </completionCondition>\r\n    </multiInstanceLoopCharacteristics>\r\n	</userTask>\r\n    <userTask id=\"taskuser-6\" name=\"å½’æ¡£\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-finish\"></userTask>\r\n    <endEvent id=\"endnone-2\" name=\"endnone-2\"></endEvent>\r\n    <sequenceFlow id=\"transition-2\" name=\"\" sourceRef=\"taskuser-1\" targetRef=\"taskuser-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"transition-14\" name=\"\" sourceRef=\"taskuser-6\" targetRef=\"endnone-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow1\" name=\"\" sourceRef=\"taskuser-2\" targetRef=\"taskuser-3\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow2\" name=\"\" sourceRef=\"taskuser-3\" targetRef=\"taskuser-6\"></sequenceFlow>\r\n    <startEvent id=\"startevent1\" name=\"Start\"></startEvent>\r\n    <sequenceFlow id=\"flow3\" name=\"\" sourceRef=\"startevent1\" targetRef=\"taskuser-1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_publish\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"publish\" id=\"BPMNPlane_publish\">\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-1\" id=\"BPMNShape_taskuser-1\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"109\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-2\" id=\"BPMNShape_taskuser-2\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"279\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-3\" id=\"BPMNShape_taskuser-3\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"470\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-6\" id=\"BPMNShape_taskuser-6\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"660\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endnone-2\" id=\"BPMNShape_endnone-2\">\r\n        <omgdc:Bounds height=\"40\" width=\"40\" x=\"830\" y=\"206\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"startevent1\" id=\"BPMNShape_startevent1\">\r\n        <omgdc:Bounds height=\"35\" width=\"35\" x=\"20\" y=\"207\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-2\" id=\"BPMNEdge_transition-2\">\r\n        <omgdi:waypoint x=\"229\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"279\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-14\" id=\"BPMNEdge_transition-14\">\r\n        <omgdi:waypoint x=\"780\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"830\" y=\"226\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"399\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"470\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"590\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"660\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"55\" y=\"224\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"109\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('25007',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.publish.png','25005','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0p\0\0\0\0\0w\ä\n\0\0lIDATx\Ú\í\İ	”Wuı7ğ\Û7++;YY\Ú\î\Óò\Ô)[,[m±\å)€!é¨¤ˆ‰%Š\ÉQ‰´²ş\"™¥\Ç\\²,r9%Å¢B$E*	¤\âBJ(‚ˆn€\Ş\ç¾\ï3w\Îe`@f~3¼^\ç|\Îü~3\Ãö\ã=Ÿ\ßı\Üû½÷>\å)\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\ĞİŠ¢\Ø\î–[n¹`ö\ìÙN›6­˜2eŠ\ê\å5u\ê\ÔbÆŒw•\Õ&§JNe_É¾\Ü+¹‡>$\rr\æÌ™Å²eËŠGyDõ‘Z¾|yq\ÅW\Ü[6\Ì}\äTÉ©\ì+Ù—{%÷\ĞGd\ï–\Ùg\å#S¦L¹NN•œÊ¾’}¹Wr}D–&h(}·\Ê&¹FN•œÊ¾’}¹Wr}D\Ö%k&}ºIrª\äTö•\ìË½’{\ØÆš\äª{\î(n™sf±`\êqU\åq>§i’rª\äTö•\ìË½’{h¡&yÿ\Ê%\Åü?.şõ\Ç\ëT>—¯iFš¤œ*9•}%ûr¯\äZ¤I.^pñz\r²®ÿ.¸D3\Ò$\åTÉ©\ì+Ù—{%÷\Ğ*Mòº\Ëşo—M2_ÓŒ4I9Ur*ûJö\å^\É=´H“œ?eL—M2_ÓŒ4I9Ur*ûJö\å^\É=h’J“”S9Õ£e_ö\å^\î\åØœ&™+;u\Õ$ó5\ÍH“”S%§²¯d_\î•\ÜC‹4\Ég\Òe“\Ì\×4#MRN•œÊ¾’}¹Wr-\Ò$W,¹¶˜ÿ—c\×_¢P~._ÓŒ4I9Ur*ûJö\å^\É=´H“L-ú\ç¯\Ök’ùœF¤IÊ©’S\ÙW²/÷Jî¡•š\ä\Ã7şm\âúK\Ê\Ï\åkš‘&)§JNe_É¾\Ü+¹‡h’÷¯\\R,œõ?]®3\Ï\×ò=\Z’&)§Ê›¹\ì+Ù—{%÷\ĞSMòá‡‹;nœ^Ì›|L—\r²®|O¾\×/MRN•7s\ÙW²/÷Jî¡››\ä¦öl\Ù\ã¥IÊ©’S\ÙW²/÷J\î¡Eš\ä\ãÙ³µ±=^š“&)§Ê›¹\ì+Ù—{%÷\ĞMMò‰6Èº4\'MRN•7s\ÙW²/÷J\î\×7p\àÀ¾öµ¯Ñ¯_¿\ÓËs\ÊZT\ÖCee­)kqùµkÊû÷\ïß–\ï\×\Ød“Tš¤œ*9•}%ûr¯\ä~\Ë(±Ê¡lXùq~YkÛ‡µ\Ç]\è\Ê_7|\ß}÷}~ŸzaÆŒ³ı„	N8şø\ãÿ9zô\è\åC‡]]N¬ÿğ!C†¬=ò\È#Ww\ÜqsO=õ\Ô\ÓF\Zµ‹©Ij’rª\äTö•\ìË½’û­!W9‡Œ)‡¯U›;´uQ÷—u\â\àÁƒ·\ï\Õ/\ÌØ±c÷:ö\Øc¯ikk{¬ÜŠ/¼°¸ö\Úk‹eË–k×®-j+V¬(®¿şúbò\ä\É\ÅI\'T\äûËnqùk†\ì¹\ç\Ûi’J“”S%§²¯d_\î•\Üo¡£nme-\é<„\r\Z4¨(\ç—jfY°`Áz3\ËÊ•+‹…V3Ë¸q\ãª\ï\ßÀ ·¼¬Á½\îE>|ø\ÎG}ô\Ü8\à±.¸ \Z\Ğ6\Ç\êÕ«‹Y³f£Fzl\èĞ¡K<ğÀ/h’J“”S%§²¯d_\î•\Ü?Q90”ó\×:]\ßşö·«û<°\Ù3\ËÌ™3‹#Flh;³\×=zô°ı÷\ß\ÍYgµ\Ù/Â†Ì™3§(¸\ÕtĞ…}nm©&©IÊ©’S\ÙW²/÷Jî·ºrØ±ÿş³›C\Öğ\áÃ«¬y”í‰š={vqè¡‡v\â\æ•\î®-ıÂŒ9ò´C9d\íUW]UlI÷\İw_1aÂ„\Õ\å{{^|MRi’rª\äTö•\ìË½’û\Í\Şş\Ó®\Î<ó\Ìâ¡‡Ú¢3KÁ\Ä\ê4\Ä-j\Ù!.\ÃÛ°a\Ã\ÍZÑ­\å¼ó\Î{´­­\íŞ–Ÿd5Ie€SrªG+Ù—{%÷­²lò¯õ@•)\æß¹5\å÷\ït~Ü¼–[I˜e“9ò¶5‡·\ÚE]ôp9\Ä-\Ù\Äi’š¤œ*9•}%ûr¯\äş‰kó–\á-K&»C–T6¯º_\Ö-ó¢\ä‚%9\çm\îÜ¹Ew9÷\Üso0`À\Å}ı\n•š¤&)§JNe_É¾\Ü+¹brµ\É\ærÆ­}\ämCG\âš~ù÷9 U–N\Î\ËZ\Ï\îv\Øa‡İ›\îi’J“”S%§²¯d_\î•\Ü7e\ÉbóV9\ç­\'œs\Î9\Í!\î_J™û¼\åV[\âj“›kÉ’%kpwî®I*MRN•œÊ¾’}¹Wr\ßX:9¦yµ\É-}Á’Í¹°Işü\Æ7¦G_˜Ü¤{Ò¤IEOùÁ~° \à\Æi’J“”S%§²¯d_\î•Ü·/Ü¡¬UõĞ”ûK÷¤œWÿ]úõë·²\Ç@3fû¶¶¶\Ç6÷&\İ[ø(Ü²ò¸«¯§Ij’rª\äTö•\ìË½’ûÍ“Ó¬š7\é\Ş÷y{²:ê¨?\n7q\â\Äq£G\îñ\ã\àƒ¾¡\â>¤I*MRN•œÊ¾’}¹Wr_\Îó\ëaiúô\éE+\È\Õ/Ü=ò\Âüñÿ¼\ä’Kzü\Å8ù\ä“gõ¶e”\å\ßw\Ê\ã:5IMRN•œÊ¾’}¹Wrÿÿ\r<xûM}\ÏÀw*³¼6ƒR\î\Å\Ö\×\êØÕ«W¯so¸¼³\Û_ÀÑ£G/¿ö\Úk{üÅ˜={ö\ÜòE¸¬75\ÉÆ¥D§ô\ë\×owMR“”S%§²¯d_\î•\Üo2§×•u\â\Æ¹ò\ëG\Ôy;vl\ÑJÆ\ß<nd·¿€C‡]\İ7\îŞ”¥K—Ş‘Krö\Æ&Ù¨K7´\×K“\Ô$\åTÉ©\ì+Ù—{%÷9]T_¤ü8jC—\ä/¿vz\ãVX-\Ø4yò\ä\æ\Ï\Ø\Ù\İş\æ\Î\â­pB`\äE\è\åM²c¯W³Yj’š¤œ*9•}%ûr¯\ä¾#§Ë›ùl\ä7/hX>ŸS}Á‚-5À-\\¸°ùw¿¦G~\Ğ[E_\àš{½²|A“\Ô$\åTÉ©\ì+Ù—{%÷›\Ì\éuıû÷ÿtó(]ªV6­\\¹²ùw^¾\Í\ë«\Õ\×\ZCN$­?üğÃ›ü\ŞU«Võ\Ù&\ÙW2Ú“o\æ÷\Üs\Ï\ãú¾{ï½·¥ş\ï\ï¼ó\Î.¿–\Şÿır*û=VË—/\ïòk\éÛ{w2«G\Ë}o®û\î»o“\Û$õ÷uş\\_\ÛN)‡ ü?¯)\ëÁ²\îi?\âu{Y·–uS¥r¿¶üxUYW–5£¬i\å\ç&—/)kRY¿)Ÿs\Ê:£||ZY§”_ÿqù||ùxl.¡_>ÿnùüÈ²†—\Ï)kHù¹o”\Ï\Û\Ê\Ç\å\Ã~_.~À€{•?V~n\ì@x\Í\ßkuı¼Uf•®\æ–mö¸ò\æö>p\\]s\Êp\î]\î+MrÑ¢E\Å\àÁƒ«lØ°a\Å7¾ñ\â\î»\ï.v\Ûm·j-pW¿®|Šc9\Æ^.9]\ï\Íò;î¨²±\×^{US¿ø\Å/Š\Ïşó5u\êÔ\ám§v*&MšTü÷¿ÿ-:\è õªóñ\Ío~sñ©O}ª\Ú(\İÿı\×ù=S^xaõ½\çŸşz_«\ë+_ùJ\Ç\ßwÉ’%\Å\\\ĞQ#FŒ(^ø\Â¿ı\ío\×ù|=\Ôı\éO*\Şğ†7Tw\İu\×*\'>ø`²R\Üt\ÓMrªGo\Õ:\âˆ#ª¬\å\ã†6hO;\í´\âÕ¯~uuSÚ¿ÿı\ï\Åm·\İV|ô£-9\ä\êy*?gz´\Ü÷¦z\æ3ŸYüù\Ï®Î—\ê\\\Ù^\É÷\Üu\×]\Õ\Ï\ÆşóŸª¯_w\İu\Å5\×\\S}._\Ï{\Î\Æv\Îõ¦\Ü\çÿº|/{\î¾û\îû¢\Üpº­­\í•\å\ã×”9Ø¥|ş\æş¯òñÿn¨öÈ€•A+9)ŸÿŸòùW\Ë\Ç3e0Ë€–A­|>¢||LYÇ–\ÏO\È@—Á.^½ö\ï\ì²\Î/\ë÷\å\×.n§µŠW>nmóy+\ê\Ñ\î»\ßı\î]­°®´ı*”3{y“\\§9öµu\æ?ÿùÏ‹w¾ó\Õ\ã=öØ£8é¤“ª\Çgyfñ\Ü\ç>·\Ú\Èó›o¾¹\ÚÈ®kÌ˜1Å³Ÿı\ì\âœs\ÎY\çóù>\ÛnNó†š7\Ìf=ÿù\Ï/?üğ\âŸøDqê©§O{\ÚÓŠ\Ë/¿¼\Úiğ·¿ı­ø\éOZ¼ò•¯¬v&üñUö±\ê\×\×oº\æ²1ú¥/}©\Z\Ï=÷\Ü\âg?ûYõk³ó!\çÎ[}\ï	\'œP¼\ç=\ï)\Î>û\ìu*W¼Jn›ÿ\Ï\Ïy\ÎsŠü\ã]\Ö3ñŒbÖ¬YÅŠ+Š3\Î8£\Øyç«„×¼\æ5\ÕF…Nö»cu\Ä~û\íW¼\å-o©~fòñ\ë_ÿú:«&\ê!\É\åv\ÛmW¼şõ¯/\Ê\r»\ê\ç\ío|c•\Ñ\ì˜û\å/©G\Ë}\Ë\×e—]Võ\Úz€ûÑ~T\íÀ«\ëMozS•\éyó\æUß“ƒy÷‘£>ºø\Ø\Ç>\Ö1À¥w¿\ä%/©úµ\Ü÷Ø†\ÊÚ³ı{\ê%G\à\Ötû˜ûÀeOq+\Ü.—\í¥Mò\Êşıû©ss\ìkM²|(\Şşö·W{t³¡ı\å/¹zœJü\Îw¾S\\ıõ\ÕQˆ4\Ì¼\à\Å\Ë_şò\êq]/}\éK«\Ï\çq¾\Ï\ÆÁ¶›\Ó\ÈQ€_ı\êW\ÕR\Ã\áÃ‡WGr3À\å(À¯ı\ëâµ¯}mõ}97\×Y›?ş—Š\Õ\\¬%g\çw^õ¦œ¡mÈ!UFó\æa-ÿõ¯up\Ù‘\Ùf\í¸\ã\ëp3f\Ì(>ô¡­³œ#kÍ£şğ‡«?óô\ÓO/şô§W§w½\ë]\ë\rp—^zi5dv\ç^\Şm|€\Û&zô´iÓŠ·½\ímÅ»\ßı\î\âö\Ûo\ï8rœ¦wggH>—h\Éw6d\ÓÇ³³$}<?ƒ\Éh6†û\ÒP»\rp\ÛL\î_ñŠWtp\éÁÍ¯\×}7\ÜO~ò“uv\Zft¶I²ƒ9\Ïó³ğş÷¿_î·²\\q²\Ó\ĞöP\à•µ[§,÷–s\àwû‹8aÂ„“Z\á\Ş\nÃ†\r›_OÜ½¨Inp¯V_m’9\Òñ­o}«Z––.;W–\"\ÔßŸF™\ïm\î\Î\Ş\àÿøÇ–P\Êi5Œ%#Šn¼ñ\Æ\ê\è\Ö?şñ\îsŸû\\1r\ä\È\ê{\ë®«s\àš\\\ÙÓªe\ÉkÀ\å\Èp~Ÿ|\ä#\Åø\Ãjh\Ü~ûí«¬à²›.÷\ÄlV\Şğówù\ë_ÿZ}o†°d¿®ü™\Ï{\Şó:Ÿu\ÖY§\æ\Êp/{\ÙËªŸ‘úHc¸\ì–S=zKÔ‰\'X<õ©O­6>3\Ä\í¾û\î•\çY=‘¯\çg.ßŸ/=ù”SN©6~Ó«³!›#\Ôõ‘\n=Z\îû\Ú\0—e”YM”\çY2gÎœj5Q\î\é•\ÏeõE\Ş\'²\ãC\î·jFwn|\îo?§n‡®²\ì*”]1bÄû\í·\ßc=ywó¥K—.+ÿóV\r<ø\Ù}±™öµu\æÙ°\Î\ÚÑ£G¯SÏ³\ÈR„½\èE\ÅW\\\Ñ1\Ğe!\ë\Ïm\È\é÷¾÷½õ–P¦r´,C\Ó{\ßû\Şj)\Ì\æpy³Î¿%Ô¾û\î[=\Î\Ë,#Kvó\æ7ûz€\ËÑˆ,Ë²™Y\ÍÊ‘¼vØ¡c¹e~\Ï×½\îuÕ²\È\ì¬ÈŸ™1Ï³¡œó÷š\\\Ğ\åM\'\\6\n2\æ\×ä£œ\ê\Ñ[²’Ñ¿ü\å/y?]g©z]\Ù M&³J\";Lrg~2ğe#6¿Gv ¼\ï}\ï«6‚s\Şh¾O–û\Ş4Àeû\ÕW_]pÀ•,7—P&\ãy\å\Â\'Ÿ|rñÁ~p\Ê\ï‘\ßS\î·\ê¸s”\İÄ»}€;±—\Ünb¼Gu\ÔMYZ\ÑSN9\å”\æf}šd\ëWRd/n\Ş\à=ô\Ğj\ÙM6Š³±»¡\å3´\åDùl\ÄfCxÜ¸q.b\"§{E³Áù\Ç?ş±£²!YË›m†ª\\\\as¸ú\Â:©\ìh\È9>e«¸\Ï|\æ3ÕUp9\n˜\r\Şÿû\ßÕ¹k\Íú\â¿Xüş÷¿¯\ÎW«/’\r\à\ä?;\"šG\àò<K&\ë.\ç\å\×\ç\ëYz\ì8\Ù\ï\ÊÈƒ>¸\ËJÏ®—\ç\"=9W®\Îo]y«Sö³Ÿ\íXr©G\Ë}o\àrD$ı>\ï£Fê¨œ]pyŸ\ÉÊˆ<4hPµT¿ó\ï—\ß\Ë\0\×2G\êö©‡¤VX-Ø”£¶{,¶õ\È4r\ä\Èş\å†ø£=q‚\à<°fÀ€w—o;i’½\ã<¸œ?”+K\î½÷\Ş\Õ°lœ\æJ~»”m6\nrQ‰\Çsy_Mr\Û\Éip%?\Ùš\Ç\ÉJ=À\å\ëY^™%›3À\ÕW\Ë\Õ\'s\Õ\Ô\Ã;¬z\Ï\0—s\êru½z€\Ëí†v®l\×\\.ø\åg·\ÜrKõµ\ì\í\Íó|\à\\®b–n—]v\éXBi€“ı­]\ÙQ‘¬¾õ­o­\çq*½:³Ã­yj–§‡ÿ\îw¿«~\îrNG†¶z\é²-÷½\å\n\ÙY\nœó\Ø\Şñwlpga=ÀeGF\ŞSò<_>×¼\àI*C ®¥\Ô\åV\ÕÀİ“«›V¯^?=Vp=:\Ã:t\éÌ™3»ıE(\ß@rŠÿ\Ñ$[¿²\Ô\àY\ÏzVu´\"\Ìit9\n‘=µ;b—¥e9’’‹IdCÁ\0\'§\Í\î\Ê+¯¬gÈª¸4\ê¼\ÉfX\Êà³¹\\~Ÿ,…yÕ«^U\rs¹¨H\Î9Ë¹o9?\"ƒ]rœ{\å\ëù·\ï³\Ï>\Õ2³<Oåœ¼\éÓ§W\ë{e€\ÛØ \×y	eó¸\Î\\®~Öò±»m\ìd\Ëò\Ü\ÜŞ¢ş¹\Ê\Ò\Ê¿ø\ÅÏ›•«½\æÜ¹,L\Î\ÆQ~6rN–û\ŞV\Ém–Lnl€\Ëj ú*”Yú£uyš•Ÿ\\K…\ë¸\å@Ş“[A\æ¥=ÿ­iÈ!Ÿ:ğÀWg\\w¹ú\ê«o,7´n\Ê\Õh4\ÉÖ®\\5/{¥²$2\Ë\Ër¬\\¡/—N\Ï\ÇOú\Ó\ÅE]\Ôq#\Ø\İø\æ7¿Ym\ç\\‹l\0\ç\êNY¢“\ï\Í\Ò9rš.\ç\'\äµ\\Á±à²—4;rA…\\¡rc\\$\ä(X¾^ß¸8GÄ²\'6W\ãKOË¯Ï‘\ãAş\Â¾P]°¡y#\×[o½µº2j}Ñl\È&\×9Z\×y‡Dş®¹‡]½ó„ò<;8ò³Q\ß9WÁ\Ì\0—% \Ù\ÑñÕ¯~µøş÷¿_ıš\\ö:·\â\È8\åT\ŞR•\r\Ò\\\'9\Ïòß‰\'\Çw\\õ³\Éb}¡ô\è,Ê<\ÎrÊ‹/¾¸º\"k²œ\Ï\Õ÷\ÍÒ£\å¾\Õ+YÎ©7\ÜpCu!«œ\çVWÎ§~J\ã¸\æ}\à²!‹O5+;úp-5ÀTKÙlGyä£\å“\Ã{üE*ù\ï\ÊÆ½¦;–R–Xd\éd¹Qó	M²õ+G²ñ™\r\ã\ì\İ\Ír´4\Ê|-KÉ²-,\É%\Şó›\ßT¬\Ù0¯Oon`d=¿G.\ßk\ãÀ\0—Ùˆ\Ì\åı;/¡¬kc\\}?¹\æOS¹)x¸?ü\á\ÕòÆœ«™/o\Şù|óhYjñ\â\Å\Õ-²Á›ó5³ó!\ç\Çuõw\Ï`XotşZ4\ç\\¹\Ü\ì>\Â9/\Ãh¼O~ò“Õ¯\Ër\ÎrªGo©Ê±\ìˆ\È\Ñ\ç\ì¨\ÈÑˆ\ä9¥\êrO\Î|_Bd\Ùò¦ª¾x-÷­\\\é\ÓY\åP_-8;ô²œ²®\ì(Ë¹ø¹€O\ç.W!Î…|š\å\"&­%8,û\×\Êz`\Êûhß·ºyñ’û[\â T.9[np,*Ã¾zkş\ã—-[¶¶ü¹½%¦VMr³+Gºº,|ıxS{n³!]­\Ó$·İœfø\Ï¶:WYÂ˜e§,\É\Ş\Ó\rC™\ÏåŠ§]](eCy\Ìğµ±«®ºj“WKÍŸ›¥g9ú¶¡?wc\Ã_\Ñ\î>\ÔF\ì¶Ó£»ºÁw_ÿ7\Êş¶›ûú}\äñŞƒ4\ï=]mƒ\ä\n\Ã\Í\í¹\ïy\å¼0®š²\Ã7ÿw=!¸;\ì°GÜ‰­ô\"\í0hĞ “&Mzdkyk\Ş\Æi’\ÊÆœ*9•}%ûr¯\ä¾+\í7ş^\\NYÁ\ÕrD·1¼-\ß\Ômº]®¦\Ò\ÖÖ¶\äŒ3\ÎXº¥\ÏyË²\Ém\åÈ›&©IÊ©’S\ÙW²/÷J\îŸô¦¶\ÆğTıûºSş¼\æŸ_\Ö\àV}¡v(‡­‹su\Ê[o½õ\á\'{«€\\m2,\Ù\Îy\Ó$5I9Ur*ûJö\å^\Éı–“{F7.\İ\ßm\ç\Ãå¼·ò\Ï[\Û\Ş\Î\ì\r/Ö°r»ó„N˜wó\Í7o\Ö¹¥K—.›0aÂœu\Ë]\Êûú\Õ&5IMRN•œÊ¾’}¹Wr¿Õ–R\Îkq[ûH\\~ÿN\ÃÛ¼–[:¹‰lLÖŸ2\ä†ñ\ã\Ç_y\Ùe—]}\Ûm·\İ\ÚüG®X±\â\ÎrJ{ò\É\'\Ï\Z6l\Øüşıû¯Ê´Ü—oÒ­I*œ’S\ÙW²/÷Jî·¾\Ì\å<²¨¹œ1\ç\Ä\å\æ\Ú[ú‚%\ÎyK-*g¢]{\ë\á\Ë\İÛ‡¹K\Û_À5\Ø\í7\Ü;±¬=s\éO-R“\Ô$\åTÉ©\ì+Ù—{%÷[jˆ\Ë\r´›\ÃU®N™¥[j\É\ä\á‡şh§\ám^¯\Ş\Ğ$•NÉ©­d_\î•\Ü÷¤\Üú¬ÿş¿\î4dU7û>}úf\ßj GğrN]ó&\İ\Ís\ŞzÍ²I4Ie€SrªG+Ù—{%÷­ªıê”‹;]ƒ\r*Æ[\\r\É%Å‚ª{\ÍfYd-÷ƒ]¸pa1yò\äbüøñE[[\ÛcÜ–·\ì\Õ&\Ñ$•&)§rªGËˆ\ìË½’û\Ş(§l\åô®~ıú­\ÜÀöD\êşœæ¨›&©™h’rª\äTö•\ìË½’û­7\Èm_q#Û¯T¹fs·œW—{Uo«W\ÍG“\Ô$\åTÉ©\ì+Ù—{%÷=¢\Æv\Ë0\Ö~\ï¸9\í\Ë!\ëa-\Ã\İ\âö¡L\Ì2\ÌmıŠùh’š¤œ*9•}%ûr¯\ä4I¥IÊ©òf.û§V­ZUÌŸ?¿úød>/ûr¯\ä4I¥IÊ©’S\Ù\ßÊ•a¬ü§UŸ\Ì\çe_\î•Üƒ&©4I9Ur*û8Ù—{%÷ I*MRN•7s\Ù7ÀÉ¾¯\ä4Ie€SrªG\àd_\î•Üƒ&©4I9Ur*û8Ù—{%÷ I*MRN•7sœNöõ|=\Ğ$•NÉ©m€“}¹Wrš¤\Ò$\åTÉ©\ì\àd_\î•Üƒ&©4I9•Sp8ô|=\Ğ$5Iœ’S\Ù7ÀÉ¾\Ü+¹MRi’rª\äTö\rp²/÷J\îA“Tš¤œ\Ê)8œ\Ü+=Xß´i\Ó4“¾[•Mrœ*9•}œ\ìË½’{\è#fÌ˜qÇ²e\Ë4”>XK–,9¿l’\×É©’S\Ùo¥ZµjU5Œ\å\ã“ù¼\ìË½’{\Ø&MŸ>ı‹—_~ù=w\Şy\çƒ\ZK\ßÙ»•9u\ê\Ô[\Ë\ÚGN•œÊ¾’}¹Wr}Hùƒ´÷”)S\æ\äv\Ö%«^_ù¼®¯5H9•S=Zöe_\î•\Ü\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0l\Òÿ„m\Ñ\ë§É¾\0\0\0\0IEND®B`‚',1),('25010',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.bpmn20.xml','25009','<definitions\r\n  xmlns=\'http://www.omg.org/spec/BPMN/20100524/MODEL\'\r\n  xmlns:xsi=\'http://www.w3.org/2001/XMLSchema-instance\'\r\n  xmlns:activiti=\'http://activiti.org/bpmn\'\r\n  xmlns:bpmndi=\'http://www.omg.org/spec/BPMN/20100524/DI\'\r\n  xmlns:omgdc=\'http://www.omg.org/spec/DD/20100524/DC\'\r\n  xmlns:omgdi=\'http://www.omg.org/spec/DD/20100524/DI\'\r\n  typeLanguage=\'http://www.w3.org/2001/XMLSchema\'\r\n  expressionLanguage=\'http://www.w3.org/1999/XPath\'\r\n  targetNamespace=\'http://www.mossle.com\'>\r\n<process id=\'vacation\' name=\'è¯·å‡æµç¨‹\' isExecutable=\'true\'>\r\n  <documentation>è¯·å‡æµç¨‹</documentation>\r\n  <startEvent id=\'vacation_1\' name=\'å¡«å†™è¯·å‡å•\'/>\r\n  <sequenceFlow id=\'transition-1\' sourceRef=\'vacation_1\' targetRef=\'taskuser-1\'/>\r\n  <userTask id=\'taskuser-1\' name=\'å¡«å†™è¯·å‡å•\' activiti:formKey=\'vacation-request\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-2\' sourceRef=\'taskuser-1\' targetRef=\'taskuser-2\'/>\r\n  <userTask id=\'taskuser-2\' name=\'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\' activiti:formKey=\'vacation-department\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-3\' sourceRef=\'taskuser-2\' targetRef=\'exclusive-1\'/>\r\n  <exclusiveGateway id=\'exclusive-1\' name=\'exclusive-1\'/>\r\n  <sequenceFlow id=\'transition-4\' name=\"åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-3\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-9\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-3\' name=\'äººäº‹å®¡æ‰¹\' activiti:formKey=\'vacation-hr\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>7</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-8\' sourceRef=\'taskuser-3\' targetRef=\'exclusive-2\'/>\r\n  <exclusiveGateway id=\'exclusive-2\' name=\'exclusive-2\'/>\r\n  <sequenceFlow id=\'transition-10\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-13\' name=\"åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-6\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-5\' name=\'è°ƒæ•´ç”³è¯·\' activiti:formKey=\'vacation-modify\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-11\' sourceRef=\'taskuser-5\' targetRef=\'exclusive-3\'/>\r\n  <exclusiveGateway id=\'exclusive-3\' name=\'exclusive-3\'/>\r\n  <sequenceFlow id=\'transition-12\' name=\"é‡æ–°ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'taskuser-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;é‡æ–°ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-15\' name=\"æ’¤é”€ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'endnone-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;æ’¤é”€ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-6\' name=\'é”€å‡\' activiti:formKey=\'vacation-finish\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-14\' sourceRef=\'taskuser-6\' targetRef=\'endnone-2\'/>\r\n  <endEvent id=\'endnone-2\' name=\'ç»“æŸ\'/>\r\n</process>\r\n<bpmndi:BPMNDiagram id=\'BPMNDiagram_vacation\'>\r\n  <bpmndi:BPMNPlane bpmnElement=\'vacation\' id=\'BPMNPlane_vacation\'>\r\n    <bpmndi:BPMNShape bpmnElement=\'vacation_1\' id=\'BPMNShape_vacation_1\'>\r\n      <omgdc:Bounds height=\'35\' width=\'35\' x=\'29\' y=\'208\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-1\' id=\'BPMNShape_taskuser-1\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'109\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-2\' id=\'BPMNShape_taskuser-2\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'279\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-1\' id=\'BPMNShape_exclusive-1\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'445\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-3\' id=\'BPMNShape_taskuser-3\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-2\' id=\'BPMNShape_exclusive-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'681\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-5\' id=\'BPMNShape_taskuser-5\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'80\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-3\' id=\'BPMNShape_exclusive-3\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'571\' y=\'12\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-6\' id=\'BPMNShape_taskuser-6\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'764\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'endnone-2\' id=\'BPMNShape_endnone-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'926\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-1\' id=\'BPMNShape_transition-1\'>\r\n      <omgdi:waypoint x=\'69\' y=\'227\'/>\r\n      <omgdi:waypoint x=\'109\' y=\'226\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-2\' id=\'BPMNShape_transition-2\'>\r\n      <omgdi:waypoint x=\'229\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'279\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-3\' id=\'BPMNShape_transition-3\'>\r\n      <omgdi:waypoint x=\'399\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'445\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-4\' id=\'BPMNShape_transition-4\'>\r\n      <omgdi:waypoint x=\'485\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"505\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-9\' id=\'BPMNShape_transition-9\'>\r\n      <omgdi:waypoint x=\'464\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'464\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"464\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-8\' id=\'BPMNShape_transition-8\'>\r\n      <omgdi:waypoint x=\'651\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'681\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-10\' id=\'BPMNShape_transition-10\'>\r\n      <omgdi:waypoint x=\'700\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'700\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'651\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"700\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-13\' id=\'BPMNShape_transition-13\'>\r\n      <omgdi:waypoint x=\'721\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'764\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"740\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-11\' id=\'BPMNShape_transition-11\'>\r\n      <omgdi:waypoint x=\'591\' y=\'80\'/>\r\n      <omgdi:waypoint x=\'591\' y=\'52\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-12\' id=\'BPMNShape_transition-12\'>\r\n      <omgdi:waypoint x=\'571\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'185\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"338\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-15\' id=\'BPMNShape_transition-15\'>\r\n      <omgdi:waypoint x=\'611\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'205\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"945\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-14\' id=\'BPMNShape_transition-14\'>\r\n      <omgdi:waypoint x=\'884\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'926\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n  </bpmndi:BPMNPlane>\r\n</bpmndi:BPMNDiagram>\r\n</definitions>',0),('25011',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.vacation.png','25009','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Ğ\0\0\0\0\0\ŞM\î\Û\0\0D\ÔIDATx\Ú\í	xT\åõ‡q_k­û¾¶\ÚZµ\îûB]Z¬¸TM&7	QHˆ¨ Q´(*â†»şÁ”\Ì‹Š\n*¸\×Ai‹\ârÿ\çw\ÉM‡0Y&\Ëd\î\Ìû>\Ïyf\æ\Î\Í$9óó\ßı–Û®\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ˆ-q\0\0\0\0\0\0@ıt0s«\0\0\0\0\0\0 	§˜-7Qı\Ø—\0\0\0\0\0\0\0$Ï¾h\ÖôRD4\0\0\0\0\0\0@\İâ¹¡\ã\0\0\0\0\0\0\09G‡D²ÿ>k¢\0\0\0\0\0 \ç\ÅsCâ˜‘h\0\0\0\0\0\0\ÈYNi—\Ú\Èrª\ç\0\0\0\0\0\0dx\îØ„Ÿ[ˆ\0\0\0\0\0\0\Äs\ëÿ<\0\0\0\0\0\0@\Æ\ÓĞ†a\éş\0\0\0\0\0\0€Œ\Ï-5ıš‘h\0\0\0\0\0\0\È:jo\0¶Y—\ê\ÇT¨ısl,\0\0\0\0\0\0Y\';&ˆ\à;\Í\Ü\ê\ÇÆŠ\èº~\r\0\0\0\0\0\0Y\'E—j\ì¦ ¢Å³o\ŞgM4\0\0\0\0\0\0–ºDm21\\ŸˆNvşI\ÎgM4\0\0\0\0\0\0V<wHA\'ÑÏµE4Ó¹\0\0\0\0\0 \ãi¬ˆmHD§*ÿ\ÒvŒD\0\0\0\0\0@\0\Äsc\Åk]\"z\İ&Šg\ÖD\0\0\0\0\0@Öˆ\çúDô»\Í\Ï\Íı{\0\0\0\0\0\0\0Z\æø&\Ñ\ÍÏµE4k¢\0\0\0 7(((p\ë5\Çq¢Nk\Ó\ë¢.\Õy~²ã…/¨÷w¬ùùÅ®S\Ü\ÅmğoÃ°1\Õ\ÍuMÛ®=òünõñ\æ0‚\ï\Ã0¬Iyİ£W8¾‹+*\Æo\è?\Ï?~½>£§íš˜l/;\å×µpÙˆ\é;Ö— {Fß‰J\0 \åô/ö°Nùğ\É[•V\ÆÇ”…c·V\ÛT³\ÊJÃ±«k’u$zZi8z‘®tT¼c¯p\Õ~e•\Ñ^¥‘\èCvì‰²\ÊXŸd¿\ÇŞ‹&=>\"¾‡½÷´:û=½Í®/G\'è˜\ëwñ-A\ÓĞ®\Û\rQ\ßtc\î]Œ@\04£ö\ê~v#«w\î™¶gy8zFY8şly¸\êø\ÒH\ì\\{^\âŸ\Ù\èøª£º¸iùğ7ñj-\×]GµR¿›\Û\Ìj¥©\Ô^\0\0Ğ¼$ş“\ëº•Ebƒj¬2ZaI÷5E¢\'UTT¬k\ÏÿQV\ïZ\Z‰—‡\ã‘Ò‘±#-\É?¥¤^KT^½OfŸu¿‰\áEşk\êCÏµÏº\Ğ>£\È>ûX{<\Ï\ÎRbZ\Ï\Õiğ-xbuE»\ÖY\İ\Í\Zh\0€¦\×^?[íµ„pye\ì«{N/\Ç^±\×7–Gb\å& ŸñGbı«…ğıfÿ§\Zªwe\ìP«‘&•G¦`u\Ò\Õbe#¦ı!\Õ\Ú\0\0š\Ä¬\Ğ\ÇJ\Ë$’5¢\ì¿\Ö\ÕPMÒ”\"\ÏWY>\Î\ŞÏ“ğ\ÕóòHt@\íÏµ¤}Yé¨ªSuuµ<ı‹D¹÷ó\Üvú\ì\êD¿¥¦+ùÓ’zWF±$ÿw\ë^Ö£g\Ã_Ü„o	`\r\Ñ\Ú\ØßºnU•l\îTD4»p\04¿öÚ£´2ö@Y$zfò™€®´\×w•…£e«+b7jdºOeÕŸ53°\Û\ØW6¨¨ˆ¯¯©İ‰ç—†£=UO5¶ö\0€\æ\'ñòòò6\ÔULK\Ú\İ\ÍKÔz£\Îz‰Õ£—˜#ñ\Ğ\ê\äûÀ\Øz¾z´zªD¯;\×^wòÄ±®”†c\ÃVN\ìI½\ÖsMW‚¯Nôu•UEye¼‹÷»j™¦‰ó-¬%¢Š‹†\îó\Ü\Ğ}¢\ë\â°v\Ü\Z\0 ¹µ×ªnİºmP^»£td\ÕöZ®¶ºÆŠgõÒ›\Õõ\Ø¯\ZUu´*\ìõ{z,\Çûš¸¾\Â~ö,™\ê¯£\ã›7¶ö\0€\æ\'ñ\ïKJJ6\Öt ¿#W\é\Øûf£¼\ç&ŠûŒª\Ú\Ç¼#«\ÔTn{\ï%K\à§x\ëŸ#±»µ~\ÚK\èöÿ¹v\Îä¾‘ø\ïez\Ş\'?ªúù-‰\ç\é\ç4Â­©\Ú\Öy<\æ%y³\ÕÓş·ş\0jhh¸!ñÜ®‰\"ÚŸF~6_\0@³j¯•®\ë\î]-–5\â<\ÍDñµ&¤_\ëv°W[…\ãCtî¥£ª¶.\Ä\ÎÔˆt¯ğôm\íg4»wu\æÙŒTk/\0\0h^ÿÎ’øf–XßªY\ï,]ó<ş²6ªğÄ®7½ZWEc¯—G\â¥¾\Ú8\Ì×š†T=…H\Ù\Ş\ÕT3{>\ß^\Z\Çüóª“ııºrª‘f	h¯#Yİ™Ü­+«|C\0uŠ\Ùd\"º±\â9U\íÿ>\Ä3\0@3)\î\Ô\åû‡fÿ÷\Ş\ÕSv[=0¦uÏ½\Â\Ïna¯—ù;lkº¶\Õb/V/­»P\ÂXû\Î\ÈúŠ\î®‡Tk/\0\0h€ş\Æô!ÿ›\n\äM\á~\á¯c§WŒ‹o\\-vo\Ñ\Æ^¥\á\è\Í\ŞNÙ‘x{mv\á	\èH\ì™\ZQ¼z”ú\Î\ÕI;z‘u\n3z<ñ÷K€û\ët$ÎµvG¦\ãş\í\0 )\Z‰®=ºK»\Ô\ïóœLDw®õ{Xó\0\Ğrµ×·V{oõÑ•«\'b£L\ä^\ì\İ}ddl_{œµF­T=Û¯Z\\\à­}^½¤nŠR­½\0\0 8ó_K\âgú†YB®D]ó\ÚLºtd\Õ\á&toĞºe‰l\í\æ¨+§}oo£„¾\Æ\æ\Z±®µ–\È\ÖHv²\ß]><º³%õ\Å\Ş\Æe&\È\Ë#\ÑK|³\ã¯ò\í\04JD\'n,–(†#\Û5ğsÜª\n\0 \åô7ŸºnŸ\ÒHì¯h\Ö\àA8~yye¬\Û\ê\Ùx±\'µ\Ëv€Ç¢z\Ï\Û<,a\ãV\İfT³S©½\0\0 ™t\í=\è\Û{¦/\Ózš{dš>T÷_{\Ç\Â\Ñ#\Ê#±Bo¤8›­\İ\Ë#ñ\Ã\Ê+\ã~¢®ks\n/\ÙWÆ“\ßZS­+­Õƒ7¼ú\ê\êƒ\å\á\Ø5|;\0¢ötnPÛ¥~kª\Ú?\×\ÜûO\0@²Ú«üš\ï‡?ö\î$\rPh‡\í\Õ÷~?¦ZJS·%­\Ë÷\ê£ñ=4ó¯O8ö\'-Ÿ\ë];YÇ«oU5Y;s§R{\0@3	…B\ËKJJ\Zµ.F·±Ò½ k×±d\Ç \ÍDtsI6=\0\0Z€‚‚‚ÿm\'\0\0‚™Ä—\å\å\åm…\'\0Ñ­$\Æ\0 T/\0\0 óôW;w\Ş\ZO\0dÍvÍ´m\0€Ö¯½¾.,,ü\r\0\0f_’——·-\0\È:\ê2†\0¤§öbö\0@€“øb\Çq¶\Ç\0YEªÓ°™¶\r\0¾\Úk©\Õ^\Û\à	\0€`&ñEyyy;\à	€œÑ‡™­0;—\0¤¥öbö\0@€“øB³ğ@VÒ¡Zw¨\çı¥ˆg\0€´\Ö^\Ìş\0pÿ¬¨¨h<µ\Ô5Í´m\0€¶©½˜ı\0\à$ş©Ù®x §D4\â\0 \íj/fÿ\08‰\\XX¸;\0\È=ñ\0Ğ¦µ\×\çyyy;\ã	\0€`&ñ-‰\ï‰\'\0²Ÿ\İvÛ­—=¸\í¸U\0@[\Ö^\Ìş\0pÿWaa\á^x \'\â}\â9\çœ\ã¶o\ß~}¼\0\Ğf¹ø“¼¼¼\İğ\0@0“øû–\Ä‹\'\0²›P(t”\Åûf®\ã8Œ@\0´]\íõ‘\Ùx\0 ˜Iü]+¬÷Á\0Y/ —x®¶9x\0 \Íj/–\Ï\0\ÇqŞ±$¾/\0\È\êb\í0ô\Ù7\Ôl\"\0\Ğ69ù\ËÁ{\ã	\0€`&ñ·,‰ÿO\0duœOL\Ïş(4k¡\0\Ú$\'³|\0 ÀI|¾\ã8\Ä\0Y\ãk>ûf±6\0H{^fù\0@€“ø›–\Ä÷\Ç\0Yã“’‰\çj›…‡\0\0\Ò\Ë\ç\0\0‚]\\¿n‰ü@<•ñ]\ç\è3k¡\0\Ú,7³|\0 ¨XŸ[XXx\0\È\Ê\"mb}\â™¹\0Ò\ã8òòòö\Ã\0\0Á,°_3;O\0\äLÌ»x\0 Mó0\Ë\ç\0\0œ\Ä_),,<O\0  \0 õ1ñüFQQ\Ñx\0 ˜\ÅôË–\È\Ç\0h\0\0HKgµ×Ÿğ\0@0“øK………G\à	\04\0\0´>\ì?\0\ìbz–%ò£ğ\0\Z\0\0Ò’‡_µ\Ú\ë<\0\Ì$>\Ó\ì<€€\0€´\äaöŸ\0p!??ÿX<€€\0€´\äaöŸ\0pŸnv<\0@@\0@Zò0û\Ï\0\08‰Ou\çD<€€\0€´\ä\á\ÙfG\â	\0€`&ñx~~şŸñ\0\Z\0\0Ò’‡_t\çh<\0\Ì$µ$~\0@@\0@Zò0¸\0\ÏSòóóOÁ\0h\0\0HKaõ\×qx\0 ˜Iü¹P(ô<€€\0€´\äa6p\0*&\'şO\0  \0 -y˜\r\\\0œÄŸ5}\Z\0@@\0@ZòpÜ¬=\0\0f\Ú\ìt<€€\0€´\äa6p\0pŸ\n…:\â	\04\0\0¤%W™Œ\'\0\0‚™ÄŸ4;O\0  \0 -yøy\ÇqN\Å\0\0$\n=nIül<¹Š\ëº\ëø\á‡fÏıs4\Zu§L™’\Õ&\íÿcUU•;}úô¯ÌŠi\á\0š; \0\08‰?föw<¹Š\ÄóŒ3\Ü%K–¸?üğ–%¶t\éRwÚ´iÿ11}­\02¬öš\ä8N<\0@B¡\Ğ#–\Ä\Ï\Å«h\äñœµ\"ú‡)S¦¼M+€\Ğ\Ü\0 ¨˜xoI<O@®¢iÛˆ\Í\ì5\Ğ?\Ò\Ê \Ã4w@\0pÿ?\Ñùxr­™Ehfµ€f\Ó4\0È´Ú‹; \0\0\ÏY/À€€®ß¾ù÷\"÷\Ã9\ã\ÜU\×z¦\ç:†HE@\0¤( ¹\n\0@€“øf…x\ĞuÛŠ\å\İù\Ï\rr_\æ²5L\ÇôB\r\0B\íõD(:O\0\0\Çq\î·$^„\'\0]·}¶à©µÄ³oŸ/˜ˆPE@\0¤\" ¹\n\0@€“ø½fğ  ë¶·\ã7\Ö) õB\r\0B\íõh(:O\0\03‰\ß\í8N<\èºmş”Š:´\ŞC¨\" \0R¨½&˜qz\0€€&ñqf%x\Ğh4\0@\ë\Ã-D\0‚- \ï4»\0O\0ºnÓ®\Ûu	h½‡PE@\0¤P{=l\Â\0\0$\n\İ\î8NW<\èº\íı™£\ê\Ğz¡Š€\0h,\ÜB\0 À\Üfv\0tİ¶l\á\îü\ç¯=}Û\é=„*\Z\0 …Ú‹[ˆ\0•P(ôO\Çq.\Æ€€®\ß>z\åŞµ´!R\Ğ\0\0©À-D\0LAAÁ­–Ä»\ã	@@\×c+Wº\ï¿8f\í\é\ÛvL\ï!T\Ğ\0\0)\Ô^÷™ˆ.\Æ\0\0\Ä\ÄóhK\â=ğ  “ÛŠ\å\İ÷fF\ê\\­÷tb\r\0\Ğ¬\îº\Ç\ê¯\Îx\0 €D,‰÷\Ä€€^{\Ôy\Ñû1÷\Í\ÉW\Ö)}\Ó9:—\Ñh4\0@#j¯»MDwÁ\0\0ÁL\â•f½ñ  ?\ê\Ìh4\Z\0 ©˜x¾+\n\'\0\0‚™\ÄGZ/\Å€€şŸ5fÔ¹¾\Ñh„+\Z\0 .\n\n\n\î4»\0O\0\03‰7+\Ç€€şŸ5U<û†pE@\0\ÔE(º\İqœ®x\0 ˜IüfK\â}ñ  14\0@\ëSPPp›\ÙEx\0 ˜Iü&³~x\Ğ\Z\0 õ	…Bÿt\çb<\0\Ì$~£%ñşx\Ğ\Z\0 õ)((cv	\0\0 &‡šˆ€\'\0! \0Z«»F[ı\ÕO\0\0‚‚‚X¿O\0\ZC@\0¤¥ö\Zev)\0\0 &¯…BW\á	@@ch\0€\Ö\Çê®°\Õ_½ğ\0@\0)((¸\Öl\04†€\0HK\íUi\ÖO\0\0\Çq®	…BW\ã	@@ch\0€\Ö\Ç\ê®V•\á	\0€\0RPP0Ø¬O\0\ZC@\0¤¥ö\ZnV\'\0\0‚™\Äi\Z7\04†€\0h}B¡\ĞÍ\ãô\Å\0\0Á\ĞÍ†\à	@@ch\0€´\Ô^7™õ\Ã\0\0ÁL\âWš]\'\0! \0ZŸP(t£\ã8ıñ\0@0“ø\0K\âCñ  14\0@\ëSPPpƒ\Ù\åx\0 ˜Iür%r<h\r\0–\Ú\ë\ã\\\'\0\0H(ºÌ’ø0<Ù†µ\ë)f\Ç! \Ğ\r²‡Y|œˆ€4\n\èëµ„O\0\0Sdô\Õnx²°@qe\Ò\ÖÆB@# kg³‰f?ª1\0\Æşiˆ6q\Å\0\0Ä„E·\à	\ÈV`“’H# sK@\×Î¾1\0\Æş\éZ\İFO\0\0e&¢G\à	\È]3\"(¤Ğ¹! 5ASµkg4\0´AÿTa6O\0\03‰÷6«\Ä+:qDZ¢\nı:Ùˆ3\Z\0Ú°\Z,\'\0\0ˆ\ã8½LD„ñ\â²\Å\Íq\Ü\âó/v\Óò»ša\Ù$ ¿û\î;÷\Ûo¿­y½r\å\ÊVû=\ß|óMtà­µsB\Şøñ\ëõUµ\Ù õ±º\ëj«¿®Á\0\0ÁR—š\Â9÷½ÿ\\QQ±nYe\ìÚ²p\ìÁº¬4÷\îSY‰õ(Ä)¯ŒN¬mv\Şs\å‘\èù:¯,;¶,\áYet¤½·¸\æµY\éÈª3\à\"Á+^:¶o\ß~}—\ÉzÈ!\î\Í7\ß\ì=ÿû\ßÿ\îş\ío[\Ë\æÌ™\ãNš4\É\íÖ­›{\Â	\'¸ûì³÷ü¡‡róòò\ÜÎ;»S§Nõ\ì\Ë/¿\\\ëw,Y²\Ä]o½õÜ?ş8\é\ßp\Í5×¸\×]w÷|Ô¨Q\îˆ#\Üs\Î9\Ç\İÿı½\ç²÷\Ş{/\ã§p\ç\ç\çŸb\ßı¬ @\çB¼\äX<P‰\á	\0€\0bB¢»%ñ[ñD\ÎuŞ«Ldm\Ğÿ\Æ~uù\Ø)¿–õŒ<¿“\Ô\ÓúF\â¿÷•q¯\ĞÇ\è~v£dŸUv/¯ŒUQ_¿<2\í\0+º/\Ç^)G\Ğó\Òp\ìzû\ÜAz^6búm( \×\Î>™, _|ñEwë­·vÇ\çn²\É&n$q\ì	\ä|\Ğ\İe—]\ÜÉ“\'»ó\ç\Ïw/¹\äO@\ï»\ï¾\Şó\Ê\ÊJw\İu\×uO<ñD÷ü£»\í¶Ûº³f\Íò>÷é§ŸöD±l\àÀnÿşık\é}ÿoxé¥—\Ü\í·\ß\Ş6l˜{õ\ÕW»}ûöuO:\é$w\ï½÷ö÷\ë\×\Ï]°`A`6s§ƒµ…\ĞY¯\09V{]e¹\è:<\0@,_l‰üŸx\"\çô÷%%%û¯»}e+œ\'•†£“İ±\Éf§[ñ=a\r‹\Äú[1~G¯p|+¸··Bü\Êú¬´2~\\\ZÿG_Í²v~vm\á-“8^¾|¹\' o¹\å÷°\Ãó„³„¯„±ô\'Ÿ|\â\î´\ÓN\ŞÈ°\Ş?ú\è£\İ\İw\ß\İ]guÜ‡~Øµ\ï\Ú=zt\ÍgJ€x\àn×®]½j	\è\Â\ÂBïµ\ëıÄ¿A#Ì‹-rG\é\îµ\×^\î6\Ûl\ãnº\é¦\Şó\Ã?<·±ª‘õñ\ncµ\×\×ÿÀ\0\0ÁR\İ\Ì\Æâ‰œûŞ¿\éÔ©\Ófz®Q++–o3›Y:ª\êT+¼\ï\é3zÚ®ş¹*¶UtWŒ‹o¬)¾ù\ë%U¬\×\î‘\èi\Zı²ÏªL4+\Ü\çöó\Üviş“8E@kú¶\Ä\é\É\'Ÿì½–€®ªªr{ö\ì\éw\Üq\Şh²/ ¿ø\â÷˜cñ„\í[l\á½\ß}÷y#\É\ZÁ\Ö\èó\×_½†€\Ö(õgŸ}\æ	t	\è—_~\Ù{­ã¾€öÿ†c=\Ö}\íµ\×\Üs\Ï=×³ƒ:\È\İq\Çk^\ßq\Ç\Ğ	…¬F¤g¯m¯\0¹„õM,÷\Å\0\0\ÄxWK\ä·ã‰œ\Ğÿ)**Ú¢tdô+ \ï/Qµ—F¨Ê‡OŞªweô;6G\ÓE½‚½2vVy$zI\é¨xG;ş°=\àMñŒÄ\Ñ4Q\à5ye´B}ie|h¢Ù±W3\Õ™* %h‡\înµ\ÕV5ú”SNqõ«_¹›o¾¹7\Â\ì\èx<\î‰\Üıö\Û\Ï\İm·\İ\ÜC=\Ô\Ğ\ßz­kM\ï;wn€\Şx\ã\İ\ßü\æ7\î–[n\é	h=êµûZC8v7\Úh#oZ\Ó\Â{õêµ†]y\å•\îo¼XM¼+^²¤ö\êoµ×x\0 ˜…\Ùfw\â‰Ü¢s\ç\Î_Oxù\ÛÛ´\ŞQk!½b:‹ú\ïk“!{ı\è\ê\";v­·ÒŠ\íŞ•±C½c#\âı\ïx\ìÚšŸ«ŒN,­Œ\r¯][Qÿ:uÓ¨o¢€~üñ\Ç=Á*?~|€\ÖZim6&Á]ZZê­•\Ö\Ôí²²27‹y\"²{÷\î5£\Ğ\È}úô©\ÙDL\Ú\ßDL\Ç§p¿õ\Ö[€\ÖsMÿ\İ\ï~W³nXë«µ™X§p¯ÁŒW€lÀ\Äóe&¢‡\á	\0€`&ñó-‰ß…\'r\î\Â\ÉR\×u¯)¤‡OŞª<Ÿx¦‚V\êŞ†D«wğ+‹\Ä\ÆÚ±)\Z\éò7$\Òy\Z	\ë™¶gi$š\×÷\æø6\å\á\è\rú¹nc\'nZ! ›. ukª\r6\ØÀ½\á†\Ü#<\Ò[Ó¬µË¾€öw\é\Ö4n\ÙÁ\ì‰bÿµ\ìŒ3\ÎXc\n÷®»\î\ê¶o\ß\Ş=şø\ãk\Î\ÕkO& ¿ÿş{O@k:¸¦pË´‘šx€Ô°º«¯\Õ_7\ã	\0€`&ñ.Vœİ\'rN@/¶\ï~{ÿµ\ÖRjªg²sı5“ZS©\â\Ú7\ï¶:V «p\ï¾­\n÷ŠŠñjg`\ï3\ÃÑ½\ÂÑ½Wo\\X>*öGt\êZSª5={\Ã\r7t\ïº\ë.÷ˆ#p;uê´–€–v\Úin4\Z­Y×¬ó|“ö\Ï\Ó:\ç3\Ï<\Ó}\à\Ü\Ûn»\Í;W£\Özm\í\Â\ÛY;Q@K¼\ë–YW]u•·A\ÙĞ¡C=;ÿüó\Ğ\Ä+\0¤ˆ‰\ç>Ó·\à	\0€`f\Ì\î\Å9÷½/4\Û\É­b\\Ey\íóÊ‡GwÖ†EIŠôÓµ¦²4}\È{‰T:2¶o;\×]\ÇÎ¯\Òñ\Õ÷¦N\Ğ4\ÒŞ•ñıu»tjvÿı÷{S·5\Ú{À¸¯¾úªw+)™\îó\ì\ß\ÆjÅŠ\îÒ¥K\İC9\Ä}ô\ÑG\İÙ³g{¢ø\Ö[o­±w\Şy\Ç;/\Ù} \Û%L\á®m\Ï<óŒ÷ş\Å_\ìMO\Ğ\Å\Å\Åh\â\0R\Ä\Äs™‰\èx\0 ˜I¼\Ø\n³ûğD\Î	\èO\Íjv\î\Õ\èT®ú\"“´D\íÌ™3½{?k/ÿ¸6ôò7ıúüóÏ½\Ñ\ã\Í6Û¬A\Óy©\nh\İ\ãyÄˆ5k µ–ZÏŸz\ê)oC³.¸\0M¼@\n˜x.µúk$\0\0faVhö\0È¹\ïı#³=ğD\æ\ß\Ú7­ƒN|-\á\\ûXSl\åÊ•\ŞgisC\çJ¸\ë\\=ÿ\î»\ï\ÜÅ‹g¼ß²D@¯\0Y„‰\ç^&¢\Ãx\0 €X/°Dş\È9ı}÷{\ã‰\àh,§4ñ\n]µWO‹\ë\0\0fa2{O\ä\Ü÷ş®u\àû\à	4šx€ô\â8N‹\é\Ñx\0 €XÏ³D>Oäœ€~Ë¾û?\à	4šx€´\×^\İ-®o\Å\0\0\Ä\Äó¹–\ÈÁ9\' ß´\ï}<€F@¯\0ö\Ú\ëb‹\é\â	\0€\0b	ü+\Î\Å9\' \ç\Ùwÿ\'<€F@¯\0ö˜\îf6O\0\0\ÇqÎ¶\Â\ìq<‘s÷«ö½‚\'\Ğh\â\0\Ò^{uµ˜¾O\0\0³0;\Ó\ìI<‘s\ßû\Ë\Öy\'\Ğh\â\0\Ò\Óšİ\'\0\0ˆ\ã8gXaöÈ¹\Î{–}\ïG\á	4šx€ôbñ|¾\Õ_w\á	\0€`f§›=\'r\î{!??ÿX<€F@¯\0ö˜.1‡\'\0\0H(:Í’ø³x\"·pgšÙ‰x€&^ \íµWg‹\é{ğ\0@0³& \'á‰œû\Şcf\'\á	4šx€ôbuW\'³{ñ\0@\0	…B±$şÈ¹\Îûy+\ÈO\Åh4ñ\n\0\é\Å\â¹\Ø\ì~<\0@òóóO±$>Oäœ€¤\Ùx€&^ \í1]hö\0\0\0f?Ù¬\nO\ä\Ü÷ş´6\Ãh4ñ\n\0\é\Å1,¦\Ä\0\0$??ÿ\ÏZ_‡\'rN@?©{€\ã	4šx€´\Çt\È\ìa<\0@´³«%ñ©x\"\ç:\ï\Ç\Ìş\'\Ğh\â\0\Ò^{\å[Lÿ\0\0 ùùù\'\è)x\"\çô³óğ\ZM¼@\Úcú<\Å5\0\0 &³$>O\ä\\\çı°¦\á	4šx€´\×^\ç†B¡Gğ\0@0³c\Ìfâ‰œû\Ş\Ğ. x€&^ \í1ıw-\ÍÀ\0\0\Äqœ£-‰¿ˆ\'r®ó¾×¬@@# ‰W\0H{\íuv(zO\0\0³0;\Òl6È¹\ï}œY	@@# ‰W\0H{LŸ©\İõñ\0@\0	…B‡[O\ä\\\ç}‡Ù…x€&^ ½8s†\Õ_O\á	\0€`f‡™\ÍÁ9÷½5\ë†\'\Ğh\â\0\ÒÓ§›=\'\0\0H(:Ä’ø«x\"\ç:\ï[\í»\ï\'\Ğh\â\0\ÒKaa\á\ß,¦ŸÁ\0\0ÁL\âYŸ‹\'rN@G\ì{\ï‰\'\Ğh\â\0Ò‹\ã8,®\'\á	\0€\0bEÙŸ,‰\Ï\Ã9\×y´\ï¾O´kFš\Ùkß›€ş‘x€L¢°°ğ¯Ó“ñ\0@\0)**:À’øx\"\çô-ö½÷Á\í\ÚMŸ>}Ñ’%K›Yh.|\Øô\Û\Ä+\0dXLŸZPPğ<\0\0fÿ£%ñùx\"\ç¾÷aV_†\'Úµ‹\ÅbgM:õ\ß_~ù\åwˆ\Î\ìy–x®ªªú\Ä\ì<\â\02‰üüüS,®§\à	\0€\0’——·Ÿ%ñx\"\çôP+\È\à‰Õ˜\È\ê8eÊ”9š\î«5³X\àM\ß\ã\Û\Ù ‰W€¬\ìƒO*((ˆ\â	\0€`&ñ\ß[O\ä\Ü÷~\äW\á	\0\â\0\ÒK~~şŸ-®cx\0 €XQ¶	\èwñD\Î\ä\×\Øw5\0 ^ \í1}¢\Õ^Sñ\0@\0),,ü%ñ÷ğDn¡b\\E9\0 ^ ½\ä\ç\çŸ`1=\rO\0\0³0\Û\Ûôx\"\ç¾÷«4-O\0¯\0^,³\Úk\0\0 yyy{ZÿO\ä\\A>@\á	\0\â\0\ÒK~~ş±V{½€\'\0\0ˆ%ğ=\Ì>\Â9W_¦[\ã\à	\0\â\0Ò‹\Åó\ÑV{½ˆ\'\0\0H^^\Şn–\Ä?Á9W÷±ü<@¼@\Úcú(«½f\á	\0€\0RTT´‹%ñ\ÏğD\ÎuŞ¥V\Ä\0\Ä+\0¤«»4›\'\0\0H^^\ŞÎ–\Ä?\Ç9W÷´\ï=‚\'\0ˆW\0H{Ln1ı2\0\0 \Å\Å\Å;ZÿO\ä\\\ç\İİ¾÷[ñ\0ñ\n\0\é\Å\âù0³9x\0 €8³½%ñ\Åx\"\ç:\ïnfcñ\0ñ\n\0\é%\nb1ı*\0\0 :u\ÚÎ’ø—x\"\ç\nò\Í\îÀ\0\Ä+\0¤=¦6{\rO\0\0\Çq¶±$¾O\ä\\\ç]b6O\0¯\0^B¡ĞŸ,¦\ç\á	\0€\0’——·•%ñex\"\ç\nòNf÷\â	\0\â\0Ò‹\ã8ZL¿\'\0\0‚Qˆ½i\æ6`ğTÖ·ƒB³ğ\0ñ\n\0\é%\n\í¯zO\0\0\0\Çq\ÎnH@+±ã©¬/\ÈCf\ã	\0\â\0\Ò^‹ı\Ñbz>\0\0N1V\ç(´%õ‡ğPN´ó˜i\0@¼@ú	…B°˜~O\0\0«K* \ÂC9\Ñşnö\0 ^ ½8ó{‹\é·ñ\0@°\n²YIôD<“3\ßÿ™fO\â	\0\â\0\ÒK(\Ú\Çbú]<\0 \Ç\édúöqx&g\nò\ÓÍ\Æ\0\Ä+\0¤—\Â\Â\Â\ßYL¿‡\'\0\0‚W”\ÍH\ÏSğH\îP}e\0 ^ ½„B¡½-¦?À\0\0Á\Ğ\íF \Ûã‘œ*\ÈOµ\ïüy<@¼@z),,\Ü\Ëbú_x\0 €„B¡,‰ÿ‚\'r® ?É¾÷(\0 ^ ½X<\ïaö\0\0 yyy§šˆF@\ç^A~¢u\ŞSñ\0ñ\n\0é¥°°pw‹\éñ4\n\×u\×ÿğ\Ã\'Ì=û\çh4\êN™2¸UUU¹Ó§OÿÊ¬˜v\ZL\Ón\Úi\Î\ä\Çi\r< _\"Ş‰Wb#FÓ‹\Åó®fŸ\ÒC£Pœ1c†»d\É÷‡~À²Ä–.]\êN›6\í?–Ï£b´\Ó@\äG[\çı\"½ñN¼¯\Ä(FŒ¦—¢¢¢],¦?£†F¡«‡$À¬M„?L™2\åm\Ú)F;\Í|\n°\Îû%z%\âx\'^‰QŒMûôNfé¡Qh\ê\r	#{Í’\à´SŒv\Zˆ‚üP\ë¼_¡W\"Ş‰w\â•Åˆ\ÑôR\\\\¼£\ÅôôÀ\Ğ(´\îd‘\ÕIĞ¥b´\Ó@\ä…B¡¹ôJ\Ä;ñN¼£1š^\Ç\Ù\Şôbz`h\Ñ$øÍ¿¹\Î\ç.¨º\Ö3=\×1\rIvŠ\ÑN›OQQ\ÑV¿A¯D¼\ï\Ä+1Š£\é¥S§NÛ™€ş’Z,	®X¾Ğÿ\Ü ÷õg.[\ÃtL\ï‘lH‚´SŒv\Ú<òòòösg½ñN¼¯\Ä(FŒ¦}z\ĞKé¡Å’\àgZ+úöù‚‰$’ \í£6¿ \ß\×:ğwè•ˆw\âx%F1b4½t\î\Üyk\Ğ_\ÑC‹%Á·\ã7Ö™õÉ†$H;\Åh§\Í.\Èk÷ûôJ\Ä;ñN¼£1šö˜\Ş\Êbz=0´Xœ?¥¢\Î$¨÷H6$A\Ú)F;mvç½§u\Ş\Ò+\ï\Ä;ñJŒb\Ähz)))\Ù2\n-§’ †€¦\ÒNƒS\ïfù\'ôJ\Ä;ñN¼£1ÚºXüN4s°9ô\È\Ğ\ä$¨\ëJ‚zdC¤b´\Óf\ä;[gı9½ñN¼¯\Ä(FŒ¶º€>\Ì\ì\Çút(\êHMN‚\ï\ÏUg\Ô{$’ \í£6» \ßÁ:\ìEôJ\Ä;ñN¼£1š=©=«}ûö\ë\Ó#C““à²…o¸óŸ¼ö;¦÷H6$A\Ú)F;mvA¾­u\ØKè•ˆw\âx%F1b4m£\ĞI´\ã8g\ÓC³’ \ì£W\î]+	\ê‰†$H;\Åh§-R³(ñN¼¯\Ä(FŒ¦WD\'[=‡\Ñgh~\\¹\Ò}ÿ\Å1kOÁ±czdC¤b´\Ófä¿¶Nû\ßôJ\Ä;ñN¼£1š\ÖQ\èYû-šW,_\è¾73R\ç:½§sH8$A\Ú)Fgİ¬‚|s\ë¸W\Ğ+\ï\Ä;ñJŒb\Ähú0Áü8£\Ï\Ğ2Ip\åJw\Ñû1÷\Í\ÉWÖ™\0}\Ó9:—+Š$A\Ú)Fg\İ\ä‚|ë¸¿£W\"Ş‰w\â•ÅˆÑ´\n\è£\Ö>w †&%Á†®rE‘$H;\Åh§-^oh÷ôJ\Ä;ñN¼£1š^,Ÿ6û…\ÑghrlÌ•\Ãú®(’|H‚´SŒ\Î:\å‚|=\ë¼¢W\"Ş‰w\â•Åˆ\ÑÖ£¨¨h‹\ß~¡P\èvM\Ù6ûHÄªG¡µú3{o®=q§X\ç\Ó3CƒI°©	\Ğ7’IvŠ\ÑY§Lu\Şz¤_\"Ş‰w\â•ÅˆÑ–Ã„ğ6&Š{\Ú\ã|³Ÿ\ê¹ÿsR“ ¶Ÿ+\Óş”+\Ğ\è[`$A\Ú)F;m5N1[n6¢ú±#ıqA¼¯\Ä(FŒ6\ê\rÿ*Lü~“ªh®\ÃV˜\İTRR²%*’B#	\ÒN1\Úi\Û\ã~®­¥¹,¢‰w\âx%F1b´F‹\Í\ÖÁ:ur¯¿şz÷‰\'p,X\à.Y²\Äıé§Ÿ\\Ÿ\åË—»\ï½÷;yòdw\èĞ¡\ŞùI„ôR³’œøŠŠŠ-G}İ!C^4h\Ğ\Ò=z¬***ªqF·n\İ~\êß¿ÿòk¯½vŞ­·\Ş:v\àÀ{“1’ \í£¦©o\è8\Å9F¼¯\Ä(FŒÖƒ6\Óú\åÚ¢·OŸ>\Şÿö\í·ßº©°j\Õ*wÆŒ\îe—]–LH\Ë\Ú\Ñ\èë¯¿ş¯ƒ[\\\\ü‹	g\ïŠ\Ão¼±\Ö‡eË–¹\ï¼ów\Å\á\æ›ovu¾	\ê\Ï\ìgºe\ë®l$A’ \í£¶	\Z(ºı÷sn%ñN¼¯\Ä(FŒ6…¼¼¼Ç™(r\Ë\Ê\Ê<œ¨ùš\Ê\ìÙ³\İ^½z\Õ\Ño\Ú\ïım\Ö¸9l+®¸b^×®]™0a‚\'S½\â0s\æLw\àÀ¿ô\è\ÑcñE]t&I#	\ÒN1\Úi\ã\r\Û99M¼\ï\Ä+1Š£M\Ï\'Š\Ûq\ãÆ¹\ßÿ½Û’Hˆ\ßs\Ï=µEôGY!¢\r\Z\Ôó\Â/üQÿ`ªCõÉ˜3gkz\Õ%—\\òD6\íÀF$	\ÒN1\ÚiZ9%Å‘ªT\Ï\'\Ş1\âx%F±œê“«§m¿\àZ-\Ñ\ÕÿÑš\èók­~3\Ğ\ZqÀ€c/½ôÒŸ^}õ\Õu\Ôÿû_wô\èÑ«JJJ¾\ĞU’ F¤b´\Ó&\ã›ğs+\Ú1=#Ş‰Wb#F\×\"qÍ³Ä³¦l§M\éN\ÜO\ËlB`\ÅsÏ=\Öú\æ\Ö\âÁü¹¸¸ø?\Ù0TO$	\ÒN1\ÚiF\ã-õó\Ä;F¼¯\Ä(–u}²v\ÛNœN\İ\Ú#\Ï\ÉF¢¿ı=]Ğš¶­‘\ç\Ö\Ï>O>ù\äJ\Ñƒ>M$	\ÒN1\Úi«\Ó\ĞD\éş\â#Ş‰Wb|Ÿ¬)Ó‰·ªÒš\ç¶\àşû\ïOÑ‹3•[†i\Íó¼yó\Ò\æ¬x\à‹\Â\ÂÂ§‚¼C7I$H;\Åh§i)\Æ[j:gÖD\ï\Ä;ñJŒb\Ähc0±Z‘¸\ÛvKo–\Ê\Æbúı	\"º\"0`À›\Ú0,İ”––~\n…z’1’ \íC@\×Q<û\Åø:f]ªS¡ö\ÏeõFE\Ä;ñN¼£1\Ú\ãlcö/Zuç¤¶D\ë¡ı¿Å´\árı}\í@\İ\çY·ªj‰İ¶Se\áÂ…?~ñN\"	’\é¬1\Úi[\ãŠ\ê;\Í\Ü\ê\Ç\Æ\åuı\\ÖŠh\âx\'^‰QŒm\r`ú‚µOŸ>-rŸ\ç\ærù\å—gzğ\àÁs{\ì±6s\Ö\r7Ü°ÀôP’ F¤b\èvÉ§mv©.ª\İŠò\ÄbÜ·\Î	\ïg\å\ZK\âx\'^‰QŒm\Äô|_¬\Æb17\Ğ\î\ß	úıŒu^EEÅ–\Å\ÅÅ¿,[¶¬Íœµp\á\Â%ö%~Äµ\Ğ$A’ \í£¶(u\ÉÉŠ\ëúŠòd\çß‘\äü¬[cI¼\ï\Ä+1Š£õQTT´‹i¯Ÿ$Tu/æ¶˜…œŒU«V­qo\è\Â\ÂÂƒ2ÒcÆŒ:hĞ 6wX÷\î\İßµ/ò¸º*3¥1I$H;\Åh§Mk—õ\ãR(²“\å-\Æk\åˆw,\×\âx%F±\ì\ê“\ÓMœöóE\êõ\×_\ïfÃ†\rK\\= #;\ä!C†¼2q\â\Ä6w\ÖÈ‘#gf\Ò4\î„{‘M±/\ï(’ I0¡b™\ØN\Û.›X7T”§ZŒ\'şş¥™<²E¼c­\ï\Ä+1ŠeWŸÜ˜vh\Ço÷\Ï\Ë˜\È\äÉ“§qß—‘ò Aƒ–¾ñ\Æm\î¬Ù³g\Ï3\'\Å3-	&Ø¤dWsH‚$A\Ú)F;mZ»lÆ´ÌºŠòu›XŒ74•xÇ²^@¯\Ä(–]º¾vh\Ç\æø\ï/X° £ô{ï½—8=7#ğ=z¬Z²dI›;kñ\âÅ‹t\ã\ìN‚5Ws!I$H;\Åh§Mk—M,\Æ\ë+\Ê\ßmF1\ŞÜ¿‡xÇ²E@¯\Ä(–]z­vh¯?òg‚Ldùò\å‰÷ÒŒ,À‹ŠŠ2b\Ûr!Gez¡’x5G\Ó\"H‚$A\Ú)F;mZ»l¤dEysŠñT§§\ïX\Ö\nh\â•Å²K@\'¶C³ü×™¢kkB\ß2¶\0\ÏDg\Å29	~ó\Í7\îw\ß}\×âŸ«\Ï\Ôg\'{oÅŠ)V\â\ëÿü\ç?\å\Ã ¶\ÉLk§ÿş÷¿u^¦}÷_~ùe\ï}ÿı÷)·u\Ú\éšv\Î9\çø…óˆfvc\ë&\Éz·úxs‘Q>s·øü‹\ß/%\ë§\Zs\ŞÊ•+½˜\Ôc¶\Åo\âxm\ÙX\ÍU\ä¸\Ë\æ>9\Éx\Ít\ÊWo\æ„B¡ş-·2%	şóŸÿt;t\è\à<ğ€geee\î\Ş{\ï]óúó\Ï?wÿû\ßÿzaC¦óô¹\×\\s{\İu\×y\ÏG\Z\å1\Â{ÿı÷÷Ë´VA\ï¿şú\ë\î¶\Ûn\ë^}õ\Õ\îgœ\áY$ñ\Î÷_ñ\Å5ó\×_\í\î¹\ç\îÌ™3½\×/¾ø¢»ıö\Û7Zp1¹\íTEñ¢E‹\Ü+¯¼\Òı\ë_ÿ\ê=—\İq\Ç5mAVUUU#w\ÙeW÷£W;½\ä’K\Ö2¿]\èñ÷¿ÿ½û—¿ü\Åk\ï^x\á\ZŸ){\â‰\'¼s~ø\áµ\Şó\í\ÜsÏ­ù{.\\\èN˜0¡\Æ.»\ì2w‹-¶pÇ¿\Æq¿(ö\Ùg\İ\ßı\îw\Şó\ßşö·^;\Ñ\Å ƒ|ğ#Ğl—\í\Z\ŞÅ·9#Z¹\ïl›Œh•Gb=J#±g\Ê+£k[Y8ö\\y$z¾\Î+‹Ä-\ÇGxV\Ùû–g\ÜnW„k¬ø‚\İ/5d\ï¾û®÷]%\Ñz¯ÿş5Ö«W/\ï\\=&\×yA\ß\ÎùxM5V—\r¨tk\ÇjiÿŠùAŒÑ†\ìÿø‡¦{Ï¿ú\ê+÷\Î;\ïôo´\ÑF^M¨\ZpşüùMªnİ˜¶\ç\ßdúÇŒ,À3e\rôÒ¥K¿\Èğ5Ğµ;’ŒZ\Ç2f\ÌOP\è>nJf²<\Ğ\Ğşk%/‰VuVJzú¿\ì%0\ßt\\\ï\ë<}\îK/½\ä‰Zm)¯¤×·o_÷¤“Nò>W\Ïûõ\ë\çm> s{ö\ì\ézè¡®.Êœu\ÖY\î™g\é^|ñ\Å\î=÷\Ü\ã	\'}\îG}\äû\á‡z‰öoû›{\Ì1\Çx\ÏO>ùd÷„Nğ\ë}’`pÛ©vt¬] m¾ù\ænyy¹{\Ê)§¸·\Şz«»\îº\ëºS§NõÚ¬.„\Ãaw\Çwô\ÚÈ!Cjìª«®ò~\Ş/~%¦ÿü\ç?»gŸ}¶\'\ĞuqHô³jƒz>o\Ş<\ï\\]ü9\ì°\Ã\Üû\î»o\r\Ó-6\Şx\ã5¾\çM6\Ù\Äkƒu\Ùl\à]\ìY¶l™{\×]w¹{ì±‡ûñ\Ç»»í¶›û\Üs\Ï! ›\Ğ.Š\ß­´¦²)Ey«¯©´\Âû‰^\ág7Jş^´{yeì¬ŠŠøú\å‘i”¬:¼<{¥<=¢S\×^n\×ş·¸]/\æ\êy\ï>\æer¿Ô½õ\Ö[^Höú\0õGŠYŸ>}¼\ïTş1½¯ó‚¿( ‰\×&\ÆjÏ¡\ã½\Øôcµl\ÈmŸ\Ïû\è›r+sw\rbŒ64+d¯½öòbo»\í¶s‡\îÕ‹\Ñh\Ô\ĞO>ù¤w!Ë¯\çR©Ğ­\ÓZıYF\à\Ö	}•	»¯U\ï\Â=#ÀY&>Ï®£#Éˆ$8m\Ú4\ï\n\Ş>û\ì\ã>ô\ĞCVQğ\ë_ÿ\ÚıÕ¯~\å=/))ñ\ÎU£T‚S\á°\Ùf›y$QX<ÿüó\ŞB\ç¾F˜5z8r\äH/Yn³\Í6î¦›n\ê=?üğ\ÃkF·\ÜrK\ïó”»v\í\êşù^r”T $&GJPw\ŞynÇ½÷ô¨\×:\î \" ƒ\ÙNÕ±;Ö½÷\Ş{½)[š\r¡\ÛH@_z\é¥^;\İ}÷İ½ó4\â¬\ï_mÈ¿RhK—.­\Ğj[o½µû\àƒºs\ç\ÎõDs·nİ¼‹:n¸¡\'–õ\\‹|­¶ªH´v\Øa\r=}út÷¸\ã[c:¹F¦ô·ù\ÇtqG¿óö\Ûow\×[o=\ïo:ø\àƒ\×*À\'Mš\ä‰üú¦æ€®·]6c©®[\ß$\Û\Õ7•¢<-»úZQ>\Ù\ìt+À\'¬a‘X+\È\ï\è\ïb\Åøö&œ¯L´®ınte\åCnÿôö§\Üo]ç‰™\Ú/5\Æ\Ô\ß(–ü¶µM3H¿Gq„{\È!‡xß§õZ\Çõ~6\Äo	hâµ™±Z;F\'\Îw\êxieü¸lĞšÉ¡~7‹¹¯¼òŠ7z|\Ûm·y\ÂY\Ç\ï¾ûnoğE±•jˆ€nı˜f\îf¢û@+2\á>\Ğæ¨›2¨\0¬\ï\nlF%ÁG}\Ô=ú\è£İv\Ú\ÉKV\Z]\Ûo¿ı¼©n2øi¤7ñg\âñ¸w…Pb#\Ñü\é72şI {\ì±\îk¯½\æMy•t\ĞApñ_\ëÊ¡Š%?ıŒ’£Dú\àMW‘¢Ÿ‘ù„„¸şV%Tı¬õZ\Ç\ĞÁn§\ê,+++½¢öı÷\ß÷®P¿üò\Ë5úô\ÓOw\à\ë\èº\Ö@\'\n\èÑ£G{\Ó2\Õ\Î4={öl\ïsN<ñD÷–[nñD»:iÔ¾€Vû“ \Ö\íú\í\Í7\ßôş–^xÁ;W¸.\Şø¦ß©‹Lşk]%O,ü) *ÀuÑ©w\ï\Ş5#\í*À\ÓYd €nT»l\âHRC÷]§‰Eùa\í\Òp_Y\Ü*¼+\Æ\Å7¶\Âû@\ßúŒª\Ú\Ç/\ØkŠ÷Hô4€Y^)+»\î\î/Ã¾ş\Ô\Õ÷¼2¯ß˜\ç¶\Ë\ä~©1¦eAú~”+\êĞº`¦\"»K—.Ş¹z\Ôk÷t\Ğ\ã74ñ\ÚB±\ê\Ç\è\İÓ¾Šx1‰\ÍM«\Ù  Õ¿*~\Ô\Ë4ó+\Ùôü9s\æ¤\\#\" [?¦¥¹r\è1Y€[Az³DK[Ó³g\Ïù\æ¤ö\íF¦M\á\Öó\ÆèŠŠ\nO\ëªSmó¯¼KğhZ­„¶F U\äøŸ\é›D¯\Ä\ÈE]\äM\Õñ“£F\ßy\çwÖ¬Y\îM7\İTcşT	ä­¶\ÚÊ½üòË½i=J¬z\ÔkG@»jº²T£\Å­\ZA\Òt¯T´®d\ëQœ——\ç=\×T\ÎÎ;{¢\\W¿\Õ1ûZkª5ETmJEr¢©\0\×\Å\Zº·>Skò5;\ã\í·\ßö~§º^u\ÔQŞ…¢\Ä\\#\\Š\ïŠıŒi§M¦¡¥†ŠñvM,\Êıi©g·ö?¨)Ÿ\å‘\è%¥£\â­\à~Ø°\"{\ÖYjª¨Šğš¢¼2Za¯\ï)­ŒM4;öjú¥†Lû#h\ïƒ}÷\İ7\é\æ`3f\Ìğr‰L\ëšõ=\ê\Ñ?¦øLŒÉ \Æo€\ã=«\ãµ5c5[\Ö@kV‡.Z+ı¾\\¥õ\\¦‹\çĞ©Öˆè´ˆ\ìó|‘š	:0\r&\Üz«8#h\Ñ]ºtùE\ë\Ûğ\ĞK\ÌAß”””lŒ0i­M¾” d:^[@kª´Ö¬\Ô6M»\Ñ\Æ`‰k\Ô$ õ|\àÀ\ŞU{¿Qk\ÔO¿ÇŸ\æ­i\ä~r\Ô\Ï(Yª\ØYıõ\İN:y£şhŸ²’n÷\îİ½i<Jºz\ÔkG@»J\èjz\æ3\Ï<Sc\êDıhşJ\Ô~ú\é§)	hMõT›“i\r£Ú–.ºH@Ÿv\Úi^‘\ìh‚[nñÚ°\Ö>&š\Ö_i\æ†\Ö;ú›“©¨^gu¼e‰#Xz­)Ÿ~®õ\Úúy½\n…X\İò\Ô5²\Õ\Øb<Õ¢\Üÿ}g§\ãŸ+«Œ]«µ’*¸{W\Æõˆô¿\ã±kÿWÀG\'–VÆ†\×.Ê­°$\èZBUËŒ/š=õô\ÓO¯u–©?‘©\Ï\Òw¨G½\Ö\"ƒË \ÇoÀ\ã=k\ãµ5c5ô«¯¾\ê\Í‘HVÿ«`ú\ŞtZ³eŠIõı©Öˆ\è\Ö\'//omĞ¥z^şoK˜ÈªU«\Ü\â\â\â_|­a\íe—Œu¢ h3Ÿ¶bÔ¨Q¯XGv;Â¤yS\á´ZW\Ò% %.ü)\ÖZ\êh‰]õKf\ÚAQ›3iƒ§\ÚZ»K@+1úSm´‘˜/ e‰\Éñ\Úk¯­9.¯\ã\ZğG´sªşV™¦ğ(\é\ê\Ñ?¦÷I‚Án§\Z\áUqªv©\ç\Ú\È\Î\Ğz_Ó»\Õ\á¦\" ı>\Õµ®¿´´\Ôk—\ĞZS\íoz\'\í\ï\ÚÛ\é\"“_€«(\×:.]\×{Zº \×\Ú\è\Î/Àµs¸\npµ\n(ºUF¶jO\Ï\ì\Ò.õû\Æ&+\Ê;§0‚\ÖòEyõ¦D«wñ+‹\Ä\ÆÚ±)\Z\íò7%\Òy½+£\ÇôŒLÛ³4\Í\ë{s|›òpôı\\·±7-Ç‹‚, u—‡#<²¦Ÿ\ĞôNõ)š\éäŸ£m„\é›fU\éûÓ£^ÿ\æ7¿©\Ù\à2\èñ›ñ•ñÚš±š\rZË³T¯Ik¡bPß™f~i£L{H@§Z#\" \Ó6\n=\ËªZË	h\æQÆ¯ö0`€Ó¯_¿Ÿ\Ûbóo¿ıö\Ç\Â\ÂÂ¯3ú\nC†*7\Şx£\'rµÓ¨\ZœÄŠ®º«@Iôj\Ã	Jh\ÉL\Ó_µ\æY<%\nh\í^*®©²Zk=t\èP\Ï4b\\—€\Ö\Ï\èwj³\'\íxªi´şh6–¨¯0òM\ç‘ƒ- 5=ËŸ½\àh]\é”pV±«\Â5U­\Ï\Ñòƒw\Ş\Ù\Ó*¾µfQ34L\ÂZ\íVEº\Ş\×ÿ®Q+\İ\êF¯eºb®\ÎB\Ïı[¶ù]V{\nh\â\Z\Ê\ÚøW\\\á\İ6‡v\Ú\"\ÓC;$)®SŒ·k\à\çZõVUõ\åŞºI­«T\í[EEÅº*Òµ\î²Wxú¶*\Ş+*\ÆohEû4_\Z\ì\î½zó¢\è\ÄòQ±?Q@ûwŠ\Ğj³J]Ó…\Ş?ü\á5k›?şxM3h\Ğ /¾ô¨\×\Ú\ÍW³Ot^\Ğ\ã7K\â=\ë\âµ5c5›\î­M9µ™­\âX\ßÛŸşô\'\ï™Lµ_2]_ˆ€N«€¾\Ä«š\r	ô\ï\ßÿ\ç„\é\Ûe\ï\Ä=z,–\êO7Lo˜“\"“¦›¦Áú\âB*\nô¨\éªz®jW\ß\çh­˜®\ê«ø\Ç4õV	Q›¶h½s¢€...®S@\ëöV*„4MOS½õ\ášR«©<Ú°À7M\Ó\ÓûzL<\î\ß_š$\\­{4\ëÂ‹vÀõ´¦\é«-èŠµv\è®O@\ëj´F‘ô¾„´iDI´\nh\àúym€§é˜º-†®fû¢Xö\É\'Ÿxk,ı%*\àuÁH£Õ‰¿K\éo\Õ=iuKıN]a\×k\í@\ïß¯\\E‚:}\àŠ)M\Í\ÏÏ¯¹œ6\è;şø\ã½\Èi§->=t\ê©TouSû\çš{?\Û&Q><ºsy8v[’Bıt­«,Dò^G¢\'•Œ\í\Û\Îu×±ó«t\Ü\ÎyP»ÿj*i\ï\Êøş}#ñ\ßM@Kœj=².\Ô\Ö\Ş,H}—FŠw\İu×š\İø5’¥\Û%Ê”K_V«\ÔKü?ƒ¿Y\ïY¯­«\Ù\" \ÕkÀFwQQ\í§\Ò~LK(kªw*5\":}h\é¬\ÕN\Ë}Áª<\Ù\ÆwdJ\Ü<lE^^\Ş\æ\ï\Änİºıå¢‹.Z¥‚4]Xaü¾\Õ\ÂA)T\Ôùkc¤Ä«\íº-‡Ö¢\Ôõ·j#`\ë\n ¦\ÕJ\Ô$¾ç¯‰\Ö(¢Ä?õ\ÔS^Ò¼\à‚\êÂ­Ï“°\Ñ\ç(9\ê3jÿ~_@e\â\î‹\è\æ	h-!\Ğ\è°F—jO\á®ıı\'\Ğşı¤}ñë›¦zJ@k„JE·6“À\Öh”\'¶\ÙgŸ}æ­«W»T|hº¾ZyP¿W•j¿÷\È#x\ëº4CSÅµ\\B\Ôñœz\ê©\Ş\Ïi:¹„;\í´UŠòÖ˜nšUdjq®½:Th\'\Ş&±v\Üic±\Ú\âU##ºšQ%\Ü\Ğ\ï	ZüfY¼¯\ÑTMı·f„i\ÃYõË¾€\Ö-­mV,\é\"VsjDt\ëbµ\ÙP_´ª^Sm4º´´ô\ç}S`\Ú÷\ÈÈ‘#L\ÇT\î/¾ø\â[M\İ\Î\Ï\Ï?…$Ø²–\ìş•ş\è]}W…s2SrôE®¦»\Õ Zw¦i²*<üµl‰¿W£‰\ÉD’Fu\ÕI$Á\ìi§j~›ÒˆÚ†\Úf\ív£¶¤MÅ’­}Ò±eË–Õ¹Q™k\ßC¶®\â\\¦ß­«\áş´\Ïú\îc­õ[~\Ç_û÷\Ö\'¾\Õ\ÆÓ½+\ËtK\å-]\Ü\ï)ZC8\ÙûŠqõ+\ÏAŒ\ß,Œw\â5GtmSœú}³\ê\ÊÄ˜mjˆ€n]4ˆibõ3_¸7®Môı÷ßŸ8ú¼´¤¤d\ËÀ´\îvşù\çt\ï½÷®jM\'Y1ı“9\æ‹@\Ìm\Ï\Ñ$ˆ! 1\Úi†\Ñ\Üiœm2m›x\Çr4Ş‰Wb”\r\Î(tq‚xõşşt¢ß—øû\ÍJ\Ô\æ\Äm:u\ê´\ì±\Çû¡µF«\ÅóP’ F¤b´\Ó&Õ©HµÉ†a\Ä;–\ãñN¼£\Äh@\Ğİn•¶õĞšj¿\ï§ñ<.°­±‹‹‹\Şu\×]‹[zÍ³¦mg\Ã\È3I$H;\Åh§mBª\Ó:sb\Ú6ñN¼¯\Ä(FŒ6•\ê©\Üo&Š\è\Ö‰\Ö\ç\×\Ïoj\êv]#\Ñ&vŸ\Ò\îÜŸ|ò\É\Ê\æŞªJ»mkÃ° ¯y&	’i§\í40Eùaf+\Ì\Î\Î%\ç\ï\Ä;ñJŒb\ÄhSPM\Ä~”8Zk¢W­Z\Õ\â†\ÕZó,û\ÈDüo³&\ÈC¡PO\Ò_^w\İuoş\ë_ÿJiDzñ\â\ÅKF=G£\Î\æ˜1A\Şm›$H¤b´ÓŒ¢Cu±İ¡÷—\æšx&Ş‰w\â•Åˆ\Ñ\æˆh\Ó~sÅ­v\ç\ÖTë–š²]^^şs-ñüfV‰\çZ\ÃúÚ¥­[·n\ï6lV<\í\ÓO?ı$\Ñ)Ë–-û\Ò3o\äÈ‘3{ö\ì9\ßqœo4§^_I#	\ÒN1\ÚišF¶rn\Ú6ñN¼¯\Ä(FŒ¶\ÚT\Ú4\ÜCµD®wKÁX,–ò­®4‚­5\Õıû÷¯-œ½5ÏŸ¶\İ\Èé£ª\Åô¤\êaşœ°\Èl–\î\İe\Ö^7\è&	b$A\Ú)F;McQ\Ó\â™x\'Ş‰Wb#F[‚\êİ¹?«-z;u\ê\ä^ıõ\îÄ‰½{x\ëV¥‰·@\Ö\íD\ß{\ï=wò\ä\É\î°a\Ã\Ü\â\â\â_’ç¥\ÜmH‚\Z£f™ˆ‘\ë\â™x\'Ş‰Wb#F[\n\r†j\à4\n-O\"‚›b+4Ğš£\Î@$	\ÒN1\Úi†£5”n»¹UñN¼¯\Ä(FŒ¦QHoi\"z@õN\İ?¦*œµ®Zwa\Ê\Æı°€$ˆ! 1\Úi\áŠ6ñN¼¯\Ä(FŒ¶\"&†÷—®¾wôœ\ê\éØ¾X–¸ş¬z#²1š\Í{aIC@c´S \Ş1\âˆQŒ 	bh¾O\Ú)\Ğ/a\Ä;£1\n@\ÄH‚´S\Ú)\0ñN¼1Š£\0$AŒ$H;\Åè¬xÇˆwb#FH‚IvŠ\ÑNxÇˆwb#FH‚IvŠ\ÑNxÇˆw F‰Q\0 	’i§\íˆwŒxb#FH‚\Z£ñ\ï@Œb\Ä(\0IC@c´S _Âˆw F1b€$ˆ‘i§´S _\".ˆw F1b€$ˆ‘i§5\ï\Ä;£1\n@\ÄH‚´SŒ\Î\ZˆwŒx\'F1b€$ˆ‘i§\íˆwŒx\'F‰Qb€$H² 	\ÒN1\Ú)\ïñ\Ä(1JŒI‚´SŒv\n\Ä;F¼1Š£\0\Í%\Z’,²×¾·$ø#\í£ñ\ï@Œb\Ä(@0}úôEK–,!ad¡-\\¸ğaK‚o\ÓN1\Ú)\ïñ\Ä(FŒ´\0±Xì¬©S§şû\Ë/¿üÄ‘=W•\0«ªª>1;vŠ\ÑNxÇˆw F1b …°@\é8eÊ”9š²¡uX\àM\ß\ã\ÛÙ–\0i§´S _Âˆw F1b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0Œÿ2·z‘÷\ç\ÕR\0\0\0\0IEND®B`‚',1),('27502',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/.DS_Store','27501','\0\0\0Bud1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0i\0s\0s\0i\0o\0n\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0p\0e\0r\0m\0i\0s\0s\0i\0o\0n\0.\0b\0p\0m\0n\02\00\0.\0x\0m\0lIlocblob\0\0\0\0\0\0F\0\0\0(ÿÿÿÿÿÿ\0\0\0\0\0\0p\0u\0b\0l\0i\0s\0h\0.\0b\0p\0m\0n\02\00\0.\0x\0m\0lIlocblob\0\0\0\0\0\0\Ì\0\0\0(ÿÿÿÿÿÿ\0\0\0\0\0\0v\0a\0c\0a\0t\0i\0o\0n\0.\0b\0p\0m\0n\02\00\0.\0x\0m\0lIlocblob\0\0\0\0\0R\0\0\0(ÿÿÿÿÿÿ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0€\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0€\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0€\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0E\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0DSDB\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0`\0\0\0\0\0\0\0\0\0\0€\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0€\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0€\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0@\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0',0),('27504',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/permission.bpmn20.xml','27503','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions\r\n  xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\"\r\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n  xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\r\n  xmlns:activiti=\"http://activiti.org/bpmn\"\r\n  xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\"\r\n  xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\"\r\n  xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\"\r\n  typeLanguage=\"http://www.w3.org/2001/XMLSchema\"\r\n  expressionLanguage=\"http://www.w3.org/1999/XPath\"\r\n  targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"permission\" name=\"å®¡æ‰¹æƒé™\" isExecutable=\"true\">\r\n    <documentation>å®¡æ‰¹æƒé™</documentation>\r\n  <dataObject id=\"dObj123\" name=\"StringTest123\" itemSubjectRef=\"xsd:string\">\r\n    <extensionElements>\r\n      <activiti:value>Testing123</activiti:value>\r\n    </extensionElements>\r\n  </dataObject>\r\n    <startEvent id=\"startEvent-1\"></startEvent>\r\n    <userTask id=\"usertask1\" name=\"å‘èµ·ç”³è¯·\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"permission-request\"></userTask>\r\n    <sequenceFlow id=\"flow1\" sourceRef=\"startEvent-1\" targetRef=\"usertask1\"></sequenceFlow>\r\n    <userTask id=\"usertask2\" name=\"éƒ¨é—¨ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:ç»ç†\" activiti:formKey=\"permission-department\"></userTask>\r\n    <sequenceFlow id=\"flow2\" sourceRef=\"usertask1\" targetRef=\"usertask2\"></sequenceFlow>\r\n    <userTask id=\"usertask3\" name=\"æ€»ç»ç†å®¡æ‰¹\" activiti:assignee=\"å²—ä½:æ€»ç»ç†\" activiti:formKey=\"permission-manager\"></userTask>\r\n    <sequenceFlow id=\"flow3\" sourceRef=\"usertask2\" targetRef=\"usertask3\"></sequenceFlow>\r\n    <endEvent id=\"endevent1\" name=\"End\"></endEvent>\r\n    <sequenceFlow id=\"flow4\" sourceRef=\"usertask3\" targetRef=\"endevent1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_permission\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"permission\" id=\"BPMNPlane_permission\">\r\n      <bpmndi:BPMNShape bpmnElement=\"startEvent-1\" id=\"BPMNShape_startEvent-1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"40.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask1\" id=\"BPMNShape_usertask1\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"120.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask2\" id=\"BPMNShape_usertask2\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"280.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"usertask3\" id=\"BPMNShape_usertask3\">\r\n        <omgdc:Bounds height=\"55.0\" width=\"105.0\" x=\"440.0\" y=\"50.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endevent1\" id=\"BPMNShape_endevent1\">\r\n        <omgdc:Bounds height=\"35.0\" width=\"35.0\" x=\"600.0\" y=\"60.0\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"75.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"120.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"225.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"280.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"385.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"440.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow4\" id=\"BPMNEdge_flow4\">\r\n        <omgdi:waypoint x=\"545.0\" y=\"77.0\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"600.0\" y=\"77.0\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('27505',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/permission.permission.png','27503','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0…\0\0\0s\0\0\0\î}xù\0\0\åIDATx\Ú\ípTU\Ç?{WTT\ìX‡±;cÁŠeKˆ„ Q BˆŠŠ%‚\Ä,(D\ëğQP:‚‚€ˆ¡7EEŠ\Ş\ïş\ïpw^–\É&ow¿™3yo\ßÛ’·ÿ=÷\ÜsÏ½\ï?ÿ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0(‚1f\ßE‹}<}úôÆgÆŒƒ…ÀÆk&O¼\ÆZ:ú\Ã\ĞúC\0s\ä§L™bV­Ze6oŞŒ…\ÈV¯^m&Mšô›u÷¡?ı¡?ô\01E=db¨\ãf\Ûs‹ş0ô‡ş\Ğ\0\Ä\r™\à|\Âm\Ö)nEúC\è\0bŠ\ê7p<¡wŠıa\èı¡?\0…Süc\Ãr³(¿¿)\ÛÑ™¶õN§ˆş\Ğú\Ã\Ğ@’8Å\ëÍœ\Ïs\Ì÷Ÿ=]\Äô˜\á¸pŠ\èı¡?ı$S\\Z0|‡\è\í×‚8.œ\"úC\èC\0\É\à\çNøo‰NQ\Çp\\8Eô‡ş\Ğ†ş\0’À)\ÎÓ¡D§¨c8.œ\"úC\èC±£~ıúUSSS\ï·t³6Á\ÚRk&`Ë­M³\çôµ\ç6¶\ÛÕ¹j» C‡Uòòò:\å\æ\æ\Î\È\É\ÉY••µ¥Aƒ‘‹š™™¹­U«V\ë;v\ì8³W¯^}ÚµkwA!N§ˆş\ĞúC\è¯2¨W¯^m\èı\Ï\Æ(›¢‚À]\ÙV‰\Ö2jÕªµ/`€Î;\ßÒ¾}û\ï\Ò\Ó\ÓÿµÁ :t¨™5k–[\Å~Û¶mÆ³v\íZ3o\Ş<3zôhó\ÒK/oƒÄ¥ö9™‰zQw\Ç)j¶]INQ\Çp\\8Eô‡ş\Ğ†ş\Ê\Ì]b-¿”`I6W\ÙÃ¤[´hQ½mÛ¶37nü\ï\Çì‚¾Ò°e\Ë3u\êTÓ®]»³²²V4i\Ò\ä\ÎdtŠ¦ö,\Ñ)\ê§ˆş\Ğú\Ã\Ğ_¹\rwÙ\é‹v\Z\Õ\ìÒ¥‹Q,SPP`–/_n6m\Ú‰U”\äš?¾2dˆ;¯aÃ†\Å‡£\ìëœ””aNNNv£F¶0ÀüùçŸ¦¬\ä\ç\çniÚ´\éĞ”””C“\É)®-œe\æ|\Ñ~Ç¡û˜\á¸pŠ\èı¡?ı•\r\Å\Û\ë#\\FF†y\ï½÷\\\ĞW\Z÷hT´E‹E\Ã\Ô\Ô\Ôõöo­¤\nÛ´iÓ§yó\æÛ¾ù\æSüşû\ï&//o‹ı’–\Ù/¯Z²8E\Ù\âwpŠz§…SD\èıa\è¯\\\Â)Á\0N\ån\Ê–•È9\Ò\çOX\Ûhí¾¤	³³³ÿ)mT]\ZüOzzúoöK<3)œ\â\ß›_ö\Şq\è\Ä>¦c8.œ\"úC\èC{Nt†P\Ã\ÄÁ9e¥°°\Ğ<ıô\ÓÁÀpSjjj„2V†0–¡gØ°a\ÛÀ°0\Ş3†»rŠZ±ş\Ô%\Ö\Ô\è«ú\ã\ÑúCú\Û3¶\×F¶\éÓ§\Ç$nQ\r¢\ê\rƒCû\Ş5ò¢jR‰jgÎœi*ŠAƒ-KKK\Ï3“KtŠ¶¼|Áx3{ô3%:Do:G\ç\Òk\Æ)¢?ô‡ş0ôWª\á%ÁI%\Ê\ÆMJ\éÜ¹s‘õ\rµb\"\ÏÖ¤’Š\æñ\Ç_–šššHNqW½cz\Í8Eô‡ş\ĞúCe\Ç\Æ\ßk\Ës\Èxgó#š4iœ|òjB]T­C¨eg\Êc–ñŒ\ÓoKKK[¯‘vqNqwz\Ç;\ë5\ã\ÈpŠ\èı¡?ı\í-Lœe\\\ÖI%¥Aq£&TO˜«…©µ6Oeñ\â‹/¨& Qœ\â:Do82œ\"úC\èC»:\á3-;S\Ñ\è&À°[B\\TİºNw)\í\Â\Ô\åœ-\\eƒ\Â5ñX[¸»K2`8Eô‡ş\Ğ†ş\Ê.ú[\×i¹˜Š˜ \ÍÂ…‹¬_˜‘‘Q%\î/l\ïŞ½»h¾²iÖ¬ÙöK¾\Z§ˆ\á\ÑúCú\ÛE-\áı> ÓŒ\à\Ê\"¸¸µa\ê\Æı…\Í\ÍÍ1bÄˆJ\n»w\ï>5LC\Èö³ŒÙ §ˆSDú\Ã\Ğ_\Å\êOÃµ5\ãxg|øá‡‰5\á$\'\'gõ¬Y³*=(œ>}úL->¢Zù±_tMœ\"Nıa\èı¡¿p\è/¸Xõ¼yó*3v	f\n\Ç\Ä}P˜••µ¥2\Æ\â£Y±b\År­÷6Qo„]\\\Ï§ˆSDú\Ã\Ğ_\Å\ê\Ï>¶\Ô¯\ÈY\Ç\Ñüò\Ë/E\Ö,Œû Pš±®\Ïî ‹\ZbQFzAq\âqŠ\èCú«Xı×F*-fü,q\êŸñ{.Jk‡\É)jI¿ıw	wø\í·\ß\ÌÊ•+cşYşú\ë/ó\Ç\à\ãX6lØ­ó¤©\Ò\è\"\Ö\ß÷\Îô­\Æc\ãÆ\è/NıŸ\r\îk\Õt–œú\î‡!vI˜ 0l™\Âx³\Ê\n/^\ì\íT@˜mz\è!³n\İ:s\Şy\ç™Ñ£G\ïp~\ïŞ½Íµ\×^ë¶—-[f^{íµˆ½ñ\ÆÅ¾‡\Êö\Ùgóó\Ï?{üù\çŸ7:ur\Û={ö4¯¾úª¹\ç{\ÜgĞ¶lşüù•v\âQW•¥?ò\ZŠy\æ™g\Ì-·\Ü\â¶eo½õ–¹\ã;\"6v\ì\ØH@x\ÒI\'­súë¯¿š¦M›\î`>¸\\±b…9ö\Øc\İ2_|ñ…III)b\ï¿ÿ¾;\ï\Ë/¿,¢KYğ½½­Y³\Æİ¤^E\æ\Şt\Ãú\Ã?\Ü|ô\ÑGE÷\røÈ‘#\ÍYg\å¶\Ï<óLwı@XWh~ú\é\'ôbÿ§[°üñn¸Nû‹-2‡z¨™={v‘ó’UgÉ¨?2…	\\S¸zõ\êe!¯)ô–o{\ÈuüšŠ•¾ù\æ›æ¢‹.r\Û\×\\s[LS\Ûıû÷7|°+‚õ]İºuİ¹U«VuÛƒ\r\Òl)g7\ß|³9ò\È##¯ûé§Ÿº@OÖ®];\ç\ÌZµjyL\Çı¹_}õ•9\î¸\ãL×®]\Ís\Ï=gz\ê)s\Ã\r7˜3\Î8\Ãm·l\Ù\Ò\ĞSıi%}\×AS\Ãû\ÄO˜Úµk›^½z™½÷\Ş\ÛLœ8\ÑuDÔ°¾şúë®±V%777b\Ï>û¬{¾o(_~ùesıõ×»\ío¿ı\Öt\ë\ÖÍ™ô±\×^{™>øÀ<x°¹ò\Ê+\ÍAd\î¾ûn\×\ÑQ\ã,ıp\Â	N·z]ujôÿ\ë¼o¼±D\Ûo¿ı\ÌÔ©S]V©_¿~¦zõê®ƒs\Ê)§˜\Ï?ÿ<\æ5ú+»)\ë6e\Ê§Au4´]¯^=\çó´\Ì\Ê%«Î’M\Ô\Æ\ë¸×¨Á\É\ì\ã)!eg–š\Zt\\psxj¼•¡Ó¶L™‚2\Í\ÌÒ°\Ë;\ï¼c~øaS£F\r·­´¯¿şºHP˜™™\é^·q\ã\Æ\æp\Î,--\Í\í\ëq~eõ\Ã\ìŞ½»9ıô\Ó]à© TÛ—^z)\Ã\'q¢?•ô\é\Ó\Ç8\Ğ5´ZƒKg…Í›7wY–SO=Õ§Ì t¡L\àœ9svx-\Û\Ñ+Jw\Ê0\êu\Ôxúlõ¹\ç\ë\Zû\è\àô\ä“OvÛ=ö˜¹üò\Ë]–\çè£v¶o¬\'Ol®¾ú\ê\"C\Ù\Ê\Ì\è³ùÇ”ÿ\î»\ïLß¾}]\Æ[Ï½ø\â‹wh¬G\Z\åò.¯@e7RúN;\í4\çS¼i?:\ĞJV%›ş˜}#´N¡R\İaX§0L·‰	ˆqš¤,\én+•*##g¦LŸ‚BmG\ÛÜ¹s]o\æ\İw\ß5\Z5rNS\Û³zÇ²;\ï¼s‡ Pk\éÒ¥®Á—3S\à¨}=\îƒB½¿‚¾«®º\Êõ\Ê\ï½÷^g\ÊH*{\ä÷5üHP~ı)À\Ó0š\ZÀ¸ìˆ¾w\Ş~û\í¦M›6\î\\–TS\n\ÕPv\Øa&==\İs\Ì1n8NYG5\È\çŸ¾k„µŞ—\Ï\n\é–U\ÊÖ¨A–†•jØ°¡{nÇ#µ\ÎWƒ+\í{Ó±C9$²?`À€\Èg\në©±\Ö\ë\éõ}FT\ÚV\Æı…\Ëÿù 0º\ÎUûÁ 0™u–lú³\Çz„aB½w\àóöˆû 0//\ï¥Î;WzP˜=\Ç^\ĞZ!e±=\ã°…\Ş\ÔXk¸Bw§	šŸp¢!\Ş[o½\Õõf5„¢m\Õ\ÊIµn\İ\Ú9@\rÿƒ\Â<\ĞŠUªTq\ç\é¯öõ¸\n0høğ€p™B>úhS}š\Ö\Â$(¿ş4ü=|,\Ó÷­ ğ²\Ë.3¯¼òJ©ƒBeZT† \Ûú\ç@U^ š,û\É\'Ÿ¸cªMT6Ò¿¯ScªúFı­V­š+™6\Öj€•1\ÒP:@:¦ökÖ¬Y¤C¢s•\á\Ñ\èˆ\Zk\r5J›zN¬4Šş\Ê/(”vøy\Ó~0(Lf%›şl°˜†;š¨¾4\Ş÷A¡ı‡ª=ø\àƒÿª>¨\×(Ô½ÿ\È\È\È80Ş®_‚\Â\ï¿ÿ\Şzûï¿¿\Â4t¬ Q½\Ó\à,d\r5Oš4\É\ì»ï¾®Áöº‘ƒó=qO>ùd¤Q\çù‰&z<8|ü\Ã?¸ P\Ûr\È\ê!û\Éu\×]\ç&œ0|ú\Ó—Šó?ûì³ˆ\å\ç\çG2…*\ê?ê¨£\\\æ¹4A¡ö\Õñ°N\Şu$ô\n.{ô\è1MXòC\ØC‡uX\ä—T\ê -©C£\â~¯-?óT\r°ô¯†=˜ÁÑ¾†ñ|c­úÇ»\îº\Ë\×oš\Âøñ\Ò\Úm·\İ1oÁı\à0n²\ê,\Ùô× Aƒ“‚÷>V‰T%\×n\Òı˜\â\â¶n\İú\'W={öœa<}qŠ{^W¨úA9\Â:u\ê¸a	9\"_P-“x\åTc£¿\n _x\á·­z9\Ås\Î9\'23OAŸ†\\ôš\ZR\Ñy*\ÊÖ¾/.(\Ô0…\nF5|,S/ 0¾ô§!6\é\ç\ì³\Ïv\Û\Ö\ÑE‚B\×Ğ²\êK\êsªÿˆ#0^x¡\ÂSc®Ì£2\Ï\ÚÖ_t­—\Z\Ğ	&¸a>uFT’ m™2Ó¾±V}™2:š‘ª÷T)ƒö¥Y\ßX«\ÎLµ4\é‡õ\n\ã\Ãÿi\âÜŒ3œ\ÏRYƒ´\égÀ¿ıö\Ûn\"‰¿\ÖÉª³d\Ô_°®P\ÙßŠF£m °\Â\\\Ø6m\Ú\ÔoÙ²\å?•±4\rF¶¦¥¥­SÔS,½ib‡2fj„U/¨^¬œ_ğ<õˆ\å$be\n}VHœö\åHµŒƒ\Ïª\æEu†š\ç‡Q\Ô\ËÖ¾‚e#ƒA¡¯÷ÔŒ\Ó+®¸Â¥óeªW$(Œ¿ pÚ´i‘Ì¯\nUk¥`P\r£\Z¹\Ò…ê¨¨uÉ’%®!ö™\Íb?ñ\Ä‹<Oï­¿f9«amß¾½›  N†23Ú–ù\É-j¬‹òö=¬¬õŠn¬Û¶m\ëj„\Ğ_xüŸ–„‘OS	Œ\ÊWÆ\ït©‰o\Zù\Ğ2X\Ê^k”#™u–Œú!geeU\è\Ò4ªW•~üû[=^”P\×^\Ğš\Ú_\Ñ\ä\æ\æÎŠ\ç\â\Ì\Ê\n5‹M\êø”Ô„õ†µ<‚şªnpØ°aî‡¢Z1Õ¸(ğ\ÓP‡2Ãª‹QÍ‹«zÉšA†	®S>6\r1\êø#<\â\êƒA¡z\å…ñjB’|\r¥ù °Y³f.ğ\×z˜*\Ò\ßYP¨¡9eQt\\Á¡¶•]Ö¬t\Í\È\ÔP²Òš´¢÷Ó¶\ì\ÇtU¡ÿmıúõ\î¯LÃ‚\Ê\êø}¿Ì‘\Ê\'ôYµÆ¢×ª²I\ÚW§\É\Ï@\Õ\ï@Ë¨±V\æ\\†–5ñsı”\×\Ìkôÿ§‰\"š9¬m\éGÁ—2uÒŸF.ôıÉ·©\Æ0™u–ŒúÛ¾4\Íl˜)ùQQH\'ş}SSSÿ—p\×şnnÒ¤\Éı8*\nû^`œŸRRR\Å)–\Ş\Ô•£\Ñğ…j`´tŒœ_\ØUO\Ã(\ê\éjıB;\ËÁiY\ÍV\ÆG\Ã$\ê}«.F¦\ÙÄ¥\r\nõšZ \Úg–<h{øğ\á\î5µAa|…\ê`([|\É%—\ì0|¬ó*)(ô\ëjV¼öÕ\ë5\Ôhk_š\ĞkG[töD½qeqŠ3M¤Š~_ù¯’´ªIª	SöZ41K®\Zó›nº\É=O\Ë\í(Ë„ş\Â\ãÿ\ä¿44¨mu<•\Ùó\Ù9ù/Õ¼ªF™¸d\ÖY2\ê/:[¨Ì¾“X£¶70l¼\Õ…\ç%\äÅµÀ\'¶Ç³µ\"†‘m ó§†mª6N±\ì¦ÀmW·*\Û\Ó\Û\Îù5\é\Ô\ŞÕ¹ª¿ñ\ÙF9i\İ]€\Û<Å—şÔ¡ğ‹KWj05ı]\êû\ÕÄ“\ân©¨\ÇJºY,M\ï«	\Åi}WzTp[\Ò\í!\Ñ_xüŸü¾ËŠ¸•]<\é,YƒBa³>HSMh,\'\Î*¸[kš°V©XÛ»Y<p\àÀ-±mC³-##c™ğ[\à1œ\"úC\èC{JJJJ5œ­öš–\Ù\Ó\í\çbê¶²	9¹d\'©Øª\r6\\;dÈÍ±\Ên»\à1œ\"úC\èCe%55µ¦µõ>`SÍŸF+\Ês\È8*C8*K\ßJ…f§§§ö\ë\×oEy\×j\È82„8Eœ\"ú\Ã\ĞúC¡Jj\ÕõkÊ”\Õ\Óú»ee¬™\éQ·\İK€0˜1´\Üp\ÍJ^²d\É\ße]vF³Œ5©$\ŞkqŠ8Eô‡¡?ô‡şÂ‰b´mqZ	£´÷G\Ö\Ìq-\á•tC\ÆIF¥d³mp¸²S§N³.\\XªÌ¡\îT’———¯ì ½½ñB\âqŠ\èCúUR«†9–FsnE-E¤\å÷4K\Ù\×ê¯‚@e53]·~~®f\'ô¤’Ò `\Î^ŒºÈ™™™?v\í\ÚuÚ„	¾µqI0\\»v\íJ{Qgv\ï\Ş}ª\îe¬[\×\éN%ñº05N§ˆş0ô‡ş\Ğ_|\Æ-š»5\Ü\Ó:„	»\ìL9dknGY[¼=zöo¹µiÖºY«÷2\Æ)\â\Ñ†ş\ĞúK¶\ß#978	e7Mµ‰ı\îN%€S\Ä)\Ò(c\èı¡¿dFIª\íõ†İ¶\'µ¢‡——×¯_Œ\î°f\Èû5¯‚«8Eœ\"ú\Ã\ĞúC\0€S\Ä)¢?ı¡?ô\08Eœ\"ú\Ã\ĞúC\0€S\Ä)¢?ı¡?ô\08Eœ\"ú\Ã\ĞúC\0°gŒ7\Çn\Ûd\âVô‡¡?ô‡ş\0 ¦L<yùªU«p>!µ\Â\Â\Â¬Sœ‹ş0ô‡ş\Ğ\0Ä”ñ\ã\Ç\ß5q\â\Ä\r+W®ü\'®²\âØ±c—X»ıa\èı¡?\0ˆ9öGW\Çö\Æò•¦Wı\n\Ów17\"úC\èKVı\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\Ä-ÿ\à³jo\ã)@\0\0\0\0IEND®B`‚',1),('27508',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/publish.bpmn20.xml','27507','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"publish\" name=\"å…¬æ–‡å‘å¸ƒ\" isExecutable=\"true\">\r\n    <documentation>å…¬æ–‡å‘å¸ƒ</documentation>\r\n    <userTask id=\"taskuser-1\" name=\"å‘æ–‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-request\"></userTask>\r\n    <userTask id=\"taskuser-2\" name=\"éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\" activiti:assignee=\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\" activiti:formKey=\"publish-manager\"></userTask>\r\n    <userTask id=\"taskuser-3\" name=\"ä¼šç­¾\" activiti:formKey=\"publish-countersign\">\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>${countersignUser}</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n    <multiInstanceLoopCharacteristics isSequential=\"false\" activiti:collection=\"${countersignUsers}\" activiti:elementVariable=\"countersignUser\">\r\n      <completionCondition>\r\n	    ${counterSignService.canComplete(\r\n			execution,\r\n			nrOfInstances,\r\n			nrOfActiveInstances,\r\n			nrOfCompletedInstances,\r\n			loopCounter)}\r\n	  </completionCondition>\r\n    </multiInstanceLoopCharacteristics>\r\n	</userTask>\r\n    <userTask id=\"taskuser-6\" name=\"å½’æ¡£\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-finish\"></userTask>\r\n    <endEvent id=\"endnone-2\" name=\"endnone-2\"></endEvent>\r\n    <sequenceFlow id=\"transition-2\" name=\"\" sourceRef=\"taskuser-1\" targetRef=\"taskuser-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"transition-14\" name=\"\" sourceRef=\"taskuser-6\" targetRef=\"endnone-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow1\" name=\"\" sourceRef=\"taskuser-2\" targetRef=\"taskuser-3\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow2\" name=\"\" sourceRef=\"taskuser-3\" targetRef=\"taskuser-6\"></sequenceFlow>\r\n    <startEvent id=\"startevent1\" name=\"Start\"></startEvent>\r\n    <sequenceFlow id=\"flow3\" name=\"\" sourceRef=\"startevent1\" targetRef=\"taskuser-1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_publish\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"publish\" id=\"BPMNPlane_publish\">\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-1\" id=\"BPMNShape_taskuser-1\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"109\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-2\" id=\"BPMNShape_taskuser-2\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"279\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-3\" id=\"BPMNShape_taskuser-3\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"470\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-6\" id=\"BPMNShape_taskuser-6\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"660\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endnone-2\" id=\"BPMNShape_endnone-2\">\r\n        <omgdc:Bounds height=\"40\" width=\"40\" x=\"830\" y=\"206\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"startevent1\" id=\"BPMNShape_startevent1\">\r\n        <omgdc:Bounds height=\"35\" width=\"35\" x=\"20\" y=\"207\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-2\" id=\"BPMNEdge_transition-2\">\r\n        <omgdi:waypoint x=\"229\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"279\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-14\" id=\"BPMNEdge_transition-14\">\r\n        <omgdi:waypoint x=\"780\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"830\" y=\"226\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"399\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"470\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"590\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"660\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"55\" y=\"224\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"109\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('27509',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/publish.publish.png','27507','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0p\0\0\0\0\0w\ä\n\0\0lIDATx\Ú\í\İ	”Wuı7ğ\Û7++;YY\Ú\î\Óò\Ô)[,[m±\å)€!é¨¤ˆ‰%Š\ÉQ‰´²ş\"™¥\Ç\\²,r9%Å¢B$E*	¤\âBJ(‚ˆn€\Ş\ç¾\ï3w\Îe`@f~3¼^\ç|\Îü~3\Ãö\ã=Ÿ\ßı\Üû½÷>\å)\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\ĞİŠ¢\Ø\î–[n¹`ö\ìÙN›6­˜2eŠ\ê\å5u\ê\ÔbÆŒw•\Õ&§JNe_É¾\Ü+¹‡>$\rr\æÌ™Å²eËŠGyDõ‘Z¾|yq\ÅW\Ü[6\Ì}\äTÉ©\ì+Ù—{%÷\ĞGd\ï–\Ùg\å#S¦L¹NN•œÊ¾’}¹Wr}D–&h(}·\Ê&¹FN•œÊ¾’}¹Wr}D\Ö%k&}ºIrª\äTö•\ìË½’{\ØÆš\äª{\î(n™sf±`\êqU\åq>§i’rª\äTö•\ìË½’{h¡&yÿ\Ê%\Åü?.şõ\Ç\ëT>—¯iFš¤œ*9•}%ûr¯\äZ¤I.^pñz\r²®ÿ.¸D3\Ò$\åTÉ©\ì+Ù—{%÷\Ğ*Mòº\Ëşo—M2_ÓŒ4I9Ur*ûJö\å^\É=´H“œ?eL—M2_ÓŒ4I9Ur*ûJö\å^\É=h’J“”S9Õ£e_ö\å^\î\åØœ&™+;u\Õ$ó5\ÍH“”S%§²¯d_\î•\ÜC‹4\Ég\Òe“\Ì\×4#MRN•œÊ¾’}¹Wr-\Ò$W,¹¶˜ÿ—c\×_¢P~._ÓŒ4I9Ur*ûJö\å^\É=´H“L-ú\ç¯\Ök’ùœF¤IÊ©’S\ÙW²/÷Jî¡•š\ä\Ã7şm\âúK\Ê\Ï\åkš‘&)§JNe_É¾\Ü+¹‡h’÷¯\\R,œõ?]®3\Ï\×ò=\Z’&)§Ê›¹\ì+Ù—{%÷\ĞSMòá‡‹;nœ^Ì›|L—\r²®|O¾\×/MRN•7s\ÙW²/÷Jî¡››\ä¦öl\Ù\ã¥IÊ©’S\ÙW²/÷J\î¡Eš\ä\ãÙ³µ±=^š“&)§Ê›¹\ì+Ù—{%÷\ĞMMò‰6Èº4\'MRN•7s\ÙW²/÷J\î\×7p\àÀ¾öµ¯Ñ¯_¿\ÓËs\ÊZT\ÖCee­)kqùµkÊû÷\ïß–\ï\×\Ød“Tš¤œ*9•}%ûr¯\ä~\Ë(±Ê¡lXùq~YkÛ‡µ\Ç]\è\Ê_7|\ß}÷}~ŸzaÆŒ³ı„	N8şø\ãÿ9zô\è\åC‡]]N¬ÿğ!C†¬=ò\È#Ww\ÜqsO=õ\Ô\ÓF\Zµ‹©Ij’rª\äTö•\ìË½’û­!W9‡Œ)‡¯U›;´uQ÷—u\â\àÁƒ·\ï\Õ/\ÌØ±c÷:ö\Øc¯ikk{¬ÜŠ/¼°¸ö\Úk‹eË–k×®-j+V¬(®¿şúbò\ä\É\ÅI\'T\äûËnqùk†\ì¹\ç\Ûi’J“”S%§²¯d_\î•\Üo¡£nme-\é<„\r\Z4¨(\ç—jfY°`Áz3\ËÊ•+‹…V3Ë¸q\ãª\ï\ßÀ ·¼¬Á½\îE>|ø\ÎG}ô\Ü8\à±.¸ \Z\Ğ6\Ç\êÕ«‹Y³f£Fzl\èĞ¡K<ğÀ/h’J“”S%§²¯d_\î•\Ü?Q90”ó\×:]\ßşö·«û<°\Ù3\ËÌ™3‹#Flh;³\×=zô°ı÷\ß\ÍYgµ\Ù/Â†Ì™3§(¸\ÕtĞ…}nm©&©IÊ©’S\ÙW²/÷Jî·ºrØ±ÿş³›C\Öğ\áÃ«¬y”í‰š={vqè¡‡v\â\æ•\î®-ıÂŒ9ò´C9d\íUW]UlI÷\İw_1aÂ„\Õ\å{{^|MRi’rª\äTö•\ìË½’û\Í\Şş\Ó®\Î<ó\Ìâ¡‡Ú¢3KÁ\Ä\ê4\Ä-j\Ù!.\ÃÛ°a\Ã\ÍZÑ­\å¼ó\Î{´­­\íŞ–Ÿd5Ie€SrªG+Ù—{%÷­²lò¯õ@•)\æß¹5\å÷\ït~Ü¼–[I˜e“9ò¶5‡·\ÚE]ôp9\Ä-\Ù\Äi’š¤œ*9•}%ûr¯\äş‰kó–\á-K&»C–T6¯º_\Ö-ó¢\ä‚%9\çm\îÜ¹Ew9÷\Üso0`À\Å}ı\n•š¤&)§JNe_É¾\Ü+¹brµ\É\ærÆ­}\ämCG\âš~ù÷9 U–N\Î\ËZ\Ï\îv\Øa‡İ›\îi’J“”S%§²¯d_\î•\Ü7e\ÉbóV9\ç­\'œs\Î9\Í!\î_J™û¼\åV[\âj“›kÉ’%kpwî®I*MRN•œÊ¾’}¹Wr\ßX:9¦yµ\É-}Á’Í¹°Işü\Æ7¦G_˜Ü¤{Ò¤IEOùÁ~° \à\Æi’J“”S%§²¯d_\î•Ü·/Ü¡¬UõĞ”ûK÷¤œWÿ]úõë·²\Ç@3fû¶¶¶\Ç6÷&\İ[ø(Ü²ò¸«¯§Ij’rª\äTö•\ìË½’ûÍ“Ó¬š7\é\Ş÷y{²:ê¨?\n7q\â\Äq£G\îñ\ã\àƒ¾¡\â>¤I*MRN•œÊ¾’}¹Wr_\Îó\ëaiúô\éE+\È\Õ/Ü=ò\Âüñÿ¼\ä’Kzü\Å8ù\ä“gõ¶e”\å\ßw\Ê\ã:5IMRN•œÊ¾’}¹Wrÿÿ\r<xûM}\ÏÀw*³¼6ƒR\î\Å\Ö\×\êØÕ«W¯so¸¼³\Û_ÀÑ£G/¿ö\Úk{üÅ˜={ö\ÜòE¸¬75\ÉÆ¥D§ô\ë\×owMR“”S%§²¯d_\î•\Üo2§×•u\â\Æ¹ò\ëG\Ôy;vl\ÑJÆ\ß<nd·¿€C‡]\İ7\îŞ”¥K—Ş‘Krö\Æ&Ù¨K7´\×K“\Ô$\åTÉ©\ì+Ù—{%÷9]T_¤ü8jC—\ä/¿vz\ãVX-\Ø4yò\ä\æ\Ï\Ø\Ù\İş\æ\Î\â­pB`\äE\è\åM²c¯W³Yj’š¤œ*9•}%ûr¯\ä¾#§Ë›ùl\ä7/hX>ŸS}Á‚-5À-\\¸°ùw¿¦G~\Ğ[E_\àš{½²|A“\Ô$\åTÉ©\ì+Ù—{%÷›\Ì\éuıû÷ÿtó(]ªV6­\\¹²ùw^¾\Í\ë«\Õ\×\ZCN$­?üğÃ›ü\ŞU«Võ\Ù&\ÙW2Ú“o\æ÷\Üs\Ï\ãú¾{ï½·¥ş\ï\ï¼ó\Î.¿–\Şÿır*û=VË—/\ïòk\éÛ{w2«G\Ë}o®û\î»o“\Û$õ÷uş\\_\ÛN)‡ ü?¯)\ëÁ²\îi?\âu{Y·–uS¥r¿¶üxUYW–5£¬i\å\ç&—/)kRY¿)Ÿs\Ê:£||ZY§”_ÿqù||ùxl.¡_>ÿnùüÈ²†—\Ï)kHù¹o”\Ï\Û\Ê\Ç\å\Ã~_.~À€{•?V~n\ì@x\Í\ßkuı¼Uf•®\æ–mö¸ò\æö>p\\]s\Êp\î]\î+MrÑ¢E\Å\àÁƒ«lØ°a\Å7¾ñ\â\î»\ï.v\Ûm·j-pW¿®|Šc9\Æ^.9]\ï\Íò;î¨²±\×^{US¿ø\Å/Š\Ïşó5u\êÔ\ám§v*&MšTü÷¿ÿ-:\è õªóñ\Ío~sñ©O}ª\Ú(\İÿı\×ù=S^xaõ½\çŸşz_«\ë+_ùJ\Ç\ßwÉ’%\Å\\\ĞQ#FŒ(^ø\Â¿ı\ío\×ù|=\Ôı\éO*\Şğ†7Tw\İu\×*\'>ø`²R\Üt\ÓMrªGo\Õ:\âˆ#ª¬\å\ã†6hO;\í´\âÕ¯~uuSÚ¿ÿı\ï\Åm·\İV|ô£-9\ä\êy*?gz´\Ü÷¦z\æ3ŸYüù\Ï®Î—\ê\\\Ù^\É÷\Üu\×]\Õ\Ï\ÆşóŸª¯_w\İu\Å5\×\\S}._\Ï{\Î\Æv\Îõ¦\Ü\çÿº|/{\î¾û\îû¢\Üpº­­\í•\å\ã×”9Ø¥|ş\æş¯òñÿn¨öÈ€•A+9)ŸÿŸòùW\Ë\Ç3e0Ë€–A­|>¢||LYÇ–\ÏO\È@—Á.^½ö\ï\ì²\Î/\ë÷\å\×.n§µŠW>nmóy+\ê\Ñ\î»\ßı\î]­°®´ı*”3{y“\\§9öµu\æ?ÿùÏ‹w¾ó\Õ\ã=öØ£8é¤“ª\Çgyfñ\Ü\ç>·\Ú\Èó›o¾¹\ÚÈ®kÌ˜1Å³Ÿı\ì\âœs\ÎY\çóù>\ÛnNó†š7\Ìf=ÿù\Ï/?üğ\âŸøDqê©§O{\ÚÓŠ\Ë/¿¼\Úiğ·¿ı­ø\éOZ¼ò•¯¬v&üñUö±\ê\×\×oº\æ²1ú¥/}©\Z\Ï=÷\Ü\âg?ûYõk³ó!\çÎ[}\ï	\'œP¼\ç=\ï)\Î>û\ìu*W¼Jn›ÿ\Ï\Ïy\ÎsŠü\ã]\Ö3ñŒbÖ¬YÅŠ+Š3\Î8£\Øyç«„×¼\æ5\ÕF…Nö»cu\Ä~û\íW¼\å-o©~fòñ\ë_ÿú:«&\ê!\É\åv\ÛmW¼şõ¯/\Ê\r»\ê\ç\ío|c•\Ñ\ì˜û\å/©G\Ë}\Ë\×e—]Võ\Úz€ûÑ~T\íÀ«\ëMozS•\éyó\æUß“ƒy÷‘£>ºø\Ø\Ç>\Ö1À¥w¿\ä%/©úµ\Ü÷Ø†\ÊÚ³ı{\ê%G\à\Ötû˜ûÀeOq+\Ü.—\í¥Mò\Êşıû©ss\ìkM²|(\Şşö·W{t³¡ı\å/¹zœJü\Îw¾S\\ıõ\ÕQˆ4\Ì¼\à\Å\Ë_şò\êq]/}\éK«\Ï\çq¾\Ï\ÆÁ¶›\Ó\ÈQ€_ı\êW\ÕR\Ã\áÃ‡WGr3À\å(À¯ı\ëâµ¯}mõ}97\×Y›?ş—Š\Õ\\¬%g\çw^õ¦œ¡mÈ!UFó\æa-ÿõ¯up\Ù‘\Ùf\í¸\ã\ëp3f\Ì(>ô¡­³œ#kÍ£şğ‡«?óô\ÓO/şô§W§w½\ë]\ë\rp—^zi5dv\ç^\Şm|€\Û&zô´iÓŠ·½\ímÅ»\ßı\î\âö\Ûo\ï8rœ¦wggH>—h\Éw6d\ÓÇ³³$}<?ƒ\Éh6†û\ÒP»\rp\ÛL\î_ñŠWtp\éÁÍ¯\×}7\ÜO~ò“uv\Zft¶I²ƒ9\Ïó³ğş÷¿_î·²\\q²\Ó\ĞöP\à•µ[§,÷–s\àwû‹8aÂ„“Z\á\Ş\nÃ†\r›_OÜ½¨Inp¯V_m’9\Òñ­o}«Z––.;W–\"\ÔßŸF™\ïm\î\Î\Ş\àÿøÇ–P\Êi5Œ%#Šn¼ñ\Æ\ê\è\Ö?şñ\îsŸû\\1r\ä\È\ê{\ë®«s\àš\\\ÙÓªe\ÉkÀ\å\Èp~Ÿ|\ä#\Åø\Ãjh\Ü~ûí«¬à²›.÷\ÄlV\Şğówù\ë_ÿZ}o†°d¿®ü™\Ï{\Şó:Ÿu\ÖY§\æ\Êp/{\ÙËªŸ‘úHc¸\ì–S=zKÔ‰\'X<õ©O­6>3\Ä\í¾û\î•\çY=‘¯\çg.ßŸ/=ù”SN©6~Ó«³!›#\Ôõ‘\n=Z\îû\Ú\0—e”YM”\çY2gÎœj5Q\î\é•\ÏeõE\Ş\'²\ãC\î·jFwn|\îo?§n‡®²\ì*”]1bÄû\í·\ßc=ywó¥K—.+ÿóV\r<ø\Ù}±™öµu\æÙ°\Î\ÚÑ£G¯SÏ³\ÈR„½\èE\ÅW\\\Ñ1\Ğe!\ë\Ïm\È\é÷¾÷½õ–P¦r´,C\Ó{\ßû\Şj)\Ì\æpy³Î¿%Ô¾û\î[=\Î\Ë,#Kvó\æ7ûz€\ËÑˆ,Ë²™Y\ÍÊ‘¼vØ¡c¹e~\Ï×½\îuÕ²\È\ì¬ÈŸ™1Ï³¡œó÷š\\\Ğ\åM\'\\6\n2\æ\×ä£œ\ê\Ñ[²’Ñ¿ü\å/y?]g©z]\Ù M&³J\";Lrg~2ğe#6¿Gv ¼\ï}\ï«6‚s\Şh¾O–û\Ş4Àeû\ÕW_]pÀ•,7—P&\ãy\å\Â\'Ÿ|rñÁ~p\Ê\ï‘\ßS\î·\ê¸s”\İÄ»}€;±—\Ünb¼Gu\ÔMYZ\ÑSN9\å”\æf}šd\ëWRd/n\Ş\à=ô\Ğj\ÙM6Š³±»¡\å3´\åDùl\ÄfCxÜ¸q.b\"§{E³Áù\Ç?ş±£²!YË›m†ª\\\\as¸ú\Â:©\ìh\È9>e«¸\Ï|\æ3ÕUp9\n˜\r\Şÿû\ßÕ¹k\Íú\â¿Xüş÷¿¯\ÎW«/’\r\à\ä?;\"šG\àò<K&\ë.\ç\å\×\ç\ëYz\ì8\Ù\ï\ÊÈƒ>¸\ËJÏ®—\ç\"=9W®\Îo]y«Sö³Ÿ\íXr©G\Ë}o\àrD$ı>\ï£Fê¨œ]pyŸ\ÉÊˆ<4hPµT¿ó\ï—\ß\Ë\0\×2G\êö©‡¤VX-Ø”£¶{,¶õ\È4r\ä\Èş\å†ø£=q‚\à<°fÀ€w—o;i’½\ã<¸œ?”+K\î½÷\Ş\Õ°lœ\æJ~»”m6\nrQ‰\Çsy_Mr\Û\Éip%?\Ùš\Ç\ÉJ=À\å\ëY^™%›3À\ÕW\Ë\Õ\'s\Õ\Ô\Ã;¬z\Ï\0—s\êru½z€\Ëí†v®l\×\\.ø\åg·\ÜrKõµ\ì\í\Íó|\à\\®b–n—]v\éXBi€“ı­]\ÙQ‘¬¾õ­o­\çq*½:³Ã­yj–§‡ÿ\îw¿«~\îrNG†¶z\é²-÷½\å\n\ÙY\nœó\Ø\Şñwlpga=ÀeGF\ŞSò<_>×¼\àI*C ®¥\Ô\åV\ÕÀİ“«›V¯^?=Vp=:\Ã:t\éÌ™3»ıE(\ß@rŠÿ\Ñ$[¿²\Ô\àY\ÏzVu´\"\Ìit9\n‘=µ;b—¥e9’’‹IdCÁ\0\'§\Í\î\Ê+¯¬gÈª¸4\ê¼\ÉfX\Êà³¹\\~Ÿ,…yÕ«^U\rs¹¨H\Î9Ë¹o9?\"ƒ]rœ{\å\ëù·\ï³\Ï>\Õ2³<Oåœ¼\éÓ§W\ë{e€\ÛØ \×y	eó¸\Î\\®~Öò±»m\ìd\Ëò\Ü\ÜŞ¢ş¹\Ê\Ò\Ê¿ø\ÅÏ›•«½\æÜ¹,L\Î\ÆQ~6rN–û\ŞV\Ém–Lnl€\Ëj ú*”Yú£uyš•Ÿ\\K…\ë¸\å@Ş“[A\æ¥=ÿ­iÈ!Ÿ:ğÀWg\\w¹ú\ê«o,7´n\Ê\Õh4\ÉÖ®\\5/{¥²$2\Ë\Ër¬\\¡/—N\Ï\ÇOú\Ó\ÅE]\Ôq#\Ø\İø\æ7¿Ym\ç\\‹l\0\ç\êNY¢“\ï\Í\Ò9rš.\ç\'\äµ\\Á±à²—4;rA…\\¡rc\\$\ä(X¾^ß¸8GÄ²\'6W\ãKOË¯Ï‘\ãAş\Â¾P]°¡y#\×[o½µº2j}Ñl\È&\×9Z\×y‡Dş®¹‡]½ó„ò<;8ò³Q\ß9WÁ\Ì\0—% \Ù\ÑñÕ¯~µøş÷¿_ıš\\ö:·\â\È8\åT\ŞR•\r\Ò\\\'9\Ïòß‰\'\Çw\\õ³\Éb}¡ô\è,Ê<\ÎrÊ‹/¾¸º\"k²œ\Ï\Õ÷\ÍÒ£\å¾\Õ+YÎ©7\ÜpCu!«œ\çVWÎ§~J\ã¸\æ}\à²!‹O5+;úp-5ÀTKÙlGyä£\å“\Ã{üE*ù\ï\ÊÆ½¦;–R–Xd\éd¹Qó	M²õ+G²ñ™\r\ã\ì\İ\Ír´4\Ê|-KÉ²-,\É%\Şó›\ßT¬\Ù0¯Oon`d=¿G.\ßk\ãÀ\0—Ùˆ\Ì\åı;/¡¬kc\\}?¹\æOS¹)x¸?ü\á\ÕòÆœ«™/o\Şù|óhYjñ\â\Å\Õ-²Á›ó5³ó!\ç\Çuõw\Ï`XotşZ4\ç\\¹\Ü\ì>\Â9/\Ãh¼O~ò“Õ¯\Ër\ÎrªGo©Ê±\ìˆ\È\Ñ\ç\ì¨\ÈÑˆ\ä9¥\êrO\Î|_Bd\Ùò¦ª¾x-÷­\\\é\ÓY\åP_-8;ô²œ²®\ì(Ë¹ø¹€O\ç.W!Î…|š\å\"&­%8,û\×\Êz`\Êûhß·ºyñ’û[\â T.9[np,*Ã¾zkş\ã—-[¶¶ü¹½%¦VMr³+Gºº,|ıxS{n³!]­\Ó$·İœfø\Ï¶:WYÂ˜e§,\É\Ş\Ó\rC™\ÏåŠ§]](eCy\Ìğµ±«®ºj“WKÍŸ›¥g9ú¶¡?wc\Ã_\Ñ\î>\ÔF\ì¶Ó£»ºÁw_ÿ7\Êş¶›ûú}\äñŞƒ4\ï=]mƒ\ä\n\Ã\Í\í¹\ïy\å¼0®š²\Ã7ÿw=!¸;\ì°GÜ‰­ô\"\í0hĞ “&Mzdkyk\Ş\Æi’\ÊÆœ*9•}%ûr¯\ä¾+\í7ş^\\NYÁ\ÕrD·1¼-\ß\Ômº]®¦\Ò\ÖÖ¶\äŒ3\ÎXº¥\ÏyË²\Ém\åÈ›&©IÊ©’S\ÙW²/÷J\îŸô¦¶\ÆğTıûºSş¼\æŸ_\Ö\àV}¡v(‡­‹su\Ê[o½õ\á\'{«€\\m2,\Ù\Îy\Ó$5I9Ur*ûJö\å^\Éı–“{F7.\İ\ßm\ç\Ãå¼·ò\Ï[\Û\Ş\Î\ì\r/Ö°r»ó„N˜wó\Í7o\Ö¹¥K—.›0aÂœu\Ë]\Êûú\Õ&5IMRN•œÊ¾’}¹Wr¿Õ–R\Îkq[ûH\\~ÿN\ÃÛ¼–[:¹‰lLÖŸ2\ä†ñ\ã\Ç_y\Ùe—]}\Ûm·\İ\ÚüG®X±\â\ÎrJ{ò\É\'\Ï\Z6l\Øüşıû¯Ê´Ü—oÒ­I*œ’S\ÙW²/÷Jî·¾\Ì\å<²¨¹œ1\ç\Ä\å\æ\Ú[ú‚%\ÎyK-*g¢]{\ë\á\Ë\İÛ‡¹K\Û_À5\Ø\í7\Ü;±¬=s\éO-R“\Ô$\åTÉ©\ì+Ù—{%÷[jˆ\Ë\r´›\ÃU®N™¥[j\É\ä\á‡şh§\ám^¯\Ş\Ğ$•NÉ©­d_\î•\Ü÷¤\Üú¬ÿş¿\î4dU7û>}úf\ßj GğrN]ó&\İ\Ís\ŞzÍ²I4Ie€SrªG+Ù—{%÷­ªıê”‹;]ƒ\r*Æ[\\r\É%Å‚ª{\ÍfYd-÷ƒ]¸pa1yò\äbüøñE[[\ÛcÜ–·\ì\Õ&\Ñ$•&)§rªGËˆ\ìË½’û\Ş(§l\åô®~ıú­\ÜÀöD\êşœæ¨›&©™h’rª\äTö•\ìË½’û­7\Èm_q#Û¯T¹fs·œW—{Uo«W\ÍG“\Ô$\åTÉ©\ì+Ù—{%÷=¢\Æv\Ë0\Ö~\ï¸9\í\Ë!\ëa-\Ã\İ\âö¡L\Ì2\ÌmıŠùh’š¤œ*9•}%ûr¯\ä4I¥IÊ©òf.û§V­ZUÌŸ?¿úød>/ûr¯\ä4I¥IÊ©’S\Ù\ßÊ•a¬ü§UŸ\Ì\çe_\î•Üƒ&©4I9Ur*û8Ù—{%÷ I*MRN•7s\Ù7ÀÉ¾¯\ä4Ie€SrªG\àd_\î•Üƒ&©4I9Ur*û8Ù—{%÷ I*MRN•7sœNöõ|=\Ğ$•NÉ©m€“}¹Wrš¤\Ò$\åTÉ©\ì\àd_\î•Üƒ&©4I9•Sp8ô|=\Ğ$5Iœ’S\Ù7ÀÉ¾\Ü+¹MRi’rª\äTö\rp²/÷J\îA“Tš¤œ\Ê)8œ\Ü+=Xß´i\Ó4“¾[•Mrœ*9•}œ\ìË½’{\è#fÌ˜qÇ²e\Ë4”>XK–,9¿l’\×É©’S\Ùo¥ZµjU5Œ\å\ã“ù¼\ìË½’{\Ø&MŸ>ı‹—_~ù=w\Şy\çƒ\ZK\ßÙ»•9u\ê\Ô[\Ë\ÚGN•œÊ¾’}¹Wr}Hùƒ´÷”)S\æ\äv\Ö%«^_ù¼®¯5H9•S=Zöe_\î•\Ü\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0l\Òÿ„m\Ñ\ë§É¾\0\0\0\0IEND®B`‚',1),('27512',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/vacation.bpmn20.xml','27511','<definitions\r\n  xmlns=\'http://www.omg.org/spec/BPMN/20100524/MODEL\'\r\n  xmlns:xsi=\'http://www.w3.org/2001/XMLSchema-instance\'\r\n  xmlns:activiti=\'http://activiti.org/bpmn\'\r\n  xmlns:bpmndi=\'http://www.omg.org/spec/BPMN/20100524/DI\'\r\n  xmlns:omgdc=\'http://www.omg.org/spec/DD/20100524/DC\'\r\n  xmlns:omgdi=\'http://www.omg.org/spec/DD/20100524/DI\'\r\n  typeLanguage=\'http://www.w3.org/2001/XMLSchema\'\r\n  expressionLanguage=\'http://www.w3.org/1999/XPath\'\r\n  targetNamespace=\'http://www.mossle.com\'>\r\n<process id=\'vacation\' name=\'è¯·å‡æµç¨‹\' isExecutable=\'true\'>\r\n  <documentation>è¯·å‡æµç¨‹</documentation>\r\n  <startEvent id=\'vacation_1\' name=\'å¡«å†™è¯·å‡å•\'/>\r\n  <sequenceFlow id=\'transition-1\' sourceRef=\'vacation_1\' targetRef=\'taskuser-1\'/>\r\n  <userTask id=\'taskuser-1\' name=\'å¡«å†™è¯·å‡å•\' activiti:formKey=\'vacation-request\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-2\' sourceRef=\'taskuser-1\' targetRef=\'taskuser-2\'/>\r\n  <userTask id=\'taskuser-2\' name=\'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\' activiti:formKey=\'vacation-department\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-3\' sourceRef=\'taskuser-2\' targetRef=\'exclusive-1\'/>\r\n  <exclusiveGateway id=\'exclusive-1\' name=\'exclusive-1\'/>\r\n  <sequenceFlow id=\'transition-4\' name=\"åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-3\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-9\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-1\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${leaderComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-3\' name=\'äººäº‹å®¡æ‰¹\' activiti:formKey=\'vacation-hr\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>7</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-8\' sourceRef=\'taskuser-3\' targetRef=\'exclusive-2\'/>\r\n  <exclusiveGateway id=\'exclusive-2\' name=\'exclusive-2\'/>\r\n  <sequenceFlow id=\'transition-10\' name=\"ä¸åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-5\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;ä¸åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-13\' name=\"åŒæ„\" sourceRef=\'exclusive-2\' targetRef=\'taskuser-6\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${hrComment==&apos;åŒæ„&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-5\' name=\'è°ƒæ•´ç”³è¯·\' activiti:formKey=\'vacation-modify\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-11\' sourceRef=\'taskuser-5\' targetRef=\'exclusive-3\'/>\r\n  <exclusiveGateway id=\'exclusive-3\' name=\'exclusive-3\'/>\r\n  <sequenceFlow id=\'transition-12\' name=\"é‡æ–°ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'taskuser-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;é‡æ–°ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <sequenceFlow id=\'transition-15\' name=\"æ’¤é”€ç”³è¯·\" sourceRef=\'exclusive-3\' targetRef=\'endnone-2\'>\r\n    <conditionExpression xsi:type=\'tFormalExpression\'>${initiatorComment==&apos;æ’¤é”€ç”³è¯·&apos;}</conditionExpression>\r\n  </sequenceFlow>\r\n  <userTask id=\'taskuser-6\' name=\'é”€å‡\' activiti:formKey=\'vacation-finish\'>\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n  </userTask>\r\n  <sequenceFlow id=\'transition-14\' sourceRef=\'taskuser-6\' targetRef=\'endnone-2\'/>\r\n  <endEvent id=\'endnone-2\' name=\'ç»“æŸ\'/>\r\n</process>\r\n<bpmndi:BPMNDiagram id=\'BPMNDiagram_vacation\'>\r\n  <bpmndi:BPMNPlane bpmnElement=\'vacation\' id=\'BPMNPlane_vacation\'>\r\n    <bpmndi:BPMNShape bpmnElement=\'vacation_1\' id=\'BPMNShape_vacation_1\'>\r\n      <omgdc:Bounds height=\'35\' width=\'35\' x=\'29\' y=\'208\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-1\' id=\'BPMNShape_taskuser-1\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'109\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-2\' id=\'BPMNShape_taskuser-2\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'279\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-1\' id=\'BPMNShape_exclusive-1\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'445\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-3\' id=\'BPMNShape_taskuser-3\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-2\' id=\'BPMNShape_exclusive-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'681\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-5\' id=\'BPMNShape_taskuser-5\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'531\' y=\'80\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'exclusive-3\' id=\'BPMNShape_exclusive-3\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'571\' y=\'12\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'taskuser-6\' id=\'BPMNShape_taskuser-6\'>\r\n      <omgdc:Bounds height=\'80\' width=\'120\' x=\'764\' y=\'185\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNShape bpmnElement=\'endnone-2\' id=\'BPMNShape_endnone-2\'>\r\n      <omgdc:Bounds height=\'40\' width=\'40\' x=\'926\' y=\'205\'/>\r\n    </bpmndi:BPMNShape>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-1\' id=\'BPMNShape_transition-1\'>\r\n      <omgdi:waypoint x=\'69\' y=\'227\'/>\r\n      <omgdi:waypoint x=\'109\' y=\'226\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-2\' id=\'BPMNShape_transition-2\'>\r\n      <omgdi:waypoint x=\'229\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'279\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-3\' id=\'BPMNShape_transition-3\'>\r\n      <omgdi:waypoint x=\'399\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'445\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-4\' id=\'BPMNShape_transition-4\'>\r\n      <omgdi:waypoint x=\'485\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"505\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-9\' id=\'BPMNShape_transition-9\'>\r\n      <omgdi:waypoint x=\'464\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'464\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'531\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"464\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-8\' id=\'BPMNShape_transition-8\'>\r\n      <omgdi:waypoint x=\'651\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'681\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-10\' id=\'BPMNShape_transition-10\'>\r\n      <omgdi:waypoint x=\'700\' y=\'205\'/>\r\n      <omgdi:waypoint x=\'700\' y=\'120\'/>\r\n      <omgdi:waypoint x=\'651\' y=\'120\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"700\" y=\"120\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-13\' id=\'BPMNShape_transition-13\'>\r\n      <omgdi:waypoint x=\'721\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'764\' y=\'225\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"740\" y=\"225\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-11\' id=\'BPMNShape_transition-11\'>\r\n      <omgdi:waypoint x=\'591\' y=\'80\'/>\r\n      <omgdi:waypoint x=\'591\' y=\'52\'/>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-12\' id=\'BPMNShape_transition-12\'>\r\n      <omgdi:waypoint x=\'571\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'338\' y=\'185\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"338\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-15\' id=\'BPMNShape_transition-15\'>\r\n      <omgdi:waypoint x=\'611\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'32\'/>\r\n      <omgdi:waypoint x=\'945\' y=\'205\'/>\r\n	  <bpmndi:BPMNLabel>\r\n        <omgdc:Bounds height=\"11\" width=\"100\" x=\"945\" y=\"32\"></omgdc:Bounds>\r\n      </bpmndi:BPMNLabel>\r\n    </bpmndi:BPMNEdge>\r\n    <bpmndi:BPMNEdge bpmnElement=\'transition-14\' id=\'BPMNShape_transition-14\'>\r\n      <omgdi:waypoint x=\'884\' y=\'225\'/>\r\n      <omgdi:waypoint x=\'926\' y=\'225\'/>\r\n    </bpmndi:BPMNEdge>\r\n  </bpmndi:BPMNPlane>\r\n</bpmndi:BPMNDiagram>\r\n</definitions>',0),('27513',1,'/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/vacation.vacation.png','27511','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\Ğ\0\0\0\0\0\ŞM\î\Û\0\0D\ÔIDATx\Ú\í	xT\åõ‡q_k­û¾¶\ÚZµ\îûB]Z¬¸TM&7	QHˆ¨ Q´(*â†»şÁ”\Ì‹Š\n*¸\×Ai‹\ârÿ\çw\ÉM‡0Y&\Ëd\î\Ìû>\Ïyf\æ\Î\Í$9óó\ßı–Û®\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ˆ-q\0\0\0\0\0\0@ıt0s«\0\0\0\0\0\0 	§˜-7Qı\Ø—\0\0\0\0\0\0\0$Ï¾h\ÖôRD4\0\0\0\0\0\0@\İâ¹¡\ã\0\0\0\0\0\0\09G‡D²ÿ>k¢\0\0\0\0\0 \ç\ÅsCâ˜‘h\0\0\0\0\0\0\ÈYNi—\Ú\Èrª\ç\0\0\0\0\0\0dx\îØ„Ÿ[ˆ\0\0\0\0\0\0\Äs\ëÿ<\0\0\0\0\0\0@\Æ\ÓĞ†a\éş\0\0\0\0\0\0€Œ\Ï-5ıš‘h\0\0\0\0\0\0\È:jo\0¶Y—\ê\ÇT¨ısl,\0\0\0\0\0\0Y\';&ˆ\à;\Í\Ü\ê\ÇÆŠ\èº~\r\0\0\0\0\0\0Y\'E—j\ì¦ ¢Å³o\ŞgM4\0\0\0\0\0\0–ºDm21\\ŸˆNvşI\ÎgM4\0\0\0\0\0\0V<wHA\'ÑÏµE4Ó¹\0\0\0\0\0 \ãi¬ˆmHD§*ÿ\ÒvŒD\0\0\0\0\0@\0\Äsc\Åk]\"z\İ&Šg\ÖD\0\0\0\0\0@Öˆ\çúDô»\Í\Ï\Íı{\0\0\0\0\0\0\0Z\æø&\Ñ\ÍÏµE4k¢\0\0\0 7(((p\ë5\Çq¢Nk\Ó\ë¢.\Õy~²ã…/¨÷w¬ùùÅ®S\Ü\ÅmğoÃ°1\Õ\ÍuMÛ®=òünõñ\æ0‚\ï\Ã0¬Iyİ£W8¾‹+*\Æo\è?\Ï?~½>£§íš˜l/;\å×µpÙˆ\é;Ö— {Fß‰J\0 \åô/ö°Nùğ\É[•V\ÆÇ”…c·V\ÛT³\ÊJÃ±«k’u$zZi8z‘®tT¼c¯p\Õ~e•\Ñ^¥‘\èCvì‰²\ÊXŸd¿\ÇŞ‹&=>\"¾‡½÷´:û=½Í®/G\'è˜\ëwñ-A\ÓĞ®\Û\rQ\ßtc\î]Œ@\04£ö\ê~v#«w\î™¶gy8zFY8şly¸\êø\ÒH\ì\\{^\âŸ\Ù\èøª£º¸iùğ7ñj-\×]GµR¿›\Û\Ìj¥©\Ô^\0\0Ğ¼$ş“\ëº•Ebƒj¬2ZaI÷5E¢\'UTT¬k\ÏÿQV\ïZ\Z‰—‡\ã‘Ò‘±#-\É?¥¤^KT^½OfŸu¿‰\áEşk\êCÏµÏº\Ğ>£\È>ûX{<\Ï\ÎRbZ\Ï\Õiğ-xbuE»\ÖY\İ\Í\Zh\0€¦\×^?[íµ„pye\ì«{N/\Ç^±\×7–Gb\å& ŸñGbı«…ğıfÿ§\Zªwe\ìP«‘&•G¦`u\Ò\Õbe#¦ı!\Õ\Ú\0\0š\Ä¬\Ğ\ÇJ\Ë$’5¢\ì¿\Ö\ÕPMÒ”\"\ÏWY>\Î\ŞÏ“ğ\ÕóòHt@\íÏµ¤}Yé¨ªSuuµ<ı‹D¹÷ó\Üvú\ì\êD¿¥¦+ùÓ’zWF±$ÿw\ë^Ö£g\Ã_Ü„o	`\r\Ñ\Ú\ØßºnU•l\îTD4»p\04¿öÚ£´2ö@Y$zfò™€®´\×w•…£e«+b7jdºOeÕŸ53°\Û\ØW6¨¨ˆ¯¯©İ‰ç—†£=UO5¶ö\0€\æ\'ñòòò6\ÔULK\Ú\İ\ÍKÔz£\Îz‰Õ£—˜#ñ\Ğ\ê\äûÀ\Øz¾z´zªD¯;\×^wòÄ±®”†c\ÃVN\ìI½\ÖsMW‚¯Nôu•UEye¼‹÷»j™¦‰ó-¬%¢Š‹†\îó\Ü\Ğ}¢\ë\â°v\Ü\Z\0 ¹µ×ªnİºmP^»£td\ÕöZ®¶ºÆŠgõÒ›\Õõ\Ø¯\ZUu´*\ìõ{z,\Çûš¸¾\Â~ö,™\ê¯£\ã›7¶ö\0€\æ\'ñ\ïKJJ6\Öt ¿#W\é\Øûf£¼\ç&ŠûŒª\Ú\Ç¼#«\ÔTn{\ï%K\à§x\ëŸ#±»µ~\ÚK\èöÿ¹v\Îä¾‘ø\ïez\Ş\'?ªúù-‰\ç\é\ç4Â­©\Ú\Öy<\æ%y³\ÕÓş·ş\0jhh¸!ñÜ®‰\"ÚŸF~6_\0@³j¯•®\ë\î]-–5\â<\ÍDñµ&¤_\ëv°W[…\ãCtî¥£ª¶.\Ä\ÎÔˆt¯ğôm\íg4»wu\æÙŒTk/\0\0h^ÿÎ’øf–XßªY\ï,]ó<ş²6ªğÄ®7½ZWEc¯—G\â¥¾\Ú8\Ì×š†T=…H\Ù\Ş\ÕT3{>\ß^\Z\Çüóª“ııºrª‘f	h¯#Yİ™Ü­+«|C\0uŠ\Ùd\"º±\â9U\íÿ>\Ä3\0@3)\î\Ô\åû‡fÿ÷\Ş\ÕSv[=0¦uÏ½\Â\Ïna¯—ù;lkº¶\Õb/V/­»P\ÂXû\Î\ÈúŠ\î®‡Tk/\0\0h€ş\Æô!ÿ›\n\äM\á~\á¯c§WŒ‹o\\-vo\Ñ\Æ^¥\á\è\Í\ŞNÙ‘x{mv\á	\èH\ì™\ZQ¼z”ú\Î\ÕI;z‘u\n3z<ñ÷K€û\ët$ÎµvG¦\ãş\í\0 )\Z‰®=ºK»\Ô\ïóœLDw®õ{Xó\0\Ğrµ×·V{oõÑ•«\'b£L\ä^\ì\İ}ddl_{œµF­T=Û¯Z\\\à­}^½¤nŠR­½\0\0 8ó_K\âgú†YB®D]ó\ÚLºtd\Õ\á&toĞºe‰l\í\æ¨+§}oo£„¾\Æ\æ\Z±®µ–\È\ÖHv²\ß]><º³%õ\Å\Ş\Æe&\È\Ë#\ÑK|³\ã¯ò\í\04JD\'n,–(†#\Û5ğsÜª\n\0 \åô7ŸºnŸ\ÒHì¯h\Ö\àA8~yye¬\Û\ê\Ùx±\'µ\Ëv€Ç¢z\Ï\Û<,a\ãV\İfT³S©½\0\0 ™t\í=\è\Û{¦/\Ózš{dš>T÷_{\Ç\Â\Ñ#\Ê#±Bo¤8›­\İ\Ë#ñ\Ã\Ê+\ã~¢®ks\n/\ÙWÆ“\ßZS­+­Õƒ7¼ú\ê\êƒ\å\á\Ø5|;\0¢ötnPÛ¥~kª\Ú?\×\ÜûO\0@²Ú«üš\ï‡?ö\î$\rPh‡\í\Õ÷~?¦ZJS·%­\Ë÷\ê£ñ=4ó¯O8ö\'-Ÿ\ë];YÇ«oU5Y;s§R{\0@3	…B\ËKJJ\Zµ.F·±Ò½ k×±d\Ç \ÍDtsI6=\0\0Z€‚‚‚ÿm\'\0\0‚™Ä—\å\å\åm…\'\0Ñ­$\Æ\0 T/\0\0 óôW;w\Ş\ZO\0dÍvÍ´m\0€Ö¯½¾.,,ü\r\0\0f_’——·-\0\È:\ê2†\0¤§öbö\0@€“øb\Çq¶\Ç\0YEªÓ°™¶\r\0¾\Úk©\Õ^\Û\à	\0€`&ñEyyy;\à	€œÑ‡™­0;—\0¤¥öbö\0@€“øB³ğ@VÒ¡Zw¨\çı¥ˆg\0€´\Ö^\Ìş\0pÿ¬¨¨h<µ\Ô5Í´m\0€¶©½˜ı\0\à$ş©Ù®x §D4\â\0 \íj/fÿ\08‰\\XX¸;\0\È=ñ\0Ğ¦µ\×\çyyy;\ã	\0€`&ñ-‰\ï‰\'\0²Ÿ\İvÛ­—=¸\í¸U\0@[\Ö^\Ìş\0pÿWaa\á^x \'\â}\â9\çœ\ã¶o\ß~}¼\0\Ğf¹ø“¼¼¼\İğ\0@0“øû–\Ä‹\'\0²›P(t”\Åûf®\ã8Œ@\0´]\íõ‘\Ùx\0 ˜Iü]+¬÷Á\0Y/ —x®¶9x\0 \Íj/–\Ï\0\ÇqŞ±$¾/\0\È\êb\í0ô\Ù7\Ôl\"\0\Ğ69ù\ËÁ{\ã	\0€`&ñ·,‰ÿO\0duœOL\Ïş(4k¡\0\Ú$\'³|\0 ÀI|¾\ã8\Ä\0Y\ãk>ûf±6\0H{^fù\0@€“ø›–\Ä÷\Ç\0Yã“’‰\çj›…‡\0\0\Ò\Ë\ç\0\0‚]\\¿n‰ü@<•ñ]\ç\è3k¡\0\Ú,7³|\0 ¨XŸ[XXx\0\È\Ê\"mb}\â™¹\0Ò\ã8òòòö\Ã\0\0Á,°_3;O\0\äLÌ»x\0 Mó0\Ë\ç\0\0œ\Ä_),,<O\0  \0 õ1ñüFQQ\Ñx\0 ˜\ÅôË–\È\Ç\0h\0\0HKgµ×Ÿğ\0@0“øK………G\à	\04\0\0´>\ì?\0\ìbz–%ò£ğ\0\Z\0\0Ò’‡_µ\Ú\ë<\0\Ì$>\Ó\ì<€€\0€´\äaöŸ\0p!??ÿX<€€\0€´\äaöŸ\0pŸnv<\0@@\0@Zò0û\Ï\0\08‰Ou\çD<€€\0€´\ä\á\ÙfG\â	\0€`&ñx~~şŸñ\0\Z\0\0Ò’‡_t\çh<\0\Ì$µ$~\0@@\0@Zò0¸\0\ÏSòóóOÁ\0h\0\0HKaõ\×qx\0 ˜Iü¹P(ô<€€\0€´\äa6p\0*&\'şO\0  \0 -y˜\r\\\0œÄŸ5}\Z\0@@\0@ZòpÜ¬=\0\0f\Ú\ìt<€€\0€´\äa6p\0pŸ\n…:\â	\04\0\0¤%W™Œ\'\0\0‚™ÄŸ4;O\0  \0 -yøy\ÇqN\Å\0\0$\n=nIül<¹Š\ëº\ëø\á‡fÏıs4\Zu§L™’\Õ&\íÿcUU•;}úô¯ÌŠi\á\0š; \0\08‰?föw<¹Š\ÄóŒ3\Ü%K–¸?üğ–%¶t\éRwÚ´iÿ11}­\02¬öš\ä8N<\0@B¡\Ğ#–\Ä\Ï\Å«h\äñœµ\"ú‡)S¦¼M+€\Ğ\Ü\0 ¨˜xoI<O@®¢iÛˆ\Í\ì5\Ğ?\Ò\Ê \Ã4w@\0pÿ?\Ñùxr­™Ehfµ€f\Ó4\0È´Ú‹; \0\0\ÏY/À€€®ß¾ù÷\"÷\Ã9\ã\ÜU\×z¦\ç:†HE@\0¤( ¹\n\0@€“øf…x\ĞuÛŠ\å\İù\Ï\rr_\æ²5L\ÇôB\r\0B\íõD(:O\0\0\Çq\î·$^„\'\0]·}¶à©µÄ³oŸ/˜ˆPE@\0¤\" ¹\n\0@€“ø½fğ  ë¶·\ã7\Ö) õB\r\0B\íõh(:O\0\03‰\ß\í8N<\èºmş”Š:´\ŞC¨\" \0R¨½&˜qz\0€€&ñqf%x\Ğh4\0@\ë\Ã-D\0‚- \ï4»\0O\0ºnÓ®\Ûu	h½‡PE@\0¤P{=l\Â\0\0$\n\İ\î8NW<\èº\íı™£\ê\Ğz¡Š€\0h,\ÜB\0 À\Üfv\0tİ¶l\á\îü\ç¯=}Û\é=„*\Z\0 …Ú‹[ˆ\0•P(ôO\Çq.\Æ€€®\ß>z\åŞµ´!R\Ğ\0\0©À-D\0LAAÁ­–Ä»\ã	@@\×c+Wº\ï¿8f\í\é\ÛvL\ï!T\Ğ\0\0)\Ô^÷™ˆ.\Æ\0\0\Ä\ÄóhK\â=ğ  “ÛŠ\å\İ÷fF\ê\\­÷tb\r\0\Ğ¬\îº\Ç\ê¯\Îx\0 €D,‰÷\Ä€€^{\Ôy\Ñû1÷\Í\ÉW\Ö)}\Ó9:—\Ñh4\0@#j¯»MDwÁ\0\0ÁL\â•f½ñ  ?\ê\Ìh4\Z\0 ©˜x¾+\n\'\0\0‚™\ÄGZ/\Å€€şŸ5fÔ¹¾\Ñh„+\Z\0 .\n\n\n\î4»\0O\0\03‰7+\Ç€€şŸ5U<û†pE@\0\ÔE(º\İqœ®x\0 ˜IüfK\â}ñ  14\0@\ëSPPp›\ÙEx\0 ˜Iü&³~x\Ğ\Z\0 õ	…Bÿt\çb<\0\Ì$~£%ñşx\Ğ\Z\0 õ)((cv	\0\0 &‡šˆ€\'\0! \0Z«»F[ı\ÕO\0\0‚‚‚X¿O\0\ZC@\0¤¥ö\Zev)\0\0 &¯…BW\á	@@ch\0€\Ö\Çê®°\Õ_½ğ\0@\0)((¸\Öl\04†€\0HK\íUi\ÖO\0\0\Çq®	…BW\ã	@@ch\0€\Ö\Ç\ê®V•\á	\0€\0RPP0Ø¬O\0\ZC@\0¤¥ö\ZnV\'\0\0‚™\Äi\Z7\04†€\0h}B¡\ĞÍ\ãô\Å\0\0Á\ĞÍ†\à	@@ch\0€´\Ô^7™õ\Ã\0\0ÁL\âWš]\'\0! \0ZŸP(t£\ã8ıñ\0@0“ø\0K\âCñ  14\0@\ëSPPpƒ\Ù\åx\0 ˜Iür%r<h\r\0–\Ú\ë\ã\\\'\0\0H(ºÌ’ø0<Ù†µ\ë)f\Ç! \Ğ\r²‡Y|œˆ€4\n\èëµ„O\0\0Sdô\Õnx²°@qe\Ò\ÖÆB@# kg³‰f?ª1\0\Æşiˆ6q\Å\0\0Ä„E·\à	\ÈV`“’H# sK@\×Î¾1\0\Æş\éZ\İFO\0\0e&¢G\à	\È]3\"(¤Ğ¹! 5ASµkg4\0´AÿTa6O\0\03‰÷6«\Ä+:qDZ¢\nı:Ùˆ3\Z\0Ú°\Z,\'\0\0ˆ\ã8½LD„ñ\â²\Å\Íq\Ü\âó/v\Óò»ša\Ù$ ¿û\î;÷\Ûo¿­y½r\å\ÊVû=\ß|óMtà­µsB\Şøñ\ëõUµ\Ù õ±º\ëj«¿®Á\0\0ÁR—š\Â9÷½ÿ\\QQ±nYe\ìÚ²p\ìÁº¬4÷\îSY‰õ(Ä)¯ŒN¬mv\Şs\å‘\èù:¯,;¶,\áYet¤½·¸\æµY\éÈª3\à\"Á+^:¶o\ß~}—\ÉzÈ!\î\Í7\ß\ì=ÿû\ßÿ\îş\ío[\Ë\æÌ™\ãNš4\É\íÖ­›{\Â	\'¸ûì³÷ü¡‡róòò\ÜÎ;»S§Nõ\ì\Ë/¿\\\ëw,Y²\Ä]o½õÜ?ş8\é\ßp\Í5×¸\×]w÷|Ô¨Q\îˆ#\Üs\Î9\Ç\İÿı½\ç²÷\Ş{/\ã§p\ç\ç\çŸb\ßı¬ @\çB¼\äX<P‰\á	\0€\0bB¢»%ñ[ñD\ÎuŞ«Ldm\Ğÿ\Æ~uù\Ø)¿–õŒ<¿“\Ô\ÓúF\â¿÷•q¯\ĞÇ\è~v£dŸUv/¯ŒUQ_¿<2\í\0+º/\Ç^)G\Ğó\Òp\ìzû\ÜAz^6búm( \×\Î>™, _|ñEwë­·vÇ\çn²\É&n$q\ì	\ä|\Ğ\İe—]\ÜÉ“\'»ó\ç\Ïw/¹\äO@\ï»\ï¾\Şó\Ê\ÊJw\İu\×uO<ñD÷ü£»\í¶Ûº³f\Íò>÷é§ŸöD±l\àÀnÿşık\é}ÿoxé¥—\Ü\í·\ß\Ş6l˜{õ\ÕW»}ûöuO:\é$w\ï½÷ö÷\ë\×\Ï]°`A`6s§ƒµ…\ĞY¯\09V{]e¹\è:<\0@,_l‰üŸx\"\çô÷%%%û¯»}e+œ\'•†£“İ±\Éf§[ñ=a\r‹\Äú[1~G¯p|+¸··Bü\Êú¬´2~\\\ZÿG_Í²v~vm\á-“8^¾|¹\' o¹\å÷°\Ãó„³„¯„±ô\'Ÿ|\â\î´\ÓN\ŞÈ°\Ş?ú\è£\İ\İw\ß\İ]guÜ‡~Øµ\ï\Ú=zt\ÍgJ€x\àn×®]½j	\è\Â\ÂBïµ\ëıÄ¿A#Ì‹-rG\é\îµ\×^\î6\Ûl\ãnº\é¦\Şó\Ã?<·±ª‘õñ\ncµ\×\×ÿÀ\0\0ÁR\İ\Ì\Æâ‰œûŞ¿\éÔ©\Ófz®Q++–o3›Y:ª\êT+¼\ï\é3zÚ®ş¹*¶UtWŒ‹o¬)¾ù\ë%U¬\×\î‘\èi\Zı²ÏªL4+\Ü\çöó\Üviş“8E@kú¶\Ä\é\É\'Ÿì½–€®ªªr{ö\ì\éw\Üq\Şh²/ ¿ø\â÷˜cñ„\í[l\á½\ß}÷y#\É\ZÁ\Ö\èó\×_½†€\Ö(õgŸ}\æ	t	\è—_~\Ù{­ã¾€öÿ†c=\Ö}\íµ\×\Üs\Ï=×³ƒ:\È\İq\Çk^\ßq\Ç\Ğ	…¬F¤g¯m¯\0¹„õM,÷\Å\0\0\ÄxWK\ä·ã‰œ\Ğÿ)**Ú¢tdô+ \ï/Qµ—F¨Ê‡OŞªweô;6G\ÓE½‚½2vVy$zI\é¨xG;ş°=\àMñŒÄ\Ñ4Q\à5ye´B}ie|h¢Ù±W3\Õ™* %h‡\înµ\ÕV5ú”SNqõ«_¹›o¾¹7\Â\ì\èx<\î‰\Üıö\Û\Ï\İm·\İ\ÜC=\Ô\Ğ\ßz­kM\ï;wn€\Şx\ã\İ\ßü\æ7\î–[n\é	h=êµûZC8v7\Úh#oZ\Ó\Â{õêµ†]y\å•\îo¼XM¼+^²¤ö\êoµ×x\0 ˜…\Ùfw\â‰Ü¢s\ç\Î_Oxù\ÛÛ´\ŞQk!½b:‹ú\ïk“!{ı\è\ê\";v­·ÒŠ\íŞ•±C½c#\âı\ïx\ìÚšŸ«ŒN,­Œ\r¯][Qÿ:uÓ¨o¢€~üñ\Ç=Á*?~|€\ÖZim6&Á]ZZê­•\Ö\Ôí²²27‹y\"²{÷\î5£\Ğ\È}úô©\ÙDL\Ú\ßDL\Ç§p¿õ\Ö[€\ÖsMÿ\İ\ï~W³nXë«µ™X§p¯ÁŒW€lÀ\Äóe&¢‡\á	\0€`&ñó-‰ß…\'r\î\Â\ÉR\×u¯)¤‡OŞª<Ÿx¦‚V\êŞ†D«wğ+‹\Ä\ÆÚ±)\Z\éò7$\Òy\Z	\ë™¶gi$š\×÷\æø6\å\á\è\rú¹nc\'nZ! ›. ukª\r6\ØÀ½\á†\Ü#<\Ò[Ó¬µË¾€öw\é\Ö4n\ÙÁ\ì‰bÿµ\ìŒ3\ÎXc\n÷®»\î\ê¶o\ß\Ş=şø\ãk\Î\ÕkO& ¿ÿş{O@k:¸¦pË´‘šx€Ô°º«¯\Õ_7\ã	\0€`&ñ.Vœİ\'rN@/¶\ï~{ÿµ\ÖRjªg²sı5“ZS©\â\Ú7\ï¶:V «p\ï¾­\n÷ŠŠñjg`\ï3\ÃÑ½\ÂÑ½Wo\\X>*öGt\êZSª5={\Ã\r7t\ïº\ë.÷ˆ#p;uê´–€–v\Úin4\Z­Y×¬ó|“ö\Ï\Ó:\ç3\Ï<\Ó}\à\Ü\Ûn»\Í;W£\Özm\í\Â\ÛY;Q@K¼\ë–YW]u•·A\ÙĞ¡C=;ÿüó\Ğ\Ä+\0¤ˆ‰\ç>Ó·\à	\0€`f\Ì\î\Å9÷½/4\Û\É­b\\Ey\íóÊ‡GwÖ†EIŠôÓµ¦²4}\È{‰T:2¶o;\×]\ÇÎ¯\Òñ\Õ÷¦N\Ğ4\ÒŞ•ñıu»tjvÿı÷{S·5\Ú{À¸¯¾úªw+)™\îó\ì\ß\ÆjÅŠ\îÒ¥K\İC9\Ä}ô\ÑG\İÙ³g{¢ø\Ö[o­±w\Şy\Ç;/\Ù} \Û%L\á®m\Ï<óŒ÷ş\Å_\ìMO\Ğ\Å\Å\Åh\â\0R\Ä\Äs™‰\èx\0 ˜I¼\Ø\n³ûğD\Î	\èO\Íjv\î\Õ\èT®ú\"“´D\íÌ™3½{?k/ÿ¸6ôò7ıúüóÏ½\Ñ\ã\Í6Û¬A\Óy©\nh\İ\ãyÄˆ5k µ–ZÏŸz\ê)oC³.¸\0M¼@\n˜x.µúk$\0\0faVhö\0È¹\ïı#³=ğD\æ\ß\Ú7­ƒN|-\á\\ûXSl\åÊ•\ŞgisC\çJ¸\ë\\=ÿ\î»\ï\ÜÅ‹g¼ß²D@¯\0Y„‰\ç^&¢\Ãx\0 €X/°Dş\È9ı}÷{\ã‰\àh,§4ñ\n]µWO‹\ë\0\0fa2{O\ä\Ü÷ş®u\àû\à	4šx€ô\â8N‹\é\Ñx\0 €XÏ³D>Oäœ€~Ë¾û?\à	4šx€´\×^\İ-®o\Å\0\0\Ä\Äó¹–\ÈÁ9\' ß´\ï}<€F@¯\0ö\Ú\ëb‹\é\â	\0€\0b	ü+\Î\Å9\' \ç\Ùwÿ\'<€F@¯\0ö˜\îf6O\0\0\ÇqÎ¶\Â\ìq<‘s÷«ö½‚\'\Ğh\â\0\Ò^{uµ˜¾O\0\0³0;\Ó\ìI<‘s\ßû\Ë\Öy\'\Ğh\â\0\Ò\Óšİ\'\0\0ˆ\ã8gXaöÈ¹\Î{–}\ïG\á	4šx€ôbñ|¾\Õ_w\á	\0€`f§›=\'r\î{!??ÿX<€F@¯\0ö˜.1‡\'\0\0H(:Í’ø³x\"·pgšÙ‰x€&^ \íµWg‹\é{ğ\0@0³& \'á‰œû\Şcf\'\á	4šx€ôbuW\'³{ñ\0@\0	…B±$şÈ¹\Îûy+\ÈO\Åh4ñ\n\0\é\Å\â¹\Ø\ì~<\0@òóóO±$>Oäœ€¤\Ùx€&^ \í1]hö\0\0\0f?Ù¬\nO\ä\Ü÷ş´6\Ãh4ñ\n\0\é\Å1,¦\Ä\0\0$??ÿ\ÏZ_‡\'rN@?©{€\ã	4šx€´\Çt\È\ìa<\0@´³«%ñ©x\"\ç:\ï\Ç\Ìş\'\Ğh\â\0\Ò^{\å[Lÿ\0\0 ùùù\'\è)x\"\çô³óğ\ZM¼@\Úcú<\Å5\0\0 &³$>O\ä\\\çı°¦\á	4šx€´\×^\ç†B¡Gğ\0@0³c\Ìfâ‰œû\Ş\Ğ. x€&^ \í1ıw-\ÍÀ\0\0\Äqœ£-‰¿ˆ\'r®ó¾×¬@@# ‰W\0H{\íuv(zO\0\0³0;\Òl6È¹\ï}œY	@@# ‰W\0H{LŸ©\İõñ\0@\0	…B‡[O\ä\\\ç}‡Ù…x€&^ ½8s†\Õ_O\á	\0€`f‡™\ÍÁ9÷½5\ë†\'\Ğh\â\0\ÒÓ§›=\'\0\0H(:Ä’ø«x\"\ç:\ï[\í»\ï\'\Ğh\â\0\ÒKaa\á\ß,¦ŸÁ\0\0ÁL\âYŸ‹\'rN@G\ì{\ï‰\'\Ğh\â\0Ò‹\ã8,®\'\á	\0€\0bEÙŸ,‰\Ï\Ã9\×y´\ï¾O´kFš\Ùkß›€ş‘x€L¢°°ğ¯Ó“ñ\0@\0)**:À’øx\"\çô-ö½÷Á\í\ÚMŸ>}Ñ’%K›Yh.|\Øô\Û\Ä+\0dXLŸZPPğ<\0\0fÿ£%ñùx\"\ç¾÷aV_†\'Úµ‹\ÅbgM:õ\ß_~ù\åwˆ\Î\ìy–x®ªªú\Ä\ì<\â\02‰üüüS,®§\à	\0€\0’——·Ÿ%ñx\"\çôP+\È\à‰Õ˜\È\ê8eÊ”9š\î«5³X\àM\ß\ã\Û\Ù ‰W€¬\ìƒO*((ˆ\â	\0€`&ñ\ß[O\ä\Ü÷~\äW\á	\0\â\0\ÒK~~şŸ-®cx\0 €XQ¶	\èwñD\Î\ä\×\Øw5\0 ^ \í1}¢\Õ^Sñ\0@\0),,ü%ñ÷ğDn¡b\\E9\0 ^ ½\ä\ç\çŸ`1=\rO\0\0³0\Û\Ûôx\"\ç¾÷«4-O\0¯\0^,³\Úk\0\0 yyy{ZÿO\ä\\A>@\á	\0\â\0\ÒK~~ş±V{½€\'\0\0ˆ%ğ=\Ì>\Â9W_¦[\ã\à	\0\â\0Ò‹\Åó\ÑV{½ˆ\'\0\0H^^\Şn–\Ä?Á9W÷±ü<@¼@\Úcú(«½f\á	\0€\0RTT´‹%ñ\ÏğD\ÎuŞ¥V\Ä\0\Ä+\0¤«»4›\'\0\0H^^\ŞÎ–\Ä?\Ç9W÷´\ï=‚\'\0ˆW\0H{Ln1ı2\0\0 \Å\Å\Å;ZÿO\ä\\\ç\İİ¾÷[ñ\0ñ\n\0\é\Å\âù0³9x\0 €8³½%ñ\Åx\"\ç:\ïnfcñ\0ñ\n\0\é%\nb1ı*\0\0 :u\ÚÎ’ø—x\"\ç\nò\Í\îÀ\0\Ä+\0¤=¦6{\rO\0\0\Çq¶±$¾O\ä\\\ç]b6O\0¯\0^B¡ĞŸ,¦\ç\á	\0€\0’——·•%ñex\"\ç\nòNf÷\â	\0\â\0Ò‹\ã8ZL¿\'\0\0‚Qˆ½i\æ6`ğTÖ·ƒB³ğ\0ñ\n\0\é%\n\í¯zO\0\0\0\Çq\ÎnH@+±ã©¬/\ÈCf\ã	\0\â\0\Ò^‹ı\Ñbz>\0\0N1V\ç(´%õ‡ğPN´ó˜i\0@¼@ú	…B°˜~O\0\0«K* \ÂC9\Ñşnö\0 ^ ½8ó{‹\é·ñ\0@°\n²YIôD<“3\ßÿ™fO\â	\0\â\0\ÒK(\Ú\Çbú]<\0 \Ç\édúöqx&g\nò\ÓÍ\Æ\0\Ä+\0¤—\Â\Â\Â\ßYL¿‡\'\0\0‚W”\ÍH\ÏSğH\îP}e\0 ^ ½„B¡½-¦?À\0\0Á\Ğ\íF \Ûã‘œ*\ÈOµ\ïüy<@¼@z),,\Ü\Ëbú_x\0 €„B¡,‰ÿ‚\'r® ?É¾÷(\0 ^ ½X<\ïaö\0\0 yyy§šˆF@\ç^A~¢u\ŞSñ\0ñ\n\0é¥°°pw‹\éñ4\n\×u\×ÿğ\Ã\'Ì=û\çh4\êN™2¸UUU¹Ó§OÿÊ¬˜v\ZL\Ón\Úi\Î\ä\Çi\r< _\"Ş‰Wb#FÓ‹\Åó®fŸ\ÒC£Pœ1c†»d\É÷‡~À²Ä–.]\êN›6\í?–Ï£b´\Ó@\äG[\çı\"½ñN¼¯\Ä(FŒ¦—¢¢¢],¦?£†F¡«‡$À¬M„?L™2\åm\Ú)F;\Í|\n°\Îû%z%\âx\'^‰QŒMûôNfé¡Qh\ê\r	#{Í’\à´SŒv\Zˆ‚üP\ë¼_¡W\"Ş‰w\â•Åˆ\ÑôR\\\\¼£\ÅôôÀ\Ğ(´\îd‘\ÕIĞ¥b´\Ó@\ä…B¡¹ôJ\Ä;ñN¼£1š^\Ç\Ù\Şôbz`h\Ñ$øÍ¿¹\Î\ç.¨º\Ö3=\×1\rIvŠ\ÑN›OQQ\ÑV¿A¯D¼\ï\Ä+1Š£\é¥S§NÛ™€ş’Z,	®X¾Ğÿ\Ü ÷õg.[\ÃtL\ï‘lH‚´SŒv\Ú<òòòösg½ñN¼¯\Ä(FŒ¦}z\ĞKé¡Å’\àgZ+úöù‚‰$’ \í£6¿ \ß\×:ğwè•ˆw\âx%F1b4½t\î\Üyk\Ğ_\ÑC‹%Á·\ã7Ö™õÉ†$H;\Åh§\Í.\Èk÷ûôJ\Ä;ñN¼£1šö˜\Ş\Êbz=0´Xœ?¥¢\Î$¨÷H6$A\Ú)F;mvç½§u\Ş\Ò+\ï\Ä;ñJŒb\Ähz)))\Ù2\n-§’ †€¦\ÒNƒS\ïfù\'ôJ\Ä;ñN¼£1ÚºXüN4s°9ô\È\Ğ\ä$¨\ëJ‚zdC¤b´\Óf\ä;[gı9½ñN¼¯\Ä(FŒ¶º€>\Ì\ì\Çút(\êHMN‚\ï\ÏUg\Ô{$’ \í£6» \ßÁ:\ìEôJ\Ä;ñN¼£1š=©=«}ûö\ë\Ó#C““à²…o¸óŸ¼ö;¦÷H6$A\Ú)F;mvA¾­u\ØKè•ˆw\âx%F1b4m£\ĞI´\ã8g\ÓC³’ \ì£W\î]+	\ê‰†$H;\Åh§-R³(ñN¼¯\Ä(FŒ¦WD\'[=‡\Ñgh~\\¹\Ò}ÿ\Å1kOÁ±czdC¤b´\Ófä¿¶Nû\ßôJ\Ä;ñN¼£1š\ÖQ\èYû-šW,_\è¾73R\ç:½§sH8$A\Ú)Fgİ¬‚|s\ë¸W\Ğ+\ï\Ä;ñJŒb\Ähú0Áü8£\Ï\Ğ2Ip\åJw\Ñû1÷\Í\ÉWÖ™\0}\Ó9:—+Š$A\Ú)Fg\İ\ä‚|ë¸¿£W\"Ş‰w\â•ÅˆÑ´\n\è£\Ö>w †&%Á†®rE‘$H;\Åh§-^oh÷ôJ\Ä;ñN¼£1š^,Ÿ6û…\ÑghrlÌ•\Ãú®(’|H‚´SŒ\Î:\å‚|=\ë¼¢W\"Ş‰w\â•Åˆ\ÑÖ£¨¨h‹\ß~¡P\èvM\Ù6ûHÄªG¡µú3{o®=q§X\ç\Ó3CƒI°©	\Ğ7’IvŠ\ÑY§Lu\Şz¤_\"Ş‰w\â•ÅˆÑ–Ã„ğ6&Š{\Ú\ã|³Ÿ\ê¹ÿsR“ ¶Ÿ+\Óş”+\Ğ\è[`$A\Ú)F;m5N1[n6¢ú±#ıqA¼¯\Ä(FŒ6\ê\rÿ*Lü~“ªh®\ÃV˜\İTRR²%*’B#	\ÒN1\Úi\Û\ã~®­¥¹,¢‰w\âx%F1b´F‹\Í\ÖÁ:ur¯¿şz÷‰\'p,X\à.Y²\Äıé§Ÿ\\Ÿ\åË—»\ï½÷;yòdw\èĞ¡\ŞùI„ôR³’œøŠŠŠ-G}İ!C^4h\Ğ\Ò=z¬***ªqF·n\İ~\êß¿ÿòk¯½vŞ­·\Ş:v\àÀ{“1’ \í£¦©o\è8\Å9F¼¯\Ä(FŒÖƒ6\Óú\åÚ¢·OŸ>\Şÿö\í·ßº©°j\Õ*wÆŒ\îe—]–LH\Ë\Ú\Ñ\èë¯¿ş¯ƒ[\\\\ü‹	g\ïŠ\Ão¼±\Ö‡eË–¹\ï¼ów\Å\á\æ›ovu¾	\ê\Ï\ìgºe\ë®l$A’ \í£¶	\Z(ºı÷sn%ñN¼¯\Ä(FŒ6…¼¼¼Ç™(r\Ë\Ê\Ê<œ¨ùš\Ê\ìÙ³\İ^½z\Õ\Ño\Ú\ïım\Ö¸9l+®¸b^×®]™0a‚\'S½\â0s\æLw\àÀ¿ô\è\ÑcñE]t&I#	\ÒN1\Úi\ã\r\Û99M¼\ï\Ä+1Š£M\Ï\'Š\Ûq\ãÆ¹\ßÿ½Û’Hˆ\ßs\Ï=µEôGY!¢\r\Z\Ôó\Â/üQÿ`ªCõÉ˜3gkz\Õ%—\\òD6\íÀF$	\ÒN1\ÚiZ9%Å‘ªT\Ï\'\Ş1\âx%F±œê“«§m¿\àZ-\Ñ\ÕÿÑš\èók­~3\Ğ\ZqÀ€c/½ôÒŸ^}õ\Õu\Ôÿû_wô\èÑ«JJJ¾\ĞU’ F¤b´\Ó&\ã›ğs+\Ú1=#Ş‰Wb#F\×\"qÍ³Ä³¦l§M\éN\ÜO\ËlB`\ÅsÏ=\Öú\æ\Ö\âÁü¹¸¸ø?\Ù0TO$	\ÒN1\ÚiF\ã-õó\Ä;F¼¯\Ä(–u}²v\ÛNœN\İ\Ú#\Ï\ÉF¢¿ı=]Ğš¶­‘\ç\Ö\Ï>O>ù\äJ\Ñƒ>M$	\ÒN1\Úi«\Ó\ĞD\éş\â#Ş‰Wb|Ÿ¬)Ó‰·ªÒš\ç¶\àşû\ïOÑ‹3•[†i\Íó¼yó\Ò\æ¬x\à‹\Â\ÂÂ§‚¼C7I$H;\Åh§i)\Æ[j:gÖD\ï\Ä;ñJŒb\Ähc0±Z‘¸\ÛvKo–\Ê\Æbúı	\"º\"0`À›\Ú0,İ”––~\n…z’1’ \íC@\×Q<û\Åø:f]ªS¡ö\ÏeõFE\Ä;ñN¼£1\Ú\ãlcö/Zuç¤¶D\ë¡ı¿Å´\árı}\í@\İ\çY·ªj‰İ¶Se\áÂ…?~ñN\"	’\é¬1\Úi[\ãŠ\ê;\Í\Ü\ê\Ç\Æ\åuı\\ÖŠh\âx\'^‰QŒm\r`ú‚µOŸ>-rŸ\ç\ærù\å—gzğ\àÁs{\ì±6s\Ö\r7Ü°ÀôP’ F¤b\èvÉ§mv©.ª\İŠò\ÄbÜ·\Î	\ïg\å\ZK\âx\'^‰QŒm\Äô|_¬\Æb17\Ğ\î\ß	úıŒu^EEÅ–\Å\ÅÅ¿,[¶¬Íœµp\á\Â%ö%~Äµ\Ğ$A’ \í£¶(u\ÉÉŠ\ëúŠòd\çß‘\äü¬[cI¼\ï\Ä+1Š£õQTT´‹i¯Ÿ$Tu/æ¶˜…œŒU«V­qo\è\Â\ÂÂƒ2ÒcÆŒ:hĞ 6wX÷\î\İßµ/ò¸º*3¥1I$H;\Åh§Mk—õ\ãR(²“\å-\Æk\åˆw,\×\âx%F±\ì\ê“\ÓMœöóE\êõ\×_\ïfÃ†\rK\\= #;\ä!C†¼2q\â\Ä6w\ÖÈ‘#gf\Ò4\î„{‘M±/\ï(’ I0¡b™\ØN\Û.›X7T”§ZŒ\'şş¥™<²E¼c­\ï\Ä+1ŠeWŸÜ˜vh\Ço÷\Ï\Ë˜\È\äÉ“§qß—‘ò Aƒ–¾ñ\Æm\î¬Ù³g\Ï3\'\Å3-	&Ø¤dWsH‚$A\Ú)F;mZ»lÆ´ÌºŠòu›XŒ74•xÇ²^@¯\Ä(–]º¾vh\Ç\æø\ï/X° £ô{ï½—8=7#ğ=z¬Z²dI›;kñ\âÅ‹t\ã\ìN‚5Ws!I$H;\Åh§Mk—M,\Æ\ë+\Ê\ßmF1\ŞÜ¿‡xÇ²E@¯\Ä(–]z­vh¯?òg‚Ldùò\å‰÷ÒŒ,À‹ŠŠ2b\Ûr!Gez¡’x5G\Ó\"H‚$A\Ú)F;mZ»l¤dEysŠñT§§\ïX\Ö\nh\â•Å²K@\'¶C³ü×™¢kkB\ß2¶\0\ÏDg\Å29	~ó\Í7\îw\ß}\×âŸ«\Ï\Ôg\'{oÅŠ)V\â\ëÿü\ç?\å\Ã ¶\ÉLk§ÿş÷¿u^¦}÷_~ùe\ï}ÿı÷)·u\Ú\éšv\Î9\çø…óˆfvc\ë&\Éz·úxs‘Q>s·øü‹\ß/%\ë§\Zs\ŞÊ•+½˜\Ôc¶\Åo\âxm\ÙX\ÍU\ä¸\Ë\æ>9\Éx\Ít\ÊWo\æ„B¡ş-·2%	şóŸÿt;t\è\à<ğ€geee\î\Ş{\ï]óúó\Ï?wÿû\ßÿzaC¦óô¹\×\\s{\İu\×y\ÏG\Z\å1\Â{ÿı÷÷Ë´VA\ï¿şú\ë\î¶\Ûn\ë^}õ\Õ\îgœ\áY$ñ\Î÷_ñ\Å5ó\×_\í\î¹\ç\îÌ™3½\×/¾ø¢»ıö\Û7Zp1¹\íTEñ¢E‹\Ü+¯¼\Òı\ë_ÿ\ê=—\İq\Ç5mAVUUU#w\ÙeW÷£W;½\ä’K\Ö2¿]\èñ÷¿ÿ½û—¿ü\Åk\ï^x\á\ZŸ){\â‰\'¼s~ø\áµ\Şó\í\ÜsÏ­ù{.\\\èN˜0¡\Æ.»\ì2w‹-¶pÇ¿\Æq¿(ö\Ùg\İ\ßı\îw\Şó\ßşö·^;\Ñ\Å ƒ|ğ#Ğl—\í\Z\ŞÅ·9#Z¹\ïl›Œh•Gb=J#±g\Ê+£k[Y8ö\\y$z¾\Î+‹Ä-\ÇGxV\Ùû–g\ÜnW„k¬ø‚\İ/5d\ï¾û®÷]%\Ñz¯ÿş5Ö«W/\ï\\=&\×yA\ß\ÎùxM5V—\r¨tk\ÇjiÿŠùAŒÑ†\ìÿø‡¦{Ï¿ú\ê+÷\Î;\ïôo´\ÑF^M¨\ZpşüùMªnİ˜¶\ç\ßdúÇŒ,À3e\rôÒ¥K¿\Èğ5Ğµ;’ŒZ\Ç2f\ÌOP\è>nJf²<\Ğ\Ğşk%/‰VuVJzú¿\ì%0\ßt\\\ï\ë<}\îK/½\ä‰Zm)¯¤×·o_÷¤“Nò>W\Ïûõ\ë\çm> s{ö\ì\ézè¡®.Êœu\ÖY\î™g\é^|ñ\Å\î=÷\Ü\ã	\'}\îG}\äû\á‡z‰öoû›{\Ì1\Çx\ÏO>ùd÷„Nğ\ë}’`pÛ©vt¬] m¾ù\ænyy¹{\Ê)§¸·\Şz«»\îº\ëºS§NõÚ¬.„\Ãaw\Çwô\ÚÈ!Cjìª«®ò~\Ş/~%¦ÿü\ç?»gŸ}¶\'\ĞuqHô³jƒz>o\Ş<\ï\\]ü9\ì°\Ã\Üû\î»o\r\Ó-6\Şx\ã5¾\çM6\Ù\Äkƒu\Ùl\à]\ìY¶l™{\×]w¹{ì±‡ûñ\Ç»»í¶›û\Üs\Ï! ›\Ğ.Š\ß­´¦²)Ey«¯©´\Âû‰^\ág7Jş^´{yeì¬ŠŠøú\å‘i”¬:¼<{¥<=¢S\×^n\×ş·¸]/\æ\êy\ï>\æer¿Ô½õ\Ö[^Höú\0õGŠYŸ>}¼\ïTş1½¯ó‚¿( ‰\×&\ÆjÏ¡\ã½\Øôcµl\ÈmŸ\Ïû\è›r+sw\rbŒ64+d¯½öòbo»\í¶s‡\îÕ‹\Ñh\Ô\ĞO>ù¤w!Ë¯\çR©Ğ­\ÓZıYF\à\Ö	}•	»¯U\ï\Â=#ÀY&>Ï®£#Éˆ$8m\Ú4\ï\n\Ş>û\ì\ã>ô\ĞCVQğ\ë_ÿ\ÚıÕ¯~\å=/))ñ\ÎU£T‚S\á°\Ùf›y$QX<ÿüó\ŞB\ç¾F˜5z8r\äH/Yn³\Í6î¦›n\ê=?üğ\ÃkF·\ÜrK\ïó”»v\í\êşù^r”T $&GJPw\ŞynÇ½÷ô¨\×:\î \" ƒ\ÙNÕ±;Ö½÷\Ş{½)[š\r¡\ÛH@_z\é¥^;\İ}÷İ½ó4\â¬\ï_mÈ¿RhK—.­\Ğj[o½µû\àƒºs\ç\ÎõDs·nİ¼‹:n¸¡\'–õ\\‹|­¶ªH´v\Øa\r=}út÷¸\ã[c:¹F¦ô·ù\ÇtqG¿óö\Ûow\×[o=\ïo:ø\àƒ\×*À\'Mš\ä‰üú¦æ€®·]6c©®[\ß$\Û\Õ7•¢<-»úZQ>\Ù\ìt+À\'¬a‘X+\È\ï\è\ïb\Åøö&œ¯L´®ınte\åCnÿôö§\Üo]ç‰™\Ú/5\Æ\Ô\ß(–ü¶µM3H¿Gq„{\È!‡xß§õZ\Çõ~6\Äo	hâµ™±Z;F\'\Îw\êxieü¸lĞšÉ¡~7‹¹¯¼òŠ7z|\Ûm·y\ÂY\Ç\ï¾ûnoğE±•jˆ€nı˜f\îf¢û@+2\á>\Ğæ¨›2¨\0¬\ï\nlF%ÁG}\Ô=ú\è£İv\Ú\ÉKV\Z]\Ûo¿ı¼©n2øi¤7ñg\âñ¸w…Pb#\Ñü\é72şI {\ì±\îk¯½\æMy•t\ĞApñ_\ëÊ¡Š%?ıŒ’£Dú\àMW‘¢Ÿ‘ù„„¸şV%Tı¬õZ\Ç\ĞÁn§\ê,+++½¢öı÷\ß÷®P¿üò\Ë5úô\ÓOw\à\ë\èº\Ö@\'\n\èÑ£G{\Ó2\Õ\Î4={öl\ïsN<ñD÷–[nñD»:iÔ¾€Vû“ \Ö\íú\í\Í7\ßôş–^xÁ;W¸.\Şø¦ß©‹Lşk]%O,ü) *ÀuÑ©w\ï\Ş5#\í*À\ÓYd €nT»l\âHRC÷]§‰Eùa\í\Òp_Y\Ü*¼+\Æ\Å7¶\Âû@\ßúŒª\Ú\Ç/\ØkŠ÷Hô4€Y^)+»\î\î/Ã¾ş\Ô\Õ÷¼2¯ß˜\ç¶\Ë\ä~©1¦eAú~”+\êĞº`¦\"»K—.Ş¹z\Ôk÷t\Ğ\ã74ñ\ÚB±\ê\Ç\è\İÓ¾Šx1‰\ÍM«\Ù  Õ¿*~\Ô\Ë4ó+\Ùôü9s\æ¤\\#\" [?¦¥¹r\è1Y€[Az³DK[Ó³g\Ïù\æ¤ö\íF¦M\á\Öó\ÆèŠŠ\nO\ëªSmó¯¼KğhZ­„¶F U\äøŸ\é›D¯\Ä\ÈE]\äM\Õñ“£F\ßy\çwÖ¬Y\îM7\İTcşT	ä­¶\ÚÊ½üòË½i=J¬z\ÔkG@»jº²T£\Å­\ZA\Òt¯T´®d\ëQœ——\ç=\×T\ÎÎ;{¢\\W¿\Õ1ûZkª5ETmJEr¢©\0\×\Å\Zº·>Skò5;\ã\í·\ßö~§º^u\ÔQŞ…¢\Ä\\#\\Š\ïŠıŒi§M¦¡¥†ŠñvM,\Êıi©g·ö?¨)Ÿ\å‘\è%¥£\â­\à~Ø°\"{\ÖYjª¨Šğš¢¼2Za¯\ï)­ŒM4;öjú¥†Lû#h\ïƒ}÷\İ7\é\æ`3f\Ìğr‰L\ëšõ=\ê\Ñ?¦øLŒÉ \Æo€\ã=«\ãµ5c5[\Ö@kV‡.Z+ı¾\\¥õ\\¦‹\çĞ©Öˆè´ˆ\ìó|‘š	:0\r&\Üz«8#h\Ñ]ºtùE\ë\Ûğ\ĞK\ÌAß”””lŒ0i­M¾” d:^[@kª´Ö¬\Ô6M»\Ñ\Æ`‰k\Ô$ õ|\àÀ\ŞU{¿Qk\ÔO¿ÇŸ\æ­i\ä~r\Ô\Ï(Yª\ØYıõ\İN:y£şhŸ²’n÷\îİ½i<Jºz\ÔkG@»J\èjz\æ3\Ï<Sc\êDıhşJ\Ô~ú\é§)	hMõT›“i\r£Ú–.ºH@Ÿv\Úi^‘\ìh‚[nñÚ°\Ö>&š\Ö_i\æ†\Ö;ú›“©¨^gu¼e‰#Xz­)Ÿ~®õ\Úúy½\n…X\İò\Ô5²\Õ\Øb<Õ¢\Üÿ}g§\ãŸ+«Œ]«µ’*¸{W\Æõˆô¿\ã±kÿWÀG\'–VÆ†\×.Ê­°$\èZBUËŒ/š=õô\ÓO¯u–©?‘©\Ï\Òw¨G½\Ö\"ƒË \ÇoÀ\ã=k\ãµ5c5ô«¯¾\ê\Í‘HVÿ«`ú\ŞtZ³eŠIõı©Öˆ\è\Ö\'//omĞ¥z^şoK˜ÈªU«\Ü\â\â\â_|­a\íe—Œu¢ h3Ÿ¶bÔ¨Q¯XGv;Â¤yS\á´ZW\Ò% %.ü)\ÖZ\êh‰]õKf\ÚAQ›3iƒ§\ÚZ»K@+1úSm´‘˜/ e‰\Éñ\Úk¯­9.¯\ã\ZğG´sªşV™¦ğ(\é\ê\Ñ?¦÷I‚Án§\Z\áUqªv©\ç\Ú\È\Î\Ğz_Ó»\Õ\á¦\" ı>\Õµ®¿´´\Ôk—\ĞZS\íoz\'\í\ï\ÚÛ\é\"“_€«(\×:.]\×{Zº \×\Ú\è\Î/Àµs¸\npµ\n(ºUF¶jO\Ï\ì\Ò.õû\Æ&+\Ê;§0‚\ÖòEyõ¦D«wñ+‹\Ä\ÆÚ±)\Z\íò7%\Òy½+£\ÇôŒLÛ³4\Í\ë{s|›òpôı\\·±7-Ç‹‚, u—‡#<²¦Ÿ\ĞôNõ)š\éäŸ£m„\é›fU\éûÓ£^ÿ\æ7¿©\Ù\à2\èñ›ñ•ñÚš±š\rZË³T¯Ik¡bPß™f~i£L{H@§Z#\" \Ó6\n=\ËªZË	h\æQÆ¯ö0`€Ó¯_¿Ÿ\Ûbóo¿ıö\Ç\Â\ÂÂ¯3ú\nC†*7\Şx£\'rµÓ¨\ZœÄŠ®º«@Iôj\Ã	Jh\ÉL\Ó_µ\æY<%\nh\í^*®©²Zk=t\èP\Ï4b\\—€\Ö\Ï\èwj³\'\íxªi´şh6–¨¯0òM\ç‘ƒ- 5=ËŸ½\àh]\é”pV±«\Â5U­\Ï\Ñòƒw\Ş\Ù\Ó*¾µfQ34L\ÂZ\íVEº\Ş\×ÿ®Q+\İ\êF¯eºb®\ÎB\Ïı[¶ù]V{\nh\â\Z\Ê\ÚøW\\\á\İ6‡v\Ú\"\ÓC;$)®SŒ·k\à\çZõVUõ\åŞºI­«T\í[EEÅº*Òµ\î²Wxú¶*\Ş+*\ÆohEû4_\Z\ì\î½zó¢\è\ÄòQ±?Q@ûwŠ\Ğj³J]Ó…\Ş?ü\á5k›?şxM3h\Ğ /¾ô¨\×\Ú\ÍW³Ot^\Ğ\ã7K\â=\ë\âµ5c5›\î­M9µ™­\âX\ßÛŸşô\'\ï™Lµ_2]_ˆ€N«€¾\Ä«š\r	ô\ï\ßÿ\ç„\é\Ûe\ï\Ä=z,–\êO7Lo˜“\"“¦›¦Áú\âB*\nô¨\éªz®jW\ß\çh­˜®\ê«ø\Ç4õV	Q›¶h½s¢€...®S@\ëöV*„4MOS½õ\ášR«©<Ú°À7M\Ó\ÓûzL<\î\ß_š$\\­{4\ëÂ‹vÀõ´¦\é«-èŠµv\è®O@\ëj´F‘ô¾„´iDI´\nh\àúym€§é˜º-†®fû¢Xö\É\'Ÿxk,ı%*\àuÁH£Õ‰¿K\éo\Õ=iuKıN]a\×k\í@\ïß¯\\E‚:}\àŠ)M\Í\ÏÏ¯¹œ6\è;şø\ã½\Èi§->=t\ê©TouSû\çš{?\Û&Q><ºsy8v[’Bıt­«,Dò^G¢\'•Œ\í\Û\Îu×±ó«t\Ü\ÎyP»ÿj*i\ï\Êøş}#ñ\ßM@Kœj=².\Ô\Ö\Ş,H}—FŠw\İu×š\İø5’¥\Û%Ê”K_V«\ÔKü?ƒ¿Y\ïY¯­«\Ù\" \ÕkÀFwQQ\í§\Ò~LK(kªw*5\":}h\é¬\ÕN\Ë}Áª<\Ù\ÆwdJ\Ü<lE^^\Ş\æ\ï\Änİºıå¢‹.Z¥‚4]Xaü¾\Õ\ÂA)T\Ôùkc¤Ä«\íº-‡Ö¢\Ôõ·j#`\ë\n ¦\ÕJ\Ô$¾ç¯‰\Ö(¢Ä?õ\ÔS^Ò¼\à‚\êÂ­Ï“°\Ñ\ç(9\ê3jÿ~_@e\â\î‹\è\æ	h-!\Ğ\è°F—jO\á®ıı\'\Ğşı¤}ñë›¦zJ@k„JE·6“À\Öh”\'¶\ÙgŸ}æ­«W»T|hº¾ZyP¿W•j¿÷\È#x\ëº4CSÅµ\\B\Ôñœz\ê©\Ş\Ïi:¹„;\í´UŠòÖ˜nšUdjq®½:Th\'\Ş&±v\Üic±\Ú\âU##ºšQ%\Ü\Ğ\ï	ZüfY¼¯\ÑTMı·f„i\ÃYõË¾€\Ö-­mV,\é\"VsjDt\ëbµ\ÙP_´ª^Sm4º´´ô\ç}S`\Ú÷\ÈÈ‘#L\ÇT\î/¾ø\â[M\İ\Î\Ï\Ï?…$Ø²–\ìş•ş\è]}W…s2SrôE®¦»\Õ Zw¦i²*<üµl‰¿W£‰\ÉD’Fu\ÕI$Á\ìi§j~›ÒˆÚ†\Úf\ív£¶¤MÅ’­}Ò±eË–Õ¹Q™k\ßC¶®\â\\¦ß­«\áş´\Ïú\îc­õ[~\Ç_û÷\Ö\'¾\Õ\ÆÓ½+\ËtK\å-]\Ü\ï)ZC8\ÙûŠqõ+\ÏAŒ\ß,Œw\â5GtmSœú}³\ê\ÊÄ˜mjˆ€n]4ˆibõ3_¸7®Môı÷ßŸ8ú¼´¤¤d\ËÀ´\îvşù\çt\ï½÷®jM\'Y1ı“9\æ‹@\Ìm\Ï\Ñ$ˆ! 1\Úi†\Ñ\Üiœm2m›x\Çr4Ş‰Wb”\r\Î(tq‚xõşşt¢ß—øû\ÍJ\Ô\æ\Äm:u\ê´\ì±\Çû¡µF«\ÅóP’ F¤b´\Ó&Õ©HµÉ†a\Ä;–\ãñN¼£\Äh@\Ğİn•¶õĞšj¿\ï§ñ<.°­±‹‹‹\Şu\×]‹[zÍ³¦mg\Ã\È3I$H;\Åh§mBª\Ó:sb\Ú6ñN¼¯\Ä(FŒ6•\ê©\Üo&Š\è\Ö‰\Ö\ç\×\Ïoj\êv]#\Ñ&vŸ\Ò\îÜŸ|ò\É\Ê\æŞªJ»mkÃ° ¯y&	’i§\í40Eùaf+\Ì\Î\Î%\ç\ï\Ä;ñJŒb\ÄhSPM\Ä~”8Zk¢W­Z\Õ\â†\ÕZó,û\ÈDüo³&\ÈC¡PO\Ò_^w\İuoş\ë_ÿJiDzñ\â\ÅKF=G£\Î\æ˜1A\Şm›$H¤b´ÓŒ¢Cu±İ¡÷—\æšx&Ş‰w\â•Åˆ\Ñ\æˆh\Ó~sÅ­v\ç\ÖTë–š²]^^şs-ñüfV‰\çZ\ÃúÚ¥­[·n\ï6lV<\í\ÓO?ı$\Ñ)Ë–-û\Ò3o\äÈ‘3{ö\ì9\ßqœo4§^_I#	\ÒN1\ÚišF¶rn\Ú6ñN¼¯\Ä(FŒ¶\ÚT\Ú4\ÜCµD®wKÁX,–ò­®4‚­5\Õıû÷¯-œ½5ÏŸ¶\İ\Èé£ª\Åô¤\êaşœ°\Èl–\î\İe\Ö^7\è&	b$A\Ú)F;McQ\Ó\â™x\'Ş‰Wb#F[‚\êİ¹?«-z;u\ê\ä^ıõ\îÄ‰½{x\ëV¥‰·@\Ö\íD\ß{\ï=wò\ä\É\î°a\Ã\Ü\â\â\â_’ç¥\ÜmH‚\Z£f™ˆ‘\ë\â™x\'Ş‰Wb#F[\n\r†j\à4\n-O\"‚›b+4Ğš£\Î@$	\ÒN1\Úi†£5”n»¹UñN¼¯\Ä(FŒ¦QHoi\"z@õN\İ?¦*œµ®Zwa\Ê\Æı°€$ˆ! 1\Úi\áŠ6ñN¼¯\Ä(FŒ¶\"&†÷—®¾wôœ\ê\éØ¾X–¸ş¬z#²1š\Í{aIC@c´S \Ş1\âˆQŒ 	bh¾O\Ú)\Ğ/a\Ä;£1\n@\ÄH‚´S\Ú)\0ñN¼1Š£\0$AŒ$H;\Åè¬xÇˆwb#FH‚IvŠ\ÑNxÇˆwb#FH‚IvŠ\ÑNxÇˆw F‰Q\0 	’i§\íˆwŒxb#FH‚\Z£ñ\ï@Œb\Ä(\0IC@c´S _Âˆw F1b€$ˆ‘i§´S _\".ˆw F1b€$ˆ‘i§5\ï\Ä;£1\n@\ÄH‚´SŒ\Î\ZˆwŒx\'F1b€$ˆ‘i§\íˆwŒx\'F‰Qb€$H² 	\ÒN1\Ú)\ïñ\Ä(1JŒI‚´SŒv\n\Ä;F¼1Š£\0\Í%\Z’,²×¾·$ø#\í£ñ\ï@Œb\Ä(@0}úôEK–,!ad¡-\\¸ğaK‚o\ÓN1\Ú)\ïñ\Ä(FŒ´\0±Xì¬©S§şû\Ë/¿üÄ‘=W•\0«ªª>1;vŠ\ÑNxÇˆw F1b …°@\é8eÊ”9š²¡uX\àM\ß\ã\ÛÙ–\0i§´S _Âˆw F1b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0Œÿ2·z‘÷\ç\ÕR\0\0\0\0IEND®B`‚',1),('3',1,'D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\permission.permission.png','1','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0…\0\0\0s\0\0\0\î}xù\0\0\ÙIDATx\Ú\í\rle\ZÇ›¨ñŒ\Z5Ñ¨Q£\æŒ!Æ˜‹Ñ¨ñ4\Ä\è£95ZVJÑª´b­JŒœ4 …\à¡ñj°\âWP‰\âÎ‚>(Ÿ\é\Ñb¨ ˆPZZ=¤ s\ïÒ·yw\Ú-İ¶»;»óû%O:İ™\íngÿûŸ\ç}Ş\É\Ë\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ˆ\Ãó¼“w\ì\Ø1»®®î·šš\ZoÉ’%Db\éÒ¥ŞªU«~0Qˆşô‡ş\Ğ\0¤\â\êÕ«½––\ï\èÑ£Dˆ¢µµ\Õ[¹r\åAc ?ı¡?ô\0)E-d1\Ô\ÆxÔ´œ7£?ı¡?ô\0)E]&˜O¸Ã˜\â1ôG ?ô‡ş\0 ¥hü\ÆzSô\Ğş\Ğú€P˜\â\Ï?5y;Ö¾\ç5,è‡¶õ¦…)¢?ô‡şôS<| \Ñ\Ûô\ïr\ï¿óGÅ…\Ó>ŒSD\èı\è ¦¸»\áóN†hcO\Ã<ŒSD\èı\è \n¦¸yù\ßš¢öa\\˜\"úC\è@\00\ÅMK&$4E\íÃ¸0Eô‡ş\ĞşRÇ!CÎ\Åb\Z^6±\Ü\ÄnM&Ö˜c\Ş1\Ç7Û—q\ÖNÀ„	Î®ªªšTQQ±®¼¼¼µ´´´m\èĞ¡\'µ¤¤\äøó\Ï?`\âÄ‰õo¼ñ\Æ[\ãÆû#I!¦ˆ)¢?ô‡ş\Ğú\Ëƒ¾\İ$zsLr$()I4Q4p\àÀ“\É\0&O<hüøñ_şn’Ao\îÜ¹Ş†\rüU\ì?\îYö\ï\ß\ïmÙ²\Å[´h‘÷\Ê+¯x:\Ş$‰»\ÍsJrõ¤ö\Ä5\Û.‘)jÆ…)¢?ô‡şô\×˜d\î:k“L\ÅfU#Ÿ9ò²±c\Ç\Ö>ü÷Ù³gûI_2´µµyµµµŞ¸q\ã~/--m...şkMq[\í\ë	MQû0.Lı¡?ôG ¿~\ë*\Ò^\é\ëH\ìÔ«9e\ÊO¹LCCƒ\×\Ô\Ô\ä9r¤#WQ‘k\ëÖ­^uuµÜ°aÃºJš¿sq$\Âòòò²\Ç{\ì\Ø|\àıò\Ë/^_Y»v­g’Â¶#F\Ì\Í\Ï\Ï?#J¦¸¿qƒ·iñø\Î]\'\æ1\íÃ¸0Eô‡ş\Ğşú†r‹öñ‚‰\\QQ‘÷\á‡úI_2(\ïQ¯\èÈ‘#\ã\ÃX,vÀü©„pÌ˜1o=ù\ä“Ç¿üòK¯?9t\èWUU\Õf>¤½\æÃ» *¦¨Ø¹nf\'S\Ôc˜¦ˆş\Ğú#\Ğ_¿$„«\İN\Ã\İT\ì\Z\"·`ÁÏ?aâ°‰\"“–••ı–lV³f\Íú­°°ğ ù¯ˆ„)şú«·\í?\Ó;w˜Ç´\ã\Â\ÑúCú\ë=Á\n¡º‰\İ9}¥±±\Ñ5j”›‰\Åbw\ç|—±*„©L-Ÿ}öÙ¯&1l\ÌöŠ\á‰LQ+öo­–pLö±ª?¦ˆş\Ğú#\Ğ_\ïhCØ‘°\Õ\ÕÕ¥$o\ÑD7t+†\æµ\ä\äIÕ¤!¬¯¯÷\Ò\ÅG}´·  \àól™œ\ĞM¸i\Û2oã¢¿%4D:F\Ç\Òj\Æ\ÑúCúKªBx;©D\ÂT¢I)“\'O[\ßPk \æb·ñFM*I7\Ï<ó\Ì\ŞX,V–K¦x¢\Ö1­fLı¡?ô‡ş\Ğ_\ß1ù\ÃW\î\Âş\ì2\în~Dqq±;ù\ä9uRµ¡–\éYÆ½\è§?^PPğc¶f\Ú]™bOZ\Çİµš12Lı¡?ôG ¿\î\Ñ\Â\Ô\î,\ã¾N*IM\Ä\rL<¹,gN¬¦\Ö\Ú<™â¥—^jĞ˜€\\1\Å\Ş\Z¢\rŒSD\èı\è\ï„]\Çólb¦egÒn\Ò\á$†/\ç\ÄIÕ­\ët\ç‘d¦\î\çja‹I\n\ÈÆ±…=]’À\ÑúCú\ëÔ»ho]§\åb\Ò1A6\Èö\í\Û\ã\Ö/,**:;\ëO\ìô\éÓ§¨>\Ó<ñ\Äß˜ùÏ˜\")¢?ô‡şôw‚±„Ú„L3‚3…»¸µ\Éa\î\Íú[QQ±nŞ¼yO\n+++k\ÃÔ…l\ŞË’$©˜\"¦ˆşôG ¿ô\êOİµ\éšq\ÜŸ|òInM8)//oİ°aCÆ“Âºººz->¢±\n6ó_b>\è1ELı\èı¡¿p\è\Ï]¬zË–-™\Ì]\ÜJá’¬O\nKKK\Û2\Ñ¤¹¹¹I\ëı„M”î°»j¹`Š˜\"ú#\ĞşÒ«?ó\Øn»?³ƒ|ÿı÷qkf}R¨š\éX×§\'è¤†X”-Wœ˜\"¦ˆşôG ¿ô\ê\Ï}\\w\Z\ÉZ\Ì\Ú}/YŸ\êŸÙº-•µ1ELı\è@\éÕŸû{r—œI\n\ÃV)Ì¶È¤)\Ö\Ô\Ôxô.\\(!ú­%M\ZZ¹re\Â\çœr\Ê)\Şğ\áÃ“~­9s\æx—\\rI\Âı_ıµ?®#ø¸\Ş\×ûï¿ŸQS\ÌF]eJú¼¦N\ZwA)((Ğ½Ê½3\Ï<\ÓÛ´iSÇ¾½{÷ú\Ç\ë±mÛ¶yw\İu—:VZyû\í·\ãşö\âÅ‹ı\ãµHşüùó½‡z\È?V\Ï\ÑÂ³ııh\r±ó\Üs\Ïù\Û\Z,®\ï}\\k¡¿ğøŸ–şp_KŸ‘n5\ÖÕ±Q\ÕYõG¥0‡\Ç¶¶¶\î\rù˜BkMùn»¦b¦’B}	d*\ë×¯÷®¸\â\n\ïúë¯3¡Aƒ\Å¯\ãdŒ\'t’o¦:f\çÎŞw\Ş\é?~\Çwx#FŒˆ{\Îé§Ÿ\îÿ\í×²E\çœs÷\Â/ø¿\ëùkÖ¬\éd~_|ñ…Ÿ¬\ÚDBÍ˜1\Ãûô\ÓOı\í={ö\ĞR¡şÔ\Ğ\çUQQ\áNºx™\×ğC\É_ğ\"¦Àò\åË½n¸Á»ÿşûı°½Ø¹\Ú	\ê\ã\ÕW_\ít¬;vl\Ç\ï\Í\Í\Í\Şm·\İ\æ¿½\ŞM7\İ\äÿ\ïú\İ^\àgÎœ\év\ÚiŞ¿\İ\á…z·\Ür‹¿­ş.¿üòN\ï\ç\İw\ß\í\Ø\Öß´\Ûúÿ\Ñ_¸ü\ÏzÎü\í\Ú\ÚÚ„\ÇEQgQ\Óc\nS„¹\Èÿ\Ğ\Ğ\Ğ–\ÙÇ«C,\Ê83\Ìô˜š\Ê\ÊJ\ßTTÁ\ÓO%uA3\Ó\ãšYn“HkDnk\Ù>®j\ãYg\Õ\É\ÌfÍš\åo\ëo^z\é¥qû‚†fM\Ú$ø~2\á&…ú©d‘\î“p\ê\ïğ\á\ÃqY\éÁ~ÎªjŸ}Ì­ª*\Ó\Õ\ß&…Ò©}¯z\Ş\èÑ£;¶\ï»\ï¾N\Ï\×]ûT\é±\ÇYIãºˆ»•\ë õ»\\·Bn5†¬6o½õÖïŠ­t\Û\ï~¾ö\Úk\è/\Ãş§J´’­ó\Î;\Ïÿ\ÜN=õTÿ÷«®º\ÊOş‚=\ZQ\ÕY\Ôô\Ç\ì\ã¡u\n,XŠu\n\Ãt›GŒk´ e¢»­d*)t»jO\Ô\â\Ô\İjdJn¥ğ¢‹.òuğ\àÁ-\Ş{î¹§SRx\íµ\×&¬ªRd»\íc»w\ïö·U=²¹\Ûö9$…\áÓŸ½\êb¦\í]»vu$…ö³u«,z,\Ñ\ë»I¡½ğ\Ùj±½hj[‰¦´Û•6ô˜tc·•Ø†ŠMJ\í{RR«F‡­\Øhß£>\êo+\Ğÿ\Õ\Õÿ\ëVp\Î?ÿü®GU{º†ş\Ò\çÒˆ’­\à\ãjÄºuEMfß´0¬S¨\×v\Şï´¬O\n«ªª^Q’i\Ê\Ê\Ê6™:0D¢\ì²e–¤0\Ø\ÒU÷±­ªKDF¬\é\ç5\×\\\ã\'znµG\İ1J2ƒc\İd³»J¡Şƒ\Ûò\Õ\ïJ:mõR¡.7© )ş¤}FW_}µ7m\Ú4?¡Ó…UŸ÷€üıº*It\Z=­J_Ò…ºş¤=]tuAw‡\ØT•“µ\\]Lõ´-óMTÁ±ú\Ó1Á}WUp{Œ\ZK\ëÖ­‹¡m½&ú‡ÿõ4)ŒºÎ¢¦?“,†\á&£Fr“\Â²>)4ÿ\Ğ?üğïºgpB\İûøç¢¢¢?d\Ûù\ËtR¨\ÄL\İn×\ÌF·\Şq\Ó=”™\éb¯°-k›0\Ê${“&2K7³‰ª~_½z5IaHõ§$O	 Cª‹p°‹\ØV\\’M\nm ş®4¦‹£º£mƒÁv	\ÚjŠm\Ä_Û¾Up´_Ì şn¾ù\æNœ`\\º\×Àc\'\Ãµõ1…aò?;‘Nc\å\'®§}.\Ê:‹šş†z±{\ï\ãC‡ez<\áİ9\'N\î\èÑ£¿]±bEÆ’\Â\×_}i¼ƒ)ö®\ËO\æ#T·H»\Ä\r°V¨›B­cu\Û*b°kÄ¶x“\í>¾\Ûı\èv‹¸fHR>ı\é\"\Z¼8\ÚFƒ\\\ân\'›\êX\Û06\İ\êr¢£[…\Ñ\ëX\İ\é=\èo»\êzz±V×·f³»\rİ‹µı\ßûcbú\ë[hxŠ\Â~6/¾ø¢¿­d-øùDYgQÔŸ;®°ºº:\í¹\Ëô\é\Óİ¤ğ½œ9±cÆŒbZ4¿ebi\Zó¥=VPPğ£²~L1¹P·†kB\ãÇ\ï4ö\Ë52%†2$kP6Pğ\Í7\ß\ì4\à9Ï™¬º­m÷xuŸ\ØñfšlB¥0;ôg+&\î\Å\Î&÷jphÀ¾¶\í\Å9Ù¤Ğ­hxCO\ÆÃª¢F‰\Z¶Š\çL~êª¢\ÔÕ…^\Ã\"\ìû\în¬—m\\\Ùÿ]ß•`\ã\nı¥\×ÿ\äeÒ˜tğô\ÓOwx–’(%\\‰–ØŠ¢Î¢¨?·¹´´4­K\Ó466úJûú&ùSN\\sB›u\ÑN7²ypf¦’B;Z_…6\ÍÆ³3\Ü\ì\Ä5&û›\ì\Ùn\ã\àR7]½^0)L\Ô\âÖ—\Ãnk\\\Z•\Â\ìĞŸ]\æ\Ã6òœ	&ª˜(	C\Ì\ëbF¹\Æl\Ùjµ4\è\ã’>ut×\ËLDÒ…\ÙVW®¼òJÿutq·K‡Ø±^v\Û\ÕX¢\êOW	°M‚\í\Zšö{a—z²\r,w	ô—^ÿ³\ru+q+,,Œ\Û\ï.\í‚Î¢©¿ö¥i6\Ú\Äl\îÜ¹i\Ë]&NœØ‘\Æb±99wrKJJşR\\\\Ü¦‹CºX¿~ı6“\é›ŸŸ¦˜\Ü\\kcÙ¥Bd‚nuPK\Â\Øõ\ædŒj•º“\ê\ë\ëıŠÕ•¬u\neŠÖ¬‚jI\ë5»{_z]\×,\ÕrV‹\Ş&ªª ’f—şòœ\å:‚³ßµO\Ö\à>[\ÑX\×Dklö¤r™\Ìñ\É\\¬v†ª;\è?¸\î&úÿÙ¥·ò\Ú\Ç>şø\ãqKn¡³h\ê/X-T\å\î»\ï¾Ky\î¢[œn\ãc&)¼:\'O®ù²ı«²²òX:º‘M\Ë\ìu›\Ä\ävL‘À\ÑúCú\ë\r&1›g“´gŸ}\ÖK\å\ÄYb\Ünc#röÄªû\È#\ìœ9sf[*Â–––\ãEEE{M†?S$0Eô‡ş\ĞşzK~~ş&9kµ‰š–\Ù\Ó\í\çR‘\ê\æ99¹¤›R\ì¹Ã†\r\Û_]]}4U\Âö„p\n¦H`Š\èı¡?ıõ•X,v£‰6aÓ˜?\r‡\ê\Ï.\ã@…pa6}K\n\Í.,,lœ1cFs!T—q.T1ELı\èı¡¿Pµ\îµk*T\Õ\Óm\èú:\ËX‚·İ‹NB\èVM÷¹f%\ïÚµ\ë×¾.;£YÆšT’\íc1ELı\èı¡¿p¢\Ã$m‡\İ$Nw<Iöş\ÈZ˜Z\ëªƒ~—q\ä\Â@I¶\Ì$‡û&Mš´qûö\íIUu§’ªªªµªš9=O$¦ˆ)¢?ı\è/TE­&\ç\ØHæ¼§z\Êûø\ãı5s5KÙ;\ÔO%ª*j\é4­\Ë\Z|®f\çô¤’dP2gN\Æä’’’o¦Nºfùò\å\ë\ÍI\Ü\å&û÷\ï\ßgNj}eee­\îe¬[\×\éN%Ùº05¦ˆ)¢?ı¡?ô—y‹\æ.«†½	­C˜³\Ë\ÎôC\åğ\Æöq¡‰\íÙ³=yM&Ö˜x\Ù\ÄÀl¼—1¦ˆ)¢?ı¡?ô—´\ß#¹Â„\Ò\Ã\Ğ\Ø\Ä÷r\îN%€)bŠ\\”	ô‡ş\Ğ_”Q‘ª}¼\á\Ë\íE­`÷rÓ!C–\èk&|Pó*8k€)bŠ\è@\èı\0¦ˆ)¢?ı¡?ô\0˜\"¦ˆşô‡ş\Ğ\0`Š˜\"ú#\ĞúC\0€)bŠ\è@\èı@ï¨©©Áx\ÂGŒ)CúC\è\0RÊªU«šZZZ0ŸFcc\ã?)nFúC\è\0RÊ²e\Ë\îY±b\ÅOûö\íû&®²q\éÒ¥»L<€şô‡ş\Ğ\0¤ó¥»Û´\ÆÖªL¯ñD(BŸ\Å\æ(\"úCèˆªş\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0²–ÿ\Ç5œ2yZ2\0\0\0\0IEND®B`‚',1),('5105',1,'hist.var-countersignUsers',NULL,'¬\í\0sr\0java.util.ArrayListx\Ò™\Ça\0I\0sizexp\0\0\0w\0\0\0t\0247688773386240t\0247689637478400x',NULL),('6',1,'D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\publish.bpmn20.xml','5','<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:activiti=\"http://activiti.org/bpmn\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:omgdc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:omgdi=\"http://www.omg.org/spec/DD/20100524/DI\" typeLanguage=\"http://www.w3.org/2001/XMLSchema\" expressionLanguage=\"http://www.w3.org/1999/XPath\" targetNamespace=\"http://www.mossle.com\">\r\n  <process id=\"publish\" name=\"å…¬æ–‡å‘å¸ƒ\" isExecutable=\"true\">\r\n    <documentation>å…¬æ–‡å‘å¸ƒ</documentation>\r\n    <userTask id=\"taskuser-1\" name=\"å‘æ–‡\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-request\"></userTask>\r\n    <userTask id=\"taskuser-2\" name=\"éƒ¨é—¨é¢†å¯¼å®¡æ‰¹\" activiti:assignee=\"å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§\" activiti:formKey=\"publish-manager\"></userTask>\r\n    <userTask id=\"taskuser-3\" name=\"ä¼šç­¾\" activiti:formKey=\"publish-countersign\">\r\n    <humanPerformer>\r\n      <resourceAssignmentExpression>\r\n        <formalExpression>${countersignUser}</formalExpression>\r\n      </resourceAssignmentExpression>\r\n    </humanPerformer>\r\n    <multiInstanceLoopCharacteristics isSequential=\"false\" activiti:collection=\"${countersignUsers}\" activiti:elementVariable=\"countersignUser\">\r\n      <completionCondition>\r\n	    ${counterSignService.canComplete(\r\n			execution,\r\n			nrOfInstances,\r\n			nrOfActiveInstances,\r\n			nrOfCompletedInstances,\r\n			loopCounter)}\r\n	  </completionCondition>\r\n    </multiInstanceLoopCharacteristics>\r\n	</userTask>\r\n    <userTask id=\"taskuser-6\" name=\"å½’æ¡£\" activiti:assignee=\"å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº\" activiti:formKey=\"publish-finish\"></userTask>\r\n    <endEvent id=\"endnone-2\" name=\"endnone-2\"></endEvent>\r\n    <sequenceFlow id=\"transition-2\" name=\"\" sourceRef=\"taskuser-1\" targetRef=\"taskuser-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"transition-14\" name=\"\" sourceRef=\"taskuser-6\" targetRef=\"endnone-2\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow1\" name=\"\" sourceRef=\"taskuser-2\" targetRef=\"taskuser-3\"></sequenceFlow>\r\n    <sequenceFlow id=\"flow2\" name=\"\" sourceRef=\"taskuser-3\" targetRef=\"taskuser-6\"></sequenceFlow>\r\n    <startEvent id=\"startevent1\" name=\"Start\"></startEvent>\r\n    <sequenceFlow id=\"flow3\" name=\"\" sourceRef=\"startevent1\" targetRef=\"taskuser-1\"></sequenceFlow>\r\n  </process>\r\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_publish\">\r\n    <bpmndi:BPMNPlane bpmnElement=\"publish\" id=\"BPMNPlane_publish\">\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-1\" id=\"BPMNShape_taskuser-1\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"109\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-2\" id=\"BPMNShape_taskuser-2\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"279\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-3\" id=\"BPMNShape_taskuser-3\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"470\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"taskuser-6\" id=\"BPMNShape_taskuser-6\">\r\n        <omgdc:Bounds height=\"80\" width=\"120\" x=\"660\" y=\"185\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"endnone-2\" id=\"BPMNShape_endnone-2\">\r\n        <omgdc:Bounds height=\"40\" width=\"40\" x=\"830\" y=\"206\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNShape bpmnElement=\"startevent1\" id=\"BPMNShape_startevent1\">\r\n        <omgdc:Bounds height=\"35\" width=\"35\" x=\"20\" y=\"207\"></omgdc:Bounds>\r\n      </bpmndi:BPMNShape>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-2\" id=\"BPMNEdge_transition-2\">\r\n        <omgdi:waypoint x=\"229\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"279\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"transition-14\" id=\"BPMNEdge_transition-14\">\r\n        <omgdi:waypoint x=\"780\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"830\" y=\"226\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow1\" id=\"BPMNEdge_flow1\">\r\n        <omgdi:waypoint x=\"399\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"470\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow2\" id=\"BPMNEdge_flow2\">\r\n        <omgdi:waypoint x=\"590\" y=\"225\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"660\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n      <bpmndi:BPMNEdge bpmnElement=\"flow3\" id=\"BPMNEdge_flow3\">\r\n        <omgdi:waypoint x=\"55\" y=\"224\"></omgdi:waypoint>\r\n        <omgdi:waypoint x=\"109\" y=\"225\"></omgdi:waypoint>\r\n      </bpmndi:BPMNEdge>\r\n    </bpmndi:BPMNPlane>\r\n  </bpmndi:BPMNDiagram>\r\n</definitions>',0),('7',1,'D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\publish.publish.png','5','‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0p\0\0\0\0\0w\ä\n\0\0\Z4IDATx\Ú\í\İl\Şuğ%\Éy“%\ÑS#1\Äp†5†ó8£\Ç)\Ôv…9Ë”I\Øn\Í\Æ2n\ÜLü¦ˆœd²clv;¸\ÛÁM\ØÍ±1Zg\Å\r\İ\àw\ß\Ïsı6¿=k\×u´}şôõJ>\é\Ó\çyÚµ\Ï\Şı<¿\Ï\ï\ï„	\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\00ÖŠ¢ø‹\ç{nù†\r^[½zu±j\Õ*\Õ\àõğ\Ã=ö\Ø\ïSµË©’S\ÙW²/÷Jî¡‰Dƒ\\·n]\Ñ\Õ\ÕU¼úê«ªIª»»»xô\ÑG_J\róórª\äTö•\ìË½’{h±vKƒl\ÚFù\êªU«–S%§²¯d_\î•\ÜC“ˆ]4”\æ­\Ô$Ë©’S\ÙW²/÷J\î¡I\Ä~ÉšIS7\ÉBN•œÊ¾’}¹Wr\ã¬Iü\ã\Ås—\Û¾®Rq;\îÓˆ4I9Ur*ûJö\å^\É=\ÔQ“<Ğ³§\ØúŸ\Åÿ<0ó¨Šû\â1\ÍH“”S%§²¯d_\î•\ÜC4\É\İ\Û\î?¦A\æz~\Û\n\ÍH“”S%§²¯d_\î•\ÜC½4É§\×ş\ë M2ÓŒ4I9Ur*ûJö\å^\É=\ÔI“Üºjş M2ÓŒ4I9Ur*ûJö\å^\É=h’J“”S9Õ£e_ö\å^\î\åN“Œ3;\r\Ö$\ã1\ÍH“”S%§²¯d_\î•\ÜC4\É\ëo´I\Æcš‘&)§JNe_É¾\Ü+¹‡:i’û÷l.¶>4\ï\Ø]\Ò}ñ˜f¤IÊ©’S\ÙW²/÷J\î¡Nšd\Ô\Î\'n?¦I\Æ}\Z‘&)§JNe_É¾\Ü+¹‡zj’¯¼R\ìø\ï[\İE!\İiFš¤œ*9•}%ûr¯\ä\ê I\è\ÙSl_ó û™\Çcñ\rI“”S\å\Í\\ö•\ìË½’{¨U“|\å•\â…kŠ-+¿5hƒ\ÌÏ‰\çZ\ã¥IÊ©òf.ûJö\å^\É=Œq“jÍ–5^š¤œ*9•}%ûr¯\ä\ê¤IÈš­\ã­ñÒœ4I9U\Ş\Ìe_É¾\Ü+¹‡1j’\'\Û siNš¤œ*oæ²¯d_\î•\ÜkÒ¤I\ïş\Â¾puKK\Ë\ÒÇ©v¦:”ªHu8\Õ\îôØ¯\Ò\Ç[[[[\Û\ãùºC6I¥IÊ©’S\ÙW²/÷J\îGF\Z\Ä&¦¡lzú¸5Õ‘¾a\í„+ºôu3.¾ø\â¿nªfşüù§.]ºôú<\Ñ\Ù\Ù\Ù\İ\Ñ\ÑÑ›&\Öş_|\êÔ©GfÍš\Õs\İu\×mú\Îw¾ó½¹s\ç~@‹\Ô$5I9Ur*ûJö\å^\Éıhˆ+\Í!ó\Óğup¸C\Û u ÕS¦L9µ¡_˜…?oŞ¼_µ··¿·\â\Ş{\ï-6o\Ş\\tuuG)²ıû÷\Ï<óL±r\å\Êâ¦›n*\âùi Û¾f\ê¹\çûš¤\Ò$\åTÉ©\ì+Ù—{%÷#´Õ­=Õ\ê!lò\ä\ÉEš_*3Ë¶mÛ™YzzzŠ\íÛ·Wf–E‹U?À ×jJÃ½(3f\Ìxßµ\×^»\é²\Ë.{}ùò\å•m8z{{‹õ\ë\×s\ç\Î}½££c\ß\å—_şOš¤\Ò$\åTÉ©\ì+Ù—{%÷\'+6\Åñk\ÕC\×UW]Uù\İ_~ù\åa\Ï,\ëÖ­+fÎœ9\Ğ ·¬a¶\ÆuvvNÿ\ÊW¾rø\Ç?şñ°_„lÜ¸±H\\\ï´i\Ó\îmº}K5IMRN•œÊ¾’}¹Wr?\ê\Òñ®\Ö\Ö\Ö\r\å!kÆŒ•¬¼•\ídmØ°¡øú×¿^=\ÄmIÿ\î\éuı\ÂÌ=û{W\\qÅ‘\'Ÿ|²IúÓŸŠ¥K—ö¦)vo¼øš¤\Ò$\åTÉ©\ì+Ù—{%÷\Ã\Şş·<\\-[¶¬8t\èĞˆ\Î,1\ÆF¬ª!ng\İq1¼MŸ>ıµ\ØWt´\Üyç¯µ··¿T÷“¬&©pJNõh%ûr¯\ä¾^v›ü¯<PÅ‰\ã÷Mñı«\ÛRw{\Æn“±\åm4‡·\ì¾û\î{%\rq{\ÆÃ–8MR“”S%§²¯d_\î•ÜŸ¼ò1o1¼\Å.“c!v©,Ÿu?\ÕòºyQ\â„%q\ÌÛ¦M›Š±òÓŸşto[[\Ûı\Í~†JMR“”S%§²¯d_\î•ÜŸœ8\Ûdyw\Æ\Ñ\Şò6Ğ–¸ò¿Ÿ~\Ë\êe\×\É-±¯\çX»ò\Ê+÷\ÆE÷4I¥IÊ©’S\ÙW²/÷J\î\Ëb—\Åò¥â˜·Z¸\ã;\ÊC\Ü5ß•2®ó—\n‰³M×={´µµı!®®I*MRN•œÊ¾’}¹Wr_\Úur~ùl“#}Â’\áœ\Ø$şı\Ò7¿¦/L\\¤û{\î)j\å†nØ–¸Eš¤\Ò$\åTÉ©\ì+Ù—{%÷}»NNLu0Mq}\éZŠ\ã\áò\Ï\Ò\Ò\Ò\ÒS³\rPó\ç\Ï?µ½½ıõ\á^¤{„·\Âu¥\à÷\Íz,œ&©IÊ©’S\ÙW²/÷J\î‡\'³*_¤{$®óöF]s\Í5µ\ß\nwë­·.\ê\ì\ì¬ù‹ñµ¯}\í7iˆû;MRi’rª\äTö•\ìË½’û4l\Í\ÃÒš5kŠzg¿,\rp;jò\Â,X°\à‰+V\Ôü\ÅX²d\ÉúFÛ2ı¼«Nd\è\Ô$5I9Ur*ûJö\å^\Éıÿ›2eÊ©C=gÒ¤I\ïNY>ƒR\\‹­\ç\êHoo\ïQ×†kkk;k\Ì_À\Î\Î\Î\îÍ›7\×ü\ÅØ°aÃ¦ô\"¬m¤&Y:•èª–––i’š¤œ*9•}%ûr¯\ä~Èœ>\ê\Æ\ã\rr\éñ«s.\\XÔ“Å‹—…›=\æ/`GGG\ïX\\¸{(ûö\í{!N\ÉÙˆM²T´\ÖK“\Ô$\åTÉ©\ì+Ù—{%÷ı9İ™O’>\Î\è”ü\é±\ä\×\ÃŞ‚e+W®,ÿıd\Ì_À¸²x=\âEhğ&Ù¿Ö«\Ü,5IMRN•œÊ¾’}¹WrßŸ\Ó\îr>û¹)\å\Z¦\Ï7\æÇ·m\ÛVW\Üö\í\Û\Ë?û¯jò‡^/še€+¯õŠ\İ4IMRN•œÊ¾’}¹Wr?dNŸnmmı\ÇòVº¨z\Ø[°¬§§§ü3wû-p\ÍZšIóV³dÔ›¹œ×’}Ù—{\Õl•† ø>œ\êÏ©şØ·\Åkoª]©~ƒR\Z\ä7§O¦z<\Õc©V§ûV¦+Rİ“\ê®ô}\îHu[ºı½T·¤\Çÿ-}¾8\İ^§\ĞOŸ\ÏIŸ\ÏJ5#}~Eª©\é¾K\Ó\ç\í\évº\Ùò/\éömmmç§\ç¥ûÎ‰\'\Ñø¹zó\çõ2«6·Œ\Ûcàº»»÷6Á1p¹6¦p~6on¦&¹zõ\êâ¥—^*|ğÁkq\èĞ¡\Ê~É>ú\è_Ï¿ùæ›­\å’\ÓJ\â\0\àòk˜š{q\ß}÷o{\ÛÛŠ­[·ö?¶w\ï\Ş\Êó\ã¾;vŸù\Ìg*\Ï}\Ï{\ŞS|ÿû\ß?\ê{?ó\Ì3•\ç\Ç\×=şø\ã\Å%—\\R©/~ñ‹•¯‰\Ç\Ê_ó\Ë_ş²¸è¢‹úŸ3\Øóû=nº\é¦!Ÿsõ\ÕWWn\ßu\×]•¿™|ÿw\Ü!§zô¨ı]{\íµ\Ç}\ÎÚµkûûxù\ë\âdz´\Ü7Z\Å\n#¿Ë—/?¡¿¸–Wõ}\ßşö·+·Ÿşù¦\È}ü__pÁuñ\ÅŸœnoo?-\İş›”ƒ¤\ÏÏ˜4i\Òß¦\Ûg÷\rT\çÄ€ƒV\ä$}~Qúü’t{Rd1˜Å€ƒZú|fºı­Tó\Ò\ç\×\Ç@ƒ]x1\èõ\r|?Iõ³Tw§\Ç\î\ïW÷\rŠŸÀ\0w¤üy=ª\é\07gÎœ\ß\×\Ã~¥}g¡\\\×\àMò¨\æ\Ølû™Ç›|4¸§zª8ıôÓ‹|\ä#G5¾ó\Ï?ÿ¨\ç~ô£­T^ …‚xŞŒ3*Ÿÿ\èG?ª|~\"ÃŸ…ƒ\æ\Èiü_\Çÿı‚*ÿ÷1Ğ¤Ÿ£R1pU61Œ\ÅBf\ä\èsŸû\\\å\rº¼°ùÖ·¾õ¨\ÜE½ù\Ío.N9\å”81Rÿsx\à\Ê÷¯¯ş™\Şñw\çwŞ€oğ\ÕVşùs¦O;\í´\âœsÎ©Üºûî»‹÷¿ÿı\Ç|Ÿşğ‡ı·o¿ıöş\ÛñûË©=Ò•W@\ÄJ‰¡b#ÿùù»w\ï®|ü\Ä\'>\Ñß³\Ï>k€“ûº®X	——Gr_‚Q\år\Ç\ëË±r0>şú×¿®¬”®~¾ÜéŠ†\å©\Î\í{Î¡\Ùwx\Ì_À¸\Ü/~ñ‹º¸\\œN´A›\äã­­­ÿ\\\İ›­I¦ÿ£JSûù\Ï^ùø©O}ê¨…\ÙX0û\ã²yˆ‹ozÓ›*—g|­µ»\ã/§(Ö¯_\ßÿyl\É-¿\Æcù¾òÖ·‡zhÀ\ïW=À\Å÷\Ïo\Âñ1ªx“®£££ÿ¼<\ÈEn\ßşö·W]u\Õ1[\à\âû”\×\ÄV]ñy£\å\á1oõØ¹sgÿ÷ù\ä\'?\Ùÿ÷Ciş\Úø[)¯õµ«G¿ÑŠ+^‘ÁÁV’\Å}±\â\äÓŸştÿ®t‘\Ñ\È{¬ğøğ‡?¬G\Ë}Ã¬°x\ï{\ß\Û\ßWc\åpùñıû÷÷d\å¾ü\İ\ï~·ø\à?XyÏ™3gN\å¾\î\î\î\Ê\Ç\Ø{C\îGOœq²jh;[ğRY•\åF9n÷˜¿ˆK—.½©®­0}úô­y\ân &9\àZ­fm’yÁs¸[\Ê[\îò\×µkš&Ù¼9ÿÿ’ò\Â\å®]»Z\Z[òsc+Z\Ü7\Ø\ÏV=À\Ås¿ñoT¾W|ß¯~õ«•ûb·ß¼!¯„\È_oü1`U\ï&£A\Çóób\ìFœ·¸\Åc_şò—+·c7\Ìø½ú}\Ëkz\ßù\ÎwVÒ¸[\ë\Æjô8\à\ÆU\ÎK‘\çœ\Ñü7pö\ÙgW//\ĞF¾c5-T>\ç–s\Û\è{GŒ\ãn\\\å¾z€«Ş…²<À•óCZ\ä?¾>–I\â¾\Øc -vr?\â}_\ß\às ï˜º‰ƒe\ÙY(1s\æ\Ìw}\éK_z½–W7Oi]\é?\ï\à”)Sş²›i³\îg»,\ä­\ÑôbAöx\í\å5Â±†\×\07¾r\Z[\Ó\"+gyf\åX\È¾bY¼ñq\Æ•\Çc8\Ê™\å7\Ş\Ù+bWšœ·\Ûn»\í˜-]›6m:f€‹3\îûø\Ç?^\Ù2keca7>¾\å-o©Ü®\Îr^@ˆ\Ûy0Œµ¸±¥o \ì\ÇõO<qÔš\İ	c|L\èx\à\ÆSd±Rm İ„£\"Ï‘¹\Èi,´Vg4¶D\Ä\ßY³m²?~–M¢G~cE]d9zú…^X©x,ş.\ÊY^†\É+\çÊ»\å—ÿ&\ä~T·À½+N€r¼‹x÷\rp76\Èu\àn­\Éy\Í5\×üö‘G©Ù‹p\Ë-·<\ë\Ó$£¢\Æ\ÂqyW·	}Ç¶\ï`ù8\ÙÃ„8\éƒ&Ù¼9,†µº\â5v9¬\ŞM2/dw€‹Š-oñ}\Ï:\ë¬\Ê0–¶¼e\"r1ÀÅ›xmQykEy÷\ÉØ­1¬ê­‚ª\Ê[\à\âx¸X`\ÈÏ‹+N^R\Ş\â\\=ü9N‰Š-Õ±p“w®®\È\çÄ‰\Ú\Â•w\Ë+\"r¦sNc-÷0ÀEO\Îı=\Ş·.om‹½,\â\ãºu\ëpõ»¥\îóyHª‡½\Ë\âDl¥k,¶\×\äš={vkZ\Ğx­¦…¨\Ãmmm˜4iÒ»5\É\Æ9»Y4\ÊØ¢ƒY_“p-Võ\×5CS4À|\å5¤\åa-¿\é\æ†”ow€+Ÿ\ä$¾.oõŠ3XN¨:6.? \İn&ç¸´\àb¡:T\Ş}³<À\å\ß},\Îxf!¶¹{t¹ÿ\æ]\"«·´•ÿc%Flµˆ…\Øø\ÚòBl\äñ†n8\êoE–ûz­8^3\Ş#â½ z%Eõ\0YŞûo|W\ŞU-÷u³¥..…PL<¹¨\åŞ‚e½½½E{{û\ëy€«\é\Ó\ÑÑ±/\ZøX[°`A\\ƒ\âfM²1*N\Û^^H7o\Ş1[(;°>–\ë­šd}\å4Ÿd¤<\0\å\İjcØŠ\Ó:\çA\ëd¸X`-±/¾o\Îl¼Á\çÁi ï•·\Ô\å¬o€«\Şòœ‡³Ø…3ÿ\Ü\Ç;.¯üÈ¿{ü\\C­üS=úD+¯¤ˆlÅ \'&\Égx-/Ğ–ó™¿&Näûtœ²\Ü7\â\Ê\å\è\áñ•‡±ò.”ù5\å¾lÊº\ß\n\×É5k\Ö\Ô\Å\0óRM+›:u\ê?\\~ù\å½Ñ¼\Ç\ÊSO=µ£µµõ·q6\ZM²ş+oÅˆf\Ç.}\èC\ê?»^œ\åo F˜wWˆ…\ë¼E\"\ê\Î;\ï¬|Ï±Xx\Õ$\ë#§y\á0Q¨>}slu+/X–\ÏB™Ÿ_>YC\Şò¹«>¥t\ÎWy6V2\ä\ã€òpW®8\Ş-O\Ë\'9‘-\ån a5¬ù¬h9ûù\Ä>y\ÈP\×\ë’S=úD*oÑ¿£\Ş\âc\Îÿ`gş\Ğwügü½Ä®ñqŒj3£,û\ãc€›P:#põ2\Å`\'1‰\ãF\ã˜Ï¼ n\\\İp\Óòÿ\ÑÌ™3\ëb€›5k\Ök¥\İ\'g\ÔüEš6m\Ú,Y²\äğX\ìJ™\Ì^]\'/¹ä’¿\×$\ë¿bÁ;®w•Oõƒ[y«[gù\Ú^ñ\æ»\à\Ä\î•ñ¼\Ø\"2\Ğş\â¹ñx,\äj’\ã;§9±M¾(÷@×¢\Ê[±ò\ÉJª¯k`\ãÍ¹zø‹<–¯aX½Z^\áÏšz²\\TªN\\R«\ÓS[ˆmş\Ù\Î\Î\ÎJ\Æâº‰±B$²+\Éò1 \å\İ$\ão ²\Ã[¾\ÌE|M\Ît¾N§\ëÀ\É}½Wôû¼\Ân8\ï9\Ñ\ë;\é®~\Ä	[ZZzòÀË5¾nuù\ä%\êb#Tœrö\ÒK/İ™\Zy\ïhşò]]]G\Ò\ÈŞº˜Z5I¥IÊ©œZgyhô=d_\î\Õø\É}š\å¡iÚ´i•şU±\ë\Ê+¯|­4À\İXO/\Ò\ÄÉ“\'\ï¿\ç{^­-o}\Ã\Û\"MRi’rª\äTö•\ìË½’ûÁô]ø{wœ–-[V“.öR(\ro\İC]a\Ì\Å\ÙT\Ú\Û\Û÷\Üv\ÛmûFú˜·\Ømr¼ly\Ó$5I9Ur*ûJö\å^\Éı\ŞÀ\Ô^\Z*¿\ßXŠ¯üï§šR¯/\Ô\Ä4l\İg§Üµk\×+oôRq¶\É8a\Éx8\æM“\Ô$\åTÉ©\ì+Ù—{%÷#\'®]:uÿ˜Ç½¥\ïHix[\Ö/\Öô4È½xıõ\×oyö\Ùg‡µEnß¾}]K—.\İ[\İ\â*\å\Í~¶IMR“”S%§²¯d_\î•ÜÚ®”[\ÊC\Üho‰‹\ï_5¼m©»]\'‡xÁ\æ\Çş§S§Nı\Í\âÅ‹_»v\íS¿û\İ\ïv•\Éıû÷¿˜¦\ÔMK–,Y?}úô­­­­cZn\æ‹tk’\Ê\0§\äTö•\ìË½’û\Ñ3EšGv–wgŒc\â\â\â\Ú#}Â’ªcŞ¢v¦™\èôF\İ|ù±¾a\îÁ¾ğp\é{¡\ï‚{7¦:7Nı©Ej’š¤œ*9•}%ûr¯\ä~¤†¸¸€vy¸Š³SÆ®#µ\Ë\ä7¿ù\Í×ª†·-\r;¼¡I*œ’S=ZÉ¾\Ü+¹¯¥¸ôYkk\ë¿W\rY•‹}¯Y³fØ—\Zˆ-xqL]ù\"\İ\åc\Ş\Zf·I4Ie€SrªG+Ù—{%÷õª\ïì”»«‡®É“\'.,V¬XQlÛ¶-®A]\Ù-2\ë\é\é)¶o\ß^¬\\¹²X¼xq\Ñ\Ş\Şşú\0ƒ[wİmMRi’r*§z´ŒÈ¾\Ü+¹oDq\ÈV\Ş\Õ\Ò\Ò\Ò3Àv2u ³\ÕM“\ÔL4I9Ur*ûJö\å^\Éı\è\rr§¦!nvß™*wp‹\ã\ê\âZ\Õ\ãõ¬ùh’š¤œ*9•}%ûr¯\ä¾&\Ò0vfc}×\ÛØ·;d\Öb¸\Û\İw\"”[c7\Ìñ~\Æ|4IMRN•œÊ¾’}¹Wrš¤\Ò$\åTy3—ı©ƒ[·n­||#÷Ë¾\Ü+¹MRi’rª\äTöG¹bK¿Z\å\ã¹_ö\å^\É=h’J“”S%§²o€“}¹Wrš¤\Ò$\åTy3—}œ\ì\ëùJ\îA“T8%§z´Nö\å^\É=h’J“”S%§²o€“}¹Wrš¤\Ò$\åTy37À\àd_\Ï\×óMR\à”œ\ê\Ñ8Ù—{%÷ I*MRN•œÊ¾Nö\å^\É=h’J“”S9\Å\0g€C\Ï\×óMR“4À)9•}œ\ìË½’{\Ğ$•&)§JNe\ß\0\'ûr¯\ä4I¥IÊ©œb€3ÀÉ½\Òóc­^½Z3i\Ş:”š\äa9Ur*û8Ù—{%÷\Ğ${\ì±ººº4”&¬={öü,5É§\åTÉ©\ì\×S<x°2Œ\Å\Ç7r¿\ìË½’{—Ö¬Ys\á#<ò\Ç_|ñ\Ï\ZKó¬İŠùğ\Ã\ïJõy9Ur*ûJö\å^\É=4‘ô‡ô\ÙU«VmŒMÚ±_²jøŠÿÇ§›­AÊ©œ\êÑ²/ûr¯\ä\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0`Hÿzß–\ì?\ÂÊ±\0\0\0\0IEND®B`‚',1),('7526',1,'hist.var-countersignUsers',NULL,'¬\í\0sr\0java.util.ArrayListx\Ò™\Ça\0I\0sizexp\0\0\0w\0\0\0t\0247689637478400x',NULL);
+/*!40000 ALTER TABLE `act_ge_bytearray` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ge_property`
+--
+
+DROP TABLE IF EXISTS `act_ge_property`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ge_property` (
+  `NAME_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `VALUE_` varchar(300) COLLATE utf8_bin DEFAULT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  PRIMARY KEY (`NAME_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ge_property`
+--
+
+LOCK TABLES `act_ge_property` WRITE;
+/*!40000 ALTER TABLE `act_ge_property` DISABLE KEYS */;
+INSERT INTO `act_ge_property` VALUES ('next.dbid','30001',13),('schema.history','create(5.18.0.0)',1),('schema.version','5.18.0.0',1);
+/*!40000 ALTER TABLE `act_ge_property` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_actinst`
+--
+
+DROP TABLE IF EXISTS `act_hi_actinst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_actinst` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `ACT_ID_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `CALL_PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `ACT_NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `ACT_TYPE_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ASSIGNEE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `START_TIME_` datetime(3) NOT NULL,
+  `END_TIME_` datetime(3) DEFAULT NULL,
+  `DURATION_` bigint(20) DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_HI_ACT_INST_START` (`START_TIME_`),
+  KEY `ACT_IDX_HI_ACT_INST_END` (`END_TIME_`),
+  KEY `ACT_IDX_HI_ACT_INST_PROCINST` (`PROC_INST_ID_`,`ACT_ID_`),
+  KEY `ACT_IDX_HI_ACT_INST_EXEC` (`EXECUTION_ID_`,`ACT_ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_actinst`
+--
+
+LOCK TABLES `act_hi_actinst` WRITE;
+/*!40000 ALTER TABLE `act_hi_actinst` DISABLE KEYS */;
+INSERT INTO `act_hi_actinst` VALUES ('15003','vacation:1:12','15001','15001','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-23 11:09:18.547','2016-08-23 11:09:18.588',41,'1'),('15010','vacation:1:12','15001','15001','taskuser-1','15011',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-23 11:09:18.588','2016-08-23 11:09:18.878',290,'1'),('15013','vacation:1:12','15001','15001','taskuser-2','15014',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-23 11:09:18.878','2016-08-23 11:10:38.275',79397,'1'),('15018','vacation:1:12','15001','15001','exclusive-1',NULL,NULL,'exclusive-1','exclusiveGateway',NULL,'2016-08-23 11:10:38.275','2016-08-23 11:10:38.279',4,'1'),('15019','vacation:1:12','15001','15001','taskuser-3','15020',NULL,'äººäº‹å®¡æ‰¹','userTask','7','2016-08-23 11:10:38.279','2016-08-23 11:13:15.472',157193,'1'),('15024','publish:1:8','15022','15022','startevent1',NULL,NULL,'Start','startEvent',NULL,'2016-08-23 11:13:08.154','2016-08-23 11:13:08.164',10,'1'),('15030','publish:1:8','15022','15022','taskuser-1','15031',NULL,'å‘æ–‡','userTask','1','2016-08-23 11:13:08.164','2016-08-23 11:13:08.191',27,'1'),('15033','publish:1:8','15022','15022','taskuser-2','15034',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-23 11:13:08.191','2016-08-23 11:14:35.669',87478,'1'),('15039','publish:1:8','15022','15038','taskuser-3','15046',NULL,'ä¼šç­¾','userTask','247689637478400','2016-08-23 11:14:35.670','2016-08-23 15:11:57.269',14241599,'1'),('15061','vacation:1:12','15059','15059','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-23 13:29:05.013','2016-08-23 13:29:05.013',0,'1'),('15068','vacation:1:12','15059','15059','taskuser-1','15069',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-23 13:29:05.013','2016-08-23 13:29:05.044',31,'1'),('15071','vacation:1:12','15059','15059','taskuser-2','15072',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-23 13:29:05.044','2016-08-23 15:11:58.496',6173452,'1'),('15079','vacation:1:12','15077','15077','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:12:25.774',2,'1'),('15086','vacation:1:12','15077','15077','taskuser-1','15087',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-23 15:12:25.774','2016-08-23 15:12:25.802',28,'1'),('15089','vacation:1:12','15077','15077','taskuser-2','15090',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-23 15:12:25.802','2016-08-23 15:12:51.315',25513,'1'),('15096','vacation:1:12','15077','15077','exclusive-1',NULL,NULL,'exclusive-1','exclusiveGateway',NULL,'2016-08-23 15:12:51.315','2016-08-23 15:12:51.318',3,'1'),('15097','vacation:1:12','15077','15077','taskuser-3','15098',NULL,'äººäº‹å®¡æ‰¹','userTask','7','2016-08-23 15:12:51.318','2016-08-23 15:16:23.315',211997,'1'),('15101','vacation:1:12','15077','15077','exclusive-2',NULL,NULL,'exclusive-2','exclusiveGateway',NULL,'2016-08-23 15:16:23.315','2016-08-23 15:16:23.317',2,'1'),('15102','vacation:1:12','15077','15077','taskuser-6','15103',NULL,'é”€å‡','userTask','1','2016-08-23 15:16:23.317','2016-08-23 15:17:33.569',70252,'1'),('15104','vacation:1:12','15077','15077','endnone-2',NULL,NULL,'ç»“æŸ','endEvent',NULL,'2016-08-23 15:17:33.569','2016-08-23 15:17:33.570',1,'1'),('15107','publish:1:8','15105','15105','startevent1',NULL,NULL,'Start','startEvent',NULL,'2016-08-23 15:19:19.770','2016-08-23 15:19:19.799',29,'1'),('15113','publish:1:8','15105','15105','taskuser-1','15114',NULL,'å‘æ–‡','userTask','1','2016-08-23 15:19:19.799','2016-08-23 15:19:19.823',24,'1'),('15116','publish:1:8','15105','15105','taskuser-2','15117',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-23 15:19:19.823','2016-08-23 15:20:50.160',90337,'1'),('15122','publish:1:8','15105','15121','taskuser-3','15129',NULL,'ä¼šç­¾','userTask','4','2016-08-23 15:20:50.161','2016-08-23 15:31:07.512',617351,'1'),('15176','process:4:15173','15174','15174','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:31:59.855',2,'1'),('15183','process:4:15173','15174','15174','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','15184',NULL,'è¯·å‡','userTask','1','2016-08-23 17:31:59.855','2016-08-23 17:31:59.912',57,'1'),('15186','process:4:15173','15174','15174','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','15187',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-23 17:31:59.913','2016-08-23 17:32:48.131',48218,'1'),('15193','process:4:15173','15174','15174','sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,NULL,NULL,'endEvent',NULL,'2016-08-23 17:32:48.131','2016-08-23 17:32:48.132',1,'1'),('15196','process:4:15173','15194','15194','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-23 17:36:37.805','2016-08-23 17:36:37.808',3,'1'),('15203','process:4:15173','15194','15194','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','15204',NULL,'è¯·å‡','userTask','1','2016-08-23 17:36:37.808','2016-08-23 17:36:37.834',26,'1'),('15206','process:4:15173','15194','15194','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','15207',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-23 17:36:37.834','2016-08-24 10:34:19.215',61061381,'1'),('15212','vacation:1:12','15210','15210','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-23 17:37:21.080','2016-08-23 17:37:21.083',3,'1'),('15219','vacation:1:12','15210','15210','taskuser-1','15220',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-23 17:37:21.083','2016-08-23 17:37:21.109',26,'1'),('15222','vacation:1:12','15210','15210','taskuser-2','15223',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-23 17:37:21.109','2016-08-24 09:32:05.721',57284612,'1'),('17503','vacation:1:12','17501','17501','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-24 09:31:00.312','2016-08-24 09:31:00.344',32,'1'),('17510','vacation:1:12','17501','17501','taskuser-1','17511',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-24 09:31:00.344','2016-08-24 09:31:00.609',265,'1'),('17513','vacation:1:12','17501','17501','taskuser-2','17514',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-24 09:31:00.609','2016-08-28 10:05:15.061',347654452,'1'),('17518','vacation:1:12','15210','15210','exclusive-1',NULL,NULL,'exclusive-1','exclusiveGateway',NULL,'2016-08-24 09:32:05.721','2016-08-24 09:32:05.726',5,'1'),('17519','vacation:1:12','15210','15210','taskuser-3','17520',NULL,'äººäº‹å®¡æ‰¹','userTask','7','2016-08-24 09:32:05.726','2016-08-28 10:05:13.638',347587912,'1'),('17524','process:4:15173','17522','17522','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-24 10:33:49.517','2016-08-24 10:33:49.520',3,'1'),('17525','process:4:15173','17522','17522','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17526',NULL,'è¯·å‡','userTask','1','2016-08-24 10:33:49.520','2016-08-24 10:33:49.561',41,'1'),('17528','process:4:15173','17522','17522','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17529',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-24 10:33:49.561','2016-08-28 10:05:16.642',343887081,'1'),('17534','process:4:15173','15194','15194','sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,NULL,NULL,'endEvent',NULL,'2016-08-24 10:34:19.215','2016-08-24 10:34:19.215',0,'1'),('17537','process:4:15173','17535','17535','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-24 10:36:50.721','2016-08-24 10:36:50.721',0,'1'),('17545','process:4:15173','17535','17535','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17546',NULL,'è¯·å‡','userTask','1','2016-08-24 10:36:50.721','2016-08-24 10:36:50.752',31,'1'),('17548','process:4:15173','17535','17535','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17549',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-24 10:36:50.752','2016-08-28 10:05:17.663',343706911,'1'),('17554','process:4:15173','17552','17552','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-24 10:43:52.526','2016-08-24 10:43:52.526',0,'1'),('17562','process:4:15173','17552','17552','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17563',NULL,'è¯·å‡','userTask','1','2016-08-24 10:43:52.526','2016-08-24 10:43:52.542',16,'1'),('17565','process:4:15173','17552','17552','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17566',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-24 10:43:52.542','2016-08-28 10:05:18.620',343286078,'1'),('17571','process:4:15173','17569','17569','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-24 10:59:48.694','2016-08-24 10:59:48.710',16,'1'),('17579','process:4:15173','17569','17569','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17580',NULL,'è¯·å‡','userTask','1','2016-08-24 10:59:48.710','2016-08-24 10:59:48.725',15,'1'),('17582','process:4:15173','17569','17569','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17583',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-24 10:59:48.725','2016-08-28 10:05:19.784',342331059,'1'),('17588','process:4:15173','17586','17586','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,NULL,'startEvent',NULL,'2016-08-24 11:46:47.139','2016-08-24 11:46:47.154',15,'1'),('17596','process:4:15173','17586','17586','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17597',NULL,'è¯·å‡','userTask','1','2016-08-24 11:46:47.154','2016-08-24 11:46:47.186',32,'1'),('17599','process:4:15173','17586','17586','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17600',NULL,'ä¸Šçº§å®¡æ‰¹','userTask','247688773386240','2016-08-24 11:46:47.186','2016-08-28 10:05:20.598',339513412,'1'),('20047','vacation:1:12','20045','20045','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:08:28.052',3,'1'),('20054','vacation:1:12','20045','20045','taskuser-1','20055',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-28 10:08:28.052','2016-08-28 10:08:28.082',30,'1'),('20057','vacation:1:12','20045','20045','taskuser-2','20058',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-28 10:08:28.082','2016-08-28 10:14:07.122',339040,'1'),('20120','vacation-student:4:20117','20118','20118','sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04',NULL,NULL,NULL,'startEvent',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:48:29.610',3,'1'),('20128','vacation-student:4:20117','20118','20118','sid-92464D4A-380E-4D73-875E-E77E82399CEC','20129',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-28 10:48:29.610','2016-08-28 10:48:29.636',26,'1'),('20131','vacation-student:4:20117','20118','20118','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','20132',NULL,'è¾…å¯¼å‘˜å®¡æ‰¹','userTask','247689637478400','2016-08-28 10:48:29.636','2016-08-28 10:48:42.560',12924,'1'),('20136','vacation-student:4:20117','20118','20118','sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898',NULL,NULL,NULL,'exclusiveGateway',NULL,'2016-08-28 10:48:42.560','2016-08-28 10:48:42.562',2,'1'),('20137','vacation-student:4:20117','20118','20118','sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04',NULL,NULL,NULL,'exclusiveGateway',NULL,'2016-08-28 10:48:42.562','2016-08-28 10:48:42.564',2,'1'),('20138','vacation-student:4:20117','20118','20118','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','20139',NULL,'é™¢ç³»é¢†å¯¼å®¡æ‰¹','userTask','å²—ä½:ä¹¦è®°','2016-08-28 10:48:42.564','2016-08-28 10:51:54.369',191805,'1'),('20143','vacation-student:4:20117','20141','20141','sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04',NULL,NULL,NULL,'startEvent',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:53:09.252',3,'1'),('20151','vacation-student:4:20117','20141','20141','sid-92464D4A-380E-4D73-875E-E77E82399CEC','20152',NULL,'å¡«å†™è¯·å‡å•','userTask','1','2016-08-28 10:53:09.252','2016-08-28 10:53:09.274',22,'1'),('20154','vacation-student:4:20117','20141','20141','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','20155',NULL,'è¾…å¯¼å‘˜å®¡æ‰¹','userTask','247689637478400','2016-08-28 10:53:09.274','2016-08-28 10:53:34.193',24919,'1'),('20159','vacation-student:4:20117','20141','20141','sid-828C823A-98DD-4590-A7B3-4BFEC1CA6898',NULL,NULL,NULL,'exclusiveGateway',NULL,'2016-08-28 10:53:34.193','2016-08-28 10:53:34.195',2,'1'),('20160','vacation-student:4:20117','20141','20141','sid-F9CD4D4E-CC32-483C-A056-3BEB1F240A04',NULL,NULL,NULL,'exclusiveGateway',NULL,'2016-08-28 10:53:34.195','2016-08-28 10:53:34.197',2,'1'),('20161','vacation-student:4:20117','20141','20141','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','20162',NULL,'é™¢ç³»é¢†å¯¼å®¡æ‰¹','userTask','4','2016-08-28 10:53:34.197','2016-08-28 10:54:12.174',37977,'1'),('20166','vacation-student:4:20117','20141','20141','sid-B488C7ED-61FC-4E3A-AAEF-AFAA5B4971C7',NULL,NULL,NULL,'exclusiveGateway',NULL,'2016-08-28 10:54:12.174','2016-08-28 10:54:12.176',2,'1'),('20167','vacation-student:4:20117','20141','20141','sid-5732769D-2626-4CE0-98E5-40B1E96645C9','20168',NULL,'é”€å‡','userTask','1','2016-08-28 10:54:12.176','2016-08-28 10:54:39.547',27371,'1'),('20169','vacation-student:4:20117','20141','20141','sid-23B845EA-CBD0-4089-91D8-5A593FD8D038',NULL,NULL,NULL,'endEvent',NULL,'2016-08-28 10:54:39.547','2016-08-28 10:54:39.548',1,'1'),('5003','vacation:1:12','5001','5001','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-11 11:17:36.579','2016-08-11 11:17:36.598',19,'1'),('5010','vacation:1:12','5001','5001','taskuser-1','5011',NULL,'å¡«å†™è¯·å‡å•','userTask','247688773386240','2016-08-11 11:17:36.598','2016-08-11 11:52:40.281',2103683,'1'),('5014','vacation:1:12','5001','5001','taskuser-2','5015',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','4','2016-08-11 11:52:40.281','2016-08-11 14:18:45.508',8765227,'1'),('5020','vacation:1:12','5018','5018','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-11 12:03:05.849','2016-08-11 12:03:05.852',3,'1'),('5027','vacation:1:12','5018','5018','taskuser-1','5028',NULL,'å¡«å†™è¯·å‡å•','userTask','247688773386240','2016-08-11 12:03:05.852','2016-08-11 12:03:44.843',38991,'1'),('5031','vacation:1:12','5018','5018','taskuser-2','5032',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689000714240','2016-08-11 12:03:44.843','2016-08-12 15:00:10.898',96986055,'1'),('5049','vacation:1:12','5047','5047','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:15:28.049',3,'1'),('5056','vacation:1:12','5047','5047','taskuser-1','5057',NULL,'å¡«å†™è¯·å‡å•','userTask','247688773386240','2016-08-11 14:15:28.049','2016-08-11 14:18:47.509',199460,'1'),('5062','vacation:1:12','5060','5060','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-11 15:42:49.200','2016-08-11 15:42:49.203',3,'1'),('5069','vacation:1:12','5060','5060','taskuser-1','5070',NULL,'å¡«å†™è¯·å‡å•','userTask','247688773386240','2016-08-11 15:42:49.203','2016-08-23 11:09:26.260',1020397057,'1'),('5087','vacation:1:12','5085','5085','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-11 17:07:45.328','2016-08-11 17:07:45.328',0,'1'),('5094','vacation:1:12','5085','5085','taskuser-1','5095',NULL,'å¡«å†™è¯·å‡å•','userTask','247688773386240','2016-08-11 17:07:45.328','2016-08-23 11:09:28.551',1015303223,'1'),('5100','publish:1:8','5098','5098','startevent1',NULL,NULL,'Start','startEvent',NULL,'2016-08-11 17:12:15.045','2016-08-11 17:12:15.062',17,'1'),('5106','publish:1:8','5098','5098','taskuser-1','5107',NULL,'å‘æ–‡','userTask','1','2016-08-11 17:12:15.062','2016-08-11 17:12:15.077',15,'1'),('5109','publish:1:8','5098','5098','taskuser-2','5110',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','4','2016-08-11 17:12:15.077','2016-08-23 11:09:27.381',1015032304,'1'),('7503','vacation:1:12','7501','7501','vacation_1',NULL,NULL,'å¡«å†™è¯·å‡å•','startEvent',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:13:23.956',16,'1'),('7510','vacation:1:12','7501','7501','taskuser-1','7511',NULL,'å¡«å†™è¯·å‡å•','userTask','247689000714240','2016-08-12 14:13:23.956','2016-08-12 14:13:24.057',101,'1'),('7513','vacation:1:12','7501','7501','taskuser-2','7514',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247688416968704','2016-08-12 14:13:24.057','2016-08-12 14:14:23.130',59073,'1'),('7521','publish:1:8','7519','7519','startevent1',NULL,NULL,'Start','startEvent',NULL,'2016-08-12 14:56:20.106','2016-08-12 14:56:20.120',14,'1'),('7527','publish:1:8','7519','7519','taskuser-1','7528',NULL,'å‘æ–‡','userTask','1','2016-08-12 14:56:20.120','2016-08-12 14:56:20.180',60,'1'),('7530','publish:1:8','7519','7519','taskuser-2','7531',NULL,'éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask','247689637478400','2016-08-12 14:56:20.180','2016-08-12 14:57:39.283',79103,'1'),('7536','publish:1:8','7519','7535','taskuser-3','7543',NULL,'ä¼šç­¾','userTask','247689637478400','2016-08-12 14:57:39.284','2016-08-23 11:09:30.033',936710749,'1');
+/*!40000 ALTER TABLE `act_hi_actinst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_attachment`
+--
+
+DROP TABLE IF EXISTS `act_hi_attachment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_attachment` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `USER_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `DESCRIPTION_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `URL_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `CONTENT_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TIME_` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_attachment`
+--
+
+LOCK TABLES `act_hi_attachment` WRITE;
+/*!40000 ALTER TABLE `act_hi_attachment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_hi_attachment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_comment`
+--
+
+DROP TABLE IF EXISTS `act_hi_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_comment` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TIME_` datetime(3) NOT NULL,
+  `USER_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `ACTION_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `MESSAGE_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `FULL_MSG_` longblob,
+  PRIMARY KEY (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_comment`
+--
+
+LOCK TABLES `act_hi_comment` WRITE;
+/*!40000 ALTER TABLE `act_hi_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_hi_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_detail`
+--
+
+DROP TABLE IF EXISTS `act_hi_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_detail` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `ACT_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `VAR_TYPE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `TIME_` datetime(3) NOT NULL,
+  `BYTEARRAY_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `DOUBLE_` double DEFAULT NULL,
+  `LONG_` bigint(20) DEFAULT NULL,
+  `TEXT_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TEXT2_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_HI_DETAIL_PROC_INST` (`PROC_INST_ID_`),
+  KEY `ACT_IDX_HI_DETAIL_ACT_INST` (`ACT_INST_ID_`),
+  KEY `ACT_IDX_HI_DETAIL_TIME` (`TIME_`),
+  KEY `ACT_IDX_HI_DETAIL_NAME` (`NAME_`),
+  KEY `ACT_IDX_HI_DETAIL_TASK_ID` (`TASK_ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_detail`
+--
+
+LOCK TABLES `act_hi_detail` WRITE;
+/*!40000 ALTER TABLE `act_hi_detail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_hi_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_identitylink`
+--
+
+DROP TABLE IF EXISTS `act_hi_identitylink`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_identitylink` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `GROUP_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `USER_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_HI_IDENT_LNK_USER` (`USER_ID_`),
+  KEY `ACT_IDX_HI_IDENT_LNK_TASK` (`TASK_ID_`),
+  KEY `ACT_IDX_HI_IDENT_LNK_PROCINST` (`PROC_INST_ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_identitylink`
+--
+
+LOCK TABLES `act_hi_identitylink` WRITE;
+/*!40000 ALTER TABLE `act_hi_identitylink` DISABLE KEYS */;
+INSERT INTO `act_hi_identitylink` VALUES ('15002',NULL,'starter','1',NULL,'15001'),('15012',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15001'),('15015',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'15001'),('15016',NULL,'participant','247689637478400',NULL,'15001'),('15021',NULL,'participant','7',NULL,'15001'),('15023',NULL,'starter','1',NULL,'15022'),('15032',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15022'),('15035',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'15022'),('15036',NULL,'participant','247689637478400',NULL,'15022'),('15060',NULL,'starter','1',NULL,'15059'),('15070',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15059'),('15073',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'15059'),('15074',NULL,'participant','247689637478400',NULL,'15059'),('15078',NULL,'starter','1',NULL,'15077'),('15088',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15077'),('15091',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'15077'),('15092',NULL,'participant','247689637478400',NULL,'15077'),('15099',NULL,'participant','7',NULL,'15077'),('15106',NULL,'starter','1',NULL,'15105'),('15115',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15105'),('15118',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'15105'),('15119',NULL,'participant','247689637478400',NULL,'15105'),('15130',NULL,'participant','4',NULL,'15105'),('15175',NULL,'starter','1',NULL,'15174'),('15185',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15174'),('15188',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'15174'),('15189',NULL,'participant','247688773386240',NULL,'15174'),('15195',NULL,'starter','1',NULL,'15194'),('15205',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15194'),('15208',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'15194'),('15209',NULL,'participant','247688773386240',NULL,'15194'),('15211',NULL,'starter','1',NULL,'15210'),('15221',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'15210'),('15224',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'15210'),('15225',NULL,'participant','247689637478400',NULL,'15210'),('17502',NULL,'starter','1',NULL,'17501'),('17512',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'17501'),('17515',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'17501'),('17516',NULL,'participant','247689637478400',NULL,'17501'),('17521',NULL,'participant','7',NULL,'15210'),('17523',NULL,'starter','1',NULL,'17522'),('17527',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'17522'),('17530',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'17522'),('17531',NULL,'participant','247688773386240',NULL,'17522'),('17536',NULL,'starter','1',NULL,'17535'),('17547',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'17535'),('17550',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'17535'),('17551',NULL,'participant','247688773386240',NULL,'17535'),('17553',NULL,'starter','1',NULL,'17552'),('17564',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'17552'),('17567',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'17552'),('17568',NULL,'participant','247688773386240',NULL,'17552'),('17570',NULL,'starter','1',NULL,'17569'),('17581',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'17569'),('17584',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'17569'),('17585',NULL,'participant','247688773386240',NULL,'17569'),('17587',NULL,'starter','1',NULL,'17586'),('17598',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'17586'),('17601',NULL,'participant','å²—ä½:é™¢é•¿',NULL,'17586'),('17602',NULL,'participant','247688773386240',NULL,'17586'),('20046',NULL,'starter','1',NULL,'20045'),('20056',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'20045'),('20059',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'20045'),('20060',NULL,'participant','247689637478400',NULL,'20045'),('20119',NULL,'starter','1',NULL,'20118'),('20130',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'20118'),('20133',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'20118'),('20134',NULL,'participant','247689637478400',NULL,'20118'),('20140',NULL,'participant','å²—ä½:ä¹¦è®°',NULL,'20118'),('20142',NULL,'starter','1',NULL,'20141'),('20153',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'20141'),('20156',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'20141'),('20157',NULL,'participant','247689637478400',NULL,'20141'),('20163',NULL,'participant','å²—ä½:ä¹¦è®°',NULL,'20141'),('20164',NULL,'participant','4',NULL,'20141'),('5002',NULL,'starter','1',NULL,'5001'),('5012',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'5001'),('5013',NULL,'participant','247688773386240',NULL,'5001'),('5016',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'5001'),('5017',NULL,'participant','4',NULL,'5001'),('5019',NULL,'starter','247689637478400',NULL,'5018'),('5029',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'5018'),('5030',NULL,'participant','247688773386240',NULL,'5018'),('5033',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'5018'),('5034',NULL,'participant','247689000714240',NULL,'5018'),('5048',NULL,'starter','1',NULL,'5047'),('5058',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'5047'),('5059',NULL,'participant','247688773386240',NULL,'5047'),('5061',NULL,'starter','1',NULL,'5060'),('5071',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'5060'),('5072',NULL,'participant','247688773386240',NULL,'5060'),('5086',NULL,'starter','1',NULL,'5085'),('5096',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'5085'),('5097',NULL,'participant','247688773386240',NULL,'5085'),('5099',NULL,'starter','1',NULL,'5098'),('5108',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'5098'),('5111',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'5098'),('5112',NULL,'participant','4',NULL,'5098'),('7502',NULL,'starter','247689000714240',NULL,'7501'),('7512',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'7501'),('7515',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'7501'),('7516',NULL,'participant','247688416968704',NULL,'7501'),('7520',NULL,'starter','1',NULL,'7519'),('7529',NULL,'participant','å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',NULL,'7519'),('7532',NULL,'participant','å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',NULL,'7519'),('7533',NULL,'participant','247689637478400',NULL,'7519');
+/*!40000 ALTER TABLE `act_hi_identitylink` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_procinst`
+--
+
+DROP TABLE IF EXISTS `act_hi_procinst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_procinst` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `BUSINESS_KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `START_TIME_` datetime(3) NOT NULL,
+  `END_TIME_` datetime(3) DEFAULT NULL,
+  `DURATION_` bigint(20) DEFAULT NULL,
+  `START_USER_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `START_ACT_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `END_ACT_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `SUPER_PROCESS_INSTANCE_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `DELETE_REASON_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  UNIQUE KEY `PROC_INST_ID_` (`PROC_INST_ID_`),
+  KEY `ACT_IDX_HI_PRO_INST_END` (`END_TIME_`),
+  KEY `ACT_IDX_HI_PRO_I_BUSKEY` (`BUSINESS_KEY_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_procinst`
+--
+
+LOCK TABLES `act_hi_procinst` WRITE;
+/*!40000 ALTER TABLE `act_hi_procinst` DISABLE KEYS */;
+INSERT INTO `act_hi_procinst` VALUES ('15001','15001','270376238874624','vacation:1:12','2016-08-23 11:09:18.547','2016-08-23 11:13:15.473',236926,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09'),('15022','15022','270380001509376','publish:1:8','2016-08-23 11:13:08.154','2016-08-23 15:11:57.272',14329118,'1','startevent1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 11:13'),('15059','15059','270513642176512','vacation:1:12','2016-08-23 13:29:05.013','2016-08-23 15:11:58.496',6173483,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29'),('15077','15077','270615236689920','vacation:1:12','2016-08-23 15:12:25.772','2016-08-23 15:17:33.572',307800,'1','vacation_1','endnone-2',NULL,NULL,'1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12'),('15105','15105','270622027038720','publish:1:8','2016-08-23 15:19:19.770','2016-08-23 15:31:07.515',707745,'1','startevent1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:19'),('15174','15174','270752438255616','process:4:15173','2016-08-23 17:31:59.853','2016-08-23 17:32:48.133',48280,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60','sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,NULL,'1','null-ä¸´è¿œ-2016-08-23 17:31'),('15194','15194','270756993302528','process:4:15173','2016-08-23 17:36:37.805','2016-08-24 10:34:19.215',61061410,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60','sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,NULL,'1','null-ä¸´è¿œ-2016-08-23 17:36'),('15210','15210','270757515640832','vacation:1:12','2016-08-23 17:37:21.080','2016-08-28 10:05:13.639',404872559,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37'),('17501','17501','271695178579968','vacation:1:12','2016-08-24 09:31:00.312','2016-08-28 10:05:15.062',347654750,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31'),('17522','17522','271756963692544','process:4:15173','2016-08-24 10:33:49.517','2016-08-28 10:05:16.642',343887125,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','null-ä¸´è¿œ-2016-08-24 10:33'),('17535','17535','271759910174720','process:4:15173','2016-08-24 10:36:50.721','2016-08-28 10:05:17.664',343706943,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','null-ä¸´è¿œ-2016-08-24 10:36'),('17552','17552','271766822633472','process:4:15173','2016-08-24 10:43:52.526','2016-08-28 10:05:18.621',343286095,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','null-ä¸´è¿œ-2016-08-24 10:43'),('17569','17569','271782491504640','process:4:15173','2016-08-24 10:59:48.694','2016-08-28 10:05:19.784',342331090,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','null-ä¸´è¿œ-2016-08-24 10:59'),('17586','17586','271828669497344','process:4:15173','2016-08-24 11:46:47.139','2016-08-28 10:05:20.598',339513459,'1','sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','null-ä¸´è¿œ-2016-08-24 11:46'),('20045','20045','277394326110208','vacation:1:12','2016-08-28 10:08:28.049','2016-08-28 10:14:07.122',339073,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08'),('20118','20118','277433676251136','vacation-student:4:20117','2016-08-28 10:48:29.607','2016-08-28 10:51:54.369',204762,'1','sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:48'),('20141','20141','277438255661056','vacation-student:4:20117','2016-08-28 10:53:09.249','2016-08-28 10:54:39.550',90301,'1','sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04','sid-23B845EA-CBD0-4089-91D8-5A593FD8D038',NULL,NULL,'1','å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:53'),('5001','5001','253397469265920','vacation:1:12','2016-08-11 11:17:36.579','2016-08-11 14:18:45.508',10868929,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17'),('5018','5018','253442188607488','vacation:1:12','2016-08-11 12:03:05.849','2016-08-12 15:00:10.899',97025050,'247689637478400','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-tt-2016-08-11 12:03'),('5047','5047','253572155539456','vacation:1:12','2016-08-11 14:15:28.046','2016-08-11 14:18:47.509',199463,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 14:15'),('5060','5060','253585567006720','vacation:1:12','2016-08-11 15:42:49.200','2016-08-23 11:09:26.261',1020397061,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 15:42'),('5085','5085','253741680312320','vacation:1:12','2016-08-11 17:07:45.328','2016-08-23 11:09:28.551',1015303223,'1','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 17:07'),('5098','5098','253746096472064','publish:1:8','2016-08-11 17:12:15.045','2016-08-23 11:09:27.382',1015032337,'1','startevent1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-11 17:12'),('7501','7501','254985839607808','vacation:1:12','2016-08-12 14:13:23.940','2016-08-12 14:14:23.130',59190,'247689000714240','vacation_1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','è¯·å‡æµç¨‹-ee-2016-08-12 14:13'),('7519','7519','255028049969152','publish:1:8','2016-08-12 14:56:20.106','2016-08-23 11:09:30.037',936789931,'1','startevent1',NULL,NULL,'äººå·¥ç»ˆæ­¢','1','å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-12 14:56');
+/*!40000 ALTER TABLE `act_hi_procinst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_taskinst`
+--
+
+DROP TABLE IF EXISTS `act_hi_taskinst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_taskinst` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_DEF_KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `PARENT_TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `DESCRIPTION_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `OWNER_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `ASSIGNEE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `START_TIME_` datetime(3) NOT NULL,
+  `CLAIM_TIME_` datetime(3) DEFAULT NULL,
+  `END_TIME_` datetime(3) DEFAULT NULL,
+  `DURATION_` bigint(20) DEFAULT NULL,
+  `DELETE_REASON_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `PRIORITY_` int(11) DEFAULT NULL,
+  `DUE_DATE_` datetime(3) DEFAULT NULL,
+  `FORM_KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `CATEGORY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_HI_TASK_INST_PROCINST` (`PROC_INST_ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_taskinst`
+--
+
+LOCK TABLES `act_hi_taskinst` WRITE;
+/*!40000 ALTER TABLE `act_hi_taskinst` DISABLE KEYS */;
+INSERT INTO `act_hi_taskinst` VALUES ('15011','vacation:1:12','taskuser-1','15001','15001','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-23 11:09:18.591',NULL,'2016-08-23 11:09:18.875',284,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('15014','vacation:1:12','taskuser-2','15001','15001','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-23 11:09:18.881',NULL,'2016-08-23 11:10:38.271',79390,'å®Œæˆ',50,NULL,'vacation-department',NULL,'1'),('15020','vacation:1:12','taskuser-3','15001','15001','äººäº‹å®¡æ‰¹',NULL,NULL,NULL,'7','2016-08-23 11:10:38.280',NULL,'2016-08-23 11:13:15.468',157188,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-hr',NULL,'1'),('15031','publish:1:8','taskuser-1','15022','15022','å‘æ–‡',NULL,NULL,NULL,'1','2016-08-23 11:13:08.165',NULL,'2016-08-23 11:13:08.189',24,'å‘èµ·æµç¨‹',50,NULL,'publish-request',NULL,'1'),('15034','publish:1:8','taskuser-2','15022','15022','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-23 11:13:08.193',NULL,'2016-08-23 11:14:35.663',87470,'å®Œæˆ',50,NULL,'publish-manager',NULL,'1'),('15046','publish:1:8','taskuser-3','15022','15043','ä¼šç­¾',NULL,NULL,NULL,'247689637478400','2016-08-23 11:14:35.676',NULL,'2016-08-23 15:11:57.260',14241584,'äººå·¥ç»ˆæ­¢',50,NULL,'publish-countersign',NULL,'1'),('15069','vacation:1:12','taskuser-1','15059','15059','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-23 13:29:05.013',NULL,'2016-08-23 13:29:05.044',31,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('15072','vacation:1:12','taskuser-2','15059','15059','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-23 13:29:05.044',NULL,'2016-08-23 15:11:58.494',6173450,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-department',NULL,'1'),('15087','vacation:1:12','taskuser-1','15077','15077','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-23 15:12:25.775',NULL,'2016-08-23 15:12:25.801',26,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('15090','vacation:1:12','taskuser-2','15077','15077','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-23 15:12:25.804',NULL,'2016-08-23 15:12:51.312',25508,'å®Œæˆ',50,NULL,'vacation-department',NULL,'1'),('15098','vacation:1:12','taskuser-3','15077','15077','äººäº‹å®¡æ‰¹',NULL,NULL,NULL,'7','2016-08-23 15:12:51.320',NULL,'2016-08-23 15:16:23.312',211992,'å®Œæˆ',50,NULL,'vacation-hr',NULL,'1'),('15103','vacation:1:12','taskuser-6','15077','15077','é”€å‡',NULL,NULL,NULL,'1','2016-08-23 15:16:23.318',NULL,'2016-08-23 15:17:33.566',70248,'å®Œæˆ',50,NULL,'vacation-finish',NULL,'1'),('15114','publish:1:8','taskuser-1','15105','15105','å‘æ–‡',NULL,NULL,NULL,'1','2016-08-23 15:19:19.800',NULL,'2016-08-23 15:19:19.822',22,'å‘èµ·æµç¨‹',50,NULL,'publish-request',NULL,'1'),('15117','publish:1:8','taskuser-2','15105','15105','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-23 15:19:19.824',NULL,'2016-08-23 15:20:50.157',90333,'å®Œæˆ',50,NULL,'publish-manager',NULL,'1'),('15129','publish:1:8','taskuser-3','15105','15126','ä¼šç­¾',NULL,NULL,NULL,'4','2016-08-23 15:20:50.164',NULL,'2016-08-23 15:31:07.483',617319,'äººå·¥ç»ˆæ­¢',50,NULL,'publish-countersign',NULL,'1'),('15184','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','15174','15174','è¯·å‡',NULL,NULL,NULL,'1','2016-08-23 17:31:59.856',NULL,'2016-08-23 17:31:59.911',55,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('15187','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','15174','15174','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-23 17:31:59.914',NULL,'2016-08-23 17:32:48.128',48214,'å®Œæˆ',50,NULL,NULL,NULL,'1'),('15204','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','15194','15194','è¯·å‡',NULL,NULL,NULL,'1','2016-08-23 17:36:37.809',NULL,'2016-08-23 17:36:37.833',24,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('15207','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','15194','15194','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-23 17:36:37.836',NULL,'2016-08-24 10:34:19.215',61061379,'å®Œæˆ',50,NULL,NULL,NULL,'1'),('15220','vacation:1:12','taskuser-1','15210','15210','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-23 17:37:21.083',NULL,'2016-08-23 17:37:21.108',25,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('15223','vacation:1:12','taskuser-2','15210','15210','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-23 17:37:21.110',NULL,'2016-08-24 09:32:05.714',57284604,'å®Œæˆ',50,NULL,'vacation-department',NULL,'1'),('17511','vacation:1:12','taskuser-1','17501','17501','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-24 09:31:00.344',NULL,'2016-08-24 09:31:00.594',250,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('17514','vacation:1:12','taskuser-2','17501','17501','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-24 09:31:00.609',NULL,'2016-08-28 10:05:15.057',347654448,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-department',NULL,'1'),('17520','vacation:1:12','taskuser-3','15210','15210','äººäº‹å®¡æ‰¹',NULL,NULL,NULL,'7','2016-08-24 09:32:05.728',NULL,'2016-08-28 10:05:13.636',347587908,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-hr',NULL,'1'),('17526','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17522','17522','è¯·å‡',NULL,NULL,NULL,'1','2016-08-24 10:33:49.522',NULL,'2016-08-24 10:33:49.559',37,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('17529','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17522','17522','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-24 10:33:49.562',NULL,'2016-08-28 10:05:16.640',343887078,'äººå·¥ç»ˆæ­¢',50,NULL,NULL,NULL,'1'),('17546','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17535','17535','è¯·å‡',NULL,NULL,NULL,'1','2016-08-24 10:36:50.721',NULL,'2016-08-24 10:36:50.752',31,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('17549','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17535','17535','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-24 10:36:50.752',NULL,'2016-08-28 10:05:17.662',343706910,'äººå·¥ç»ˆæ­¢',50,NULL,NULL,NULL,'1'),('17563','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17552','17552','è¯·å‡',NULL,NULL,NULL,'1','2016-08-24 10:43:52.526',NULL,'2016-08-24 10:43:52.542',16,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('17566','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17552','17552','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-24 10:43:52.542',NULL,'2016-08-28 10:05:18.618',343286076,'äººå·¥ç»ˆæ­¢',50,NULL,NULL,NULL,'1'),('17580','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17569','17569','è¯·å‡',NULL,NULL,NULL,'1','2016-08-24 10:59:48.710',NULL,'2016-08-24 10:59:48.725',15,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('17583','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17569','17569','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-24 10:59:48.725',NULL,'2016-08-28 10:05:19.782',342331057,'äººå·¥ç»ˆæ­¢',50,NULL,NULL,NULL,'1'),('17597','process:4:15173','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','17586','17586','è¯·å‡',NULL,NULL,NULL,'1','2016-08-24 11:46:47.154',NULL,'2016-08-24 11:46:47.186',32,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('17600','process:4:15173','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','17586','17586','ä¸Šçº§å®¡æ‰¹',NULL,NULL,NULL,'247688773386240','2016-08-24 11:46:47.186',NULL,'2016-08-28 10:05:20.596',339513410,'äººå·¥ç»ˆæ­¢',50,NULL,NULL,NULL,'1'),('20055','vacation:1:12','taskuser-1','20045','20045','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-28 10:08:28.053',NULL,'2016-08-28 10:08:28.081',28,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('20058','vacation:1:12','taskuser-2','20045','20045','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-28 10:08:28.083',NULL,'2016-08-28 10:14:07.120',339037,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-department',NULL,'1'),('20129','vacation-student:4:20117','sid-92464D4A-380E-4D73-875E-E77E82399CEC','20118','20118','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-28 10:48:29.611',NULL,'2016-08-28 10:48:29.634',23,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('20132','vacation-student:4:20117','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','20118','20118','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-28 10:48:29.637',NULL,'2016-08-28 10:48:42.557',12920,'å®Œæˆ',50,NULL,NULL,NULL,'1'),('20139','vacation-student:4:20117','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','20118','20118','é™¢ç³»é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'å²—ä½:ä¹¦è®°','2016-08-28 10:48:42.565',NULL,'2016-08-28 10:51:54.367',191802,'äººå·¥ç»ˆæ­¢',50,NULL,NULL,NULL,'1'),('20152','vacation-student:4:20117','sid-92464D4A-380E-4D73-875E-E77E82399CEC','20141','20141','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'1','2016-08-28 10:53:09.253',NULL,'2016-08-28 10:53:09.273',20,'å‘èµ·æµç¨‹',50,NULL,NULL,NULL,'1'),('20155','vacation-student:4:20117','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','20141','20141','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-28 10:53:09.275',NULL,'2016-08-28 10:53:34.190',24915,'å®Œæˆ',50,NULL,NULL,NULL,'1'),('20162','vacation-student:4:20117','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','20141','20141','é™¢ç³»é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'4','2016-08-28 10:53:34.199',NULL,'2016-08-28 10:54:12.172',37973,'å®Œæˆ',50,NULL,NULL,NULL,'1'),('20168','vacation-student:4:20117','sid-5732769D-2626-4CE0-98E5-40B1E96645C9','20141','20141','é”€å‡',NULL,NULL,NULL,'1','2016-08-28 10:54:12.177',NULL,'2016-08-28 10:54:39.544',27367,'å®Œæˆ',50,NULL,NULL,NULL,'1'),('5011','vacation:1:12','taskuser-1','5001','5001','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'247688773386240','2016-08-11 11:17:36.599',NULL,'2016-08-11 11:52:40.277',2103678,'å®Œæˆ',50,NULL,'vacation-request',NULL,'1'),('5015','vacation:1:12','taskuser-2','5001','5001','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'4','2016-08-11 11:52:40.283',NULL,'2016-08-11 14:18:45.493',8765210,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-department',NULL,'1'),('5028','vacation:1:12','taskuser-1','5018','5018','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'247688773386240','2016-08-11 12:03:05.853',NULL,'2016-08-11 12:03:44.840',38987,'å®Œæˆ',50,NULL,'vacation-request',NULL,'1'),('5032','vacation:1:12','taskuser-2','5018','5018','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689000714240','2016-08-11 12:03:44.844',NULL,'2016-08-12 15:00:10.897',96986053,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-department',NULL,'1'),('5057','vacation:1:12','taskuser-1','5047','5047','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'247688773386240','2016-08-11 14:15:28.050',NULL,'2016-08-11 14:18:47.509',199459,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-request',NULL,'1'),('5070','vacation:1:12','taskuser-1','5060','5060','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'247688773386240','2016-08-11 15:42:49.205',NULL,'2016-08-23 11:09:26.256',1020397051,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-request',NULL,'1'),('5095','vacation:1:12','taskuser-1','5085','5085','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'247688773386240','2016-08-11 17:07:45.328',NULL,'2016-08-23 11:09:28.549',1015303221,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-request',NULL,'1'),('5107','publish:1:8','taskuser-1','5098','5098','å‘æ–‡',NULL,NULL,NULL,'1','2016-08-11 17:12:15.062',NULL,'2016-08-11 17:12:15.077',15,'å‘èµ·æµç¨‹',50,NULL,'publish-request',NULL,'1'),('5110','publish:1:8','taskuser-2','5098','5098','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'4','2016-08-11 17:12:15.077',NULL,'2016-08-23 11:09:27.379',1015032302,'äººå·¥ç»ˆæ­¢',50,NULL,'publish-manager',NULL,'1'),('7511','vacation:1:12','taskuser-1','7501','7501','å¡«å†™è¯·å‡å•',NULL,NULL,NULL,'247689000714240','2016-08-12 14:13:23.971',NULL,'2016-08-12 14:13:24.057',86,'å‘èµ·æµç¨‹',50,NULL,'vacation-request',NULL,'1'),('7514','vacation:1:12','taskuser-2','7501','7501','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247688416968704','2016-08-12 14:13:24.057',NULL,'2016-08-12 14:14:23.130',59073,'äººå·¥ç»ˆæ­¢',50,NULL,'vacation-department',NULL,'1'),('7528','publish:1:8','taskuser-1','7519','7519','å‘æ–‡',NULL,NULL,NULL,'1','2016-08-12 14:56:20.122',NULL,'2016-08-12 14:56:20.179',57,'å‘èµ·æµç¨‹',50,NULL,'publish-request',NULL,'1'),('7531','publish:1:8','taskuser-2','7519','7519','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,NULL,NULL,'247689637478400','2016-08-12 14:56:20.181',NULL,'2016-08-12 14:57:39.278',79097,'å®Œæˆ',50,NULL,'publish-manager',NULL,'1'),('7543','publish:1:8','taskuser-3','7519','7540','ä¼šç­¾',NULL,NULL,NULL,'247689637478400','2016-08-12 14:57:39.295',NULL,'2016-08-23 11:09:30.015',936710720,'äººå·¥ç»ˆæ­¢',50,NULL,'publish-countersign',NULL,'1');
+/*!40000 ALTER TABLE `act_hi_taskinst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_hi_varinst`
+--
+
+DROP TABLE IF EXISTS `act_hi_varinst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_hi_varinst` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `VAR_TYPE_` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `BYTEARRAY_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `DOUBLE_` double DEFAULT NULL,
+  `LONG_` bigint(20) DEFAULT NULL,
+  `TEXT_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TEXT2_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `CREATE_TIME_` datetime(3) DEFAULT NULL,
+  `LAST_UPDATED_TIME_` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_HI_PROCVAR_PROC_INST` (`PROC_INST_ID_`),
+  KEY `ACT_IDX_HI_PROCVAR_NAME_TYPE` (`NAME_`,`VAR_TYPE_`),
+  KEY `ACT_IDX_HI_PROCVAR_TASK_ID` (`TASK_ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_hi_varinst`
+--
+
+LOCK TABLES `act_hi_varinst` WRITE;
+/*!40000 ALTER TABLE `act_hi_varinst` DISABLE KEYS */;
+INSERT INTO `act_hi_varinst` VALUES ('15004','15001','15001',NULL,'startDate','string',2,NULL,NULL,NULL,'2016-07-28',NULL,'2016-08-23 11:09:18.547','2016-08-23 11:13:15.478'),('15005','15001','15001',NULL,'startDateTime','string',2,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-23 11:09:18.548','2016-08-23 11:13:15.478'),('15006','15001','15001',NULL,'reason','string',2,NULL,NULL,NULL,'test',NULL,'2016-08-23 11:09:18.548','2016-08-23 11:13:15.478'),('15007','15001','15001',NULL,'endDate','string',2,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-23 11:09:18.548','2016-08-23 11:13:15.478'),('15008','15001','15001',NULL,'type','string',2,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-23 11:09:18.548','2016-08-23 11:13:15.478'),('15009','15001','15001',NULL,'endDateTime','string',2,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-23 11:09:18.548','2016-08-23 11:13:15.478'),('15017','15001','15001',NULL,'leaderComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-23 11:10:38.259','2016-08-23 11:13:15.478'),('15025','15022','15022',NULL,'content','string',2,NULL,NULL,NULL,'11111',NULL,'2016-08-23 11:13:08.154','2016-08-23 15:11:57.276'),('15026','15022','15022',NULL,'title','string',2,NULL,NULL,NULL,'test',NULL,'2016-08-23 11:13:08.154','2016-08-23 15:11:57.276'),('15028','15022','15022',NULL,'countersignUsers','serializable',1,'15029',NULL,NULL,NULL,NULL,'2016-08-23 11:13:08.161','2016-08-23 15:11:57.276'),('15037','15022','15022',NULL,'leaderComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-23 11:14:35.655','2016-08-23 15:11:57.276'),('15040','15022','15038',NULL,'nrOfInstances','integer',1,NULL,NULL,1,'1',NULL,'2016-08-23 11:14:35.674','2016-08-23 15:11:57.271'),('15041','15022','15038',NULL,'nrOfCompletedInstances','integer',1,NULL,NULL,0,'0',NULL,'2016-08-23 11:14:35.674','2016-08-23 15:11:57.271'),('15042','15022','15038',NULL,'nrOfActiveInstances','integer',1,NULL,NULL,1,'1',NULL,'2016-08-23 11:14:35.674','2016-08-23 15:11:57.271'),('15044','15022','15043',NULL,'loopCounter','integer',1,NULL,NULL,0,'0',NULL,'2016-08-23 11:14:35.675','2016-08-23 15:11:57.264'),('15045','15022','15043',NULL,'countersignUser','string',1,NULL,NULL,NULL,'247689637478400',NULL,'2016-08-23 11:14:35.675','2016-08-23 15:11:57.263'),('15062','15059','15059',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-27',NULL,'2016-08-23 13:29:05.013','2016-08-23 15:11:58.501'),('15063','15059','15059',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-23 13:29:05.013','2016-08-23 15:11:58.501'),('15064','15059','15059',NULL,'reason','string',1,NULL,NULL,NULL,'fdgd',NULL,'2016-08-23 13:29:05.013','2016-08-23 15:11:58.501'),('15065','15059','15059',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-23 13:29:05.013','2016-08-23 15:11:58.501'),('15066','15059','15059',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-23 13:29:05.013','2016-08-23 15:11:58.501'),('15067','15059','15059',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-23 13:29:05.013','2016-08-23 15:11:58.501'),('15080','15077','15077',NULL,'startDate','string',3,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:17:33.572'),('15081','15077','15077',NULL,'startDateTime','string',3,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:17:33.572'),('15082','15077','15077',NULL,'reason','string',3,NULL,NULL,NULL,'a',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:17:33.572'),('15083','15077','15077',NULL,'endDate','string',3,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:17:33.572'),('15084','15077','15077',NULL,'type','string',3,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:17:33.572'),('15085','15077','15077',NULL,'endDateTime','string',3,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-23 15:12:25.772','2016-08-23 15:17:33.572'),('15095','15077','15077',NULL,'leaderComment','string',2,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-23 15:12:51.300','2016-08-23 15:17:33.572'),('15100','15077','15077',NULL,'hrComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-23 15:16:23.303','2016-08-23 15:17:33.572'),('15108','15105','15105',NULL,'content','string',2,NULL,NULL,NULL,'1231',NULL,'2016-08-23 15:19:19.770','2016-08-23 15:31:07.518'),('15109','15105','15105',NULL,'title','string',2,NULL,NULL,NULL,'12',NULL,'2016-08-23 15:19:19.770','2016-08-23 15:31:07.518'),('15111','15105','15105',NULL,'countersignUsers','serializable',1,'15112',NULL,NULL,NULL,NULL,'2016-08-23 15:19:19.795','2016-08-23 15:31:07.518'),('15120','15105','15105',NULL,'leaderComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-23 15:20:50.149','2016-08-23 15:31:07.518'),('15123','15105','15121',NULL,'nrOfInstances','integer',1,NULL,NULL,1,'1',NULL,'2016-08-23 15:20:50.163','2016-08-23 15:31:07.514'),('15124','15105','15121',NULL,'nrOfCompletedInstances','integer',1,NULL,NULL,0,'0',NULL,'2016-08-23 15:20:50.163','2016-08-23 15:31:07.514'),('15125','15105','15121',NULL,'nrOfActiveInstances','integer',1,NULL,NULL,1,'1',NULL,'2016-08-23 15:20:50.163','2016-08-23 15:31:07.514'),('15127','15105','15126',NULL,'loopCounter','integer',1,NULL,NULL,0,'0',NULL,'2016-08-23 15:20:50.163','2016-08-23 15:31:07.509'),('15128','15105','15126',NULL,'countersignUser','string',1,NULL,NULL,NULL,'4',NULL,'2016-08-23 15:20:50.163','2016-08-23 15:31:07.509'),('15177','15174','15174',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:32:48.136'),('15178','15174','15174',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:32:48.136'),('15179','15174','15174',NULL,'reason','string',1,NULL,NULL,NULL,'èƒœå¤šè´Ÿå°‘',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:32:48.136'),('15180','15174','15174',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-30',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:32:48.136'),('15181','15174','15174',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:32:48.136'),('15182','15174','15174',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-23 17:31:59.853','2016-08-23 17:32:48.136'),('15190','15174','15174',NULL,'content','null',0,NULL,NULL,NULL,NULL,NULL,'2016-08-23 17:32:48.121','2016-08-23 17:32:48.136'),('15191','15174','15174',NULL,'title','null',0,NULL,NULL,NULL,NULL,NULL,'2016-08-23 17:32:48.121','2016-08-23 17:32:48.136'),('15192','15174','15174',NULL,'leaderComment','null',0,NULL,NULL,NULL,NULL,NULL,'2016-08-23 17:32:48.121','2016-08-23 17:32:48.136'),('15197','15194','15194',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-23 17:36:37.805','2016-08-24 10:34:19.215'),('15198','15194','15194',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-23 17:36:37.805','2016-08-24 10:34:19.215'),('15199','15194','15194',NULL,'reason','string',1,NULL,NULL,NULL,'sd',NULL,'2016-08-23 17:36:37.805','2016-08-24 10:34:19.215'),('15200','15194','15194',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-23 17:36:37.805','2016-08-24 10:34:19.215'),('15201','15194','15194',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-23 17:36:37.805','2016-08-24 10:34:19.215'),('15202','15194','15194',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-23 17:36:37.805','2016-08-24 10:34:19.215'),('15213','15210','15210',NULL,'startDate','string',2,NULL,NULL,NULL,'2016-08-23',NULL,'2016-08-23 17:37:21.080','2016-08-28 10:05:13.643'),('15214','15210','15210',NULL,'startDateTime','string',2,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-23 17:37:21.080','2016-08-28 10:05:13.643'),('15215','15210','15210',NULL,'reason','string',2,NULL,NULL,NULL,'fd',NULL,'2016-08-23 17:37:21.080','2016-08-28 10:05:13.643'),('15216','15210','15210',NULL,'endDate','string',2,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-23 17:37:21.080','2016-08-28 10:05:13.643'),('15217','15210','15210',NULL,'type','string',2,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-23 17:37:21.080','2016-08-28 10:05:13.643'),('15218','15210','15210',NULL,'endDateTime','string',2,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-23 17:37:21.080','2016-08-28 10:05:13.643'),('17504','17501','17501',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-24 09:31:00.312','2016-08-28 10:05:15.067'),('17505','17501','17501',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-24 09:31:00.312','2016-08-28 10:05:15.067'),('17506','17501','17501',NULL,'reason','string',1,NULL,NULL,NULL,'aad',NULL,'2016-08-24 09:31:00.312','2016-08-28 10:05:15.067'),('17507','17501','17501',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-28',NULL,'2016-08-24 09:31:00.312','2016-08-28 10:05:15.067'),('17508','17501','17501',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-24 09:31:00.312','2016-08-28 10:05:15.067'),('17509','17501','17501',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-24 09:31:00.312','2016-08-28 10:05:15.067'),('17517','15210','15210',NULL,'leaderComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-24 09:32:05.701','2016-08-28 10:05:13.643'),('17532','15194','15194',NULL,'leaderComment','string',0,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-24 10:34:19.200','2016-08-24 10:34:19.215'),('17533','15194','15194',NULL,'fileupload-4-1','null',0,NULL,NULL,NULL,NULL,NULL,'2016-08-24 10:34:19.200','2016-08-24 10:34:19.215'),('17538','17535','17535',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-28',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17539','17535','17535',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17540','17535','17535',NULL,'reason','string',1,NULL,NULL,NULL,'sf',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17541','17535','17535',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17542','17535','17535',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17543','17535','17535',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17544','17535','17535',NULL,'fileupload-4-1','string',1,NULL,NULL,NULL,'20160824/1b9ed044-ac0e-452b-a091-5607b21d1b49.txt',NULL,'2016-08-24 10:36:50.721','2016-08-28 10:05:17.671'),('17555','17552','17552',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17556','17552','17552',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17557','17552','17552',NULL,'reason','string',1,NULL,NULL,NULL,'fgd',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17558','17552','17552',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17559','17552','17552',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17560','17552','17552',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17561','17552','17552',NULL,'fileupload-4-1','string',1,NULL,NULL,NULL,'20160824/1591ad81-1b1d-4fda-b7d2-5ce2ad13e154.xls',NULL,'2016-08-24 10:43:52.526','2016-08-28 10:05:18.626'),('17572','17569','17569',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17573','17569','17569',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17574','17569','17569',NULL,'reason','string',1,NULL,NULL,NULL,'gjfj',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17575','17569','17569',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17576','17569','17569',NULL,'type','string',1,NULL,NULL,NULL,'å©šå‡',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17577','17569','17569',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17578','17569','17569',NULL,'fileupload-4-1','string',1,NULL,NULL,NULL,'20160824/b0476c74-90c2-4462-a6b5-8f74985c153f.txt',NULL,'2016-08-24 10:59:48.694','2016-08-28 10:05:19.789'),('17589','17586','17586',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('17590','17586','17586',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('17591','17586','17586',NULL,'reason','string',1,NULL,NULL,NULL,'sdf',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('17592','17586','17586',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('17593','17586','17586',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('17594','17586','17586',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('17595','17586','17586',NULL,'fileupload-4-1','string',1,NULL,NULL,NULL,'20160824/49756345-f0f7-4f0f-a39f-afd01ac9fb96.txt',NULL,'2016-08-24 11:46:47.139','2016-08-28 10:05:20.603'),('20048','20045','20045',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-30',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:14:07.127'),('20049','20045','20045',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:14:07.127'),('20050','20045','20045',NULL,'reason','string',1,NULL,NULL,NULL,'adsff',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:14:07.127'),('20051','20045','20045',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:14:07.127'),('20052','20045','20045',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:14:07.127'),('20053','20045','20045',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-28 10:08:28.049','2016-08-28 10:14:07.127'),('20121','20118','20118',NULL,'startDate','string',2,NULL,NULL,NULL,'2016-08-30',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20122','20118','20118',NULL,'startDateTime','string',2,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20123','20118','20118',NULL,'totalDays','string',2,NULL,NULL,NULL,'å¤§äºä¸‰å¤©',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20124','20118','20118',NULL,'reason','string',2,NULL,NULL,NULL,'df',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20125','20118','20118',NULL,'endDate','string',2,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20126','20118','20118',NULL,'type','string',2,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20127','20118','20118',NULL,'endDateTime','string',2,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-28 10:48:29.607','2016-08-28 10:51:54.374'),('20135','20118','20118',NULL,'leaderComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-28 10:48:42.548','2016-08-28 10:51:54.374'),('20144','20141','20141',NULL,'startDate','string',3,NULL,NULL,NULL,'2016-08-30',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20145','20141','20141',NULL,'startDateTime','string',3,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20146','20141','20141',NULL,'totalDays','string',3,NULL,NULL,NULL,'å¤§äºä¸‰å¤©',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20147','20141','20141',NULL,'reason','string',3,NULL,NULL,NULL,'sf',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20148','20141','20141',NULL,'endDate','string',3,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20149','20141','20141',NULL,'type','string',3,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20150','20141','20141',NULL,'endDateTime','string',3,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-28 10:53:09.249','2016-08-28 10:54:39.550'),('20158','20141','20141',NULL,'leaderComment','string',2,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-28 10:53:34.181','2016-08-28 10:54:39.550'),('20165','20141','20141',NULL,'hrComment','string',1,NULL,NULL,NULL,'åŒæ„',NULL,'2016-08-28 10:54:12.164','2016-08-28 10:54:39.550'),('5004','5001','5001',NULL,'startDate','string',2,NULL,NULL,NULL,'2016-08-20',NULL,'2016-08-11 11:17:36.580','2016-08-11 14:18:45.508'),('5005','5001','5001',NULL,'startDateTime','string',2,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-11 11:17:36.580','2016-08-11 14:18:45.508'),('5006','5001','5001',NULL,'reason','string',2,NULL,NULL,NULL,'å®¿èˆ',NULL,'2016-08-11 11:17:36.580','2016-08-11 14:18:45.508'),('5007','5001','5001',NULL,'endDate','string',2,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-11 11:17:36.580','2016-08-11 14:18:45.508'),('5008','5001','5001',NULL,'type','string',2,NULL,NULL,NULL,'å€’ä¼‘',NULL,'2016-08-11 11:17:36.580','2016-08-11 14:18:45.508'),('5009','5001','5001',NULL,'endDateTime','string',2,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-11 11:17:36.580','2016-08-11 14:18:45.508'),('5021','5018','5018',NULL,'startDate','string',2,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-11 12:03:05.849','2016-08-12 15:00:10.904'),('5022','5018','5018',NULL,'startDateTime','string',2,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-11 12:03:05.849','2016-08-12 15:00:10.904'),('5023','5018','5018',NULL,'reason','string',2,NULL,NULL,NULL,'fd',NULL,'2016-08-11 12:03:05.849','2016-08-12 15:00:10.904'),('5024','5018','5018',NULL,'endDate','string',2,NULL,NULL,NULL,'2016-08-31',NULL,'2016-08-11 12:03:05.849','2016-08-12 15:00:10.904'),('5025','5018','5018',NULL,'type','string',2,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-11 12:03:05.849','2016-08-12 15:00:10.904'),('5026','5018','5018',NULL,'endDateTime','string',2,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-11 12:03:05.849','2016-08-12 15:00:10.904'),('5050','5047','5047',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-13',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:18:47.524'),('5051','5047','5047',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:18:47.524'),('5052','5047','5047',NULL,'reason','string',1,NULL,NULL,NULL,'åˆ†å…¬å¸',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:18:47.524'),('5053','5047','5047',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-25',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:18:47.524'),('5054','5047','5047',NULL,'type','string',1,NULL,NULL,NULL,'ç—…å‡',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:18:47.524'),('5055','5047','5047',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-11 14:15:28.046','2016-08-11 14:18:47.524'),('5063','5060','5060',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-20',NULL,'2016-08-11 15:42:49.200','2016-08-23 11:09:26.265'),('5064','5060','5060',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-11 15:42:49.200','2016-08-23 11:09:26.265'),('5065','5060','5060',NULL,'reason','string',1,NULL,NULL,NULL,'è®¸æ˜Œvsæ‰“å‘å£«å¤§å¤«',NULL,'2016-08-11 15:42:49.200','2016-08-23 11:09:26.265'),('5066','5060','5060',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-27',NULL,'2016-08-11 15:42:49.200','2016-08-23 11:09:26.265'),('5067','5060','5060',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-11 15:42:49.200','2016-08-23 11:09:26.265'),('5068','5060','5060',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-11 15:42:49.200','2016-08-23 11:09:26.265'),('5088','5085','5085',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-12',NULL,'2016-08-11 17:07:45.328','2016-08-23 11:09:28.557'),('5089','5085','5085',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-11 17:07:45.328','2016-08-23 11:09:28.557'),('5090','5085','5085',NULL,'reason','string',1,NULL,NULL,NULL,'test',NULL,'2016-08-11 17:07:45.328','2016-08-23 11:09:28.557'),('5091','5085','5085',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-26',NULL,'2016-08-11 17:07:45.328','2016-08-23 11:09:28.557'),('5092','5085','5085',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-11 17:07:45.328','2016-08-23 11:09:28.557'),('5093','5085','5085',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-11 17:07:45.328','2016-08-23 11:09:28.557'),('5101','5098','5098',NULL,'content','string',1,NULL,NULL,NULL,'11',NULL,'2016-08-11 17:12:15.046','2016-08-23 11:09:27.386'),('5102','5098','5098',NULL,'title','string',1,NULL,NULL,NULL,'11',NULL,'2016-08-11 17:12:15.046','2016-08-23 11:09:27.386'),('5104','5098','5098',NULL,'countersignUsers','serializable',1,'5105',NULL,NULL,NULL,NULL,'2016-08-11 17:12:15.046','2016-08-23 11:09:27.386'),('7504','7501','7501',NULL,'startDate','string',1,NULL,NULL,NULL,'2016-08-20',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:14:23.130'),('7505','7501','7501',NULL,'startDateTime','string',1,NULL,NULL,NULL,'ä¸Šåˆ',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:14:23.130'),('7506','7501','7501',NULL,'reason','string',1,NULL,NULL,NULL,'qwe',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:14:23.130'),('7507','7501','7501',NULL,'endDate','string',1,NULL,NULL,NULL,'2016-08-25',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:14:23.130'),('7508','7501','7501',NULL,'type','string',1,NULL,NULL,NULL,'äº‹å‡',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:14:23.130'),('7509','7501','7501',NULL,'endDateTime','string',1,NULL,NULL,NULL,'ä¸‹åˆ',NULL,'2016-08-12 14:13:23.940','2016-08-12 14:14:23.130'),('7522','7519','7519',NULL,'content','string',2,NULL,NULL,NULL,'',NULL,'2016-08-12 14:56:20.106','2016-08-23 11:09:30.040'),('7523','7519','7519',NULL,'title','string',2,NULL,NULL,NULL,'df',NULL,'2016-08-12 14:56:20.106','2016-08-23 11:09:30.042'),('7525','7519','7519',NULL,'countersignUsers','serializable',1,'7526',NULL,NULL,NULL,NULL,'2016-08-12 14:56:20.115','2016-08-23 11:09:30.042'),('7534','7519','7519',NULL,'leaderComment','null',1,NULL,NULL,NULL,NULL,NULL,'2016-08-12 14:57:39.265','2016-08-23 11:09:30.042'),('7537','7519','7535',NULL,'nrOfInstances','integer',1,NULL,NULL,1,'1',NULL,'2016-08-12 14:57:39.292','2016-08-23 11:09:30.036'),('7538','7519','7535',NULL,'nrOfCompletedInstances','integer',1,NULL,NULL,0,'0',NULL,'2016-08-12 14:57:39.293','2016-08-23 11:09:30.036'),('7539','7519','7535',NULL,'nrOfActiveInstances','integer',1,NULL,NULL,1,'1',NULL,'2016-08-12 14:57:39.293','2016-08-23 11:09:30.036'),('7541','7519','7540',NULL,'loopCounter','integer',1,NULL,NULL,0,'0',NULL,'2016-08-12 14:57:39.294','2016-08-23 11:09:30.023'),('7542','7519','7540',NULL,'countersignUser','string',1,NULL,NULL,NULL,'247689637478400',NULL,'2016-08-12 14:57:39.294','2016-08-23 11:09:30.022');
+/*!40000 ALTER TABLE `act_hi_varinst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_re_deployment`
+--
+
+DROP TABLE IF EXISTS `act_re_deployment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_re_deployment` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `CATEGORY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  `DEPLOY_TIME_` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_re_deployment`
+--
+
+LOCK TABLES `act_re_deployment` WRITE;
+/*!40000 ALTER TABLE `act_re_deployment` DISABLE KEYS */;
+INSERT INTO `act_re_deployment` VALUES ('1','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\permission.bpmn20.xml',NULL,'1','2016-08-06 09:08:08.770'),('15055','è¯·å‡demo',NULL,'1','2016-08-23 04:18:47.262'),('15157','1name',NULL,'1','2016-08-23 08:16:21.672'),('15161','name',NULL,'1','2016-08-23 08:29:39.812'),('15165',NULL,NULL,'1','2016-08-23 08:43:26.709'),('15170','name',NULL,'1','2016-08-23 09:23:07.997'),('20110','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1','2016-08-28 02:38:47.852'),('20114','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1','2016-08-28 02:43:04.510'),('22501','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.bpmn20.xml',NULL,'1','2016-08-30 06:41:36.975'),('22505','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.bpmn20.xml',NULL,'1','2016-08-30 06:41:39.818'),('22509','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.bpmn20.xml',NULL,'1','2016-08-30 06:41:40.230'),('25001','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.bpmn20.xml',NULL,'1','2016-08-30 07:45:15.878'),('25005','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.bpmn20.xml',NULL,'1','2016-08-30 07:45:17.603'),('25009','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.bpmn20.xml',NULL,'1','2016-08-30 07:45:17.822'),('27501','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/.DS_Store',NULL,'1','2016-08-30 07:57:46.684'),('27503','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/permission.bpmn20.xml',NULL,'1','2016-08-30 07:57:46.792'),('27507','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/publish.bpmn20.xml',NULL,'1','2016-08-30 07:57:49.643'),('27511','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/vacation.bpmn20.xml',NULL,'1','2016-08-30 07:57:50.112'),('5','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\publish.bpmn20.xml',NULL,'1','2016-08-06 09:08:11.050'),('9','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\vacation.bpmn20.xml',NULL,'1','2016-08-06 09:08:11.533');
+/*!40000 ALTER TABLE `act_re_deployment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_re_model`
+--
+
+DROP TABLE IF EXISTS `act_re_model`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_re_model` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `CATEGORY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `CREATE_TIME_` timestamp(3) NULL DEFAULT NULL,
+  `LAST_UPDATE_TIME_` timestamp(3) NULL DEFAULT NULL,
+  `VERSION_` int(11) DEFAULT NULL,
+  `META_INFO_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `DEPLOYMENT_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EDITOR_SOURCE_VALUE_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EDITOR_SOURCE_EXTRA_VALUE_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_FK_MODEL_SOURCE` (`EDITOR_SOURCE_VALUE_ID_`),
+  KEY `ACT_FK_MODEL_SOURCE_EXTRA` (`EDITOR_SOURCE_EXTRA_VALUE_ID_`),
+  KEY `ACT_FK_MODEL_DEPLOYMENT` (`DEPLOYMENT_ID_`),
+  CONSTRAINT `ACT_FK_MODEL_DEPLOYMENT` FOREIGN KEY (`DEPLOYMENT_ID_`) REFERENCES `act_re_deployment` (`ID_`),
+  CONSTRAINT `ACT_FK_MODEL_SOURCE` FOREIGN KEY (`EDITOR_SOURCE_VALUE_ID_`) REFERENCES `act_ge_bytearray` (`ID_`),
+  CONSTRAINT `ACT_FK_MODEL_SOURCE_EXTRA` FOREIGN KEY (`EDITOR_SOURCE_EXTRA_VALUE_ID_`) REFERENCES `act_ge_bytearray` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_re_model`
+--
+
+LOCK TABLES `act_re_model` WRITE;
+/*!40000 ALTER TABLE `act_re_model` DISABLE KEYS */;
+INSERT INTO `act_re_model` VALUES ('15047',14,'å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,NULL,'2016-08-23 03:24:58.255','2016-08-28 02:43:04.758',1,NULL,'20114','15048',NULL,''),('15053',11,'name',NULL,NULL,'2016-08-23 04:16:46.146','2016-08-23 09:23:08.135',1,NULL,'15170','15054',NULL,''),('15169',1,NULL,NULL,NULL,'2016-08-23 09:20:50.599','2016-08-23 09:20:50.599',1,NULL,NULL,NULL,NULL,'');
+/*!40000 ALTER TABLE `act_re_model` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_re_procdef`
+--
+
+DROP TABLE IF EXISTS `act_re_procdef`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_re_procdef` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `CATEGORY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `KEY_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `VERSION_` int(11) NOT NULL,
+  `DEPLOYMENT_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `RESOURCE_NAME_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `DGRM_RESOURCE_NAME_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `DESCRIPTION_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `HAS_START_FORM_KEY_` tinyint(4) DEFAULT NULL,
+  `HAS_GRAPHICAL_NOTATION_` tinyint(4) DEFAULT NULL,
+  `SUSPENSION_STATE_` int(11) DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`ID_`),
+  UNIQUE KEY `ACT_UNIQ_PROCDEF` (`KEY_`,`VERSION_`,`TENANT_ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_re_procdef`
+--
+
+LOCK TABLES `act_re_procdef` WRITE;
+/*!40000 ALTER TABLE `act_re_procdef` DISABLE KEYS */;
+INSERT INTO `act_re_procdef` VALUES ('myProcess:1:15168',1,'http://www.activiti.org/test','My process','myProcess',1,'15165','s.bpmn','s.myProcess.png',NULL,0,1,1,'1'),('permission:1:4',1,'http://www.mossle.com','å®¡æ‰¹æƒé™','permission',1,'1','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\permission.bpmn20.xml','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\permission.permission.png','å®¡æ‰¹æƒé™',0,1,1,'1'),('permission:2:22504',1,'http://www.mossle.com','å®¡æ‰¹æƒé™','permission',2,'22501','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.bpmn20.xml','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.permission.png','å®¡æ‰¹æƒé™',0,1,1,'1'),('permission:3:25004',1,'http://www.mossle.com','å®¡æ‰¹æƒé™','permission',3,'25001','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.bpmn20.xml','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/permission.permission.png','å®¡æ‰¹æƒé™',0,1,1,'1'),('permission:4:27506',1,'http://www.mossle.com','å®¡æ‰¹æƒé™','permission',4,'27503','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/permission.bpmn20.xml','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/permission.permission.png','å®¡æ‰¹æƒé™',0,1,1,'1'),('process:1:15058',3,'http://www.activiti.org/processdef',NULL,'process',1,'15055','è¯·å‡demo.bpmn20.xml','è¯·å‡demo.process.png',NULL,0,1,1,'1'),('process:2:15160',1,'http://www.activiti.org/processdef',NULL,'process',2,'15157','1name.bpmn20.xml','1name.process.png',NULL,0,1,1,'1'),('process:3:15164',1,'http://www.activiti.org/processdef',NULL,'process',3,'15161','name.bpmn20.xml','name.process.png',NULL,0,1,1,'1'),('process:4:15173',1,'http://www.activiti.org/processdef',NULL,'process',4,'15170','name.bpmn20.xml','name.process.png',NULL,0,1,1,'1'),('publish:1:8',3,'http://www.mossle.com','å…¬æ–‡å‘å¸ƒ','publish',1,'5','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\publish.bpmn20.xml','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\publish.publish.png','å…¬æ–‡å‘å¸ƒ',0,1,1,'1'),('publish:2:22508',1,'http://www.mossle.com','å…¬æ–‡å‘å¸ƒ','publish',2,'22505','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.bpmn20.xml','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.publish.png','å…¬æ–‡å‘å¸ƒ',0,1,1,'1'),('publish:3:25008',1,'http://www.mossle.com','å…¬æ–‡å‘å¸ƒ','publish',3,'25005','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.bpmn20.xml','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/publish.publish.png','å…¬æ–‡å‘å¸ƒ',0,1,1,'1'),('publish:4:27510',1,'http://www.mossle.com','å…¬æ–‡å‘å¸ƒ','publish',4,'27507','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/publish.bpmn20.xml','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/publish.publish.png','å…¬æ–‡å‘å¸ƒ',0,1,1,'1'),('vacation-student:3:20113',1,'http://www.activiti.org/processdef','å­¦ç”Ÿè¯·å‡æµç¨‹','vacation-student',3,'20110','å­¦ç”Ÿè¯·å‡æµç¨‹.bpmn20.xml','å­¦ç”Ÿè¯·å‡æµç¨‹.vacation-student.png',NULL,0,1,1,'1'),('vacation-student:4:20117',1,'http://www.activiti.org/processdef','å­¦ç”Ÿè¯·å‡æµç¨‹','vacation-student',4,'20114','å­¦ç”Ÿè¯·å‡æµç¨‹.bpmn20.xml','å­¦ç”Ÿè¯·å‡æµç¨‹.vacation-student.png',NULL,0,1,1,'1'),('vacation:1:12',3,'http://www.mossle.com','è¯·å‡æµç¨‹','vacation',1,'9','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\vacation.bpmn20.xml','D:\\OpenSource\\LemonOA\\lemon-master\\webapp\\WEB-INF\\classes\\bpmn2\\vacation.vacation.png','è¯·å‡æµç¨‹',0,1,1,'1'),('vacation:2:22512',1,'http://www.mossle.com','è¯·å‡æµç¨‹','vacation',2,'22509','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.bpmn20.xml','/Users/dengfengdecao/develop/java/idea-ws/lemon-master/target/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.vacation.png','è¯·å‡æµç¨‹',0,1,1,'1'),('vacation:3:25012',1,'http://www.mossle.com','è¯·å‡æµç¨‹','vacation',3,'25009','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.bpmn20.xml','/Users/dengfengdecao/develop/tomcat7/webapps/lemon-1.7.1-SNAPSHOT/WEB-INF/classes/bpmn2/vacation.vacation.png','è¯·å‡æµç¨‹',0,1,1,'1'),('vacation:4:27514',1,'http://www.mossle.com','è¯·å‡æµç¨‹','vacation',4,'27511','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/vacation.bpmn20.xml','/Users/dengfengdecao/develop/tomcat7/webapps/lemon/WEB-INF/classes/bpmn2/vacation.vacation.png','è¯·å‡æµç¨‹',0,1,1,'1');
+/*!40000 ALTER TABLE `act_re_procdef` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ru_event_subscr`
+--
+
+DROP TABLE IF EXISTS `act_ru_event_subscr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ru_event_subscr` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `EVENT_TYPE_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `EVENT_NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `ACTIVITY_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `CONFIGURATION_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `CREATED_` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_EVENT_SUBSCR_CONFIG_` (`CONFIGURATION_`),
+  KEY `ACT_FK_EVENT_EXEC` (`EXECUTION_ID_`),
+  CONSTRAINT `ACT_FK_EVENT_EXEC` FOREIGN KEY (`EXECUTION_ID_`) REFERENCES `act_ru_execution` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ru_event_subscr`
+--
+
+LOCK TABLES `act_ru_event_subscr` WRITE;
+/*!40000 ALTER TABLE `act_ru_event_subscr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_ru_event_subscr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ru_execution`
+--
+
+DROP TABLE IF EXISTS `act_ru_execution`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ru_execution` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `REV_` int(11) DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `BUSINESS_KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `PARENT_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `SUPER_EXEC_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `ACT_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `IS_ACTIVE_` tinyint(4) DEFAULT NULL,
+  `IS_CONCURRENT_` tinyint(4) DEFAULT NULL,
+  `IS_SCOPE_` tinyint(4) DEFAULT NULL,
+  `IS_EVENT_SCOPE_` tinyint(4) DEFAULT NULL,
+  `SUSPENSION_STATE_` int(11) DEFAULT NULL,
+  `CACHED_ENT_STATE_` int(11) DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `LOCK_TIME_` timestamp(3) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_EXEC_BUSKEY` (`BUSINESS_KEY_`),
+  KEY `ACT_FK_EXE_PROCINST` (`PROC_INST_ID_`),
+  KEY `ACT_FK_EXE_PARENT` (`PARENT_ID_`),
+  KEY `ACT_FK_EXE_SUPER` (`SUPER_EXEC_`),
+  KEY `ACT_FK_EXE_PROCDEF` (`PROC_DEF_ID_`),
+  CONSTRAINT `ACT_FK_EXE_PARENT` FOREIGN KEY (`PARENT_ID_`) REFERENCES `act_ru_execution` (`ID_`),
+  CONSTRAINT `ACT_FK_EXE_PROCDEF` FOREIGN KEY (`PROC_DEF_ID_`) REFERENCES `act_re_procdef` (`ID_`),
+  CONSTRAINT `ACT_FK_EXE_PROCINST` FOREIGN KEY (`PROC_INST_ID_`) REFERENCES `act_ru_execution` (`ID_`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ACT_FK_EXE_SUPER` FOREIGN KEY (`SUPER_EXEC_`) REFERENCES `act_ru_execution` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ru_execution`
+--
+
+LOCK TABLES `act_ru_execution` WRITE;
+/*!40000 ALTER TABLE `act_ru_execution` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_ru_execution` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ru_identitylink`
+--
+
+DROP TABLE IF EXISTS `act_ru_identitylink`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ru_identitylink` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `REV_` int(11) DEFAULT NULL,
+  `GROUP_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `USER_ID_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_IDENT_LNK_USER` (`USER_ID_`),
+  KEY `ACT_IDX_IDENT_LNK_GROUP` (`GROUP_ID_`),
+  KEY `ACT_IDX_ATHRZ_PROCEDEF` (`PROC_DEF_ID_`),
+  KEY `ACT_FK_TSKASS_TASK` (`TASK_ID_`),
+  KEY `ACT_FK_IDL_PROCINST` (`PROC_INST_ID_`),
+  CONSTRAINT `ACT_FK_ATHRZ_PROCEDEF` FOREIGN KEY (`PROC_DEF_ID_`) REFERENCES `act_re_procdef` (`ID_`),
+  CONSTRAINT `ACT_FK_IDL_PROCINST` FOREIGN KEY (`PROC_INST_ID_`) REFERENCES `act_ru_execution` (`ID_`),
+  CONSTRAINT `ACT_FK_TSKASS_TASK` FOREIGN KEY (`TASK_ID_`) REFERENCES `act_ru_task` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ru_identitylink`
+--
+
+LOCK TABLES `act_ru_identitylink` WRITE;
+/*!40000 ALTER TABLE `act_ru_identitylink` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_ru_identitylink` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ru_job`
+--
+
+DROP TABLE IF EXISTS `act_ru_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ru_job` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `LOCK_EXP_TIME_` timestamp(3) NULL DEFAULT NULL,
+  `LOCK_OWNER_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `EXCLUSIVE_` tinyint(1) DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROCESS_INSTANCE_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `RETRIES_` int(11) DEFAULT NULL,
+  `EXCEPTION_STACK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `EXCEPTION_MSG_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `DUEDATE_` timestamp(3) NULL DEFAULT NULL,
+  `REPEAT_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `HANDLER_TYPE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `HANDLER_CFG_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_FK_JOB_EXCEPTION` (`EXCEPTION_STACK_ID_`),
+  CONSTRAINT `ACT_FK_JOB_EXCEPTION` FOREIGN KEY (`EXCEPTION_STACK_ID_`) REFERENCES `act_ge_bytearray` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ru_job`
+--
+
+LOCK TABLES `act_ru_job` WRITE;
+/*!40000 ALTER TABLE `act_ru_job` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_ru_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ru_task`
+--
+
+DROP TABLE IF EXISTS `act_ru_task`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ru_task` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `REV_` int(11) DEFAULT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_DEF_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `PARENT_TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `DESCRIPTION_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_DEF_KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `OWNER_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `ASSIGNEE_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `DELEGATION_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PRIORITY_` int(11) DEFAULT NULL,
+  `CREATE_TIME_` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  `DUE_DATE_` datetime(3) DEFAULT NULL,
+  `CATEGORY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `SUSPENSION_STATE_` int(11) DEFAULT NULL,
+  `TENANT_ID_` varchar(255) COLLATE utf8_bin DEFAULT '',
+  `FORM_KEY_` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_TASK_CREATE` (`CREATE_TIME_`),
+  KEY `ACT_FK_TASK_EXE` (`EXECUTION_ID_`),
+  KEY `ACT_FK_TASK_PROCINST` (`PROC_INST_ID_`),
+  KEY `ACT_FK_TASK_PROCDEF` (`PROC_DEF_ID_`),
+  CONSTRAINT `ACT_FK_TASK_EXE` FOREIGN KEY (`EXECUTION_ID_`) REFERENCES `act_ru_execution` (`ID_`),
+  CONSTRAINT `ACT_FK_TASK_PROCDEF` FOREIGN KEY (`PROC_DEF_ID_`) REFERENCES `act_re_procdef` (`ID_`),
+  CONSTRAINT `ACT_FK_TASK_PROCINST` FOREIGN KEY (`PROC_INST_ID_`) REFERENCES `act_ru_execution` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ru_task`
+--
+
+LOCK TABLES `act_ru_task` WRITE;
+/*!40000 ALTER TABLE `act_ru_task` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_ru_task` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `act_ru_variable`
+--
+
+DROP TABLE IF EXISTS `act_ru_variable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `act_ru_variable` (
+  `ID_` varchar(64) COLLATE utf8_bin NOT NULL,
+  `REV_` int(11) DEFAULT NULL,
+  `TYPE_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `NAME_` varchar(255) COLLATE utf8_bin NOT NULL,
+  `EXECUTION_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `PROC_INST_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `TASK_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `BYTEARRAY_ID_` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `DOUBLE_` double DEFAULT NULL,
+  `LONG_` bigint(20) DEFAULT NULL,
+  `TEXT_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  `TEXT2_` varchar(4000) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`ID_`),
+  KEY `ACT_IDX_VARIABLE_TASK_ID` (`TASK_ID_`),
+  KEY `ACT_FK_VAR_EXE` (`EXECUTION_ID_`),
+  KEY `ACT_FK_VAR_PROCINST` (`PROC_INST_ID_`),
+  KEY `ACT_FK_VAR_BYTEARRAY` (`BYTEARRAY_ID_`),
+  CONSTRAINT `ACT_FK_VAR_BYTEARRAY` FOREIGN KEY (`BYTEARRAY_ID_`) REFERENCES `act_ge_bytearray` (`ID_`),
+  CONSTRAINT `ACT_FK_VAR_EXE` FOREIGN KEY (`EXECUTION_ID_`) REFERENCES `act_ru_execution` (`ID_`),
+  CONSTRAINT `ACT_FK_VAR_PROCINST` FOREIGN KEY (`PROC_INST_ID_`) REFERENCES `act_ru_execution` (`ID_`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `act_ru_variable`
+--
+
+LOCK TABLES `act_ru_variable` WRITE;
+/*!40000 ALTER TABLE `act_ru_variable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `act_ru_variable` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `activity_info`
+--
+
+DROP TABLE IF EXISTS `activity_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `activity_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `LOCATION` varchar(200) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `OPEN_TIME` datetime DEFAULT NULL,
+  `CLOSE_TIME` datetime DEFAULT NULL,
+  `HEAD_COUNT` int(11) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `activity_info`
+--
+
+LOCK TABLES `activity_info` WRITE;
+/*!40000 ALTER TABLE `activity_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `activity_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `activity_user`
+--
+
+DROP TABLE IF EXISTS `activity_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `activity_user` (
+  `ID` bigint(20) NOT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_ACTIVITY_USER_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_ACTIVITY_USER_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `activity_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `activity_user`
+--
+
+LOCK TABLES `activity_user` WRITE;
+/*!40000 ALTER TABLE `activity_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `activity_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `asset_info`
+--
+
+DROP TABLE IF EXISTS `asset_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `asset_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `asset_info`
+--
+
+LOCK TABLES `asset_info` WRITE;
+/*!40000 ALTER TABLE `asset_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `asset_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `attendance_info`
+--
+
+DROP TABLE IF EXISTS `attendance_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attendance_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CATALOG` varchar(100) DEFAULT NULL,
+  `EMPLOYEE_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attendance_info`
+--
+
+LOCK TABLES `attendance_info` WRITE;
+/*!40000 ALTER TABLE `attendance_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `attendance_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `audit_base`
+--
+
+DROP TABLE IF EXISTS `audit_base`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `audit_base` (
+  `ID` bigint(20) NOT NULL,
+  `USER` varchar(200) DEFAULT NULL,
+  `RESOURCE_TYPE` varchar(200) DEFAULT NULL,
+  `RESOURCE_ID` varchar(200) DEFAULT NULL,
+  `ACTION` varchar(200) DEFAULT NULL,
+  `RESULT` varchar(200) DEFAULT NULL,
+  `APPLICATION` varchar(200) DEFAULT NULL,
+  `AUDIT_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `CLIENT` varchar(200) DEFAULT NULL,
+  `SERVER` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `audit_base`
+--
+
+LOCK TABLES `audit_base` WRITE;
+/*!40000 ALTER TABLE `audit_base` DISABLE KEYS */;
+INSERT INTO `audit_base` VALUES (246665432809472,'1',NULL,NULL,'login','success','lemon','2016-08-06 09:09:24','127.0.0.1','192.168.56.1',NULL,'1'),(247683820945408,'1',NULL,NULL,'login','success','lemon','2016-08-07 02:25:21','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(247728627924992,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-07 03:10:56','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(247729803444224,'1',NULL,NULL,'login','success','lemon','2016-08-07 03:12:08','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(251790635155456,'1',NULL,NULL,'login','success','lemon','2016-08-10 00:03:01','127.0.0.1','192.168.56.1',NULL,'1'),(253344698875904,'1',NULL,NULL,'login','success','lemon','2016-08-11 02:23:54','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253431718739968,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-11 03:52:25','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253432529879040,'1',NULL,NULL,'login','success','lemon','2016-08-11 03:53:15','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253441887780864,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-11 04:02:46','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253442732785664,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-11 04:03:38','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253443140452352,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-11 04:04:02','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253444439949312,'1',NULL,NULL,'login','success','lemon','2016-08-11 04:05:22','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253740517785600,'4',NULL,NULL,'login','success','lemon','2016-08-11 09:06:33','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(253741421215744,'1',NULL,NULL,'login','success','lemon','2016-08-11 09:07:28','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(254787445391360,'1',NULL,NULL,'login','success','lemon','2016-08-12 02:51:32','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(254858589732864,'1',NULL,NULL,'login','success','lemon','2016-08-12 04:03:55','127.0.0.1','192.168.56.1',NULL,'1'),(254985583673344,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-12 06:13:06','127.0.0.1','192.168.56.1',NULL,'1'),(254987085971456,'1',NULL,NULL,'login','success','lemon','2016-08-12 06:14:37','127.0.0.1','192.168.56.1',NULL,'1'),(255011646816256,'1',NULL,NULL,'login','success','lemon','2016-08-12 06:39:36','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(255028897890304,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-12 06:57:09','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(255029862318080,'lingo',NULL,NULL,'login','failure','lemon','2016-08-12 06:58:08','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(255029950611456,'1',NULL,NULL,'login','success','lemon','2016-08-12 06:58:14','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(255031004381184,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-12 06:59:18','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(255032068423680,'1',NULL,NULL,'login','success','lemon','2016-08-12 07:00:23','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(255316388954112,'1',NULL,NULL,'login','success','lemon','2016-08-12 11:49:36','127.0.0.1','192.168.56.1',NULL,'1'),(255337659400192,'1',NULL,NULL,'login','success','lemon','2016-08-12 12:11:15','127.0.0.1','192.168.56.1',NULL,'1'),(255367668023296,'1',NULL,NULL,'login','success','lemon','2016-08-12 12:41:46','127.0.0.1','192.168.56.1',NULL,'1'),(255450579566592,'1',NULL,NULL,'login','success','lemon','2016-08-12 14:06:07','127.0.0.1','192.168.56.1',NULL,'1'),(256176468230144,'1',NULL,NULL,'login','success','lemon','2016-08-13 02:24:31','127.0.0.1','192.168.56.1',NULL,'1'),(256413907795968,'1',NULL,NULL,'login','success','lemon','2016-08-13 06:26:04','127.0.0.1','192.168.56.1',NULL,'1'),(256416033341440,'1',NULL,NULL,'login','success','lemon','2016-08-13 06:28:13','127.0.0.1','192.168.56.1',NULL,'1'),(256431869870080,'1',NULL,NULL,'login','success','lemon','2016-08-13 06:44:20','127.0.0.1','192.168.56.1',NULL,'1'),(256469990948864,'1',NULL,NULL,'login','success','lemon','2016-08-13 07:23:07','127.0.0.1','192.168.56.1',NULL,'1'),(256474625032192,'1',NULL,NULL,'login','success','lemon','2016-08-13 07:27:50','127.0.0.1','192.168.56.1',NULL,'1'),(256515201155072,'1',NULL,NULL,'login','success','lemon','2016-08-13 08:09:06','127.0.0.1','192.168.56.1',NULL,'1'),(256519373520896,'1',NULL,NULL,'login','success','lemon','2016-08-13 08:13:21','127.0.0.1','192.168.56.1',NULL,'1'),(256534166667264,'1',NULL,NULL,'login','success','lemon','2016-08-13 08:28:24','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256542795497472,'1',NULL,NULL,'login','success','lemon','2016-08-13 08:37:10','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256548512858112,'1',NULL,NULL,'login','success','lemon','2016-08-13 08:42:59','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256577893613568,'1',NULL,NULL,'login','success','lemon','2016-08-13 09:12:53','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256581161631744,'1',NULL,NULL,'login','success','lemon','2016-08-13 09:16:12','127.0.0.1','192.168.56.1',NULL,'1'),(256698439090176,'1',NULL,NULL,'login','success','lemon','2016-08-13 11:15:30','127.0.0.1','192.168.56.1',NULL,'1'),(256722595725312,'1',NULL,NULL,'login','success','lemon','2016-08-13 11:40:04','127.0.0.1','192.168.56.1',NULL,'1'),(256727069376512,'1',NULL,NULL,'login','success','lemon','2016-08-13 11:44:37','127.0.0.1','192.168.56.1',NULL,'1'),(256733701570560,'1',NULL,NULL,'login','success','lemon','2016-08-13 11:51:22','127.0.0.1','192.168.56.1',NULL,'1'),(256752626761728,'1',NULL,NULL,'login','success','lemon','2016-08-13 12:10:37','127.0.0.1','192.168.56.1',NULL,'1'),(256759187996672,'1',NULL,NULL,'login','success','lemon','2016-08-13 12:17:18','127.0.0.1','192.168.56.1',NULL,'1'),(256781980123136,'1',NULL,NULL,'login','success','lemon','2016-08-13 12:40:29','127.0.0.1','192.168.56.1',NULL,'1'),(256785338761216,'1',NULL,NULL,'login','success','lemon','2016-08-13 12:43:54','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256791168598016,'1',NULL,NULL,'login','success','lemon','2016-08-13 12:49:49','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256796361621504,'1',NULL,NULL,'login','success','lemon','2016-08-13 12:55:07','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256824483545088,'1',NULL,NULL,'login','success','lemon','2016-08-13 13:23:43','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256828481208320,'1',NULL,NULL,'login','success','lemon','2016-08-13 13:27:47','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(256834650259456,'1',NULL,NULL,'login','success','lemon','2016-08-13 13:34:04','127.0.0.1','192.168.56.1',NULL,'1'),(260360598044672,'1',NULL,NULL,'login','success','lemon','2016-08-16 01:20:50','127.0.0.1','192.168.56.1',NULL,'1'),(260378720370688,'1',NULL,NULL,'login','success','lemon','2016-08-16 01:39:17','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260652562857984,'1',NULL,NULL,'login','success','lemon','2016-08-16 06:17:51','127.0.0.1','192.168.56.1',NULL,'1'),(260657047781376,'1',NULL,NULL,'login','success','lemon','2016-08-16 06:22:24','127.0.0.1','192.168.56.1',NULL,'1'),(260662188015616,'1',NULL,NULL,'login','success','lemon','2016-08-16 06:27:38','127.0.0.1','192.168.56.1',NULL,'1'),(260666835304448,'1',NULL,NULL,'login','success','lemon','2016-08-16 06:32:22','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260679108149248,'1',NULL,NULL,'login','success','lemon','2016-08-16 06:44:51','127.0.0.1','192.168.56.1',NULL,'1'),(260679120764928,'1',NULL,NULL,'login','success','lemon','2016-08-16 06:44:52','127.0.0.1','192.168.56.1',NULL,'1'),(260698752729088,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:04:50','127.0.0.1','192.168.56.1',NULL,'1'),(260713802776576,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:20:08','127.0.0.1','192.168.56.1',NULL,'1'),(260719298478080,'2013034611',NULL,NULL,'login','failure','lemon','2016-08-16 07:25:44','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(260719509389312,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:25:57','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260723640680448,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:30:09','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260728177180672,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:34:46','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260740404822016,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:47:12','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260752075522048,'1',NULL,NULL,'login','success','lemon','2016-08-16 07:59:04','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260759007936512,'1',NULL,NULL,'login','success','lemon','2016-08-16 08:06:08','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260774040453120,'1',NULL,NULL,'login','success','lemon','2016-08-16 08:21:25','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260787016253440,'1',NULL,NULL,'login','success','lemon','2016-08-16 08:34:37','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260795816329216,'1',NULL,NULL,'login','success','lemon','2016-08-16 08:43:34','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260810686480384,'1',NULL,NULL,'login','success','lemon','2016-08-16 08:58:42','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260815497232384,'1',NULL,NULL,'login','success','lemon','2016-08-16 09:03:35','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260825962758144,'1',NULL,NULL,'login','success','lemon','2016-08-16 09:14:14','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260840514699264,'1',NULL,NULL,'login','success','lemon','2016-08-16 09:29:02','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260949059305472,'1',NULL,NULL,'login','success','lemon','2016-08-16 11:19:27','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260958073487360,'1',NULL,NULL,'login','success','lemon','2016-08-16 11:28:37','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(260972490260480,'1',NULL,NULL,'login','success','lemon','2016-08-16 11:43:17','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(261844773912576,'1',NULL,NULL,'login','success','lemon','2016-08-17 02:30:37','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(261904297558016,'1',NULL,NULL,'login','success','lemon','2016-08-17 03:31:10','127.0.0.1','192.168.56.1',NULL,'1'),(261917127802880,'1',NULL,NULL,'login','success','lemon','2016-08-17 03:44:14','127.0.0.1','192.168.56.1',NULL,'1'),(262066466160640,'1',NULL,NULL,'login','success','lemon','2016-08-17 06:16:08','127.0.0.1','192.168.56.1',NULL,'1'),(262102779822080,'rrr',NULL,NULL,'login','failure','lemon','2016-08-17 06:53:05','127.0.0.1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(262102874816512,'247689264381952',NULL,NULL,'login','success','lemon','2016-08-17 06:53:11','127.0.0.1','192.168.56.1',NULL,'1'),(262129712971776,'1',NULL,NULL,'login','success','lemon','2016-08-17 07:20:29','127.0.0.1','192.168.56.1',NULL,'1'),(262143829884928,'1',NULL,NULL,'login','success','lemon','2016-08-17 07:34:50','127.0.0.1','192.168.56.1',NULL,'1'),(262146442919936,'1',NULL,NULL,'login','success','lemon','2016-08-17 07:37:30','127.0.0.1','192.168.56.1',NULL,'1'),(262150258704384,'1',NULL,NULL,'login','success','lemon','2016-08-17 07:41:23','127.0.0.1','192.168.56.1',NULL,'1'),(262158917697536,'1',NULL,NULL,'login','success','lemon','2016-08-17 07:50:11','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(262163325370368,'1',NULL,NULL,'login','success','lemon','2016-08-17 07:54:40','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263273729736704,'1',NULL,NULL,'login','success','lemon','2016-08-18 02:44:14','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263358348083200,'1',NULL,NULL,'login','success','lemon','2016-08-18 04:10:19','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263473451368448,'1',NULL,NULL,'login','success','lemon','2016-08-18 06:07:24','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263483056160768,'2013034531',NULL,NULL,'login','failure','lemon','2016-08-18 06:17:10','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(263483855978496,'2013034531',NULL,NULL,'login','failure','lemon','2016-08-18 06:17:59','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(263484134998016,'1',NULL,NULL,'login','success','lemon','2016-08-18 06:18:16','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263486945181696,'263486612602880',NULL,NULL,'login','success','lemon','2016-08-18 06:21:08','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263488217808896,'1',NULL,NULL,'login','success','lemon','2016-08-18 06:22:25','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263545999851520,'1',NULL,NULL,'login','success','lemon','2016-08-18 07:21:12','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263552552845312,'1',NULL,NULL,'login','success','lemon','2016-08-18 07:27:52','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(263618235711488,'1',NULL,NULL,'login','success','lemon','2016-08-18 08:34:41','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(264677461327872,'1',NULL,NULL,'login','success','lemon','2016-08-19 02:32:11','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(264703418728448,'1',NULL,NULL,'login','success','lemon','2016-08-19 02:58:35','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(264717449822208,'1',NULL,NULL,'login','success','lemon','2016-08-19 03:12:52','127.0.0.1','192.168.56.1',NULL,'1'),(264717594492928,'1',NULL,NULL,'login','success','lemon','2016-08-19 03:13:00','127.0.0.1','192.168.56.1',NULL,'1'),(264717918748672,'1',NULL,NULL,'login','success','lemon','2016-08-19 03:13:20','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(264722973229056,'1',NULL,NULL,'login','success','lemon','2016-08-19 03:18:29','127.0.0.1','192.168.56.1',NULL,'1'),(264739139780608,'1',NULL,NULL,'login','success','lemon','2016-08-19 03:34:55','127.0.0.1','192.168.56.1',NULL,'1'),(264973105414144,'1',NULL,NULL,'login','success','lemon','2016-08-19 07:32:56','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267683249389568,'1',NULL,NULL,'login','success','lemon','2016-08-21 05:29:50','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267714020376576,'267713809711104',NULL,NULL,'login','success','lemon','2016-08-21 06:01:08','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267714520989696,'1',NULL,NULL,'login','success','lemon','2016-08-21 06:01:38','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267715768352768,'267713809711104',NULL,NULL,'login','success','lemon','2016-08-21 06:02:54','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267763255558144,'1',NULL,NULL,'login','success','lemon','2016-08-21 06:51:13','127.0.0.1','192.168.56.1',NULL,'1'),(267769269288960,'267768847958016',NULL,NULL,'login','success','lemon','2016-08-21 06:57:20','127.0.0.1','192.168.56.1',NULL,'1'),(267773131898880,'1',NULL,NULL,'login','success','lemon','2016-08-21 07:01:16','127.0.0.1','192.168.56.1',NULL,'1'),(267773925179392,'267768847958016',NULL,NULL,'login','success','lemon','2016-08-21 07:02:04','127.0.0.1','192.168.56.1',NULL,'1'),(267804173271040,'267768847958016',NULL,NULL,'login','success','lemon','2016-08-21 07:32:50','127.0.0.1','192.168.56.1',NULL,'1'),(267811361226752,'267768847958016',NULL,NULL,'login','success','lemon','2016-08-21 07:40:09','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267813888245760,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-21 07:42:43','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267823120515072,'267768847958016',NULL,NULL,'login','success','lemon','2016-08-21 07:52:07','127.0.0.1','192.168.56.1',NULL,'1'),(267830801448960,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-21 07:59:56','127.0.0.1','192.168.56.1',NULL,'1'),(267838159880192,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-21 08:07:25','127.0.0.1','192.168.56.1',NULL,'1'),(267840164265984,'1',NULL,NULL,'login','success','lemon','2016-08-21 08:09:27','127.0.0.1','192.168.56.1',NULL,'1'),(267850798792704,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 08:20:16','127.0.0.1','192.168.56.1',NULL,'1'),(267858361434112,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 08:27:58','127.0.0.1','192.168.56.1',NULL,'1'),(267879793115136,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 08:49:46','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267889005314048,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 08:59:08','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(267903301877760,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 09:13:41','127.0.0.1','192.168.56.1',NULL,'1'),(267922837602304,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 09:33:33','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(268046725578752,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 11:39:34','127.0.0.1','192.168.56.1',NULL,'1'),(268049348968448,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 11:42:15','127.0.0.1','192.168.56.1',NULL,'1'),(268057321897984,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-21 11:50:21','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(268072929099776,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-21 12:06:14','127.0.0.1','192.168.56.1',NULL,'1'),(268861725212672,'267768847958016',NULL,NULL,'login','success','lemon','2016-08-22 01:28:38','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(268869382193152,'1',NULL,NULL,'login','success','lemon','2016-08-22 01:36:25','127.0.0.1','192.168.56.1',NULL,'1'),(268869531287552,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-22 01:36:35','127.0.0.1','192.168.56.1',NULL,'1'),(268887598186496,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-22 01:54:57','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(268904868904960,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-22 02:12:31','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(268943965126656,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-22 02:52:18','127.0.0.1','192.168.56.1',NULL,'1'),(269026883944448,'1',NULL,NULL,'login','success','lemon','2016-08-22 04:16:39','127.0.0.1','192.168.56.1',NULL,'1'),(269146248970240,'1',NULL,NULL,'login','success','lemon','2016-08-22 06:18:04','127.0.0.1','192.168.56.1',NULL,'1'),(269146348060672,'lingo',NULL,NULL,'login','failure','lemon','2016-08-22 06:18:10','127.0.0.1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(269146393837568,'1',NULL,NULL,'login','success','lemon','2016-08-22 06:18:13','127.0.0.1','192.168.56.1',NULL,'1'),(269202842419200,'1',NULL,NULL,'login','success','lemon','2016-08-22 07:15:38','127.0.0.1','192.168.56.1',NULL,'1'),(269207582883840,'1',NULL,NULL,'login','success','lemon','2016-08-22 07:20:28','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(269426758385664,'1',NULL,NULL,'login','success','lemon','2016-08-22 11:03:25','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270346416062464,'1',NULL,NULL,'login','success','lemon','2016-08-23 02:38:56','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270377394814976,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 03:10:27','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270379469455360,'1',NULL,NULL,'login','success','lemon','2016-08-23 03:12:34','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270380441567232,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 03:13:33','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270381834698752,'lingo',NULL,NULL,'login','failure','lemon','2016-08-23 03:14:58','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(270381890502656,'1',NULL,NULL,'login','success','lemon','2016-08-23 03:15:02','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270388302102528,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 03:21:33','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270388951777280,'lingo',NULL,NULL,'login','failure','lemon','2016-08-23 03:22:13','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(270389010399232,'1',NULL,NULL,'login','success','lemon','2016-08-23 03:22:16','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270613550104576,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 07:10:41','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270614641983488,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:11:48','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270615456366592,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 07:12:37','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270617129975808,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:14:20','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270618998194176,'7',NULL,NULL,'login','success','lemon','2016-08-23 07:16:14','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270619752529920,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:17:00','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270622531747840,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:19:49','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270622733729792,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 07:20:02','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270623679283200,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:20:59','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270623936790528,'4',NULL,NULL,'login','success','lemon','2016-08-23 07:21:15','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270630981124096,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 07:28:25','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270631173636096,'lingo',NULL,NULL,'login','failure','lemon','2016-08-23 07:28:37','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(270631212728320,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:28:39','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270633033351168,'king',NULL,NULL,'login','failure','lemon','2016-08-23 07:30:30','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(270633099853824,'4',NULL,NULL,'login','success','lemon','2016-08-23 07:30:34','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270633299312640,'4',NULL,NULL,'login','success','lemon','2016-08-23 07:30:46','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270633501884416,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:30:59','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270634090725376,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-23 07:31:35','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270634604232704,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:32:06','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270634825990144,'king',NULL,NULL,'login','failure','lemon','2016-08-23 07:32:20','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(270634865852416,'4',NULL,NULL,'login','success','lemon','2016-08-23 07:32:22','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270643285180416,'1',NULL,NULL,'login','success','lemon','2016-08-23 07:40:56','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270699662131200,'1',NULL,NULL,'login','success','lemon','2016-08-23 08:38:17','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270736039641088,'1',NULL,NULL,'login','success','lemon','2016-08-23 09:15:17','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270752610025472,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-23 09:32:09','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270753916616704,'1',NULL,NULL,'login','success','lemon','2016-08-23 09:33:28','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270755560800256,'1',NULL,NULL,'login','success','lemon','2016-08-23 09:35:09','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270756041523200,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-23 09:35:38','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(270756412424192,'1',NULL,NULL,'login','success','lemon','2016-08-23 09:36:01','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271693818527744,'1',NULL,NULL,'login','success','lemon','2016-08-24 01:29:35','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271695938682880,'1',NULL,NULL,'login','success','lemon','2016-08-24 01:31:45','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271696038035456,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-24 01:31:51','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271696565026816,'1',NULL,NULL,'login','success','lemon','2016-08-24 01:32:23','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271696999972864,'1',NULL,NULL,'login','success','lemon','2016-08-24 01:32:50','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271757247447040,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-24 02:34:07','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271757717618688,'1',NULL,NULL,'login','success','lemon','2016-08-24 02:34:35','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271760058761216,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-24 02:36:58','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271762643386368,'lingo',NULL,NULL,'login','failure','lemon','2016-08-24 02:39:36','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(271762688409600,'1',NULL,NULL,'login','success','lemon','2016-08-24 02:39:39','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271766974726144,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-24 02:44:01','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271772102066176,'1',NULL,NULL,'login','success','lemon','2016-08-24 02:49:13','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271782659440640,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-24 02:59:58','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271784059551744,'1',NULL,NULL,'login','success','lemon','2016-08-24 03:01:23','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271799720738816,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-24 03:17:19','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271812780867584,'lingo',NULL,NULL,'login','failure','lemon','2016-08-24 03:30:36','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(271812999413760,'1',NULL,NULL,'login','success','lemon','2016-08-24 03:30:50','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(271828786348032,'247688773386240',NULL,NULL,'login','success','lemon','2016-08-24 03:46:53','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(276261380833280,'1',NULL,NULL,'login','success','lemon','2016-08-27 06:55:57','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(276487994474496,'1',NULL,NULL,'login','success','lemon','2016-08-27 10:46:29','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277351058489344,'1',NULL,NULL,'login','success','lemon','2016-08-28 01:24:26','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277386720067584,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:00:43','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277388531974144,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:02:33','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277388893159424,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:02:55','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277391950643200,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:06:02','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277392333488128,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:06:25','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277394535251968,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:08:40','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277395549749248,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:09:41','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277400995201024,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:15:14','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277403224686592,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:17:30','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277416236597248,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:30:44','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277416536195072,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:31:02','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277416821866496,'e',NULL,NULL,'login','failure','lemon','2016-08-28 02:31:20','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(277416890580992,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-28 02:31:24','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277417086861312,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:31:36','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277433824460800,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:48:38','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277434047627264,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-28 02:48:51','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277434272415744,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:49:05','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277436959686656,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:51:49','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277438586830848,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 02:53:28','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277438800019456,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-28 02:53:41','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277438988271616,'lingo',NULL,NULL,'login','failure','lemon','2016-08-28 02:53:53','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(277439026626560,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:53:55','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277439210291200,'4',NULL,NULL,'login','success','lemon','2016-08-28 02:54:06','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277439419875328,'lingo',NULL,NULL,'login','failure','lemon','2016-08-28 02:54:19','0:0:0:0:0:0:0:1','192.168.56.1','è´¦å·æˆ–å¯†ç é”™è¯¯',''),(277439454150656,'1',NULL,NULL,'login','success','lemon','2016-08-28 02:54:21','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277588145946624,'247689637478400',NULL,NULL,'login','success','lemon','2016-08-28 05:25:37','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277588373110784,'1',NULL,NULL,'login','success','lemon','2016-08-28 05:25:50','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277590456172544,'4',NULL,NULL,'login','success','lemon','2016-08-28 05:27:58','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277594290585600,'1',NULL,NULL,'login','success','lemon','2016-08-28 05:31:52','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277599933513728,'247689000714240',NULL,NULL,'login','success','lemon','2016-08-28 05:37:36','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277601817788416,'1',NULL,NULL,'login','success','lemon','2016-08-28 05:39:31','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(277706575331328,'1',NULL,NULL,'login','success','lemon','2016-08-28 07:26:05','127.0.0.1','192.168.56.1',NULL,'1'),(277836503711744,'1',NULL,NULL,'login','success','lemon','2016-08-28 09:38:15','127.0.0.1','192.168.56.1',NULL,'1'),(277849324683264,'1',NULL,NULL,'login','success','lemon','2016-08-28 09:51:18','127.0.0.1','192.168.56.1',NULL,'1'),(277866134142976,'1',NULL,NULL,'login','success','lemon','2016-08-28 10:08:24','127.0.0.1','192.168.56.1',NULL,'1'),(277866494328832,'1',NULL,NULL,'login','success','lemon','2016-08-28 10:08:46','127.0.0.1','192.168.56.1',NULL,'1'),(279033607307264,'1',NULL,NULL,'login','success','lemon','2016-08-29 05:56:01','0:0:0:0:0:0:0:1','192.168.56.1',NULL,'1'),(280548260593664,'1',NULL,NULL,'login','success','lemon','2016-08-30 07:36:48','0:0:0:0:0:0:0:1','10.0.0.5',NULL,'1'),(280553063399424,'1',NULL,NULL,'login','success','lemon','2016-08-30 07:41:41','0:0:0:0:0:0:0:1','10.0.0.5',NULL,'1'),(280559177121792,'1',NULL,NULL,'login','success','lemon','2016-08-30 07:47:54','0:0:0:0:0:0:0:1','10.0.0.5',NULL,'1'),(280559827632128,'1',NULL,NULL,'login','success','lemon','2016-08-30 07:48:34','0:0:0:0:0:0:0:1','10.0.0.5',NULL,'1'),(281940199292928,'1',NULL,NULL,'login','success','lemon','2016-08-31 07:12:45','0:0:0:0:0:0:0:1','10.0.0.5',NULL,'1');
+/*!40000 ALTER TABLE `audit_base` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `audit_extra`
+--
+
+DROP TABLE IF EXISTS `audit_extra`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `audit_extra` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `AUDIT_BASE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `audit_extra`
+--
+
+LOCK TABLES `audit_extra` WRITE;
+/*!40000 ALTER TABLE `audit_extra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `audit_extra` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_access`
+--
+
+DROP TABLE IF EXISTS `auth_access`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_access` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `PERM_ID` bigint(20) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_AUTH_ACCESS_PERM` (`PERM_ID`),
+  CONSTRAINT `FK_AUTH_ACCESS_PERM` FOREIGN KEY (`PERM_ID`) REFERENCES `auth_perm` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_access`
+--
+
+LOCK TABLES `auth_access` WRITE;
+/*!40000 ALTER TABLE `auth_access` DISABLE KEYS */;
+INSERT INTO `auth_access` VALUES (1,'URL','/**',3,9999,NULL,'1'),(2,'URL','/common/util/**',5,1,NULL,'1'),(3,'URL','/common/util/**',21,1,NULL,'1'),(4,'URL','/common/**',2,2,NULL,'1'),(5,'URL','/j_spring_security_exit_user',5,3,NULL,'1'),(6,'URL','/j_spring_security_switch_user',5,4,NULL,'1'),(7,'URL','/j_spring_security_switch_user',21,4,NULL,'1'),(8,'URL','/rs/**',2,5,NULL,'1'),(9,'URL','/guest/**',2,9,NULL,'1');
+/*!40000 ALTER TABLE `auth_access` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_menu`
+--
+
+DROP TABLE IF EXISTS `auth_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_menu` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `TITLE` varchar(50) DEFAULT NULL,
+  `URL` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `PERM_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `DISPLAY` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_AUTH_MENU_PARENT` (`PARENT_ID`),
+  KEY `FK_AUTH_MENU_PERM` (`PERM_ID`),
+  CONSTRAINT `FK_AUTH_MENU_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `auth_menu` (`ID`),
+  CONSTRAINT `FK_AUTH_MENU_PERM` FOREIGN KEY (`PERM_ID`) REFERENCES `auth_perm` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_menu`
+--
+
+LOCK TABLES `auth_menu` WRITE;
+/*!40000 ALTER TABLE `auth_menu` DISABLE KEYS */;
+INSERT INTO `auth_menu` VALUES (1,'index','portal','é¦–é¡µ','/portal/index.do',1,NULL,NULL,101,NULL,'true'),(11,'system','pim','ä¸ªäººäº‹åŠ¡',NULL,11,NULL,NULL,102,NULL,'true'),(13,'module','pim','ä¸ªäººäº‹åŠ¡','/pim/pim-schedule-list.do',13,NULL,11,104,NULL,'true'),(14,'module','mail','é‚®ç®±','/javamail/index.do',14,NULL,11,105,NULL,'true'),(15,'module','disk','ç½‘ç›˜','/disk/disk-info-list.do',15,NULL,11,106,NULL,'true'),(16,'module','report','ç»Ÿè®¡æŠ¥è¡¨','/report/chart-mostActiveProcess.do',16,NULL,11,107,NULL,'true'),(17,'module','bpm','æµç¨‹ä¸­å¿ƒ','/bpm/workspace-home.do',12,NULL,11,108,NULL,'true'),(21,'entry','sys','ç³»ç»Ÿé…ç½®',NULL,21,NULL,NULL,201,NULL,'true'),(31,'system','user','ç”¨æˆ·ç®¡ç†','/user/account-info-list.do',31,NULL,21,301,NULL,'true'),(32,'module','account','è´¦å·ç®¡ç†','/user/account-info-list.do',32,NULL,31,302,NULL,'true'),(33,'module','group','ç¾¤ç»„ç®¡ç†','/group/group-info-list.do',33,NULL,31,303,NULL,'true'),(34,'module','auth','æƒé™ç®¡ç†','/auth/user-status-list.do',34,NULL,31,304,NULL,'true'),(35,'module','session','ä¼šè¯ç®¡ç†','/user/account-online-list.do',35,NULL,31,305,NULL,'true'),(41,'system','bpm','æµç¨‹ç®¡ç†','/bpm/bpm-process-list.do',41,NULL,21,401,NULL,'true'),(42,'module','bpm','æµç¨‹ç®¡ç†','/bpm/bpm-process-list.do',42,NULL,41,402,NULL,'true'),(43,'module','task','ä»»åŠ¡ç®¡ç†','/humantask/task-info-list.do',43,NULL,41,403,NULL,'true'),(44,'module','form','è¡¨å•ç®¡ç†','/form/form-template-list.do',44,NULL,41,404,NULL,'true'),(45,'module','model','æ¨¡å—ç®¡ç†','/model/model-info-list.do',45,NULL,41,405,NULL,'true'),(51,'system','cms','å†…å®¹ç®¡ç†','/cms/cms-catalog-list.do',51,NULL,21,501,NULL,'true'),(52,'module','cms','å…¬å‘Šç®¡ç†','/cms/cms-catalog-list.do',52,NULL,51,502,NULL,'true'),(61,'system','logistic','è¡Œæ”¿åŠå…¬','/car/car-info-list.do',61,NULL,21,601,NULL,'true'),(62,'module','car','è½¦è¾†ç®¡ç†','/car/car-info-list.do',62,NULL,61,602,NULL,'true'),(63,'module','meeting','ä¼šè®®å®¤ç®¡ç†','/meeting/meeting-info-list.do',63,NULL,61,603,NULL,'true'),(71,'system','hr','äººåŠ›èµ„æº','/party/org-list.do',71,NULL,21,701,NULL,'true'),(72,'module','org','ç»„ç»‡æœºæ„','/party/org-list.do',72,NULL,71,702,NULL,'true'),(73,'module','position','èŒä½ç®¡ç†','/org/job-list.do',73,NULL,71,703,NULL,'true'),(74,'module','workcal','å·¥ä½œæ—¥å†','/workcal/workcal-view.do',74,NULL,71,704,NULL,'true'),(81,'system','sys','ç³»ç»Ÿé…ç½®','/party/tree-list.do',9999,NULL,21,801,NULL,'true'),(91,'system','finance','è´¢åŠ¡ç®¡ç†','/expense/expense-info-list.do',91,NULL,21,901,NULL,'false'),(101,'system','crm','CRM','/customer/customer-info-list.do',101,NULL,21,1001,NULL,'false'),(111,'system','retail','è¿›é”€å­˜','/sale/sale-info-list.do',111,NULL,21,1101,NULL,'false'),(306,'module','device','è®¾å¤‡ç®¡ç†','/user/account-device-list.do',306,NULL,31,306,NULL,'true'),(604,'module','book','å›¾ä¹¦ç®¡ç†','/book/book-info-list.do',604,NULL,61,604,NULL,'false'),(605,'module','officesupply','åŠå…¬ç”¨å“ç®¡ç†','/officesupply/officesupply-info-list.do',605,NULL,61,605,NULL,'false'),(606,'module','visitor','è®¿å®¢ç®¡ç†','/visitor/visitor-info-list.do',606,NULL,61,606,NULL,'false'),(607,'module','card','å·¥å¡ç®¡ç†','/card/card-info-list.do',607,NULL,61,607,NULL,'false'),(608,'module','seat','å·¥ä½ç®¡ç†','/seat/seat-info-list.do',608,NULL,61,608,NULL,'false'),(609,'module','stamp','å°ç« ç®¡ç†','/stamp/stamp-info-list.do',609,NULL,61,609,NULL,'false'),(610,'module','asset','èµ„äº§ç®¡ç†','/asset/asset-info-list.do',610,NULL,61,610,NULL,'false'),(611,'module','activity','æ´»åŠ¨ç®¡ç†','/activity/activity-info-list.do',611,NULL,61,611,NULL,'false'),(612,'module','sign','ç­¾åˆ°ç®¡ç†','/sign/sign-info-list.do',612,NULL,61,612,NULL,'false'),(613,'module','vote','æŠ•ç¥¨ç®¡ç†','/vote/vote-info-list.do',613,NULL,61,613,NULL,'false'),(705,'module','employee','äººå‘˜ç®¡ç†','/employee/employee-info-list.do',705,NULL,71,705,NULL,'false'),(706,'module','contract','åˆåŒç®¡ç†','/contract/contract-info-list.do',706,NULL,71,706,NULL,'false'),(707,'module','salary','è–ªé…¬ç®¡ç†','/salary/salary-info-list.do',707,NULL,71,707,NULL,'false'),(708,'module','socialsecurity','ç¤¾ä¿ç®¡ç†','/socialsecurity/socialsecurity-info-list.do',708,NULL,71,708,NULL,'false'),(709,'module','recruit','æ‹›è˜ç®¡ç†','/recruit/recruit-info-list.do',709,NULL,71,709,NULL,'false'),(710,'module','train','åŸ¹è®­ç®¡ç†','/train/train-info-list.do',710,NULL,71,710,NULL,'false'),(711,'module','performance','ç»©æ•ˆç®¡ç†','/performance/performance-info-list.do',711,NULL,71,711,NULL,'false'),(712,'module','attendance','è€ƒå‹¤ç®¡ç†','/attendance/attendance-info-list.do',712,NULL,71,712,NULL,'false'),(713,'module','leave','ä¼‘å‡ç®¡ç†','/leave/leave-info-list.do',713,NULL,71,713,NULL,'false'),(902,'module','expense','æŠ¥é”€ç®¡ç†','/expense/expense-info-list.do',902,NULL,91,902,NULL,'true'),(903,'module','budget','é¢„ç®—ç®¡ç†','/budget/budget-info-list.do',903,NULL,91,903,NULL,'true'),(1002,'module','customer','å®¢æˆ·ç®¡ç†','/customer/customer-info-list.do',1002,NULL,101,1002,NULL,'true'),(1003,'module','product','äº§å“ç®¡ç†','/product/product-info-list.do',1003,NULL,101,1003,NULL,'true'),(1004,'module','business','ä¸šåŠ¡ç®¡ç†','/business/business-info-list.do',1004,NULL,101,1004,NULL,'true'),(1102,'module','sale','é”€å”®ç®¡ç†','/sale/sale-info-list.do',1102,NULL,111,1102,NULL,'true'),(1103,'module','purchase','é‡‡è´­ç®¡ç†','/purchase/purchase-info-list.do',1103,NULL,111,1103,NULL,'true'),(1104,'module','inventory','åº“å­˜ç®¡ç†','/inventory/inventory-info-list.do',1104,NULL,111,1104,NULL,'true');
+/*!40000 ALTER TABLE `auth_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_perm`
+--
+
+DROP TABLE IF EXISTS `auth_perm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_perm` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PERM_TYPE_ID` bigint(20) NOT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_AUTH_PERM_TYPE` (`PERM_TYPE_ID`),
+  CONSTRAINT `FK_AUTH_PERM_TYPE` FOREIGN KEY (`PERM_TYPE_ID`) REFERENCES `auth_perm_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_perm`
+--
+
+LOCK TABLES `auth_perm` WRITE;
+/*!40000 ALTER TABLE `auth_perm` DISABLE KEYS */;
+INSERT INTO `auth_perm` VALUES (1,'*','æ‰€æœ‰æƒé™',1,'1',1),(2,'IS_GUEST','æ¸¸å®¢',1,'1',2),(3,'IS_USER','ç”¨æˆ·',1,'1',3),(4,'IS_LOGINED','ç™»å½•',1,'1',4),(5,'IS_SWITCHED','åˆ‡æ¢èº«ä»½',1,'1',5),(6,'IS_REMEMBERED','è‡ªåŠ¨ç™»å½•',1,'1',6),(21,'util','å·¥å…·',2,'1',21),(101,'portal','å·¥ä½œå°',11,'1',NULL),(102,'sys_pim','ä¸ªäººäº‹åŠ¡',11,'1',NULL),(103,'menu_pim','ä¸ªäººäº‹åŠ¡',11,'1',NULL),(104,'pim','ä¸ªäººäº‹åŠ¡',11,'1',NULL),(105,'mail','é‚®ç®±',11,'1',NULL),(106,'disk','ç½‘ç›˜',11,'1',NULL),(107,'report','ç»Ÿè®¡æŠ¥è¡¨',11,'1',NULL),(108,'bpm','æµç¨‹ä¸­å¿ƒ',11,'1',NULL),(201,'system','ç³»ç»Ÿé…ç½®',21,'1',NULL),(301,'sys_user','ç”¨æˆ·ç®¡ç†',31,'1',NULL),(302,'account','è´¦å·ç®¡ç†',31,'1',NULL),(303,'group','ç¾¤ç»„ç®¡ç†',31,'1',NULL),(304,'auth','æƒé™ç®¡ç†',31,'1',NULL),(305,'session','ä¼šè¯ç®¡ç†',31,'1',NULL),(306,'device','è®¾å¤‡ç®¡ç†',31,'1',NULL),(401,'sys_bpm','æµç¨‹ç®¡ç†',41,'1',NULL),(402,'bpm','æµç¨‹ç®¡ç†',41,'1',NULL),(403,'task','ä»»åŠ¡ç®¡ç†',41,'1',NULL),(404,'form','è¡¨å•ç®¡ç†',41,'1',NULL),(405,'model','æ¨¡å—ç®¡ç†',41,'1',NULL),(501,'sys_cms','å†…å®¹ç®¡ç†',51,'1',NULL),(502,'cms','å…¬å‘Šç®¡ç†',51,'1',NULL),(601,'sys_logistic','è¡Œæ”¿åŠå…¬',61,'1',NULL),(602,'car','è½¦è¾†ç®¡ç†',101,'1',NULL),(603,'meeting','ä¼šè®®å®¤ç®¡ç†',2,'1',NULL),(604,'book','å›¾ä¹¦ç®¡ç†',61,'1',NULL),(605,'officesupply','åŠå…¬ç”¨å“ç®¡ç†',61,'1',NULL),(606,'visitor','è®¿å®¢ç®¡ç†',61,'1',NULL),(607,'card','å·¥å¡ç®¡ç†',61,'1',NULL),(608,'seat','å·¥ä½ç®¡ç†',61,'1',NULL),(609,'stamp','å°ç« ç®¡ç†',61,'1',NULL),(610,'asset','èµ„äº§ç®¡ç†',61,'1',NULL),(611,'activity','æ´»åŠ¨ç®¡ç†',61,'1',NULL),(612,'sign','ç­¾åˆ°ç®¡ç†',61,'1',NULL),(613,'vote','æŠ•ç¥¨ç®¡ç†',61,'1',NULL),(701,'sys_hr','äººåŠ›èµ„æº',71,'1',NULL),(702,'org','ç»„ç»‡æœºæ„',71,'1',NULL),(703,'position','èŒä½ç®¡ç†',71,'1',NULL),(704,'workcal','å·¥ä½œæ—¥å†',71,'1',NULL),(705,'employee','äººå‘˜ç®¡ç†',71,'1',NULL),(706,'contract','åˆåŒç®¡ç†',71,'1',NULL),(707,'salary','è–ªé…¬ç®¡ç†',71,'1',NULL),(708,'socialsecurity','ç¤¾ä¿ç®¡ç†',71,'1',NULL),(709,'recruit','æ‹›è˜ç®¡ç†',71,'1',NULL),(710,'train','åŸ¹è®­ç®¡ç†',71,'1',NULL),(711,'performance','ç»©æ•ˆç®¡ç†',71,'1',NULL),(712,'attendance','è€ƒå‹¤ç®¡ç†',71,'1',NULL),(713,'leave','ä¼‘å‡ç®¡ç†',71,'1',NULL),(801,'sys_sys','ç³»ç»Ÿé…ç½®',81,'1',NULL),(901,'finance','è´¢åŠ¡ç®¡ç†',91,'1',NULL),(902,'expense','æŠ¥é”€ç®¡ç†',91,'1',NULL),(903,'budget','é¢„ç®—ç®¡ç†',91,'1',NULL),(1001,'crm','CRM',101,'1',NULL),(1002,'customer','å®¢æˆ·ç®¡ç†',101,'1',NULL),(1003,'product','äº§å“ç®¡ç†',101,'1',NULL),(1004,'business','ä¸šåŠ¡ç®¡ç†',101,'1',NULL),(1101,'retail','è¿›é”€å­˜',111,'1',NULL),(1102,'sale','é”€å”®ç®¡ç†',111,'1',NULL),(1103,'purchase','é‡‡è´­ç®¡ç†',111,'1',NULL),(1104,'inventory','åº“å­˜ç®¡ç†',111,'1',NULL);
+/*!40000 ALTER TABLE `auth_perm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_perm_role_def`
+--
+
+DROP TABLE IF EXISTS `auth_perm_role_def`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_perm_role_def` (
+  `PERM_ID` bigint(20) NOT NULL,
+  `ROLE_DEF_ID` bigint(20) NOT NULL,
+  PRIMARY KEY (`PERM_ID`,`ROLE_DEF_ID`),
+  KEY `FK_AUTH_PERM_ROLE_DEF_ROLE_DEF` (`ROLE_DEF_ID`),
+  CONSTRAINT `FK_AUTH_PERM_ROLE_DEF_PERM` FOREIGN KEY (`PERM_ID`) REFERENCES `auth_perm` (`ID`),
+  CONSTRAINT `FK_AUTH_PERM_ROLE_DEF_ROLE_DEF` FOREIGN KEY (`ROLE_DEF_ID`) REFERENCES `auth_role_def` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_perm_role_def`
+--
+
+LOCK TABLES `auth_perm_role_def` WRITE;
+/*!40000 ALTER TABLE `auth_perm_role_def` DISABLE KEYS */;
+INSERT INTO `auth_perm_role_def` VALUES (1,1),(201,2),(801,2),(201,3),(301,3),(302,3),(303,3),(304,3),(305,3),(306,3),(201,4),(401,4),(402,4),(403,4),(404,4),(405,4),(201,5),(501,5),(502,5),(201,6),(601,6),(604,6),(605,6),(606,6),(607,6),(608,6),(609,6),(610,6),(611,6),(612,6),(613,6),(201,7),(701,7),(702,7),(703,7),(704,7),(705,7),(706,7),(707,7),(708,7),(709,7),(710,7),(711,7),(712,7),(713,7),(101,8),(102,8),(103,8),(104,8),(105,8),(106,8),(107,8),(108,8),(901,9),(902,9),(903,9),(1001,10),(1002,10),(1003,10),(1004,10),(1101,11),(1102,11),(1103,11),(1104,11);
+/*!40000 ALTER TABLE `auth_perm_role_def` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_perm_type`
+--
+
+DROP TABLE IF EXISTS `auth_perm_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_perm_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_perm_type`
+--
+
+LOCK TABLES `auth_perm_type` WRITE;
+/*!40000 ALTER TABLE `auth_perm_type` DISABLE KEYS */;
+INSERT INTO `auth_perm_type` VALUES (1,'é»˜è®¤',1,0,NULL,'1'),(2,'ç³»ç»Ÿ',0,1,NULL,'1'),(11,'ä¸ªäººäº‹åŠ¡',0,11,NULL,'1'),(21,'ç³»ç»Ÿé…ç½®å…¥å£',0,21,NULL,'1'),(31,'ç”¨æˆ·ç®¡ç†',0,31,NULL,'1'),(41,'æµç¨‹ç®¡ç†',0,41,NULL,'1'),(51,'å†…å®¹ç®¡ç†',0,51,NULL,'1'),(61,'è¡Œæ”¿åŠå…¬',0,61,NULL,'1'),(71,'äººåŠ›èµ„æº',0,71,NULL,'1'),(81,'ç³»ç»Ÿé…ç½®',0,81,NULL,'1'),(91,'è´¢åŠ¡ç®¡ç†',0,91,NULL,'1'),(101,'CRM',0,101,NULL,'1'),(111,'è¿›é”€å­˜',0,111,NULL,'1');
+/*!40000 ALTER TABLE `auth_perm_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_role`
+--
+
+DROP TABLE IF EXISTS `auth_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_role` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `ROLE_DEF_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_AUTH_ROLE_DEF` (`ROLE_DEF_ID`),
+  CONSTRAINT `FK_AUTH_ROLE_DEF` FOREIGN KEY (`ROLE_DEF_ID`) REFERENCES `auth_role_def` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_role`
+--
+
+LOCK TABLES `auth_role` WRITE;
+/*!40000 ALTER TABLE `auth_role` DISABLE KEYS */;
+INSERT INTO `auth_role` VALUES (1,'è¶…çº§ç®¡ç†å‘˜',NULL,1,'1'),(2,'ç³»ç»Ÿç®¡ç†å‘˜',NULL,2,'1'),(3,'è´¦å·ç®¡ç†å‘˜',NULL,3,'1'),(4,'æµç¨‹ç®¡ç†å‘˜',NULL,4,'1'),(5,'å†…å®¹ç®¡ç†å‘˜',NULL,5,'1'),(6,'è¡Œæ”¿ç®¡ç†å‘˜',NULL,6,'1'),(7,'äººäº‹ç®¡ç†å‘˜',NULL,7,'1'),(8,'æ™®é€šç”¨æˆ·',NULL,8,'1'),(9,'è´¢åŠ¡ç®¡ç†å‘˜',NULL,9,'1'),(10,'CRMç®¡ç†å‘˜',NULL,10,'1'),(11,'è¿›é”€å­˜ç®¡ç†å‘˜',NULL,11,'1');
+/*!40000 ALTER TABLE `auth_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_role_def`
+--
+
+DROP TABLE IF EXISTS `auth_role_def`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_role_def` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_role_def`
+--
+
+LOCK TABLES `auth_role_def` WRITE;
+/*!40000 ALTER TABLE `auth_role_def` DISABLE KEYS */;
+INSERT INTO `auth_role_def` VALUES (1,'è¶…çº§ç®¡ç†å‘˜',NULL,'1'),(2,'ç³»ç»Ÿç®¡ç†å‘˜',NULL,'1'),(3,'è´¦å·ç®¡ç†å‘˜',NULL,'1'),(4,'æµç¨‹ç®¡ç†å‘˜',NULL,'1'),(5,'å†…å®¹ç®¡ç†å‘˜',NULL,'1'),(6,'è¡Œæ”¿ç®¡ç†å‘˜',NULL,'1'),(7,'äººäº‹ç®¡ç†å‘˜',NULL,'1'),(8,'æ™®é€šç”¨æˆ·',NULL,'1'),(9,'è´¢åŠ¡ç®¡ç†å‘˜',NULL,'1'),(10,'CRMç®¡ç†å‘˜',NULL,'1'),(11,'è¿›é”€å­˜ç®¡ç†å‘˜',NULL,'1');
+/*!40000 ALTER TABLE `auth_role_def` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_role`
+--
+
+DROP TABLE IF EXISTS `auth_user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_role` (
+  `USER_STATUS_ID` bigint(20) NOT NULL,
+  `ROLE_ID` bigint(20) NOT NULL,
+  PRIMARY KEY (`USER_STATUS_ID`,`ROLE_ID`),
+  KEY `FK_AUTH_USER_ROLE_ROLE` (`ROLE_ID`),
+  CONSTRAINT `FK_AUTH_USER_ROLE_ROLE` FOREIGN KEY (`ROLE_ID`) REFERENCES `auth_role` (`ID`),
+  CONSTRAINT `FK_AUTH_USER_ROLE_USER` FOREIGN KEY (`USER_STATUS_ID`) REFERENCES `auth_user_status` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_role`
+--
+
+LOCK TABLES `auth_user_role` WRITE;
+/*!40000 ALTER TABLE `auth_user_role` DISABLE KEYS */;
+INSERT INTO `auth_user_role` VALUES (1,1),(2,1),(1,2),(1,4),(1,8),(4,8),(5,8),(6,8),(7,8),(8,8),(247688787001345,8),(247689002090496,8),(267768849235968,8);
+/*!40000 ALTER TABLE `auth_user_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_status`
+--
+
+DROP TABLE IF EXISTS `auth_user_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_status` (
+  `ID` bigint(20) NOT NULL,
+  `USERNAME` varchar(50) DEFAULT NULL,
+  `PASSWORD` varchar(50) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `ref` varchar(200) DEFAULT NULL,
+  `USER_REPO_REF` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_status`
+--
+
+LOCK TABLES `auth_user_status` WRITE;
+/*!40000 ALTER TABLE `auth_user_status` DISABLE KEYS */;
+INSERT INTO `auth_user_status` VALUES (1,'lingo','1',1,'1','1','1'),(2,'vivian','1',1,'2','1','1'),(4,'king','1',1,'4','1','1'),(5,'john','1',1,'5','1','1'),(6,'william','1',1,'6','1','1'),(7,'adam','1',1,'7','1','1'),(8,'robot','1',1,'8','1','1'),(247688787001345,'ww','',1,'247688773386240','1','1'),(247689002090496,'ee','',1,'247689000714240','1','1'),(267768849235968,'2013034531',NULL,1,'267768847958016','1','1');
+/*!40000 ALTER TABLE `auth_user_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_borrow`
+--
+
+DROP TABLE IF EXISTS `book_borrow`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `book_borrow` (
+  `ID` bigint(20) NOT NULL,
+  `USER_ID` varchar(50) DEFAULT NULL,
+  `BORROW_TIME` datetime DEFAULT NULL,
+  `BORROW_OPERATOR` varchar(64) DEFAULT NULL,
+  `RETURN_TIME` datetime DEFAULT NULL,
+  `RETURN_OPERATOR` varchar(64) DEFAULT NULL,
+  `EXPIRE_DATE` datetime DEFAULT NULL,
+  `RENEW` varchar(50) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BOOK_BORROW_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_BOOK_BORROW_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `book_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_borrow`
+--
+
+LOCK TABLES `book_borrow` WRITE;
+/*!40000 ALTER TABLE `book_borrow` DISABLE KEYS */;
+/*!40000 ALTER TABLE `book_borrow` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_info`
+--
+
+DROP TABLE IF EXISTS `book_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `book_info` (
+  `ID` bigint(20) NOT NULL,
+  `COVER` varchar(64) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `AUTHOR` varchar(100) DEFAULT NULL,
+  `TRANSLATOR` varchar(100) DEFAULT NULL,
+  `ISBN` varchar(100) DEFAULT NULL,
+  `PRICE` double DEFAULT NULL,
+  `PUBLISH_COMPANY` varchar(100) DEFAULT NULL,
+  `PUBLISH_DATE` date DEFAULT NULL,
+  `PAGE` int(11) DEFAULT NULL,
+  `ADD_TIME` datetime DEFAULT NULL,
+  `OPERATOR` varchar(64) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `SHELF` varchar(50) DEFAULT NULL,
+  `TOTOAL_COUNT` int(11) DEFAULT NULL,
+  `BORROW_COUNT` int(11) DEFAULT NULL,
+  `BORROW_TIMES` int(11) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_info`
+--
+
+LOCK TABLES `book_info` WRITE;
+/*!40000 ALTER TABLE `book_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `book_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_category`
+--
+
+DROP TABLE IF EXISTS `bpm_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_category` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_category`
+--
+
+LOCK TABLES `bpm_category` WRITE;
+/*!40000 ALTER TABLE `bpm_category` DISABLE KEYS */;
+INSERT INTO `bpm_category` VALUES (1,'å¸¸ç”¨æµç¨‹',1,'1'),(247766486876160,'ä¸ªäººæµç¨‹',2,'1');
+/*!40000 ALTER TABLE `bpm_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_assign`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_assign`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_assign` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_ASSIGN_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_ASSIGN_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_assign`
+--
+
+LOCK TABLES `bpm_conf_assign` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_assign` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bpm_conf_assign` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_base`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_base`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_base` (
+  `ID` bigint(20) NOT NULL,
+  `PROCESS_DEFINITION_ID` varchar(200) DEFAULT NULL,
+  `PROCESS_DEFINITION_KEY` varchar(200) DEFAULT NULL,
+  `PROCESS_DEFINITION_VERSION` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_base`
+--
+
+LOCK TABLES `bpm_conf_base` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_base` DISABLE KEYS */;
+INSERT INTO `bpm_conf_base` VALUES (1,'vacation:1:12','vacation',1),(2,'publish:1:8','publish',1),(3,'permission:1:4','permission',1),(270444573179904,'process:1:15058','process',1),(270678116040704,'process:2:15160','process',2),(270691192438784,'process:3:15164','process',3),(270704741679104,'myProcess:1:15168','myProcess',1),(270743755276288,'process:4:15173','process',4),(277424166273024,'vacation-student:3:20113','vacation-student',3),(277428371881984,'vacation-student:4:20117','vacation-student',4),(280494055456768,'permission:2:22504','permission',2),(280494068908032,'publish:2:22508','publish',2),(280494076477440,'vacation:2:22512','vacation',2),(280556611911680,'permission:3:25004','permission',3),(280556617400320,'publish:3:25008','publish',3),(280556622004224,'vacation:3:25012','vacation',3),(280568931385344,'permission:4:27506','permission',4),(280568942313472,'publish:4:27510','publish',4),(280568951128064,'vacation:4:27514','vacation',4);
+/*!40000 ALTER TABLE `bpm_conf_base` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_countersign`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_countersign`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_countersign` (
+  `ID` bigint(20) NOT NULL,
+  `SEQUENTIAL` int(11) DEFAULT NULL,
+  `PARTICIPANT` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `RATE` int(11) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_COUNTERSIGN_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_COUNTERSIGN_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_countersign`
+--
+
+LOCK TABLES `bpm_conf_countersign` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_countersign` DISABLE KEYS */;
+INSERT INTO `bpm_conf_countersign` VALUES (246664244854784,0,NULL,0,100,246664244330496),(247683341615104,0,NULL,0,100,246664244330496),(251786526195712,0,NULL,0,100,246664244330496),(253341346234368,0,NULL,0,100,246664244330496),(254785862107136,0,NULL,0,100,246664244330496),(254858199203840,0,NULL,0,100,246664244330496),(255315781730304,0,NULL,0,100,246664244330496),(255337129787392,0,NULL,0,100,246664244330496),(255366998474752,0,NULL,0,100,246664244330496),(255450398720000,0,NULL,0,100,246664244330496),(256175878127616,0,NULL,0,100,246664244330496),(256413247832064,0,NULL,0,100,246664244330496),(256415744344064,0,NULL,0,100,246664244330496),(256431526641664,0,NULL,0,100,246664244330496),(256450206187520,0,NULL,0,100,246664244330496),(256469180563456,0,NULL,0,100,246664244330496),(256474201751552,0,NULL,0,100,246664244330496),(256479876431872,0,NULL,0,100,246664244330496),(256514910437376,0,NULL,0,100,246664244330496),(256519195213824,0,NULL,0,100,246664244330496),(256533222506496,0,NULL,0,100,246664244330496),(256541877288960,0,NULL,0,100,246664244330496),(256547033808896,0,NULL,0,100,246664244330496),(256565678620672,0,NULL,0,100,246664244330496),(256575042076672,0,NULL,0,100,246664244330496),(256580327620608,0,NULL,0,100,246664244330496),(256594602082304,0,NULL,0,100,246664244330496),(256600705138688,0,NULL,0,100,246664244330496),(256695428415488,0,NULL,0,100,246664244330496),(256721606787072,0,NULL,0,100,246664244330496),(256726207807488,0,NULL,0,100,246664244330496),(256732985131008,0,NULL,0,100,246664244330496),(256739830185984,0,NULL,0,100,246664244330496),(256743777976320,0,NULL,0,100,246664244330496),(256751565586432,0,NULL,0,100,246664244330496),(256758882238464,0,NULL,0,100,246664244330496),(256767041486848,0,NULL,0,100,246664244330496),(256771587588096,0,NULL,0,100,246664244330496),(256777116123136,0,NULL,0,100,246664244330496),(256781211615232,0,NULL,0,100,246664244330496),(256785945001984,0,NULL,0,100,246664244330496),(256789365309440,0,NULL,0,100,246664244330496),(256795375484928,0,NULL,0,100,246664244330496),(256801357758464,0,NULL,0,100,246664244330496),(256804288790528,0,NULL,0,100,246664244330496),(256823538909184,0,NULL,0,100,246664244330496),(256828223815680,0,NULL,0,100,246664244330496),(256834383642624,0,NULL,0,100,246664244330496),(260360463515648,0,NULL,0,100,246664244330496),(260643567403008,0,NULL,0,100,246664244330496),(260647572848640,0,NULL,0,100,246664244330496),(260651034132480,0,NULL,0,100,246664244330496),(260656207347712,0,NULL,0,100,246664244330496),(260661887008768,0,NULL,0,100,246664244330496),(260665484541952,0,NULL,0,100,246664244330496),(260678674661376,0,NULL,0,100,246664244330496),(260697956827136,0,NULL,0,100,246664244330496),(260713263104000,0,NULL,0,100,246664244330496),(260719138357248,0,NULL,0,100,246664244330496),(260723506118656,0,NULL,0,100,246664244330496),(260727921606656,0,NULL,0,100,246664244330496),(260736436551680,0,NULL,0,100,246664244330496),(260747536973824,0,NULL,0,100,246664244330496),(260751468773376,0,NULL,0,100,246664244330496),(260756085751808,0,NULL,0,100,246664244330496),(260772518969344,0,NULL,0,100,246664244330496),(260786535399424,0,NULL,0,100,246664244330496),(260795025227776,0,NULL,0,100,246664244330496),(260805300092928,0,NULL,0,100,246664244330496),(260809877831680,0,NULL,0,100,246664244330496),(260815240478720,0,NULL,0,100,246664244330496),(260817946918912,0,NULL,0,100,246664244330496),(260834080636928,0,NULL,0,100,246664244330496),(260946551472128,0,NULL,0,100,246664244330496),(260948743684096,0,NULL,0,100,246664244330496),(260957910532096,0,NULL,0,100,246664244330496),(260970262921216,0,NULL,0,100,246664244330496),(261844087128064,0,NULL,0,100,246664244330496),(261894111199232,0,NULL,0,100,246664244330496),(261916946497536,0,NULL,0,100,246664244330496),(262065782636544,0,NULL,0,100,246664244330496),(262143455117312,0,NULL,0,100,246664244330496),(262145930051584,0,NULL,0,100,246664244330496),(262150050414592,0,NULL,0,100,246664244330496),(262154032005120,0,NULL,0,100,246664244330496),(262161560043520,0,NULL,0,100,246664244330496),(263269396791296,0,NULL,0,100,246664244330496),(263357431152640,0,NULL,0,100,246664244330496),(263545545424896,0,NULL,0,100,246664244330496),(263550770446336,0,NULL,0,100,246664244330496),(263778273886208,0,NULL,0,100,246664244330496),(263807624052736,0,NULL,0,100,246664244330496),(264673510883328,0,NULL,0,100,246664244330496),(264702875910144,0,NULL,0,100,246664244330496),(264714099081216,0,NULL,0,100,246664244330496),(264721067884544,0,NULL,0,100,246664244330496),(264737231732736,0,NULL,0,100,246664244330496),(267682377089024,0,NULL,0,100,246664244330496),(267753118449664,0,NULL,0,100,246664244330496),(267787345149952,0,NULL,0,100,246664244330496),(267810855452672,0,NULL,0,100,246664244330496),(267822546878464,0,NULL,0,100,246664244330496),(267828760936448,0,NULL,0,100,246664244330496),(267835533180928,0,NULL,0,100,246664244330496),(267846647463936,0,NULL,0,100,246664244330496),(267858042044416,0,NULL,0,100,246664244330496),(267870304026624,0,NULL,0,100,246664244330496),(267873521336320,0,NULL,0,100,246664244330496),(267878034735104,0,NULL,0,100,246664244330496),(267885578108928,0,NULL,0,100,246664244330496),(267899183251456,0,NULL,0,100,246664244330496),(267913964945408,0,NULL,0,100,246664244330496),(267921152786432,0,NULL,0,100,246664244330496),(267941408587776,0,NULL,0,100,246664244330496),(268048861396992,0,NULL,0,100,246664244330496),(268051110887424,0,NULL,0,100,246664244330496),(268056900026368,0,NULL,0,100,246664244330496),(268071688699904,0,NULL,0,100,246664244330496),(268858792542208,0,NULL,0,100,246664244330496),(268866249031680,0,NULL,0,100,246664244330496),(268879754575872,0,NULL,0,100,246664244330496),(268904282882048,0,NULL,0,100,246664244330496),(268933331451904,0,NULL,0,100,246664244330496),(269191413121024,0,NULL,0,100,246664244330496),(269207247355904,0,NULL,0,100,246664244330496),(269342452645888,0,NULL,0,100,246664244330496),(270337870905344,0,NULL,0,100,246664244330496),(271672129093632,0,NULL,0,100,246664244330496),(276260009295872,0,NULL,0,100,246664244330496),(276475336900608,0,NULL,0,100,246664244330496),(277346857598976,0,NULL,0,100,246664244330496),(277698918481920,0,NULL,0,100,246664244330496),(277832546631680,0,NULL,0,100,246664244330496),(277847757897728,0,NULL,0,100,246664244330496),(277863013695488,0,NULL,0,100,246664244330496),(279025754587136,0,NULL,0,100,246664244330496),(279032323375104,0,NULL,0,100,246664244330496),(280494070710272,0,NULL,0,100,280494070398976),(280517777702912,0,NULL,0,100,280494070398976),(280546294120448,0,NULL,0,100,280494070398976),(280548121755648,0,NULL,0,100,280494070398976),(280550181126144,0,NULL,0,100,280494070398976),(280552923840512,0,NULL,0,100,280494070398976),(280556618448896,0,NULL,0,100,280556618186752),(280563910000640,0,NULL,0,100,280556618186752),(280568943804416,0,NULL,0,100,280568943394816),(280571830779904,0,NULL,0,100,280568943394816),(280573984751616,0,NULL,0,100,280568943394816),(280576858259456,0,NULL,0,100,280568943394816),(280584772435968,0,NULL,0,100,280568943394816),(280629346598912,0,NULL,0,100,280568943394816),(280640104693760,0,NULL,0,100,280568943394816),(281882843283456,0,NULL,0,100,280568943394816),(281930400169984,0,NULL,0,100,280494070398976),(281940091846656,0,NULL,0,100,280494070398976);
+/*!40000 ALTER TABLE `bpm_conf_countersign` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_form`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_form`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_form` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `ORIGIN_VALUE` varchar(200) DEFAULT NULL,
+  `ORIGIN_TYPE` int(11) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_FORM_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_FORM_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_form`
+--
+
+LOCK TABLES `bpm_conf_form` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_form` DISABLE KEYS */;
+INSERT INTO `bpm_conf_form` VALUES (246664235679744,'permission-request',0,'permission-request',0,0,13),(246664236810240,'permission-department',0,'permission-department',0,0,14),(246664237465600,'permission-manager',0,'permission-manager',0,0,16),(246664243625984,'publish-request',0,'publish-request',0,0,246664243511296),(246664244051968,'publish-manager',0,'publish-manager',0,0,246664243888128),(246664244559872,'publish-countersign',0,'publish-countersign',0,0,246664244330496),(246664245297152,'publish-finish',0,'publish-finish',0,0,246664245116928),(246664251867136,'vacation-request',0,'vacation-request',0,0,3),(246664252211200,'vacation-department',0,'vacation-department',0,0,4),(246664252522496,'vacation-hr',0,'vacation-hr',0,0,5),(246664252817408,'vacation-modify',0,'vacation-modify',0,0,6),(246664253292544,'vacation-finish',0,'vacation-finish',0,0,8),(271754628857856,'vacation-department1',0,NULL,NULL,1,270743755603968),(271759159558144,'vacation-request-student',0,NULL,NULL,1,270743755423744),(277431387930624,'vacation-request-student',0,NULL,NULL,1,277428372062208),(277431622221824,'vocation-depart-student',0,NULL,NULL,1,277428372209664),(277432008605696,'vacation-leader-student',0,NULL,NULL,1,277428372668416),(277432436998144,'vacation-modify-student',0,NULL,NULL,1,277428372881408),(277432697847808,'vacation-finish-student',0,NULL,NULL,1,277428372373504),(280494058455040,'permission-request',0,'permission-request',0,0,280494057308160),(280494063992832,'permission-department',0,'permission-department',0,0,280494060486656),(280494064369664,'permission-manager',0,'permission-manager',0,0,280494064189440),(280494069760000,'publish-request',0,'publish-request',0,0,280494069661696),(280494070235136,'publish-manager',0,'publish-manager',0,0,280494069940224),(280494070546432,'publish-countersign',0,'publish-countersign',0,0,280494070398976),(280494071267328,'publish-finish',0,'publish-finish',0,0,280494071136256),(280494076903424,'vacation-request',0,'vacation-request',0,0,280494076772352),(280494077394944,'vacation-department',0,'vacation-department',0,0,280494077083648),(280494077820928,'vacation-hr',0,'vacation-hr',0,0,280494077706240),(280494078181376,'vacation-modify',0,'vacation-modify',0,0,280494078066688),(280494078722048,'vacation-finish',0,'vacation-finish',0,0,280494078590976),(280556614041600,'permission-request',0,'permission-request',0,0,280556613566464),(280556614762496,'permission-department',0,'permission-department',0,0,280556614647808),(280556615106560,'permission-manager',0,'permission-manager',0,0,280556614942720),(280556617744384,'publish-request',0,'publish-request',0,0,280556617629696),(280556618006528,'publish-manager',0,'publish-manager',0,0,280556617908224),(280556618301440,'publish-countersign',0,'publish-countersign',0,0,280556618186752),(280556618776576,'publish-finish',0,'publish-finish',0,0,280556618661888),(280556622331904,'vacation-request',0,'vacation-request',0,0,280556622217216),(280556622594048,'vacation-department',0,'vacation-department',0,0,280556622495744),(280556622839808,'vacation-hr',0,'vacation-hr',0,0,280556622741504),(280556623101952,'vacation-modify',0,'vacation-modify',0,0,280556623003648),(280556623495168,'vacation-finish',0,'vacation-finish',0,0,280556623364096),(280568934645760,'permission-request',0,'permission-request',0,0,280568933793792),(280568935825408,'permission-department',0,'permission-department',0,0,280568935677952),(280568936333312,'permission-manager',0,'permission-manager',0,0,280568936103936),(280568942706688,'publish-request',0,'publish-request',0,0,280568942592000),(280568943132672,'publish-manager',0,'publish-manager',0,0,280568942968832),(280568943591424,'publish-countersign',0,'publish-countersign',0,0,280568943394816),(280568944230400,'publish-finish',0,'publish-finish',0,0,280568944066560),(280568951717888,'vacation-request',0,'vacation-request',0,0,280568951537664),(280568952127488,'vacation-department',0,'vacation-department',0,0,280568951996416),(280568952422400,'vacation-hr',0,'vacation-hr',0,0,280568952307712),(280568952750080,'vacation-modify',0,'vacation-modify',0,0,280568952602624),(280568953307136,'vacation-finish',0,'vacation-finish',0,0,280568953126912);
+/*!40000 ALTER TABLE `bpm_conf_form` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_listener`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_listener`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_listener` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_LISTENER_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_LISTENER_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_listener`
+--
+
+LOCK TABLES `bpm_conf_listener` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_listener` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bpm_conf_listener` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_node`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_node`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_node` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `CONF_USER` int(11) DEFAULT NULL,
+  `CONF_LISTENER` int(11) DEFAULT NULL,
+  `CONF_RULE` int(11) DEFAULT NULL,
+  `CONF_FORM` int(11) DEFAULT NULL,
+  `CONF_OPERATION` int(11) DEFAULT NULL,
+  `CONF_NOTICE` int(11) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `CONF_BASE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_NODE_CONF_BASE` (`CONF_BASE_ID`),
+  CONSTRAINT `FK_BPM_CONF_NODE_CONF_BASE` FOREIGN KEY (`CONF_BASE_ID`) REFERENCES `bpm_conf_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_node`
+--
+
+LOCK TABLES `bpm_conf_node` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_node` DISABLE KEYS */;
+INSERT INTO `bpm_conf_node` VALUES (1,'vacation','å…¨å±€','process',2,0,2,0,2,2,1,1),(2,'vacation_1','å¡«å†™è¯·å‡å•','startEvent',2,0,2,0,2,0,2,1),(3,'taskuser-1','å¡«å†™è¯·å‡å•','userTask',0,0,0,0,0,0,3,1),(4,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,1),(5,'taskuser-3','äººäº‹å®¡æ‰¹','userTask',0,0,0,0,0,0,5,1),(6,'taskuser-5','è°ƒæ•´ç”³è¯·','userTask',0,0,0,0,0,0,6,1),(7,'endnone-2','endnone-2','endEvent',2,0,2,2,2,0,7,1),(8,'taskuser-6','é”€å‡','userTask',0,0,0,0,0,0,8,1),(11,'permission','å®¡æ‰¹æƒé™','process',2,0,2,0,2,2,1,3),(12,'startEvent-1','','startEvent',2,0,2,0,2,0,2,3),(13,'usertask1','å‘èµ·ç”³è¯·','userTask',0,0,0,0,0,0,3,3),(14,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,4,3),(15,'endevent1','','endEvent',2,0,2,2,2,0,5,3),(16,'usertask3','æ€»ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,NULL,3),(246664243265536,'publish','å…¨å±€','process',2,0,2,0,2,2,1,2),(246664243412992,'startevent1','Start','startEvent',2,0,2,0,2,0,2,2),(246664243511296,'taskuser-1','å‘æ–‡','userTask',0,0,0,0,0,0,3,2),(246664243888128,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,2),(246664244330496,'taskuser-3','ä¼šç­¾','userTask',0,0,0,0,0,0,5,2),(246664245116928,'taskuser-6','å½’æ¡£','userTask',0,0,0,0,0,0,6,2),(246664245755904,'endnone-2','endnone-2','endEvent',2,0,2,2,2,0,7,2),(270444573294592,'process','å…¨å±€','process',2,0,2,0,2,2,1,270444573179904),(270444573327360,'sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,'startEvent',2,0,2,0,2,0,2,270444573179904),(270444573360128,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','userTask',0,0,0,0,0,0,3,270444573179904),(270444573507584,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','userTask',0,0,0,0,0,0,4,270444573179904),(270444573655040,'sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,'endEvent',2,0,2,2,2,0,5,270444573179904),(270678116466688,'process','å…¨å±€','process',2,0,2,0,2,2,1,270678116040704),(270678116614144,'sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,'startEvent',2,0,2,0,2,0,2,270678116040704),(270678116696064,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','userTask',0,0,0,0,0,0,3,270678116040704),(270678117646336,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','userTask',0,0,0,0,0,0,4,270678116040704),(270678117777408,'sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,'endEvent',2,0,2,2,2,0,5,270678116040704),(270691192520704,'process','å…¨å±€','process',2,0,2,0,2,2,1,270691192438784),(270691192553472,'sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,'startEvent',2,0,2,0,2,0,2,270691192438784),(270691192569856,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','userTask',0,0,0,0,0,0,3,270691192438784),(270691192864768,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','userTask',0,0,0,0,0,0,4,270691192438784),(270691192995840,'sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,'endEvent',2,0,2,2,2,0,5,270691192438784),(270704741777408,'myProcess','å…¨å±€','process',2,0,2,0,2,2,1,270704741679104),(270704741892096,'startevent1','Start','startEvent',2,0,2,0,2,0,2,270704741679104),(270704741957632,'usertask1','User Task','userTask',0,0,0,0,0,0,3,270704741679104),(270704742301696,'usertask2','User Task','userTask',0,0,0,0,0,0,4,270704741679104),(270704742531072,'endevent1','End','endEvent',2,0,2,2,2,0,5,270704741679104),(270704743284736,'usertask3','User Task','userTask',0,0,0,0,0,0,6,270704741679104),(270743755341824,'process','å…¨å±€','process',2,0,2,0,2,2,1,270743755276288),(270743755390976,'sid-A96C3AAA-D6D7-4DB5-A1E3-73D49BA0CA60',NULL,'startEvent',2,0,2,0,2,0,2,270743755276288),(270743755423744,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','userTask',0,0,0,0,0,0,3,270743755276288),(270743755603968,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','userTask',0,0,0,0,0,0,4,270743755276288),(270743756095488,'sid-AE528184-10E4-4D80-ADDE-21ED7729462E',NULL,'endEvent',2,0,2,2,2,0,5,270743755276288),(277428371996672,'vacation-student','å…¨å±€','process',2,0,2,0,2,2,1,277428371881984),(277428372029440,'sid-4CAE5CD3-1F38-40AF-833F-337531C9AA04',NULL,'startEvent',2,0,2,0,2,0,2,277428371881984),(277428372062208,'sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•','userTask',0,0,0,0,0,0,3,277428371881984),(277428372209664,'sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹','userTask',0,0,0,0,0,0,4,277428371881984),(277428372373504,'sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡','userTask',0,0,0,0,0,0,5,277428371881984),(277428372553728,'sid-23B845EA-CBD0-4089-91D8-5A593FD8D038',NULL,'endEvent',2,0,2,2,2,0,6,277428371881984),(277428372668416,'sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,7,277428371881984),(277428372881408,'sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF','è°ƒæ•´ç”³è¯·','userTask',0,0,0,0,0,0,8,277428371881984),(280494057111552,'permission','å…¨å±€','process',2,0,2,0,2,2,1,280494055456768),(280494057226240,'startEvent-1',NULL,'startEvent',2,0,2,0,2,0,2,280494055456768),(280494057308160,'usertask1','å‘èµ·ç”³è¯·','userTask',0,0,0,0,0,0,3,280494055456768),(280494060486656,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280494055456768),(280494064189440,'usertask3','æ€»ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,5,280494055456768),(280494064631808,'endevent1','End','endEvent',2,0,2,2,2,0,6,280494055456768),(280494069022720,'publish','å…¨å±€','process',2,0,2,0,2,2,1,280494068908032),(280494069071872,'startevent1','Start','startEvent',2,0,2,0,2,0,2,280494068908032),(280494069661696,'taskuser-1','å‘æ–‡','userTask',0,0,0,0,0,0,3,280494068908032),(280494069940224,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280494068908032),(280494070398976,'taskuser-3','ä¼šç­¾','userTask',0,0,0,0,0,0,5,280494068908032),(280494071136256,'taskuser-6','å½’æ¡£','userTask',0,0,0,0,0,0,6,280494068908032),(280494071463936,'endnone-2','endnone-2','endEvent',2,0,2,2,2,0,7,280494068908032),(280494076608512,'vacation','å…¨å±€','process',2,0,2,0,2,2,1,280494076477440),(280494076657664,'vacation_1','å¡«å†™è¯·å‡å•','startEvent',2,0,2,0,2,0,2,280494076477440),(280494076772352,'taskuser-1','å¡«å†™è¯·å‡å•','userTask',0,0,0,0,0,0,3,280494076477440),(280494077083648,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280494076477440),(280494077706240,'taskuser-3','äººäº‹å®¡æ‰¹','userTask',0,0,0,0,0,0,5,280494076477440),(280494078066688,'taskuser-5','è°ƒæ•´ç”³è¯·','userTask',0,0,0,0,0,0,6,280494076477440),(280494078492672,'endnone-2','ç»“æŸ','endEvent',2,0,2,2,2,0,7,280494076477440),(280494078590976,'taskuser-6','é”€å‡','userTask',0,0,0,0,0,0,8,280494076477440),(280556613419008,'permission','å…¨å±€','process',2,0,2,0,2,2,1,280556611911680),(280556613500928,'startEvent-1',NULL,'startEvent',2,0,2,0,2,0,2,280556611911680),(280556613566464,'usertask1','å‘èµ·ç”³è¯·','userTask',0,0,0,0,0,0,3,280556611911680),(280556614647808,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280556611911680),(280556614942720,'usertask3','æ€»ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,5,280556611911680),(280556615319552,'endevent1','End','endEvent',2,0,2,2,2,0,6,280556611911680),(280556617498624,'publish','å…¨å±€','process',2,0,2,0,2,2,1,280556617400320),(280556617564160,'startevent1','Start','startEvent',2,0,2,0,2,0,2,280556617400320),(280556617629696,'taskuser-1','å‘æ–‡','userTask',0,0,0,0,0,0,3,280556617400320),(280556617908224,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280556617400320),(280556618186752,'taskuser-3','ä¼šç­¾','userTask',0,0,0,0,0,0,5,280556617400320),(280556618661888,'taskuser-6','å½’æ¡£','userTask',0,0,0,0,0,0,6,280556617400320),(280556618956800,'endnone-2','endnone-2','endEvent',2,0,2,2,2,0,7,280556617400320),(280556622118912,'vacation','å…¨å±€','process',2,0,2,0,2,2,1,280556622004224),(280556622168064,'vacation_1','å¡«å†™è¯·å‡å•','startEvent',2,0,2,0,2,0,2,280556622004224),(280556622217216,'taskuser-1','å¡«å†™è¯·å‡å•','userTask',0,0,0,0,0,0,3,280556622004224),(280556622495744,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280556622004224),(280556622741504,'taskuser-3','äººäº‹å®¡æ‰¹','userTask',0,0,0,0,0,0,5,280556622004224),(280556623003648,'taskuser-5','è°ƒæ•´ç”³è¯·','userTask',0,0,0,0,0,0,6,280556622004224),(280556623282176,'endnone-2','ç»“æŸ','endEvent',2,0,2,2,2,0,7,280556622004224),(280556623364096,'taskuser-6','é”€å‡','userTask',0,0,0,0,0,0,8,280556622004224),(280568933597184,'permission','å…¨å±€','process',2,0,2,0,2,2,1,280568931385344),(280568933711872,'startEvent-1',NULL,'startEvent',2,0,2,0,2,0,2,280568931385344),(280568933793792,'usertask1','å‘èµ·ç”³è¯·','userTask',0,0,0,0,0,0,3,280568931385344),(280568935677952,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280568931385344),(280568936103936,'usertask3','æ€»ç»ç†å®¡æ‰¹','userTask',0,0,0,0,0,0,5,280568931385344),(280568936595456,'endevent1','End','endEvent',2,0,2,2,2,0,6,280568931385344),(280568942428160,'publish','å…¨å±€','process',2,0,2,0,2,2,1,280568942313472),(280568942493696,'startevent1','Start','startEvent',2,0,2,0,2,0,2,280568942313472),(280568942592000,'taskuser-1','å‘æ–‡','userTask',0,0,0,0,0,0,3,280568942313472),(280568942968832,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280568942313472),(280568943394816,'taskuser-3','ä¼šç­¾','userTask',0,0,0,0,0,0,5,280568942313472),(280568944066560,'taskuser-6','å½’æ¡£','userTask',0,0,0,0,0,0,6,280568942313472),(280568944476160,'endnone-2','endnone-2','endEvent',2,0,2,2,2,0,7,280568942313472),(280568951308288,'vacation','å…¨å±€','process',2,0,2,0,2,2,1,280568951128064),(280568951439360,'vacation_1','å¡«å†™è¯·å‡å•','startEvent',2,0,2,0,2,0,2,280568951128064),(280568951537664,'taskuser-1','å¡«å†™è¯·å‡å•','userTask',0,0,0,0,0,0,3,280568951128064),(280568951996416,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','userTask',0,0,0,0,0,0,4,280568951128064),(280568952307712,'taskuser-3','äººäº‹å®¡æ‰¹','userTask',0,0,0,0,0,0,5,280568951128064),(280568952602624,'taskuser-5','è°ƒæ•´ç”³è¯·','userTask',0,0,0,0,0,0,6,280568951128064),(280568953012224,'endnone-2','ç»“æŸ','endEvent',2,0,2,2,2,0,7,280568951128064),(280568953126912,'taskuser-6','é”€å‡','userTask',0,0,0,0,0,0,8,280568951128064);
+/*!40000 ALTER TABLE `bpm_conf_node` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_notice`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_notice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_notice` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `DUE_DATE` varchar(50) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  `TEMPLATE_ID` bigint(20) DEFAULT NULL,
+  `TEMPLATE_CODE` varchar(200) DEFAULT NULL,
+  `NOTIFICATION_TYPE` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_NOTICE_NODE` (`NODE_ID`),
+  KEY `FK_BPM_CONF_NOTICE_TEMPLATE` (`TEMPLATE_ID`),
+  CONSTRAINT `FK_BPM_CONF_NOTICE_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`),
+  CONSTRAINT `FK_BPM_CONF_NOTICE_TEMPLATE` FOREIGN KEY (`TEMPLATE_ID`) REFERENCES `bpm_mail_template` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_notice`
+--
+
+LOCK TABLES `bpm_conf_notice` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_notice` DISABLE KEYS */;
+INSERT INTO `bpm_conf_notice` VALUES (1,0,'ä»»åŠ¡æ¥æ”¶äºº',NULL,4,1,'arrival-assignee','msg,email'),(2,0,'æµç¨‹å‘èµ·äºº',NULL,5,2,'arrival-initiator','msg,email'),(3,1,'1',NULL,8,3,'complete','msg,email'),(4,2,'ä»»åŠ¡æ¥æ”¶äºº','P1H',8,4,'timeout','msg,email');
+/*!40000 ALTER TABLE `bpm_conf_notice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_operation`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_operation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_operation` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_OPERATION_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_OPERATION_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_operation`
+--
+
+LOCK TABLES `bpm_conf_operation` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_operation` DISABLE KEYS */;
+INSERT INTO `bpm_conf_operation` VALUES (1,'saveDraft',NULL,3),(2,'completeTask',NULL,3),(3,'saveDraft',NULL,4),(4,'completeTask',NULL,4),(5,'saveDraft',NULL,5),(6,'completeTask',NULL,5),(7,'saveDraft',NULL,6),(8,'completeTask',NULL,6),(9,'saveDraft',NULL,8),(10,'completeTask',NULL,8),(11,'saveDraft',NULL,14),(12,'completeTask',NULL,14),(13,'rollbackPrevious',NULL,14),(14,'saveDraft',NULL,16),(15,'completeTask',NULL,16),(16,'rollbackPrevious',NULL,16),(101,'rollbackInitiator',NULL,14),(102,'transfer',NULL,14),(103,'delegateTask',NULL,14),(104,'communicate',NULL,14),(105,'addCounterSign',NULL,14);
+/*!40000 ALTER TABLE `bpm_conf_operation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_rule`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_rule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_rule` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_RULE_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_RULE_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_rule`
+--
+
+LOCK TABLES `bpm_conf_rule` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_rule` DISABLE KEYS */;
+INSERT INTO `bpm_conf_rule` VALUES (1,'èŒä½',14);
+/*!40000 ALTER TABLE `bpm_conf_rule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_conf_user`
+--
+
+DROP TABLE IF EXISTS `bpm_conf_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_conf_user` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `NODE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_CONF_USER_NODE` (`NODE_ID`),
+  CONSTRAINT `FK_BPM_CONF_USER_NODE` FOREIGN KEY (`NODE_ID`) REFERENCES `bpm_conf_node` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_conf_user`
+--
+
+LOCK TABLES `bpm_conf_user` WRITE;
+/*!40000 ALTER TABLE `bpm_conf_user` DISABLE KEYS */;
+INSERT INTO `bpm_conf_user` VALUES (246664235171840,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,13),(246664236777472,'å²—ä½:ç»ç†',0,0,1,14),(246664237383680,'å²—ä½:æ€»ç»ç†',0,0,1,16),(246664243593216,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,246664243511296),(246664244002816,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,246664243888128),(246664244477952,'${countersignUser}',0,0,1,246664244330496),(246664245215232,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,246664245116928),(246664251817984,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,3),(246664252162048,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,4),(246664252473344,'7',0,0,1,5),(246664252784640,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,6),(246664253227008,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,8),(270678116761600,'3',0,0,1,270678116696064),(270678116909056,'4',1,0,2,270678116696064),(270678116974592,'5',2,0,3,270678116696064),(270691192619008,'test',2,0,1,270691192569856),(270691192668160,'tes',2,0,1,270691192569856),(270704742023168,'å¼ ä¸‰ï¼Œæå››',2,0,1,270704741957632),(270743755472896,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,270743755423744),(270743755653120,'å²—ä½:é™¢é•¿',0,0,1,270743755603968),(277428372094976,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,277428372062208),(277428372275200,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,277428372209664),(277428372422656,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,277428372373504),(277428372717568,'å²—ä½:ä¹¦è®°',0,0,1,277428372668416),(277428372963328,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,277428372881408),(280494057979904,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280494057308160),(280494063960064,'å²—ä½:ç»ç†',0,0,1,280494060486656),(280494064304128,'å²—ä½:æ€»ç»ç†',0,0,1,280494064189440),(280494069727232,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280494069661696),(280494070202368,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,280494069940224),(280494070497280,'${countersignUser}',0,0,1,280494070398976),(280494071218176,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280494071136256),(280494076870656,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280494076772352),(280494077247488,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,280494077083648),(280494077788160,'7',0,0,1,280494077706240),(280494078148608,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280494078066688),(280494078672896,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280494078590976),(280556613828608,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280556613566464),(280556614729728,'å²—ä½:ç»ç†',0,0,1,280556614647808),(280556615041024,'å²—ä½:æ€»ç»ç†',0,0,1,280556614942720),(280556617711616,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280556617629696),(280556617973760,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,280556617908224),(280556618268672,'${countersignUser}',0,0,1,280556618186752),(280556618727424,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280556618661888),(280556622315520,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280556622217216),(280556622561280,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,280556622495744),(280556622807040,'7',0,0,1,280556622741504),(280556623069184,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280556623003648),(280556623446016,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280556623364096),(280568934219776,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280568933793792),(280568935776256,'å²—ä½:ç»ç†',0,0,1,280568935677952),(280568936251392,'å²—ä½:æ€»ç»ç†',0,0,1,280568936103936),(280568942657536,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280568942592000),(280568943083520,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,280568942968832),(280568943525888,'${countersignUser}',0,0,1,280568943394816),(280568944181248,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280568944066560),(280568951668736,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280568951537664),(280568952094720,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§',0,0,1,280568951996416),(280568952389632,'7',0,0,1,280568952307712),(280568952700928,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280568952602624),(280568953241600,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº',0,0,1,280568953126912);
+/*!40000 ALTER TABLE `bpm_conf_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_instance`
+--
+
+DROP TABLE IF EXISTS `bpm_instance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_instance` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `BUSINESS_KEY` varchar(64) DEFAULT NULL,
+  `REF` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `INITIATOR` varchar(64) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `PROCESS_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_INSTANCE_PROCESS` (`PROCESS_ID`),
+  CONSTRAINT `FK_BPM_INSTANCE_PROCESS` FOREIGN KEY (`PROCESS_ID`) REFERENCES `bpm_process` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_instance`
+--
+
+LOCK TABLES `bpm_instance` WRITE;
+/*!40000 ALTER TABLE `bpm_instance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bpm_instance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_mail_template`
+--
+
+DROP TABLE IF EXISTS `bpm_mail_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_mail_template` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `SUBJECT` varchar(100) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_mail_template`
+--
+
+LOCK TABLES `bpm_mail_template` WRITE;
+/*!40000 ALTER TABLE `bpm_mail_template` DISABLE KEYS */;
+INSERT INTO `bpm_mail_template` VALUES (1,'ä»»åŠ¡åˆ°è¾¾ï¼ˆä»»åŠ¡å¤„ç†äººï¼‰','æ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†','#{task.assignee}æ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”#{task.name}ã€‚'),(2,'ä»»åŠ¡åˆ°è¾¾ï¼ˆæµç¨‹å‘èµ·äººï¼‰','æ‚¨çš„æµç¨‹å·²ç»åˆ°è¾¾#{task.name}ç¯èŠ‚','#{initiator}æ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹å·²ç»åˆ°è¾¾#{task.name}ç¯èŠ‚'),(3,'ä»»åŠ¡å®Œæˆ','æµç¨‹å·²ç»å®Œæˆ#{task.name}ç¯èŠ‚','æ‚¨å¥½ï¼Œ#{initiator}çš„æµç¨‹å·²ç»å®Œæˆ#{task.name}ç¯èŠ‚'),(4,'ä»»åŠ¡è¶…æ—¶æé†’','ä»»åŠ¡å³å°†è¿‡æœŸ','#{task.assignee}æ‚¨å¥½ï¼Œä»»åŠ¡#{task.name}å·²ç»å³å°†åˆ°æœŸ');
+/*!40000 ALTER TABLE `bpm_mail_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_process`
+--
+
+DROP TABLE IF EXISTS `bpm_process`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_process` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CATEGORY_ID` bigint(20) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `USE_TASK_CONF` int(11) DEFAULT NULL,
+  `CODE` varchar(64) DEFAULT NULL,
+  `CONF_BASE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_PROCESS_CATEGORY_ID` (`CATEGORY_ID`),
+  KEY `FK_BPM_PROCESS_CONF_BASE` (`CONF_BASE_ID`),
+  CONSTRAINT `FK_BPM_PROCESS_CATEGORY_ID` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `bpm_category` (`ID`),
+  CONSTRAINT `FK_BPM_PROCESS_CONF_BASE` FOREIGN KEY (`CONF_BASE_ID`) REFERENCES `bpm_conf_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_process`
+--
+
+LOCK TABLES `bpm_process` WRITE;
+/*!40000 ALTER TABLE `bpm_process` DISABLE KEYS */;
+INSERT INTO `bpm_process` VALUES (1,'è¯·å‡æµç¨‹',1,1,'é€šç”¨è¯·å‡æµç¨‹',0,'vacation',1,'1'),(2,'å‘æ–‡æµç¨‹',1,2,'é€šç”¨å‘æ–‡æµç¨‹',0,'publish',2,'1'),(3,'æƒé™å®¡æ‰¹',1,3,'æƒé™å®¡æ‰¹æµç¨‹',1,'permission',3,'1'),(270656120799232,'è¯·å‡demo',1,4,'',0,NULL,270444573179904,'1'),(270745847971840,'test',1,6,'11',0,NULL,270743755276288,'1'),(277430478815232,'å­¦ç”Ÿè¯·å‡æµç¨‹',1,7,'1',0,NULL,277428371881984,'1');
+/*!40000 ALTER TABLE `bpm_process` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_task_conf`
+--
+
+DROP TABLE IF EXISTS `bpm_task_conf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_task_conf` (
+  `ID` bigint(20) NOT NULL,
+  `BUSINESS_KEY` varchar(200) DEFAULT NULL,
+  `TASK_DEFINITION_KEY` varchar(200) DEFAULT NULL,
+  `ASSIGNEE` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_task_conf`
+--
+
+LOCK TABLES `bpm_task_conf` WRITE;
+/*!40000 ALTER TABLE `bpm_task_conf` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bpm_task_conf` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_task_def`
+--
+
+DROP TABLE IF EXISTS `bpm_task_def`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_task_def` (
+  `ID` bigint(20) NOT NULL,
+  `TASK_DEFINITION_KEY` varchar(200) DEFAULT NULL,
+  `ASSIGNEE` varchar(200) DEFAULT NULL,
+  `CANDIDATE` varchar(200) DEFAULT NULL,
+  `PROCESS_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_TASK_DEF_ID` (`PROCESS_ID`),
+  CONSTRAINT `FK_BPM_TASK_DEF_ID` FOREIGN KEY (`PROCESS_ID`) REFERENCES `bpm_process` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_task_def`
+--
+
+LOCK TABLES `bpm_task_def` WRITE;
+/*!40000 ALTER TABLE `bpm_task_def` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bpm_task_def` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bpm_task_def_notice`
+--
+
+DROP TABLE IF EXISTS `bpm_task_def_notice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bpm_task_def_notice` (
+  `ID` bigint(20) NOT NULL,
+  `TASK_DEFINITION_KEY` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `DUE_DATE` varchar(50) DEFAULT NULL,
+  `TEMPLATE_ID` bigint(20) DEFAULT NULL,
+  `PROCESS_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_BPM_TASK_DEF_NOTICE_PROCESS` (`PROCESS_ID`),
+  KEY `FK_BPM_TASK_DEF_NOTICE_TEMPLATE` (`TEMPLATE_ID`),
+  CONSTRAINT `FK_BPM_TASK_DEF_NOTICE_PROCESS` FOREIGN KEY (`PROCESS_ID`) REFERENCES `bpm_process` (`ID`),
+  CONSTRAINT `FK_BPM_TASK_DEF_NOTICE_TEMPLATE` FOREIGN KEY (`TEMPLATE_ID`) REFERENCES `bpm_mail_template` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bpm_task_def_notice`
+--
+
+LOCK TABLES `bpm_task_def_notice` WRITE;
+/*!40000 ALTER TABLE `bpm_task_def_notice` DISABLE KEYS */;
+INSERT INTO `bpm_task_def_notice` VALUES (1,'taskuser-2',0,'ä»»åŠ¡æ¥æ”¶äºº',NULL,1,1),(2,'taskuser-3',0,'æµç¨‹å‘èµ·äºº',NULL,2,1),(3,'taskuser-6',1,'king',NULL,3,1),(4,'taskuser-6',2,'ä»»åŠ¡æ¥æ”¶äºº','P1H',4,1);
+/*!40000 ALTER TABLE `bpm_task_def_notice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `budget_info`
+--
+
+DROP TABLE IF EXISTS `budget_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `budget_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `MONEY` double DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `budget_info`
+--
+
+LOCK TABLES `budget_info` WRITE;
+/*!40000 ALTER TABLE `budget_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `budget_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_info`
+--
+
+DROP TABLE IF EXISTS `business_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CUSTOMER` varchar(100) DEFAULT NULL,
+  `PRODUCT` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_info`
+--
+
+LOCK TABLES `business_info` WRITE;
+/*!40000 ALTER TABLE `business_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `business_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `car_info`
+--
+
+DROP TABLE IF EXISTS `car_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `car_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `WEIGHT` int(11) DEFAULT NULL,
+  `PEOPLE` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `car_info`
+--
+
+LOCK TABLES `car_info` WRITE;
+/*!40000 ALTER TABLE `car_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `car_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `card_info`
+--
+
+DROP TABLE IF EXISTS `card_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `card_info` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `card_info`
+--
+
+LOCK TABLES `card_info` WRITE;
+/*!40000 ALTER TABLE `card_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `card_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_article`
+--
+
+DROP TABLE IF EXISTS `cms_article`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_article` (
+  `ID` bigint(20) NOT NULL,
+  `TITLE` varchar(200) DEFAULT NULL,
+  `SHORT_TITLE` varchar(200) DEFAULT NULL,
+  `SUB_TITLE` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `SUMMARY` varchar(200) DEFAULT NULL,
+  `LOGO` varchar(200) DEFAULT NULL,
+  `KEYWORD` varchar(200) DEFAULT NULL,
+  `TAGS` varchar(200) DEFAULT NULL,
+  `SOURCE` varchar(200) DEFAULT NULL,
+  `ALLOW_COMMENT` int(11) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `PUBLISH_TIME` timestamp NULL DEFAULT NULL,
+  `CLOSE_TIME` timestamp NULL DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `TOP` int(11) DEFAULT NULL,
+  `WEIGHT` int(11) DEFAULT NULL,
+  `CREATE_TIME` timestamp NULL DEFAULT NULL,
+  `TEMPLATE` varchar(200) DEFAULT NULL,
+  `HIT_COUNT` varchar(200) DEFAULT NULL,
+  `RECOMMEND_ID` bigint(20) DEFAULT NULL,
+  `RECOMMEND_STATUS` int(11) DEFAULT NULL,
+  `USER_ID` varchar(200) DEFAULT NULL,
+  `CATALOG_ID` bigint(20) DEFAULT NULL,
+  `COMMENT_COUNT` int(11) DEFAULT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_ARTICLE_CATALOG` (`CATALOG_ID`),
+  CONSTRAINT `FK_CMS_ARTICLE_CATALOG` FOREIGN KEY (`CATALOG_ID`) REFERENCES `cms_catalog` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_article`
+--
+
+LOCK TABLES `cms_article` WRITE;
+/*!40000 ALTER TABLE `cms_article` DISABLE KEYS */;
+INSERT INTO `cms_article` VALUES (279049062678528,'df',NULL,NULL,'dfg','dfgd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2016-08-29 06:11:44',NULL,NULL,NULL,NULL,'1',1,NULL,NULL,'1');
+/*!40000 ALTER TABLE `cms_article` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_attachment`
+--
+
+DROP TABLE IF EXISTS `cms_attachment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_attachment` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PATH` varchar(200) DEFAULT NULL,
+  `SIZE` int(11) DEFAULT NULL,
+  `HEIGHT` int(11) DEFAULT NULL,
+  `WIDTH` int(11) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USER_ID` varchar(200) DEFAULT NULL,
+  `ARTICLE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_ATTACHMENT_ARTICLE` (`ARTICLE_ID`),
+  CONSTRAINT `FK_CMS_ATTACHMENT_ARTICLE` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `cms_article` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_attachment`
+--
+
+LOCK TABLES `cms_attachment` WRITE;
+/*!40000 ALTER TABLE `cms_attachment` DISABLE KEYS */;
+INSERT INTO `cms_attachment` VALUES (279049063677952,NULL,'','20160829/9e175a24-41dd-4285-ad5c-cd51ca0b8223',NULL,NULL,NULL,'2016-08-29 06:11:43',NULL,279049062678528);
+/*!40000 ALTER TABLE `cms_attachment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_catalog`
+--
+
+DROP TABLE IF EXISTS `cms_catalog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_catalog` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `LOGO` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `TEMPLATE_INDEX` varchar(200) DEFAULT NULL,
+  `TEMPLATE_LIST` varchar(200) DEFAULT NULL,
+  `TEMPLATE_DETAIL` varchar(200) DEFAULT NULL,
+  `KEYWORD` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `SITE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_CATALOG_PARENT` (`PARENT_ID`),
+  KEY `FK_CMS_CATALOG_SITE` (`SITE_ID`),
+  CONSTRAINT `FK_CMS_CATALOG_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `cms_catalog` (`ID`),
+  CONSTRAINT `FK_CMS_CATALOG_SITE` FOREIGN KEY (`SITE_ID`) REFERENCES `cms_site` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_catalog`
+--
+
+LOCK TABLES `cms_catalog` WRITE;
+/*!40000 ALTER TABLE `cms_catalog` DISABLE KEYS */;
+INSERT INTO `cms_catalog` VALUES (1,'æœ€æ–°åŠ¨æ€','news',NULL,0,'/default/index.html','/default/list.html','/default/detail.html',NULL,NULL,NULL,'1',NULL),(270763739004928,'1','as','as',0,'sa','as','as','as','sa',NULL,'1',NULL),(279048761606144,'wer','ee','e',1,'ee','ee','ee','e','',NULL,'1',NULL);
+/*!40000 ALTER TABLE `cms_catalog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_click`
+--
+
+DROP TABLE IF EXISTS `cms_click`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_click` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `USER_ID` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `ARTICLE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_CLICK_ARTICLE` (`ARTICLE_ID`),
+  CONSTRAINT `FK_CMS_CLICK_ARTICLE` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `cms_article` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_click`
+--
+
+LOCK TABLES `cms_click` WRITE;
+/*!40000 ALTER TABLE `cms_click` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_click` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_comment`
+--
+
+DROP TABLE IF EXISTS `cms_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_comment` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(200) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USER_ID` varchar(200) DEFAULT NULL,
+  `ARTICLE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_COMMENT_ARTICLE` (`ARTICLE_ID`),
+  KEY `FK_CMS_COMMENT_PARENT` (`PARENT_ID`),
+  CONSTRAINT `FK_CMS_COMMENT_ARTICLE` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `cms_article` (`ID`),
+  CONSTRAINT `FK_CMS_COMMENT_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `cms_comment` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_comment`
+--
+
+LOCK TABLES `cms_comment` WRITE;
+/*!40000 ALTER TABLE `cms_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_content`
+--
+
+DROP TABLE IF EXISTS `cms_content`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_content` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_content`
+--
+
+LOCK TABLES `cms_content` WRITE;
+/*!40000 ALTER TABLE `cms_content` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_content` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_favorite`
+--
+
+DROP TABLE IF EXISTS `cms_favorite`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_favorite` (
+  `ID` bigint(20) NOT NULL,
+  `SUBJECT` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USER_ID` varchar(200) DEFAULT NULL,
+  `ARTICLE_ID` bigint(20) DEFAULT NULL,
+  `COMMENT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_FAVORITE_ARTICLE` (`ARTICLE_ID`),
+  KEY `FK_CMS_FAVORITE_COMMENT` (`COMMENT_ID`),
+  CONSTRAINT `FK_CMS_FAVORITE_ARTICLE` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `cms_article` (`ID`),
+  CONSTRAINT `FK_CMS_FAVORITE_COMMENT` FOREIGN KEY (`COMMENT_ID`) REFERENCES `cms_comment` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_favorite`
+--
+
+LOCK TABLES `cms_favorite` WRITE;
+/*!40000 ALTER TABLE `cms_favorite` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_favorite` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_site`
+--
+
+DROP TABLE IF EXISTS `cms_site`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_site` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_ARTICLE_PARENT` (`PARENT_ID`),
+  CONSTRAINT `FK_CMS_ARTICLE_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `cms_article` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_site`
+--
+
+LOCK TABLES `cms_site` WRITE;
+/*!40000 ALTER TABLE `cms_site` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_site` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_tag`
+--
+
+DROP TABLE IF EXISTS `cms_tag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_tag` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `COUNT_ARTICLE` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_tag`
+--
+
+LOCK TABLES `cms_tag` WRITE;
+/*!40000 ALTER TABLE `cms_tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_tag` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_tag_article`
+--
+
+DROP TABLE IF EXISTS `cms_tag_article`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_tag_article` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `TAG_ID` bigint(20) DEFAULT NULL,
+  `ARTICLE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_TAG_ARTICLE_TAG` (`TAG_ID`),
+  KEY `FK_CMS_TAG_ARTICLE_ARTICLE` (`ARTICLE_ID`),
+  CONSTRAINT `FK_CMS_TAG_ARTICLE_ARTICLE` FOREIGN KEY (`ARTICLE_ID`) REFERENCES `cms_article` (`ID`),
+  CONSTRAINT `FK_CMS_TAG_ARTICLE_TAG` FOREIGN KEY (`TAG_ID`) REFERENCES `cms_tag` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_tag_article`
+--
+
+LOCK TABLES `cms_tag_article` WRITE;
+/*!40000 ALTER TABLE `cms_tag_article` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_tag_article` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_version`
+--
+
+DROP TABLE IF EXISTS `cms_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_version` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(64) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `CONTENT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_CMS_VERSION_CONTENT` (`CONTENT_ID`),
+  CONSTRAINT `FK_CMS_VERSION_CONTENT` FOREIGN KEY (`CONTENT_ID`) REFERENCES `cms_content` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_version`
+--
+
+LOCK TABLES `cms_version` WRITE;
+/*!40000 ALTER TABLE `cms_version` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contract_info`
+--
+
+DROP TABLE IF EXISTS `contract_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contract_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `COMPANY` varchar(50) DEFAULT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contract_info`
+--
+
+LOCK TABLES `contract_info` WRITE;
+/*!40000 ALTER TABLE `contract_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contract_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_info`
+--
+
+DROP TABLE IF EXISTS `customer_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `ADDRESS` varchar(200) DEFAULT NULL,
+  `CONTACT` varchar(100) DEFAULT NULL,
+  `COMPANY` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_info`
+--
+
+LOCK TABLES `customer_info` WRITE;
+/*!40000 ALTER TABLE `customer_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `delegate_history`
+--
+
+DROP TABLE IF EXISTS `delegate_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `delegate_history` (
+  `ID` bigint(20) NOT NULL,
+  `ASSIGNEE` varchar(200) DEFAULT NULL,
+  `ATTORNEY` varchar(200) DEFAULT NULL,
+  `DELEGATE_TIME` datetime DEFAULT NULL,
+  `TASK_ID` varchar(100) DEFAULT NULL,
+  `PROCESS_DEFINITION_ID` varchar(100) DEFAULT NULL,
+  `TASK_DEFINITION_KEY` varchar(100) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delegate_history`
+--
+
+LOCK TABLES `delegate_history` WRITE;
+/*!40000 ALTER TABLE `delegate_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `delegate_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `delegate_info`
+--
+
+DROP TABLE IF EXISTS `delegate_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `delegate_info` (
+  `ID` bigint(20) NOT NULL,
+  `ASSIGNEE` varchar(200) DEFAULT NULL,
+  `ATTORNEY` varchar(200) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `PROCESS_DEFINITION_ID` varchar(100) DEFAULT NULL,
+  `TASK_DEFINITION_KEY` varchar(100) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `delegate_info`
+--
+
+LOCK TABLES `delegate_info` WRITE;
+/*!40000 ALTER TABLE `delegate_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `delegate_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dict_data`
+--
+
+DROP TABLE IF EXISTS `dict_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dict_data` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `SCHEMA_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_DICT_DATA_INFO` (`INFO_ID`),
+  KEY `FK_DICT_DATA_SCHEMA` (`SCHEMA_ID`),
+  CONSTRAINT `FK_DICT_DATA_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `dict_info` (`ID`),
+  CONSTRAINT `FK_DICT_DATA_SCHEMA` FOREIGN KEY (`SCHEMA_ID`) REFERENCES `dict_schema` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dict_data`
+--
+
+LOCK TABLES `dict_data` WRITE;
+/*!40000 ALTER TABLE `dict_data` DISABLE KEYS */;
+INSERT INTO `dict_data` VALUES (1,'åŸå¸‚','åŒ—äº¬',201,1,'1'),(2,'äººå‘˜','ä¸´è¿œ',201,2,'1'),(3,'ç”µè¯','13800138000',201,3,'1'),(4,'åœ°å€','åŒ—äº¬å…­ç¯å¤–',201,4,'1'),(11,'åŸå¸‚','å”å±±',202,1,'1'),(12,'äººå‘˜','ä¸´è¿œ',202,2,'1'),(13,'ç”µè¯','13800138000',202,3,'1'),(14,'åœ°å€','è·¯åŒ—åŒºå‡¤å‡°å±±',202,4,'1');
+/*!40000 ALTER TABLE `dict_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dict_info`
+--
+
+DROP TABLE IF EXISTS `dict_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dict_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_DICT_INFO_TYPE` (`TYPE_ID`),
+  CONSTRAINT `FK_DICT_INFO_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `dict_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dict_info`
+--
+
+LOCK TABLES `dict_info` WRITE;
+/*!40000 ALTER TABLE `dict_info` DISABLE KEYS */;
+INSERT INTO `dict_info` VALUES (1,'åŒ—äº¬','åŒ—äº¬',1,1,'1'),(2,'å¤©æ´¥','å¤©æ´¥',2,1,'1'),(3,'æ²³åŒ—','æ²³åŒ—',3,1,'1'),(4,'å±±è¥¿','å±±è¥¿',4,1,'1'),(5,'å†…è’™å¤','å†…è’™å¤',5,1,'1'),(6,'è¾½å®','è¾½å®',6,1,'1'),(7,'å‰æ—','å‰æ—',7,1,'1'),(8,'é»‘é¾™æ±Ÿ','é»‘é¾™æ±Ÿ',8,1,'1'),(9,'ä¸Šæµ·','ä¸Šæµ·',9,1,'1'),(10,'æ±Ÿè‹','æ±Ÿè‹',10,1,'1'),(11,'æµ™æ±Ÿ','æµ™æ±Ÿ',11,1,'1'),(12,'å®‰å¾½','å®‰å¾½',12,1,'1'),(13,'ç¦å»º','ç¦å»º',13,1,'1'),(14,'æ±Ÿè¥¿','æ±Ÿè¥¿',14,1,'1'),(15,'å±±ä¸œ','å±±ä¸œ',15,1,'1'),(16,'æ²³å—','æ²³å—',16,1,'1'),(17,'æ¹–åŒ—','æ¹–åŒ—',17,1,'1'),(18,'æ¹–å—','æ¹–å—',18,1,'1'),(19,'å¹¿ä¸œ','å¹¿ä¸œ',19,1,'1'),(20,'å¹¿è¥¿','å¹¿è¥¿',20,1,'1'),(21,'æµ·å—','æµ·å—',21,1,'1'),(22,'é‡åº†','é‡åº†',22,1,'1'),(23,'å››å·','å››å·',23,1,'1'),(24,'è´µå·','è´µå·',24,1,'1'),(25,'äº‘å—','äº‘å—',25,1,'1'),(26,'è¥¿è—','è¥¿è—',26,1,'1'),(27,'é™•è¥¿','é™•è¥¿',27,1,'1'),(28,'ç”˜è‚ƒ','ç”˜è‚ƒ',28,1,'1'),(29,'é’æµ·','é’æµ·',29,1,'1'),(30,'å®å¤','å®å¤',30,1,'1'),(31,'æ–°ç–†','æ–°ç–†',31,1,'1'),(32,'å°æ¹¾','å°æ¹¾',32,1,'1'),(33,'é¦™æ¸¯','é¦™æ¸¯',33,1,'1'),(34,'æ¾³é—¨','æ¾³é—¨',34,1,'1'),(101,'ACHANG','é˜¿æ˜Œæ—',1,2,'1'),(102,'BAI','ç™½æ—',1,2,'1'),(103,'BLANG','å¸ƒæœ—æ—',1,2,'1'),(104,'BONAN','ä¿å®‰æ—',1,2,'1'),(105,'BOUYEI','å¸ƒä¾æ—',1,2,'1'),(106,'CHOSEN','æœé²œæ—',1,2,'1'),(107,'DAI','å‚£æ—',1,2,'1'),(108,'DAUR','è¾¾æ–¡å°”æ—',1,2,'1'),(109,'DEANG','å¾·æ˜‚æ—',1,2,'1'),(110,'DONG','ä¾—æ—',1,2,'1'),(111,'DONGXIAN','ä¸œä¹¡æ—',1,2,'1'),(112,'DRUNG','ç‹¬é¾™æ—',1,2,'1'),(113,'EWENKI','é„‚æ¸©å…‹æ—',1,2,'1'),(114,'GAOSHAN','é«˜å±±æ—',1,2,'1'),(115,'GELAO','ä»¡ä½¬æ—',1,2,'1'),(116,'HAN','æ±‰æ—',1,2,'1'),(117,'HANI','å“ˆå°¼æ—',1,2,'1'),(118,'HEZHEN','èµ«å“²æ—',1,2,'1'),(119,'HUI','å›æ—',1,2,'1'),(120,'JING','äº¬æ—',1,2,'1'),(121,'JINGPO','æ™¯é¢‡æ—',1,2,'1'),(122,'JINO','åŸºè¯ºæ—',1,2,'1'),(123,'KAZAK','å“ˆè¨å…‹æ—',1,2,'1'),(124,'KIRGIZ','æŸ¯å°”å…‹å­œæ—',1,2,'1'),(125,'LAHU','æ‹‰ç¥œæ—',1,2,'1'),(126,'LHOBA','çå·´æ—',1,2,'1'),(127,'LI','é»æ—',1,2,'1'),(128,'LISU','å‚ˆåƒ³æ—',1,2,'1'),(129,'MAN','æ»¡æ—',1,2,'1'),(130,'MAONAN','æ¯›å—æ—',1,2,'1'),(131,'MIAO','è‹—æ—',1,2,'1'),(132,'MOINBA','é—¨å·´æ—',1,2,'1'),(133,'MONGOL','è’™å¤æ—',1,2,'1'),(134,'MULAO','ä»«ä½¬æ—',1,2,'1'),(135,'NAXI','çº³è¥¿æ—',1,2,'1'),(136,'NU','æ€’æ—',1,2,'1'),(137,'OROQEN','é„‚ä¼¦æ˜¥æ—',1,2,'1'),(138,'OZBEK','ä¹Œå­œåˆ«å…‹æ—',1,2,'1'),(139,'PUMI','æ™®ç±³æ—',1,2,'1'),(140,'QIANG','ç¾Œæ—',1,2,'1'),(141,'RUSSIAN','ä¿„ç½—æ–¯æ—',1,2,'1'),(142,'SALAR','æ’’æ‹‰æ—',1,2,'1'),(143,'SHE','ç•²æ—',1,2,'1'),(144,'SHUI','æ°´æ—',1,2,'1'),(145,'TAJIK','å¡”å‰å…‹æ—',1,2,'1'),(146,'TATAR','å¡”å¡”å°”æ—',1,2,'1'),(147,'TU','åœŸæ—',1,2,'1'),(148,'TUJIA','åœŸå®¶æ—',1,2,'1'),(149,'UYGUR','ç»´å¾å°”æ—',1,2,'1'),(150,'VA','ä½¤æ—',1,2,'1'),(151,'XIBE','é”¡ä¼¯æ—',1,2,'1'),(152,'YAO','ç‘¶æ—',1,2,'1'),(153,'YI','å½æ—',1,2,'1'),(154,'YUGUR','è£•å›ºæ—',1,2,'1'),(155,'ZANG','è—æ—',1,2,'1'),(156,'ZHUANG','å£®æ—',1,2,'1'),(201,'BEIJING','åŒ—äº¬',1,3,'1'),(202,'TANGSHAN','å”å±±',1,3,'1');
+/*!40000 ALTER TABLE `dict_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dict_schema`
+--
+
+DROP TABLE IF EXISTS `dict_schema`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dict_schema` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_DICT_SCHEMA_TYPE` (`TYPE_ID`),
+  CONSTRAINT `FK_DICT_SCHEMA_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `dict_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dict_schema`
+--
+
+LOCK TABLES `dict_schema` WRITE;
+/*!40000 ALTER TABLE `dict_schema` DISABLE KEYS */;
+INSERT INTO `dict_schema` VALUES (1,'åŸå¸‚',NULL,1,NULL,3,'1'),(2,'äººå‘˜',NULL,2,NULL,3,'1'),(3,'ç”µè¯',NULL,3,NULL,3,'1'),(4,'åœ°å€',NULL,4,NULL,3,'1');
+/*!40000 ALTER TABLE `dict_schema` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dict_type`
+--
+
+DROP TABLE IF EXISTS `dict_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dict_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dict_type`
+--
+
+LOCK TABLES `dict_type` WRITE;
+/*!40000 ALTER TABLE `dict_type` DISABLE KEYS */;
+INSERT INTO `dict_type` VALUES (1,'çœç›´è¾–å¸‚','string',NULL,'1'),(2,'æ°‘æ—','string',NULL,'1'),(3,'è”ç³»äºº','multiple',NULL,'1');
+/*!40000 ALTER TABLE `dict_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `disk_acl`
+--
+
+DROP TABLE IF EXISTS `disk_acl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `disk_acl` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `REF` varchar(64) DEFAULT NULL,
+  `SHARE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_DISK_ACL_SHARE` (`SHARE_ID`),
+  CONSTRAINT `FK_DISK_ACL_SHARE` FOREIGN KEY (`SHARE_ID`) REFERENCES `disk_share` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `disk_acl`
+--
+
+LOCK TABLES `disk_acl` WRITE;
+/*!40000 ALTER TABLE `disk_acl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `disk_acl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `disk_info`
+--
+
+DROP TABLE IF EXISTS `disk_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `disk_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `FILE_SIZE` bigint(20) DEFAULT NULL,
+  `CREATOR` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `PREVIEW_STATUS` varchar(50) DEFAULT NULL,
+  `PREVIEW_REF` varchar(200) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `PARENT_PATH` varchar(200) DEFAULT NULL,
+  `DIR_TYPE` int(11) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `LAST_MODIFIER` varchar(64) DEFAULT NULL,
+  `LAST_MODIFIED_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `EXPIRE_TIME` datetime DEFAULT NULL,
+  `CHECKOUT_STATUS` varchar(50) DEFAULT NULL,
+  `FILE_VERSION` varchar(50) DEFAULT NULL,
+  `SECURITY_LEVEL` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_DISK_INFO_PARENT` (`PARENT_ID`),
+  CONSTRAINT `FK_DISK_INFO_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `disk_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `disk_info`
+--
+
+LOCK TABLES `disk_info` WRITE;
+/*!40000 ALTER TABLE `disk_info` DISABLE KEYS */;
+INSERT INTO `disk_info` VALUES (279044636983296,'lemon.sql',NULL,'sql',760087,'1','2016-08-29 14:07:14','20160829/5b6f766e-a377-4f41-9f91-95e9bc7f67eb.sql',NULL,NULL,NULL,'',1,NULL,'1','2016-08-29 14:07:14','active',NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `disk_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `disk_share`
+--
+
+DROP TABLE IF EXISTS `disk_share`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `disk_share` (
+  `ID` bigint(20) NOT NULL,
+  `SHARE_TYPE` varchar(50) DEFAULT NULL,
+  `SHARE_TIME` datetime DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATOR` varchar(64) DEFAULT NULL,
+  `TYPE` varchar(64) DEFAULT NULL,
+  `DIR_TYPE` int(11) DEFAULT NULL,
+  `COUNT_VIEW` int(11) DEFAULT NULL,
+  `COUNT_SAVE` int(11) DEFAULT NULL,
+  `COUNT_DOWNLOAD` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_DISK_SHARE_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_DISK_SHARE_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `disk_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `disk_share`
+--
+
+LOCK TABLES `disk_share` WRITE;
+/*!40000 ALTER TABLE `disk_share` DISABLE KEYS */;
+INSERT INTO `disk_share` VALUES (279044819025920,'public','2016-08-29 14:07:25',279044636983296,'lemon.sql','1','sql',1,0,0,0);
+/*!40000 ALTER TABLE `disk_share` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `door_info`
+--
+
+DROP TABLE IF EXISTS `door_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `door_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `BUILDING` varchar(100) DEFAULT NULL,
+  `FLOOR` varchar(100) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `door_info`
+--
+
+LOCK TABLES `door_info` WRITE;
+/*!40000 ALTER TABLE `door_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `door_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employee_info`
+--
+
+DROP TABLE IF EXISTS `employee_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `employee_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `DEPARTMENT` varchar(50) DEFAULT NULL,
+  `COMPANY` varchar(50) DEFAULT NULL,
+  `POSITION` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee_info`
+--
+
+LOCK TABLES `employee_info` WRITE;
+/*!40000 ALTER TABLE `employee_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `employee_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `expense_info`
+--
+
+DROP TABLE IF EXISTS `expense_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `expense_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `MONEY` double DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `HEAD_COUNT` int(11) DEFAULT NULL,
+  `PERSON` varchar(200) DEFAULT NULL,
+  `TRAFFIC` varchar(100) DEFAULT NULL,
+  `COUNTRY` varchar(100) DEFAULT NULL,
+  `ADDRESS` varchar(100) DEFAULT NULL,
+  `THING` varchar(100) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `expense_info`
+--
+
+LOCK TABLES `expense_info` WRITE;
+/*!40000 ALTER TABLE `expense_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `expense_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `form_schema`
+--
+
+DROP TABLE IF EXISTS `form_schema`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `form_schema` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `READ_ONLY` int(11) DEFAULT NULL,
+  `NOT_NULL` int(11) DEFAULT NULL,
+  `UNIQUE_CONSTRAINT` int(11) DEFAULT NULL,
+  `VALIDATOR` varchar(200) DEFAULT NULL,
+  `CONVERSION_PATTERN` varchar(200) DEFAULT NULL,
+  `MULTIPLE` int(11) DEFAULT NULL,
+  `ENUMERATION_KEYS` varchar(200) DEFAULT NULL,
+  `ENUMERATION_VALUES` varchar(200) DEFAULT NULL,
+  `FORM_TEMPLATE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_FORM_SCHEMA_TEMPLATE` (`FORM_TEMPLATE_ID`),
+  CONSTRAINT `FK_FORM_SCHEMA_TEMPLATE` FOREIGN KEY (`FORM_TEMPLATE_ID`) REFERENCES `form_template` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `form_schema`
+--
+
+LOCK TABLES `form_schema` WRITE;
+/*!40000 ALTER TABLE `form_schema` DISABLE KEYS */;
+/*!40000 ALTER TABLE `form_schema` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `form_template`
+--
+
+DROP TABLE IF EXISTS `form_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `form_template` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `code` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `form_template`
+--
+
+LOCK TABLES `form_template` WRITE;
+/*!40000 ALTER TABLE `form_template` DISABLE KEYS */;
+INSERT INTO `form_template` VALUES (246664254881792,0,'ç”³è¯·å•','{\r\n	\"code\":\"vacation-request\",\r\n	\"name\":\"ç”³è¯·å•\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"ç”³è¯·å•\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"4\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"2-2\",\r\n			\"minRow\":2,\r\n			\"minCol\":2,\r\n			\"maxRow\":2,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"3-2\",\r\n			\"minRow\":3,\r\n			\"minCol\":2,\r\n			\"maxRow\":3,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"è¯·å‡åŸå› \"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\r\n			\"col\":1,\r\n			\"name\":\"reason\",\r\n			\"required\":true,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"è¯·å‡ç±»å‹\"\r\n		},{\r\n			\"type\":\"radio\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"type\",\r\n			\"items\":\"å€’ä¼‘,äº‹å‡,ç—…å‡,å©šå‡\",\r\n			\"required\":true,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":2,\r\n			\"col\":0,\r\n			\"text\":\"å¼€å§‹æ—¶é—´\"\r\n		},{\r\n			\"type\":\"datepicker\",\r\n			\"row\":2,\r\n			\"col\":1,\r\n			\"name\":\"startDate\",\r\n			\"required\":true,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"select\",\r\n			\"row\":2,\r\n			\"col\":2,\r\n			\"name\":\"startDateTime\",\r\n			\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\r\n			\"required\":true,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":3,\r\n			\"col\":0,\r\n			\"text\":\"ç»“æŸæ—¶é—´\"\r\n		},{\r\n			\"type\":\"datepicker\",\r\n			\"row\":3,\r\n			\"col\":1,\r\n			\"name\":\"endDate\",\r\n			\"required\":true,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"select\",\r\n			\"row\":3,\r\n			\"col\":2,\r\n			\"name\":\"endDateTime\",\r\n			\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\r\n			\"required\":true,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n','vacation-request','1',NULL,NULL),(246664255078400,0,'ä¸Šçº§å®¡æ‰¹','{\"name\":\"ä¸Šçº§å®¡æ‰¹\",\"code\":\"vacation-department\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"ä¸Šçº§å®¡æ‰¹\"},{\"type\":\"grid\",\"row\":\"5\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"å€’ä¼‘,äº‹å‡,ç—…å‡,å©šå‡\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"ç³»ä¸»ä»»æ„è§\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":false}]}]}','vacation-department','1',NULL,NULL),(246664255307776,0,'äººäº‹å®¡æ‰¹','{\"name\":\"äººäº‹å®¡æ‰¹\",\"code\":\"vacation-hr\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"äººäº‹å®¡æ‰¹\"},{\"type\":\"grid\",\"row\":\"6\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"å€’ä¼‘,äº‹å‡,ç—…å‡,å©šå‡\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":true,\"readOnly\":true},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"ç³»ä¸»ä»»æ„è§\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"äººäº‹æ„è§\"},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"hrComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":false}]}]}','vacation-hr','1',NULL,NULL),(246664255520768,0,'è°ƒæ•´ç”³è¯·','{\"name\":\"è°ƒæ•´ç”³è¯·\",\"code\":\"vacation-modify\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"è°ƒæ•´ç”³è¯·\"},{\"type\":\"grid\",\"row\":\"7\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3},{\"startId\":\"6-1\",\"minRow\":6,\"minCol\":1,\"maxRow\":6,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"å€’ä¼‘,äº‹å‡,ç—…å‡,å©šå‡\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":true,\"readOnly\":false},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":true,\"readOnly\":false},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"ç³»ä¸»ä»»æ„è§\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"äººäº‹æ„è§\"},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"hrComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":6,\"col\":0,\"text\":\"è°ƒæ•´ç”³è¯·\"},{\"type\":\"radio\",\"row\":6,\"col\":1,\"name\":\"initiatorComment\",\"items\":\"é‡æ–°ç”³è¯·,æ’¤é”€ç”³è¯·\",\"required\":true,\"readOnly\":false}]}]}','vacation-modify','1',NULL,NULL),(246664255766528,0,'é”€å‡','{\"name\":\"é”€å‡\",\"code\":\"vacation-finish\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"é”€å‡\"},{\"type\":\"grid\",\"row\":\"6\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"å€’ä¼‘,äº‹å‡,ç—…å‡,å©šå‡\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"ç³»ä¸»ä»»æ„è§\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"äººäº‹æ„è§\"},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"hrComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true}]}]}','vacation-finish','1',NULL,NULL),(246664256045056,0,'å‘æ–‡','{\r\n	\"code\":\"publish-request\",\r\n	\"name\":\"å‘æ–‡\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"å‘æ–‡\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"3\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"2-1\",\r\n			\"minRow\":2,\r\n			\"minCol\":1,\r\n			\"maxRow\":2,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"æ ‡é¢˜\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\"col\":1,\r\n			\"name\":\"title\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":2,\r\n			\"col\":0,\r\n			\"text\":\"å†…å®¹\"\r\n		},{\r\n			\"type\":\"textarea\",\r\n			\"row\":2,\r\n			\"col\":1,\r\n			\"name\":\"content\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"æ‹Ÿç¨¿å®¡æ‰¹\"\r\n		},{\r\n			\"type\":\"userpicker\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"countersignUsers\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n	','publish-request','1',NULL,NULL),(246664256241664,0,'ç»ç†å®¡æ‰¹','{\r\n	\"code\":\"publish-manager\",\r\n	\"name\":\"ç»ç†å®¡æ‰¹\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"ç»ç†å®¡æ‰¹\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"3\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"2-1\",\r\n			\"minRow\":2,\r\n			\"minCol\":1,\r\n			\"maxRow\":2,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"æ ‡é¢˜\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\"col\":1,\r\n			\"name\":\"title\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"å†…å®¹\"\r\n		},{\r\n			\"type\":\"textarea\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"content\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":2,\r\n			\"col\":0,\r\n			\"text\":\"éƒ¨é—¨ç»ç†æ„è§\"\r\n		},{\r\n			\"type\":\"radio\",\r\n			\"row\":2,\r\n			\"col\":1,\r\n			\"name\":\"leaderComment\",\r\n			\"items\":\"åŒæ„,ä¸åŒæ„\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n','publish-manager','1',NULL,NULL),(246664256421888,0,'ä¼šç­¾å®¡æ‰¹','{\r\n	\"code\":\"publish-countersign\",\r\n	\"name\":\"ä¼šç­¾å®¡æ‰¹\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"ä¼šç­¾å®¡æ‰¹\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"3\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"2-1\",\r\n			\"minRow\":2,\r\n			\"minCol\":1,\r\n			\"maxRow\":2,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"æ ‡é¢˜\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\"col\":1,\r\n			\"name\":\"title\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"å†…å®¹\"\r\n		},{\r\n			\"type\":\"textarea\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"content\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":2,\r\n			\"col\":0,\r\n			\"text\":\"å®¡æ‰¹æ„è§\"\r\n		},{\r\n			\"type\":\"radio\",\r\n			\"row\":2,\r\n			\"col\":1,\r\n			\"name\":\"countersignComment\",\r\n			\"items\":\"åŒæ„,ä¸åŒæ„\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n','publish-countersign','1',NULL,NULL),(246664256651264,0,'å½’æ¡£','{\r\n	\"code\":\"publish-finish\",\r\n	\"name\":\"å½’æ¡£\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"å½’æ¡£\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"2\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"æ ‡é¢˜\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\"col\":1,\r\n			\"name\":\"title\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"å†…å®¹\"\r\n		},{\r\n			\"type\":\"textarea\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"content\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		}]\r\n	}]\r\n}\r\n','publish-finish','1',NULL,NULL),(246664256847872,0,'å‘èµ·ç”³è¯·','{\r\n	\"code\":\"permission-request\",\r\n	\"name\":\"å‘èµ·ç”³è¯·\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"å‘èµ·ç”³è¯·\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"1\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"ç”³è¯·\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\r\n			\"col\":1,\r\n			\"name\":\"name\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n','permission-request','1',NULL,NULL),(246664257011712,0,'ç»ç†å®¡æ‰¹','{\r\n	\"code\":\"permission-department\",\r\n	\"name\":\"ç»ç†å®¡æ‰¹\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"ç»ç†å®¡æ‰¹\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"2\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"ç”³è¯·\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\r\n			\"col\":1,\r\n			\"name\":\"name\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"ç»ç†å®¡æ‰¹æ„è§\"\r\n		},{\r\n			\"type\":\"radio\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"managerComment\",\r\n			\"items\":\"åŒæ„,ä¸åŒæ„\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n','permission-department','1',NULL,NULL),(246664257191936,0,'æ€»ç»ç†å®¡æ‰¹','{\r\n	\"code\":\"permission-manager\",\r\n	\"name\":\"æ€»ç»ç†å®¡æ‰¹\",\r\n	\"sections\":[{\r\n		\"type\":\"text\",\r\n		\"tag\":\"h1\",\r\n		\"text\":\"æ€»ç»ç†å®¡æ‰¹\"\r\n	},{\r\n		\"type\":\"grid\",\r\n		\"row\":\"3\",\r\n		\"col\":\"4\",\r\n		\"merge\":[{\r\n			\"startId\":\"0-1\",\r\n			\"minRow\":0,\r\n			\"minCol\":1,\r\n			\"maxRow\":0,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"1-1\",\r\n			\"minRow\":1,\r\n			\"minCol\":1,\r\n			\"maxRow\":1,\r\n			\"maxCol\":3\r\n		},{\r\n			\"startId\":\"2-1\",\r\n			\"minRow\":2,\r\n			\"minCol\":1,\r\n			\"maxRow\":2,\r\n			\"maxCol\":3\r\n		}],\r\n		\"fields\":[{\r\n			\"type\":\"label\",\r\n			\"row\":0,\r\n			\"col\":0,\r\n			\"text\":\"ç”³è¯·\"\r\n		},{\r\n			\"type\":\"textfield\",\r\n			\"row\":0,\r\n			\"col\":1,\r\n			\"name\":\"name\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":1,\r\n			\"col\":0,\r\n			\"text\":\"ç»ç†å®¡æ‰¹æ„è§\"\r\n		},{\r\n			\"type\":\"radio\",\r\n			\"row\":1,\r\n			\"col\":1,\r\n			\"name\":\"managerComment\",\r\n			\"items\":\"åŒæ„,ä¸åŒæ„\",\r\n			\"required\":false,\r\n			\"readOnly\":true\r\n		},{\r\n			\"type\":\"label\",\r\n			\"row\":2,\r\n			\"col\":0,\r\n			\"text\":\"æ€»ç»ç†å®¡æ‰¹æ„è§\"\r\n		},{\r\n			\"type\":\"radio\",\r\n			\"row\":2,\r\n			\"col\":1,\r\n			\"name\":\"leaderComment\",\r\n			\"items\":\"åŒæ„,ä¸åŒæ„\",\r\n			\"required\":false,\r\n			\"readOnly\":false\r\n		}]\r\n	}]\r\n}\r\n','permission-manager','1',NULL,NULL),(271716752752640,0,'å­¦ç”Ÿè°ƒæ•´ç”³è¯·','{\"name\":\"å­¦ç”Ÿè°ƒæ•´ç”³è¯·\",\"code\":\"vacation-modify-student\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"è°ƒæ•´ç”³è¯·\"},{\"type\":\"grid\",\"row\":\"8\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3},{\"startId\":\"6-1\",\"minRow\":6,\"minCol\":1,\"maxRow\":6,\"maxCol\":3},{\"startId\":\"7-1\",\"minRow\":7,\"minCol\":1,\"maxRow\":7,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"äº‹å‡,ç—…å‡\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":true,\"readOnly\":false},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":true,\"readOnly\":false},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"è¾…å¯¼å‘˜æ„è§\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"é™¢ç³»é¢†å¯¼æ„è§\"},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"hrComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":6,\"col\":0,\"text\":\"è°ƒæ•´ç”³è¯·\"},{\"type\":\"radio\",\"row\":6,\"col\":1,\"name\":\"initiatorComment\",\"items\":\"é‡æ–°ç”³è¯·,æ’¤é”€ç”³è¯·\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":7,\"col\":0,\"text\":\"è¯·å‡å¤©æ•°\"},{\"type\":\"radio\",\"row\":7,\"col\":1,\"name\":\"totalDays\",\"items\":\"å¤§äºä¸‰å¤©,å°äºä¸‰å¤©\",\"required\":true,\"readOnly\":false}]}]}','vacation-modify-student','1','1',NULL),(276490922000384,0,'å­¦ç”Ÿé”€å‡é”€å‡','{\"name\":\"å­¦ç”Ÿé”€å‡é”€å‡\",\"code\":\"vacation-finish-student\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"é”€å‡\"},{\"type\":\"grid\",\"row\":\"6\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"äº‹å‡,ç—…å‡\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"è¾…å¯¼å‘˜æ„è§\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"é™¢ç³»é¢†å¯¼æ„è§\"},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"hrComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":true}]}]}','vacation-finish-student','1','1',NULL),(276498367135744,0,'è¾…å¯¼å‘˜å®¡æ‰¹','{\"name\":\"è¾…å¯¼å‘˜å®¡æ‰¹\",\"code\":\"vocation-depart-student\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"è¾…å¯¼å‘˜å®¡æ‰¹\"},{\"type\":\"grid\",\"row\":\"6\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"äº‹å‡,ç—…å‡\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":true,\"readOnly\":false},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"totalDays\",\"items\":\"å¤§äºä¸‰å¤©,å°äºä¸‰å¤©\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"è¾…å¯¼å‘˜æ„è§\"},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"è¯·å‡å¤©æ•°\"}]}]}','vocation-depart-student','1','1',NULL),(276505718063104,0,'é™¢ç³»é¢†å¯¼å®¡æ‰¹','{\"name\":\"é™¢ç³»é¢†å¯¼å®¡æ‰¹\",\"code\":\"vacation-leader-student\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"é™¢ç³»é¢†å¯¼å®¡æ‰¹\"},{\"type\":\"grid\",\"row\":\"7\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3},{\"startId\":\"5-1\",\"minRow\":5,\"minCol\":1,\"maxRow\":5,\"maxCol\":3},{\"startId\":\"6-1\",\"minRow\":6,\"minCol\":1,\"maxRow\":6,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"äº‹å‡,ç—…å‡\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":false,\"readOnly\":true},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":false,\"readOnly\":true},{\"type\":\"radio\",\"row\":5,\"col\":1,\"name\":\"leaderComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":false},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"totalDays\",\"items\":\"å¤§äºä¸‰å¤©,å°äºä¸‰å¤©\",\"required\":false,\"readOnly\":true},{\"type\":\"label\",\"row\":5,\"col\":0,\"text\":\"è¾…å¯¼å‘˜æ„è§\"},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"è¯·å‡å¤©æ•°\"},{\"type\":\"label\",\"row\":6,\"col\":0,\"text\":\"é™¢ç³»é¢†å¯¼æ„è§\"},{\"type\":\"radio\",\"row\":6,\"col\":1,\"name\":\"hrComment\",\"items\":\"åŒæ„,ä¸åŒæ„\",\"required\":false,\"readOnly\":false}]}]}','vacation-leader-student','1','1',NULL),(276513208221696,0,'å­¦ç”Ÿç”³è¯·å•','{\"name\":\"å­¦ç”Ÿç”³è¯·å•\",\"code\":\"vacation-request-student\",\"sections\":[{\"type\":\"text\",\"tag\":\"h1\",\"text\":\"ç”³è¯·å•\"},{\"type\":\"grid\",\"row\":\"5\",\"col\":\"4\",\"merge\":[{\"startId\":\"0-1\",\"minRow\":0,\"minCol\":1,\"maxRow\":0,\"maxCol\":3},{\"startId\":\"1-1\",\"minRow\":1,\"minCol\":1,\"maxRow\":1,\"maxCol\":3},{\"startId\":\"2-2\",\"minRow\":2,\"minCol\":2,\"maxRow\":2,\"maxCol\":3},{\"startId\":\"3-2\",\"minRow\":3,\"minCol\":2,\"maxRow\":3,\"maxCol\":3},{\"startId\":\"4-1\",\"minRow\":4,\"minCol\":1,\"maxRow\":4,\"maxCol\":3}],\"fields\":[{\"type\":\"label\",\"row\":0,\"col\":0,\"text\":\"è¯·å‡åŸå› \"},{\"type\":\"textfield\",\"row\":0,\"col\":1,\"name\":\"reason\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":1,\"col\":0,\"text\":\"è¯·å‡ç±»å‹\"},{\"type\":\"radio\",\"row\":1,\"col\":1,\"name\":\"type\",\"items\":\"äº‹å‡,ç—…å‡\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":2,\"col\":0,\"text\":\"å¼€å§‹æ—¶é—´\"},{\"type\":\"datepicker\",\"row\":2,\"col\":1,\"name\":\"startDate\",\"required\":true,\"readOnly\":false},{\"type\":\"select\",\"row\":2,\"col\":2,\"name\":\"startDateTime\",\"items\":\"ä¸Šåˆ,ä¸‹åˆ\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":3,\"col\":0,\"text\":\"ç»“æŸæ—¶é—´\"},{\"type\":\"datepicker\",\"row\":3,\"col\":1,\"name\":\"endDate\",\"required\":true,\"readOnly\":false},{\"type\":\"select\",\"row\":3,\"col\":2,\"name\":\"endDateTime\",\"items\":\"ä¸‹åˆ,ä¸Šåˆ\",\"required\":true,\"readOnly\":false},{\"type\":\"label\",\"row\":4,\"col\":0,\"text\":\"è¯·å‡å¤©æ•°\"},{\"type\":\"radio\",\"row\":4,\"col\":1,\"name\":\"totalDays\",\"items\":\"å¤§äºä¸‰å¤©,å°äºä¸‰å¤©\",\"required\":true,\"readOnly\":false}]}]}','vacation-request-student','1','1',NULL);
+/*!40000 ALTER TABLE `form_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_admin`
+--
+
+DROP TABLE IF EXISTS `group_admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_admin` (
+  `ID` bigint(20) NOT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_GROUP_ADIMN_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_GROUP_ADIMN_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `group_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_admin`
+--
+
+LOCK TABLES `group_admin` WRITE;
+/*!40000 ALTER TABLE `group_admin` DISABLE KEYS */;
+INSERT INTO `group_admin` VALUES (1,1,'1','1');
+/*!40000 ALTER TABLE `group_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_alias`
+--
+
+DROP TABLE IF EXISTS `group_alias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_alias` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `CATALOG` varchar(100) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_GROUP_ALIAS_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_GROUP_ALIAS_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `group_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_alias`
+--
+
+LOCK TABLES `group_alias` WRITE;
+/*!40000 ALTER TABLE `group_alias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `group_alias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_info`
+--
+
+DROP TABLE IF EXISTS `group_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_info` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `MEMBER_COUNT` int(11) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_GROUP_INFO_TYPE` (`TYPE_ID`),
+  CONSTRAINT `FK_GROUP_INFO_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `group_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_info`
+--
+
+LOCK TABLES `group_info` WRITE;
+/*!40000 ALTER TABLE `group_info` DISABLE KEYS */;
+INSERT INTO `group_info` VALUES (1,NULL,'å…¨ä½“æˆå‘˜',NULL,NULL,8,NULL,NULL,'1');
+/*!40000 ALTER TABLE `group_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_member`
+--
+
+DROP TABLE IF EXISTS `group_member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_member` (
+  `ID` bigint(20) NOT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_GROUP_MEMBER_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_GROUP_MEMBER_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `group_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_member`
+--
+
+LOCK TABLES `group_member` WRITE;
+/*!40000 ALTER TABLE `group_member` DISABLE KEYS */;
+INSERT INTO `group_member` VALUES (1,1,'1','1'),(2,1,'2','1'),(3,1,'3','1'),(4,1,'4','1'),(5,1,'5','1'),(6,1,'6','1'),(7,1,'7','1'),(8,1,'8','1');
+/*!40000 ALTER TABLE `group_member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_relation`
+--
+
+DROP TABLE IF EXISTS `group_relation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_relation` (
+  `ID` bigint(20) NOT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `CHILD_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_GROUP_RELATION_PARENT` (`PARENT_ID`),
+  KEY `FK_GROUP_RELATION_CHILD` (`CHILD_ID`),
+  CONSTRAINT `FK_GROUP_RELATION_CHILD` FOREIGN KEY (`CHILD_ID`) REFERENCES `group_info` (`ID`),
+  CONSTRAINT `FK_GROUP_RELATION_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `group_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_relation`
+--
+
+LOCK TABLES `group_relation` WRITE;
+/*!40000 ALTER TABLE `group_relation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `group_relation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_type`
+--
+
+DROP TABLE IF EXISTS `group_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_type`
+--
+
+LOCK TABLES `group_type` WRITE;
+/*!40000 ALTER TABLE `group_type` DISABLE KEYS */;
+INSERT INTO `group_type` VALUES (1,'default','1');
+/*!40000 ALTER TABLE `group_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ht_humantask`
+--
+
+DROP TABLE IF EXISTS `ht_humantask`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ht_humantask` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `ASSIGNEE` varchar(64) DEFAULT NULL,
+  `OWNER` varchar(64) DEFAULT NULL,
+  `DELEGATE_STATUS` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `DURATION` varchar(50) DEFAULT NULL,
+  `SUSPEND_STATUS` varchar(50) DEFAULT NULL,
+  `CATEGORY` varchar(50) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `FORM` varchar(200) DEFAULT NULL,
+  `TASK_ID` varchar(200) DEFAULT NULL,
+  `EXECUTION_ID` varchar(200) DEFAULT NULL,
+  `PROCESS_INSTANCE_ID` varchar(200) DEFAULT NULL,
+  `PROCESS_DEFINITION_ID` varchar(200) DEFAULT NULL,
+  `TENENT_ID` varchar(64) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `COMPLETE_TIME` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_HT_HUMANTASK_PARENT` (`PARENT_ID`),
+  CONSTRAINT `FK_HT_HUMANTASK_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `ht_humantask` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ht_humantask`
+--
+
+LOCK TABLES `ht_humantask` WRITE;
+/*!40000 ALTER TABLE `ht_humantask` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ht_humantask` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ht_participant`
+--
+
+DROP TABLE IF EXISTS `ht_participant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ht_participant` (
+  `ID` bigint(20) NOT NULL,
+  `CATEGORY` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `HUMANTASK_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_HT_PARTICIPANT_HUMANTASK` (`HUMANTASK_ID`),
+  CONSTRAINT `FK_HT_PARTICIPANT_HUMANTASK` FOREIGN KEY (`HUMANTASK_ID`) REFERENCES `ht_humantask` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ht_participant`
+--
+
+LOCK TABLES `ht_participant` WRITE;
+/*!40000 ALTER TABLE `ht_participant` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ht_participant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `inventory_info`
+--
+
+DROP TABLE IF EXISTS `inventory_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `inventory_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `GOODS` varchar(100) DEFAULT NULL,
+  `SUPPLIER` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `inventory_info`
+--
+
+LOCK TABLES `inventory_info` WRITE;
+/*!40000 ALTER TABLE `inventory_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `inventory_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `javamail_attachment`
+--
+
+DROP TABLE IF EXISTS `javamail_attachment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `javamail_attachment` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `MESSAGE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_JAVAMAIL_ATTACHMENT_MESSAGE` (`MESSAGE_ID`),
+  CONSTRAINT `FK_JAVAMAIL_ATTACHMENT_MESSAGE` FOREIGN KEY (`MESSAGE_ID`) REFERENCES `javamail_message` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `javamail_attachment`
+--
+
+LOCK TABLES `javamail_attachment` WRITE;
+/*!40000 ALTER TABLE `javamail_attachment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `javamail_attachment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `javamail_config`
+--
+
+DROP TABLE IF EXISTS `javamail_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `javamail_config` (
+  `ID` bigint(20) NOT NULL,
+  `USERNAME` varchar(200) DEFAULT NULL,
+  `PASSWORD` varchar(200) DEFAULT NULL,
+  `RECEIVE_TYPE` varchar(50) DEFAULT NULL,
+  `RECEIVE_HOST` varchar(200) DEFAULT NULL,
+  `RECEIVE_PORT` varchar(10) DEFAULT NULL,
+  `RECEIVE_SECURE` varchar(50) DEFAULT NULL,
+  `SEND_TYPE` varchar(50) DEFAULT NULL,
+  `SEND_HOST` varchar(50) DEFAULT NULL,
+  `SEND_PORT` varchar(10) DEFAULT NULL,
+  `SEND_SECURE` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `javamail_config`
+--
+
+LOCK TABLES `javamail_config` WRITE;
+/*!40000 ALTER TABLE `javamail_config` DISABLE KEYS */;
+INSERT INTO `javamail_config` VALUES (1,'lingo@mossle.com','~lemon2mossle','pop3','mail.mossle.com','995','ssl-all','smtp','mail.mossle.com','465','ssl-all',1,'1');
+/*!40000 ALTER TABLE `javamail_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `javamail_message`
+--
+
+DROP TABLE IF EXISTS `javamail_message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `javamail_message` (
+  `ID` bigint(20) NOT NULL,
+  `SENDER` varchar(200) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `CC` varchar(200) DEFAULT NULL,
+  `BCC` varchar(200) DEFAULT NULL,
+  `SUBJECT` text,
+  `CONTENT` text,
+  `SEND_TIME` datetime DEFAULT NULL,
+  `RECEIVE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `FOLDER` varchar(200) DEFAULT NULL,
+  `MESSAGE_ID` varchar(200) DEFAULT NULL,
+  `MESSAGE_NUMBER` int(11) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_JAVAMAIL_MESSAGE_CONFIG` (`CONFIG_ID`),
+  CONSTRAINT `FK_JAVAMAIL_MESSAGE_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `javamail_config` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `javamail_message`
+--
+
+LOCK TABLES `javamail_message` WRITE;
+/*!40000 ALTER TABLE `javamail_message` DISABLE KEYS */;
+/*!40000 ALTER TABLE `javamail_message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_grade`
+--
+
+DROP TABLE IF EXISTS `job_grade`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_grade` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_grade`
+--
+
+LOCK TABLES `job_grade` WRITE;
+/*!40000 ALTER TABLE `job_grade` DISABLE KEYS */;
+INSERT INTO `job_grade` VALUES (1,'A','1',1),(2,'B','1',2);
+/*!40000 ALTER TABLE `job_grade` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_info`
+--
+
+DROP TABLE IF EXISTS `job_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `LEVEL_ID` bigint(20) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `TITLE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_JOB_INFO_LEVEL` (`LEVEL_ID`),
+  KEY `FK_JOB_INFO_TYPE` (`TYPE_ID`),
+  KEY `FK_JOB_INFO_TITLE` (`TITLE_ID`),
+  CONSTRAINT `FK_JOB_INFO_LEVEL` FOREIGN KEY (`LEVEL_ID`) REFERENCES `job_level` (`ID`),
+  CONSTRAINT `FK_JOB_INFO_TITLE` FOREIGN KEY (`TITLE_ID`) REFERENCES `job_title` (`ID`),
+  CONSTRAINT `FK_JOB_INFO_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `job_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_info`
+--
+
+LOCK TABLES `job_info` WRITE;
+/*!40000 ALTER TABLE `job_info` DISABLE KEYS */;
+INSERT INTO `job_info` VALUES (1,NULL,1,1,1,'1'),(2,NULL,2,2,2,'1');
+/*!40000 ALTER TABLE `job_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_level`
+--
+
+DROP TABLE IF EXISTS `job_level`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_level` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `GRADE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_JOB_LEVEL_GRADE` (`GRADE_ID`),
+  CONSTRAINT `FK_JOB_LEVEL_GRADE` FOREIGN KEY (`GRADE_ID`) REFERENCES `job_grade` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_level`
+--
+
+LOCK TABLES `job_level` WRITE;
+/*!40000 ALTER TABLE `job_level` DISABLE KEYS */;
+INSERT INTO `job_level` VALUES (1,'3',1,'1',1),(2,'2',2,'1',2),(3,'1',2,'1',3);
+/*!40000 ALTER TABLE `job_level` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_title`
+--
+
+DROP TABLE IF EXISTS `job_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_title` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_title`
+--
+
+LOCK TABLES `job_title` WRITE;
+/*!40000 ALTER TABLE `job_title` DISABLE KEYS */;
+INSERT INTO `job_title` VALUES (1,'æ€»ç»ç†','1'),(2,'éƒ¨é—¨ç»ç†','1'),(270737941118976,'è¾…å¯¼å‘˜','1');
+/*!40000 ALTER TABLE `job_title` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_type`
+--
+
+DROP TABLE IF EXISTS `job_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_JOB_TYPE_PARENT` (`PARENT_ID`),
+  CONSTRAINT `FK_JOB_TYPE_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `job_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_type`
+--
+
+LOCK TABLES `job_type` WRITE;
+/*!40000 ALTER TABLE `job_type` DISABLE KEYS */;
+INSERT INTO `job_type` VALUES (1,'å†³ç­–ç®¡ç†ç±»',NULL,'1'),(2,'æŠ€æœ¯ç±»',NULL,'2');
+/*!40000 ALTER TABLE `job_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_user`
+--
+
+DROP TABLE IF EXISTS `job_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_user` (
+  `ID` bigint(20) NOT NULL,
+  `USER_REF` varchar(50) DEFAULT NULL,
+  `JOB_INFO_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_JOB_USER_JOB` (`JOB_INFO_ID`),
+  CONSTRAINT `FK_JOB_USER_JOB` FOREIGN KEY (`JOB_INFO_ID`) REFERENCES `job_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_user`
+--
+
+LOCK TABLES `job_user` WRITE;
+/*!40000 ALTER TABLE `job_user` DISABLE KEYS */;
+INSERT INTO `job_user` VALUES (1,'5',1,'1'),(2,'3',2,'1'),(3,'4',2,'1');
+/*!40000 ALTER TABLE `job_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kv_prop`
+--
+
+DROP TABLE IF EXISTS `kv_prop`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kv_prop` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `RECORD_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_KV_PROP_RECORD` (`RECORD_ID`),
+  CONSTRAINT `FK_KV_PROP_RECORD` FOREIGN KEY (`RECORD_ID`) REFERENCES `kv_record` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kv_prop`
+--
+
+LOCK TABLES `kv_prop` WRITE;
+/*!40000 ALTER TABLE `kv_prop` DISABLE KEYS */;
+INSERT INTO `kv_prop` VALUES (253397469347840,'startDate',0,'2016-08-20',NULL,253397469265920),(253397469380608,'startDateTime',0,'ä¸Šåˆ',NULL,253397469265920),(253397469380609,'reason',0,'å®¿èˆ',NULL,253397469265920),(253397469446144,'autoCompleteFirstTask',0,'false',NULL,253397469265920),(253397469462528,'businessKey',0,'253397469265920',NULL,253397469265920),(253397469462529,'bpmProcessId',0,'1',NULL,253397469265920),(253397469462530,'endDate',0,'2016-08-26',NULL,253397469265920),(253397469478912,'type',0,'å€’ä¼‘',NULL,253397469265920),(253397469478913,'endDateTime',0,'ä¸‹åˆ',NULL,253397469265920),(253397469495296,'processDefinitionId',0,'vacation:1:12',NULL,253397469265920),(253431963222016,'humanTaskId',0,'253397498626048',NULL,253397469265920),(253431963222017,'_humantask_action_',0,'',NULL,253397469265920),(253431963238400,'_humantask_comment_',0,'sdsdds',NULL,253397469265920),(253442188673024,'startDate',0,'2016-08-26',NULL,253442188607488),(253442188689408,'startDateTime',0,'ä¸Šåˆ',NULL,253442188607488),(253442188689409,'reason',0,'fd',NULL,253442188607488),(253442188705792,'autoCompleteFirstTask',0,'false',NULL,253442188607488),(253442188804096,'businessKey',0,'253442188607488',NULL,253442188607488),(253442188820480,'bpmProcessId',0,'1',NULL,253442188607488),(253442188820481,'endDate',0,'2016-08-31',NULL,253442188607488),(253442188820482,'type',0,'äº‹å‡',NULL,253442188607488),(253442188836864,'endDateTime',0,'ä¸‹åˆ',NULL,253442188607488),(253442188836865,'processDefinitionId',0,'vacation:1:12',NULL,253442188607488),(253442851618816,'humanTaskId',0,'253442852519936',NULL,253442188607488),(253442851635200,'_humantask_action_',0,'',NULL,253442188607488),(253442851635201,'_humantask_comment_',0,'',NULL,253442188607488),(253569526644737,'bpmProcessId',0,'253452682625024',NULL,253569526644736),(253569526644738,'businessKey',0,'',NULL,253569526644736),(253572155654144,'startDate',0,'2016-08-13',NULL,253572155539456),(253572155670528,'startDateTime',0,'ä¸Šåˆ',NULL,253572155539456),(253572155686912,'reason',0,'åˆ†å…¬å¸',NULL,253572155539456),(253572155686913,'autoCompleteFirstTask',0,'false',NULL,253572155539456),(253572155686914,'businessKey',0,'253572155539456',NULL,253572155539456),(253572155817984,'bpmProcessId',0,'1',NULL,253572155539456),(253572155817985,'endDate',0,'2016-08-25',NULL,253572155539456),(253572155817986,'type',0,'ç—…å‡',NULL,253572155539456),(253572155817987,'endDateTime',0,'ä¸‹åˆ',NULL,253572155539456),(253572155834368,'processDefinitionId',0,'vacation:1:12',NULL,253572155539456),(253585567039488,'startDate',0,'2016-08-20',NULL,253585567006720),(253585567039489,'startDateTime',0,'ä¸Šåˆ',NULL,253585567006720),(253585567039490,'reason',0,'è®¸æ˜Œvsæ‰“å‘å£«å¤§å¤«',NULL,253585567006720),(253585567055872,'autoCompleteFirstTask',0,'false',NULL,253585567006720),(253585567055873,'businessKey',0,'253585567006720',NULL,253585567006720),(253585567055874,'bpmProcessId',0,'1',NULL,253585567006720),(253585567072256,'endDate',0,'2016-08-27',NULL,253585567006720),(253585567121408,'type',0,'äº‹å‡',NULL,253585567006720),(253585567121409,'endDateTime',0,'ä¸‹åˆ',NULL,253585567006720),(253585567121410,'processDefinitionId',0,'vacation:1:12',NULL,253585567006720),(253657840795648,'startDate',0,'2016-08-18',NULL,253657840730112),(253657840812032,'startDateTime',0,'ä¸Šåˆ',NULL,253657840730112),(253657840828416,'reason',0,'sfsdf',NULL,253657840730112),(253657840828417,'autoCompleteFirstTask',0,'false',NULL,253657840730112),(253657840959488,'businessKey',0,'',NULL,253657840730112),(253657840959489,'bpmProcessId',0,'1',NULL,253657840730112),(253657840959490,'endDate',0,'2016-08-27',NULL,253657840730112),(253657840959491,'type',0,'äº‹å‡',NULL,253657840730112),(253657840959492,'endDateTime',0,'ä¸‹åˆ',NULL,253657840730112),(253657840992256,'processDefinitionId',0,'vacation:1:12',NULL,253657840730112),(253741680312321,'startDate',0,'2016-08-12',NULL,253741680312320),(253741680558080,'startDateTime',0,'ä¸Šåˆ',NULL,253741680312320),(253741680558081,'reason',0,'test',NULL,253741680312320),(253741680558082,'autoCompleteFirstTask',0,'false',NULL,253741680312320),(253741680558083,'businessKey',0,'253741680312320',NULL,253741680312320),(253741680558084,'bpmProcessId',0,'1',NULL,253741680312320),(253741680558085,'endDate',0,'2016-08-26',NULL,253741680312320),(253741680558086,'type',0,'äº‹å‡',NULL,253741680312320),(253741680558087,'endDateTime',0,'ä¸‹åˆ',NULL,253741680312320),(253741680558088,'processDefinitionId',0,'vacation:1:12',NULL,253741680312320),(253746096472065,'content',0,'11',NULL,253746096472064),(253746096472066,'title',0,'11',NULL,253746096472064),(253746096472067,'autoCompleteFirstTask',0,'false',NULL,253746096472064),(253746096472068,'businessKey',0,'253746096472064',NULL,253746096472064),(253746096472069,'bpmProcessId',0,'2',NULL,253746096472064),(253746096472070,'countersignUsers',0,'247688773386240,247689637478400',NULL,253746096472064),(253746096472071,'processDefinitionId',0,'publish:1:8',NULL,253746096472064),(253746096472072,'countersignUsers_name',0,'ww,tt',NULL,253746096472064),(254985839607809,'startDate',0,'2016-08-20',NULL,254985839607808),(254985839607810,'startDateTime',0,'ä¸Šåˆ',NULL,254985839607808),(254985839607811,'reason',0,'qwe',NULL,254985839607808),(254985839607812,'autoCompleteFirstTask',0,'false',NULL,254985839607808),(254985839607813,'businessKey',0,'254985839607808',NULL,254985839607808),(254985839607814,'bpmProcessId',0,'1',NULL,254985839607808),(254985839607815,'endDate',0,'2016-08-25',NULL,254985839607808),(254985839607816,'type',0,'äº‹å‡',NULL,254985839607808),(254985839607817,'endDateTime',0,'ä¸‹åˆ',NULL,254985839607808),(254985839607818,'processDefinitionId',0,'vacation:1:12',NULL,254985839607808),(255028050034688,'content',0,'',NULL,255028049969152),(255028050051072,'title',0,'df',NULL,255028049969152),(255028050051073,'autoCompleteFirstTask',0,'false',NULL,255028049969152),(255028050051074,'businessKey',0,'255028049969152',NULL,255028049969152),(255028050067456,'bpmProcessId',0,'2',NULL,255028049969152),(255028050067457,'countersignUsers',0,'247689637478400',NULL,255028049969152),(255028050067458,'processDefinitionId',0,'publish:1:8',NULL,255028049969152),(255028050083840,'countersignUsers_name',0,'tt',NULL,255028049969152),(255029386952704,'humanTaskId',0,'255029388197888',NULL,255028049969152),(255029386969088,'_humantask_action_',0,'åå¯¹',NULL,255028049969152),(255029386985472,'_humantask_comment_',0,'',NULL,255028049969152),(255031233069056,'countersignComment',0,'åŒæ„',NULL,255028049969152),(263487426166784,'startDate',0,'2016-08-26',NULL,263487425871872),(263487426183168,'startDateTime',0,'ä¸Šåˆ',NULL,263487425871872),(263487426199552,'reason',0,'sda',NULL,263487425871872),(263487426215936,'autoCompleteFirstTask',0,'false',NULL,263487425871872),(263487426232320,'businessKey',0,'263487425871872',NULL,263487425871872),(263487426248704,'bpmProcessId',0,'1',NULL,263487425871872),(263487426265088,'endDate',0,'2016-08-31',NULL,263487425871872),(263487426265089,'type',0,'äº‹å‡',NULL,263487425871872),(263487426281472,'endDateTime',0,'ä¸‹åˆ',NULL,263487425871872),(263487426297856,'processDefinitionId',0,'vacation:1:12',NULL,263487425871872),(270376239153152,'startDate',0,'2016-07-28',NULL,270376238874624),(270376239169536,'startDateTime',0,'ä¸Šåˆ',NULL,270376238874624),(270376239169537,'reason',0,'test',NULL,270376238874624),(270376239185920,'autoCompleteFirstTask',0,'false',NULL,270376238874624),(270376239185921,'businessKey',0,'270376238874624',NULL,270376238874624),(270376239185922,'bpmProcessId',0,'1',NULL,270376238874624),(270376239202304,'endDate',0,'2016-08-26',NULL,270376238874624),(270376239202305,'type',0,'äº‹å‡',NULL,270376238874624),(270376239218688,'endDateTime',0,'ä¸‹åˆ',NULL,270376238874624),(270376239218689,'processDefinitionId',0,'vacation:1:12',NULL,270376238874624),(270377573826560,'humanTaskId',0,'270376274198528',NULL,270376238874624),(270377573826561,'_humantask_action_',0,'',NULL,270376238874624),(270377573842944,'leaderComment',0,'åŒæ„',NULL,270376238874624),(270377573842945,'_humantask_comment_',0,'',NULL,270376238874624),(270380001542144,'content',0,'11111',NULL,270380001509376),(270380001542145,'title',0,'test',NULL,270380001509376),(270380001558528,'autoCompleteFirstTask',0,'false',NULL,270380001509376),(270380001558529,'businessKey',0,'270380001509376',NULL,270380001509376),(270380001574912,'bpmProcessId',0,'2',NULL,270380001509376),(270380001574913,'countersignUsers',0,'247689637478400',NULL,270380001509376),(270380001574914,'processDefinitionId',0,'publish:1:8',NULL,270380001509376),(270380001591296,'countersignUsers_name',0,'tt',NULL,270380001509376),(270381013516288,'humanTaskId',0,'270381464567808',NULL,270380001509376),(270381013532672,'_humantask_action_',0,'åŒæ„',NULL,270380001509376),(270381013549056,'leaderComment',0,'åŒæ„',NULL,270380001509376),(270381013549057,'_humantask_comment_',0,'',NULL,270380001509376),(270388501430272,'countersignComment',0,'åŒæ„',NULL,270380001509376),(270513642438656,'startDate',0,'2016-08-27',NULL,270513642176512),(270513642438657,'startDateTime',0,'ä¸Šåˆ',NULL,270513642176512),(270513642438658,'reason',0,'fdgd',NULL,270513642176512),(270513642438659,'autoCompleteFirstTask',0,'false',NULL,270513642176512),(270513642438660,'businessKey',0,'270513642176512',NULL,270513642176512),(270513642438661,'bpmProcessId',0,'1',NULL,270513642176512),(270513642438662,'endDate',0,'2016-08-31',NULL,270513642176512),(270513642438663,'type',0,'äº‹å‡',NULL,270513642176512),(270513642438664,'endDateTime',0,'ä¸‹åˆ',NULL,270513642176512),(270513642438665,'processDefinitionId',0,'vacation:1:12',NULL,270513642176512),(270614424371200,'humanTaskId',0,'270513673076736',NULL,270513642176512),(270614424403968,'_humantask_action_',0,'',NULL,270513642176512),(270614424420352,'_humantask_comment_',0,'',NULL,270513642176512),(270615236722688,'startDate',0,'2016-08-26',NULL,270615236689920),(270615236722689,'startDateTime',0,'ä¸Šåˆ',NULL,270615236689920),(270615236722690,'reason',0,'a',NULL,270615236689920),(270615236722691,'autoCompleteFirstTask',0,'false',NULL,270615236689920),(270615236739072,'businessKey',0,'270615236689920',NULL,270615236689920),(270615236739073,'bpmProcessId',0,'1',NULL,270615236689920),(270615236739074,'endDate',0,'2016-08-31',NULL,270615236689920),(270615236820992,'type',0,'äº‹å‡',NULL,270615236689920),(270615236837376,'endDateTime',0,'ä¸‹åˆ',NULL,270615236689920),(270615236837377,'processDefinitionId',0,'vacation:1:12',NULL,270615236689920),(270615537221632,'humanTaskId',0,'270619157757952',NULL,270615236689920),(270615537238016,'_humantask_action_',0,'',NULL,270615236689920),(270615537238017,'_humantask_comment_',0,'',NULL,270615236689920),(270615682908160,'leaderComment',0,'åŒæ„',NULL,270615236689920),(270619156856832,'hrComment',0,'åŒæ„',NULL,270615236689920),(270622027120640,'content',0,'1231',NULL,270622027038720),(270622027137024,'title',0,'12',NULL,270622027038720),(270622027137025,'autoCompleteFirstTask',0,'false',NULL,270622027038720),(270622027153408,'businessKey',0,'270622027038720',NULL,270622027038720),(270622027153409,'bpmProcessId',0,'2',NULL,270622027038720),(270622027169792,'countersignUsers',0,'4',NULL,270622027038720),(270622027169793,'processDefinitionId',0,'publish:1:8',NULL,270622027038720),(270622027169794,'countersignUsers_name',0,'é‡‘',NULL,270622027038720),(270623529009152,'humanTaskId',0,'270623529762816',NULL,270622027038720),(270623529025536,'_humantask_action_',0,'åŒæ„',NULL,270622027038720),(270623529025537,'leaderComment',0,'åŒæ„',NULL,270622027038720),(270623529025538,'_humantask_comment_',0,'',NULL,270622027038720),(270624048300032,'countersignComment',0,'åŒæ„',NULL,270622027038720),(270633939025920,'content',0,'we',NULL,270633939009536),(270633939042304,'title',0,'qw',NULL,270633939009536),(270633939091456,'autoCompleteFirstTask',0,'false',NULL,270633939009536),(270633939107840,'businessKey',0,'270633939009536',NULL,270633939009536),(270633939107841,'bpmProcessId',0,'2',NULL,270633939009536),(270633939107842,'countersignUsers',0,'247689637478400',NULL,270633939009536),(270633939124224,'processDefinitionId',0,'publish:1:8',NULL,270633939009536),(270633939124225,'countersignUsers_name',0,'tt',NULL,270633939009536),(270634202431488,'humanTaskId',0,'270634203316224',NULL,270633939009536),(270634202447872,'_humantask_action_',0,'åŒæ„',NULL,270633939009536),(270634202447873,'leaderComment',0,'åŒæ„',NULL,270633939009536),(270634202480640,'_humantask_comment_',0,'',NULL,270633939009536),(270635210719232,'countersignComment',0,'åŒæ„',NULL,270633939009536),(270752438370304,'startDate',0,'2016-08-26',NULL,270752438255616),(270752438386688,'startDateTime',0,'ä¸Šåˆ',NULL,270752438255616),(270752438386689,'reason',0,'èƒœå¤šè´Ÿå°‘',NULL,270752438255616),(270752438403072,'autoCompleteFirstTask',0,'false',NULL,270752438255616),(270752438403073,'businessKey',0,'270752438255616',NULL,270752438255616),(270752438403074,'bpmProcessId',0,'270745847971840',NULL,270752438255616),(270752438419456,'endDate',0,'2016-08-30',NULL,270752438255616),(270752438419457,'type',0,'äº‹å‡',NULL,270752438255616),(270752438419458,'endDateTime',0,'ä¸‹åˆ',NULL,270752438255616),(270752438435840,'processDefinitionId',0,'process:4:15173',NULL,270752438255616),(270753257078784,'humanTaskId',0,'270752467746816',NULL,270752438255616),(270753257078785,'_humantask_action_',0,'',NULL,270752438255616),(270753257095168,'_humantask_comment_',0,'',NULL,270752438255616),(270755860905984,'startDate',0,'2016-08-27',NULL,270755860873216),(270755860905985,'startDateTime',0,'ä¸Šåˆ',NULL,270755860873216),(270755860905986,'reason',0,'sdf',NULL,270755860873216),(270755860905987,'autoCompleteFirstTask',0,'false',NULL,270755860873216),(270755860922368,'businessKey',0,'',NULL,270755860873216),(270755860971520,'bpmProcessId',0,'270745847971840',NULL,270755860873216),(270755860987904,'endDate',0,'2016-08-31',NULL,270755860873216),(270755860987905,'type',0,'äº‹å‡',NULL,270755860873216),(270755860987906,'endDateTime',0,'ä¸‹åˆ',NULL,270755860873216),(270755860987907,'processDefinitionId',0,'process:4:15173',NULL,270755860873216),(270756993368064,'startDate',0,'2016-08-26',NULL,270756993302528),(270756993384448,'startDateTime',0,'ä¸Šåˆ',NULL,270756993302528),(270756993384449,'reason',0,'sd',NULL,270756993302528),(270756993400832,'autoCompleteFirstTask',0,'false',NULL,270756993302528),(270756993400833,'businessKey',0,'270756993302528',NULL,270756993302528),(270756993400834,'bpmProcessId',0,'270745847971840',NULL,270756993302528),(270756993417216,'endDate',0,'2016-08-31',NULL,270756993302528),(270756993417217,'type',0,'äº‹å‡',NULL,270756993302528),(270756993417218,'endDateTime',0,'ä¸‹åˆ',NULL,270756993302528),(270756993417219,'processDefinitionId',0,'process:4:15173',NULL,270756993302528),(270757515673600,'startDate',0,'2016-08-23',NULL,270757515640832),(270757515673601,'startDateTime',0,'ä¸Šåˆ',NULL,270757515640832),(270757515689984,'reason',0,'fd',NULL,270757515640832),(270757515689985,'autoCompleteFirstTask',0,'false',NULL,270757515640832),(270757515689986,'businessKey',0,'270757515640832',NULL,270757515640832),(270757515689987,'bpmProcessId',0,'1',NULL,270757515640832),(270757515706368,'endDate',0,'2016-08-31',NULL,270757515640832),(270757515706369,'type',0,'äº‹å‡',NULL,270757515640832),(270757515706370,'endDateTime',0,'ä¸‹åˆ',NULL,270757515640832),(270757515722752,'processDefinitionId',0,'vacation:1:12',NULL,270757515640832),(271695178825728,'startDate',0,'2016-08-26',NULL,271695178579968),(271695178825729,'startDateTime',0,'ä¸Šåˆ',NULL,271695178579968),(271695178825730,'reason',0,'aad',NULL,271695178579968),(271695178825731,'autoCompleteFirstTask',0,'false',NULL,271695178579968),(271695178825732,'businessKey',0,'271695178579968',NULL,271695178579968),(271695178825733,'bpmProcessId',0,'1',NULL,271695178579968),(271695178825734,'endDate',0,'2016-08-28',NULL,271695178579968),(271695178825735,'type',0,'äº‹å‡',NULL,271695178579968),(271695178825736,'endDateTime',0,'ä¸‹åˆ',NULL,271695178579968),(271695178825737,'processDefinitionId',0,'vacation:1:12',NULL,271695178579968),(271696279928832,'humanTaskId',0,'270757730238464',NULL,270757515640832),(271696279928833,'_humantask_action_',0,'',NULL,270757515640832),(271696279928834,'leaderComment',0,'åŒæ„',NULL,270757515640832),(271696279928835,'_humantask_comment_',0,'',NULL,270757515640832),(271756963725312,'bpmProcessId',0,'270745847971840',NULL,271756963692544),(271756963741696,'businessKey',0,'',NULL,271756963692544),(271757449904128,'humanTaskId',0,'270757021220864',NULL,270756993302528),(271757449904129,'_humantask_action_',0,'',NULL,270756993302528),(271757449904130,'leaderComment',0,'åŒæ„',NULL,270756993302528),(271757449904131,'_humantask_comment_',0,'',NULL,270756993302528),(271759910174721,'startDate',0,'2016-08-28',NULL,271759910174720),(271759910174722,'startDateTime',0,'ä¸Šåˆ',NULL,271759910174720),(271759910174723,'reason',0,'sf',NULL,271759910174720),(271759910174724,'autoCompleteFirstTask',0,'false',NULL,271759910174720),(271759910174725,'businessKey',0,'271759910174720',NULL,271759910174720),(271759910174726,'bpmProcessId',0,'270745847971840',NULL,271759910174720),(271759910174727,'endDate',0,'2016-08-31',NULL,271759910174720),(271759910174728,'type',0,'äº‹å‡',NULL,271759910174720),(271759910420480,'endDateTime',0,'ä¸‹åˆ',NULL,271759910174720),(271759910420481,'processDefinitionId',0,'process:4:15173',NULL,271759910174720),(271759910682624,'fileupload-4-1',0,'20160824/1b9ed044-ac0e-452b-a091-5607b21d1b49.txt',NULL,271759910174720),(271766822633473,'startDate',0,'2016-08-26',NULL,271766822633472),(271766822633474,'startDateTime',0,'ä¸Šåˆ',NULL,271766822633472),(271766822633475,'reason',0,'fgd',NULL,271766822633472),(271766822633476,'autoCompleteFirstTask',0,'false',NULL,271766822633472),(271766822633477,'businessKey',0,'271766822633472',NULL,271766822633472),(271766822633478,'bpmProcessId',0,'270745847971840',NULL,271766822633472),(271766822879232,'endDate',0,'2016-08-31',NULL,271766822633472),(271766822879233,'type',0,'äº‹å‡',NULL,271766822633472),(271766822879234,'endDateTime',0,'ä¸‹åˆ',NULL,271766822633472),(271766822879235,'processDefinitionId',0,'process:4:15173',NULL,271766822633472),(271766823141376,'fileupload-4-1',0,'20160824/1591ad81-1b1d-4fda-b7d2-5ce2ad13e154.xls',NULL,271766822633472),(271782491504641,'startDate',0,'2016-08-26',NULL,271782491504640),(271782491504642,'startDateTime',0,'ä¸Šåˆ',NULL,271782491504640),(271782491504643,'reason',0,'gjfj',NULL,271782491504640),(271782491504644,'autoCompleteFirstTask',0,'false',NULL,271782491504640),(271782491504645,'businessKey',0,'271782491504640',NULL,271782491504640),(271782491504646,'bpmProcessId',0,'270745847971840',NULL,271782491504640),(271782491504647,'endDate',0,'2016-08-31',NULL,271782491504640),(271782491504648,'type',0,'å©šå‡',NULL,271782491504640),(271782491750400,'endDateTime',0,'ä¸‹åˆ',NULL,271782491504640),(271782491750401,'processDefinitionId',0,'process:4:15173',NULL,271782491504640),(271782491750403,'fileupload-4-1',0,'20160824/b0476c74-90c2-4462-a6b5-8f74985c153f.txt',NULL,271782491504640),(271828669497345,'startDate',0,'2016-08-26',NULL,271828669497344),(271828669497346,'startDateTime',0,'ä¸Šåˆ',NULL,271828669497344),(271828669497347,'reason',0,'sdf',NULL,271828669497344),(271828669497348,'autoCompleteFirstTask',0,'false',NULL,271828669497344),(271828669497349,'businessKey',0,'271828669497344',NULL,271828669497344),(271828669759488,'bpmProcessId',0,'270745847971840',NULL,271828669497344),(271828669759489,'endDate',0,'2016-08-31',NULL,271828669497344),(271828669759490,'type',0,'äº‹å‡',NULL,271828669497344),(271828669759491,'endDateTime',0,'ä¸‹åˆ',NULL,271828669497344),(271828669759492,'processDefinitionId',0,'process:4:15173',NULL,271828669497344),(271828670021632,'fileupload-4-1',0,'20160824/49756345-f0f7-4f0f-a39f-afd01ac9fb96.txt',NULL,271828669497344),(277386212868096,'startDate',0,'2016-08-28',NULL,277386212622336),(277386212884480,'totalDays',0,'å¤§äºä¸‰å¤©',NULL,277386212622336),(277386212900864,'startDateTime',0,'ä¸Šåˆ',NULL,277386212622336),(277386212900865,'reason',0,'test',NULL,277386212622336),(277386212900866,'autoCompleteFirstTask',0,'false',NULL,277386212622336),(277386212917248,'businessKey',0,'277386212622336',NULL,277386212622336),(277386212917249,'bpmProcessId',0,'277362401099776',NULL,277386212622336),(277386212917250,'endDate',0,'2016-08-31',NULL,277386212622336),(277386212933632,'type',0,'äº‹å‡',NULL,277386212622336),(277386212933633,'endDateTime',0,'ä¸‹åˆ',NULL,277386212622336),(277386212933634,'processDefinitionId',0,'vacation-student:1:20008',NULL,277386212622336),(277391815983104,'startDate',0,'2016-08-30',NULL,277391815950336),(277391815983105,'totalDays',0,'å¤§äºä¸‰å¤©',NULL,277391815950336),(277391815983106,'startDateTime',0,'ä¸Šåˆ',NULL,277391815950336),(277391815999488,'reason',0,'sd',NULL,277391815950336),(277391815999489,'autoCompleteFirstTask',0,'false',NULL,277391815950336),(277391815999490,'businessKey',0,'277391815950336',NULL,277391815950336),(277391816015872,'bpmProcessId',0,'277362401099776',NULL,277391815950336),(277391816015873,'endDate',0,'2016-08-31',NULL,277391815950336),(277391816032256,'type',0,'äº‹å‡',NULL,277391815950336),(277391816048640,'endDateTime',0,'ä¸‹åˆ',NULL,277391815950336),(277391816065024,'processDefinitionId',0,'vacation-student:1:20008',NULL,277391815950336),(277394326126592,'startDate',0,'2016-08-30',NULL,277394326110208),(277394326142976,'startDateTime',0,'ä¸Šåˆ',NULL,277394326110208),(277394326142977,'reason',0,'adsff',NULL,277394326110208),(277394326142978,'autoCompleteFirstTask',0,'false',NULL,277394326110208),(277394326159360,'businessKey',0,'277394326110208',NULL,277394326110208),(277394326159361,'bpmProcessId',0,'1',NULL,277394326110208),(277394326159362,'endDate',0,'2016-08-31',NULL,277394326110208),(277394326175744,'type',0,'äº‹å‡',NULL,277394326110208),(277394326175745,'endDateTime',0,'ä¸‹åˆ',NULL,277394326110208),(277394326175746,'processDefinitionId',0,'vacation:1:12',NULL,277394326110208),(277400806670336,'startDate',0,'2016-08-30',NULL,277400806588416),(277400806670337,'totalDays',0,'å°äºä¸‰å¤©',NULL,277400806588416),(277400806686720,'startDateTime',0,'ä¸Šåˆ',NULL,277400806588416),(277400806686721,'reason',0,'te',NULL,277400806588416),(277400806686722,'autoCompleteFirstTask',0,'false',NULL,277400806588416),(277400806752256,'businessKey',0,'277400806588416',NULL,277400806588416),(277400806752257,'bpmProcessId',0,'277362401099776',NULL,277400806588416),(277400806768640,'endDate',0,'2016-08-31',NULL,277400806588416),(277400806768641,'type',0,'äº‹å‡',NULL,277400806588416),(277400806768642,'endDateTime',0,'ä¸‹åˆ',NULL,277400806588416),(277400806785024,'processDefinitionId',0,'vacation-student:1:20008',NULL,277400806588416),(277401186009088,'humanTaskId',0,'277400840503296',NULL,277400806588416),(277401186009089,'_humantask_action_',0,'',NULL,277400806588416),(277401186009090,'leaderComment',0,'åŒæ„',NULL,277400806588416),(277401186025472,'_humantask_comment_',0,'',NULL,277400806588416),(277416052768768,'startDate',0,'2016-08-30',NULL,277416052719616),(277416052768769,'totalDays',0,'å¤§äºä¸‰å¤©',NULL,277416052719616),(277416052785152,'startDateTime',0,'ä¸Šåˆ',NULL,277416052719616),(277416052785153,'reason',0,'ret',NULL,277416052719616),(277416052785154,'autoCompleteFirstTask',0,'false',NULL,277416052719616),(277416052801536,'businessKey',0,'277416052719616',NULL,277416052719616),(277416052801537,'bpmProcessId',0,'277362401099776',NULL,277416052719616),(277416052801538,'endDate',0,'2016-08-31',NULL,277416052719616),(277416052801539,'type',0,'äº‹å‡',NULL,277416052719616),(277416052817920,'endDateTime',0,'ä¸‹åˆ',NULL,277416052719616),(277416052817921,'processDefinitionId',0,'vacation-student:2:20087',NULL,277416052719616),(277416334852096,'humanTaskId',0,'277416114700288',NULL,277416052719616),(277416334868480,'_humantask_action_',0,'',NULL,277416052719616),(277416334868481,'leaderComment',0,'åŒæ„',NULL,277416052719616),(277416334868482,'_humantask_comment_',0,'',NULL,277416052719616),(277433676283904,'startDate',0,'2016-08-30',NULL,277433676251136),(277433676300288,'totalDays',0,'å¤§äºä¸‰å¤©',NULL,277433676251136),(277433676300289,'startDateTime',0,'ä¸Šåˆ',NULL,277433676251136),(277433676300290,'reason',0,'df',NULL,277433676251136),(277433676300291,'autoCompleteFirstTask',0,'false',NULL,277433676251136),(277433676316672,'businessKey',0,'277433676251136',NULL,277433676251136),(277433676316673,'bpmProcessId',0,'277430478815232',NULL,277433676251136),(277433676316674,'endDate',0,'2016-08-31',NULL,277433676251136),(277433676316675,'type',0,'äº‹å‡',NULL,277433676251136),(277433676316676,'endDateTime',0,'ä¸‹åˆ',NULL,277433676251136),(277433676414976,'processDefinitionId',0,'vacation-student:4:20117',NULL,277433676251136),(277433905528832,'humanTaskId',0,'277433694568448',NULL,277433676251136),(277433905528833,'_humantask_action_',0,'',NULL,277433676251136),(277433905545216,'leaderComment',0,'åŒæ„',NULL,277433676251136),(277433905610752,'_humantask_comment_',0,'',NULL,277433676251136),(277438255693824,'startDate',0,'2016-08-30',NULL,277438255661056),(277438255693825,'totalDays',0,'å¤§äºä¸‰å¤©',NULL,277438255661056),(277438255693826,'startDateTime',0,'ä¸Šåˆ',NULL,277438255661056),(277438255710208,'reason',0,'sf',NULL,277438255661056),(277438255710209,'autoCompleteFirstTask',0,'false',NULL,277438255661056),(277438255726592,'businessKey',0,'277438255661056',NULL,277438255661056),(277438255726593,'bpmProcessId',0,'277430478815232',NULL,277438255661056),(277438255742976,'endDate',0,'2016-08-31',NULL,277438255661056),(277438255742977,'type',0,'äº‹å‡',NULL,277438255661056),(277438255742978,'endDateTime',0,'ä¸‹åˆ',NULL,277438255661056),(277438255759360,'processDefinitionId',0,'vacation-student:4:20117',NULL,277438255661056),(277438683594752,'humanTaskId',0,'277439306760192',NULL,277438255661056),(277438683611136,'_humantask_action_',0,'',NULL,277438255661056),(277438683611137,'leaderComment',0,'åŒæ„',NULL,277438255661056),(277438683627520,'_humantask_comment_',0,'',NULL,277438255661056),(277439306022912,'hrComment',0,'åŒæ„',NULL,277438255661056),(277601506263040,'startDate',0,'2016-08-28',NULL,277601506230272),(277601506279424,'startDateTime',0,'ä¸Šåˆ',NULL,277601506230272),(277601506279425,'reason',0,'fgh',NULL,277601506230272),(277601506295808,'autoCompleteFirstTask',0,'false',NULL,277601506230272),(277601506295809,'businessKey',0,'277601506230272',NULL,277601506230272),(277601506295810,'bpmProcessId',0,'1',NULL,277601506230272),(277601506295811,'endDate',0,'2016-08-31',NULL,277601506230272),(277601506312192,'type',0,'å€’ä¼‘',NULL,277601506230272),(277601506312193,'endDateTime',0,'ä¸‹åˆ',NULL,277601506230272),(277601506312194,'processDefinitionId',0,'vacation:1:12',NULL,277601506230272);
+/*!40000 ALTER TABLE `kv_prop` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kv_record`
+--
+
+DROP TABLE IF EXISTS `kv_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kv_record` (
+  `ID` bigint(20) NOT NULL,
+  `CATEGORY` varchar(200) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `NAME` varchar(100) DEFAULT NULL,
+  `FORM_TEMPLATE_CODE` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kv_record`
+--
+
+LOCK TABLES `kv_record` WRITE;
+/*!40000 ALTER TABLE `kv_record` DISABLE KEYS */;
+INSERT INTO `kv_record` VALUES (253357509574656,NULL,0,'vacation-request',NULL,NULL,'ç”³è¯·å•',NULL,NULL),(253357634093056,NULL,0,'vacation-department',NULL,NULL,'ä¸Šçº§å®¡æ‰¹',NULL,NULL),(253357840138240,NULL,0,'vacation-hr',NULL,NULL,'äººäº‹å®¡æ‰¹',NULL,NULL),(253358658420736,NULL,0,'publish-finish',NULL,NULL,'å½’æ¡£',NULL,NULL),(253397469265920,'1',2,'5001','1','2016-08-11 11:17:35','è¯·å‡æµç¨‹',NULL,'1'),(253442188607488,'1',1,'5018','247689637478400','2016-08-11 12:03:04','è¯·å‡æµç¨‹',NULL,'1'),(253569526644736,'253452682625024',2,'5042','1','2016-08-11 14:12:36','ç®€å•è¯·å‡æµç¨‹',NULL,'1'),(253572155539456,'1',2,'5047','1','2016-08-11 14:15:17','è¯·å‡æµç¨‹',NULL,'1'),(253585567006720,'1',2,'5060','1','2016-08-11 14:28:55','è¯·å‡æµç¨‹',NULL,'1'),(253657840730112,'1',0,NULL,'1','2016-08-11 15:42:27','è¯·å‡æµç¨‹',NULL,'1'),(253741680312320,'1',2,'5085','1','2016-08-11 17:07:44','è¯·å‡æµç¨‹',NULL,'1'),(253746096472064,'2',2,'5098','1','2016-08-11 17:12:13','å‘æ–‡æµç¨‹',NULL,'1'),(254985839607808,'1',2,'7501','247689000714240','2016-08-12 14:13:21','è¯·å‡æµç¨‹',NULL,'1'),(255028049969152,'2',1,'7519','1','2016-08-12 14:56:18','å‘æ–‡æµç¨‹',NULL,'1'),(263487425871872,'1',2,'10001','263486612602880','2016-08-18 14:21:37','è¯·å‡æµç¨‹',NULL,'1'),(270376238874624,'1',1,'15001','1','2016-08-23 11:09:17','è¯·å‡æµç¨‹',NULL,'1'),(270380001509376,'2',1,'15022','1','2016-08-23 11:13:06','å‘æ–‡æµç¨‹',NULL,'1'),(270513642176512,'1',1,'15059','1','2016-08-23 13:29:03','è¯·å‡æµç¨‹',NULL,'1'),(270615236689920,'1',2,'15077','1','2016-08-23 15:12:24','è¯·å‡æµç¨‹',NULL,'1'),(270622027038720,'2',1,'15105','1','2016-08-23 15:19:18','å‘æ–‡æµç¨‹',NULL,'1'),(270633939009536,'2',1,'15131','1','2016-08-23 15:31:25','å‘æ–‡æµç¨‹',NULL,'1'),(270752438255616,'270745847971840',2,'15174','1','2016-08-23 17:31:58','test',NULL,'1'),(270755860873216,'270745847971840',0,NULL,'1','2016-08-23 17:35:27','test',NULL,'1'),(270756993302528,'270745847971840',2,'15194','1','2016-08-23 17:36:36','test',NULL,'1'),(270757515640832,'1',2,'15210','1','2016-08-23 17:37:08','è¯·å‡æµç¨‹',NULL,'1'),(271695178579968,'1',2,'17501','1','2016-08-24 09:30:58','è¯·å‡æµç¨‹',NULL,'1'),(271710293164032,NULL,0,'vacation-modify',NULL,NULL,'è°ƒæ•´ç”³è¯·',NULL,NULL),(271729509171200,NULL,0,'vacation-request1',NULL,NULL,'ç”³è¯·å•1',NULL,NULL),(271755996758016,NULL,0,'vacation-request-student',NULL,NULL,'å­¦ç”Ÿè¯·å‡å•',NULL,NULL),(271756081807360,NULL,0,'vacation-department-student',NULL,NULL,'è¾…å¯¼å‘˜å®¡æ‰¹',NULL,NULL),(271756963692544,'270745847971840',2,'17522','1','2016-08-24 10:33:49','test',NULL,'1'),(271759910174720,'270745847971840',2,'17535','1','2016-08-24 10:36:49','test',NULL,'1'),(271766822633472,'270745847971840',2,'17552','1','2016-08-24 10:43:51','test',NULL,'1'),(271782491504640,'270745847971840',2,'17569','1','2016-08-24 10:59:48','test',NULL,'1'),(271789764935680,NULL,0,'publish-request',NULL,NULL,'å‘æ–‡',NULL,NULL),(271817743646720,NULL,0,'vacation-hr1',NULL,NULL,'äººäº‹å®¡æ‰¹1',NULL,NULL),(271828669497344,'270745847971840',2,'17586','1','2016-08-24 11:46:46','test',NULL,'1'),(276491299864576,NULL,0,'permission-manager',NULL,NULL,'æ€»ç»ç†å®¡æ‰¹',NULL,NULL),(276491477336064,NULL,0,'publish-manager',NULL,NULL,'ç»ç†å®¡æ‰¹',NULL,NULL),(276492071239680,NULL,0,'permission-department',NULL,NULL,'ç»ç†å®¡æ‰¹',NULL,NULL),(277386212622336,'277362401099776',2,'20009','1','2016-08-28 10:00:12','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277391815950336,'277362401099776',2,'20028','1','2016-08-28 10:05:54','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277394326110208,'1',2,'20045','1','2016-08-28 10:08:27','è¯·å‡æµç¨‹',NULL,'1'),(277397172125696,NULL,0,'vacation-leader-student',NULL,NULL,'é™¢ç³»é¢†å¯¼å®¡æ‰¹',NULL,NULL),(277400806588416,'277362401099776',1,'20061','1','2016-08-28 10:15:02','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277416052719616,'277362401099776',2,'20088','1','2016-08-28 10:30:33','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277433676251136,'277430478815232',2,'20118','1','2016-08-28 10:48:29','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277438255661056,'277430478815232',2,'20141','1','2016-08-28 10:53:08','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277601506230272,'1',2,'20170','247689000714240','2016-08-28 13:39:12','è¯·å‡æµç¨‹',NULL,'1');
+/*!40000 ALTER TABLE `kv_record` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `leave_info`
+--
+
+DROP TABLE IF EXISTS `leave_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `leave_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `EMPLOYEE_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `leave_info`
+--
+
+LOCK TABLES `leave_info` WRITE;
+/*!40000 ALTER TABLE `leave_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `leave_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `meeting_attendee`
+--
+
+DROP TABLE IF EXISTS `meeting_attendee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meeting_attendee` (
+  `ID` bigint(20) NOT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_MEETING_ATTENDEE_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_MEETING_ATTENDEE_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `meeting_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meeting_attendee`
+--
+
+LOCK TABLES `meeting_attendee` WRITE;
+/*!40000 ALTER TABLE `meeting_attendee` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meeting_attendee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `meeting_info`
+--
+
+DROP TABLE IF EXISTS `meeting_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meeting_info` (
+  `ID` bigint(20) NOT NULL,
+  `SUBJECT` varchar(200) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `START_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `END_TIME` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ORGANIZER` varchar(64) DEFAULT NULL,
+  `MEETING_TIMEZONE` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CATALOG` varchar(50) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `MEETING_ROOM_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_MEETING_INFO_ROOM` (`MEETING_ROOM_ID`),
+  CONSTRAINT `FK_MEETING_INFO_ROOM` FOREIGN KEY (`MEETING_ROOM_ID`) REFERENCES `meeting_room` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meeting_info`
+--
+
+LOCK TABLES `meeting_info` WRITE;
+/*!40000 ALTER TABLE `meeting_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meeting_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `meeting_item`
+--
+
+DROP TABLE IF EXISTS `meeting_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meeting_item` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_MEETING_ITEM_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_MEETING_ITEM_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `meeting_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meeting_item`
+--
+
+LOCK TABLES `meeting_item` WRITE;
+/*!40000 ALTER TABLE `meeting_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meeting_item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `meeting_room`
+--
+
+DROP TABLE IF EXISTS `meeting_room`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meeting_room` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `MAP_REF` varchar(200) DEFAULT NULL,
+  `NUM` int(11) DEFAULT NULL,
+  `PROJECTOR` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `BUILDING` varchar(200) DEFAULT NULL,
+  `FLOOR` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meeting_room`
+--
+
+LOCK TABLES `meeting_room` WRITE;
+/*!40000 ALTER TABLE `meeting_room` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meeting_room` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `model_field`
+--
+
+DROP TABLE IF EXISTS `model_field`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `model_field` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `CODE` varchar(200) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `SEARCHABLE` varchar(10) DEFAULT NULL,
+  `DISPLAYABLE` varchar(10) DEFAULT NULL,
+  `VIEW_LIST` varchar(10) DEFAULT NULL,
+  `VIEW_FORM` varchar(10) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_MODEL_FIELD_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_MODEL_FIELD_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `model_info` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=280568963563521 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `model_field`
+--
+
+LOCK TABLES `model_field` WRITE;
+/*!40000 ALTER TABLE `model_field` DISABLE KEYS */;
+INSERT INTO `model_field` VALUES (246664259452928,'managerComment','managerComment','radio',NULL,'true','true','true','true','1',246664258142208),(246664259665920,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',246664258142208),(246664259878912,'name','name','textfield',NULL,'true','true','true','true','1',246664258142208),(246664261337088,'content','content','textarea',NULL,'true','true','true','true','1',246664260141056),(246664261550080,'title','title','textfield',NULL,'true','true','true','true','1',246664260141056),(246664261795840,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',246664260141056),(246664262025216,'countersignUsers','countersignUsers','userpicker',NULL,'true','true','true','true','1',246664260141056),(246664262254592,'countersignComment','countersignComment','radio',NULL,'true','true','true','true','1',246664260141056),(246664263663616,'startDate','startDate','datepicker',NULL,'true','true','true','true','1',246664262631424),(246664263876608,'startDateTime','startDateTime','select',NULL,'true','true','true','true','1',246664262631424),(246664264056832,'reason','reason','textfield',NULL,'true','true','true','true','1',246664262631424),(246664264302592,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',246664262631424),(246664264531968,'hrComment','hrComment','radio',NULL,'true','true','true','true','1',246664262631424),(246664264728576,'endDate','endDate','datepicker',NULL,'true','true','true','true','1',246664262631424),(246664264908800,'type','type','radio',NULL,'true','true','true','true','1',246664262631424),(246664265105408,'endDateTime','endDateTime','select',NULL,'true','true','true','true','1',246664262631424),(246664265236480,'initiatorComment','initiatorComment','radio',NULL,'true','true','true','true','1',246664262631424),(271672138203136,'startDate','startDate','datepicker',NULL,'true','true','true','true','1',271672137940992),(271672138203137,'startDateTime','startDateTime','select',NULL,'true','true','true','true','1',271672137940992),(271672138465280,'reason','reason','textfield',NULL,'true','true','true','true','1',271672137940992),(271672138465281,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',271672137940992),(271672138711040,'endDate','endDate','datepicker',NULL,'true','true','true','true','1',271672137940992),(271672138711041,'type','type','radio',NULL,'true','true','true','true','1',271672137940992),(271672138973184,'endDateTime','endDateTime','select',NULL,'true','true','true','true','1',271672137940992),(276260027383808,'fileupload-4-1','fileupload-4-1','fileupload',NULL,'true','true','true','true','1',271672137940992),(277346867019776,'totalDays','totalDays','radio',NULL,'true','true','true','true','1',271672137940992),(277698932293632,'startDate','startDate','datepicker',NULL,'true','true','true','true','1',277698931408896),(277698932523008,'totalDays','totalDays','radio',NULL,'true','true','true','true','1',277698931408896),(277698932719616,'startDateTime','startDateTime','select',NULL,'true','true','true','true','1',277698931408896),(277698932932608,'reason','reason','textfield',NULL,'true','true','true','true','1',277698931408896),(277698933194752,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',277698931408896),(277698933391360,'hrComment','hrComment','radio',NULL,'true','true','true','true','1',277698931408896),(277698933686272,'endDate','endDate','datepicker',NULL,'true','true','true','true','1',277698931408896),(277698933964800,'type','type','radio',NULL,'true','true','true','true','1',277698931408896),(277698934177792,'endDateTime','endDateTime','select',NULL,'true','true','true','true','1',277698931408896),(277698934325248,'initiatorComment','initiatorComment','radio',NULL,'true','true','true','true','1',277698931408896),(280494085750784,'managerComment','managerComment','radio',NULL,'true','true','true','true','1',280494085160960),(280494085881856,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',280494085160960),(280494086062080,'name','name','textfield',NULL,'true','true','true','true','1',280494085160960),(280494091354112,'content','content','textarea',NULL,'true','true','true','true','1',280494090747904),(280494091599872,'title','title','textfield',NULL,'true','true','true','true','1',280494090747904),(280494091763712,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',280494090747904),(280494092042240,'countersignUsers','countersignUsers','userpicker',NULL,'true','true','true','true','1',280494090747904),(280494092288000,'countersignComment','countersignComment','radio',NULL,'true','true','true','true','1',280494090747904),(280556632883200,'managerComment','managerComment','radio',NULL,'true','true','true','true','1',280556632522752),(280556632981504,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',280556632522752),(280556633063424,'name','name','textfield',NULL,'true','true','true','true','1',280556632522752),(280568963235840,'managerComment','managerComment','radio',NULL,'true','true','true','true','1',280568962727936),(280568963383296,'leaderComment','leaderComment','radio',NULL,'true','true','true','true','1',280568962727936),(280568963563520,'name','name','textfield',NULL,'true','true','true','true','1',280568962727936);
+/*!40000 ALTER TABLE `model_field` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `model_info`
+--
+
+DROP TABLE IF EXISTS `model_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `model_info` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `CODE` varchar(200) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=280568962727937 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `model_info`
+--
+
+LOCK TABLES `model_info` WRITE;
+/*!40000 ALTER TABLE `model_info` DISABLE KEYS */;
+INSERT INTO `model_info` VALUES (246664258142208,'permission:1:4','å®¡æ‰¹æƒé™',NULL,'1'),(246664260141056,'publish:1:8','å…¬æ–‡å‘å¸ƒ',NULL,'1'),(246664262631424,'vacation:1:12','è¯·å‡æµç¨‹',NULL,'1'),(254785875722240,'process:1:5040',NULL,NULL,'1'),(254785876164608,'process:2:5076',NULL,NULL,'1'),(254785876459520,'process:3:5080',NULL,NULL,'1'),(254785876754432,'process:4:5084',NULL,NULL,'1'),(271672135483392,'myProcess:1:15168','My process',NULL,'1'),(271672136663040,'process:1:15058',NULL,NULL,'1'),(271672137170944,'process:2:15160',NULL,NULL,'1'),(271672137433088,'process:3:15164',NULL,NULL,'1'),(271672137940992,'process:4:15173',NULL,NULL,'1'),(277698930606080,'vacation-student:3:20113','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(277698931408896,'vacation-student:4:20117','å­¦ç”Ÿè¯·å‡æµç¨‹',NULL,'1'),(280494085160960,'permission:2:22504','å®¡æ‰¹æƒé™',NULL,'1'),(280494090747904,'publish:2:22508','å…¬æ–‡å‘å¸ƒ',NULL,'1'),(280556632522752,'permission:3:25004','å®¡æ‰¹æƒé™',NULL,'1'),(280568962727936,'permission:4:27506','å®¡æ‰¹æƒé™',NULL,'1');
+/*!40000 ALTER TABLE `model_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `msg_info`
+--
+
+DROP TABLE IF EXISTS `msg_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `msg_info` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `TYPE` int(11) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `SENDER_ID` varchar(64) DEFAULT NULL,
+  `RECEIVER_ID` varchar(64) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `DATA` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=277601532264450 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `msg_info`
+--
+
+LOCK TABLES `msg_info` WRITE;
+/*!40000 ALTER TABLE `msg_info` DISABLE KEYS */;
+INSERT INTO `msg_info` VALUES (253431967662080,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17éœ€è¦æ‚¨å®¡æ‰¹','é‡‘æ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253431964352512\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253431964352512</a>',NULL,'2016-08-11 03:52:40','20','4',1,'1','253431964352512'),(253442852995073,'è¯·å‡æµç¨‹-tt-2016-08-11 12:03éœ€è¦æ‚¨å®¡æ‰¹','eeæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-tt-2016-08-11 12:03ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253442852519936\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253442852519936</a>',NULL,'2016-08-11 04:03:45','20','247689000714240',1,'1','253442852519936'),(254985888071680,'è¯·å‡æµç¨‹-ee-2016-08-12 14:13éœ€è¦æ‚¨å®¡æ‰¹','qqæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ee-2016-08-12 14:13ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=254985884745728\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=254985884745728</a>',NULL,'2016-08-12 06:13:24','20','247688416968704',0,'1','254985884745728'),(263487482003456,'è¯·å‡æµç¨‹-å¼ ä¸‰-2016-08-18 14:21éœ€è¦æ‚¨å®¡æ‰¹','qqæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-å¼ ä¸‰-2016-08-18 14:21ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=263487477841920\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=263487477841920</a>',NULL,'2016-08-18 06:21:40','20','247688416968704',0,'1','263487477841920'),(270376277245952,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09éœ€è¦æ‚¨å®¡æ‰¹','ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270376274198528\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270376274198528</a>',NULL,'2016-08-23 03:09:19','20','247689637478400',1,'1','270376274198528'),(270377575301121,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚','ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15001\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15001</a>',NULL,'2016-08-23 03:10:38','20','1',1,'1','270377575055360'),(270513673584641,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29éœ€è¦æ‚¨å®¡æ‰¹','ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270513673076736\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270513673076736</a>',NULL,'2016-08-23 05:29:05','20','247689637478400',0,'1','270513673076736'),(270615267180544,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12éœ€è¦æ‚¨å®¡æ‰¹','ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270615266328576\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270615266328576</a>',NULL,'2016-08-23 07:12:26','20','247689637478400',0,'1','270615266328576'),(270615684661248,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚','ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077</a>',NULL,'2016-08-23 07:12:51','20','1',0,'1','270615684382720'),(270620309356544,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»å®Œæˆé”€å‡ç¯èŠ‚','ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»å®Œæˆé”€å‡ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077</a>',NULL,'2016-08-23 07:17:34','20','1',0,'1','270619157757952'),(270757731041280,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37éœ€è¦æ‚¨å®¡æ‰¹','ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270757730238464\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270757730238464</a>',NULL,'2016-08-23 09:37:21','20','247689637478400',0,'1','270757730238464'),(271695218343937,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31éœ€è¦æ‚¨å®¡æ‰¹','ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=271695214493696\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=271695214493696</a>',NULL,'2016-08-24 01:31:01','20','247689637478400',0,'1','271695214493696'),(271696281731073,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚','ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15210\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15210</a>',NULL,'2016-08-24 01:32:06','20','1',1,'1','271696281403392'),(277394350505984,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08éœ€è¦æ‚¨å®¡æ‰¹','ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277394347524096\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277394347524096</a>',NULL,'2016-08-28 02:08:28','20','247689637478400',0,'1','277394347524096'),(277601532264449,'è¯·å‡æµç¨‹-ee-2016-08-28 13:39éœ€è¦æ‚¨å®¡æ‰¹','wwæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ee-2016-08-28 13:39ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277601531461632\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277601531461632</a>',NULL,'2016-08-28 05:39:14','20','247688773386240',0,'1','277601531461632');
+/*!40000 ALTER TABLE `msg_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `officesupply_info`
+--
+
+DROP TABLE IF EXISTS `officesupply_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `officesupply_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `PRICE` double DEFAULT NULL,
+  `UNIT` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `PHOTO` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `officesupply_info`
+--
+
+LOCK TABLES `officesupply_info` WRITE;
+/*!40000 ALTER TABLE `officesupply_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `officesupply_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `officesupply_receive`
+--
+
+DROP TABLE IF EXISTS `officesupply_receive`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `officesupply_receive` (
+  `ID` bigint(20) NOT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `RECEIVE_TIME` datetime DEFAULT NULL,
+  `RECEIVE_COUNT` int(11) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_OFFICESUPPLY_RECEIVE_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_OFFICESUPPLY_RECEIVE_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `officesupply_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `officesupply_receive`
+--
+
+LOCK TABLES `officesupply_receive` WRITE;
+/*!40000 ALTER TABLE `officesupply_receive` DISABLE KEYS */;
+/*!40000 ALTER TABLE `officesupply_receive` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `org_company`
+--
+
+DROP TABLE IF EXISTS `org_company`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `org_company` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `org_company`
+--
+
+LOCK TABLES `org_company` WRITE;
+/*!40000 ALTER TABLE `org_company` DISABLE KEYS */;
+INSERT INTO `org_company` VALUES (1,NULL,'ä¿¡æ¯å·¥ç¨‹å­¦é™¢',NULL,1,NULL,'1');
+/*!40000 ALTER TABLE `org_company` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `org_department`
+--
+
+DROP TABLE IF EXISTS `org_department`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `org_department` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCN` varchar(200) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `org_department`
+--
+
+LOCK TABLES `org_department` WRITE;
+/*!40000 ALTER TABLE `org_department` DISABLE KEYS */;
+INSERT INTO `org_department` VALUES (1,NULL,'å¸‚åœºéƒ¨',NULL,1,NULL,'1'),(2,NULL,'è´¢åŠ¡éƒ¨',NULL,1,NULL,'1'),(3,NULL,'äººäº‹éƒ¨',NULL,1,NULL,'1'),(4,NULL,'ç ”å‘éƒ¨',NULL,1,NULL,'1');
+/*!40000 ALTER TABLE `org_department` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `party_entity`
+--
+
+DROP TABLE IF EXISTS `party_entity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `party_entity` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `NAME` varchar(100) DEFAULT NULL,
+  `REF` varchar(100) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `LEVEL` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PARTY_ENTITY_TYPE` (`TYPE_ID`),
+  KEY `I_PARTY_ENTITY_REFERENCE_TYPE` (`REF`,`TYPE_ID`),
+  KEY `I_PARTY_ENTITY_NAME` (`NAME`),
+  CONSTRAINT `FK_PARTY_ENTITY_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `party_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_entity`
+--
+
+LOCK TABLES `party_entity` WRITE;
+/*!40000 ALTER TABLE `party_entity` DISABLE KEYS */;
+INSERT INTO `party_entity` VALUES (1,2,'ä¿¡æ¯å·¥ç¨‹å­¦é™¢','1','1',NULL),(7,4,'OAç»„','7','1',NULL),(8,1,'Lingo','1','1',NULL),(9,1,'Vivian','2','1',NULL),(11,1,'King','4','1',NULL),(12,1,'John','5','1',NULL),(13,1,'William','6','1',NULL),(14,1,'Adam','7','1',NULL),(15,5,'æ€»ç»ç†',NULL,'1',2),(16,5,'ç»ç†',NULL,'1',1),(10008,1,'Robot','8','1',NULL),(10009,1,'Bob','9','1',NULL),(10010,1,'Alice','10','1',NULL),(10011,1,'Mike','11','1',NULL),(10012,1,'Justin','12','1',NULL),(10013,1,'Tom','13','1',NULL),(10014,1,'James','14','1',NULL),(10015,1,'Joe','15','1',NULL),(10016,1,'Paul','16','1',NULL),(10017,1,'Jane','17','1',NULL),(10018,1,'Marry','18','1',NULL),(10019,1,'Ben','19','1',NULL),(10020,1,'Bot','20','1',NULL),(10021,1,'Jack','21','1',NULL),(10022,1,'Martin','22','1',NULL),(10023,1,'Alex','23','1',NULL),(10024,1,'Daniel','24','1',NULL),(10025,1,'Eric','25','1',NULL),(10026,1,'Leon','26','1',NULL),(10027,1,'Clark','27','1',NULL),(10028,1,'David','28','1',NULL),(10029,1,'Henry','29','1',NULL),(10030,1,'Helen','30','1',NULL),(10031,1,'Sarah','31','1',NULL),(30011,3,'è¡Œæ”¿éƒ¨',NULL,'1',NULL),(30012,3,'é”€å”®éƒ¨',NULL,'1',NULL),(30013,3,'å®¢æœéƒ¨',NULL,'1',NULL),(246672072802304,5,'é™¢é•¿',NULL,'1',NULL),(246672584392704,3,'è¡Œæ”¿éƒ¨',NULL,'1',NULL),(246672875077632,3,'æ•™å­¦éƒ¨',NULL,'1',NULL),(246673234477056,2,'è½¯ä»¶å·¥ç¨‹',NULL,'1',NULL),(246673545330688,2,'è®¡ç®—æœºç§‘å­¦ç³»',NULL,'1',NULL),(246674137432064,2,'è½¯ä»¶å·¥ç¨‹ç³»',NULL,'1',NULL),(246674438438912,2,'æ•°å­¦ç³»',NULL,'1',NULL),(246675515850752,4,'13è½¯ä»¶å·¥ç¨‹1ç­',NULL,'1',NULL),(246675862306816,4,'13è½¯ä»¶å·¥ç¨‹2ç­',NULL,'1',NULL),(246686248615936,4,'13è®¡ç®—æœºç§‘å­¦1ç­',NULL,'1',NULL),(246686802132992,4,'13æ•°å­¦1ç­',NULL,'1',NULL),(246689204633600,5,'æ•™å­¦ç§˜ä¹¦',NULL,'1',NULL),(246689751498752,5,'è¾…å¯¼å‘˜',NULL,'1',NULL),(246690250981376,5,'ç­çº§è¾…å¯¼å‘˜',NULL,'1',NULL),(246690792636416,5,'ç­çº§è¾…å¯¼å‘˜',NULL,'1',NULL),(247686228787200,5,'13è½¯1ç­çº§è¾…å¯¼å‘˜',NULL,'1',NULL),(247687163609088,5,'å­¦ç”Ÿ',NULL,'1',NULL),(247688787001344,1,'ww','247688773386240','1',NULL),(247689001828352,1,'ee','247689000714240','1',NULL),(247689265692672,1,'rr','247689264381952','1',NULL),(247689641492480,1,'tt','247689637478400','1',NULL),(247722930913280,5,'ç³»ä¸»ä»»',NULL,'1',NULL),(247723234000896,5,'ç³»ä¸»ä»»',NULL,'1',NULL),(247723902418944,5,'ç³»ä¸»ä»»',NULL,'1',NULL),(267768848777216,1,'å¼ ä¸‰','267768847958016','1',NULL),(277421486178304,5,'ä¹¦è®°',NULL,'1',NULL);
+/*!40000 ALTER TABLE `party_entity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `party_struct`
+--
+
+DROP TABLE IF EXISTS `party_struct`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `party_struct` (
+  `STRUCT_TYPE_ID` bigint(20) NOT NULL,
+  `PARENT_ENTITY_ID` bigint(20) DEFAULT NULL,
+  `CHILD_ENTITY_ID` bigint(20) NOT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `ID` bigint(20) NOT NULL DEFAULT '0',
+  `PART_TIME` int(11) DEFAULT NULL,
+  `LINK` int(11) DEFAULT NULL,
+  `ADMIN` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PARTY_STRUCT_TYPE` (`STRUCT_TYPE_ID`),
+  KEY `FK_PARTY_STRUCT_PARENT` (`PARENT_ENTITY_ID`),
+  KEY `FK_PARTY_STRUCT_CHILD` (`CHILD_ENTITY_ID`),
+  CONSTRAINT `FK_PARTY_STRUCT_CHILD` FOREIGN KEY (`CHILD_ENTITY_ID`) REFERENCES `party_entity` (`ID`),
+  CONSTRAINT `FK_PARTY_STRUCT_PARENT` FOREIGN KEY (`PARENT_ENTITY_ID`) REFERENCES `party_entity` (`ID`),
+  CONSTRAINT `FK_PARTY_STRUCT_TYPE` FOREIGN KEY (`STRUCT_TYPE_ID`) REFERENCES `party_struct_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_struct`
+--
+
+LOCK TABLES `party_struct` WRITE;
+/*!40000 ALTER TABLE `party_struct` DISABLE KEYS */;
+INSERT INTO `party_struct` VALUES (1,NULL,1,NULL,'1',20,NULL,NULL,NULL),(1,1,246672072802304,1,'1',246672073261056,NULL,NULL,1),(1,1,246672584392704,1,'1',246672584704000,NULL,NULL,NULL),(1,1,246672875077632,2,'1',246672875323392,NULL,NULL,NULL),(1,1,246673545330688,2,'1',246673545658368,NULL,NULL,NULL),(1,1,246674137432064,2,'1',246674137710592,NULL,NULL,NULL),(1,1,246674438438912,2,'1',246674438701056,NULL,NULL,NULL),(1,246674137432064,246675515850752,3,'1',246675516047360,NULL,NULL,NULL),(1,246674137432064,246675862306816,3,'1',246675862536192,NULL,NULL,NULL),(1,246673545330688,246686248615936,3,'1',246686248861696,NULL,NULL,NULL),(1,246674438438912,246686802132992,3,'1',246686802984960,NULL,NULL,NULL),(1,246672584392704,246689204633600,3,'1',246689204862976,NULL,NULL,0),(1,246672584392704,246689751498752,3,'1',246689751711744,NULL,NULL,0),(1,246686248615936,246690792636416,3,'1',246690792849408,NULL,NULL,1),(1,246675515850752,247686228787200,4,'1',247686229377024,NULL,NULL,1),(1,246675515850752,247687163609088,4,'1',247687163854848,NULL,NULL,0),(1,247686228787200,247689641492480,3,'1',247697929453568,NULL,NULL,1),(1,247687163609088,247688787001344,4,'1',247698852380672,NULL,NULL,0),(1,246674137432064,247723902418944,3,'1',247723902664704,NULL,NULL,1),(1,247723902418944,247689001828352,3,'1',247725367721984,NULL,NULL,1),(1,1,11,1,NULL,254846562320384,NULL,NULL,0),(1,1,9,1,'1',254859107729408,NULL,NULL,0),(1,247687163609088,8,1,'1',255009055965184,NULL,NULL,0),(1,1,11,1,'1',255324089040896,NULL,NULL,0),(1,1,12,7,'1',260370603786240,NULL,NULL,0),(1,1,11,9,'1',261845371469824,NULL,NULL,0),(1,246675862306816,11,8,'1',261849786761216,NULL,NULL,0),(1,247687163609088,247689265692672,55,'1',261851492466688,NULL,NULL,0),(1,247687163609088,12,1,'1',263326307991552,NULL,NULL,0),(1,247687163609088,9,4,'1',263328532267008,NULL,NULL,0),(1,1,267768848777216,7,'1',267768849088512,NULL,NULL,0),(1,246672072802304,247688787001344,1,'1',270741189951488,NULL,NULL,1),(1,1,277421486178304,1,NULL,277421486587904,NULL,NULL,1),(1,277421486178304,11,1,'1',277437505093632,NULL,NULL,1);
+/*!40000 ALTER TABLE `party_struct` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `party_struct_rule`
+--
+
+DROP TABLE IF EXISTS `party_struct_rule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `party_struct_rule` (
+  `STRUCT_TYPE_ID` bigint(20) NOT NULL,
+  `PARENT_TYPE_ID` bigint(20) DEFAULT NULL,
+  `CHILD_TYPE_ID` bigint(20) NOT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `ID` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `FK_PARTY_STRUCT_RULE_TYPE` (`STRUCT_TYPE_ID`),
+  KEY `FK_PARTY_STRUCT_RULE_TYPE_PARENT` (`PARENT_TYPE_ID`),
+  KEY `FK_PARTY_STRUCT_RULE_TYPE_CHILD` (`CHILD_TYPE_ID`),
+  CONSTRAINT `FK_PARTY_STRUCT_RULE_TYPE` FOREIGN KEY (`STRUCT_TYPE_ID`) REFERENCES `party_struct_type` (`ID`),
+  CONSTRAINT `FK_PARTY_STRUCT_RULE_TYPE_CHILD` FOREIGN KEY (`CHILD_TYPE_ID`) REFERENCES `party_type` (`ID`),
+  CONSTRAINT `FK_PARTY_STRUCT_RULE_TYPE_PARENT` FOREIGN KEY (`PARENT_TYPE_ID`) REFERENCES `party_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_struct_rule`
+--
+
+LOCK TABLES `party_struct_rule` WRITE;
+/*!40000 ALTER TABLE `party_struct_rule` DISABLE KEYS */;
+INSERT INTO `party_struct_rule` VALUES (1,2,2,'1',1),(1,2,3,'1',2),(1,2,4,'1',3),(1,2,1,'1',4),(1,3,3,'1',5),(1,3,4,'1',6),(1,3,1,'1',7),(1,4,4,'1',8),(1,4,1,'1',9),(1,2,5,'1',10),(1,3,5,'1',11),(1,4,5,'1',12),(1,5,1,'1',14);
+/*!40000 ALTER TABLE `party_struct_rule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `party_struct_type`
+--
+
+DROP TABLE IF EXISTS `party_struct_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `party_struct_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `REF` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_struct_type`
+--
+
+LOCK TABLES `party_struct_type` WRITE;
+/*!40000 ALTER TABLE `party_struct_type` DISABLE KEYS */;
+INSERT INTO `party_struct_type` VALUES (1,'è¡Œæ”¿ç»„ç»‡',NULL,'1',0);
+/*!40000 ALTER TABLE `party_struct_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `party_type`
+--
+
+DROP TABLE IF EXISTS `party_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `party_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `REF` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `party_type`
+--
+
+LOCK TABLES `party_type` WRITE;
+/*!40000 ALTER TABLE `party_type` DISABLE KEYS */;
+INSERT INTO `party_type` VALUES (1,'äººå‘˜','1',1,'user'),(2,'é™¢ç³»','1',0,'company'),(3,'éƒ¨é—¨','1',0,'department'),(4,'ç­çº§','1',0,'group'),(5,'å²—ä½','1',2,NULL);
+/*!40000 ALTER TABLE `party_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `performance_info`
+--
+
+DROP TABLE IF EXISTS `performance_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `performance_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `EMPLOYEE_ID` varchar(64) DEFAULT NULL,
+  `SUPERIOUR_ID` varchar(64) DEFAULT NULL,
+  `SCORE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `performance_info`
+--
+
+LOCK TABLES `performance_info` WRITE;
+/*!40000 ALTER TABLE `performance_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `performance_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `person_info`
+--
+
+DROP TABLE IF EXISTS `person_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_info` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `USERNAME` varchar(200) DEFAULT NULL,
+  `FAMILY_NAME` varchar(200) DEFAULT NULL,
+  `GIVEN_NAME` varchar(200) DEFAULT NULL,
+  `FULL_NAME` varchar(200) DEFAULT NULL,
+  `CELLPHONE` varchar(50) DEFAULT NULL,
+  `TELEPHONE` varchar(200) DEFAULT NULL,
+  `EMAIL` varchar(200) DEFAULT NULL,
+  `IM` varchar(200) DEFAULT NULL,
+  `COUNTRY` varchar(200) DEFAULT NULL,
+  `PROVINCE` varchar(200) DEFAULT NULL,
+  `CITY` varchar(200) DEFAULT NULL,
+  `BUILDING` varchar(200) DEFAULT NULL,
+  `FLOOR` varchar(200) DEFAULT NULL,
+  `SEAT` varchar(200) DEFAULT NULL,
+  `EMPLOYEE_NO` varchar(50) DEFAULT NULL,
+  `EMPLOYEE_TYPE` varchar(50) DEFAULT NULL,
+  `CARD` varchar(200) DEFAULT NULL,
+  `COMPANY_CODE` varchar(200) DEFAULT NULL,
+  `COMPANY_NAME` varchar(200) DEFAULT NULL,
+  `DEPARTMENT_CODE` varchar(200) DEFAULT NULL,
+  `DEPARTMENT_NAME` varchar(200) DEFAULT NULL,
+  `POSITION_CODE` varchar(200) DEFAULT NULL,
+  `POSITION_NAME` varchar(200) DEFAULT NULL,
+  `GENDER` varchar(500) DEFAULT NULL,
+  `BIRTHDAY` datetime DEFAULT NULL,
+  `ID_CARD_TYPE` varchar(50) DEFAULT NULL,
+  `ID_CARD_VALUE` varchar(50) DEFAULT NULL,
+  `NATIONALITY` varchar(200) DEFAULT NULL,
+  `STAR` varchar(50) DEFAULT NULL,
+  `BLOOD` varchar(50) DEFAULT NULL,
+  `CLOTH_SIZE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_info`
+--
+
+LOCK TABLES `person_info` WRITE;
+/*!40000 ALTER TABLE `person_info` DISABLE KEYS */;
+INSERT INTO `person_info` VALUES (1,'1','lingo','Mossle','Lingo','Lingo Mossle','18012345678',NULL,'lingo@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(2,'2','vivian','Mossle','Vivian','Vivian Mossle','18012345678',NULL,'vivian@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(3,'3','steven','Demo','Steven','Steven','18012345678',NULL,'steven@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(4,'4','king','Demo','King','King','18012345678',NULL,'king@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(5,'5','john','Demo','John','John','18012345678',NULL,'john@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(6,'6','william','','William','William','18012345678',NULL,'william@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(7,'7','adam','Demo','Adam','Adam','18012345678',NULL,'adam@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(8,'8','robot','Demo','Robot','Robot','18012345678',NULL,'robot@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(9,'9','bob','Mossle','Bob','Bob Mossle','18012345678',NULL,'bob@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(10,'10','alice','Mossle','Alice','Alice Mossle','18012345678',NULL,'alice@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(11,'11','mike','Mossle','Mike','Mike Mossle','18012345678',NULL,'mike@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(12,'12','justin','Mossle','Justin','Justin Mossle','18012345678',NULL,'justin@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(13,'13','tom','Mossle','Tom','Tom Mossle','18012345678',NULL,'tom@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(14,'14','james','Mossle','James','James Mossle','18012345678',NULL,'james@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(15,'15','joe','Mossle','Joe','Joe Mossle','18012345678',NULL,'joe@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(16,'16','paul','Mossle','Paul','Paul Mossle','18012345678',NULL,'paul@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(17,'17','jane','Mossle','Jane','Jane Mossle','18012345678',NULL,'jane@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(18,'18','marry','Mossle','Marry','Marry Mossle','18012345678',NULL,'marry@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(19,'19','ben','Mossle','Ben','Ben Mossle','18012345678',NULL,'ben@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(20,'20','bot','Mossle','Bot','Bot Mossle','18012345678',NULL,'bot@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(21,'21','jack','Mossle','Jack','Jack Mossle','18012345678',NULL,'jack@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(22,'22','martin','Mossle','Martin','Martin Mossle','18012345678',NULL,'marin@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(23,'23','alex','Mossle','Alex','Alex Mossle','18012345678',NULL,'alex@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(24,'24','daniel','Mossle','Daniel','Daniel Mossle','18012345678',NULL,'daniel@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(25,'25','eric','Mossle','Eric','Eric Mossle','18012345678',NULL,'eric@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(26,'26','leon','Mossle','Leon','Leon Mossle','18012345678',NULL,'leon@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(27,'27','clark','Mossle','Clark','Clark Mossle','18012345678',NULL,'clark@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(28,'28','david','Mossle','David','David Mossle','18012345678',NULL,'david@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(29,'29','henry','Mossle','Henry','Henry Mossle','18012345678',NULL,'henry@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(30,'30','helen','Mossle','Helen','Helen Mossle','18012345678',NULL,'helen@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(31,'31','sarah','Mossle','Sarah','Sarah Mossle','18012345678',NULL,'sarah@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(32,'32','sam','Mossle','Sam','Sam Mossle','18012345678',NULL,'sam@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(33,'33','claire','Mossle','Claire','Claire Mossle','18012345678',NULL,'claire@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(34,'34','thomas','Mossle','Thomas','Thomas Mossle','18012345678',NULL,'thomas@mossle.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1'),(260392476082176,'260384205684736',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(262103653695488,'c',NULL,NULL,NULL,NULL,'22222222',NULL,'18159801259@qq.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(263275567316992,'262163856867328',NULL,NULL,NULL,NULL,'wer',NULL,'erw',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(263619674357760,'263589088296960',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(268888767512576,'247688773386240',NULL,NULL,NULL,NULL,'22222222238',NULL,'3347',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(268889544179712,NULL,NULL,NULL,NULL,NULL,'22222222238',NULL,'33',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(268905442639872,NULL,NULL,NULL,NULL,NULL,'22222222238',NULL,'334',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(268944163880960,NULL,NULL,NULL,NULL,NULL,'22222222238',NULL,'3347',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `person_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_device`
+--
+
+DROP TABLE IF EXISTS `pim_device`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_device` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(64) DEFAULT NULL,
+  `NAME` varchar(64) DEFAULT NULL,
+  `TYPE` varchar(64) DEFAULT NULL,
+  `SESSION_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_device`
+--
+
+LOCK TABLES `pim_device` WRITE;
+/*!40000 ALTER TABLE `pim_device` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pim_device` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_favorite`
+--
+
+DROP TABLE IF EXISTS `pim_favorite`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_favorite` (
+  `ID` bigint(20) NOT NULL,
+  `MODULE_TYPE` varchar(50) DEFAULT NULL,
+  `MODULE_ID` varchar(64) DEFAULT NULL,
+  `TITLE` varchar(100) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `TAGS` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_favorite`
+--
+
+LOCK TABLES `pim_favorite` WRITE;
+/*!40000 ALTER TABLE `pim_favorite` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pim_favorite` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_info`
+--
+
+DROP TABLE IF EXISTS `pim_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PHOTO` varchar(200) DEFAULT NULL,
+  `BIRTHDAY` date DEFAULT NULL,
+  `ADDRESS` varchar(200) DEFAULT NULL,
+  `TEL` varchar(200) DEFAULT NULL,
+  `EMAIL` varchar(200) DEFAULT NULL,
+  `ORG` varchar(200) DEFAULT NULL,
+  `TITLE` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `DEPARTMENT` varchar(100) DEFAULT NULL,
+  `IMPP` varchar(100) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `REF` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_info`
+--
+
+LOCK TABLES `pim_info` WRITE;
+/*!40000 ALTER TABLE `pim_info` DISABLE KEYS */;
+INSERT INTO `pim_info` VALUES (1,'ä¸´è¿œ',NULL,NULL,NULL,'15801234567','lingo@mossle.com','Mossle','Javaç¨‹åºå‘˜','1','1','IT','15801234567','internal','1');
+/*!40000 ALTER TABLE `pim_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_note`
+--
+
+DROP TABLE IF EXISTS `pim_note`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_note` (
+  `ID` bigint(20) NOT NULL,
+  `TITLE` varchar(100) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CLIENT_X` int(11) DEFAULT NULL,
+  `CLIENT_Y` int(11) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_note`
+--
+
+LOCK TABLES `pim_note` WRITE;
+/*!40000 ALTER TABLE `pim_note` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pim_note` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_phrase`
+--
+
+DROP TABLE IF EXISTS `pim_phrase`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_phrase` (
+  `ID` bigint(20) NOT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_phrase`
+--
+
+LOCK TABLES `pim_phrase` WRITE;
+/*!40000 ALTER TABLE `pim_phrase` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pim_phrase` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_remind`
+--
+
+DROP TABLE IF EXISTS `pim_remind`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_remind` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `REPEAT_TYPE` varchar(64) DEFAULT NULL,
+  `REPEAT_PEROID` int(11) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `REMIND_TIME` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_remind`
+--
+
+LOCK TABLES `pim_remind` WRITE;
+/*!40000 ALTER TABLE `pim_remind` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pim_remind` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_schedule`
+--
+
+DROP TABLE IF EXISTS `pim_schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_schedule` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `LOCATION` varchar(200) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `START_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `END_TIME` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ALERT_TIME` varchar(50) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `REF` varchar(100) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_schedule`
+--
+
+LOCK TABLES `pim_schedule` WRITE;
+/*!40000 ALTER TABLE `pim_schedule` DISABLE KEYS */;
+INSERT INTO `pim_schedule` VALUES (279035107328000,'gfv ',NULL,'ytuy',NULL,'2016-07-31 16:00:00','2016-08-01 16:00:00',NULL,'1',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `pim_schedule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pim_schedule_participant`
+--
+
+DROP TABLE IF EXISTS `pim_schedule_participant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pim_schedule_participant` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` int(11) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `SCHEDULE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_SCHEDULE_PARTICIPANT_SCHEDULE` (`SCHEDULE_ID`),
+  CONSTRAINT `FK_PIM_SCHEDULE_PARTICIPANT_SCHEDULE` FOREIGN KEY (`SCHEDULE_ID`) REFERENCES `pim_schedule` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pim_schedule_participant`
+--
+
+LOCK TABLES `pim_schedule_participant` WRITE;
+/*!40000 ALTER TABLE `pim_schedule_participant` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pim_schedule_participant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_category`
+--
+
+DROP TABLE IF EXISTS `plm_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_category` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_category`
+--
+
+LOCK TABLES `plm_category` WRITE;
+/*!40000 ALTER TABLE `plm_category` DISABLE KEYS */;
+INSERT INTO `plm_category` VALUES (1,'é€šç”¨å·¥å…·',1,NULL,NULL,NULL),(2,'ç³»ç»Ÿå·¥å…·',2,NULL,NULL,NULL),(3,'åŸºç¡€ç»„ä»¶',3,NULL,NULL,NULL),(4,'ä¸šåŠ¡æ¨¡å—',4,NULL,NULL,NULL),(5,'å†…å®¹ç®¡ç†',5,NULL,NULL,NULL),(99,'å­µåŒ–å™¨',99,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `plm_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_comment`
+--
+
+DROP TABLE IF EXISTS `plm_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_comment` (
+  `ID` bigint(20) NOT NULL,
+  `CONTENT` text,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `ISSUE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_COMMENT_ISSUE` (`ISSUE_ID`),
+  CONSTRAINT `FK_PIM_COMMENT_ISSUE` FOREIGN KEY (`ISSUE_ID`) REFERENCES `plm_issue` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_comment`
+--
+
+LOCK TABLES `plm_comment` WRITE;
+/*!40000 ALTER TABLE `plm_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `plm_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_component`
+--
+
+DROP TABLE IF EXISTS `plm_component`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_component` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `PROJECT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_COMPONENT_PROJECT` (`PROJECT_ID`),
+  CONSTRAINT `FK_PIM_COMPONENT_PROJECT` FOREIGN KEY (`PROJECT_ID`) REFERENCES `plm_project` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_component`
+--
+
+LOCK TABLES `plm_component` WRITE;
+/*!40000 ALTER TABLE `plm_component` DISABLE KEYS */;
+/*!40000 ALTER TABLE `plm_component` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_config`
+--
+
+DROP TABLE IF EXISTS `plm_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_config` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_config`
+--
+
+LOCK TABLES `plm_config` WRITE;
+/*!40000 ALTER TABLE `plm_config` DISABLE KEYS */;
+INSERT INTO `plm_config` VALUES (1,'default','é»˜è®¤é…ç½®');
+/*!40000 ALTER TABLE `plm_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_issue`
+--
+
+DROP TABLE IF EXISTS `plm_issue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_issue` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `SEVERITY` int(11) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `COMPLETE_TIME` datetime DEFAULT NULL,
+  `REPORTER_ID` varchar(64) DEFAULT NULL,
+  `ASSIGNEE_ID` varchar(64) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `STEP` varchar(50) DEFAULT NULL,
+  `PROJECT_ID` bigint(20) DEFAULT NULL,
+  `SPRINT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PLM_ISSUE_PROJECT` (`PROJECT_ID`),
+  KEY `FK_PLM_ISSUE_SPRINT` (`SPRINT_ID`),
+  CONSTRAINT `FK_PLM_ISSUE_PROJECT` FOREIGN KEY (`PROJECT_ID`) REFERENCES `plm_project` (`ID`),
+  CONSTRAINT `FK_PLM_ISSUE_SPRINT` FOREIGN KEY (`SPRINT_ID`) REFERENCES `plm_sprint` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_issue`
+--
+
+LOCK TABLES `plm_issue` WRITE;
+/*!40000 ALTER TABLE `plm_issue` DISABLE KEYS */;
+INSERT INTO `plm_issue` VALUES (1,'story','æ–‡æ¡£æ”¯æŒæƒé™é…ç½®','Lemon2ç¾¤ï¼Œä¾ç„¶çˆ±ä½ (934039020)æå‡ºçš„ï¼Œåœ¨dominoä¸­æœ‰ä¸ªè¯»è€…åŸŸã€ä½œè€…åŸŸ  ç”¨æ¥æ§åˆ¶æ–‡æ¡£çš„æƒé™',NULL,'2015-02-11 03:26:41',NULL,NULL,'1','1','active','preConfirm',11,1),(2,'story','æ•´ç†è¡¨ç»“æ„è®¾è®¡å›¾','',NULL,'2015-02-11 06:06:09',NULL,NULL,'1','1','active','dev',11,1),(3,'story','ç«™å†…æ¶ˆæ¯å‘ç»™å¤šäºº','',NULL,'2015-02-11 07:36:05',NULL,NULL,'1','1','active','preDev',11,1),(5,'story','ç”µå­è¡¨å•æ”¯æŒå¢åˆ è¡Œåˆ—','',NULL,'2015-02-12 06:48:40',NULL,NULL,'1','1','active','dev',11,1),(6,'story','æ¢³ç†æƒé™','1.è§„åˆ’ç›®å‰çš„åŠŸèƒ½ç‚¹\n2.è§„åˆ’å“ªäº›åŠŸèƒ½ç‚¹éœ€è¦å“ªäº›æƒé™\n3.æ”¹ä»£ç ',NULL,'2015-02-13 06:44:09',NULL,NULL,'1','1','active','dev',11,1);
+/*!40000 ALTER TABLE `plm_issue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_issue_component`
+--
+
+DROP TABLE IF EXISTS `plm_issue_component`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_issue_component` (
+  `ISSUE_ID` bigint(20) NOT NULL DEFAULT '0',
+  `COMPONENT_ID` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ISSUE_ID`,`COMPONENT_ID`),
+  KEY `FK_PIM_ISSUE_COMPONENT_COMPONENT` (`COMPONENT_ID`),
+  CONSTRAINT `FK_PIM_ISSUE_COMPONENT_COMPONENT` FOREIGN KEY (`COMPONENT_ID`) REFERENCES `plm_component` (`ID`),
+  CONSTRAINT `FK_PIM_ISSUE_COMPONENT_ISSUE` FOREIGN KEY (`ISSUE_ID`) REFERENCES `plm_issue` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_issue_component`
+--
+
+LOCK TABLES `plm_issue_component` WRITE;
+/*!40000 ALTER TABLE `plm_issue_component` DISABLE KEYS */;
+/*!40000 ALTER TABLE `plm_issue_component` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_issue_version`
+--
+
+DROP TABLE IF EXISTS `plm_issue_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_issue_version` (
+  `ISSUE_ID` bigint(20) NOT NULL DEFAULT '0',
+  `VERSION_ID` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ISSUE_ID`,`VERSION_ID`),
+  KEY `FK_PIM_ISSUE_VERSION_VERSION` (`VERSION_ID`),
+  CONSTRAINT `FK_PIM_ISSUE_VERSION_ISSUE` FOREIGN KEY (`ISSUE_ID`) REFERENCES `plm_issue` (`ID`),
+  CONSTRAINT `FK_PIM_ISSUE_VERSION_VERSION` FOREIGN KEY (`VERSION_ID`) REFERENCES `plm_version` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_issue_version`
+--
+
+LOCK TABLES `plm_issue_version` WRITE;
+/*!40000 ALTER TABLE `plm_issue_version` DISABLE KEYS */;
+/*!40000 ALTER TABLE `plm_issue_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_log`
+--
+
+DROP TABLE IF EXISTS `plm_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_log` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `LOG_TIME` datetime DEFAULT NULL,
+  `CONTENT` text,
+  `ISSUE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_LOG_ISSUE` (`ISSUE_ID`),
+  CONSTRAINT `FK_PIM_LOG_ISSUE` FOREIGN KEY (`ISSUE_ID`) REFERENCES `plm_issue` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_log`
+--
+
+LOCK TABLES `plm_log` WRITE;
+/*!40000 ALTER TABLE `plm_log` DISABLE KEYS */;
+INSERT INTO `plm_log` VALUES (1,'create','1','2015-02-11 03:26:41',NULL,1),(2,'create','1','2015-02-11 06:06:09',NULL,2),(3,'create','1','2015-02-11 07:36:05',NULL,3),(5,'create','1','2015-02-12 06:48:40',NULL,5),(6,'update',NULL,'2015-02-12 14:17:24',NULL,1),(7,'update',NULL,'2015-02-12 14:17:26',NULL,1),(8,'update',NULL,'2015-02-12 14:17:36',NULL,5),(9,'update',NULL,'2015-02-12 14:17:38',NULL,2),(10,'update',NULL,'2015-02-12 14:17:39',NULL,3),(11,'update',NULL,'2015-02-12 14:17:41',NULL,3),(12,'update',NULL,'2015-02-12 14:17:42',NULL,2),(13,'update',NULL,'2015-02-12 14:17:44',NULL,2),(14,'update',NULL,'2015-02-12 14:18:40',NULL,1),(15,'update',NULL,'2015-02-12 14:18:46',NULL,5),(16,'update',NULL,'2015-02-12 14:18:47',NULL,2),(17,'update',NULL,'2015-02-12 14:18:49',NULL,1),(18,'update',NULL,'2015-02-12 14:18:55',NULL,5),(19,'update',NULL,'2015-02-12 14:18:56',NULL,5),(20,'create','1','2015-02-13 06:44:09',NULL,6),(21,'update',NULL,'2015-02-24 16:20:34',NULL,3),(22,'update',NULL,'2015-02-24 16:20:36',NULL,2),(23,'update',NULL,'2015-02-24 16:20:38',NULL,1),(24,'update',NULL,'2015-02-24 16:20:40',NULL,5),(25,'update',NULL,'2015-02-24 16:20:42',NULL,6),(26,'update',NULL,'2015-02-24 16:20:44',NULL,6),(27,'update',NULL,'2015-02-26 03:49:04',NULL,3),(28,'update',NULL,'2015-02-26 03:49:06',NULL,3),(29,'update',NULL,'2015-02-26 03:49:08',NULL,2),(30,'update',NULL,'2015-02-26 03:49:09',NULL,5),(31,'update',NULL,'2015-02-26 03:49:10',NULL,6),(32,'update',NULL,'2015-02-26 09:19:42',NULL,3),(33,'update',NULL,'2015-02-26 09:19:44',NULL,1),(34,'update',NULL,'2015-02-26 09:19:46',NULL,2),(35,'update',NULL,'2015-02-26 09:19:47',NULL,5),(36,'update',NULL,'2015-02-26 09:19:49',NULL,6),(37,'update',NULL,'2015-02-26 09:50:29',NULL,3),(38,'update',NULL,'2015-02-26 09:50:31',NULL,2),(39,'update',NULL,'2015-02-26 09:50:40',NULL,1),(40,'update',NULL,'2015-02-26 09:50:42',NULL,6),(41,'update',NULL,'2015-02-26 09:50:44',NULL,5),(42,'complete issue',NULL,'2015-02-26 09:50:49',NULL,6),(43,'reopen issue',NULL,'2015-02-26 09:50:57',NULL,6),(44,'update',NULL,'2015-02-26 09:50:59',NULL,1),(45,'update',NULL,'2015-02-26 09:51:02',NULL,6);
+/*!40000 ALTER TABLE `plm_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_project`
+--
+
+DROP TABLE IF EXISTS `plm_project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_project` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `LOGO` varchar(200) DEFAULT NULL,
+  `SUMMARY` text,
+  `WIKI_URL` varchar(200) DEFAULT NULL,
+  `SOURCE_URL` varchar(200) DEFAULT NULL,
+  `URL` varchar(200) DEFAULT NULL,
+  `LEADER_ID` varchar(64) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CATEGORY_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_PROJECT_CATEGORY` (`CATEGORY_ID`),
+  CONSTRAINT `FK_PIM_PROJECT_CATEGORY` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `plm_category` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_project`
+--
+
+LOCK TABLES `plm_project` WRITE;
+/*!40000 ALTER TABLE `plm_project` DISABLE KEYS */;
+INSERT INTO `plm_project` VALUES (11,'PARENT','å…¨å±€é…ç½®',NULL,NULL,NULL,NULL,NULL,'1',1,NULL,NULL,NULL,1),(12,'FRONTEND','å‰ç«¯æ¡†æ¶',NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,NULL,1),(13,'BACKEND','åç«¯æ¡†æ¶',NULL,NULL,NULL,NULL,NULL,'1',3,NULL,NULL,NULL,1),(14,'TEST','æµ‹è¯•å·¥å…·',NULL,NULL,NULL,NULL,NULL,'1',4,NULL,NULL,NULL,1),(15,'CORE','æ ¸å¿ƒå·¥å…·',NULL,NULL,NULL,NULL,NULL,'1',5,NULL,NULL,NULL,1),(16,'SECURITY','æƒé™æ§åˆ¶',NULL,NULL,NULL,NULL,NULL,'1',6,NULL,NULL,NULL,1),(21,'DICT','æ•°æ®å­—å…¸',NULL,NULL,NULL,NULL,NULL,'1',1,NULL,NULL,NULL,2),(22,'MAIL','é‚®ä»¶',NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,NULL,2),(23,'STORE','é™„ä»¶',NULL,NULL,NULL,NULL,NULL,'1',3,NULL,NULL,NULL,2),(24,'TEMPLATE','æ¨¡æ¿',NULL,NULL,NULL,NULL,NULL,'1',4,NULL,NULL,NULL,2),(25,'WHITELIST','ç™½åå•',NULL,NULL,NULL,NULL,NULL,'1',5,NULL,NULL,NULL,2),(26,'WORKCAL','å·¥ä½œæ—¥å†',NULL,NULL,NULL,NULL,NULL,'1',6,NULL,NULL,NULL,2),(27,'AUDIT','å®¡è®¡æ—¥å¿—',NULL,NULL,NULL,NULL,NULL,'1',7,NULL,NULL,NULL,2),(28,'ONLINE','åœ¨çº¿åˆ—è¡¨',NULL,NULL,NULL,NULL,NULL,'1',8,NULL,NULL,NULL,2),(31,'USER','ç”¨æˆ·ç®¡ç†',NULL,NULL,NULL,NULL,NULL,'1',1,NULL,NULL,NULL,3),(32,'ORG','ç»„ç»‡æœºæ„',NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,NULL,3),(33,'AUTH','æƒé™æ§åˆ¶',NULL,NULL,NULL,NULL,NULL,'1',3,NULL,NULL,NULL,3),(34,'FORM','ç”µå­è¡¨å•',NULL,NULL,NULL,NULL,NULL,'1',4,NULL,NULL,NULL,3),(35,'TASK','ä»»åŠ¡ä¸­å¿ƒ',NULL,NULL,NULL,NULL,NULL,'1',5,NULL,NULL,NULL,3),(36,'BPM','ä¸šåŠ¡æµç¨‹',NULL,NULL,NULL,NULL,NULL,'1',6,NULL,NULL,NULL,3),(37,'OPERATION','æ“ä½œ',NULL,NULL,NULL,NULL,NULL,'1',7,NULL,NULL,NULL,3),(41,'PIM','ä¸ªäººäº‹åŠ¡',NULL,NULL,NULL,NULL,NULL,'1',1,NULL,NULL,NULL,4),(42,'LOGISTIC','è¡Œæ”¿ç®¡ç†',NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,NULL,4),(43,'LEMON','LemonOA',NULL,NULL,NULL,NULL,NULL,'1',3,NULL,NULL,NULL,4),(44,'PLM','é¡¹ç›®è¿½è¸ª',NULL,NULL,NULL,NULL,NULL,'1',4,NULL,NULL,NULL,4),(51,'NEWS','æ–°é—»',NULL,NULL,NULL,NULL,NULL,'1',1,NULL,NULL,NULL,5),(52,'FORUM','è®ºå›',NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,NULL,5),(53,'WIKI','WIKI',NULL,NULL,NULL,NULL,NULL,'1',3,NULL,NULL,NULL,5),(54,'ASK','é—®ç­”',NULL,NULL,NULL,NULL,NULL,'1',4,NULL,NULL,NULL,5),(55,'MSG','ç«™å†…ä¿¡',NULL,NULL,NULL,NULL,NULL,'1',5,NULL,NULL,NULL,5),(56,'SNS','äº’åŠ¨',NULL,NULL,NULL,NULL,NULL,'1',6,NULL,NULL,NULL,5),(9901,'TENANT','å¤šç§Ÿæˆ·',NULL,NULL,NULL,NULL,NULL,'1',1,NULL,NULL,NULL,99),(9902,'ACL','æ•°æ®æƒé™',NULL,NULL,NULL,NULL,NULL,'1',2,NULL,NULL,NULL,99),(9903,'REPORT','æŠ¥è¡¨ç®¡ç†',NULL,NULL,NULL,NULL,NULL,'1',3,NULL,NULL,NULL,99),(9904,'EXPORT','å¯¼å‡ºç®¡ç†',NULL,NULL,NULL,NULL,NULL,'1',4,NULL,NULL,NULL,99),(9905,'DEV','ç ”å‘ç®¡ç†',NULL,NULL,NULL,NULL,NULL,'1',5,NULL,NULL,NULL,99),(9906,'HR','äººäº‹ç®¡ç†',NULL,NULL,NULL,NULL,NULL,'1',6,NULL,NULL,NULL,99),(9907,'APP','ç§»åŠ¨ç«¯',NULL,NULL,NULL,NULL,NULL,'1',7,NULL,NULL,NULL,99),(9908,'IM','å³æ—¶é€šè®¯',NULL,NULL,NULL,NULL,NULL,'1',8,NULL,NULL,NULL,99),(9909,'DEEP','æ·±åº¦å­¦ä¹ ',NULL,NULL,NULL,NULL,NULL,'1',9,NULL,NULL,NULL,99),(9910,'JAVAMAIL','é‚®ä»¶å®¢æˆ·ç«¯',NULL,NULL,NULL,NULL,NULL,'1',10,NULL,NULL,NULL,99),(9911,'SMS','çŸ­ä¿¡',NULL,NULL,NULL,NULL,NULL,'1',11,NULL,NULL,NULL,99);
+/*!40000 ALTER TABLE `plm_project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_sprint`
+--
+
+DROP TABLE IF EXISTS `plm_sprint`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_sprint` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  `PROJECT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_SPRINT_CONFIG` (`CONFIG_ID`),
+  KEY `FK_PIM_SPRINT_PROJECT` (`PROJECT_ID`),
+  CONSTRAINT `FK_PIM_SPRINT_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `plm_config` (`ID`),
+  CONSTRAINT `FK_PIM_SPRINT_PROJECT` FOREIGN KEY (`PROJECT_ID`) REFERENCES `plm_project` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_sprint`
+--
+
+LOCK TABLES `plm_sprint` WRITE;
+/*!40000 ALTER TABLE `plm_sprint` DISABLE KEYS */;
+INSERT INTO `plm_sprint` VALUES (1,NULL,'global-1.0.0.0',NULL,'2015-01-01 00:00:00','2015-01-31 00:00:00','active',1,11);
+/*!40000 ALTER TABLE `plm_sprint` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_step`
+--
+
+DROP TABLE IF EXISTS `plm_step`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_step` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `ACTION` varchar(50) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_STEP_CONFIG` (`CONFIG_ID`),
+  CONSTRAINT `FK_PIM_STEP_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `plm_config` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_step`
+--
+
+LOCK TABLES `plm_step` WRITE;
+/*!40000 ALTER TABLE `plm_step` DISABLE KEYS */;
+INSERT INTO `plm_step` VALUES (1,'request','éœ€æ±‚æ± ',1,'none',1),(2,'preDev','å‡†å¤‡å¼€å‘',2,'none',1),(3,'dev','å¼€å‘ä¸­',3,'start',1),(4,'preTest','å‡†å¤‡æµ‹è¯•',4,'stop',1),(5,'test','æµ‹è¯•ä¸­',5,'start',1),(6,'preConfirm','å‡†å¤‡éªŒè¯',6,'stop',1),(7,'confirm','éªŒè¯å®Œæˆ',7,'complete',1);
+/*!40000 ALTER TABLE `plm_step` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plm_version`
+--
+
+DROP TABLE IF EXISTS `plm_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plm_version` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `PROJECT_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PIM_VERSION_PROJECT` (`PROJECT_ID`),
+  CONSTRAINT `FK_PIM_VERSION_PROJECT` FOREIGN KEY (`PROJECT_ID`) REFERENCES `plm_project` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plm_version`
+--
+
+LOCK TABLES `plm_version` WRITE;
+/*!40000 ALTER TABLE `plm_version` DISABLE KEYS */;
+INSERT INTO `plm_version` VALUES (11,'1.0.0','active',NULL,NULL,1,11);
+/*!40000 ALTER TABLE `plm_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portal_info`
+--
+
+DROP TABLE IF EXISTS `portal_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `portal_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `COLUMN_LAYOUT` varchar(100) DEFAULT NULL,
+  `SHARED_STATUS` varchar(10) DEFAULT NULL,
+  `GLOBAL_STATUS` varchar(10) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portal_info`
+--
+
+LOCK TABLES `portal_info` WRITE;
+/*!40000 ALTER TABLE `portal_info` DISABLE KEYS */;
+INSERT INTO `portal_info` VALUES (1,NULL,NULL,NULL,NULL,'4-4-4','true','true',NULL),(247765516238848,NULL,NULL,'1',NULL,'4-4-4','true','true',NULL),(277601201963008,NULL,NULL,'247689000714240',NULL,'4-4-4','true','true',NULL);
+/*!40000 ALTER TABLE `portal_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portal_item`
+--
+
+DROP TABLE IF EXISTS `portal_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `portal_item` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `COLUMN_INDEX` int(11) DEFAULT NULL,
+  `ROW_INDEX` int(11) DEFAULT NULL,
+  `DATA` varchar(200) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `WIDGET_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PORTAL_ITEM_INFO` (`INFO_ID`),
+  KEY `FK_PORTAL_ITEM_WIDGET` (`WIDGET_ID`),
+  CONSTRAINT `FK_PORTAL_ITEM_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `portal_info` (`ID`),
+  CONSTRAINT `FK_PORTAL_ITEM_WIDGET` FOREIGN KEY (`WIDGET_ID`) REFERENCES `portal_widget` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portal_item`
+--
+
+LOCK TABLES `portal_item` WRITE;
+/*!40000 ALTER TABLE `portal_item` DISABLE KEYS */;
+INSERT INTO `portal_item` VALUES (1,'å¾…åŠä»»åŠ¡',1,1,NULL,1,1,NULL),(2,'æˆ‘çš„æµç¨‹',2,1,NULL,1,2,NULL),(3,'å¸¸ç”¨æµç¨‹',3,1,NULL,1,3,NULL),(4,'é€šçŸ¥å…¬å‘Š',1,2,NULL,1,4,NULL),(5,'å¸¸ç”¨å·¥å…·',2,2,NULL,1,5,NULL),(6,'å¤©æ°”é¢„æŠ¥',3,2,NULL,1,6,NULL),(7,'Android',1,3,NULL,1,10,NULL),(8,'ç§ä¿¡',2,3,NULL,1,9,NULL),(247765516746753,'æˆ‘çš„æµç¨‹',2,1,NULL,247765516238848,2,NULL),(247765516746754,'é€šçŸ¥å…¬å‘Š',1,2,NULL,247765516238848,4,NULL),(247765517008896,'ç§ä¿¡',2,2,NULL,247765516238848,9,NULL),(247765517008898,'å¾…åŠä»»åŠ¡',1,1,NULL,247765516238848,1,NULL),(247765517008899,'å¤©æ°”é¢„æŠ¥',3,2,NULL,247765516238848,6,NULL),(247765517254656,'å¸¸ç”¨æµç¨‹',3,1,NULL,247765516238848,3,NULL),(277601202880512,'ç§ä¿¡',2,3,NULL,277601201963008,9,NULL),(277601203175424,'Android',1,3,NULL,277601201963008,10,NULL),(277601203339264,'å¸¸ç”¨å·¥å…·',2,2,NULL,277601201963008,5,NULL),(277601203453952,'é€šçŸ¥å…¬å‘Š',1,2,NULL,277601201963008,4,NULL),(277601203699712,'å¤©æ°”é¢„æŠ¥',3,2,NULL,277601201963008,6,NULL),(277601203814400,'æˆ‘çš„æµç¨‹',2,1,NULL,277601201963008,2,NULL),(277601204109312,'å¸¸ç”¨æµç¨‹',3,1,NULL,277601201963008,3,NULL),(277601204191232,'å¾…åŠä»»åŠ¡',1,1,NULL,277601201963008,1,NULL);
+/*!40000 ALTER TABLE `portal_item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portal_ref`
+--
+
+DROP TABLE IF EXISTS `portal_ref`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `portal_ref` (
+  `ID` bigint(20) NOT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_PORTAL_REF_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_PORTAL_REF_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `portal_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portal_ref`
+--
+
+LOCK TABLES `portal_ref` WRITE;
+/*!40000 ALTER TABLE `portal_ref` DISABLE KEYS */;
+INSERT INTO `portal_ref` VALUES (247728629727232,1,'247688773386240',NULL),(247765516238849,247765516238848,'1',NULL),(253441890664448,1,'247689637478400',NULL),(253740519063552,1,'4',NULL),(262102878863360,1,'247689264381952',NULL),(263486951800832,1,'263486612602880',NULL),(267714024620032,1,'267713809711104',NULL),(267769274040320,1,'267768847958016',NULL),(270618999898112,1,'7',NULL),(277601202225152,277601201963008,'247689000714240',NULL);
+/*!40000 ALTER TABLE `portal_ref` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portal_widget`
+--
+
+DROP TABLE IF EXISTS `portal_widget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `portal_widget` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `URL` varchar(200) DEFAULT NULL,
+  `DATA` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portal_widget`
+--
+
+LOCK TABLES `portal_widget` WRITE;
+/*!40000 ALTER TABLE `portal_widget` DISABLE KEYS */;
+INSERT INTO `portal_widget` VALUES (1,'å¾…åŠä»»åŠ¡','/rs/humantask/widget/personalTasks',NULL,NULL),(2,'æˆ‘çš„æµç¨‹','/rs/bpm/widget/runningProcesses',NULL,NULL),(3,'å¸¸ç”¨æµç¨‹','/rs/bpm/widget/processes',NULL,NULL),(4,'é€šçŸ¥å…¬å‘Š','/rs/cms/widget/articles',NULL,NULL),(5,'å¸¸ç”¨å·¥å…·','/widgets/tools.html',NULL,NULL),(6,'å¤©æ°”é¢„æŠ¥','/widgets/weather.html',NULL,NULL),(7,'åœ°å›¾','/widgets/map.html',NULL,NULL),(8,'æ—¶é’Ÿ','/widgets/clock.html',NULL,NULL),(9,'ç§ä¿¡','/rs/msg/widget/msg',NULL,NULL),(10,'Android','/widgets/android.html',NULL,NULL);
+/*!40000 ALTER TABLE `portal_widget` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_info`
+--
+
+DROP TABLE IF EXISTS `product_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_info`
+--
+
+LOCK TABLES `product_info` WRITE;
+/*!40000 ALTER TABLE `product_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `purchase_info`
+--
+
+DROP TABLE IF EXISTS `purchase_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `purchase_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `SUPPLIER` varchar(100) DEFAULT NULL,
+  `GOODS` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `purchase_info`
+--
+
+LOCK TABLES `purchase_info` WRITE;
+/*!40000 ALTER TABLE `purchase_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `purchase_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recruit_info`
+--
+
+DROP TABLE IF EXISTS `recruit_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recruit_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CARD_TYPE` varchar(50) DEFAULT NULL,
+  `CARD_VALUE` varchar(50) DEFAULT NULL,
+  `MOBILE` varchar(50) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recruit_info`
+--
+
+LOCK TABLES `recruit_info` WRITE;
+/*!40000 ALTER TABLE `recruit_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recruit_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `salary_info`
+--
+
+DROP TABLE IF EXISTS `salary_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `salary_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `MONEY` double DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `EMPLOYEE_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `salary_info`
+--
+
+LOCK TABLES `salary_info` WRITE;
+/*!40000 ALTER TABLE `salary_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `salary_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sale_info`
+--
+
+DROP TABLE IF EXISTS `sale_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sale_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CUSTOMER` varchar(100) DEFAULT NULL,
+  `PRODUCT` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` text,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sale_info`
+--
+
+LOCK TABLES `sale_info` WRITE;
+/*!40000 ALTER TABLE `sale_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sale_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_activity`
+--
+
+DROP TABLE IF EXISTS `schema_version_activity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_activity` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_ACTIVITY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_ACTIVITY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_ACTIVITY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_activity`
+--
+
+LOCK TABLES `schema_version_activity` WRITE;
+/*!40000 ALTER TABLE `schema_version_activity` DISABLE KEYS */;
+INSERT INTO `schema_version_activity` VALUES (1,1,'0.0.0.1','activity info','SQL','V0_0_0_1__activity_info.sql',376658868,'root','2016-08-06 09:07:06',33,1),(2,2,'0.0.0.2','activity user','SQL','V0_0_0_2__activity_user.sql',1021883058,'root','2016-08-06 09:07:06',29,1);
+/*!40000 ALTER TABLE `schema_version_activity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_asset`
+--
+
+DROP TABLE IF EXISTS `schema_version_asset`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_asset` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_ASSET_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_ASSET_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_ASSET_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_asset`
+--
+
+LOCK TABLES `schema_version_asset` WRITE;
+/*!40000 ALTER TABLE `schema_version_asset` DISABLE KEYS */;
+INSERT INTO `schema_version_asset` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:06',0,1),(2,2,'0.0.0.1','asset info','SQL','V0_0_0_1__asset_info.sql',2046070757,'root','2016-08-06 09:07:06',19,1);
+/*!40000 ALTER TABLE `schema_version_asset` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_attendance`
+--
+
+DROP TABLE IF EXISTS `schema_version_attendance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_attendance` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_ATTENDANCE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_ATTENDANCE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_ATTENDANCE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_attendance`
+--
+
+LOCK TABLES `schema_version_attendance` WRITE;
+/*!40000 ALTER TABLE `schema_version_attendance` DISABLE KEYS */;
+INSERT INTO `schema_version_attendance` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:07',0,1),(2,2,'0.0.0.1','attendance info','SQL','V0_0_0_1__attendance_info.sql',1953383375,'root','2016-08-06 09:07:07',22,1);
+/*!40000 ALTER TABLE `schema_version_attendance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_audit`
+--
+
+DROP TABLE IF EXISTS `schema_version_audit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_audit` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_AUDIT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_AUDIT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_AUDIT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_audit`
+--
+
+LOCK TABLES `schema_version_audit` WRITE;
+/*!40000 ALTER TABLE `schema_version_audit` DISABLE KEYS */;
+INSERT INTO `schema_version_audit` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:07',0,1),(2,2,'0.0.1','audit base','SQL','V0_0_1__audit_base.sql',-555427555,'root','2016-08-06 09:07:07',23,1),(3,3,'0.0.2','audit extra','SQL','V0_0_2__audit_extra.sql',625921391,'root','2016-08-06 09:07:07',34,1),(4,4,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-401251867,'root','2016-08-06 09:07:07',79,1);
+/*!40000 ALTER TABLE `schema_version_audit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_auth`
+--
+
+DROP TABLE IF EXISTS `schema_version_auth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_auth` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_AUTH_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_AUTH_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_AUTH_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_auth`
+--
+
+LOCK TABLES `schema_version_auth` WRITE;
+/*!40000 ALTER TABLE `schema_version_auth` DISABLE KEYS */;
+INSERT INTO `schema_version_auth` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:07',0,1),(2,2,'0.0.1','user status','SQL','V0_0_1__user_status.sql',-2015520959,'root','2016-08-06 09:07:07',31,1),(3,3,'0.0.2','role def','SQL','V0_0_2__role_def.sql',1947119503,'root','2016-08-06 09:07:07',21,1),(4,4,'0.0.3','role','SQL','V0_0_3__role.sql',85034199,'root','2016-08-06 09:07:08',32,1),(5,5,'0.0.4','perm type','SQL','V0_0_4__perm_type.sql',153950610,'root','2016-08-06 09:07:08',30,1),(6,6,'0.0.5','perm','SQL','V0_0_5__perm.sql',8031793,'root','2016-08-06 09:07:08',25,1),(7,7,'0.0.6','perm role def','SQL','V0_0_6__perm_role_def.sql',-799578815,'root','2016-08-06 09:07:08',33,1),(8,8,'0.0.7','access','SQL','V0_0_7__access.sql',-1907478133,'root','2016-08-06 09:07:08',28,1),(9,9,'0.0.8','user role','SQL','V0_0_8__user_role.sql',210019612,'root','2016-08-06 09:07:08',29,1),(10,10,'0.9.0.1','user status','SQL','V0_9_0_1__user_status.sql',-795897572,'root','2016-08-06 09:07:08',19,1),(11,11,'1.0.1.1','perm','SQL','V1_0_1_1__perm.sql',-1577256507,'root','2016-08-06 09:07:08',45,1),(12,12,'1.6.0.1','menu','SQL','V1_6_0_1__menu.sql',2023863233,'root','2016-08-06 09:07:08',36,1),(13,13,'1.6.0.2','tenant','SQL','V1_6_0_2__tenant.sql',744730255,'root','2016-08-06 09:07:08',282,1),(14,14,'1.7.0.1','menu','SQL','V1_7_0_1__menu.sql',-672613254,'root','2016-08-06 09:07:08',47,1);
+/*!40000 ALTER TABLE `schema_version_auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_book`
+--
+
+DROP TABLE IF EXISTS `schema_version_book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_book` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_BOOK_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_BOOK_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_BOOK_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_book`
+--
+
+LOCK TABLES `schema_version_book` WRITE;
+/*!40000 ALTER TABLE `schema_version_book` DISABLE KEYS */;
+INSERT INTO `schema_version_book` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:09',0,1),(2,2,'0.0.0.1','book info','SQL','V0_0_0_1__book_info.sql',182479442,'root','2016-08-06 09:07:09',34,1),(3,3,'0.0.0.2','book borrow','SQL','V0_0_0_2__book_borrow.sql',763575468,'root','2016-08-06 09:07:10',23,1);
+/*!40000 ALTER TABLE `schema_version_book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_bpm`
+--
+
+DROP TABLE IF EXISTS `schema_version_bpm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_bpm` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_BPM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_BPM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_BPM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_bpm`
+--
+
+LOCK TABLES `schema_version_bpm` WRITE;
+/*!40000 ALTER TABLE `schema_version_bpm` DISABLE KEYS */;
+INSERT INTO `schema_version_bpm` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:10',0,1),(2,2,'0.0.1','bpm category','SQL','V0_0_1__bpm_category.sql',625611410,'root','2016-08-06 09:07:10',16,1),(3,3,'0.0.2','bpm process','SQL','V0_0_2__bpm_process.sql',-1075291043,'root','2016-08-06 09:07:10',31,1),(4,4,'0.0.5','bpm task conf','SQL','V0_0_5__bpm_task_conf.sql',385130250,'root','2016-08-06 09:07:10',19,1),(5,5,'0.0.6','bpm task def','SQL','V0_0_6__bpm_task_def.sql',-1104683230,'root','2016-08-06 09:07:10',28,1),(6,6,'0.0.7','bpm mail template','SQL','V0_0_7__bpm_mail_template.sql',-1305582650,'root','2016-08-06 09:07:10',22,1),(7,7,'0.0.8','bpm task def notice','SQL','V0_0_8__bpm_task_def_notice.sql',980749472,'root','2016-08-06 09:07:10',31,1),(8,8,'0.9.0.1','bpm conf base','SQL','V0_9_0_1__bpm_conf_base.sql',1945796035,'root','2016-08-06 09:07:10',24,1),(9,9,'0.9.0.2','bpm conf node','SQL','V0_9_0_2__bpm_conf_node.sql',1377989717,'root','2016-08-06 09:07:10',19,1),(10,10,'0.9.0.3','bpm conf user','SQL','V0_9_0_3__bpm_conf_user.sql',-1385976294,'root','2016-08-06 09:07:10',35,1),(11,11,'0.9.0.4','bpm conf listener','SQL','V0_9_0_4__bpm_conf_listener.sql',-10966431,'root','2016-08-06 09:07:10',22,1),(12,12,'0.9.0.5','bpm conf rule','SQL','V0_9_0_5__bpm_conf_rule.sql',-1329974824,'root','2016-08-06 09:07:10',30,1),(13,13,'0.9.0.6','bpm conf form','SQL','V0_9_0_6__bpm_conf_form.sql',-1830832794,'root','2016-08-06 09:07:10',42,1),(14,14,'0.9.0.7','bpm conf operation','SQL','V0_9_0_7__bpm_conf_operation.sql',-1546898213,'root','2016-08-06 09:07:10',21,1),(15,15,'0.9.0.8','bpm conf notice','SQL','V0_9_0_8__bpm_conf_notice.sql',1862083711,'root','2016-08-06 09:07:10',32,1),(16,16,'0.9.0.9','bpm process','SQL','V0_9_0_9__bpm_process.sql',-739148914,'root','2016-08-06 09:07:11',256,1),(17,17,'1.0.1.1','bpm conf countersign','SQL','V1_0_1_1__bpm_conf_countersign.sql',-369197680,'root','2016-08-06 09:07:11',25,1),(18,18,'1.4.0.1','bpm conf notice','SQL','V1_4_0_1__bpm_conf_notice.sql',-295053765,'root','2016-08-06 09:07:11',111,1),(19,19,'1.6.0.1','bpm conf assign','SQL','V1_6_0_1__bpm_conf_assign.sql',310348409,'root','2016-08-06 09:07:11',36,1),(20,20,'1.6.0.2','tenant','SQL','V1_6_0_2__tenant.sql',-1011912880,'root','2016-08-06 09:07:11',90,1),(21,21,'1.6.0.3','bpm instance','SQL','V1_6_0_3__bpm_instance.sql',-246501005,'root','2016-08-06 09:07:11',32,1);
+/*!40000 ALTER TABLE `schema_version_bpm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_budget`
+--
+
+DROP TABLE IF EXISTS `schema_version_budget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_budget` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_BUDGET_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_BUDGET_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_BUDGET_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_budget`
+--
+
+LOCK TABLES `schema_version_budget` WRITE;
+/*!40000 ALTER TABLE `schema_version_budget` DISABLE KEYS */;
+INSERT INTO `schema_version_budget` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:12',0,1),(2,2,'0.0.0.1','budget info','SQL','V0_0_0_1__budget_info.sql',-1009595817,'root','2016-08-06 09:07:12',18,1);
+/*!40000 ALTER TABLE `schema_version_budget` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_business`
+--
+
+DROP TABLE IF EXISTS `schema_version_business`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_business` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_BUSINESS_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_BUSINESS_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_BUSINESS_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_business`
+--
+
+LOCK TABLES `schema_version_business` WRITE;
+/*!40000 ALTER TABLE `schema_version_business` DISABLE KEYS */;
+INSERT INTO `schema_version_business` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:12',0,1),(2,2,'0.0.0.1','business info','SQL','V0_0_0_1__business_info.sql',-719216230,'root','2016-08-06 09:07:12',18,1);
+/*!40000 ALTER TABLE `schema_version_business` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_car`
+--
+
+DROP TABLE IF EXISTS `schema_version_car`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_car` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_CAR_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_CAR_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_CAR_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_car`
+--
+
+LOCK TABLES `schema_version_car` WRITE;
+/*!40000 ALTER TABLE `schema_version_car` DISABLE KEYS */;
+INSERT INTO `schema_version_car` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:12',0,1),(2,2,'0.0.0.1','car info','SQL','V0_0_0_1__car_info.sql',-1562941431,'root','2016-08-06 09:07:12',20,1);
+/*!40000 ALTER TABLE `schema_version_car` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_card`
+--
+
+DROP TABLE IF EXISTS `schema_version_card`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_card` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_CARD_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_CARD_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_CARD_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_card`
+--
+
+LOCK TABLES `schema_version_card` WRITE;
+/*!40000 ALTER TABLE `schema_version_card` DISABLE KEYS */;
+INSERT INTO `schema_version_card` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:13',0,1),(2,2,'0.0.0.1','card info','SQL','V0_0_0_1__card_info.sql',1136408922,'root','2016-08-06 09:07:13',38,1),(3,3,'0.0.0.2','door info','SQL','V0_0_0_2__door_info.sql',615548439,'root','2016-08-06 09:07:13',24,1);
+/*!40000 ALTER TABLE `schema_version_card` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_cms`
+--
+
+DROP TABLE IF EXISTS `schema_version_cms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_cms` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_CMS_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_CMS_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_CMS_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_cms`
+--
+
+LOCK TABLES `schema_version_cms` WRITE;
+/*!40000 ALTER TABLE `schema_version_cms` DISABLE KEYS */;
+INSERT INTO `schema_version_cms` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:13',0,1),(2,2,'0.0.1','cms catalog','SQL','V0_0_1__cms_catalog.sql',281012919,'root','2016-08-06 09:07:13',26,1),(3,3,'0.0.2','cms article','SQL','V0_0_2__cms_article.sql',-1662997565,'root','2016-08-06 09:07:13',34,1),(4,4,'0.0.3','cms comment','SQL','V0_0_3__cms_comment.sql',-399530884,'root','2016-08-06 09:07:13',34,1),(5,5,'0.0.4','cms favorite','SQL','V0_0_4__cms_favorite.sql',1967330307,'root','2016-08-06 09:07:13',26,1),(6,6,'1.4.0.1','cms attachment','SQL','V1_4_0_1__cms_attachment.sql',1085487635,'root','2016-08-06 09:07:13',36,1),(7,7,'1.5.0.1','article','SQL','V1_5_0_1__article.sql',1205271314,'root','2016-08-06 09:07:13',101,1),(8,8,'1.5.0.2','article','SQL','V1_5_0_2__article.sql',-1761839809,'root','2016-08-06 09:07:13',56,1),(9,9,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-787295385,'root','2016-08-06 09:07:14',131,1),(18,18,'1.6.0.10','cms click','SQL','V1_6_0_10__cms_click.sql',-1978137465,'root','2016-08-06 09:07:14',27,1),(10,10,'1.6.0.2','site','SQL','V1_6_0_2__site.sql',1667008469,'root','2016-08-06 09:07:14',30,1),(11,11,'1.6.0.3','catalog','SQL','V1_6_0_3__catalog.sql',1573127128,'root','2016-08-06 09:07:14',95,1),(12,12,'1.6.0.4','article','SQL','V1_6_0_4__article.sql',1563108029,'root','2016-08-06 09:07:14',85,1),(13,13,'1.6.0.5','comment','SQL','V1_6_0_5__comment.sql',-370118847,'root','2016-08-06 09:07:14',92,1),(14,14,'1.6.0.6','content','SQL','V1_6_0_6__content.sql',-864897024,'root','2016-08-06 09:07:14',28,1),(15,15,'1.6.0.7','cms tag','SQL','V1_6_0_7__cms_tag.sql',431648115,'root','2016-08-06 09:07:14',16,1),(16,16,'1.6.0.8','cms tag article','SQL','V1_6_0_8__cms_tag_article.sql',-660467623,'root','2016-08-06 09:07:14',33,1),(17,17,'1.6.0.9','cms version','SQL','V1_6_0_9__cms_version.sql',-2009734327,'root','2016-08-06 09:07:14',23,1);
+/*!40000 ALTER TABLE `schema_version_cms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_contract`
+--
+
+DROP TABLE IF EXISTS `schema_version_contract`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_contract` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_CONTRACT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_CONTRACT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_CONTRACT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_contract`
+--
+
+LOCK TABLES `schema_version_contract` WRITE;
+/*!40000 ALTER TABLE `schema_version_contract` DISABLE KEYS */;
+INSERT INTO `schema_version_contract` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:15',0,1),(2,2,'0.0.0.1','contract info','SQL','V0_0_0_1__contract_info.sql',1245607706,'root','2016-08-06 09:07:15',28,1);
+/*!40000 ALTER TABLE `schema_version_contract` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_customer`
+--
+
+DROP TABLE IF EXISTS `schema_version_customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_customer` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_CUSTOMER_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_CUSTOMER_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_CUSTOMER_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_customer`
+--
+
+LOCK TABLES `schema_version_customer` WRITE;
+/*!40000 ALTER TABLE `schema_version_customer` DISABLE KEYS */;
+INSERT INTO `schema_version_customer` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:17',0,1),(2,2,'0.0.0.1','customer info','SQL','V0_0_0_1__customer_info.sql',-528932684,'root','2016-08-06 09:07:17',24,1);
+/*!40000 ALTER TABLE `schema_version_customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_auth`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_auth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_auth` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_AUTH_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_AUTH_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_AUTH_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_auth`
+--
+
+LOCK TABLES `schema_version_data_auth` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_auth` DISABLE KEYS */;
+INSERT INTO `schema_version_data_auth` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:09',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',765798338,'root','2016-08-06 09:07:09',120,1),(3,3,'1.0.1.1','data','SQL','V1_0_1_1__data.sql',-617050355,'root','2016-08-06 09:07:09',11,1),(4,4,'1.5.0.1','data','SQL','V1_5_0_1__data.sql',-1463493483,'root','2016-08-06 09:07:09',10,1),(5,5,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',1920927077,'root','2016-08-06 09:07:09',207,1),(6,6,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',-1324973502,'root','2016-08-06 09:07:09',174,1),(7,7,'1.7.0.2','data','SQL','V1_7_0_2__data.sql',768303055,'root','2016-08-06 09:07:09',35,1);
+/*!40000 ALTER TABLE `schema_version_data_auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_bpm`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_bpm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_bpm` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_BPM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_BPM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_BPM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_bpm`
+--
+
+LOCK TABLES `schema_version_data_bpm` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_bpm` DISABLE KEYS */;
+INSERT INTO `schema_version_data_bpm` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:11',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',-89268386,'root','2016-08-06 09:07:11',28,1),(3,3,'0.9.0.1','bpm process','SQL','V0_9_0_1__bpm_process.sql',-119054036,'root','2016-08-06 09:07:11',16,1),(4,4,'0.9.0.2','bpm conf node','SQL','V0_9_0_2__bpm_conf_node.sql',-501116463,'root','2016-08-06 09:07:11',40,1),(5,5,'1.0.0.1','bpm conf node','SQL','V1_0_0_1__bpm_conf_node.sql',923472623,'root','2016-08-06 09:07:11',19,1),(6,6,'1.0.1.1','bpm conf node','SQL','V1_0_1_1__bpm_conf_node.sql',-902694963,'root','2016-08-06 09:07:11',15,1),(7,7,'1.4.0.1','bpm conf node','SQL','V1_4_0_1__bpm_conf_node.sql',-1201552482,'root','2016-08-06 09:07:12',9,1),(8,8,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-735249303,'root','2016-08-06 09:07:12',6,1),(9,9,'1.7.0.1','bpm conf operation','SQL','V1_7_0_1__bpm_conf_operation.sql',729867728,'root','2016-08-06 09:07:12',12,1);
+/*!40000 ALTER TABLE `schema_version_data_bpm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_cms`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_cms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_cms` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_CMS_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_CMS_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_CMS_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_cms`
+--
+
+LOCK TABLES `schema_version_data_cms` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_cms` DISABLE KEYS */;
+INSERT INTO `schema_version_data_cms` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:14',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',-1588494011,'root','2016-08-06 09:07:14',20,1),(3,3,'1.5.0.1','data','SQL','V1_5_0_1__data.sql',646224299,'root','2016-08-06 09:07:14',20,1),(4,4,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',-2140559165,'root','2016-08-06 09:07:14',13,1),(5,5,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',-747264050,'root','2016-08-06 09:07:15',14,1);
+/*!40000 ALTER TABLE `schema_version_data_cms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_dict`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_dict`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_dict` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_DICT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_DICT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_DICT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_dict`
+--
+
+LOCK TABLES `schema_version_data_dict` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_dict` DISABLE KEYS */;
+INSERT INTO `schema_version_data_dict` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:18',0,1),(2,2,'0.0.0.1','data','SQL','V0_0_0_1__data.sql',397502185,'root','2016-08-06 09:07:18',125,1),(3,3,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',-520648644,'root','2016-08-06 09:07:18',9,1);
+/*!40000 ALTER TABLE `schema_version_data_dict` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_group`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_group` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_GROUP_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_GROUP_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_GROUP_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_group`
+--
+
+LOCK TABLES `schema_version_data_group` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_group` DISABLE KEYS */;
+INSERT INTO `schema_version_data_group` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:20',0,1),(2,2,'0.7.0.1','data','SQL','V0_7_0_1__data.sql',-1052296612,'root','2016-08-06 09:07:20',15,1);
+/*!40000 ALTER TABLE `schema_version_data_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_humantask`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_humantask`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_humantask` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_HUMANTASK_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_HUMANTASK_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_HUMANTASK_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_humantask`
+--
+
+LOCK TABLES `schema_version_data_humantask` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_humantask` DISABLE KEYS */;
+INSERT INTO `schema_version_data_humantask` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:22',0,1),(2,2,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',-1608297043,'root','2016-08-06 09:07:22',50,1),(3,3,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',1073833320,'root','2016-08-06 09:07:22',44,1);
+/*!40000 ALTER TABLE `schema_version_data_humantask` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_javamail`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_javamail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_javamail` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_JAVAMAIL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_JAVAMAIL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_JAVAMAIL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_javamail`
+--
+
+LOCK TABLES `schema_version_data_javamail` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_javamail` DISABLE KEYS */;
+INSERT INTO `schema_version_data_javamail` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:26',0,1),(2,2,'0.0.0.1','javamail config','SQL','V0_0_0_1__javamail_config.sql',-1897308881,'root','2016-08-06 09:07:26',7,1);
+/*!40000 ALTER TABLE `schema_version_data_javamail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_org`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_org`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_org` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_ORG_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_ORG_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_ORG_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_org`
+--
+
+LOCK TABLES `schema_version_data_org` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_org` DISABLE KEYS */;
+INSERT INTO `schema_version_data_org` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:30',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',1830395117,'root','2016-08-06 09:07:30',14,1),(3,3,'1.0.1.2','job','SQL','V1_0_1_2__job.sql',-205905006,'root','2016-08-06 09:07:30',49,1),(4,4,'1.3.0.1','job','SQL','V1_3_0_1__job.sql',-2075617749,'root','2016-08-06 09:07:30',10,1);
+/*!40000 ALTER TABLE `schema_version_data_org` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_party`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_party`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_party` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_PARTY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_PARTY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_PARTY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_party`
+--
+
+LOCK TABLES `schema_version_data_party` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_party` DISABLE KEYS */;
+INSERT INTO `schema_version_data_party` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:33',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',-184025357,'root','2016-08-06 09:07:33',70,1),(3,3,'1.0.1.1','data','SQL','V1_0_1_1__data.sql',-404760277,'root','2016-08-06 09:07:33',30,1),(4,4,'1.3.0.1','data','SQL','V1_3_0_1__data.sql',-986652955,'root','2016-08-06 09:07:33',15,1),(5,5,'1.5.0.1','data','SQL','V1_5_0_1__data.sql',-1925453969,'root','2016-08-06 09:07:33',5,1),(6,6,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',925576050,'root','2016-08-06 09:07:33',47,1);
+/*!40000 ALTER TABLE `schema_version_data_party` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_pim`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_pim`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_pim` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_PIM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_PIM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_PIM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_pim`
+--
+
+LOCK TABLES `schema_version_data_pim` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_pim` DISABLE KEYS */;
+INSERT INTO `schema_version_data_pim` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:35',0,1),(2,2,'0.0.0.1','data','SQL','V0_0_0_1__data.sql',-2043291187,'root','2016-08-06 09:07:35',5,1);
+/*!40000 ALTER TABLE `schema_version_data_pim` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_plm`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_plm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_plm` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_PLM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_PLM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_PLM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_plm`
+--
+
+LOCK TABLES `schema_version_data_plm` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_plm` DISABLE KEYS */;
+INSERT INTO `schema_version_data_plm` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:36',0,1),(2,2,'0.0.0.1','category','SQL','V0_0_0_1__category.sql',1222563659,'root','2016-08-06 09:07:36',14,1),(3,3,'0.0.0.2','project','SQL','V0_0_0_2__project.sql',-471301786,'root','2016-08-06 09:07:36',40,1),(4,4,'0.0.0.3','version','SQL','V0_0_0_3__version.sql',2073632375,'root','2016-08-06 09:07:36',5,1),(5,5,'0.0.0.4','kanban','SQL','V0_0_0_4__kanban.sql',-1031147710,'root','2016-08-06 09:07:36',17,1),(6,6,'0.0.0.5','data','SQL','V0_0_0_5__data.sql',-2077997513,'root','2016-08-06 09:07:36',58,1);
+/*!40000 ALTER TABLE `schema_version_data_plm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_portal`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_portal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_portal` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_PORTAL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_PORTAL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_PORTAL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_portal`
+--
+
+LOCK TABLES `schema_version_data_portal` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_portal` DISABLE KEYS */;
+INSERT INTO `schema_version_data_portal` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:37',0,1),(2,2,'1.0.0','data','SQL','V1_0_0__data.sql',-740437415,'root','2016-08-06 09:07:37',21,1),(3,3,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',-55747089,'root','2016-08-06 09:07:37',8,1);
+/*!40000 ALTER TABLE `schema_version_data_portal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_sendmail`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_sendmail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_sendmail` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_SENDMAIL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_SENDMAIL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_SENDMAIL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_sendmail`
+--
+
+LOCK TABLES `schema_version_data_sendmail` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_sendmail` DISABLE KEYS */;
+INSERT INTO `schema_version_data_sendmail` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:23',0,1),(2,2,'1.0.0','data','SQL','V1_0_0__data.sql',-342528832,'root','2016-08-06 09:07:23',8,1),(3,3,'1.6.0.1','config','SQL','V1_6_0_1__config.sql',140902159,'root','2016-08-06 09:07:23',8,1),(4,4,'1.7.0.1','config','SQL','V1_7_0_1__config.sql',-1730520350,'root','2016-08-06 09:07:23',5,1);
+/*!40000 ALTER TABLE `schema_version_data_sendmail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_sendsms`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_sendsms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_sendsms` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_SENDSMS_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_SENDSMS_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_SENDSMS_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_sendsms`
+--
+
+LOCK TABLES `schema_version_data_sendsms` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_sendsms` DISABLE KEYS */;
+INSERT INTO `schema_version_data_sendsms` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:24',0,1),(2,2,'1.0.0','data','SQL','V1_0_0__data.sql',916530636,'root','2016-08-06 09:07:24',7,1);
+/*!40000 ALTER TABLE `schema_version_data_sendsms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_template`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_template` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_TEMPLATE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_TEMPLATE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_TEMPLATE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_template`
+--
+
+LOCK TABLES `schema_version_data_template` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_template` DISABLE KEYS */;
+INSERT INTO `schema_version_data_template` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:25',0,1),(2,2,'0.0.0.1','data','SQL','V0_0_0_1__data.sql',1836513897,'root','2016-08-06 09:07:25',13,1),(3,3,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',1619061954,'root','2016-08-06 09:07:25',7,1),(4,4,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',466765159,'root','2016-08-06 09:07:25',14,1);
+/*!40000 ALTER TABLE `schema_version_data_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_ticket`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_ticket` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_TICKET_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_TICKET_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_TICKET_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_ticket`
+--
+
+LOCK TABLES `schema_version_data_ticket` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_ticket` DISABLE KEYS */;
+INSERT INTO `schema_version_data_ticket` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:40',0,1),(2,2,'0.0.0.1','data','SQL','V0_0_0_1__data.sql',-680123055,'root','2016-08-06 09:07:40',9,1);
+/*!40000 ALTER TABLE `schema_version_data_ticket` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_user`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_user` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_USER_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_USER_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_USER_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_user`
+--
+
+LOCK TABLES `schema_version_data_user` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_user` DISABLE KEYS */;
+INSERT INTO `schema_version_data_user` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:43',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',1685611106,'root','2016-08-06 09:07:43',33,1),(3,3,'0.9.0.1','data','SQL','V0_9_0_1__data.sql',-1321416084,'root','2016-08-06 09:07:43',13,1),(4,4,'1.3.0.1','data','SQL','V1_3_0_1__data.sql',-78940932,'root','2016-08-06 09:07:43',6,1),(5,5,'1.3.0.2','data','SQL','V1_3_0_2__data.sql',-896623616,'root','2016-08-06 09:07:43',5,1),(6,6,'1.5.0.1','data','SQL','V1_5_0_1__data.sql',201430815,'root','2016-08-06 09:07:43',36,1),(7,7,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',-521761274,'root','2016-08-06 09:07:43',9,1),(8,8,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',1590354556,'root','2016-08-06 09:07:43',102,1);
+/*!40000 ALTER TABLE `schema_version_data_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_data_workcal`
+--
+
+DROP TABLE IF EXISTS `schema_version_data_workcal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_data_workcal` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DATA_WORKCAL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DATA_WORKCAL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DATA_WORKCAL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_data_workcal`
+--
+
+LOCK TABLES `schema_version_data_workcal` WRITE;
+/*!40000 ALTER TABLE `schema_version_data_workcal` DISABLE KEYS */;
+INSERT INTO `schema_version_data_workcal` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:45',0,1),(2,2,'0.0.1','data','SQL','V0_0_1__data.sql',-1740434376,'root','2016-08-06 09:07:45',69,1),(3,3,'0.0.2','data','SQL','V0_0_2__data.sql',1276626974,'root','2016-08-06 09:07:45',47,1),(4,4,'1.6.0.1','data','SQL','V1_6_0_1__data.sql',97020511,'root','2016-08-06 09:07:45',9,1),(5,5,'1.6.0.2','data','SQL','V1_6_0_2__data.sql',-1284740292,'root','2016-08-06 09:07:45',12,1),(6,6,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',1690704956,'root','2016-08-06 09:07:45',70,1);
+/*!40000 ALTER TABLE `schema_version_data_workcal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_delegate`
+--
+
+DROP TABLE IF EXISTS `schema_version_delegate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_delegate` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DELEGATE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DELEGATE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DELEGATE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_delegate`
+--
+
+LOCK TABLES `schema_version_delegate` WRITE;
+/*!40000 ALTER TABLE `schema_version_delegate` DISABLE KEYS */;
+INSERT INTO `schema_version_delegate` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:22',0,1),(2,2,'0.0.0.1','delegate info','SQL','V0_0_0_1__delegate_info.sql',1985013488,'root','2016-08-06 09:07:22',36,1),(3,3,'0.0.0.2','delegate history','SQL','V0_0_0_2__delegate_history.sql',-869422440,'root','2016-08-06 09:07:22',28,1);
+/*!40000 ALTER TABLE `schema_version_delegate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_dict`
+--
+
+DROP TABLE IF EXISTS `schema_version_dict`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_dict` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DICT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DICT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DICT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_dict`
+--
+
+LOCK TABLES `schema_version_dict` WRITE;
+/*!40000 ALTER TABLE `schema_version_dict` DISABLE KEYS */;
+INSERT INTO `schema_version_dict` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:17',0,1),(2,2,'0.0.0.1','dict type','SQL','V0_0_0_1__dict_type.sql',1355748071,'root','2016-08-06 09:07:17',27,1),(3,3,'0.0.0.2','dict schema','SQL','V0_0_0_2__dict_schema.sql',1661413321,'root','2016-08-06 09:07:17',24,1),(4,4,'0.0.0.3','dict info','SQL','V0_0_0_3__dict_info.sql',-1361182776,'root','2016-08-06 09:07:17',27,1),(5,5,'0.0.0.4','dict data','SQL','V0_0_0_4__dict_data.sql',-108037193,'root','2016-08-06 09:07:17',28,1),(6,6,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-170944144,'root','2016-08-06 09:07:17',170,1);
+/*!40000 ALTER TABLE `schema_version_dict` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_disk`
+--
+
+DROP TABLE IF EXISTS `schema_version_disk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_disk` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_DISK_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_DISK_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_DISK_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_disk`
+--
+
+LOCK TABLES `schema_version_disk` WRITE;
+/*!40000 ALTER TABLE `schema_version_disk` DISABLE KEYS */;
+INSERT INTO `schema_version_disk` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:18',0,1),(2,2,'0.0.0.1','disk info','SQL','V0_0_0_1__disk_info.sql',1947079706,'root','2016-08-06 09:07:18',29,1),(3,3,'0.0.0.2','disk share','SQL','V0_0_0_2__disk_share.sql',1191640118,'root','2016-08-06 09:07:18',29,1),(4,4,'0.0.0.3','disk acl','SQL','V0_0_0_3__disk_acl.sql',1795932918,'root','2016-08-06 09:07:18',20,1);
+/*!40000 ALTER TABLE `schema_version_disk` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_employee`
+--
+
+DROP TABLE IF EXISTS `schema_version_employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_employee` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_EMPLOYEE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_EMPLOYEE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_EMPLOYEE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_employee`
+--
+
+LOCK TABLES `schema_version_employee` WRITE;
+/*!40000 ALTER TABLE `schema_version_employee` DISABLE KEYS */;
+INSERT INTO `schema_version_employee` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:18',0,1),(2,2,'0.0.0.1','employee info','SQL','V0_0_0_1__employee_info.sql',-51514901,'root','2016-08-06 09:07:18',45,1);
+/*!40000 ALTER TABLE `schema_version_employee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_expense`
+--
+
+DROP TABLE IF EXISTS `schema_version_expense`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_expense` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_EXPENSE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_EXPENSE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_EXPENSE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_expense`
+--
+
+LOCK TABLES `schema_version_expense` WRITE;
+/*!40000 ALTER TABLE `schema_version_expense` DISABLE KEYS */;
+INSERT INTO `schema_version_expense` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:19',0,1),(2,2,'0.0.0.1','expense info','SQL','V0_0_0_1__expense_info.sql',-271868152,'root','2016-08-06 09:07:19',30,1);
+/*!40000 ALTER TABLE `schema_version_expense` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_form`
+--
+
+DROP TABLE IF EXISTS `schema_version_form`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_form` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_FORM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_FORM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_FORM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_form`
+--
+
+LOCK TABLES `schema_version_form` WRITE;
+/*!40000 ALTER TABLE `schema_version_form` DISABLE KEYS */;
+INSERT INTO `schema_version_form` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:19',0,1),(2,2,'0.0.3','form template','SQL','V0_0_3__form_template.sql',-475654482,'root','2016-08-06 09:07:19',32,1),(3,3,'1.1.0.2','form schema','SQL','V1_1_0_2__form_schema.sql',-1472401406,'root','2016-08-06 09:07:19',28,1),(4,4,'1.3.0.1','form template','SQL','V1_3_0_1__form_template.sql',-235089447,'root','2016-08-06 09:07:19',95,1),(5,5,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',1261129736,'root','2016-08-06 09:07:19',163,1);
+/*!40000 ALTER TABLE `schema_version_form` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_group`
+--
+
+DROP TABLE IF EXISTS `schema_version_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_group` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_GROUP_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_GROUP_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_GROUP_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_group`
+--
+
+LOCK TABLES `schema_version_group` WRITE;
+/*!40000 ALTER TABLE `schema_version_group` DISABLE KEYS */;
+INSERT INTO `schema_version_group` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:20',0,1),(2,2,'0.0.0.1','group type','SQL','V0_0_0_1__group_type.sql',-385299985,'root','2016-08-06 09:07:20',20,1),(3,3,'0.0.0.2','group info','SQL','V0_0_0_2__group_info.sql',1680817743,'root','2016-08-06 09:07:20',27,1),(4,4,'0.0.0.3','group alias','SQL','V0_0_0_3__group_alias.sql',719723172,'root','2016-08-06 09:07:20',31,1),(5,5,'0.0.0.4','group relation','SQL','V0_0_0_4__group_relation.sql',-95611627,'root','2016-08-06 09:07:20',23,1),(6,6,'0.0.0.5','group member','SQL','V0_0_0_5__group_member.sql',-1845808079,'root','2016-08-06 09:07:20',37,1),(7,7,'0.0.0.6','group admin','SQL','V0_0_0_6__group_admin.sql',-1886904454,'root','2016-08-06 09:07:20',25,1);
+/*!40000 ALTER TABLE `schema_version_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_humantask`
+--
+
+DROP TABLE IF EXISTS `schema_version_humantask`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_humantask` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_HUMANTASK_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_HUMANTASK_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_HUMANTASK_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_humantask`
+--
+
+LOCK TABLES `schema_version_humantask` WRITE;
+/*!40000 ALTER TABLE `schema_version_humantask` DISABLE KEYS */;
+INSERT INTO `schema_version_humantask` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:20',0,1),(2,2,'0.0.0.1','humantask','SQL','V0_0_0_1__humantask.sql',-942339138,'root','2016-08-06 09:07:20',24,1),(3,3,'0.0.0.2','participant','SQL','V0_0_0_2__participant.sql',1243109055,'root','2016-08-06 09:07:20',20,1),(4,4,'1.5.0.1','task info','SQL','V1_5_0_1__task_info.sql',972503896,'root','2016-08-06 09:07:21',33,1),(5,5,'1.5.0.2','task participant','SQL','V1_5_0_2__task_participant.sql',-116541113,'root','2016-08-06 09:07:21',19,1),(6,6,'1.6.0.1','task info','SQL','V1_6_0_1__task_info.sql',786076243,'root','2016-08-06 09:07:21',291,1),(15,15,'1.6.0.10','task log','SQL','V1_6_0_10__task_log.sql',20680185,'root','2016-08-06 09:07:21',34,1),(7,7,'1.6.0.2','task def base','SQL','V1_6_0_2__task_def_base.sql',-784319918,'root','2016-08-06 09:07:21',29,1),(8,8,'1.6.0.3','task def user','SQL','V1_6_0_3__task_def_user.sql',-1487383690,'root','2016-08-06 09:07:21',22,1),(9,9,'1.6.0.4','task def operation','SQL','V1_6_0_4__task_def_operation.sql',-1138866585,'root','2016-08-06 09:07:21',22,1),(10,10,'1.6.0.5','task def deadline','SQL','V1_6_0_5__task_def_deadline.sql',-996187211,'root','2016-08-06 09:07:21',30,1),(11,11,'1.6.0.6','task def escalation','SQL','V1_6_0_6__task_def_escalation.sql',209415707,'root','2016-08-06 09:07:21',20,1),(12,12,'1.6.0.7','task def notification','SQL','V1_6_0_7__task_def_notification.sql',682332800,'root','2016-08-06 09:07:21',32,1),(13,13,'1.6.0.8','task conf user','SQL','V1_6_0_8__task_conf_user.sql',1902307641,'root','2016-08-06 09:07:21',24,1),(14,14,'1.6.0.9','task deadline','SQL','V1_6_0_9__task_deadline.sql',1106351149,'root','2016-08-06 09:07:21',26,1),(16,16,'1.7.0.1','task info','SQL','V1_7_0_1__task_info.sql',-509512988,'root','2016-08-06 09:07:22',249,1),(17,17,'1.7.0.2','task def base','SQL','V1_7_0_2__task_def_base.sql',1462056070,'root','2016-08-06 09:07:22',81,1),(18,18,'1.7.1.1','task def user','SQL','V1_7_1_1__task_def_user.sql',-2034273118,'root','2016-08-06 09:07:22',42,1);
+/*!40000 ALTER TABLE `schema_version_humantask` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_inventory`
+--
+
+DROP TABLE IF EXISTS `schema_version_inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_inventory` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_INVENTORY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_INVENTORY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_INVENTORY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_inventory`
+--
+
+LOCK TABLES `schema_version_inventory` WRITE;
+/*!40000 ALTER TABLE `schema_version_inventory` DISABLE KEYS */;
+INSERT INTO `schema_version_inventory` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:26',0,1),(2,2,'0.0.0.1','inventory info','SQL','V0_0_0_1__inventory_info.sql',178383650,'root','2016-08-06 09:07:26',28,1);
+/*!40000 ALTER TABLE `schema_version_inventory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_javamail`
+--
+
+DROP TABLE IF EXISTS `schema_version_javamail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_javamail` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_JAVAMAIL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_JAVAMAIL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_JAVAMAIL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_javamail`
+--
+
+LOCK TABLES `schema_version_javamail` WRITE;
+/*!40000 ALTER TABLE `schema_version_javamail` DISABLE KEYS */;
+INSERT INTO `schema_version_javamail` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:26',0,1),(2,2,'0.0.0.1','javamail config','SQL','V0_0_0_1__javamail_config.sql',469715651,'root','2016-08-06 09:07:26',24,1),(3,3,'0.0.0.2','javamail message','SQL','V0_0_0_2__javamail_message.sql',-831422996,'root','2016-08-06 09:07:26',27,1),(4,4,'0.0.0.3','javamail attachment','SQL','V0_0_0_3__javamail_attachment.sql',1607137089,'root','2016-08-06 09:07:26',19,1);
+/*!40000 ALTER TABLE `schema_version_javamail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_keyvalue`
+--
+
+DROP TABLE IF EXISTS `schema_version_keyvalue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_keyvalue` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_KEYVALUE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_KEYVALUE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_KEYVALUE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_keyvalue`
+--
+
+LOCK TABLES `schema_version_keyvalue` WRITE;
+/*!40000 ALTER TABLE `schema_version_keyvalue` DISABLE KEYS */;
+INSERT INTO `schema_version_keyvalue` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:27',0,1),(2,2,'0.0.0.1','kv record','SQL','V0_0_0_1__kv_record.sql',427876074,'root','2016-08-06 09:07:27',31,1),(3,3,'0.0.0.2','kv prop','SQL','V0_0_0_2__kv_prop.sql',-543699534,'root','2016-08-06 09:07:27',26,1);
+/*!40000 ALTER TABLE `schema_version_keyvalue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_leave`
+--
+
+DROP TABLE IF EXISTS `schema_version_leave`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_leave` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_LEAVE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_LEAVE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_LEAVE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_leave`
+--
+
+LOCK TABLES `schema_version_leave` WRITE;
+/*!40000 ALTER TABLE `schema_version_leave` DISABLE KEYS */;
+INSERT INTO `schema_version_leave` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:27',0,1),(2,2,'0.0.0.1','Leave info','SQL','V0_0_0_1__Leave_info.sql',-1949518536,'root','2016-08-06 09:07:27',18,1);
+/*!40000 ALTER TABLE `schema_version_leave` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_meeting`
+--
+
+DROP TABLE IF EXISTS `schema_version_meeting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_meeting` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_MEETING_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_MEETING_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_MEETING_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_meeting`
+--
+
+LOCK TABLES `schema_version_meeting` WRITE;
+/*!40000 ALTER TABLE `schema_version_meeting` DISABLE KEYS */;
+INSERT INTO `schema_version_meeting` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:27',0,1),(2,2,'0.0.0.1','meeting room','SQL','V0_0_0_1__meeting_room.sql',-1573587360,'root','2016-08-06 09:07:27',23,1),(3,3,'0.0.0.2','meeting info','SQL','V0_0_0_2__meeting_info.sql',1066065240,'root','2016-08-06 09:07:28',28,1),(4,4,'0.0.0.3','meeting attendee','SQL','V0_0_0_3__meeting_attendee.sql',-806551611,'root','2016-08-06 09:07:28',17,1),(5,5,'0.0.0.4','meeting item','SQL','V0_0_0_4__meeting_item.sql',-693595609,'root','2016-08-06 09:07:28',29,1);
+/*!40000 ALTER TABLE `schema_version_meeting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_model`
+--
+
+DROP TABLE IF EXISTS `schema_version_model`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_model` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_MODEL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_MODEL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_MODEL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_model`
+--
+
+LOCK TABLES `schema_version_model` WRITE;
+/*!40000 ALTER TABLE `schema_version_model` DISABLE KEYS */;
+INSERT INTO `schema_version_model` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:28',0,1),(2,2,'0.0.0.1','model info','SQL','V0_0_0_1__model_info.sql',1712153431,'root','2016-08-06 09:07:28',27,1),(3,3,'0.0.0.2','model field','SQL','V0_0_0_2__model_field.sql',123598629,'root','2016-08-06 09:07:28',18,1);
+/*!40000 ALTER TABLE `schema_version_model` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_msg`
+--
+
+DROP TABLE IF EXISTS `schema_version_msg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_msg` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_MSG_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_MSG_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_MSG_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_msg`
+--
+
+LOCK TABLES `schema_version_msg` WRITE;
+/*!40000 ALTER TABLE `schema_version_msg` DISABLE KEYS */;
+INSERT INTO `schema_version_msg` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:28',0,1),(2,2,'0.0.1','msg info','SQL','V0_0_1__msg_info.sql',-2111375862,'root','2016-08-06 09:07:28',16,1),(3,3,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-522780915,'root','2016-08-06 09:07:28',47,1),(4,4,'1.7.0.1','data','SQL','V1_7_0_1__data.sql',-1787655498,'root','2016-08-06 09:07:28',34,1);
+/*!40000 ALTER TABLE `schema_version_msg` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_officesupply`
+--
+
+DROP TABLE IF EXISTS `schema_version_officesupply`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_officesupply` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_OFFICESUPPLY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_OFFICESUPPLY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_OFFICESUPPLY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_officesupply`
+--
+
+LOCK TABLES `schema_version_officesupply` WRITE;
+/*!40000 ALTER TABLE `schema_version_officesupply` DISABLE KEYS */;
+INSERT INTO `schema_version_officesupply` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:28',0,1),(2,2,'0.0.0.1','officesupply info','SQL','V0_0_0_1__officesupply_info.sql',-1016774324,'root','2016-08-06 09:07:29',28,1),(3,3,'0.0.0.2','officesupply receive','SQL','V0_0_0_2__officesupply_receive.sql',-717792194,'root','2016-08-06 09:07:29',21,1);
+/*!40000 ALTER TABLE `schema_version_officesupply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_org`
+--
+
+DROP TABLE IF EXISTS `schema_version_org`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_org` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_ORG_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_ORG_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_ORG_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_org`
+--
+
+LOCK TABLES `schema_version_org` WRITE;
+/*!40000 ALTER TABLE `schema_version_org` DISABLE KEYS */;
+INSERT INTO `schema_version_org` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:29',0,1),(2,2,'0.0.1','org company','SQL','V0_0_1__org_company.sql',1410709027,'root','2016-08-06 09:07:29',16,1),(3,3,'0.0.2','org department','SQL','V0_0_2__org_department.sql',1742708419,'root','2016-08-06 09:07:29',28,1),(4,4,'1.0.1.1','job grade','SQL','V1_0_1_1__job_grade.sql',1276186479,'root','2016-08-06 09:07:29',23,1),(5,5,'1.0.1.2','job level','SQL','V1_0_1_2__job_level.sql',-1172239075,'root','2016-08-06 09:07:29',18,1),(6,6,'1.0.1.3','job type','SQL','V1_0_1_3__job_type.sql',127982197,'root','2016-08-06 09:07:29',31,1),(7,7,'1.0.1.4','job title','SQL','V1_0_1_4__job_title.sql',1603966155,'root','2016-08-06 09:07:29',20,1),(8,8,'1.0.1.5','job info','SQL','V1_0_1_5__job_info.sql',2044978812,'root','2016-08-06 09:07:29',34,1),(9,9,'1.0.1.6','job user','SQL','V1_0_1_6__job_user.sql',-1217198940,'root','2016-08-06 09:07:29',32,1),(10,10,'1.3.0.1','job','SQL','V1_3_0_1__job.sql',-1856902805,'root','2016-08-06 09:07:29',83,1),(11,11,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',129130939,'root','2016-08-06 09:07:30',405,1);
+/*!40000 ALTER TABLE `schema_version_org` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_party`
+--
+
+DROP TABLE IF EXISTS `schema_version_party`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_party` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PARTY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PARTY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PARTY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_party`
+--
+
+LOCK TABLES `schema_version_party` WRITE;
+/*!40000 ALTER TABLE `schema_version_party` DISABLE KEYS */;
+INSERT INTO `schema_version_party` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:30',0,1),(2,2,'0.0.1','party type','SQL','V0_0_1__party_type.sql',-267211797,'root','2016-08-06 09:07:30',24,1),(3,3,'0.0.2','party entity','SQL','V0_0_2__party_entity.sql',-1775118558,'root','2016-08-06 09:07:30',78,1),(4,4,'0.0.3','party dim','SQL','V0_0_3__party_dim.sql',1879905857,'root','2016-08-06 09:07:31',21,1),(5,5,'0.0.4','party struct type','SQL','V0_0_4__party_struct_type.sql',103450412,'root','2016-08-06 09:07:31',33,1),(6,6,'0.0.5','party struct rule','SQL','V0_0_5__party_struct_rule.sql',1948309612,'root','2016-08-06 09:07:31',22,1),(7,7,'0.0.6','party struct','SQL','V0_0_6__party_struct.sql',663973242,'root','2016-08-06 09:07:31',37,1),(8,8,'0.0.7','party dim root','SQL','V0_0_7__party_dim_root.sql',-1788130381,'root','2016-08-06 09:07:31',35,1),(9,9,'1.0.1.2','party type','SQL','V1_0_1_2__party_type.sql',-881395941,'root','2016-08-06 09:07:31',167,1),(10,10,'1.0.1.3','party dim root','SQL','V1_0_1_3__party_dim_root.sql',-1545605772,'root','2016-08-06 09:07:31',22,1),(11,11,'1.0.1.4','party struct','SQL','V1_0_1_4__party_struct.sql',405883584,'root','2016-08-06 09:07:32',729,1),(12,12,'1.0.1.5','party struct type','SQL','V1_0_1_5__party_struct_type.sql',-2041823563,'root','2016-08-06 09:07:32',82,1),(13,13,'1.0.1.6','party struct rule','SQL','V1_0_1_6__party_struct_rule.sql',-643578369,'root','2016-08-06 09:07:32',434,1),(14,14,'1.0.1.7','party dim','SQL','V1_0_1_7__party_dim.sql',-77947696,'root','2016-08-06 09:07:32',12,1),(15,15,'1.3.0.1','party entity','SQL','V1_3_0_1__party_entity.sql',-462907382,'root','2016-08-06 09:07:32',61,1),(16,16,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-325523786,'root','2016-08-06 09:07:33',277,1);
+/*!40000 ALTER TABLE `schema_version_party` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_performance`
+--
+
+DROP TABLE IF EXISTS `schema_version_performance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_performance` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PERFORMANCE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PERFORMANCE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PERFORMANCE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_performance`
+--
+
+LOCK TABLES `schema_version_performance` WRITE;
+/*!40000 ALTER TABLE `schema_version_performance` DISABLE KEYS */;
+INSERT INTO `schema_version_performance` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:33',0,1),(2,2,'0.0.0.1','performance info','SQL','V0_0_0_1__performance_info.sql',133887281,'root','2016-08-06 09:07:33',20,1);
+/*!40000 ALTER TABLE `schema_version_performance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_pim`
+--
+
+DROP TABLE IF EXISTS `schema_version_pim`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_pim` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PIM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PIM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PIM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_pim`
+--
+
+LOCK TABLES `schema_version_pim` WRITE;
+/*!40000 ALTER TABLE `schema_version_pim` DISABLE KEYS */;
+INSERT INTO `schema_version_pim` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:34',0,1),(2,2,'0.0.1','pim info','SQL','V0_0_1__pim_info.sql',435166978,'root','2016-08-06 09:07:34',17,1),(3,3,'0.0.2','pim schedule','SQL','V0_0_2__pim_schedule.sql',-2026731659,'root','2016-08-06 09:07:34',30,1),(4,4,'0.0.3','pim schedule participant','SQL','V0_0_3__pim_schedule_participant.sql',1004138041,'root','2016-08-06 09:07:34',24,1),(5,5,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-1785861192,'root','2016-08-06 09:07:34',159,1),(6,6,'1.6.0.2','pim note','SQL','V1_6_0_2__pim_note.sql',2108190187,'root','2016-08-06 09:07:34',27,1),(7,7,'1.6.0.3','work report info','SQL','V1_6_0_3__work_report_info.sql',850625393,'root','2016-08-06 09:07:34',18,1),(8,8,'1.6.0.4','work report attachment','SQL','V1_6_0_4__work_report_attachment.sql',-613935685,'root','2016-08-06 09:07:34',22,1),(9,9,'1.6.0.5','work report acl','SQL','V1_6_0_5__work_report_acl.sql',1472733337,'root','2016-08-06 09:07:34',29,1),(10,10,'1.6.0.6','pim favorite','SQL','V1_6_0_6__pim_favorite.sql',1058949705,'root','2016-08-06 09:07:34',18,1),(11,11,'1.6.0.7','pim device','SQL','V1_6_0_7__pim_device.sql',-1853127305,'root','2016-08-06 09:07:34',28,1),(12,12,'1.7.0.1','pim remind','SQL','V1_7_0_1__pim_remind.sql',448727599,'root','2016-08-06 09:07:34',21,1),(13,13,'1.7.0.2','pim phrase','SQL','V1_7_0_2__pim_phrase.sql',-1651859394,'root','2016-08-06 09:07:34',18,1),(14,14,'1.7.0.3','pim info','SQL','V1_7_0_3__pim_info.sql',1024923075,'root','2016-08-06 09:07:34',158,1),(15,15,'1.7.0.4','pim note','SQL','V1_7_0_4__pim_note.sql',666499915,'root','2016-08-06 09:07:35',112,1);
+/*!40000 ALTER TABLE `schema_version_pim` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_plm`
+--
+
+DROP TABLE IF EXISTS `schema_version_plm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_plm` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PLM_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PLM_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PLM_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_plm`
+--
+
+LOCK TABLES `schema_version_plm` WRITE;
+/*!40000 ALTER TABLE `schema_version_plm` DISABLE KEYS */;
+INSERT INTO `schema_version_plm` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:35',0,1),(2,2,'0.0.0.1','plm category','SQL','V0_0_0_1__plm_category.sql',-507658774,'root','2016-08-06 09:07:35',23,1),(11,11,'0.0.0.10','plm log','SQL','V0_0_0_10__plm_log.sql',773003107,'root','2016-08-06 09:07:36',28,1),(12,12,'0.0.0.11','plm issue component','SQL','V0_0_0_11__plm_issue_component.sql',-613318287,'root','2016-08-06 09:07:36',22,1),(13,13,'0.0.0.12','plm issue version','SQL','V0_0_0_12__plm_issue_version.sql',209208832,'root','2016-08-06 09:07:36',29,1),(3,3,'0.0.0.2','plm project','SQL','V0_0_0_2__plm_project.sql',-1666216209,'root','2016-08-06 09:07:35',28,1),(4,4,'0.0.0.3','plm component','SQL','V0_0_0_3__plm_component.sql',1884853612,'root','2016-08-06 09:07:35',32,1),(5,5,'0.0.0.4','plm version','SQL','V0_0_0_4__plm_version.sql',1038264641,'root','2016-08-06 09:07:35',38,1),(6,6,'0.0.0.5','plm config','SQL','V0_0_0_5__plm_config.sql',-987805801,'root','2016-08-06 09:07:35',32,1),(7,7,'0.0.0.6','plm step','SQL','V0_0_0_6__plm_step.sql',-456525314,'root','2016-08-06 09:07:35',27,1),(8,8,'0.0.0.7','plm sprint','SQL','V0_0_0_7__plm_sprint.sql',1063439256,'root','2016-08-06 09:07:35',28,1),(9,9,'0.0.0.8','plm issue','SQL','V0_0_0_8__plm_issue.sql',-1654539969,'root','2016-08-06 09:07:35',34,1),(10,10,'0.0.0.9','plm comment','SQL','V0_0_0_9__plm_comment.sql',346785765,'root','2016-08-06 09:07:36',20,1);
+/*!40000 ALTER TABLE `schema_version_plm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_portal`
+--
+
+DROP TABLE IF EXISTS `schema_version_portal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_portal` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PORTAL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PORTAL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PORTAL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_portal`
+--
+
+LOCK TABLES `schema_version_portal` WRITE;
+/*!40000 ALTER TABLE `schema_version_portal` DISABLE KEYS */;
+INSERT INTO `schema_version_portal` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:36',0,1),(2,2,'0.0.0.1','portal widget','SQL','V0_0_0_1__portal_widget.sql',1045815725,'root','2016-08-06 09:07:36',27,1),(3,3,'0.0.0.2','portal info','SQL','V0_0_0_2__portal_info.sql',-2071899877,'root','2016-08-06 09:07:36',18,1),(4,4,'0.0.0.3','portal item','SQL','V0_0_0_3__portal_item.sql',-849249980,'root','2016-08-06 09:07:36',30,1),(5,5,'0.0.0.4','portal ref','SQL','V0_0_0_4__portal_ref.sql',-1146006306,'root','2016-08-06 09:07:37',27,1);
+/*!40000 ALTER TABLE `schema_version_portal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_product`
+--
+
+DROP TABLE IF EXISTS `schema_version_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_product` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PRODUCT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PRODUCT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PRODUCT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_product`
+--
+
+LOCK TABLES `schema_version_product` WRITE;
+/*!40000 ALTER TABLE `schema_version_product` DISABLE KEYS */;
+INSERT INTO `schema_version_product` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:37',0,1),(2,2,'0.0.0.1','product info','SQL','V0_0_0_1__product_info.sql',1495348982,'root','2016-08-06 09:07:37',17,1);
+/*!40000 ALTER TABLE `schema_version_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_purchase`
+--
+
+DROP TABLE IF EXISTS `schema_version_purchase`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_purchase` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_PURCHASE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_PURCHASE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_PURCHASE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_purchase`
+--
+
+LOCK TABLES `schema_version_purchase` WRITE;
+/*!40000 ALTER TABLE `schema_version_purchase` DISABLE KEYS */;
+INSERT INTO `schema_version_purchase` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:37',0,1),(2,2,'0.0.0.1','purchase info','SQL','V0_0_0_1__purchase_info.sql',-1863466209,'root','2016-08-06 09:07:37',20,1);
+/*!40000 ALTER TABLE `schema_version_purchase` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_recruit`
+--
+
+DROP TABLE IF EXISTS `schema_version_recruit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_recruit` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_RECRUIT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_RECRUIT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_RECRUIT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_recruit`
+--
+
+LOCK TABLES `schema_version_recruit` WRITE;
+/*!40000 ALTER TABLE `schema_version_recruit` DISABLE KEYS */;
+INSERT INTO `schema_version_recruit` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:38',0,1),(2,2,'0.0.0.1','recruit info','SQL','V0_0_0_1__recruit_info.sql',2100057991,'root','2016-08-06 09:07:38',19,1);
+/*!40000 ALTER TABLE `schema_version_recruit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_salary`
+--
+
+DROP TABLE IF EXISTS `schema_version_salary`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_salary` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SALARY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SALARY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SALARY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_salary`
+--
+
+LOCK TABLES `schema_version_salary` WRITE;
+/*!40000 ALTER TABLE `schema_version_salary` DISABLE KEYS */;
+INSERT INTO `schema_version_salary` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:38',0,1),(2,2,'0.0.0.1','salary info','SQL','V0_0_0_1__salary_info.sql',709656602,'root','2016-08-06 09:07:38',16,1);
+/*!40000 ALTER TABLE `schema_version_salary` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_sale`
+--
+
+DROP TABLE IF EXISTS `schema_version_sale`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_sale` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SALE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SALE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SALE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_sale`
+--
+
+LOCK TABLES `schema_version_sale` WRITE;
+/*!40000 ALTER TABLE `schema_version_sale` DISABLE KEYS */;
+INSERT INTO `schema_version_sale` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:38',0,1),(2,2,'0.0.0.1','sale info','SQL','V0_0_0_1__sale_info.sql',347968044,'root','2016-08-06 09:07:38',29,1);
+/*!40000 ALTER TABLE `schema_version_sale` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_seat`
+--
+
+DROP TABLE IF EXISTS `schema_version_seat`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_seat` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SEAT_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SEAT_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SEAT_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_seat`
+--
+
+LOCK TABLES `schema_version_seat` WRITE;
+/*!40000 ALTER TABLE `schema_version_seat` DISABLE KEYS */;
+INSERT INTO `schema_version_seat` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:38',0,1),(2,2,'0.0.0.1','seat info','SQL','V0_0_0_1__seat_info.sql',-1970938822,'root','2016-08-06 09:07:38',26,1);
+/*!40000 ALTER TABLE `schema_version_seat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_sendmail`
+--
+
+DROP TABLE IF EXISTS `schema_version_sendmail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_sendmail` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SENDMAIL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SENDMAIL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SENDMAIL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_sendmail`
+--
+
+LOCK TABLES `schema_version_sendmail` WRITE;
+/*!40000 ALTER TABLE `schema_version_sendmail` DISABLE KEYS */;
+INSERT INTO `schema_version_sendmail` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:23',0,1),(2,2,'0.0.1','sendmail config','SQL','V0_0_1__sendmail_config.sql',-160702474,'root','2016-08-06 09:07:23',34,1),(3,3,'0.0.2','sendmail template','SQL','V0_0_2__sendmail_template.sql',-1827285762,'root','2016-08-06 09:07:23',20,1),(4,4,'0.0.3','sendmail attachment','SQL','V0_0_3__sendmail_attachment.sql',77268816,'root','2016-08-06 09:07:23',31,1),(5,5,'0.0.4','sendmail queue','SQL','V0_0_4__sendmail_queue.sql',-1868004583,'root','2016-08-06 09:07:23',33,1),(6,6,'0.0.5','sendmail history','SQL','V0_0_5__sendmail_history.sql',-901174271,'root','2016-08-06 09:07:23',28,1),(7,7,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',1427014093,'root','2016-08-06 09:07:23',244,1),(8,8,'1.6.0.2','config','SQL','V1_6_0_2__config.sql',-606796712,'root','2016-08-06 09:07:23',76,1);
+/*!40000 ALTER TABLE `schema_version_sendmail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_sendsms`
+--
+
+DROP TABLE IF EXISTS `schema_version_sendsms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_sendsms` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SENDSMS_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SENDSMS_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SENDSMS_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_sendsms`
+--
+
+LOCK TABLES `schema_version_sendsms` WRITE;
+/*!40000 ALTER TABLE `schema_version_sendsms` DISABLE KEYS */;
+INSERT INTO `schema_version_sendsms` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:24',0,1),(2,2,'0.0.1','sendsms config','SQL','V0_0_1__sendsms_config.sql',-980595036,'root','2016-08-06 09:07:24',21,1),(3,3,'0.0.2','sendsms queue','SQL','V0_0_2__sendsms_queue.sql',1151586996,'root','2016-08-06 09:07:24',28,1),(4,4,'0.0.3','sendsms history','SQL','V0_0_3__sendsms_history.sql',-590699944,'root','2016-08-06 09:07:24',26,1);
+/*!40000 ALTER TABLE `schema_version_sendsms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_sign`
+--
+
+DROP TABLE IF EXISTS `schema_version_sign`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_sign` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SIGN_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SIGN_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SIGN_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_sign`
+--
+
+LOCK TABLES `schema_version_sign` WRITE;
+/*!40000 ALTER TABLE `schema_version_sign` DISABLE KEYS */;
+INSERT INTO `schema_version_sign` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:39',0,1),(2,2,'0.0.0.1','sign info','SQL','V0_0_0_1__sign_info.sql',-1174367020,'root','2016-08-06 09:07:39',27,1);
+/*!40000 ALTER TABLE `schema_version_sign` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_socialsecurity`
+--
+
+DROP TABLE IF EXISTS `schema_version_socialsecurity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_socialsecurity` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_SOCIALSECURITY_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_SOCIALSECURITY_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_SOCIALSECURITY_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_socialsecurity`
+--
+
+LOCK TABLES `schema_version_socialsecurity` WRITE;
+/*!40000 ALTER TABLE `schema_version_socialsecurity` DISABLE KEYS */;
+INSERT INTO `schema_version_socialsecurity` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:39',0,1),(2,2,'0.0.0.1','socialsecurity info','SQL','V0_0_0_1__socialsecurity_info.sql',454438857,'root','2016-08-06 09:07:39',26,1);
+/*!40000 ALTER TABLE `schema_version_socialsecurity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_stamp`
+--
+
+DROP TABLE IF EXISTS `schema_version_stamp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_stamp` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_STAMP_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_STAMP_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_STAMP_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_stamp`
+--
+
+LOCK TABLES `schema_version_stamp` WRITE;
+/*!40000 ALTER TABLE `schema_version_stamp` DISABLE KEYS */;
+INSERT INTO `schema_version_stamp` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:39',0,1),(2,2,'0.0.0.1','stamp info','SQL','V0_0_0_1__stamp_info.sql',105461038,'root','2016-08-06 09:07:39',25,1);
+/*!40000 ALTER TABLE `schema_version_stamp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_store`
+--
+
+DROP TABLE IF EXISTS `schema_version_store`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_store` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_STORE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_STORE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_STORE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_store`
+--
+
+LOCK TABLES `schema_version_store` WRITE;
+/*!40000 ALTER TABLE `schema_version_store` DISABLE KEYS */;
+INSERT INTO `schema_version_store` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:24',0,1),(2,2,'0.0.1','store info','SQL','V0_0_1__store_info.sql',1551937664,'root','2016-08-06 09:07:24',22,1),(3,3,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-1512647980,'root','2016-08-06 09:07:24',59,1);
+/*!40000 ALTER TABLE `schema_version_store` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_template`
+--
+
+DROP TABLE IF EXISTS `schema_version_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_template` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_TEMPLATE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_TEMPLATE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_TEMPLATE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_template`
+--
+
+LOCK TABLES `schema_version_template` WRITE;
+/*!40000 ALTER TABLE `schema_version_template` DISABLE KEYS */;
+INSERT INTO `schema_version_template` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:25',0,1),(2,2,'0.0.0.1','template info','SQL','V0_0_0_1__template_info.sql',1661570255,'root','2016-08-06 09:07:25',24,1),(3,3,'0.0.0.2','template field','SQL','V0_0_0_2__template_field.sql',-300001309,'root','2016-08-06 09:07:25',25,1),(4,4,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-290800133,'root','2016-08-06 09:07:25',83,1);
+/*!40000 ALTER TABLE `schema_version_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_ticket`
+--
+
+DROP TABLE IF EXISTS `schema_version_ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_ticket` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_TICKET_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_TICKET_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_TICKET_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_ticket`
+--
+
+LOCK TABLES `schema_version_ticket` WRITE;
+/*!40000 ALTER TABLE `schema_version_ticket` DISABLE KEYS */;
+INSERT INTO `schema_version_ticket` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:40',0,1),(2,2,'0.0.0.1','ticket catalog','SQL','V0_0_0_1__ticket_catalog.sql',998816890,'root','2016-08-06 09:07:40',18,1),(3,3,'0.0.0.2','ticket group','SQL','V0_0_0_2__ticket_group.sql',-1059614110,'root','2016-08-06 09:07:40',24,1),(4,4,'0.0.0.3','ticket info','SQL','V0_0_0_3__ticket_info.sql',160062116,'root','2016-08-06 09:07:40',29,1),(5,5,'0.0.0.4','ticket comment','SQL','V0_0_0_4__ticket_comment.sql',2021355784,'root','2016-08-06 09:07:40',18,1),(6,6,'0.0.0.5','ticket member','SQL','V0_0_0_5__ticket_member.sql',-1529042218,'root','2016-08-06 09:07:40',31,1);
+/*!40000 ALTER TABLE `schema_version_ticket` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_train`
+--
+
+DROP TABLE IF EXISTS `schema_version_train`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_train` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_TRAIN_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_TRAIN_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_TRAIN_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_train`
+--
+
+LOCK TABLES `schema_version_train` WRITE;
+/*!40000 ALTER TABLE `schema_version_train` DISABLE KEYS */;
+INSERT INTO `schema_version_train` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:40',0,1),(2,2,'0.0.0.1','train info','SQL','V0_0_0_1__train_info.sql',-1924930105,'root','2016-08-06 09:07:40',18,1);
+/*!40000 ALTER TABLE `schema_version_train` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_user`
+--
+
+DROP TABLE IF EXISTS `schema_version_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_user` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_USER_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_USER_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_USER_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_user`
+--
+
+LOCK TABLES `schema_version_user` WRITE;
+/*!40000 ALTER TABLE `schema_version_user` DISABLE KEYS */;
+INSERT INTO `schema_version_user` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:41',0,1),(2,2,'0.0.1','user repo','SQL','V0_0_1__user_repo.sql',-1146758244,'root','2016-08-06 09:07:41',20,1),(3,3,'0.0.2','user schema','SQL','V0_0_2__user_schema.sql',400529101,'root','2016-08-06 09:07:41',32,1),(4,4,'0.0.3','user base','SQL','V0_0_3__user_base.sql',-1628370766,'root','2016-08-06 09:07:41',26,1),(5,5,'0.0.4','user attr','SQL','V0_0_4__user_attr.sql',802064957,'root','2016-08-06 09:07:41',30,1),(6,6,'0.9.0.1','user repo','SQL','V0_9_0_1__user_repo.sql',-960019611,'root','2016-08-06 09:07:41',42,1),(7,7,'0.9.0.2','user base','SQL','V0_9_0_2__user_base.sql',206585403,'root','2016-08-06 09:07:41',105,1),(8,8,'1.3.0.1','account type','SQL','V1_3_0_1__account_type.sql',2067938376,'root','2016-08-06 09:07:41',27,1),(9,9,'1.3.0.2','account','SQL','V1_3_0_2__account.sql',51906149,'root','2016-08-06 09:07:41',22,1),(10,10,'1.3.0.3','user base','SQL','V1_3_0_3__user_base.sql',-1105532769,'root','2016-08-06 09:07:42',671,1),(11,11,'1.5.0.1','account info','SQL','V1_5_0_1__account_info.sql',1058092215,'root','2016-08-06 09:07:42',26,1),(12,12,'1.5.0.2','account credential','SQL','V1_5_0_2__account_credential.sql',1308439864,'root','2016-08-06 09:07:42',24,1),(13,13,'1.5.0.3','person info','SQL','V1_5_0_3__person_info.sql',742901411,'root','2016-08-06 09:07:42',23,1),(14,14,'1.5.0.4','account avatar','SQL','V1_5_0_4__account_avatar.sql',-1451310947,'root','2016-08-06 09:07:42',30,1),(15,15,'1.5.0.5','account online','SQL','V1_5_0_5__account_online.sql',-1353373468,'root','2016-08-06 09:07:42',15,1),(16,16,'1.5.0.6','account lock info','SQL','V1_5_0_6__account_lock_info.sql',1800855449,'root','2016-08-06 09:07:42',27,1),(17,17,'1.5.0.7','account lock log','SQL','V1_5_0_7__account_lock_log.sql',2049000602,'root','2016-08-06 09:07:42',24,1),(18,18,'1.5.0.8','account log','SQL','V1_5_0_8__account_log.sql',-1791259508,'root','2016-08-06 09:07:42',17,1),(19,19,'1.5.0.9','account history credential','SQL','V1_5_0_9__account_history_credential.sql',69945046,'root','2016-08-06 09:07:42',30,1),(20,20,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',1168228322,'root','2016-08-06 09:07:42',349,1),(21,21,'1.7.0.1','account device','SQL','V1_7_0_1__account_device.sql',787410944,'root','2016-08-06 09:07:42',25,1);
+/*!40000 ALTER TABLE `schema_version_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_visitor`
+--
+
+DROP TABLE IF EXISTS `schema_version_visitor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_visitor` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_VISITOR_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_VISITOR_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_VISITOR_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_visitor`
+--
+
+LOCK TABLES `schema_version_visitor` WRITE;
+/*!40000 ALTER TABLE `schema_version_visitor` DISABLE KEYS */;
+INSERT INTO `schema_version_visitor` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:43',0,1),(2,2,'0.0.0.1','visitor info','SQL','V0_0_0_1__visitor_info.sql',476306035,'root','2016-08-06 09:07:43',29,1);
+/*!40000 ALTER TABLE `schema_version_visitor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_vote`
+--
+
+DROP TABLE IF EXISTS `schema_version_vote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_vote` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_VOTE_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_VOTE_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_VOTE_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_vote`
+--
+
+LOCK TABLES `schema_version_vote` WRITE;
+/*!40000 ALTER TABLE `schema_version_vote` DISABLE KEYS */;
+INSERT INTO `schema_version_vote` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:44',0,1),(2,2,'0.0.0.1','vote info','SQL','V0_0_0_1__vote_info.sql',2038448331,'root','2016-08-06 09:07:44',54,1),(3,3,'0.0.0.2','vote item','SQL','V0_0_0_2__vote_item.sql',-910175638,'root','2016-08-06 09:07:44',25,1),(4,4,'0.0.0.3','vote user','SQL','V0_0_0_3__vote_user.sql',2141787145,'root','2016-08-06 09:07:44',32,1);
+/*!40000 ALTER TABLE `schema_version_vote` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_whitelist`
+--
+
+DROP TABLE IF EXISTS `schema_version_whitelist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_whitelist` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_WHITELIST_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_WHITELIST_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_WHITELIST_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_whitelist`
+--
+
+LOCK TABLES `schema_version_whitelist` WRITE;
+/*!40000 ALTER TABLE `schema_version_whitelist` DISABLE KEYS */;
+INSERT INTO `schema_version_whitelist` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:25',0,1),(2,2,'0.0.0.1','whitellist type','SQL','V0_0_0_1__whitellist_type.sql',-848851382,'root','2016-08-06 09:07:25',21,1),(3,3,'0.0.0.2','whitelist app','SQL','V0_0_0_2__whitelist_app.sql',-1840695895,'root','2016-08-06 09:07:25',26,1),(4,4,'0.0.0.3','whitelist host','SQL','V0_0_0_3__whitelist_host.sql',39316124,'root','2016-08-06 09:07:25',28,1),(5,5,'0.0.0.4','whitelist ip','SQL','V0_0_0_4__whitelist_ip.sql',-1633571516,'root','2016-08-06 09:07:25',20,1),(6,6,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',-1273196714,'root','2016-08-06 09:07:26',159,1);
+/*!40000 ALTER TABLE `schema_version_whitelist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_version_workcal`
+--
+
+DROP TABLE IF EXISTS `schema_version_workcal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_version_workcal` (
+  `version_rank` int(11) NOT NULL,
+  `installed_rank` int(11) NOT NULL,
+  `version` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int(11) DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int(11) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`version`),
+  KEY `SCHEMA_VERSION_WORKCAL_vr_idx` (`version_rank`),
+  KEY `SCHEMA_VERSION_WORKCAL_ir_idx` (`installed_rank`),
+  KEY `SCHEMA_VERSION_WORKCAL_s_idx` (`success`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_version_workcal`
+--
+
+LOCK TABLES `schema_version_workcal` WRITE;
+/*!40000 ALTER TABLE `schema_version_workcal` DISABLE KEYS */;
+INSERT INTO `schema_version_workcal` VALUES (1,1,'0','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2016-08-06 09:07:44',0,1),(2,2,'0.0.1','workcal type','SQL','V0_0_1__workcal_type.sql',-174669058,'root','2016-08-06 09:07:44',33,1),(3,3,'0.0.2','workcal rule','SQL','V0_0_2__workcal_rule.sql',280724199,'root','2016-08-06 09:07:44',27,1),(4,4,'0.0.3','workcal part','SQL','V0_0_3__workcal_part.sql',-1907530515,'root','2016-08-06 09:07:44',29,1),(5,5,'1.6.0.1','tenant','SQL','V1_6_0_1__tenant.sql',621443185,'root','2016-08-06 09:07:44',135,1);
+/*!40000 ALTER TABLE `schema_version_workcal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `seat_info`
+--
+
+DROP TABLE IF EXISTS `seat_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `seat_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `BUILDING` varchar(100) DEFAULT NULL,
+  `FLOOR` varchar(100) DEFAULT NULL,
+  `LOCATION` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seat_info`
+--
+
+LOCK TABLES `seat_info` WRITE;
+/*!40000 ALTER TABLE `seat_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `seat_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendmail_attachment`
+--
+
+DROP TABLE IF EXISTS `sendmail_attachment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendmail_attachment` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `PATH` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `TEMPLATE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_SENDMAIL_ATTACHMENT_TEMPLATE` (`TEMPLATE_ID`),
+  CONSTRAINT `FK_SENDMAIL_ATTACHMENT_TEMPLATE` FOREIGN KEY (`TEMPLATE_ID`) REFERENCES `sendmail_template` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendmail_attachment`
+--
+
+LOCK TABLES `sendmail_attachment` WRITE;
+/*!40000 ALTER TABLE `sendmail_attachment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sendmail_attachment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendmail_config`
+--
+
+DROP TABLE IF EXISTS `sendmail_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendmail_config` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `HOST` varchar(200) DEFAULT NULL,
+  `USERNAME` varchar(200) DEFAULT NULL,
+  `PASSWORD` varchar(200) DEFAULT NULL,
+  `SMTP_AUTH` int(11) DEFAULT NULL,
+  `SMTP_STARTTLS` int(11) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `DEFAULT_FROM` varchar(200) DEFAULT NULL,
+  `TEST_MAIL` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  `PORT` int(11) DEFAULT NULL,
+  `SMTP_SSL` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendmail_config`
+--
+
+LOCK TABLES `sendmail_config` WRITE;
+/*!40000 ALTER TABLE `sendmail_config` DISABLE KEYS */;
+INSERT INTO `sendmail_config` VALUES (1,'default','mail.mossle.com','bot@mossle.com','bot2mossle',1,0,'normal','bot@mossle.com',NULL,'1',465,1);
+/*!40000 ALTER TABLE `sendmail_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendmail_history`
+--
+
+DROP TABLE IF EXISTS `sendmail_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendmail_history` (
+  `ID` bigint(20) NOT NULL,
+  `SUBJECT` varchar(50) DEFAULT NULL,
+  `SENDER` varchar(200) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `CC` varchar(200) DEFAULT NULL,
+  `BCC` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `ATTACHMENT` varchar(200) DEFAULT NULL,
+  `DATA` text,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `INFO` varchar(200) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  `TEMPLATE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_SENDMAIL_HISTORY_CONFIG` (`CONFIG_ID`),
+  KEY `FK_SENDMAIL_HISTORY_TEMPLATE` (`TEMPLATE_ID`),
+  CONSTRAINT `FK_SENDMAIL_HISTORY_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `sendmail_config` (`ID`),
+  CONSTRAINT `FK_SENDMAIL_HISTORY_TEMPLATE` FOREIGN KEY (`TEMPLATE_ID`) REFERENCES `sendmail_template` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendmail_history`
+--
+
+LOCK TABLES `sendmail_history` WRITE;
+/*!40000 ALTER TABLE `sendmail_history` DISABLE KEYS */;
+INSERT INTO `sendmail_history` VALUES (253432175624192,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17éœ€è¦æ‚¨å®¡æ‰¹','bot@mossle.com','king@mossle.com',NULL,NULL,'é‡‘æ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253431964352512\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253431964352512</a>',NULL,NULL,'2016-08-11 03:52:53','error','Could not connect to SMTP host: mail.mossle.com, port: 465',NULL,NULL,'1');
+/*!40000 ALTER TABLE `sendmail_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendmail_queue`
+--
+
+DROP TABLE IF EXISTS `sendmail_queue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendmail_queue` (
+  `ID` bigint(20) NOT NULL,
+  `SUBJECT` varchar(50) DEFAULT NULL,
+  `SENDER` varchar(200) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `CC` varchar(200) DEFAULT NULL,
+  `BCC` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `ATTACHMENT` varchar(200) DEFAULT NULL,
+  `DATA` text,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `INFO` varchar(200) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  `TEMPLATE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_SENDMAIL_QUEUE_CONFIG` (`CONFIG_ID`),
+  KEY `FK_SENDMAIL_QUEUE_TEMPLATE` (`TEMPLATE_ID`),
+  CONSTRAINT `FK_SENDMAIL_QUEUE_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `sendmail_config` (`ID`),
+  CONSTRAINT `FK_SENDMAIL_QUEUE_TEMPLATE` FOREIGN KEY (`TEMPLATE_ID`) REFERENCES `sendmail_template` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendmail_queue`
+--
+
+LOCK TABLES `sendmail_queue` WRITE;
+/*!40000 ALTER TABLE `sendmail_queue` DISABLE KEYS */;
+INSERT INTO `sendmail_queue` VALUES (253442852995072,'è¯·å‡æµç¨‹-tt-2016-08-11 12:03éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'eeæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-tt-2016-08-11 12:03ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253442852519936\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=253442852519936</a>',NULL,NULL,'2016-08-11 04:03:44',NULL,NULL,NULL,NULL,'1'),(254985887825920,'è¯·å‡æµç¨‹-ee-2016-08-12 14:13éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'qqæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ee-2016-08-12 14:13ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=254985884745728\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=254985884745728</a>',NULL,NULL,'2016-08-12 06:13:24',NULL,NULL,NULL,NULL,'1'),(263487481987072,'è¯·å‡æµç¨‹-å¼ ä¸‰-2016-08-18 14:21éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'qqæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-å¼ ä¸‰-2016-08-18 14:21ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=263487477841920\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=263487477841920</a>',NULL,NULL,'2016-08-18 06:21:40',NULL,NULL,NULL,NULL,'1'),(270376277229568,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270376274198528\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270376274198528</a>',NULL,NULL,'2016-08-23 03:09:19',NULL,NULL,NULL,NULL,'1'),(270377575301120,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚',NULL,'lingo@mossle.com',NULL,NULL,'ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15001\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15001</a>',NULL,NULL,'2016-08-23 03:10:38',NULL,NULL,NULL,NULL,'1'),(270513673584640,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270513673076736\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270513673076736</a>',NULL,NULL,'2016-08-23 05:29:05',NULL,NULL,NULL,NULL,'1'),(270615267115008,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270615266328576\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270615266328576</a>',NULL,NULL,'2016-08-23 07:12:25',NULL,NULL,NULL,NULL,'1'),(270615684644864,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚',NULL,'lingo@mossle.com',NULL,NULL,'ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077</a>',NULL,NULL,'2016-08-23 07:12:51',NULL,NULL,NULL,NULL,'1'),(270620309340160,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»å®Œæˆé”€å‡ç¯èŠ‚',NULL,'lingo@mossle.com',NULL,NULL,'ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12å·²ç»å®Œæˆé”€å‡ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15077</a>',NULL,NULL,'2016-08-23 07:17:33',NULL,NULL,NULL,NULL,'1'),(270757730631680,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270757730238464\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=270757730238464</a>',NULL,NULL,'2016-08-23 09:37:21',NULL,NULL,NULL,NULL,'1'),(271695218343936,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=271695214493696\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=271695214493696</a>',NULL,NULL,'2016-08-24 01:31:00',NULL,NULL,NULL,NULL,'1'),(271696281731072,'æ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚',NULL,'lingo@mossle.com',NULL,NULL,'ä¸´è¿œæ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37å·²ç»åˆ°è¾¾äººäº‹å®¡æ‰¹ç¯èŠ‚ã€‚<br><a href=\"http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15210\">http://localhost:8080/lemon/bpm/workspace-viewHistory.do?processInstanceId=15210</a>',NULL,NULL,'2016-08-24 01:32:05',NULL,NULL,NULL,NULL,'1'),(277394350489600,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08éœ€è¦æ‚¨å®¡æ‰¹',NULL,NULL,NULL,NULL,'ttæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277394347524096\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277394347524096</a>',NULL,NULL,'2016-08-28 02:08:28',NULL,NULL,NULL,NULL,'1'),(277601532264448,'è¯·å‡æµç¨‹-ee-2016-08-28 13:39éœ€è¦æ‚¨å®¡æ‰¹',NULL,'3347',NULL,NULL,'wwæ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”è¯·å‡æµç¨‹-ee-2016-08-28 13:39ã€‚<br><a href=\"http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277601531461632\">http://localhost:8080/lemon/operation/task-operation-viewTaskForm.do?humanTaskId=277601531461632</a>',NULL,NULL,'2016-08-28 05:39:13',NULL,NULL,NULL,NULL,'1');
+/*!40000 ALTER TABLE `sendmail_queue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendmail_template`
+--
+
+DROP TABLE IF EXISTS `sendmail_template`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendmail_template` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `SENDER` varchar(200) DEFAULT NULL,
+  `CC` varchar(200) DEFAULT NULL,
+  `BCC` varchar(200) DEFAULT NULL,
+  `SUBJECT` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `MANUAL` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendmail_template`
+--
+
+LOCK TABLES `sendmail_template` WRITE;
+/*!40000 ALTER TABLE `sendmail_template` DISABLE KEYS */;
+INSERT INTO `sendmail_template` VALUES (1,'test','lingo<lingo@mossle.com>,vivian<vivian@mossle.com>','æµ‹è¯•<lingo@mossle.com>',NULL,NULL,'test','test',0,NULL),(2,'template','æ¼”ç¤º<lingo@mossle.com>','æµ‹è¯•<lingo@mossle.com>',NULL,NULL,'template','${name}<#list list as item>${item}</#list>',1,NULL);
+/*!40000 ALTER TABLE `sendmail_template` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendsms_config`
+--
+
+DROP TABLE IF EXISTS `sendsms_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendsms_config` (
+  `ID` bigint(20) NOT NULL DEFAULT '0',
+  `NAME` varchar(50) DEFAULT NULL,
+  `HOST` varchar(200) DEFAULT NULL,
+  `USERNAME` varchar(200) DEFAULT NULL,
+  `PASSWORD` varchar(200) DEFAULT NULL,
+  `APP_ID` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `MOBILE_FIELD_NAME` varchar(50) DEFAULT NULL,
+  `MESSAGE_FIELD_NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendsms_config`
+--
+
+LOCK TABLES `sendsms_config` WRITE;
+/*!40000 ALTER TABLE `sendsms_config` DISABLE KEYS */;
+INSERT INTO `sendsms_config` VALUES (1,'default','http://localhost/sms','username','password','1',NULL,'mobile','message',NULL);
+/*!40000 ALTER TABLE `sendsms_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendsms_history`
+--
+
+DROP TABLE IF EXISTS `sendsms_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendsms_history` (
+  `ID` bigint(20) NOT NULL DEFAULT '0',
+  `MOBILE` varchar(50) DEFAULT NULL,
+  `MESSAGE` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `INFO` varchar(200) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_SENDSMS_HISTORY_CONFIG` (`CONFIG_ID`),
+  CONSTRAINT `FK_SENDSMS_HISTORY_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `sendsms_config` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendsms_history`
+--
+
+LOCK TABLES `sendsms_history` WRITE;
+/*!40000 ALTER TABLE `sendsms_history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sendsms_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sendsms_queue`
+--
+
+DROP TABLE IF EXISTS `sendsms_queue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sendsms_queue` (
+  `ID` bigint(20) NOT NULL DEFAULT '0',
+  `MOBILE` varchar(50) DEFAULT NULL,
+  `MESSAGE` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `INFO` varchar(200) DEFAULT NULL,
+  `CONFIG_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_SENDSMS_QUEUE_CONFIG` (`CONFIG_ID`),
+  CONSTRAINT `FK_SENDSMS_QUEUE_CONFIG` FOREIGN KEY (`CONFIG_ID`) REFERENCES `sendsms_config` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sendsms_queue`
+--
+
+LOCK TABLES `sendsms_queue` WRITE;
+/*!40000 ALTER TABLE `sendsms_queue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sendsms_queue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sign_info`
+--
+
+DROP TABLE IF EXISTS `sign_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sign_info` (
+  `ID` bigint(20) NOT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `CATALOG` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `REF` varchar(100) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sign_info`
+--
+
+LOCK TABLES `sign_info` WRITE;
+/*!40000 ALTER TABLE `sign_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sign_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `socialsecurity_info`
+--
+
+DROP TABLE IF EXISTS `socialsecurity_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `socialsecurity_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `MONEY` double DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `EMPLOYEE_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `socialsecurity_info`
+--
+
+LOCK TABLES `socialsecurity_info` WRITE;
+/*!40000 ALTER TABLE `socialsecurity_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `socialsecurity_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stamp_info`
+--
+
+DROP TABLE IF EXISTS `stamp_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stamp_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stamp_info`
+--
+
+LOCK TABLES `stamp_info` WRITE;
+/*!40000 ALTER TABLE `stamp_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stamp_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `store_info`
+--
+
+DROP TABLE IF EXISTS `store_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `store_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `MODEL` varchar(50) DEFAULT NULL,
+  `PATH` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `SIZE` bigint(20) DEFAULT NULL,
+  `CREATE_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `TENANT_ID` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `store_info`
+--
+
+LOCK TABLES `store_info` WRITE;
+/*!40000 ALTER TABLE `store_info` DISABLE KEYS */;
+INSERT INTO `store_info` VALUES (267686851182592,'default.jpg','avatar','default-80.jpg',NULL,NULL,'2016-08-21 05:33:30','1'),(271759910420482,'601536.txt','form','20160824/1b9ed044-ac0e-452b-a091-5607b21d1b49.txt',NULL,NULL,'2016-08-24 02:36:49','1'),(271766822879236,'OAEX.xls','form','20160824/1591ad81-1b1d-4fda-b7d2-5ce2ad13e154.xls',NULL,NULL,'2016-08-24 02:43:51','1'),(271782491750402,'601536.txt','form','20160824/b0476c74-90c2-4462-a6b5-8f74985c153f.txt',NULL,NULL,'2016-08-24 02:59:48','1'),(271828669759493,'601536.txt','form','20160824/49756345-f0f7-4f0f-a39f-afd01ac9fb96.txt',NULL,NULL,'2016-08-24 03:46:46','1'),(279044636803072,'lemon.sql','default/user/1','20160829/5b6f766e-a377-4f41-9f91-95e9bc7f67eb.sql',NULL,NULL,'2016-08-29 06:07:14','1'),(279049063448576,'','cms/html/r/attachments','20160829/9e175a24-41dd-4285-ad5c-cd51ca0b8223',NULL,NULL,'2016-08-29 06:11:44','1');
+/*!40000 ALTER TABLE `store_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_conf_user`
+--
+
+DROP TABLE IF EXISTS `task_conf_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_conf_user` (
+  `ID` bigint(20) NOT NULL,
+  `BUSINESS_KEY` varchar(200) DEFAULT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_conf_user`
+--
+
+LOCK TABLES `task_conf_user` WRITE;
+/*!40000 ALTER TABLE `task_conf_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_conf_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_deadline`
+--
+
+DROP TABLE IF EXISTS `task_deadline`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_deadline` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(100) DEFAULT NULL,
+  `DEADLINE_TIME` datetime DEFAULT NULL,
+  `TRIGGER_TIME` datetime DEFAULT NULL,
+  `REPEAT_TIMES` int(11) DEFAULT NULL,
+  `NOTIFICATION_TYPE` varchar(200) DEFAULT NULL,
+  `NOTIFICATION_RECEIVER` varchar(200) DEFAULT NULL,
+  `NOTIFICATION_TEMPLATE_CODE` varchar(200) DEFAULT NULL,
+  `REASSIGNMENT` varchar(200) DEFAULT NULL,
+  `OPERATION` varchar(200) DEFAULT NULL,
+  `TASK_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_DEADLINE_TASK` (`TASK_ID`),
+  CONSTRAINT `FK_TASK_DEADLINE_TASK` FOREIGN KEY (`TASK_ID`) REFERENCES `task_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_deadline`
+--
+
+LOCK TABLES `task_deadline` WRITE;
+/*!40000 ALTER TABLE `task_deadline` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_deadline` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_def_base`
+--
+
+DROP TABLE IF EXISTS `task_def_base`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_def_base` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(100) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `PROCESS_DEFINITION_ID` varchar(200) DEFAULT NULL,
+  `FORM_KEY` varchar(200) DEFAULT NULL,
+  `FORM_TYPE` varchar(50) DEFAULT NULL,
+  `COUNTERSIGN_TYPE` varchar(50) DEFAULT NULL,
+  `COUNTERSIGN_USER` varchar(200) DEFAULT NULL,
+  `COUNTERSIGN_STRATEGY` varchar(50) DEFAULT NULL,
+  `COUNTERSIGN_RATE` int(11) DEFAULT NULL,
+  `ASSIGN_STRATEGY` varchar(100) DEFAULT NULL,
+  `PROCESS_DEFINITION_KEY` varchar(100) DEFAULT NULL,
+  `PROCESS_DEFINITION_VERSION` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_def_base`
+--
+
+LOCK TABLES `task_def_base` WRITE;
+/*!40000 ALTER TABLE `task_def_base` DISABLE KEYS */;
+INSERT INTO `task_def_base` VALUES (1,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','vacation:1:12','vacation-department','internal',NULL,NULL,NULL,NULL,NULL,'vacation',1),(2,'taskuser-3','äººäº‹å®¡æ‰¹','vacation:1:12','vacation-hr','internal',NULL,NULL,NULL,NULL,NULL,'vacation',1),(3,'taskuser-6','é”€å‡','vacation:1:12','vacation-finish','internal',NULL,NULL,NULL,NULL,NULL,'vacation',1),(4,'usertask2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'publish',1),(5,'usertask3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'publish',1),(101,'usertask1','å‘èµ·ç”³è¯·','permission:1:4','permission-request','internal',NULL,NULL,NULL,NULL,NULL,'permission',1),(102,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','permission:1:4','permission-department','internal',NULL,NULL,NULL,NULL,NULL,'permission',1),(103,'usertask3','æ€»ç»ç†å®¡æ‰¹','permission:1:4','permission-manager','internal',NULL,NULL,NULL,NULL,NULL,'permission',1),(246664243691520,'taskuser-1','å‘æ–‡','publish:1:8','publish-request','internal',NULL,NULL,NULL,NULL,NULL,'publish',1),(246664244117504,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','publish:1:8','publish-manager','internal',NULL,NULL,NULL,NULL,NULL,'publish',1),(246664244920320,'taskuser-3','ä¼šç­¾','publish:1:8','publish-countersign','internal','parallel',NULL,'percent',100,NULL,'publish',1),(246664245395456,'taskuser-6','å½’æ¡£','publish:1:8','publish-finish','internal',NULL,NULL,NULL,NULL,NULL,'publish',1),(246664251932672,'taskuser-1','å¡«å†™è¯·å‡å•','vacation:1:12','vacation-request','internal',NULL,NULL,NULL,NULL,NULL,'vacation',1),(246664252882944,'taskuser-5','è°ƒæ•´ç”³è¯·','vacation:1:12','vacation-modify','internal',NULL,NULL,NULL,NULL,NULL,'vacation',1),(253449255780352,'sid-4AE0273C-4BD1-45A5-9053-22DBB28EDC13','å¡«å†™è¯·å‡æ¡','process:1:5040',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',1),(253449255927808,'sid-93D14684-407C-4037-BB98-76F731423DD1','å®¡æ‰¹','process:1:5040',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',1),(253695811076096,'sid-4AE0273C-4BD1-45A5-9053-22DBB28EDC13','å¡«å†™è¯·å‡æ¡','process:2:5076',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',2),(253695811223552,'sid-93D14684-407C-4037-BB98-76F731423DD1','å®¡æ‰¹','process:2:5076',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',2),(253698612183040,'sid-4AE0273C-4BD1-45A5-9053-22DBB28EDC13','å¡«å†™è¯·å‡æ¡','process:3:5080',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',3),(253698612412416,'sid-93D14684-407C-4037-BB98-76F731423DD1','å®¡æ‰¹','process:3:5080',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',3),(253700457725952,'sid-4AE0273C-4BD1-45A5-9053-22DBB28EDC13','å¡«å†™è¯·å‡æ¡','process:4:5084',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',4),(253700457873408,'sid-93D14684-407C-4037-BB98-76F731423DD1','å®¡æ‰¹','process:4:5084',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',4),(269439866699776,'sid-282B1A80-8CCA-4D3A-A4FC-6F973E25CD38',NULL,'process:5:12506',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',5),(269440178667520,'sid-282B1A80-8CCA-4D3A-A4FC-6F973E25CD38',NULL,'process:6:12510',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',6),(269440613122048,'sid-282B1A80-8CCA-4D3A-A4FC-6F973E25CD38',NULL,'process:7:12514',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',7),(269440799522816,'sid-282B1A80-8CCA-4D3A-A4FC-6F973E25CD38',NULL,'process:8:12518',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',8),(270439822491648,'sid-282B1A80-8CCA-4D3A-A4FC-6F973E25CD38',NULL,'process:1:15052',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',1),(270444573409280,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','process:1:15058',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',1),(270444573540352,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','process:1:15058',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',1),(270678117040128,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','process:2:15160',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',2),(270678117679104,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','process:2:15160',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',2),(270691192700928,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','process:3:15164',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',3),(270691192897536,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','process:3:15164',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',3),(270704742072320,'usertask1','User Task','myProcess:1:15168',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'myProcess',1),(270704742350848,'usertask2','User Task','myProcess:1:15168',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'myProcess',1),(270704743350272,'usertask3','User Task','myProcess:1:15168',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'myProcess',1),(270743755522048,'sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡','process:4:15173','vacation-request-student','internal',NULL,NULL,NULL,NULL,NULL,'process',4),(270743755702272,'sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹','process:4:15173','vacation-department1','internal',NULL,NULL,NULL,NULL,NULL,'process',4),(277358498037760,'sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•','process:5:20004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',5),(277358498250752,'sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹','process:5:20004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',5),(277358498447360,'sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF','è°ƒæ•´ç”³è¯·','process:5:20004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',5),(277358498709504,'sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡','process:5:20004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',5),(277358498971648,'sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹','process:5:20004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'process',5),(277361276338176,'sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•','vacation-student:1:20008','vacation-request-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',1),(277361276780544,'sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹','vacation-student:1:20008','vocation-depart-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',1),(277361277108224,'sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡','vacation-student:1:20008',' 	vacation-finish-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',1),(277361277468672,'sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹','vacation-student:1:20008',' 	vacation-leader-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',1),(277361277779968,'sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF','è°ƒæ•´ç”³è¯·','vacation-student:1:20008',' 	vacation-modify-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',1),(277404968960000,'sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•','vacation-student:2:20087','vacation-request-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',2),(277404969140224,'sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹','vacation-student:2:20087','vocation-depart-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',2),(277404969304064,'sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡','vacation-student:2:20087','vacation-finish-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',2),(277404969533440,'sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹','vacation-student:2:20087','vacation-leader-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',2),(277404969844736,'sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF','è°ƒæ•´ç”³è¯·','vacation-student:2:20087','vacation-modify-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',2),(277424166502400,'sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•','vacation-student:3:20113',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'vacation-student',3),(277424166633472,'sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹','vacation-student:3:20113',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'vacation-student',3),(277424166764544,'sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡','vacation-student:3:20113',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'vacation-student',3),(277424167026688,'sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹','vacation-student:3:20113',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'vacation-student',3),(277424167239680,'sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF','è°ƒæ•´ç”³è¯·','vacation-student:3:20113',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'vacation-student',3),(277428372144128,'sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•','vacation-student:4:20117','vacation-request-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',4),(277428372307968,'sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹','vacation-student:4:20117','vocation-depart-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',4),(277428372455424,'sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡','vacation-student:4:20117','vacation-finish-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',4),(277428372783104,'sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹','vacation-student:4:20117','vacation-leader-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',4),(277428372996096,'sid-9D95D662-1BB9-4571-AEE9-D7A12E9F85FF','è°ƒæ•´ç”³è¯·','vacation-student:4:20117','vacation-modify-student','internal',NULL,NULL,NULL,NULL,NULL,'vacation-student',4),(280494059323392,'usertask1','å‘èµ·ç”³è¯·','permission:2:22504','permission-request','internal',NULL,NULL,NULL,NULL,NULL,'permission',2),(280494064041984,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','permission:2:22504','permission-department','internal',NULL,NULL,NULL,NULL,NULL,'permission',2),(280494064467968,'usertask3','æ€»ç»ç†å®¡æ‰¹','permission:2:22504','permission-manager','internal',NULL,NULL,NULL,NULL,NULL,'permission',2),(280494069792768,'taskuser-1','å‘æ–‡','publish:2:22508','publish-request','internal',NULL,NULL,NULL,NULL,NULL,'publish',2),(280494070267904,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','publish:2:22508','publish-manager','internal',NULL,NULL,NULL,NULL,NULL,'publish',2),(280494070775808,'taskuser-3','ä¼šç­¾','publish:2:22508','publish-countersign','internal','parallel',NULL,'percent',100,NULL,'publish',2),(280494071316480,'taskuser-6','å½’æ¡£','publish:2:22508','publish-finish','internal',NULL,NULL,NULL,NULL,NULL,'publish',2),(280494076936192,'taskuser-1','å¡«å†™è¯·å‡å•','vacation:2:22512','vacation-request','internal',NULL,NULL,NULL,NULL,NULL,'vacation',2),(280494077575168,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','vacation:2:22512','vacation-department','internal',NULL,NULL,NULL,NULL,NULL,'vacation',2),(280494077886464,'taskuser-3','äººäº‹å®¡æ‰¹','vacation:2:22512','vacation-hr','internal',NULL,NULL,NULL,NULL,NULL,'vacation',2),(280494078230528,'taskuser-5','è°ƒæ•´ç”³è¯·','vacation:2:22512','vacation-modify','internal',NULL,NULL,NULL,NULL,NULL,'vacation',2),(280494078771200,'taskuser-6','é”€å‡','vacation:2:22512','vacation-finish','internal',NULL,NULL,NULL,NULL,NULL,'vacation',2),(280556614320128,'usertask1','å‘èµ·ç”³è¯·','permission:3:25004','permission-request','internal',NULL,NULL,NULL,NULL,NULL,'permission',3),(280556614811648,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','permission:3:25004','permission-department','internal',NULL,NULL,NULL,NULL,NULL,'permission',3),(280556615188480,'usertask3','æ€»ç»ç†å®¡æ‰¹','permission:3:25004','permission-manager','internal',NULL,NULL,NULL,NULL,NULL,'permission',3),(280556617777152,'taskuser-1','å‘æ–‡','publish:3:25008','publish-request','internal',NULL,NULL,NULL,NULL,NULL,'publish',3),(280556618055680,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','publish:3:25008','publish-manager','internal',NULL,NULL,NULL,NULL,NULL,'publish',3),(280556618514432,'taskuser-3','ä¼šç­¾','publish:3:25008','publish-countersign','internal','parallel',NULL,'percent',100,NULL,'publish',3),(280556618825728,'taskuser-6','å½’æ¡£','publish:3:25008','publish-finish','internal',NULL,NULL,NULL,NULL,NULL,'publish',3),(280556622381056,'taskuser-1','å¡«å†™è¯·å‡å•','vacation:3:25012','vacation-request','internal',NULL,NULL,NULL,NULL,NULL,'vacation',3),(280556622626816,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','vacation:3:25012','vacation-department','internal',NULL,NULL,NULL,NULL,NULL,'vacation',3),(280556622888960,'taskuser-3','äººäº‹å®¡æ‰¹','vacation:3:25012','vacation-hr','internal',NULL,NULL,NULL,NULL,NULL,'vacation',3),(280556623151104,'taskuser-5','è°ƒæ•´ç”³è¯·','vacation:3:25012','vacation-modify','internal',NULL,NULL,NULL,NULL,NULL,'vacation',3),(280556623560704,'taskuser-6','é”€å‡','vacation:3:25012','vacation-finish','internal',NULL,NULL,NULL,NULL,NULL,'vacation',3),(280568935071744,'usertask1','å‘èµ·ç”³è¯·','permission:4:27506','permission-request','internal',NULL,NULL,NULL,NULL,NULL,'permission',4),(280568935907328,'usertask2','éƒ¨é—¨ç»ç†å®¡æ‰¹','permission:4:27506','permission-department','internal',NULL,NULL,NULL,NULL,NULL,'permission',4),(280568936431616,'usertask3','æ€»ç»ç†å®¡æ‰¹','permission:4:27506','permission-manager','internal',NULL,NULL,NULL,NULL,NULL,'permission',4),(280568942772224,'taskuser-1','å‘æ–‡','publish:4:27510','publish-request','internal',NULL,NULL,NULL,NULL,NULL,'publish',4),(280568943198208,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','publish:4:27510','publish-manager','internal',NULL,NULL,NULL,NULL,NULL,'publish',4),(280568943869952,'taskuser-3','ä¼šç­¾','publish:4:27510','publish-countersign','internal','parallel',NULL,'percent',100,NULL,'publish',4),(280568944279552,'taskuser-6','å½’æ¡£','publish:4:27510','publish-finish','internal',NULL,NULL,NULL,NULL,NULL,'publish',4),(280568951767040,'taskuser-1','å¡«å†™è¯·å‡å•','vacation:4:27514','vacation-request','internal',NULL,NULL,NULL,NULL,NULL,'vacation',4),(280568952160256,'taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹','vacation:4:27514','vacation-department','internal',NULL,NULL,NULL,NULL,NULL,'vacation',4),(280568952471552,'taskuser-3','äººäº‹å®¡æ‰¹','vacation:4:27514','vacation-hr','internal',NULL,NULL,NULL,NULL,NULL,'vacation',4),(280568952815616,'taskuser-5','è°ƒæ•´ç”³è¯·','vacation:4:27514','vacation-modify','internal',NULL,NULL,NULL,NULL,NULL,'vacation',4),(280568953487360,'taskuser-6','é”€å‡','vacation:4:27514','vacation-finish','internal',NULL,NULL,NULL,NULL,NULL,'vacation',4);
+/*!40000 ALTER TABLE `task_def_base` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_def_deadline`
+--
+
+DROP TABLE IF EXISTS `task_def_deadline`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_def_deadline` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `DURATION` varchar(100) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `ESCALATION_TYPE` varchar(50) DEFAULT NULL,
+  `NOTIFICATION_CONDITION` varchar(200) DEFAULT NULL,
+  `NOTIFICATION_TYPE` varchar(200) DEFAULT NULL,
+  `NOTIFICATION_RECEIVER` varchar(200) DEFAULT NULL,
+  `NOTIFICATION_TEMPLATE_CODE` varchar(200) DEFAULT NULL,
+  `REASSGINMENT` varchar(200) DEFAULT NULL,
+  `OPERATION` varchar(200) DEFAULT NULL,
+  `BASE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_DEF_DEADLINE_BASE` (`BASE_ID`),
+  CONSTRAINT `FK_TASK_DEF_DEADLINE_BASE` FOREIGN KEY (`BASE_ID`) REFERENCES `task_def_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_def_deadline`
+--
+
+LOCK TABLES `task_def_deadline` WRITE;
+/*!40000 ALTER TABLE `task_def_deadline` DISABLE KEYS */;
+INSERT INTO `task_def_deadline` VALUES (1,'completion','PT1H',NULL,NULL,NULL,'mail,msg','ä»»åŠ¡æ¥æ”¶äºº','timeout',NULL,NULL,3);
+/*!40000 ALTER TABLE `task_def_deadline` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_def_escalation`
+--
+
+DROP TABLE IF EXISTS `task_def_escalation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_def_escalation` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `ESCALATION_CONDITION` varchar(200) DEFAULT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `DEADLINE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_DEF_ESCALATION_DEADLINE` (`DEADLINE_ID`),
+  CONSTRAINT `FK_TASK_DEF_ESCALATION_DEADLINE` FOREIGN KEY (`DEADLINE_ID`) REFERENCES `task_def_deadline` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_def_escalation`
+--
+
+LOCK TABLES `task_def_escalation` WRITE;
+/*!40000 ALTER TABLE `task_def_escalation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_def_escalation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_def_notification`
+--
+
+DROP TABLE IF EXISTS `task_def_notification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_def_notification` (
+  `ID` bigint(20) NOT NULL,
+  `EVENT_NAME` varchar(100) DEFAULT NULL,
+  `RECEIVER` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `TEMPLATE_CODE` varchar(200) DEFAULT NULL,
+  `BASE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_DEF_NOTIFICATION_BASE` (`BASE_ID`),
+  CONSTRAINT `FK_TASK_DEF_NOTIFICATION_BASE` FOREIGN KEY (`BASE_ID`) REFERENCES `task_def_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_def_notification`
+--
+
+LOCK TABLES `task_def_notification` WRITE;
+/*!40000 ALTER TABLE `task_def_notification` DISABLE KEYS */;
+INSERT INTO `task_def_notification` VALUES (1,'create','ä»»åŠ¡æ¥æ”¶äºº','mail,msg','arrival-assignee',1),(2,'create','æµç¨‹å‘èµ·äºº','mail,msg','arrival-initiator',2),(3,'complete','1','mail,msg','complete',3),(101,'create','ä»»åŠ¡æ¥æ”¶äºº','mail,msg','arrival-assignee',102),(102,'create','ä»»åŠ¡æ¥æ”¶äºº','mail,msg','arrival-assignee',103),(103,'complete','æµç¨‹å‘èµ·äºº','mail,msg','complete',103);
+/*!40000 ALTER TABLE `task_def_notification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_def_operation`
+--
+
+DROP TABLE IF EXISTS `task_def_operation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_def_operation` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `BASE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_DEF_OPERATION_BASE` (`BASE_ID`),
+  CONSTRAINT `FK_TASK_DEF_OPERATION_BASE` FOREIGN KEY (`BASE_ID`) REFERENCES `task_def_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_def_operation`
+--
+
+LOCK TABLES `task_def_operation` WRITE;
+/*!40000 ALTER TABLE `task_def_operation` DISABLE KEYS */;
+INSERT INTO `task_def_operation` VALUES (1,'saveDraft',NULL,NULL,NULL,1),(2,'completeTask',NULL,NULL,NULL,1),(3,'saveDraft',NULL,NULL,NULL,2),(4,'completeTask',NULL,NULL,NULL,2),(5,'saveDraft',NULL,NULL,NULL,3),(6,'completeTask',NULL,NULL,NULL,3),(7,'saveDraft',NULL,NULL,NULL,4),(8,'completeTask',NULL,NULL,NULL,4),(9,'rollbackPrevious',NULL,NULL,NULL,4),(10,'saveDraft',NULL,NULL,NULL,5),(11,'completeTask ',NULL,NULL,NULL,5),(12,'rollbackPrevious',NULL,NULL,NULL,3),(101,'saveDraft',NULL,NULL,NULL,102),(102,'completeTask',NULL,NULL,NULL,102),(103,'rollbackPrevious',NULL,NULL,NULL,102),(104,'rollbackInitiator',NULL,NULL,NULL,102),(105,'transfer',NULL,NULL,NULL,102),(106,'delegateTask',NULL,NULL,NULL,102),(107,'communicate',NULL,NULL,NULL,102),(108,'addCounterSign',NULL,NULL,NULL,102),(201,'saveDraft',NULL,NULL,NULL,103),(202,'completeTask',NULL,NULL,NULL,103),(203,'rollbackPrevious',NULL,NULL,NULL,103),(204,'rollbackInitiator',NULL,NULL,NULL,103),(205,'transfer',NULL,NULL,NULL,103),(206,'delegateTask',NULL,NULL,NULL,103),(207,'communicate',NULL,NULL,NULL,103),(208,'addCounterSign',NULL,NULL,NULL,103),(277367918821376,'saveDraft',NULL,NULL,NULL,277361276338176),(277367947575296,'completeTask',NULL,NULL,NULL,277361276338176),(277368075042816,'saveDraft',NULL,NULL,NULL,277361276780544),(277368084430848,'completeTask',NULL,NULL,NULL,277361276780544),(277368163647488,'saveDraft',NULL,NULL,NULL,277361277108224),(277368172920832,'completeTask',NULL,NULL,NULL,277361277108224),(277368250023936,'saveDraft',NULL,NULL,NULL,277361277468672),(277368259330048,'completeTask',NULL,NULL,NULL,277361277468672),(277368328617984,'saveDraft',NULL,NULL,NULL,277361277779968),(277368348835840,'completeTask',NULL,NULL,NULL,277361277779968),(277409917009920,'saveDraft',NULL,NULL,NULL,277404968960000),(277409952923648,'completeTask',NULL,NULL,NULL,277404968960000),(277410057158656,'saveDraft',NULL,NULL,NULL,277404969140224),(277410072576000,'completeTask',NULL,NULL,NULL,277404969140224),(277410129641472,'saveDraft',NULL,NULL,NULL,277404969304064),(277410140930048,'completeTask',NULL,NULL,NULL,277404969304064),(277410203140096,'saveDraft',NULL,NULL,NULL,277404969533440),(277410214494208,'completeTask',NULL,NULL,NULL,277404969533440),(277410272411648,'saveDraft',NULL,NULL,NULL,277404969844736),(277410283454464,'completeTask',NULL,NULL,NULL,277404969844736),(277410305916928,'rollbackPrevious',NULL,NULL,NULL,277404969844736);
+/*!40000 ALTER TABLE `task_def_operation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_def_user`
+--
+
+DROP TABLE IF EXISTS `task_def_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_def_user` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CATALOG` varchar(200) DEFAULT NULL,
+  `BASE_ID` bigint(20) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_DEF_USER_BASE` (`BASE_ID`),
+  CONSTRAINT `FK_TASK_DEF_USER_BASE` FOREIGN KEY (`BASE_ID`) REFERENCES `task_def_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_def_user`
+--
+
+LOCK TABLES `task_def_user` WRITE;
+/*!40000 ALTER TABLE `task_def_user` DISABLE KEYS */;
+INSERT INTO `task_def_user` VALUES (246664236302336,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',101,NULL),(246664236941312,'å²—ä½:ç»ç†','user','assignee',102,NULL),(246664237727744,'å²—ä½:æ€»ç»ç†','user','assignee',103,NULL),(246664243838976,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',246664243691520,NULL),(246664244264960,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',246664244117504,NULL),(246664245051392,'${countersignUser}','user','assignee',246664244920320,NULL),(246664245673984,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',246664245395456,NULL),(246664252047360,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',246664251932672,NULL),(246664252391424,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',1,NULL),(246664252686336,'7','user','assignee',2,NULL),(246664253014016,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',246664252882944,NULL),(246664253554688,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',3,NULL),(253449255845888,NULL,'user','assignee',253449255780352,NULL),(253449255993344,NULL,'user','assignee',253449255927808,NULL),(253695811158016,'å¸¸ç”¨è¯­ï¼šç­çº§è¾…å¯¼å‘˜','user','assignee',253695811076096,NULL),(253695811354624,NULL,'user','assignee',253695811223552,NULL),(253698612346880,NULL,'user','assignee',253698612183040,NULL),(253698612477952,NULL,'user','assignee',253698612412416,NULL),(253700457791488,NULL,'user','assignee',253700457725952,NULL),(253700457955328,NULL,'user','assignee',253700457873408,NULL),(255023953592320,'','group','candidate',253449255780352,NULL),(269439866847232,NULL,'user','assignee',269439866699776,NULL),(269440178749440,NULL,'user','assignee',269440178667520,NULL),(269440613220352,NULL,'user','assignee',269440613122048,NULL),(269440799571968,NULL,'user','assignee',269440799522816,NULL),(270439822589952,NULL,'user','assignee',270439822491648,NULL),(270439822622720,'å¸¸ç”¨è¯­ï¼šç›´æ¥ä¸Šçº§','group','candidate',270439822491648,NULL),(270444573474816,NULL,'user','assignee',270444573409280,NULL),(270444573622272,NULL,'user','assignee',270444573540352,NULL),(270678117564416,'3','user','assignee',270678117040128,NULL),(270678117597184,'4','user','candidate',270678117040128,NULL),(270678117613568,'5','group','candidate',270678117040128,NULL),(270678117728256,NULL,'user','assignee',270678117679104,NULL),(270691192733696,NULL,'user','assignee',270691192700928,NULL),(270691192766464,'test','group','candidate',270691192700928,NULL),(270691192832000,'tes','group','candidate',270691192700928,NULL),(270691192963072,NULL,'user','assignee',270691192897536,NULL),(270704742203392,NULL,'user','assignee',270704742072320,NULL),(270704742252544,'å¼ ä¸‰ï¼Œæå››','group','candidate',270704742072320,NULL),(270704742514688,NULL,'user','assignee',270704742350848,NULL),(270704743415808,NULL,'user','assignee',270704743350272,NULL),(270743755587584,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',270743755522048,NULL),(270743756062720,'å²—ä½:é™¢é•¿','user','assignee',270743755702272,NULL),(277358498103296,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277358498037760,NULL),(277358498316288,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277358498250752,NULL),(277358498512896,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277358498447360,NULL),(277358498824192,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277358498709504,NULL),(277358499037184,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277358498971648,NULL),(277361276436480,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277361276338176,NULL),(277361276911616,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277361276780544,NULL),(277361277190144,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277361277108224,NULL),(277361277566976,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277361277468672,NULL),(277361277878272,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277361277779968,NULL),(277404969041920,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277404968960000,NULL),(277404969189376,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277404969140224,NULL),(277404969353216,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277404969304064,NULL),(277404969598976,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277404969533440,NULL),(277404969910272,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277404969844736,NULL),(277424166535168,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277424166502400,NULL),(277424166666240,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277424166633472,NULL),(277424166846464,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277424166764544,NULL),(277424167075840,'å²—ä½:ä¹¦è®°','user','assignee',277424167026688,NULL),(277424167288832,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277424167239680,NULL),(277428372176896,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277428372144128,NULL),(277428372357120,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',277428372307968,NULL),(277428372520960,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277428372455424,NULL),(277428372848640,'å²—ä½:ä¹¦è®°','user','assignee',277428372783104,NULL),(277428373061632,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',277428372996096,NULL),(280494060421120,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280494059323392,NULL),(280494064156672,'å²—ä½:ç»ç†','user','assignee',280494064041984,NULL),(280494064582656,'å²—ä½:æ€»ç»ç†','user','assignee',280494064467968,NULL),(280494069907456,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280494069792768,NULL),(280494070366208,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',280494070267904,NULL),(280494071087104,'${countersignUser}','user','assignee',280494070775808,NULL),(280494071414784,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280494071316480,NULL),(280494077050880,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280494076936192,NULL),(280494077657088,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',280494077575168,NULL),(280494078001152,'7','user','assignee',280494077886464,NULL),(280494078459904,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280494078230528,NULL),(280494078869504,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280494078771200,NULL),(280556614615040,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280556614320128,NULL),(280556614893568,'å²—ä½:ç»ç†','user','assignee',280556614811648,NULL),(280556615286784,'å²—ä½:æ€»ç»ç†','user','assignee',280556615188480,NULL),(280556617875456,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280556617777152,NULL),(280556618137600,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',280556618055680,NULL),(280556618612736,'${countersignUser}','user','assignee',280556618514432,NULL),(280556618907648,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280556618825728,NULL),(280556622462976,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280556622381056,NULL),(280556622708736,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',280556622626816,NULL),(280556622970880,'7','user','assignee',280556622888960,NULL),(280556623249408,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280556623151104,NULL),(280556623642624,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280556623560704,NULL),(280568935612416,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280568935071744,NULL),(280568936054784,'å²—ä½:ç»ç†','user','assignee',280568935907328,NULL),(280568936546304,'å²—ä½:æ€»ç»ç†','user','assignee',280568936431616,NULL),(280568942919680,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280568942772224,NULL),(280568943345664,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',280568943198208,NULL),(280568944017408,'${countersignUser}','user','assignee',280568943869952,NULL),(280568944410624,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280568944279552,NULL),(280568951947264,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280568951767040,NULL),(280568952274944,'å¸¸ç”¨è¯­:ç›´æ¥ä¸Šçº§','user','assignee',280568952160256,NULL),(280568952569856,'7','user','assignee',280568952471552,NULL),(280568952946688,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280568952815616,NULL),(280568953651200,'å¸¸ç”¨è¯­:æµç¨‹å‘èµ·äºº','user','assignee',280568953487360,NULL);
+/*!40000 ALTER TABLE `task_def_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_info`
+--
+
+DROP TABLE IF EXISTS `task_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_info` (
+  `ID` bigint(20) NOT NULL,
+  `BUSINESS_KEY` varchar(100) DEFAULT NULL,
+  `CODE` varchar(100) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `CATEGORY` varchar(200) DEFAULT NULL,
+  `FORM` varchar(100) DEFAULT NULL,
+  `TENANT_ID` varchar(100) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `SUSPEND_STATUS` varchar(50) DEFAULT NULL,
+  `DELEGATE_STATUS` varchar(50) DEFAULT NULL,
+  `COMPLETE_STATUS` varchar(50) DEFAULT NULL,
+  `SKIP_STATUS` varchar(50) DEFAULT NULL,
+  `ESCALATE_STATUS` varchar(50) DEFAULT NULL,
+  `COPY_STATUS` varchar(50) DEFAULT NULL,
+  `COPY_TASK_ID` varchar(64) DEFAULT NULL,
+  `PRESENTATION_NAME` varchar(200) DEFAULT NULL,
+  `PRESENTATION_SUBJECT` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `ACTIVATION_TIME` datetime DEFAULT NULL,
+  `CLAIM_TIME` datetime DEFAULT NULL,
+  `COMPLETE_TIME` datetime DEFAULT NULL,
+  `EXPIRATION_TIME` datetime DEFAULT NULL,
+  `LAST_MODIFIED_TIME` datetime DEFAULT NULL,
+  `DURATION` varchar(50) DEFAULT NULL,
+  `CREATOR` varchar(64) DEFAULT NULL,
+  `INITIATOR` varchar(64) DEFAULT NULL,
+  `ASSIGNEE` varchar(64) DEFAULT NULL,
+  `OWNER` varchar(64) DEFAULT NULL,
+  `LAST_MODIFIER` varchar(64) DEFAULT NULL,
+  `SWIMLANE` varchar(100) DEFAULT NULL,
+  `PARENT_ID` bigint(20) DEFAULT NULL,
+  `TASK_ID` varchar(200) DEFAULT NULL,
+  `EXECUTION_ID` varchar(200) DEFAULT NULL,
+  `PROCESS_INSTANCE_ID` varchar(200) DEFAULT NULL,
+  `PROCESS_DEFINITION_ID` varchar(200) DEFAULT NULL,
+  `ATTR1` varchar(100) DEFAULT NULL,
+  `ATTR2` varchar(100) DEFAULT NULL,
+  `ATTR3` varchar(100) DEFAULT NULL,
+  `ATTR4` varchar(100) DEFAULT NULL,
+  `ATTR5` varchar(100) DEFAULT NULL,
+  `PROCESS_BUSINESS_KEY` varchar(200) DEFAULT NULL,
+  `PROCESS_STARTER` varchar(64) DEFAULT NULL,
+  `CATALOG` varchar(100) DEFAULT NULL,
+  `ACTION` varchar(200) DEFAULT NULL,
+  `COMMENT` varchar(200) DEFAULT NULL,
+  `MESSAGE` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_INFO_PARENT` (`PARENT_ID`),
+  CONSTRAINT `FK_TASK_INFO_PARENT` FOREIGN KEY (`PARENT_ID`) REFERENCES `task_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_info`
+--
+
+LOCK TABLES `task_info` WRITE;
+/*!40000 ALTER TABLE `task_info` DISABLE KEYS */;
+INSERT INTO `task_info` VALUES (253397498626048,'253397469265920','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17','2016-08-11 11:17:37',NULL,NULL,'2016-08-11 11:52:40',NULL,NULL,'null',NULL,NULL,'247688773386240',NULL,NULL,NULL,NULL,'5011','5001','5001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ','sdsdds',NULL),(253431964352512,'253397469265920','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 11:17','2016-08-11 11:52:40',NULL,NULL,'2016-08-11 14:18:45',NULL,NULL,'null',NULL,NULL,'1','4',NULL,NULL,NULL,'5015','5001','5001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247688773386240','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(253442213707776,'253442188607488','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-tt-2016-08-11 12:03','2016-08-11 12:03:06',NULL,NULL,'2016-08-11 12:03:45',NULL,NULL,'null',NULL,NULL,'247688773386240',NULL,NULL,NULL,NULL,'5028','5018','5018','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','å®Œæˆ','ww',NULL),(253442852519936,'253442188607488','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-tt-2016-08-11 12:03','2016-08-11 12:03:45',NULL,NULL,'2016-08-12 15:00:11',NULL,NULL,'null',NULL,NULL,'247689637478400','247689000714240',NULL,NULL,NULL,'5032','5018','5018','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247688773386240','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(253569527250944,'253569526644736','sid-4AE0273C-4BD1-45A5-9053-22DBB28EDC13','å¡«å†™è¯·å‡æ¡',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-11 14:12','2016-08-11 14:12:36',NULL,NULL,'2016-08-11 14:13:00',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'5046','5042','5042','process:1:5040',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(253572338647040,'253572155539456','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 14:15','2016-08-11 14:15:28',NULL,NULL,'2016-08-11 14:18:48',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'5057','5047','5047','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(253658209746944,'253585567006720','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 15:42','2016-08-11 15:42:49',NULL,NULL,'2016-08-23 11:09:26',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'5070','5060','5060','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(253741704609792,'253741680312320','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-11 17:07','2016-08-11 17:07:45',NULL,NULL,'2016-08-23 11:09:29',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'5095','5085','5085','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(253746123931648,'253746096472064','taskuser-1','å‘æ–‡',NULL,50,NULL,'publish-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-11 17:12','2016-08-11 17:12:15',NULL,NULL,'2016-08-11 17:12:15',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'5107','5098','5098','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(253746124177408,'253746096472064','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'publish-manager','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-11 17:12','2016-08-11 17:12:15',NULL,NULL,'2016-08-23 11:09:27',NULL,NULL,'null',NULL,NULL,'1','4',NULL,NULL,NULL,'5110','5098','5098','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(254985883336704,'254985839607808','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ee-2016-08-12 14:13','2016-08-12 14:13:24',NULL,NULL,'2016-08-12 14:13:24',NULL,NULL,'null',NULL,NULL,'247689000714240',NULL,NULL,NULL,NULL,'7511','7501','7501','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689000714240','start','æäº¤',NULL,NULL),(254985884745728,'254985839607808','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ee-2016-08-12 14:13','2016-08-12 14:13:24',NULL,NULL,'2016-08-12 14:14:23',NULL,NULL,'null',NULL,NULL,'247689000714240','247688416968704',NULL,NULL,NULL,'7514','7501','7501','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689000714240','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(255028091011072,'255028049969152','taskuser-1','å‘æ–‡',NULL,50,NULL,'publish-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-12 14:56','2016-08-12 14:56:20',NULL,NULL,'2016-08-12 14:56:20',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'7528','7519','7519','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(255028091977728,'255028049969152','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'publish-manager','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-12 14:56','2016-08-12 14:56:20',NULL,NULL,'2016-08-12 14:57:39',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'7531','7519','7519','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(255029388197888,'255028049969152','taskuser-3','ä¼šç­¾',NULL,50,NULL,'publish-countersign','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-12 14:56','2016-08-12 14:57:39',NULL,NULL,'2016-08-23 11:09:30',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'7543','7540','7519','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','vote','äººå·¥ç»ˆæ­¢',NULL,NULL),(263487475351552,'263487425871872','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-å¼ ä¸‰-2016-08-18 14:21','2016-08-18 14:21:40',NULL,NULL,'2016-08-18 14:21:40',NULL,NULL,'null',NULL,NULL,'263486612602880',NULL,NULL,NULL,NULL,'10011','10001','10001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'263486612602880','start','æäº¤',NULL,NULL),(263487477841920,'263487425871872','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-å¼ ä¸‰-2016-08-18 14:21','2016-08-18 14:21:40',NULL,NULL,'2016-08-23 15:59:27',NULL,NULL,'null',NULL,NULL,'247688416968704','247688416968704',NULL,NULL,NULL,'10014','10001','10001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'263486612602880','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(270376271183872,'270376238874624','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09','2016-08-23 11:09:19',NULL,NULL,'2016-08-23 11:09:19',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15011','15001','15001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270376274198528,'270376238874624','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09','2016-08-23 11:09:19',NULL,NULL,'2016-08-23 11:10:38',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'15014','15001','15001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270377575055360,'270376238874624','taskuser-3','äººäº‹å®¡æ‰¹',NULL,50,NULL,'vacation-hr','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 11:09','2016-08-23 11:10:38',NULL,NULL,'2016-08-23 11:13:15',NULL,NULL,'null',NULL,NULL,'1','7',NULL,NULL,NULL,'15020','15001','15001','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(270380030787584,'270380001509376','taskuser-1','å‘æ–‡',NULL,50,NULL,'publish-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 11:13','2016-08-23 11:13:08',NULL,NULL,'2016-08-23 11:13:08',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15031','15022','15022','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270380031246336,'270380001509376','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'publish-manager','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 11:13','2016-08-23 11:13:08',NULL,NULL,'2016-08-23 11:14:36',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'15034','15022','15022','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270381464567808,'270380001509376','taskuser-3','ä¼šç­¾',NULL,50,NULL,'publish-countersign','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 11:13','2016-08-23 11:14:36',NULL,NULL,'2016-08-23 15:11:57',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'15046','15043','15022','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','vote','äººå·¥ç»ˆæ­¢',NULL,NULL),(270513672568832,'270513642176512','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29','2016-08-23 13:29:05',NULL,NULL,'2016-08-23 13:29:05',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15069','15059','15059','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270513673076736,'270513642176512','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 13:29','2016-08-23 13:29:05',NULL,NULL,'2016-08-23 15:11:58',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'15072','15059','15059','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(270615265869824,'270615236689920','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12','2016-08-23 15:12:26',NULL,NULL,'2016-08-23 15:12:26',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15087','15077','15077','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270615266328576,'270615236689920','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12','2016-08-23 15:12:26',NULL,NULL,'2016-08-23 15:12:51',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'15090','15077','15077','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270615684382720,'270615236689920','taskuser-3','äººäº‹å®¡æ‰¹',NULL,50,NULL,'vacation-hr','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12','2016-08-23 15:12:51',NULL,NULL,'2016-08-23 15:16:23',NULL,NULL,'null',NULL,NULL,'7',NULL,NULL,NULL,NULL,'15098','15077','15077','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','å®Œæˆ',NULL,NULL),(270619157757952,'270615236689920','taskuser-6','é”€å‡',NULL,50,NULL,'vacation-finish','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 15:12','2016-08-23 15:16:23',NULL,NULL,'2016-08-23 15:17:34',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15103','15077','15077','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'7','normal','å®Œæˆ',NULL,NULL),(270622049255424,'270622027038720','taskuser-1','å‘æ–‡',NULL,50,NULL,'publish-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:19','2016-08-23 15:19:20',NULL,NULL,'2016-08-23 15:19:20',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15114','15105','15105','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270622049648640,'270622027038720','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'publish-manager','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:19','2016-08-23 15:19:20',NULL,NULL,'2016-08-23 15:20:50',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'15117','15105','15105','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270623529762816,'270622027038720','taskuser-3','ä¼šç­¾',NULL,50,NULL,'publish-countersign','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:19','2016-08-23 15:20:50',NULL,NULL,'2016-08-23 15:31:07',NULL,NULL,'null',NULL,NULL,'1','4',NULL,NULL,NULL,'15129','15126','15105','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','vote','äººå·¥ç»ˆæ­¢',NULL,NULL),(270633960767488,'270633939009536','taskuser-1','å‘æ–‡',NULL,50,NULL,'publish-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:31','2016-08-23 15:31:27',NULL,NULL,'2016-08-23 15:31:27',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15140','15131','15131','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270633961308160,'270633939009536','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'publish-manager','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:31','2016-08-23 15:31:27',NULL,NULL,'2016-08-23 15:31:42',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'15143','15131','15131','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270634203316224,'270633939009536','taskuser-3','ä¼šç­¾',NULL,50,NULL,'publish-countersign','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å…¬æ–‡å‘å¸ƒ-ä¸´è¿œ-2016-08-23 15:31','2016-08-23 15:31:42',NULL,NULL,'2016-08-23 15:59:29',NULL,NULL,'null',NULL,NULL,'4','4',NULL,NULL,NULL,'15155','15152','15131','publish:1:8',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','vote','äººå·¥ç»ˆæ­¢',NULL,NULL),(270752466812928,'270752438255616','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-23 17:31','2016-08-23 17:32:00',NULL,NULL,'2016-08-23 17:32:00',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15184','15174','15174','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270752467746816,'270752438255616','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-23 17:31','2016-08-23 17:32:00',NULL,NULL,'2016-08-23 17:32:48',NULL,NULL,'null',NULL,NULL,'247688773386240',NULL,NULL,NULL,NULL,'15187','15174','15174','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270757020794880,'270756993302528','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-23 17:36','2016-08-23 17:36:38',NULL,NULL,'2016-08-23 17:36:38',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15204','15194','15194','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270757021220864,'270756993302528','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-23 17:36','2016-08-23 17:36:38',NULL,NULL,'2016-08-24 10:34:19',NULL,NULL,'null',NULL,NULL,'247688773386240',NULL,NULL,NULL,NULL,'15207','15194','15194','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(270757729796096,'270757515640832','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37','2016-08-23 17:37:21',NULL,NULL,'2016-08-23 17:37:21',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'15220','15210','15210','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(270757730238464,'270757515640832','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37','2016-08-23 17:37:21',NULL,NULL,'2016-08-24 09:32:06',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'15223','15210','15210','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(271695211675648,'271695178579968','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31','2016-08-24 09:31:00',NULL,NULL,'2016-08-24 09:31:01',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'17511','17501','17501','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(271695214493696,'271695178579968','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-24 09:31','2016-08-24 09:31:01',NULL,NULL,'2016-08-28 10:05:15',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'17514','17501','17501','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(271696281403392,'270757515640832','taskuser-3','äººäº‹å®¡æ‰¹',NULL,50,NULL,'vacation-hr','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-23 17:37','2016-08-24 09:32:06',NULL,NULL,'2016-08-28 10:05:14',NULL,NULL,'null',NULL,NULL,'1','7',NULL,NULL,NULL,'17520','15210','15210','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(271756964380672,'271756963692544','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:33','2016-08-24 10:33:50',NULL,NULL,'2016-08-24 10:33:50',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'17526','17522','17522','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(271756965036032,'271756963692544','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:33','2016-08-24 10:33:50',NULL,NULL,'2016-08-28 10:05:17',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'17529','17522','17522','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(271759933128704,'271759910174720','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:36','2016-08-24 10:36:51',NULL,NULL,'2016-08-24 10:36:51',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'17546','17535','17535','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(271759933898752,'271759910174720','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:36','2016-08-24 10:36:51',NULL,NULL,'2016-08-28 10:05:18',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'17549','17535','17535','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(271766843981824,'271766822633472','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:43','2016-08-24 10:43:53',NULL,NULL,'2016-08-24 10:43:53',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'17563','17552','17552','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(271766844243968,'271766822633472','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:43','2016-08-24 10:43:53',NULL,NULL,'2016-08-28 10:05:19',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'17566','17552','17552','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(271782510100480,'271782491504640','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:59','2016-08-24 10:59:49',NULL,NULL,'2016-08-24 10:59:49',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'17580','17569','17569','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(271782510346240,'271782491504640','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 10:59','2016-08-24 10:59:49',NULL,NULL,'2016-08-28 10:05:20',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'17583','17569','17569','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(271828687486976,'271828669497344','sid-B42805EC-3B82-4E88-BCEB-E93869BF5284','è¯·å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 11:46','2016-08-24 11:46:47',NULL,NULL,'2016-08-24 11:46:47',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'17597','17586','17586','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(271828688011264,'271828669497344','sid-62CC9B4B-804C-44D6-AC40-9E4DD72CCA0D','ä¸Šçº§å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'null-ä¸´è¿œ-2016-08-24 11:46','2016-08-24 11:46:47',NULL,NULL,'2016-08-28 10:05:21',NULL,NULL,'null',NULL,NULL,'1','247688773386240',NULL,NULL,NULL,'17600','17586','17586','process:4:15173',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277386237607936,'277386212622336','sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:00','2016-08-28 10:00:13',NULL,NULL,'2016-08-28 10:00:13',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20020','20009','20009','vacation-student:1:20008',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277386239721472,'277386212622336','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:00','2016-08-28 10:00:13',NULL,NULL,'2016-08-28 10:05:22',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'20023','20009','20009','vacation-student:1:20008',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277391839002624,'277391815950336','sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:05','2016-08-28 10:05:55',NULL,NULL,'2016-08-28 10:05:55',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20039','20028','20028','vacation-student:1:20008',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277391839412224,'277391815950336','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:05','2016-08-28 10:05:55',NULL,NULL,'2016-08-28 10:14:06',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'20042','20028','20028','vacation-student:1:20008',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277394347032576,'277394326110208','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08','2016-08-28 10:08:28',NULL,NULL,'2016-08-28 10:08:28',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20055','20045','20045','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277394347524096,'277394326110208','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:08','2016-08-28 10:08:28',NULL,NULL,'2016-08-28 10:14:07',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'20058','20045','20045','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277400840093696,'277400806588416','sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:15','2016-08-28 10:15:04',NULL,NULL,'2016-08-28 10:15:04',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20072','20061','20061','vacation-student:1:20008',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277400840503296,'277400806588416','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:15','2016-08-28 10:15:04',NULL,NULL,'2016-08-28 10:20:10',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'20075','20061','20061','vacation-student:1:20008',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277416114257920,'277416052719616','sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:30','2016-08-28 10:30:37',NULL,NULL,'2016-08-28 10:30:37',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20099','20088','20088','vacation-student:2:20087',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277416114700288,'277416052719616','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:30','2016-08-28 10:30:37',NULL,NULL,'2016-08-28 10:30:50',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'20102','20088','20088','vacation-student:2:20087',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(277416335769600,'277416052719616','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:30','2016-08-28 10:30:50',NULL,NULL,'2016-08-28 10:38:30',NULL,NULL,'null',NULL,NULL,'1','247689637478400',NULL,NULL,NULL,'20109','20088','20088','vacation-student:2:20087',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277433694142464,'277433676251136','sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:48','2016-08-28 10:48:30',NULL,NULL,'2016-08-28 10:48:30',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20129','20118','20118','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277433694568448,'277433676251136','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:48','2016-08-28 10:48:30',NULL,NULL,'2016-08-28 10:48:43',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'20132','20118','20118','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(277433906397184,'277433676251136','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,NULL,'1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:48','2016-08-28 10:48:43',NULL,NULL,'2016-08-28 10:51:54',NULL,NULL,'null',NULL,NULL,'1','å²—ä½:ä¹¦è®°',NULL,NULL,NULL,'20139','20118','20118','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','äººå·¥ç»ˆæ­¢',NULL,NULL),(277438275796992,'277438255661056','sid-92464D4A-380E-4D73-875E-E77E82399CEC','å¡«å†™è¯·å‡å•',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:53','2016-08-28 10:53:09',NULL,NULL,'2016-08-28 10:53:09',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20152','20141','20141','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'1','start','æäº¤',NULL,NULL),(277438276173824,'277438255661056','sid-2A5BFF60-DE0C-4DB9-954A-BA57F5611EE5','è¾…å¯¼å‘˜å®¡æ‰¹',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:53','2016-08-28 10:53:09',NULL,NULL,'2016-08-28 10:53:34',NULL,NULL,'null',NULL,NULL,'247689637478400',NULL,NULL,NULL,NULL,'20155','20141','20141','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'1','normal','å®Œæˆ',NULL,NULL),(277438684512256,'277438255661056','sid-19ABB7E8-A781-4964-83DE-CBD2598A1C66','é™¢ç³»é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:53','2016-08-28 10:53:34',NULL,NULL,'2016-08-28 10:54:12',NULL,NULL,'null',NULL,NULL,'4',NULL,NULL,NULL,NULL,'20162','20141','20141','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'247689637478400','normal','å®Œæˆ',NULL,NULL),(277439306760192,'277438255661056','sid-5732769D-2626-4CE0-98E5-40B1E96645C9','é”€å‡',NULL,50,NULL,NULL,'1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'å­¦ç”Ÿè¯·å‡æµç¨‹-ä¸´è¿œ-2016-08-28 10:53','2016-08-28 10:54:12',NULL,NULL,'2016-08-28 10:54:40',NULL,NULL,'null',NULL,NULL,'1',NULL,NULL,NULL,NULL,'20168','20141','20141','vacation-student:4:20117',NULL,NULL,NULL,NULL,NULL,NULL,'4','normal','å®Œæˆ',NULL,NULL),(277601530806272,'277601506230272','taskuser-1','å¡«å†™è¯·å‡å•',NULL,50,NULL,'vacation-request','1','complete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ee-2016-08-28 13:39','2016-08-28 13:39:14',NULL,NULL,'2016-08-28 13:39:14',NULL,NULL,'null',NULL,NULL,'247689000714240',NULL,NULL,NULL,NULL,'20180','20170','20170','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689000714240','start','æäº¤',NULL,NULL),(277601531461632,'277601506230272','taskuser-2','éƒ¨é—¨é¢†å¯¼å®¡æ‰¹',NULL,50,NULL,'vacation-department','1','delete','none','none',NULL,NULL,NULL,NULL,NULL,NULL,'è¯·å‡æµç¨‹-ee-2016-08-28 13:39','2016-08-28 13:39:14',NULL,NULL,'2016-08-28 13:41:44',NULL,NULL,'null',NULL,NULL,'247688773386240','247688773386240',NULL,NULL,NULL,'20183','20170','20170','vacation:1:12',NULL,NULL,NULL,NULL,NULL,NULL,'247689000714240','normal','äººå·¥ç»ˆæ­¢',NULL,NULL);
+/*!40000 ALTER TABLE `task_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_log`
+--
+
+DROP TABLE IF EXISTS `task_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_log` (
+  `ID` bigint(20) NOT NULL,
+  `EVENT_TYPE` varchar(100) DEFAULT NULL,
+  `EVENT_TIME` datetime DEFAULT NULL,
+  `CREATOR` varchar(64) DEFAULT NULL,
+  `START_OWNER` varchar(64) DEFAULT NULL,
+  `END_OWNER` varchar(64) DEFAULT NULL,
+  `TASK_STATUS` varchar(50) DEFAULT NULL,
+  `CONTENT` text,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TASK_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_LOG_TASK` (`TASK_ID`),
+  CONSTRAINT `FK_TASK_LOG_TASK` FOREIGN KEY (`TASK_ID`) REFERENCES `task_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_log`
+--
+
+LOCK TABLES `task_log` WRITE;
+/*!40000 ALTER TABLE `task_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_participant`
+--
+
+DROP TABLE IF EXISTS `task_participant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_participant` (
+  `ID` bigint(20) NOT NULL,
+  `CATEGORY` varchar(200) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `TASK_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TASK_PARTICIPANT_TASK` (`TASK_ID`),
+  CONSTRAINT `FK_TASK_PARTICIPANT_TASK` FOREIGN KEY (`TASK_ID`) REFERENCES `task_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_participant`
+--
+
+LOCK TABLES `task_participant` WRITE;
+/*!40000 ALTER TABLE `task_participant` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_participant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `template_field`
+--
+
+DROP TABLE IF EXISTS `template_field`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `template_field` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CONTENT` text,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TEMPLATE_FIELD_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_TEMPLATE_FIELD_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `template_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `template_field`
+--
+
+LOCK TABLES `template_field` WRITE;
+/*!40000 ALTER TABLE `template_field` DISABLE KEYS */;
+INSERT INTO `template_field` VALUES (1,'subject',NULL,'${humanTask.presentationSubject}éœ€è¦æ‚¨å®¡æ‰¹',1,'1'),(2,'content',NULL,'${task.assignee}æ‚¨å¥½ï¼Œæ‚¨æœ‰æ–°ä»»åŠ¡éœ€è¦å¤„ç†â€”â€”${humanTask.presentationSubject}ã€‚<br><a href=\"${baseUrl}/operation/task-operation-viewTaskForm.do?humanTaskId=${humanTask.id?c}\">${baseUrl}/operation/task-operation-viewTaskForm.do?humanTaskId=${humanTask.id?c}</a>',1,'1'),(3,'subject',NULL,'æ‚¨çš„æµç¨‹${humanTask.presentationSubject}å·²ç»åˆ°è¾¾${task.name}ç¯èŠ‚',2,'1'),(4,'content',NULL,'${initiator}æ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹${humanTask.presentationSubject}å·²ç»åˆ°è¾¾${task.name}ç¯èŠ‚ã€‚<br><a href=\"${baseUrl}/bpm/workspace-viewHistory.do?processInstanceId=${humanTask.processInstanceId}\">${baseUrl}/bpm/workspace-viewHistory.do?processInstanceId=${humanTask.processInstanceId}</a>',2,'1'),(5,'subject',NULL,'æ‚¨çš„æµç¨‹${humanTask.presentationSubject}å·²ç»å®Œæˆ${task.name}ç¯èŠ‚',3,'1'),(6,'content',NULL,'${initiator}æ‚¨å¥½ï¼Œæ‚¨çš„æµç¨‹${humanTask.presentationSubject}å·²ç»å®Œæˆ${task.name}ç¯èŠ‚ã€‚<br><a href=\"${baseUrl}/bpm/workspace-viewHistory.do?processInstanceId=${humanTask.processInstanceId}\">${baseUrl}/bpm/workspace-viewHistory.do?processInstanceId=${humanTask.processInstanceId}</a>',3,'1'),(7,'subject',NULL,'æ‚¨è´Ÿè´£çš„ä»»åŠ¡${humanTask.presentationSubject}å³å°†è¿‡æœŸ',4,'1'),(8,'content',NULL,'${task.assignee}æ‚¨å¥½ï¼Œæ‚¨è´Ÿè´£çš„ä»»åŠ¡${humanTask.presentationSubject}å³å°†è¿‡æœŸã€‚<br><a href=\"${baseUrl}/operation/task-operation-viewTaskForm.do?humanTaskId=${humanTask.id?c}\">${baseUrl}/operation/task-operation-viewTaskForm.do?humanTaskId=${humanTask.id?c}</a>',4,'1');
+/*!40000 ALTER TABLE `template_field` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `template_info`
+--
+
+DROP TABLE IF EXISTS `template_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `template_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `template_info`
+--
+
+LOCK TABLES `template_info` WRITE;
+/*!40000 ALTER TABLE `template_info` DISABLE KEYS */;
+INSERT INTO `template_info` VALUES (1,'ä»»åŠ¡åˆ°è¾¾ï¼ˆä»»åŠ¡å¤„ç†äººï¼‰','arrival-assignee','1'),(2,'ä»»åŠ¡åˆ°è¾¾ï¼ˆæµç¨‹å‘èµ·äººï¼‰','arrival-initiator','1'),(3,'ä»»åŠ¡å®Œæˆ','complete','1'),(4,'ä»»åŠ¡è¶…æ—¶æé†’','timeout','1');
+/*!40000 ALTER TABLE `template_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket_catalog`
+--
+
+DROP TABLE IF EXISTS `ticket_catalog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket_catalog` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket_catalog`
+--
+
+LOCK TABLES `ticket_catalog` WRITE;
+/*!40000 ALTER TABLE `ticket_catalog` DISABLE KEYS */;
+INSERT INTO `ticket_catalog` VALUES (1,'é»˜è®¤åˆ†ç±»',NULL);
+/*!40000 ALTER TABLE `ticket_catalog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket_comment`
+--
+
+DROP TABLE IF EXISTS `ticket_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket_comment` (
+  `ID` bigint(20) NOT NULL,
+  `CONTENT` text,
+  `CREATOR` varchar(64) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TICKET_COMMENT_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_TICKET_COMMENT_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `ticket_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket_comment`
+--
+
+LOCK TABLES `ticket_comment` WRITE;
+/*!40000 ALTER TABLE `ticket_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ticket_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket_group`
+--
+
+DROP TABLE IF EXISTS `ticket_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket_group` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket_group`
+--
+
+LOCK TABLES `ticket_group` WRITE;
+/*!40000 ALTER TABLE `ticket_group` DISABLE KEYS */;
+INSERT INTO `ticket_group` VALUES (1,'é»˜è®¤ç»„',NULL);
+/*!40000 ALTER TABLE `ticket_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket_info`
+--
+
+DROP TABLE IF EXISTS `ticket_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket_info` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(200) DEFAULT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CONTENT` text,
+  `CREATOR` varchar(64) DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `ASSIGNEE` varchar(64) DEFAULT NULL,
+  `UPDATE_TIME` datetime DEFAULT NULL,
+  `CATALOG_ID` bigint(20) DEFAULT NULL,
+  `GROUP_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TIKCET_INFO_CATALOG` (`CATALOG_ID`),
+  KEY `FK_TICKET_INFO_GRUOP` (`GROUP_ID`),
+  CONSTRAINT `FK_TICKET_INFO_GRUOP` FOREIGN KEY (`GROUP_ID`) REFERENCES `ticket_group` (`ID`),
+  CONSTRAINT `FK_TIKCET_INFO_CATALOG` FOREIGN KEY (`CATALOG_ID`) REFERENCES `ticket_catalog` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket_info`
+--
+
+LOCK TABLES `ticket_info` WRITE;
+/*!40000 ALTER TABLE `ticket_info` DISABLE KEYS */;
+INSERT INTO `ticket_info` VALUES (1,'1','æµ‹è¯•',NULL,'1','new','2015-03-05 00:00:00',NULL,NULL,1,1);
+/*!40000 ALTER TABLE `ticket_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket_member`
+--
+
+DROP TABLE IF EXISTS `ticket_member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ticket_member` (
+  `ID` bigint(20) NOT NULL,
+  `USER` bigint(20) DEFAULT NULL,
+  `GROUP_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_TICKET_MEMBER_GROUP` (`GROUP_ID`),
+  CONSTRAINT `FK_TICKET_MEMBER_GROUP` FOREIGN KEY (`GROUP_ID`) REFERENCES `ticket_group` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket_member`
+--
+
+LOCK TABLES `ticket_member` WRITE;
+/*!40000 ALTER TABLE `ticket_member` DISABLE KEYS */;
+INSERT INTO `ticket_member` VALUES (1,1,1);
+/*!40000 ALTER TABLE `ticket_member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `train_info`
+--
+
+DROP TABLE IF EXISTS `train_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `train_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `START_TIME` datetime DEFAULT NULL,
+  `END_TIME` datetime DEFAULT NULL,
+  `CONTENT` text,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `train_info`
+--
+
+LOCK TABLES `train_info` WRITE;
+/*!40000 ALTER TABLE `train_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `train_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_account`
+--
+
+DROP TABLE IF EXISTS `user_account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_account` (
+  `ID` bigint(20) NOT NULL,
+  `USERNAME` varchar(50) DEFAULT NULL,
+  `PASSWORD` varchar(50) DEFAULT NULL,
+  `SCOPE_ID` varchar(50) DEFAULT NULL,
+  `USER_BASE_ID` bigint(20) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_USER_ACCOUNT_TYPE` (`TYPE_ID`),
+  KEY `FK_USER_ACCOUNT_USER_BASE` (`USER_BASE_ID`),
+  CONSTRAINT `FK_USER_ACCOUNT_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `user_account_type` (`ID`),
+  CONSTRAINT `FK_USER_ACCOUNT_USER_BASE` FOREIGN KEY (`USER_BASE_ID`) REFERENCES `user_base` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_account`
+--
+
+LOCK TABLES `user_account` WRITE;
+/*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_account_type`
+--
+
+DROP TABLE IF EXISTS `user_account_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_account_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `SCOPE_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_account_type`
+--
+
+LOCK TABLES `user_account_type` WRITE;
+/*!40000 ALTER TABLE `user_account_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_account_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_attr`
+--
+
+DROP TABLE IF EXISTS `user_attr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_attr` (
+  `ID` bigint(20) NOT NULL,
+  `BOOLEAN_VALUE` int(11) DEFAULT NULL,
+  `DATE_VALUE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `LONG_VALUE` bigint(20) DEFAULT NULL,
+  `DOUBLE_VALUE` double DEFAULT NULL,
+  `STRING_VALUE` varchar(200) DEFAULT NULL,
+  `USER_BASE_ID` bigint(20) DEFAULT NULL,
+  `USER_SCHEMA_ID` bigint(20) DEFAULT NULL,
+  `SCOPE_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_USER_ATTR_USER_BASE` (`USER_BASE_ID`),
+  KEY `FK_USER_ATTR_USER_SCHEMA` (`USER_SCHEMA_ID`),
+  CONSTRAINT `FK_USER_ATTR_USER_BASE` FOREIGN KEY (`USER_BASE_ID`) REFERENCES `user_base` (`ID`),
+  CONSTRAINT `FK_USER_ATTR_USER_SCHEMA` FOREIGN KEY (`USER_SCHEMA_ID`) REFERENCES `user_schema` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_attr`
+--
+
+LOCK TABLES `user_attr` WRITE;
+/*!40000 ALTER TABLE `user_attr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_attr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_base`
+--
+
+DROP TABLE IF EXISTS `user_base`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_base` (
+  `ID` bigint(20) NOT NULL,
+  `USERNAME` varchar(50) DEFAULT NULL,
+  `DISPLAY_NAME` varchar(50) DEFAULT NULL,
+  `PASSWORD` varchar(50) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `USER_REPO_ID` bigint(20) DEFAULT NULL,
+  `SCOPE_ID` varchar(50) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL,
+  `MOBILE` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `full_name` varchar(50) DEFAULT NULL,
+  `nick_name` varchar(50) DEFAULT NULL,
+  `avatar` varchar(200) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `location` varchar(50) DEFAULT NULL,
+  `station` varchar(50) DEFAULT NULL,
+  `telephone` varchar(50) DEFAULT NULL,
+  `language` varchar(50) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `timezone` varchar(50) DEFAULT NULL,
+  `employee_no` varchar(64) DEFAULT NULL,
+  `card_no` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_USER_BASE_REPO` (`USER_REPO_ID`),
+  CONSTRAINT `FK_USER_BASE_REPO` FOREIGN KEY (`USER_REPO_ID`) REFERENCES `user_repo` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_base`
+--
+
+LOCK TABLES `user_base` WRITE;
+/*!40000 ALTER TABLE `user_base` DISABLE KEYS */;
+INSERT INTO `user_base` VALUES (1,'lingo','ä¸´è¿œ','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'1',1,'1','lingo.mossle@gmail.com','18012345678',NULL,NULL,NULL,'ä¸´è¿œ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'vivian','è–‡è–‡å®‰','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'2',1,'1','vivian.mossle@gmail.com','18012345678',NULL,NULL,NULL,'è–‡è–‡å®‰',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'steven','å²è’‚æ–‡','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'3',1,'1','demo.mossle@gmail.com','18012345678',NULL,NULL,NULL,'å²è’‚æ–‡',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'king','é‡‘','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'4',1,'1','demo.mossle@gmail.com','18012345678',NULL,NULL,NULL,'é‡‘',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'john','çº¦ç¿°','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'5',1,'1','demo.mossle@gmail.com','18012345678',NULL,NULL,NULL,'çº¦ç¿°',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'william','å¨å»‰','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'6',1,'1','demo.mossle@gmail.com','18012345678',NULL,NULL,NULL,'å¨å»‰',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'adam','äºšå½“','a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'7',1,'1','demo.mossle@gmail.com','18012345678',NULL,NULL,NULL,'äºšå½“',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'robot',NULL,'a1ccdbc7f295e0aeda5dc4e0f2677ea3',1,'1',1,'1',NULL,NULL,NULL,NULL,NULL,'ç½—ä¼¯ç‰¹',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `user_base` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_repo`
+--
+
+DROP TABLE IF EXISTS `user_repo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_repo` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `ref` varchar(200) DEFAULT NULL,
+  `SCOPE_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_repo`
+--
+
+LOCK TABLES `user_repo` WRITE;
+/*!40000 ALTER TABLE `user_repo` DISABLE KEYS */;
+INSERT INTO `user_repo` VALUES (1,'default','é»˜è®¤','1','1');
+/*!40000 ALTER TABLE `user_repo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_schema`
+--
+
+DROP TABLE IF EXISTS `user_schema`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_schema` (
+  `ID` bigint(20) NOT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `READ_ONLY` int(11) DEFAULT NULL,
+  `NOT_NULL` int(11) DEFAULT NULL,
+  `UNIQUE_CONSTRAINT` int(11) DEFAULT NULL,
+  `VALIDATOR` varchar(200) DEFAULT NULL,
+  `CONVERSION_PATTERN` varchar(200) DEFAULT NULL,
+  `MULTIPLE` int(11) DEFAULT NULL,
+  `ENUMERATION_KEYS` varchar(200) DEFAULT NULL,
+  `ENUMERATION_VALUES` varchar(200) DEFAULT NULL,
+  `USER_REPO_ID` bigint(20) DEFAULT NULL,
+  `SCOPE_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_USER_SCHEMA_REPO` (`USER_REPO_ID`),
+  CONSTRAINT `FK_USER_SCHEMA_REPO` FOREIGN KEY (`USER_REPO_ID`) REFERENCES `user_repo` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_schema`
+--
+
+LOCK TABLES `user_schema` WRITE;
+/*!40000 ALTER TABLE `user_schema` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_schema` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `visitor_info`
+--
+
+DROP TABLE IF EXISTS `visitor_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `visitor_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `MOBILE` varchar(50) DEFAULT NULL,
+  `COMPANY_NAME` varchar(200) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `VISIT_TIME` datetime DEFAULT NULL,
+  `LEAVE_TIME` datetime DEFAULT NULL,
+  `ENTER_TIME` datetime DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `visitor_info`
+--
+
+LOCK TABLES `visitor_info` WRITE;
+/*!40000 ALTER TABLE `visitor_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `visitor_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vote_info`
+--
+
+DROP TABLE IF EXISTS `vote_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vote_info` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(100) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `STATUS` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vote_info`
+--
+
+LOCK TABLES `vote_info` WRITE;
+/*!40000 ALTER TABLE `vote_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vote_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vote_item`
+--
+
+DROP TABLE IF EXISTS `vote_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vote_item` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(100) DEFAULT NULL,
+  `STYLE` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `HEAD_COUNT` int(11) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_VOTE_ITEM_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_VOTE_ITEM_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `vote_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vote_item`
+--
+
+LOCK TABLES `vote_item` WRITE;
+/*!40000 ALTER TABLE `vote_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vote_item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vote_user`
+--
+
+DROP TABLE IF EXISTS `vote_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vote_user` (
+  `ID` bigint(20) NOT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `ITEM_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_VOTE_USER_ITEM` (`ITEM_ID`),
+  CONSTRAINT `FK_VOTE_USER_ITEM` FOREIGN KEY (`ITEM_ID`) REFERENCES `vote_item` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vote_user`
+--
+
+LOCK TABLES `vote_user` WRITE;
+/*!40000 ALTER TABLE `vote_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vote_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `whitelist_app`
+--
+
+DROP TABLE IF EXISTS `whitelist_app`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `whitelist_app` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `USER_ID` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `FORCE_RELOGIN` int(11) DEFAULT NULL,
+  `CODE` varchar(64) DEFAULT NULL,
+  `USERNAME` varchar(64) DEFAULT NULL,
+  `PASSWORD` varchar(200) DEFAULT NULL,
+  `LEVEL` int(11) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WHITELIST_APP_TYPE` (`TYPE_ID`),
+  CONSTRAINT `FK_WHITELIST_APP_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `whitelist_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `whitelist_app`
+--
+
+LOCK TABLES `whitelist_app` WRITE;
+/*!40000 ALTER TABLE `whitelist_app` DISABLE KEYS */;
+/*!40000 ALTER TABLE `whitelist_app` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `whitelist_host`
+--
+
+DROP TABLE IF EXISTS `whitelist_host`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `whitelist_host` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `APP_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WHITELIST_HOST_APP` (`APP_ID`),
+  CONSTRAINT `FK_WHITELIST_HOST_APP` FOREIGN KEY (`APP_ID`) REFERENCES `whitelist_app` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `whitelist_host`
+--
+
+LOCK TABLES `whitelist_host` WRITE;
+/*!40000 ALTER TABLE `whitelist_host` DISABLE KEYS */;
+/*!40000 ALTER TABLE `whitelist_host` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `whitelist_ip`
+--
+
+DROP TABLE IF EXISTS `whitelist_ip`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `whitelist_ip` (
+  `ID` bigint(20) NOT NULL,
+  `VALUE` varchar(50) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `APP_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WHITELIST_IP_APP` (`APP_ID`),
+  CONSTRAINT `FK_WHITELIST_IP_APP` FOREIGN KEY (`APP_ID`) REFERENCES `whitelist_app` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `whitelist_ip`
+--
+
+LOCK TABLES `whitelist_ip` WRITE;
+/*!40000 ALTER TABLE `whitelist_ip` DISABLE KEYS */;
+/*!40000 ALTER TABLE `whitelist_ip` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `whitelist_type`
+--
+
+DROP TABLE IF EXISTS `whitelist_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `whitelist_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `CODE` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `whitelist_type`
+--
+
+LOCK TABLES `whitelist_type` WRITE;
+/*!40000 ALTER TABLE `whitelist_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `whitelist_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `work_report_acl`
+--
+
+DROP TABLE IF EXISTS `work_report_acl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `work_report_acl` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(200) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WORK_REPORT_ACL_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_WORK_REPORT_ACL_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `work_report_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `work_report_acl`
+--
+
+LOCK TABLES `work_report_acl` WRITE;
+/*!40000 ALTER TABLE `work_report_acl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `work_report_acl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `work_report_attachment`
+--
+
+DROP TABLE IF EXISTS `work_report_attachment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `work_report_attachment` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(200) DEFAULT NULL,
+  `FILE_SIZE` bigint(20) DEFAULT NULL,
+  `REF` varchar(200) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  `INFO_ID` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WORK_REPORT_ATTACHMENT_INFO` (`INFO_ID`),
+  CONSTRAINT `FK_WORK_REPORT_ATTACHMENT_INFO` FOREIGN KEY (`INFO_ID`) REFERENCES `work_report_info` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `work_report_attachment`
+--
+
+LOCK TABLES `work_report_attachment` WRITE;
+/*!40000 ALTER TABLE `work_report_attachment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `work_report_attachment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `work_report_info`
+--
+
+DROP TABLE IF EXISTS `work_report_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `work_report_info` (
+  `ID` bigint(20) NOT NULL,
+  `TYPE` varchar(50) DEFAULT NULL,
+  `CONTENT` varchar(200) DEFAULT NULL,
+  `REPORT_DATE` date DEFAULT NULL,
+  `CREATE_TIME` datetime DEFAULT NULL,
+  `USER_ID` varchar(64) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `work_report_info`
+--
+
+LOCK TABLES `work_report_info` WRITE;
+/*!40000 ALTER TABLE `work_report_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `work_report_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `workcal_part`
+--
+
+DROP TABLE IF EXISTS `workcal_part`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workcal_part` (
+  `ID` bigint(20) NOT NULL,
+  `SHIFT` int(11) DEFAULT NULL,
+  `START_TIME` varchar(5) DEFAULT NULL,
+  `END_TIME` varchar(5) DEFAULT NULL,
+  `RULE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WORKCAL_PART_RULE` (`RULE_ID`),
+  CONSTRAINT `FK_WORKCAL_PART_RULE` FOREIGN KEY (`RULE_ID`) REFERENCES `workcal_rule` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workcal_part`
+--
+
+LOCK TABLES `workcal_part` WRITE;
+/*!40000 ALTER TABLE `workcal_part` DISABLE KEYS */;
+INSERT INTO `workcal_part` VALUES (1,0,'9:00','12:00',1,'1'),(2,1,'13:00','18:00',1,'1'),(3,0,'9:00','12:00',2,'1'),(4,1,'13:00','18:00',2,'1'),(5,0,'9:00','12:00',3,'1'),(6,1,'13:00','18:00',3,'1'),(7,0,'9:00','12:00',4,'1'),(8,1,'13:00','18:00',4,'1'),(9,0,'9:00','12:00',5,'1'),(10,1,'13:00','18:00',5,'1'),(11,0,'9:00','12:00',12,'1'),(12,1,'13:00','18:00',12,'1'),(13,0,'9:00','12:00',20,'1'),(14,1,'13:00','18:00',20,'1'),(15,0,'9:00','12:00',26,'1'),(16,1,'13:00','18:00',26,'1'),(17,0,'9:00','12:00',29,'1'),(18,1,'13:00','18:00',29,'1'),(19,0,'9:00','12:00',37,'1'),(20,1,'13:00','18:00',37,'1'),(21,0,'9:00','12:00',6,'1'),(22,1,'13:00','18:00',6,'1'),(23,0,'9:00','12:00',7,'1'),(24,1,'13:00','18:00',7,'1'),(25,0,'9:00','12:00',8,'1'),(26,1,'13:00','18:00',8,'1'),(27,0,'9:00','12:00',9,'1'),(28,1,'13:00','18:00',9,'1'),(29,0,'9:00','12:00',10,'1'),(30,1,'13:00','18:00',10,'1'),(31,0,'9:00','12:00',43,'1'),(32,1,'13:00','18:00',43,'1'),(33,0,'9:00','12:00',44,'1'),(34,1,'13:00','18:00',44,'1'),(35,0,'9:00','12:00',52,'1'),(36,1,'13:00','18:00',52,'1'),(37,0,'9:00','12:00',69,NULL),(38,1,'13:00','18:00',69,NULL),(39,0,'9:00','12:00',70,NULL),(40,1,'13:00','18:00',70,NULL),(1601,0,'9:00','12:00',1601,'1'),(1602,1,'13:00','18:00',1601,'1'),(1603,0,'9:00','12:00',1602,'1'),(1604,1,'13:00','18:00',1602,'1'),(1605,0,'9:00','12:00',1603,'1'),(1606,1,'13:00','18:00',1603,'1'),(1607,0,'9:00','12:00',1604,'1'),(1608,1,'13:00','18:00',1604,'1'),(1609,0,'9:00','12:00',1605,'1'),(1610,1,'13:00','18:00',1605,'1'),(1611,0,'9:00','12:00',1612,'1'),(1612,1,'13:00','18:00',1612,'1'),(1613,0,'9:00','12:00',1620,'1'),(1614,1,'13:00','18:00',1620,'1'),(1615,0,'9:00','12:00',1626,'1'),(1616,1,'13:00','18:00',1626,'1'),(1617,0,'9:00','12:00',1629,'1'),(1618,1,'13:00','18:00',1629,'1'),(1619,0,'9:00','12:00',1635,'1'),(1620,1,'13:00','18:00',1635,'1'),(1621,0,'9:00','12:00',1636,'1'),(1622,1,'13:00','18:00',1636,'1');
+/*!40000 ALTER TABLE `workcal_part` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `workcal_rule`
+--
+
+DROP TABLE IF EXISTS `workcal_rule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workcal_rule` (
+  `ID` bigint(20) NOT NULL,
+  `YEAR` int(11) DEFAULT NULL,
+  `WEEK` int(11) DEFAULT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `WORK_DATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `STATUS` int(11) DEFAULT NULL,
+  `TYPE_ID` bigint(20) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_WORKCAL_RULE_TYPE` (`TYPE_ID`),
+  CONSTRAINT `FK_WORKCAL_RULE_TYPE` FOREIGN KEY (`TYPE_ID`) REFERENCES `workcal_type` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workcal_rule`
+--
+
+LOCK TABLES `workcal_rule` WRITE;
+/*!40000 ALTER TABLE `workcal_rule` DISABLE KEYS */;
+INSERT INTO `workcal_rule` VALUES (1,2014,2,'å‘¨ä¸€','2016-08-06 09:07:45',0,1,'1'),(2,2014,3,'å‘¨äºŒ','2016-08-06 09:07:45',0,1,'1'),(3,2014,4,'å‘¨ä¸‰','2016-08-06 09:07:45',0,1,'1'),(4,2014,5,'å‘¨å››','2016-08-06 09:07:45',0,1,'1'),(5,2014,6,'å‘¨äº”','2016-08-06 09:07:45',0,1,'1'),(6,2015,2,'å‘¨ä¸€','2016-08-06 09:07:45',0,1,'1'),(7,2015,3,'å‘¨äºŒ','2016-08-06 09:07:45',0,1,'1'),(8,2015,4,'å‘¨ä¸‰','2016-08-06 09:07:45',0,1,'1'),(9,2015,5,'å‘¨å››','2016-08-06 09:07:45',0,1,'1'),(10,2015,6,'å‘¨äº”','2016-08-06 09:07:45',0,1,'1'),(11,2014,NULL,'å…ƒæ—¦','2016-08-06 09:07:45',1,1,'1'),(12,2014,NULL,'æ˜¥èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(13,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(14,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(15,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(16,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(17,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(18,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(19,2014,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(20,2014,NULL,'æ˜¥èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(21,2014,NULL,'æ¸…æ˜èŠ‚','2016-08-06 09:07:45',1,1,'1'),(22,2014,NULL,'æ¸…æ˜èŠ‚è¡¥ä¼‘','2016-08-06 09:07:45',3,1,'1'),(23,2014,NULL,'åŠ³åŠ¨èŠ‚','2016-08-06 09:07:45',1,1,'1'),(24,2014,NULL,'åŠ³åŠ¨èŠ‚','2016-08-06 09:07:45',1,1,'1'),(25,2014,NULL,'åŠ³åŠ¨èŠ‚','2016-08-06 09:07:45',1,1,'1'),(26,2014,NULL,'åŠ³åŠ¨èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(27,2014,NULL,'ç«¯åˆèŠ‚','2016-08-06 09:07:45',1,1,'1'),(28,2014,NULL,'ä¸­ç§‹èŠ‚','2016-08-06 09:07:45',1,1,'1'),(29,2014,NULL,'å›½åº†èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(30,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(31,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(32,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(33,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(34,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(35,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(36,2014,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(37,2014,NULL,'å›½åº†èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(41,2015,NULL,'å…ƒæ—¦','2016-08-06 09:07:45',1,1,'1'),(42,2015,NULL,'å…ƒæ—¦è¡¥ä¼‘','2016-08-06 09:07:45',3,1,'1'),(43,2015,NULL,'å…ƒæ—¦è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(44,2015,NULL,'æ˜¥èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(45,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(46,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(47,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(48,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(49,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(50,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(51,2015,NULL,'æ˜¥èŠ‚','2016-08-06 09:07:45',1,1,'1'),(52,2015,NULL,'æ˜¥èŠ‚è°ƒä¼‘','2016-08-06 09:07:45',2,1,'1'),(53,2015,NULL,'æ¸…æ˜èŠ‚','2016-08-06 09:07:45',1,1,'1'),(54,2015,NULL,'æ¸…æ˜èŠ‚è¡¥ä¼‘','2016-08-06 09:07:45',3,1,'1'),(55,2015,NULL,'åŠ³åŠ¨èŠ‚','2016-08-06 09:07:45',1,1,'1'),(56,2015,NULL,'ç«¯åˆèŠ‚','2016-08-06 09:07:45',1,1,'1'),(57,2015,NULL,'ç«¯åˆèŠ‚è¡¥ä¼‘','2016-08-06 09:07:45',3,1,'1'),(58,2015,NULL,'ä¸­ç§‹èŠ‚','2016-08-06 09:07:45',1,1,'1'),(60,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(61,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(62,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(63,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(64,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(65,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(66,2015,NULL,'å›½åº†èŠ‚','2016-08-06 09:07:45',1,1,'1'),(67,2015,NULL,'èƒœåˆ©æ—¥','2015-09-02 16:00:00',1,1,'1'),(68,2015,NULL,'èƒœåˆ©æ—¥è¡¥ä¼‘','2015-09-03 16:00:00',3,1,'1'),(69,2015,NULL,'èƒœåˆ©æ—¥è°ƒä¼‘','2015-09-05 16:00:00',2,1,'1'),(70,2015,NULL,'å›½åº†èŠ‚è°ƒä¼‘','2015-10-09 16:00:00',2,1,'1'),(1601,2016,2,'å‘¨ä¸€','2016-08-06 09:07:45',0,1,'1'),(1602,2016,3,'å‘¨äºŒ','2016-08-06 09:07:45',0,1,'1'),(1603,2016,4,'å‘¨ä¸‰','2016-08-06 09:07:45',0,1,'1'),(1604,2016,5,'å‘¨å››','2016-08-06 09:07:45',0,1,'1'),(1605,2016,6,'å‘¨äº”','2016-08-06 09:07:45',0,1,'1'),(1611,2016,NULL,'å…ƒæ—¦','2015-12-31 16:00:00',1,1,'1'),(1612,2016,NULL,'æ˜¥èŠ‚è°ƒä¼‘','2016-02-05 16:00:00',2,1,'1'),(1613,2016,NULL,'æ˜¥èŠ‚','2016-02-06 16:00:00',1,1,'1'),(1614,2016,NULL,'æ˜¥èŠ‚','2016-02-07 16:00:00',1,1,'1'),(1615,2016,NULL,'æ˜¥èŠ‚','2016-02-08 16:00:00',1,1,'1'),(1616,2016,NULL,'æ˜¥èŠ‚','2016-02-09 16:00:00',1,1,'1'),(1617,2016,NULL,'æ˜¥èŠ‚','2016-02-10 16:00:00',1,1,'1'),(1618,2016,NULL,'æ˜¥èŠ‚','2016-02-11 16:00:00',1,1,'1'),(1619,2016,NULL,'æ˜¥èŠ‚','2016-02-12 16:00:00',1,1,'1'),(1620,2016,NULL,'æ˜¥èŠ‚è°ƒä¼‘','2016-02-13 16:00:00',2,1,'1'),(1621,2016,NULL,'æ¸…æ˜èŠ‚','2016-04-03 16:00:00',1,1,'1'),(1622,2016,NULL,'åŠ³åŠ¨èŠ‚','2016-04-30 16:00:00',1,1,'1'),(1623,2016,NULL,'åŠ³åŠ¨èŠ‚è¡¥ä¼‘','2016-05-01 16:00:00',3,1,'1'),(1624,2016,NULL,'ç«¯åˆèŠ‚','2016-06-08 16:00:00',1,1,'1'),(1625,2016,NULL,'ç«¯åˆèŠ‚è¡¥ä¼‘','2016-06-09 16:00:00',3,1,'1'),(1626,2016,NULL,'ç«¯åˆèŠ‚è°ƒä¼‘','2016-06-11 16:00:00',2,1,'1'),(1627,2016,NULL,'ä¸­ç§‹èŠ‚','2016-09-14 16:00:00',1,1,'1'),(1628,2016,NULL,'ä¸­ç§‹èŠ‚è¡¥ä¼‘','2016-09-15 16:00:00',3,1,'1'),(1629,2016,NULL,'ä¸­ç§‹èŠ‚è°ƒä¼‘','2016-09-17 16:00:00',2,1,'1'),(1630,2016,NULL,'å›½åº†èŠ‚','2016-10-02 16:00:00',1,1,'1'),(1631,2016,NULL,'å›½åº†èŠ‚','2016-10-03 16:00:00',1,1,'1'),(1632,2016,NULL,'å›½åº†èŠ‚','2016-10-04 16:00:00',1,1,'1'),(1633,2016,NULL,'å›½åº†èŠ‚','2016-10-05 16:00:00',1,1,'1'),(1634,2016,NULL,'å›½åº†èŠ‚','2016-10-06 16:00:00',1,1,'1'),(1635,2016,NULL,'å›½åº†èŠ‚è°ƒä¼‘','2016-10-07 16:00:00',2,1,'1'),(1636,2016,NULL,'å›½åº†èŠ‚è°ƒä¼‘','2016-10-08 16:00:00',2,1,'1');
+/*!40000 ALTER TABLE `workcal_rule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `workcal_type`
+--
+
+DROP TABLE IF EXISTS `workcal_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `workcal_type` (
+  `ID` bigint(20) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `TENANT_ID` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `workcal_type`
+--
+
+LOCK TABLES `workcal_type` WRITE;
+/*!40000 ALTER TABLE `workcal_type` DISABLE KEYS */;
+INSERT INTO `workcal_type` VALUES (1,'é»˜è®¤','1');
+/*!40000 ALTER TABLE `workcal_type` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-09-02 22:10:17
