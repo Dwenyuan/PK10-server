@@ -3,7 +3,7 @@ package com.pk10.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BetlimitExample {
+public class BetInitExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -14,7 +14,7 @@ public class BetlimitExample {
 
     private Integer offset;
 
-    public BetlimitExample() {
+    public BetInitExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -184,193 +184,323 @@ public class BetlimitExample {
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeIsNull() {
-            addCriterion("bet_type is null");
+        public Criteria andGNameIsNull() {
+            addCriterion("g_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeIsNotNull() {
-            addCriterion("bet_type is not null");
+        public Criteria andGNameIsNotNull() {
+            addCriterion("g_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeEqualTo(String value) {
-            addCriterion("bet_type =", value, "betType");
+        public Criteria andGNameEqualTo(String value) {
+            addCriterion("g_name =", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeNotEqualTo(String value) {
-            addCriterion("bet_type <>", value, "betType");
+        public Criteria andGNameNotEqualTo(String value) {
+            addCriterion("g_name <>", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeGreaterThan(String value) {
-            addCriterion("bet_type >", value, "betType");
+        public Criteria andGNameGreaterThan(String value) {
+            addCriterion("g_name >", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("bet_type >=", value, "betType");
+        public Criteria andGNameGreaterThanOrEqualTo(String value) {
+            addCriterion("g_name >=", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeLessThan(String value) {
-            addCriterion("bet_type <", value, "betType");
+        public Criteria andGNameLessThan(String value) {
+            addCriterion("g_name <", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeLessThanOrEqualTo(String value) {
-            addCriterion("bet_type <=", value, "betType");
+        public Criteria andGNameLessThanOrEqualTo(String value) {
+            addCriterion("g_name <=", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeLike(String value) {
-            addCriterion("bet_type like", value, "betType");
+        public Criteria andGNameLike(String value) {
+            addCriterion("g_name like", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeNotLike(String value) {
-            addCriterion("bet_type not like", value, "betType");
+        public Criteria andGNameNotLike(String value) {
+            addCriterion("g_name not like", value, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeIn(List<String> values) {
-            addCriterion("bet_type in", values, "betType");
+        public Criteria andGNameIn(List<String> values) {
+            addCriterion("g_name in", values, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeNotIn(List<String> values) {
-            addCriterion("bet_type not in", values, "betType");
+        public Criteria andGNameNotIn(List<String> values) {
+            addCriterion("g_name not in", values, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeBetween(String value1, String value2) {
-            addCriterion("bet_type between", value1, value2, "betType");
+        public Criteria andGNameBetween(String value1, String value2) {
+            addCriterion("g_name between", value1, value2, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetTypeNotBetween(String value1, String value2) {
-            addCriterion("bet_type not between", value1, value2, "betType");
+        public Criteria andGNameNotBetween(String value1, String value2) {
+            addCriterion("g_name not between", value1, value2, "gName");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleIsNull() {
-            addCriterion("bet_multiple is null");
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleIsNotNull() {
-            addCriterion("bet_multiple is not null");
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleEqualTo(Integer value) {
-            addCriterion("bet_multiple =", value, "betMultiple");
+        public Criteria andTypeEqualTo(String value) {
+            addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleNotEqualTo(Integer value) {
-            addCriterion("bet_multiple <>", value, "betMultiple");
+        public Criteria andTypeNotEqualTo(String value) {
+            addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleGreaterThan(Integer value) {
-            addCriterion("bet_multiple >", value, "betMultiple");
+        public Criteria andTypeGreaterThan(String value) {
+            addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleGreaterThanOrEqualTo(Integer value) {
-            addCriterion("bet_multiple >=", value, "betMultiple");
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleLessThan(Integer value) {
-            addCriterion("bet_multiple <", value, "betMultiple");
+        public Criteria andTypeLessThan(String value) {
+            addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleLessThanOrEqualTo(Integer value) {
-            addCriterion("bet_multiple <=", value, "betMultiple");
+        public Criteria andTypeLessThanOrEqualTo(String value) {
+            addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleIn(List<Integer> values) {
-            addCriterion("bet_multiple in", values, "betMultiple");
+        public Criteria andTypeLike(String value) {
+            addCriterion("type like", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleNotIn(List<Integer> values) {
-            addCriterion("bet_multiple not in", values, "betMultiple");
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("type not like", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleBetween(Integer value1, Integer value2) {
-            addCriterion("bet_multiple between", value1, value2, "betMultiple");
+        public Criteria andTypeIn(List<String> values) {
+            addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetMultipleNotBetween(Integer value1, Integer value2) {
-            addCriterion("bet_multiple not between", value1, value2, "betMultiple");
+        public Criteria andTypeNotIn(List<String> values) {
+            addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitIsNull() {
-            addCriterion("bet_limit is null");
+        public Criteria andTypeBetween(String value1, String value2) {
+            addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitIsNotNull() {
-            addCriterion("bet_limit is not null");
+        public Criteria andTypeNotBetween(String value1, String value2) {
+            addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitEqualTo(Long value) {
-            addCriterion("bet_limit =", value, "betLimit");
+        public Criteria andRateIsNull() {
+            addCriterion("rate is null");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitNotEqualTo(Long value) {
-            addCriterion("bet_limit <>", value, "betLimit");
+        public Criteria andRateIsNotNull() {
+            addCriterion("rate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitGreaterThan(Long value) {
-            addCriterion("bet_limit >", value, "betLimit");
+        public Criteria andRateEqualTo(Integer value) {
+            addCriterion("rate =", value, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitGreaterThanOrEqualTo(Long value) {
-            addCriterion("bet_limit >=", value, "betLimit");
+        public Criteria andRateNotEqualTo(Integer value) {
+            addCriterion("rate <>", value, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitLessThan(Long value) {
-            addCriterion("bet_limit <", value, "betLimit");
+        public Criteria andRateGreaterThan(Integer value) {
+            addCriterion("rate >", value, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitLessThanOrEqualTo(Long value) {
-            addCriterion("bet_limit <=", value, "betLimit");
+        public Criteria andRateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rate >=", value, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitIn(List<Long> values) {
-            addCriterion("bet_limit in", values, "betLimit");
+        public Criteria andRateLessThan(Integer value) {
+            addCriterion("rate <", value, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitNotIn(List<Long> values) {
-            addCriterion("bet_limit not in", values, "betLimit");
+        public Criteria andRateLessThanOrEqualTo(Integer value) {
+            addCriterion("rate <=", value, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitBetween(Long value1, Long value2) {
-            addCriterion("bet_limit between", value1, value2, "betLimit");
+        public Criteria andRateIn(List<Integer> values) {
+            addCriterion("rate in", values, "rate");
             return (Criteria) this;
         }
 
-        public Criteria andBetLimitNotBetween(Long value1, Long value2) {
-            addCriterion("bet_limit not between", value1, value2, "betLimit");
+        public Criteria andRateNotIn(List<Integer> values) {
+            addCriterion("rate not in", values, "rate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRateBetween(Integer value1, Integer value2) {
+            addCriterion("rate between", value1, value2, "rate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRateNotBetween(Integer value1, Integer value2) {
+            addCriterion("rate not between", value1, value2, "rate");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitIsNull() {
+            addCriterion("money_limit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitIsNotNull() {
+            addCriterion("money_limit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitEqualTo(Integer value) {
+            addCriterion("money_limit =", value, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitNotEqualTo(Integer value) {
+            addCriterion("money_limit <>", value, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitGreaterThan(Integer value) {
+            addCriterion("money_limit >", value, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitGreaterThanOrEqualTo(Integer value) {
+            addCriterion("money_limit >=", value, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitLessThan(Integer value) {
+            addCriterion("money_limit <", value, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitLessThanOrEqualTo(Integer value) {
+            addCriterion("money_limit <=", value, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitIn(List<Integer> values) {
+            addCriterion("money_limit in", values, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitNotIn(List<Integer> values) {
+            addCriterion("money_limit not in", values, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitBetween(Integer value1, Integer value2) {
+            addCriterion("money_limit between", value1, value2, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLimitNotBetween(Integer value1, Integer value2) {
+            addCriterion("money_limit not between", value1, value2, "moneyLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyIsNull() {
+            addCriterion("init_money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyIsNotNull() {
+            addCriterion("init_money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyEqualTo(Integer value) {
+            addCriterion("init_money =", value, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyNotEqualTo(Integer value) {
+            addCriterion("init_money <>", value, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyGreaterThan(Integer value) {
+            addCriterion("init_money >", value, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("init_money >=", value, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyLessThan(Integer value) {
+            addCriterion("init_money <", value, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyLessThanOrEqualTo(Integer value) {
+            addCriterion("init_money <=", value, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyIn(List<Integer> values) {
+            addCriterion("init_money in", values, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyNotIn(List<Integer> values) {
+            addCriterion("init_money not in", values, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyBetween(Integer value1, Integer value2) {
+            addCriterion("init_money between", value1, value2, "initMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andInitMoneyNotBetween(Integer value1, Integer value2) {
+            addCriterion("init_money not between", value1, value2, "initMoney");
             return (Criteria) this;
         }
     }
