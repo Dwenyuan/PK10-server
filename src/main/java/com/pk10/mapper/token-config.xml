@@ -12,18 +12,18 @@
 	</resultMap>
 
 	<insert id="save" parameterType="com.pk10.bean.TokenConfig">
-		insert into tokenconfig(tokenurl,appid,appsecret,numberodd,singleodd,bigodd,money)
+		insert into tokenconfig(tokenurl,appid,appsecret,numberodd,singleodd,bigodd,initmoney)
 		values(#{tokenUrl},#{appID},#{appsecret},#{numberOdd},#{singleOdd},#{bigOdd},#{money})
 	</insert>
 
 	<!-- 订单只能创建和删除 不能更新 -->
 	<update id="update">
 		update tokenconfig t set t.tokenurl = #{tokenUrl},t.appsecret = #{appsecret},t.numberodd = #{numberOdd},t.singleodd = #{singleOdd},t.bigodd =
-		#{bigOdd},t.money = #{money} where t.appid = #{appID}
+		#{bigOdd},t.initmoney = #{money} where t.appid = #{appID}
 	</update>
 
 	<select id="getLastTokenConfig" resultMap="TokenConfig">
-		select tokenurl,appid,appsecret,numberodd,singleodd,bigodd,money from tokenconfig limit 1
+		select tokenurl,appid,appsecret,numberodd,singleodd,bigodd,initmoney from tokenconfig limit 1
 	</select>
 
 </mapper>

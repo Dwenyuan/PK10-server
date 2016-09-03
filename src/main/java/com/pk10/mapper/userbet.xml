@@ -59,8 +59,10 @@
 		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state
 		from userbet order by idnum desc
 		limit
-		<if test="limit">#{limit},</if>
-		100
+		<choose>
+			<when test="limit">#{limit}</when>
+			<otherwise>100</otherwise>
+		</choose>
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
