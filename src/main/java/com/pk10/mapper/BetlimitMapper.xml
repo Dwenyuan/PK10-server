@@ -96,6 +96,14 @@
     from betlimit
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from betlimit
+    where bet_type = #{betType,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from betlimit
     where id = #{id,jdbcType=INTEGER}

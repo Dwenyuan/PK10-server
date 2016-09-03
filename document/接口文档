@@ -1,0 +1,9 @@
+1 返回大小单双的赔率和限制　（需要更新数据库Ｄｕｍｐ２０１６０９０３．ｓｑｌ）
+  url ： http://localhost:8081/pk10/getAllRateAndLimit
+  返回数据 ：[{"大小单双":{"id":1,"betType":"大小单双","betMultiple":2000,"betLimit":1000}},{"0-9":{"id":2,"betType":"0-9","betMultiple":20,"betLimit":1000}}]
+
+２　修改大小单双的赔率和限制
+　　url ： http://localhost:8081/pk10/updateRateAndLimit
+　传回数据　： {"id":1,"betType":"大小单双","betMultiple":2000,"betLimit":1000}  修改大小单双倍率限制
+              {"id":2,"betType":"0-9","betMultiple":20,"betLimit":1000}         修改0-9倍率限制
+  字段说明：betMultiple（倍率），betLimit（限制）
