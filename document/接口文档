@@ -1,4 +1,4 @@
-1 返回大小单双的赔率和限制　（需要更新数据库Ｄｕｍｐ２０１６０９０３．ｓｑｌ）
+1 返回大小单双的赔率和限制　（需要更新数据库    （新添表．ｓｑｌ））
   url ： http://localhost:8081/pk10/getAllRateAndLimit
   返回数据 ：[{"大小单双":{"id":1,"betType":"大小单双","betMultiple":2000,"betLimit":1000}},{"0-9":{"id":2,"betType":"0-9","betMultiple":20,"betLimit":1000}}]
 
