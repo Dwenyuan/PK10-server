@@ -98,6 +98,14 @@
     from betInit
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByGameName" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInitExample" >
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+    where g_name = #{gName,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

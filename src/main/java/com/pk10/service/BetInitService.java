@@ -12,4 +12,6 @@ public interface BetInitService {
     public List<BetInit> getAllBetInit();
 
     public int updateBetInit(BetInit betInit);
+
+    public List<BetInit> getBetInitByName(BetInit betInit);
 }
