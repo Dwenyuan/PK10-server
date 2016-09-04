@@ -33,19 +33,27 @@ public class LoginFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/.+");
+		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername|managerlogin\\.do)|userlogin\\.html|managerlogin\\.html|\\/build\\/.+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
-		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 出去不需要过滤的静态资源或者已登录。。。
+		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
 			// 当用户已登录时，再进入登录界面会直接跳转
 			res.sendRedirect("index.html");
+		} else if ("/managerlogin.html".equals(req.getServletPath())
+				&& req.getSession().getAttribute("userinfo") != null) {
+			res.sendRedirect("manager.html");
 		} else if (isFilter || req.getSession().getAttribute("userinfo") != null) {
 			chain.doFilter(request, response);
 		} else {
-			res.sendRedirect("userlogin.html");
+			if ("/manager.html".equals(req.getServletPath())) {
+				res.sendRedirect("managerlogin.html");
+			} else {
+				res.sendRedirect("userlogin.html");
+			}
 		}
 	}
 

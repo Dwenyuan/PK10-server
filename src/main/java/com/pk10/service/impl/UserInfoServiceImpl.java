@@ -143,6 +143,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoDao.login(userInfo);
 	}
 
+	@Override
+	public UserInfo managerLogin(UserInfo userInfo) {
+		return userInfoDao.managerLogin(userInfo);
+	}
 
 	@Override
 	public List<AgentInfo> getAllAgent() {

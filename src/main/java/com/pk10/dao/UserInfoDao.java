@@ -16,22 +16,32 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
 	 * @return
 	 */
 	String cashPrize(LotteryHistory lotteryHistory, UserInfo userInfo);
-	
+
 	/**
 	 * 检测手机是否占用
+	 * 
 	 * @param userInfo
 	 * @return
 	 */
 	UserInfo getUserInfoByTel(UserInfo userInfo);
-	
+
 	/**
 	 * 检测用户名是否占用
+	 * 
 	 * @param userInfo
 	 * @return
 	 */
 	UserInfo getUserInfoByUsername(UserInfo userInfo);
-	
+
 	UserInfo login(UserInfo userInfo);
+
+	/**
+	 * 管理员登录
+	 * 
+	 * @param userInfo
+	 * @return
+	 */
+	UserInfo managerLogin(UserInfo userInfo);
 
 	/*代理商的增改查，删除和删除普通用户一样，无需重写*/
 	//添加代理商

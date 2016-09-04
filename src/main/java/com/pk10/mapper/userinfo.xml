@@ -4,11 +4,15 @@
 	<resultMap type="com.pk10.bean.UserInfo" id="UserInfo">
 		<result column="id" property="id" />
 		<result column="username" property="username" />
-		<result column="openid" property="openid" />
-		<result column="openid" property="openid" />
-		<result column="nickname" property="nickname" />
+		<result column="password" property="password" />
 		<result column="money" property="money" />
 		<result column="createdAt" property="createdAt" />
+		<result column="tel" property="tel" />
+		<result column="isagent" property="isagent" />
+		<result column="rebate" property="rebate" />
+		<result column="owner" property="owner" />
+		<result column="openid" property="openid" />
+		<result column="nickname" property="nickname" />
 	</resultMap>
 
 	<resultMap type="com.pk10.bean.AgentInfo" id="AgentInfo">
@@ -22,9 +26,12 @@
 		<result column="rebate" property="rebate" />
 	</resultMap>
 
-	<insert id="save" parameterType="com.pk10.bean.UserInfo" flushCache="true">
-		insert into userinfo(openid,nickname,money,createdAt,username,password,tel)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel})
+
+	<insert id="save" parameterType="com.pk10.bean.UserInfo"
+		flushCache="true">
+		insert into
+		userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate},#{owner})
 	</insert>
 
 	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
@@ -32,8 +39,21 @@
 		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
 	</insert>
 
-	<update id="update" parameterType="com.pk10.bean.UserInfo" flushCache="true">
-		update userinfo u set u.money = #{money},u.nickname =#{nickname},username=#{username},password=#{password},tel=#{tel} where u.id = #{id}
+	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
+		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
+	</insert>
+
+	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
+		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
+	</insert>
+
+	<update id="update" parameterType="com.pk10.bean.UserInfo"
+		flushCache="true">
+		update userinfo u set u.money = #{money},u.nickname
+		=#{nickname},username=#{username},password=#{password},tel=#{tel},isagent=#{isagent},rebate=#{rebate},owner=#{owner}
+		where u.id = #{id}
 	</update>
 
 	<update id="updateAgentByPrimaryKeySelective" parameterType="com.pk10.bean.AgentInfo" >
@@ -61,22 +81,42 @@
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 
+
 	<select id="getAll" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel from userinfo
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
 	</select>
 
-	<select id="getOneById" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel from userinfo u where u.id = #{id}
+	<select id="getOneById" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserInfo">
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		u where u.id = #{id}
 	</select>
 
-	<select id="getUserInfoByTel" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel from userinfo u where u.tel = #{tel}
+	<select id="getUserInfoByTel" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserInfo">
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		u where u.tel = #{tel}
 	</select>
-	<select id="login" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel from userinfo u where u.username = #{username} and
+	<select id="login" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserInfo">
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		u where u.username = #{username} and
 		u.password = #{password}
 	</select>
-	<select id="getUserInfoByUsername" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
+	<select id="managerLogin" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserInfo">
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		u where u.username = #{username} and
+		u.password = #{password} and
+		u.isagent != 0
+	</select>
+	<select id="getUserInfoByUsername" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserInfo">
 		select id from userinfo u where u.username = #{username}
 	</select>
 
@@ -89,7 +129,8 @@
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
-		delete from userinfo where username = #{username}
+		delete from userinfo
+		where username = #{username}
 	</delete>
 
 </mapper>

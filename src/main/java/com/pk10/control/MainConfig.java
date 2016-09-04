@@ -11,12 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.TokenInfo;
 import com.pk10.service.LotteryHistoryService;
+import com.pk10.service.TokenConfigService;
 import com.pk10.service.TokenInfoService;
 import com.pk10.util.CreateBonus;
 import com.pk10.util.WeChatSign;
@@ -33,6 +35,9 @@ public class MainConfig {
 
 	@Autowired
 	private TokenInfoService tokenInfoService;
+
+	@Autowired
+	private TokenConfigService tokenConfigService;
 
 	@Autowired
 	private LotteryHistoryService lotteryHistoryService;
@@ -80,7 +85,8 @@ public class MainConfig {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + CreateBonus.getCount() + ",\"countNum\":" + CreateBonus.getCountNum() + "}");
+		return JSON.parse("{\"idnum\":" + idnum + ",\"countDown\":" + CreateBonus.getCount() + ",\"countNum\":"
+				+ CreateBonus.getCountNum() + "}");
 	}
 
 	public Map<String, String> getSign(String url) {
@@ -93,5 +99,27 @@ public class MainConfig {
 			e.printStackTrace();
 		}
 		return WeChatSign.sign(jsapi_ticket, url);
+	}
+
+	@RequestMapping("getAllSystemSetting")
+	@ResponseBody
+	public Object getAllSystemSetting() {
+		try {
+			return tokenConfigService.getAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+
+	@RequestMapping(value = "updateSystemSetting", method = RequestMethod.POST)
+	@ResponseBody
+	public Object updateSystemSetting(TokenConfig tokenConfig) {
+		try {
+			return tokenConfigService.updateById(tokenConfig);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 }

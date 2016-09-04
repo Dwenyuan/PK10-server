@@ -34,10 +34,19 @@ public interface UserInfoService extends BaseService<UserInfo> {
 
 	/**
 	 * 登录
+	 * 
 	 * @param userInfo
 	 * @return
 	 */
 	public UserInfo login(UserInfo userInfo);
+
+	/**
+	 * 管理员登录
+	 * 
+	 * @param userInfo
+	 * @return
+	 */
+	public UserInfo managerLogin(UserInfo userInfo);
 
 	/**
 	 * 查询所有代理商

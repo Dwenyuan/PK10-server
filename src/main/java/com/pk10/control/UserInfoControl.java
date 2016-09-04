@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,10 +66,10 @@ public class UserInfoControl {
 
 	@RequestMapping(value = "updateuserinfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateUserInfo(@RequestBody UserInfo userInfo,HttpServletRequest request) {
+	public Object updateUserInfo(@RequestBody UserInfo userInfo, HttpServletRequest request) {
 		try {
 			Integer update = userInfoService.update(userInfo);
-			if(update>0){
+			if (update > 0) {
 				request.getSession().setAttribute("userinfo", userInfo);
 			}
 			return update;
@@ -193,6 +194,23 @@ public class UserInfoControl {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return false;
+		}
+	}
+
+	@RequestMapping(value = "managerlogin.do", method = RequestMethod.POST)
+	public Object managerLogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
+		UserInfo safeUserinfo;
+		try {
+			safeUserinfo = userInfoService.managerLogin(userInfo);
+			if (safeUserinfo != null) {
+				request.getSession().setAttribute("userinfo", safeUserinfo);
+				return "redirect:manager.html";
+			} else {
+				return "redirect:managerlogin.html";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "redirect:managerlogin.html";
 		}
 	}
 	//获取所有代理商
