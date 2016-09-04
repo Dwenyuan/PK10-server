@@ -7,3 +7,24 @@
 　传回数据　：{"id":1,"gName":"猜字游戏","type":"大小单双","rate":10,"limit":10000,"initMoney":1000}  修改大小单双倍率限制金币
              {"id":2,"gName":"猜字游戏","type":"数字","rate":20,"limit":10000,"initMoney":1000}         修改0-9倍率限制金币
   字段说明：betMultiple（倍率），betLimit（限制）initMoney（金币）
+3 返回所有代理商信息
+    url ： http://localhost:8081/pk10/getAllAgent
+    传回数据： [{"id":1,"openid":null,"nickname":null,"headimgurl":null,"money":0.0,"createdAt":null,"username":"12","password":"12","tel":null,"isagent":1,"rebate":12.0}]
+
+4 通过ID查询制定代理商
+    url ： http://localhost:8081/pk10/getAgentById
+    参数 ： {"id":1}
+    传回数据： {"id":1,"openid":null,"nickname":null,"headimgurl":null,"money":0.0,"createdAt":null,"username":"12","password":"12","tel":null,"isagent":1,"rebate":12.0}
+
+5 注册代理商
+    url : http://localhost:8081/pk10/registerAgent
+    参数 ： {"openid":null,"nickname":null,"money":0.0,"createdAt":null,"username":"13","password":"12","tel":null,"isagent":1,"rebate":12.0}
+    返回数据 ： 注册成功返回true 失败返回false（存在用户）
+
+6  修改代理商
+      url : http://localhost:8081/pk10/updateagentinfo
+      参数 ： {"id":1,"openid":null,"nickname":null,"headimgurl":null,"money":0.0,"createdAt":null,"username":"12","password":"13","tel":null,"isagent":1,"rebate":12.0}
+      返回数据 ： 1 成功更改一条数据
+
+ 7 删除代理商
+       说明：使用删除普通用户接口即可

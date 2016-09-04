@@ -1,6 +1,9 @@
 package com.pk10.service;
 
+import com.pk10.bean.AgentInfo;
 import com.pk10.bean.UserInfo;
+
+import java.util.List;
 
 public interface UserInfoService extends BaseService<UserInfo> {
 	/**
@@ -35,4 +38,31 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	 * @return
 	 */
 	public UserInfo login(UserInfo userInfo);
+
+	/**
+	 * 查询所有代理商
+	 * @return
+	 */
+	public List<AgentInfo> getAllAgent();
+
+	/**
+	 * 通过ID查询代理商
+	 * @param agentInfo
+	 * @return
+	 */
+	public AgentInfo getAgentById(AgentInfo agentInfo);
+
+	/**
+	 * 更新代理商信息
+	 * @param agentInfo
+	 * @return
+	 */
+	public Integer updateAgent(AgentInfo agentInfo);
+
+	/**
+	 * 添加代理商
+	 * @param agentInfo
+	 * @return
+	 */
+	public Integer savaAgent(AgentInfo agentInfo);
 }

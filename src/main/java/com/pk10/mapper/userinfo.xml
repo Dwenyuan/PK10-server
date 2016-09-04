@@ -11,13 +11,54 @@
 		<result column="createdAt" property="createdAt" />
 	</resultMap>
 
+	<resultMap type="com.pk10.bean.AgentInfo" id="AgentInfo">
+		<result column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="openid" property="openid" />
+		<result column="nickname" property="nickname" />
+		<result column="money" property="money" />
+		<result column="createdAt" property="createdAt" />
+		<result column="isagent" property="isagent" />
+		<result column="rebate" property="rebate" />
+	</resultMap>
+
 	<insert id="save" parameterType="com.pk10.bean.UserInfo" flushCache="true">
 		insert into userinfo(openid,nickname,money,createdAt,username,password,tel)
 		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel})
 	</insert>
 
+	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
+		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
+	</insert>
+
 	<update id="update" parameterType="com.pk10.bean.UserInfo" flushCache="true">
 		update userinfo u set u.money = #{money},u.nickname =#{nickname},username=#{username},password=#{password},tel=#{tel} where u.id = #{id}
+	</update>
+
+	<update id="updateAgentByPrimaryKeySelective" parameterType="com.pk10.bean.AgentInfo" >
+		update userinfo
+		<set >
+			<if test="money != null" >
+				money = #{money,jdbcType=DOUBLE},
+			</if>
+			<if test="nickname != null" >
+				nickname = #{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null" >
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null" >
+				tel = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="isagent != null" >
+				isagent = #{isagent,jdbcType=INTEGER},
+			</if>
+			<if test="rebate != null" >
+				rebate = #{rebate,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 
 	<select id="getAll" resultMap="UserInfo">
@@ -38,6 +79,15 @@
 	<select id="getUserInfoByUsername" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
 		select id from userinfo u where u.username = #{username}
 	</select>
+
+	<select id="getAllAgent" resultMap="AgentInfo">
+		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.isagent != 0
+	</select>
+
+	<select id="getAgentById" parameterType="com.pk10.bean.AgentInfo" resultMap="AgentInfo">
+		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
+	</select>
+
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
 		delete from userinfo where username = #{username}
 	</delete>

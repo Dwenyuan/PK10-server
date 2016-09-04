@@ -2,16 +2,13 @@ package com.pk10.service.impl;
 
 import java.util.List;
 
+import com.pk10.bean.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.pk10.bean.LotteryHistory;
-import com.pk10.bean.TokenConfig;
-import com.pk10.bean.UserBet;
-import com.pk10.bean.UserInfo;
 import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
@@ -146,4 +143,24 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoDao.login(userInfo);
 	}
 
+
+	@Override
+	public List<AgentInfo> getAllAgent() {
+		return userInfoDao.getAllAgent();
+	}
+
+	@Override
+	public AgentInfo getAgentById(AgentInfo agentInfo) {
+		return userInfoDao.getAgentById(agentInfo);
+	}
+
+	@Override
+	public Integer updateAgent(AgentInfo agentInfo) {
+		return userInfoDao.updateAgentByPrimaryKeySelective(agentInfo);
+	}
+
+	@Override
+	public Integer savaAgent(AgentInfo agentInfo) {
+		return userInfoDao.saveAgent(agentInfo);
+	}
 }
