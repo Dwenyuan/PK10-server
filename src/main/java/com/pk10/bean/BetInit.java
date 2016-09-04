@@ -13,7 +13,11 @@ public class BetInit {
 
     private Integer initMoney;
 
-    public Integer getId() {
+    public BetInit() {
+		super();
+	}
+
+	public Integer getId() {
         return id;
     }
 
