@@ -53,5 +53,5 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
     //通过ID查询指定代理商
 	AgentInfo getAgentById(AgentInfo agentInfo);
     //查询代理商下所有用户
-	List<UserInfo> getUserForAgent(AgentInfo agentInfo);
+	List<UserInfo> getUserForAgent(UserInfo userInfo);
 }

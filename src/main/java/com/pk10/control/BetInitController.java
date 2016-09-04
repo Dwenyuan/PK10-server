@@ -27,6 +27,7 @@ public class BetInitController {
     public Object getAllGameInitDate(){
         try {
             return betInitService.getAllBetInit();
+
         } catch (Exception e) {
             logger.error(e.getMessage());
             return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -37,7 +38,7 @@ public class BetInitController {
     @ResponseBody
     public Object getGameInitDate(@RequestBody BetInit betInit){
         try {
-            return betInitService.getBetInitByName(betInit);
+            return JSON.toJSONString(betInitService.getBetInitByName(betInit));
         } catch (Exception e) {
             logger.error(e.getMessage());
             return JSON.parse("{errmsg:" + e.getMessage() + "}");

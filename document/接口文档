@@ -35,5 +35,9 @@
       参数 ： {"id":1,"openid":null,"nickname":null,"headimgurl":null,"money":0.0,"createdAt":null,"username":"12","password":"13","tel":null,"isagent":1,"rebate":12.0}
       返回数据 ： 1 成功更改一条数据
 
- 7 删除代理商
+ ## 删除代理商
        说明：使用删除普通用户接口即可
+
+ ##查询代理商下所有用户
+    url ： http://localhost:8081/pk10/getUserForAgent
+    参数 ： {"id":1}

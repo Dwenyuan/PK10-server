@@ -239,9 +239,9 @@ public class UserInfoControl {
 
 	@RequestMapping("getUserForAgent")
 	@ResponseBody
-	public Object getUserForAgent(@RequestBody AgentInfo agentInfo){
+	public Object getUserForAgent(@RequestBody UserInfo userInfo){
 		try{
-			return userInfoService.getUserForAgent(agentInfo);
+			return JSON.toJSONString(userInfoService.getUserForAgent(userInfo));
 		}catch (Exception e){
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}

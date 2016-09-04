@@ -39,15 +39,6 @@
 		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
 	</insert>
 
-	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
-		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
-	</insert>
-
-	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
-		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
-	</insert>
 
 	<update id="update" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
@@ -128,7 +119,7 @@
 		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
 	</select>
 
-	<select id="getUserForAgent" parameterType="com.pk10.bean.AgentInfo" resultMap="com.pk10.bean.UserInfo">
+	<select id="getUserForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
 		select id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
 	</select>
 

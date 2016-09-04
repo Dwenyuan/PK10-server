@@ -77,8 +77,8 @@ public interface UserInfoService extends BaseService<UserInfo> {
 
 	/**
 	 * 获取代理商名下所有用户
-	 * @param agentInfo
+	 * @param userInfo
 	 * @return
 	 */
-	public List<UserInfo> getUserForAgent(AgentInfo agentInfo);
+	public List<UserInfo> getUserForAgent(UserInfo userInfo);
 }
