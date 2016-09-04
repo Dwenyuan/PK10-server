@@ -9,10 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.pk10.bean.LotteryHistory;
-import com.pk10.bean.TokenConfig;
-import com.pk10.bean.UserBet;
-import com.pk10.bean.UserInfo;
 import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
@@ -151,7 +147,6 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public UserInfo managerLogin(UserInfo userInfo) {
 		return userInfoDao.managerLogin(userInfo);
 	}
-
 
 	@Override
 	public List<AgentInfo> getAllAgent() {

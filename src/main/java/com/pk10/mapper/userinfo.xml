@@ -26,27 +26,6 @@
 		<result column="rebate" property="rebate" />
 	</resultMap>
 
-	<resultMap type="com.pk10.bean.AgentInfo" id="AgentInfo">
-		<result column="id" property="id" />
-		<result column="username" property="username" />
-		<result column="openid" property="openid" />
-		<result column="nickname" property="nickname" />
-		<result column="money" property="money" />
-		<result column="createdAt" property="createdAt" />
-		<result column="isagent" property="isagent" />
-		<result column="rebate" property="rebate" />
-	</resultMap>
-
-	<resultMap type="com.pk10.bean.AgentInfo" id="AgentInfo">
-		<result column="id" property="id" />
-		<result column="username" property="username" />
-		<result column="openid" property="openid" />
-		<result column="nickname" property="nickname" />
-		<result column="money" property="money" />
-		<result column="createdAt" property="createdAt" />
-		<result column="isagent" property="isagent" />
-		<result column="rebate" property="rebate" />
-	</resultMap>
 
 	<insert id="save" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
@@ -102,55 +81,6 @@
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 
-	<update id="updateAgentByPrimaryKeySelective" parameterType="com.pk10.bean.AgentInfo" >
-		update userinfo
-		<set >
-			<if test="money != null" >
-				money = #{money,jdbcType=DOUBLE},
-			</if>
-			<if test="nickname != null" >
-				nickname = #{nickname,jdbcType=VARCHAR},
-			</if>
-			<if test="username != null" >
-				username = #{username,jdbcType=VARCHAR},
-			</if>
-			<if test="tel != null" >
-				tel = #{tel,jdbcType=VARCHAR},
-			</if>
-			<if test="isagent != null" >
-				isagent = #{isagent,jdbcType=INTEGER},
-			</if>
-			<if test="rebate != null" >
-				rebate = #{rebate,jdbcType=DOUBLE},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-
-	<update id="updateAgentByPrimaryKeySelective" parameterType="com.pk10.bean.AgentInfo" >
-		update userinfo
-		<set >
-			<if test="money != null" >
-				money = #{money,jdbcType=DOUBLE},
-			</if>
-			<if test="nickname != null" >
-				nickname = #{nickname,jdbcType=VARCHAR},
-			</if>
-			<if test="username != null" >
-				username = #{username,jdbcType=VARCHAR},
-			</if>
-			<if test="tel != null" >
-				tel = #{tel,jdbcType=VARCHAR},
-			</if>
-			<if test="isagent != null" >
-				isagent = #{isagent,jdbcType=INTEGER},
-			</if>
-			<if test="rebate != null" >
-				rebate = #{rebate,jdbcType=DOUBLE},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
 
 	<select id="getAll" resultMap="UserInfo">
 		select
