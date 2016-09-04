@@ -54,3 +54,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-09-03 18:21:24
+
+select * from pk10.betInit;
+select * from pk10.userinfo;
+
+SET character_set_client = utf8 ;
+SET character_set_connection = utf8 ;
+SET character_set_database = utf8 ;
+SET character_set_results = utf8 ;
+SET character_set_server = utf8 ;
+SET collation_connection = utf8 ;
+SET collation_database = utf8 ;
+SET collation_server = utf8 ;

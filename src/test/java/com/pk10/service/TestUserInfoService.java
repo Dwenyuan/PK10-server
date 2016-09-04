@@ -21,7 +21,7 @@ public class TestUserInfoService {
 	
 	@Test
 	public void Testsave() throws Exception {
-		UserInfo info = new UserInfo("liushao", "1234321", "1233333");
+		UserInfo info = new UserInfo("刘韶2", "1234321", "1233333");
 		System.out.println(userInfoService.save(info));
 	}
 
