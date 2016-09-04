@@ -257,6 +257,7 @@ public class UserInfoControl {
 	}
 
 	// 注册代理商
+
 	@RequestMapping("registerAgent")
 	@ResponseBody
 	public Object registerAgent(@RequestBody AgentInfo agentInfo) {
@@ -296,5 +297,4 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-
 }
