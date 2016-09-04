@@ -167,4 +167,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public Integer savaAgent(AgentInfo agentInfo) {
 		return userInfoDao.saveAgent(agentInfo);
 	}
+
+	@Override
+	public List<UserInfo> getUserForAgent(AgentInfo agentInfo) {
+		return userInfoDao.getUserForAgent(agentInfo);
+	}
 }

@@ -27,7 +27,7 @@ import com.pk10.util.UserInfoFormWeChat;
 
 /**
  * 获取用户信息
- * 
+ *
  * @author Administrator
  *
  */
@@ -48,7 +48,7 @@ public class UserInfoControl {
 
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
-	 * 
+	 *
 	 * @param userInfo
 	 * @return
 	 */
@@ -92,7 +92,7 @@ public class UserInfoControl {
 
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -235,6 +235,17 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+    //获取代理商名下所有用户
+
+	@RequestMapping("getUserForAgent")
+	@ResponseBody
+	public Object getUserForAgent(@RequestBody AgentInfo agentInfo){
+		try{
+			return userInfoService.getUserForAgent(agentInfo);
+		}catch (Exception e){
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
     //注册代理商
 	@RequestMapping("registerAgent")
 	@ResponseBody
@@ -274,4 +285,6 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+
 }

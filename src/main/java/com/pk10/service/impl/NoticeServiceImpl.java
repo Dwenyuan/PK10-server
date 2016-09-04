@@ -9,6 +9,8 @@ import com.pk10.bean.Notice;
 import com.pk10.dao.NoticeDao;
 import com.pk10.service.NoticeService;
 
+
+
 @Service
 public class NoticeServiceImpl implements NoticeService {
 

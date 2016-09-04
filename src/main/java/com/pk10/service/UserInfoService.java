@@ -74,4 +74,11 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	 * @return
 	 */
 	public Integer savaAgent(AgentInfo agentInfo);
+
+	/**
+	 * 获取代理商名下所有用户
+	 * @param agentInfo
+	 * @return
+	 */
+	public List<UserInfo> getUserForAgent(AgentInfo agentInfo);
 }

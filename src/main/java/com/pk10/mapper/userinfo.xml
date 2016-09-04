@@ -128,6 +128,10 @@
 		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
 	</select>
 
+	<select id="getUserForAgent" parameterType="com.pk10.bean.AgentInfo" resultMap="com.pk10.bean.UserInfo">
+		select id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
+	</select>
+
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
 		delete from userinfo
 		where username = #{username}
