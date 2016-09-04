@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface BetInitService {
 
+	public Integer saveBetInit(BetInit betInit);
+	
     public List<BetInit> getAllBetInit();
 
     public int updateBetInit(BetInit betInit);

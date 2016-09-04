@@ -109,7 +109,7 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from betInit
+    from betInit group by g_name
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from betInit

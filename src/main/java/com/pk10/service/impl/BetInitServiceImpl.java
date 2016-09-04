@@ -32,4 +32,9 @@ public class BetInitServiceImpl implements BetInitService{
     public List<BetInit> getBetInitByName(BetInit betInit) {
         return betInitMapper.selectByGameName(betInit);
     }
+
+	@Override
+	public Integer saveBetInit(BetInit betInit) {
+		return betInitMapper.insert(betInit);
+	}
 }
