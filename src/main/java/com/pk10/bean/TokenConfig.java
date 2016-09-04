@@ -7,9 +7,12 @@ package com.pk10.bean;
  *
  */
 public class TokenConfig {
+	Integer id;
 	String tokenUrl;
 	String appID;
 	String appsecret;
+	String gamename;
+
 	Double numberOdd;// 选择数字的赔率
 	Double singleOdd;// 选择单双的赔率
 	Double bigOdd;// 选择大小的赔率
@@ -17,7 +20,8 @@ public class TokenConfig {
 	Double money;// 初始化用户时 赠送金币的数量
 	Integer lotteryTime;// 开奖时间间隔 单位 分钟
 
-	public TokenConfig(String tokenUrl, String appID, String appsecret, Double numberOdd, Double singleOdd, Double bigOdd, Double money, Integer lotteryTime) {
+	public TokenConfig(String tokenUrl, String appID, String appsecret, Double numberOdd, Double singleOdd,
+			Double bigOdd, Double money, Integer lotteryTime) {
 		super();
 		this.tokenUrl = tokenUrl;
 		this.appID = appID;
@@ -27,6 +31,51 @@ public class TokenConfig {
 		this.bigOdd = bigOdd;
 		this.money = money;
 		this.lotteryTime = lotteryTime;
+	}
+
+	public TokenConfig(Integer id, String tokenUrl, String appID, String appsecret, String gamename, Double numberOdd,
+			Double singleOdd, Double bigOdd, Double money, Integer lotteryTime) {
+		super();
+		this.id = id;
+		this.tokenUrl = tokenUrl;
+		this.appID = appID;
+		this.appsecret = appsecret;
+		this.gamename = gamename;
+		this.numberOdd = numberOdd;
+		this.singleOdd = singleOdd;
+		this.bigOdd = bigOdd;
+		this.money = money;
+		this.lotteryTime = lotteryTime;
+	}
+
+	public TokenConfig(String tokenUrl, String appID, String appsecret, String gamename, Double numberOdd,
+			Double singleOdd, Double bigOdd, Double money, Integer lotteryTime) {
+		super();
+		this.tokenUrl = tokenUrl;
+		this.appID = appID;
+		this.appsecret = appsecret;
+		this.gamename = gamename;
+		this.numberOdd = numberOdd;
+		this.singleOdd = singleOdd;
+		this.bigOdd = bigOdd;
+		this.money = money;
+		this.lotteryTime = lotteryTime;
+	}
+
+	public String getGamename() {
+		return gamename;
+	}
+
+	public void setGamename(String gamename) {
+		this.gamename = gamename;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Double getMoney() {
@@ -93,11 +142,6 @@ public class TokenConfig {
 		this.bigOdd = bigOdd;
 	}
 
-	@Override
-	public String toString() {
-		return "TokenConfig [tokenUrl=" + tokenUrl + ", appID=" + appID + ", appsecret=" + appsecret + ", numberOdd=" + numberOdd + ", singleOdd=" + singleOdd + ", bigOdd="
-				+ bigOdd + ", money=" + money + ", lotteryTime=" + lotteryTime + "]";
-	}
 
 	public TokenConfig() {
 		super();
@@ -108,6 +152,13 @@ public class TokenConfig {
 		this.tokenUrl = tokenUrl;
 		this.appID = appID;
 		this.appsecret = appsecret;
+	}
+
+	@Override
+	public String toString() {
+		return "TokenConfig [id=" + id + ", tokenUrl=" + tokenUrl + ", appID=" + appID + ", appsecret=" + appsecret
+				+ ", gamename=" + gamename + ", numberOdd=" + numberOdd + ", singleOdd=" + singleOdd + ", bigOdd="
+				+ bigOdd + ", money=" + money + ", lotteryTime=" + lotteryTime + "]";
 	}
 
 }

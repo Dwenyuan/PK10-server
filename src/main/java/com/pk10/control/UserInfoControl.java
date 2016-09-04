@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.tagext.TryCatchFinally;
 
+import com.pk10.bean.AgentInfo;
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,10 +66,10 @@ public class UserInfoControl {
 
 	@RequestMapping(value = "updateuserinfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateUserInfo(@RequestBody UserInfo userInfo,HttpServletRequest request) {
+	public Object updateUserInfo(@RequestBody UserInfo userInfo, HttpServletRequest request) {
 		try {
 			Integer update = userInfoService.update(userInfo);
-			if(update>0){
+			if (update > 0) {
 				request.getSession().setAttribute("userinfo", userInfo);
 			}
 			return update;
@@ -191,6 +194,84 @@ public class UserInfoControl {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return false;
+		}
+	}
+
+	@RequestMapping(value = "managerlogin.do", method = RequestMethod.POST)
+	public Object managerLogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
+		UserInfo safeUserinfo;
+		try {
+			safeUserinfo = userInfoService.managerLogin(userInfo);
+			if (safeUserinfo != null) {
+				request.getSession().setAttribute("userinfo", safeUserinfo);
+				return "redirect:manager.html";
+			} else {
+				return "redirect:managerlogin.html";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "redirect:managerlogin.html";
+		}
+	}
+	//获取所有代理商
+	@RequestMapping("getAllAgent")
+	@ResponseBody
+	public Object getAllAgent(){
+		try{
+			return userInfoService.getAllAgent();
+		}catch(Exception e){
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+    //通过ID获取代理商
+	@RequestMapping("getAgentById")
+	@ResponseBody
+	public Object getAgentById(@RequestBody AgentInfo agentInfo){
+		try{
+			return userInfoService.getAgentById(agentInfo);
+		}catch(Exception e){
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+    //注册代理商
+	@RequestMapping("registerAgent")
+	@ResponseBody
+	public Object registerAgent(@RequestBody AgentInfo agentInfo) {
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUsername(agentInfo.getUsername());
+		try {
+			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
+			if (hasExitUser != null) {
+				return false;
+			} else {
+				agentInfo.setCreatedAt(new Date());
+				agentInfo.setMoney(tokenConfig.getMoney());
+				Integer save = userInfoService.savaAgent(agentInfo);
+				if (save > 0) {
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+		return agentInfo;
+	}
+    //修改代理商信息
+	@RequestMapping(value = "updateagentinfo", method = RequestMethod.POST)
+	@ResponseBody
+	public Object updateUserInfo(@RequestBody AgentInfo agentInfo,HttpServletRequest request) {
+		try {
+			Integer update = userInfoService.updateAgent(agentInfo);
+			if(update>0){
+				request.getSession().setAttribute("Agentinfo", agentInfo);
+			}
+			return update;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 }

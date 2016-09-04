@@ -16,29 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `betlimit`
+-- Table structure for table `betInit`
 --
-use pk10;
-DROP TABLE IF EXISTS `betlimit`;
+
+DROP TABLE IF EXISTS `betInit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `betlimit` (
+CREATE TABLE `betInit` (
   `id` int(11) NOT NULL,
-  `bet_type` varchar(45) DEFAULT NULL,
-  `bet_multiple` int(11) DEFAULT NULL,
-  `bet_limit` bigint(20) DEFAULT NULL,
+  `g_name` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `rate` int(11) DEFAULT NULL,
+  `money_limit` int(11) DEFAULT NULL,
+  `init_money` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `betlimit`
+-- Dumping data for table `betInit`
 --
 
-LOCK TABLES `betlimit` WRITE;
-/*!40000 ALTER TABLE `betlimit` DISABLE KEYS */;
-INSERT INTO `betlimit` VALUES (1,'大小单双',2000,1000),(2,'0-9',20,1000);
-/*!40000 ALTER TABLE `betlimit` ENABLE KEYS */;
+LOCK TABLES `betInit` WRITE;
+/*!40000 ALTER TABLE `betInit` DISABLE KEYS */;
+INSERT INTO `betInit` VALUES (1,'猜字游戏','大小单双',10,10000,1000),(2,'猜字游戏','数字',21,10000,1000);
+/*!40000 ALTER TABLE `betInit` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-03 15:15:43
+-- Dump completed on 2016-09-03 18:21:24

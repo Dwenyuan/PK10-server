@@ -4,4 +4,6 @@ import com.pk10.bean.TokenConfig;
 
 public interface TokenConfigService extends BaseService<TokenConfig> {
 	public TokenConfig getLastTokenConfig();
+
+	public Integer updateById(TokenConfig t) throws Exception;
 }

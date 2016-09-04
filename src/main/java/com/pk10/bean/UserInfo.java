@@ -18,6 +18,9 @@ public class UserInfo {
 	String username;
 	String password;
 	String tel;
+	Integer isagent; // 用户等级 0-普通用户 1-二级代理商 2-一级代理商 3-超级管理员
+	Double rebate; //返点
+	Integer owner;// 本用户数据哪个代理商
 
 	public Integer getId() {
 		return id;
@@ -29,6 +32,30 @@ public class UserInfo {
 
 	public String getTel() {
 		return tel;
+	}
+
+	public Integer getIsagent() {
+		return isagent;
+	}
+
+	public void setIsagent(Integer isagent) {
+		this.isagent = isagent;
+	}
+
+	public Double getRebate() {
+		return rebate;
+	}
+
+	public void setRebate(Double rebate) {
+		this.rebate = rebate;
+	}
+
+	public Integer getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Integer owner) {
+		this.owner = owner;
 	}
 
 	public void setTel(String tel) {
@@ -113,11 +140,11 @@ public class UserInfo {
 		this.id = id;
 	}
 
-
 	@Override
 	public String toString() {
-		return "UserInfo [id=" + id + ", openid=" + openid + ", nickname=" + nickname + ", headimgurl=" + headimgurl + ", money=" + money + ", createdAt=" + createdAt
-				+ ", username=" + username + ", password=" + password + ", tel=" + tel + "]";
+		return "UserInfo [id=" + id + ", openid=" + openid + ", nickname=" + nickname + ", headimgurl=" + headimgurl
+				+ ", money=" + money + ", createdAt=" + createdAt + ", username=" + username + ", password=" + password
+				+ ", tel=" + tel + ", isagent=" + isagent + ", rebate=" + rebate + ", owner=" + owner + "]";
 	}
 
 	public UserInfo() {

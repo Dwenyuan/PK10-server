@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.pk10.bean.TokenConfig;
 import com.pk10.bean.TokenInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,6 +17,9 @@ public class TestToken {
 
 	@Autowired
 	TokenInfoService tokenInfoService;
+	
+	@Autowired
+	TokenConfigService tokenConfigService;
 	
 	@Test
 	public void test(){
@@ -36,5 +40,25 @@ public class TestToken {
 	public void TestGetLastToken() throws Exception{
 		TokenInfo lastTokenInfo = tokenInfoService.getLastTokenInfo();
 		System.out.println(lastTokenInfo);
+	}
+	
+	
+	@Test
+	public void TestTokenConfigSave() throws Exception{
+		TokenConfig tokenConfig = new TokenConfig(null, null, null, "PK10", 9D, 1.5, 1.5, 10000D, null);
+		Integer save = tokenConfigService.save(tokenConfig);
+		System.out.println(save);
+	}
+	
+	@Test
+	public void TestGetTokenConfigAll() throws Exception {
+		System.out.println(tokenConfigService.getAll());
+	}
+	
+	@Test
+	public void TestUpdateTokenConfig() throws Exception{
+		TokenConfig tokenConfig = new TokenConfig(2,null, null, null, "PK10", 5D, 1.5, 1.5, 223300D, null);
+		Integer updateById = tokenConfigService.updateById(tokenConfig);
+		System.out.println(updateById);
 	}
 }

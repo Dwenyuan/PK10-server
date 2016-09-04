@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>管理员登录</title>
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body style="background:url(build/2d6f93c1ff61f70a08a56a753fb5fc77.png) no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row" style="margin-top:40%;">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <form class="form-horizontal" role="form" action="managerlogin.do" method="POST" enctype="application/x-www-form-urlencoded">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Username" value="liushao121">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password" value="12333333">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-4"></div>
+        </div>
+    </div>
+</body>
+
+</html>

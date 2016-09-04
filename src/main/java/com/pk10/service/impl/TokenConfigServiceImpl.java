@@ -21,18 +21,23 @@ public class TokenConfigServiceImpl implements TokenConfigService {
 	}
 
 	@Override
+	public Integer updateById(TokenConfig t) throws Exception{
+		return tokenConfigDao.updateById(t);
+	}
+	
+	@Override
 	public Integer update(TokenConfig t) throws Exception {
 		return tokenConfigDao.update(t);
 	}
 
 	@Override
 	public List<TokenConfig> getAll() throws Exception {
-		return null;
+		return tokenConfigDao.getAll();
 	}
 
 	@Override
 	public TokenConfig getOneById(TokenConfig t) throws Exception {
-		return null;
+		return tokenConfigDao.getOneById(t);
 	}
 
 	@Override
