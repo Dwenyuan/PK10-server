@@ -41,7 +41,6 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	public UserInfo login(UserInfo userInfo);
 
 	/**
-<<<<<<< HEAD
 	 * 管理员登录
 	 * 
 	 * @param userInfo
@@ -50,8 +49,6 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	public UserInfo managerLogin(UserInfo userInfo);
 
 	/**
-=======
->>>>>>> branch 'master' of https://github.com/liushao121/PK10-server.git
 	 * 查询所有代理商
 	 * @return
 	 */

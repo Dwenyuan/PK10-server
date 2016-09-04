@@ -196,7 +196,6 @@ public class UserInfoControl {
 			return false;
 		}
 	}
-<<<<<<< HEAD
 
 	@RequestMapping(value = "managerlogin.do", method = RequestMethod.POST)
 	public Object managerLogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
@@ -214,8 +213,6 @@ public class UserInfoControl {
 			return "redirect:managerlogin.html";
 		}
 	}
-=======
->>>>>>> branch 'master' of https://github.com/liushao121/PK10-server.git
 	//获取所有代理商
 	@RequestMapping("getAllAgent")
 	@ResponseBody
