@@ -57,7 +57,12 @@ public class BetInit {
         return initMoney;
     }
 
-    public void setInitMoney(Integer initMoney) {
+    public BetInit(String gName) {
+		super();
+		this.gName = gName;
+	}
+
+	public void setInitMoney(Integer initMoney) {
         this.initMoney = initMoney;
     }
 }

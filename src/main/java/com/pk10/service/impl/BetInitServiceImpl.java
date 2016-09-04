@@ -8,33 +8,37 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-
 /**
  * Created by ron on 16-9-3.
  */
 @Service
-public class BetInitServiceImpl implements BetInitService{
+public class BetInitServiceImpl implements BetInitService {
 
-    @Resource
-    BetInitMapper betInitMapper;
+	@Resource
+	BetInitMapper betInitMapper;
 
-    @Override
-    public List<BetInit> getAllBetInit() {
-        return betInitMapper.selectAll();
-    }
+	@Override
+	public List<BetInit> getAllBetInit() {
+		return betInitMapper.selectAll();
+	}
 
-    @Override
-    public int updateBetInit(BetInit betInit) {
-        return betInitMapper.updateByPrimaryKeySelective(betInit);
-    }
+	@Override
+	public int updateBetInit(BetInit betInit) {
+		return betInitMapper.updateByPrimaryKeySelective(betInit);
+	}
 
-    @Override
-    public List<BetInit> getBetInitByName(BetInit betInit) {
-        return betInitMapper.selectByGameName(betInit);
-    }
+	@Override
+	public List<BetInit> getBetInitByName(BetInit betInit) {
+		return betInitMapper.selectByGameName(betInit);
+	}
 
 	@Override
 	public Integer saveBetInit(BetInit betInit) {
 		return betInitMapper.insert(betInit);
+	}
+
+	@Override
+	public BetInit getOneBetInitByName(BetInit betInit) {
+		return betInitMapper.getOneBetInitByName(betInit);
 	}
 }

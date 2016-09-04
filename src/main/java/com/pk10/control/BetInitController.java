@@ -27,6 +27,7 @@ public class BetInitController {
     public Object getAllGameInitDate(){
         try {
             return betInitService.getAllBetInit();
+
         } catch (Exception e) {
             logger.error(e.getMessage());
             return JSON.parse("{errmsg:" + e.getMessage() + "}");

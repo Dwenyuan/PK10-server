@@ -32,4 +32,6 @@ public interface BetInitMapper {
 
     int updateByPrimaryKey(BetInit record);
 
+	BetInit getOneBetInitByName(BetInit betInit);
+
 }
