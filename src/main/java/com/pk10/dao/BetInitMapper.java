@@ -18,6 +18,8 @@ public interface BetInitMapper {
 
     List<BetInit> selectByExample(BetInitExample example);
 
+    List<BetInit> selectByGameName(BetInit betInit);
+
     List<BetInit> selectAll();
 
     BetInit selectByPrimaryKey(Integer id);

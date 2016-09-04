@@ -39,16 +39,6 @@
 		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
 	</insert>
 
-	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
-		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
-	</insert>
-
-	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
-		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
-	</insert>
-
 	<update id="update" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
 		update userinfo u set u.money = #{money},u.nickname

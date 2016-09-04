@@ -19,8 +19,8 @@ public class UserInfo {
 	String password;
 	String tel;
 	Integer isagent; // 用户等级 0-普通用户 1-二级代理商 2-一级代理商 3-超级管理员
-	Double rebate; //返点
-	Integer owner;// 本用户数据哪个代理商
+	Double rebate; // 返点
+	Integer owner = 0;// 本用户数据哪个代理商
 
 	public Integer getId() {
 		return id;

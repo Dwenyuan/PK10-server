@@ -27,4 +27,9 @@ public class BetInitServiceImpl implements BetInitService{
     public int updateBetInit(BetInit betInit) {
         return betInitMapper.updateByPrimaryKeySelective(betInit);
     }
+
+    @Override
+    public List<BetInit> getBetInitByName(BetInit betInit) {
+        return betInitMapper.selectByGameName(betInit);
+    }
 }

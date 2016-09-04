@@ -33,6 +33,17 @@ public class BetInitController {
         }
     }
 
+    @RequestMapping("getGameInitDate")
+    @ResponseBody
+    public Object getGameInitDate(@RequestBody BetInit betInit){
+        try {
+            return betInitService.getBetInitByName(betInit);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return JSON.parse("{errmsg:" + e.getMessage() + "}");
+        }
+    }
+
     @RequestMapping("updateGameInitDate")
     @ResponseBody
     public Object updateGameInitDate(@RequestBody BetInit betInit){

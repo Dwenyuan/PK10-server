@@ -12,12 +12,12 @@
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script language="javascript" type="text/javascript">
         function test() {
-            var mydata = '{"id":1,"openid":null,"nickname":null,"headimgurl":null,"money":0.0,"createdAt":null,"username":"12","password":"13","tel":null,"isagent":1,"rebate":12.0} ';
+            var mydata = '{"gName":"猜字游戏"} ';
             alert(mydata);
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/updateagentinfo',
+                url: 'http://localhost:8081/pk10/getGameInitDate',
                 processData: false,
                 dataType: 'json',
                 data: mydata,
