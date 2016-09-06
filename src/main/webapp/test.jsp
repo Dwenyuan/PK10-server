@@ -12,12 +12,12 @@
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script language="javascript" type="text/javascript">
         function test() {
-            var mydata = '{"id":1} ';
+            var mydata = '{"userId":1}';
             alert(mydata);
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/getUserForAgent',
+                url: 'http://localhost:8081/pk10/getMoneyRecord',
                 processData: false,
                 dataType: 'json',
                 data: mydata,

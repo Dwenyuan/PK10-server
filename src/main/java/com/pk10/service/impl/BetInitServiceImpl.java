@@ -25,11 +25,32 @@ public class BetInitServiceImpl implements BetInitService{
 
     @Override
     public int updateBetInit(BetInit betInit) {
-        return betInitMapper.updateByPrimaryKeySelective(betInit);
+        BetInit myBetInit = betInitMapper.selectByGnameAndGtype(betInit);
+        myBetInit.setgName(betInit.getgName());
+        myBetInit.setType(betInit.getType());
+        myBetInit.setInitMoney(betInit.getInitMoney());
+        myBetInit.setRate(betInit.getRate());
+        myBetInit.setMoneyLimit(betInit.getMoneyLimit());
+        return betInitMapper.updateByPrimaryKeySelective(myBetInit);
     }
 
     @Override
     public List<BetInit> getBetInitByName(BetInit betInit) {
         return betInitMapper.selectByGameName(betInit);
+    }
+
+    @Override
+    public List<BetInit> getAllGname() {
+        return betInitMapper.selectAllGameName();
+    }
+
+    @Override
+    public List<BetInit> getAllGameTypeByGname(String gName) {
+        return betInitMapper.selectAllTypeByGName(gName);
+    }
+
+    @Override
+    public BetInit getBetinitByNameAndType(BetInit betInit) {
+        return betInitMapper.selectByGnameAndGtype(betInit);
     }
 }

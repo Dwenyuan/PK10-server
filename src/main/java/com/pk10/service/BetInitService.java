@@ -14,4 +14,10 @@ public interface BetInitService {
     public int updateBetInit(BetInit betInit);
 
     public List<BetInit> getBetInitByName(BetInit betInit);
+
+    public List<BetInit> getAllGname();
+
+    public List<BetInit> getAllGameTypeByGname(String gName);
+
+    public BetInit getBetinitByNameAndType(BetInit betInit);
 }

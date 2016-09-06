@@ -45,6 +45,28 @@ public class BetInitController {
         }
     }
 
+    @RequestMapping("getAllGameName")
+    @ResponseBody
+    public Object getAllGameName(){
+        try {
+            return JSON.toJSONString(betInitService.getAllGname());
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return JSON.parse("{errmsg:" + e.getMessage() + "}");
+        }
+    }
+
+    @RequestMapping("getAllGameTypeByGname")
+    @ResponseBody
+    public Object getAllTypeByGname(@RequestBody BetInit betInit){
+        try {
+            return JSON.toJSONString(betInitService.getAllGameTypeByGname(betInit.getgName()));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return JSON.parse("{errmsg:" + e.getMessage() + "}");
+        }
+    }
+
     @RequestMapping("updateGameInitDate")
     @ResponseBody
     public Object updateGameInitDate(@RequestBody BetInit betInit){
