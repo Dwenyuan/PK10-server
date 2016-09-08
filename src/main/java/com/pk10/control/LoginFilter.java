@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
 		boolean isFilter = matcher.find();
 		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
 			// 当用户已登录时，再进入登录界面会直接跳转
-			res.sendRedirect("index.html");
+			res.sendRedirect("index.jsp");
 		} else if ("/managerlogin.html".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("manager.html");

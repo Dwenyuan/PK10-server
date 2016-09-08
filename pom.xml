@@ -221,6 +221,12 @@
 			<artifactId>httpmime</artifactId>
 			<version>4.3.6</version>
 		</dependency>
+		<!--mybatis pagehelper-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>pk10</finalName>

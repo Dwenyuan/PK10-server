@@ -2,11 +2,10 @@ package com.pk10.control;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.tagext.TryCatchFinally;
 
-import com.pk10.bean.AgentInfo;
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.pk10.bean.AgentInfo;
+import com.pk10.bean.BetInit;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserInfo;
+import com.pk10.service.BetInitService;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
 
@@ -46,6 +48,9 @@ public class UserInfoControl {
 	@Autowired
 	private TokenConfig tokenConfig;
 
+	@Autowired
+	private BetInitService betInitService;
+
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
 	 *
@@ -54,7 +59,7 @@ public class UserInfoControl {
 	 */
 	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Object getUserInfo(@RequestBody UserInfo userInfo, HttpServletRequest request) {
+	public Object getUserInfo(HttpServletRequest request) {
 		try {
 			return request.getSession().getAttribute("userinfo");
 			// return userInfoService.getOneById(userInfo);
@@ -140,11 +145,13 @@ public class UserInfoControl {
 	public Object register(@RequestBody UserInfo userInfo) {
 		try {
 			UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(userInfo);
+			// TODO 等待添加游戏类型设定
+			BetInit safeBetInit = betInitService.getOneBetInitByName(new BetInit("PK10"));
 			if (safeUserInfo != null) { // 账号已经占用
 				return false;
 			} else {
 				userInfo.setCreatedAt(new Date());
-				userInfo.setMoney(tokenConfig.getMoney());
+				userInfo.setMoney(safeBetInit.getInitMoney() + 0.0);
 				Integer save = userInfoService.save(userInfo);
 				if (save > 0) { // 保存成功
 					return true;
@@ -187,7 +194,7 @@ public class UserInfoControl {
 			safeUserinfo = userInfoService.login(userInfo);
 			if (safeUserinfo != null) {
 				request.getSession().setAttribute("userinfo", safeUserinfo);
-				return "redirect:index.html";
+				return "redirect:index.jsp";
 			} else {
 				return false;
 			}
@@ -213,40 +220,44 @@ public class UserInfoControl {
 			return "redirect:managerlogin.html";
 		}
 	}
-	//获取所有代理商
+
+	// 获取所有代理商
 	@RequestMapping("getAllAgent")
 	@ResponseBody
-	public Object getAllAgent(){
-		try{
+	public Object getAllAgent() {
+		try {
 			return userInfoService.getAllAgent();
-		}catch(Exception e){
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-    //通过ID获取代理商
+
+	// 通过ID获取代理商
 	@RequestMapping("getAgentById")
 	@ResponseBody
-	public Object getAgentById(@RequestBody AgentInfo agentInfo){
-		try{
+	public Object getAgentById(@RequestBody AgentInfo agentInfo) {
+		try {
 			return userInfoService.getAgentById(agentInfo);
-		}catch(Exception e){
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-    //获取代理商名下所有用户
+	// 获取代理商名下所有用户
 
-	@RequestMapping("getUserForAgent")
+	@RequestMapping(value = "getUserForAgent", method = RequestMethod.POST)
 	@ResponseBody
-	public Object getUserForAgent(@RequestBody UserInfo userInfo){
-		try{
-			return JSON.toJSONString(userInfoService.getUserForAgent(userInfo));
-		}catch (Exception e){
+	public Object getUserForAgent(@RequestBody UserInfo userInfo) {
+		try {
+			return userInfoService.getUserForAgent(userInfo);
+		} catch (Exception e) {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-    //注册代理商
+
+	// 注册代理商
+
 	@RequestMapping("registerAgent")
 	@ResponseBody
 	public Object registerAgent(@RequestBody AgentInfo agentInfo) {
@@ -270,13 +281,14 @@ public class UserInfoControl {
 		}
 		return agentInfo;
 	}
-    //修改代理商信息
+
+	// 修改代理商信息
 	@RequestMapping(value = "updateagentinfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateUserInfo(@RequestBody AgentInfo agentInfo,HttpServletRequest request) {
+	public Object updateUserInfo(@RequestBody AgentInfo agentInfo, HttpServletRequest request) {
 		try {
 			Integer update = userInfoService.updateAgent(agentInfo);
-			if(update>0){
+			if (update > 0) {
 				request.getSession().setAttribute("Agentinfo", agentInfo);
 			}
 			return update;
@@ -285,6 +297,4 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-
-
 }

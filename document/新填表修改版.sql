@@ -18,7 +18,7 @@
 --
 -- Table structure for table `betInit`
 --
-
+use pk10;
 DROP TABLE IF EXISTS `betInit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -39,6 +39,7 @@ CREATE TABLE `betInit` (
 
 LOCK TABLES `betInit` WRITE;
 /*!40000 ALTER TABLE `betInit` DISABLE KEYS */;
+use pk10;
 INSERT INTO `betInit` VALUES (1,'猜字游戏','大小单双',10,10000,1000),(2,'猜字游戏','数字',21,10000,1000);
 /*!40000 ALTER TABLE `betInit` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -53,3 +54,15 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-09-03 18:21:24
+
+select * from pk10.betInit;
+select * from pk10.userinfo;
+
+SET character_set_client = utf8 ;
+SET character_set_connection = utf8 ;
+SET character_set_database = utf8 ;
+SET character_set_results = utf8 ;
+SET character_set_server = utf8 ;
+SET collation_connection = utf8 ;
+SET collation_database = utf8 ;
+SET collation_server = utf8 ;

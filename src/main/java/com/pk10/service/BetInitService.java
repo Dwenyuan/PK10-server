@@ -9,11 +9,15 @@ import java.util.List;
  */
 public interface BetInitService {
 
+	public Integer saveBetInit(BetInit betInit);
+
     public List<BetInit> getAllBetInit();
 
     public int updateBetInit(BetInit betInit);
 
     public List<BetInit> getBetInitByName(BetInit betInit);
+
+    public BetInit getOneBetInitByName(BetInit betInit);
 
     public List<BetInit> getAllGname();
 

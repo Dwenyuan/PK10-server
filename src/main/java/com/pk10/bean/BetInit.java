@@ -13,7 +13,11 @@ public class BetInit {
 
     private Integer initMoney;
 
-    public Integer getId() {
+    public BetInit() {
+		super();
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -57,7 +61,12 @@ public class BetInit {
         return initMoney;
     }
 
-    public void setInitMoney(Integer initMoney) {
+    public BetInit(String gName) {
+		super();
+		this.gName = gName;
+	}
+
+	public void setInitMoney(Integer initMoney) {
         this.initMoney = initMoney;
     }
 }

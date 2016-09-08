@@ -53,4 +53,15 @@ public class BetInitServiceImpl implements BetInitService{
     public BetInit getBetinitByNameAndType(BetInit betInit) {
         return betInitMapper.selectByGnameAndGtype(betInit);
     }
+
+    @Override
+    public Integer saveBetInit(BetInit betInit) {
+        return betInitMapper.insert(betInit);
+    }
+
+    @Override
+    public BetInit getOneBetInitByName(BetInit betInit) {
+        return betInitMapper.getOneBetInitByName(betInit);
+    }
+
 }

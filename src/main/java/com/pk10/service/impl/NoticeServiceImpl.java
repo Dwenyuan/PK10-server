@@ -29,6 +29,8 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<Notice> getAll() throws Exception {
+
+
 		return noticeDao.getAll();
 	}
 
@@ -47,4 +49,8 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.getLastNotice();
 	}
 
+	@Override
+	public int updateByPrimaryKey(Notice notice) {
+		return noticeDao.updateByPrimaryKeySelective(notice);
+	}
 }

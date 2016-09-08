@@ -106,6 +106,7 @@
     where g_name = #{gName,jdbcType=VARCHAR}
   </select>
 
+
   <select id="selectAllGameName" resultMap="BaseResultMap">
     SELECT distinct(bi.g_name) FROM pk10.betInit bi
   </select>
@@ -118,6 +119,12 @@
     SELECT * from pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR} and bi.type = #{type,jdbcType=VARCHAR}
   </select>
 
+  <select id="getOneBetInitByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+    where g_name = #{gName,jdbcType=VARCHAR} group by g_name
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

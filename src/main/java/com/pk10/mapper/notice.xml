@@ -17,6 +17,19 @@
 		select 0
 	</select>
 
+	<update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.Notice" >
+		update notice
+		<set>
+			<if test="title != null" >
+				g_name = #{gName,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null" >
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
 	<select id="getOneById" parameterType="com.pk10.bean.Notice" resultMap="Notice">
 		select id,title,content,createdAt from notice n where n.id = #{id}
 	</select>

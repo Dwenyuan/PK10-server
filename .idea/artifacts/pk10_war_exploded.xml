@@ -45,6 +45,8 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:annotations-api:6.0.43" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpmime:4.3.6" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.0.0" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

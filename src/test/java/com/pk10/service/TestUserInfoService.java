@@ -21,8 +21,12 @@ public class TestUserInfoService {
 	
 	@Test
 	public void Testsave() throws Exception {
-		UserInfo info = new UserInfo("liushao", "1234321", "1233333");
-		System.out.println(userInfoService.save(info));
+		for (int i = 0; i < 20; i++) {
+			UserInfo info = new UserInfo(""+Math.random(), "123456", "1233333");
+			info.setIsagent(0);
+			info.setOwner(36);
+			System.out.println(userInfoService.save(info));
+		}
 	}
 
 	@Test

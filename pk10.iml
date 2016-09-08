@@ -88,5 +88,7 @@
     </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.tomcat:annotations-api:6.0.43" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.3.6" level="project" />
+    <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" level="project" />
   </component>
 </module>
