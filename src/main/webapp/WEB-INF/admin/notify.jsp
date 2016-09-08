@@ -26,6 +26,29 @@
         padding-top: 11px;
     }
     </style>
+    <script type="text/javascript">
+
+        function gotoPage(pages) {
+            alert(pages);
+
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: 'http://localhost:8081/pk10/getNoticeInPage',
+                processData: false,
+                dataType: 'json',
+                data : "{\"pages\":\""+ pages+"\"}",
+                success: function(data) {
+                     alert(data);
+                },
+                error: function() {
+                    alert('Err...');
+                }
+            });
+        }
+
+    </script>
+
 </head>
 
 <body>
@@ -52,7 +75,7 @@
                 </thead>
                 <tbody>
 
-                    <c:forEach items="${notices}" var="notice">
+                    <c:forEach items="${notices.rows}" var="notice">
                         <tr>
                             <td>${notice.id}</td>
                             <td>${notice.title}</td>
@@ -100,6 +123,18 @@
                 </div>
             </div>
         </div>
+        <div class="am-cf">
+            <spen class="total">共${notices.total}条记录</spen>
+            <div class="am-fr">
+                <ul class="am-pagination">
+                    <c:forEach varStatus="vs" begin="1" end="${notices.totalPage}">
+                        <li><a href="#" onclick="gotoPage(${vs.current})">${vs.current}</a></li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+
+    </div>
         <footer class="admin-content-footer">
             <hr>
             <p class="am-padding-left">© 中远方舟 ©版权所有.</p>
@@ -114,6 +149,7 @@
         <!--<![endif]-->
         <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+        <script src="${pageContext.request.contextPath}/jquerypage/jquery.page.js"></script>
         <script type="text/javascript">
         function add() { showmodel();}
         function change(title,content) {
