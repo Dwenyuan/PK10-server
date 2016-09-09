@@ -21,10 +21,10 @@
 		update notice
 		<set>
 			<if test="title != null" >
-				g_name = #{gName,jdbcType=VARCHAR},
+				title = #{title,jdbcType=VARCHAR},
 			</if>
 			<if test="content != null" >
-				type = #{type,jdbcType=VARCHAR},
+				content = #{content,jdbcType=VARCHAR},
 			</if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}

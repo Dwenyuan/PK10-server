@@ -71,8 +71,8 @@
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-pencil-square-o"></span> 代理商管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-            <li><a href="add_agent.jsp" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加代理商</a></li>
-            <li><a href="agentlist.jsp" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
+            <li><a href="toAddAgent" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加代理商</a></li>
+            <li><a href="toAgentList" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
           </ul>
         </li>
          <li class="admin-parent">
@@ -85,7 +85,7 @@
           </ul>
         </li>
         <li class="admin-parent">
-          <a href="lotteryhistory.jsp" target="subject"><span class="am-icon-pencil-square-o"></span> 开奖管理 </a>
+          <a href="toLotteryHistory" target="subject"><span class="am-icon-pencil-square-o"></span> 开奖管理 </a>
         </li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-pencil-square-o"></span>商城管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>

@@ -86,8 +86,6 @@
             var gameName = $("#selectGame option:selected").text();
             var gameType = $("#selectType option:selected").text();
             var gameRate = $("#rate").val();
-            alert(gameName +"==" +gameType+"=="+gameRate);
-            alert('{"gName":\"'+gameName+'\","type":\"'+gameType+'\","rate":\"'+gameRate+'\"}');
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',

@@ -1,31 +1,22 @@
 package com.pk10.control;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.alibaba.fastjson.JSON;
+import com.pk10.bean.*;
+import com.pk10.service.BetInitService;
+import com.pk10.service.UserInfoService;
+import com.pk10.util.UserInfoFormWeChat;
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-import com.alibaba.fastjson.JSON;
-import com.pk10.bean.AgentInfo;
-import com.pk10.bean.BetInit;
-import com.pk10.bean.TokenConfig;
-import com.pk10.bean.UserInfo;
-import com.pk10.service.BetInitService;
-import com.pk10.service.UserInfoService;
-import com.pk10.util.UserInfoFormWeChat;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Date;
 
 /**
  * 获取用户信息
@@ -224,9 +215,14 @@ public class UserInfoControl {
 	// 获取所有代理商
 	@RequestMapping("getAllAgent")
 	@ResponseBody
-	public Object getAllAgent() {
+	public Object getAllAgent(Model model,Page page) {
 		try {
-			return userInfoService.getAllAgent();
+			page.setPages(1);
+			AgentInfo agentInfo = new AgentInfo();
+			agentInfo.setIsagent(2);
+			long total = userInfoService.getAllAgent(page,agentInfo).getTotal();
+			page.setRows((int)total);
+			return userInfoService.getAllAgent(page,agentInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -269,7 +265,6 @@ public class UserInfoControl {
 				return false;
 			} else {
 				agentInfo.setCreatedAt(new Date());
-				agentInfo.setMoney(tokenConfig.getMoney());
 				Integer save = userInfoService.savaAgent(agentInfo);
 				if (save > 0) {
 					return true;
@@ -283,9 +278,9 @@ public class UserInfoControl {
 	}
 
 	// 修改代理商信息
-	@RequestMapping(value = "updateagentinfo", method = RequestMethod.POST)
+	@RequestMapping("updateAgentInfo")
 	@ResponseBody
-	public Object updateUserInfo(@RequestBody AgentInfo agentInfo, HttpServletRequest request) {
+	public Object updateAgentInfo(@RequestBody AgentInfo agentInfo, HttpServletRequest request) {
 		try {
 			Integer update = userInfoService.updateAgent(agentInfo);
 			if (update > 0) {
@@ -297,4 +292,44 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+	@RequestMapping("toAddAgent")
+	public Object toAddAgent(){
+		return "admin/add_agent";
+	}
+
+	@RequestMapping("toAgentList")
+	public Object toAgentList(Model model, Page page){
+
+		try {
+			if (page.getPages() == 0) {
+				page.setPages(1);
+				AgentInfo agentInfo = new AgentInfo();
+				agentInfo.setIsagent(2);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
+				model.addAttribute("agentDatagrid",agentDatagrid);
+				return "admin/agentlist";
+			}else {
+				AgentInfo agentInfo = new AgentInfo();
+				agentInfo.setIsagent(2);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
+				model.addAttribute("agentDatagrid",agentDatagrid);
+				return "admin/agentlist";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+	@RequestMapping("deleteAgent")
+	@ResponseBody
+	public Object deleteAgent(@RequestBody UserInfo userInfo){
+		try {
+			return userInfoService.deleteOneById(userInfo);
+		} catch (Exception e) {
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+
 }

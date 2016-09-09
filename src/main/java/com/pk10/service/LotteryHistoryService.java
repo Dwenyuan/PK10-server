@@ -2,7 +2,9 @@ package com.pk10.service;
 
 import java.util.List;
 
+import com.pk10.bean.Datagrid;
 import com.pk10.bean.LotteryHistory;
+import com.pk10.bean.Page;
 
 public interface LotteryHistoryService extends BaseService<LotteryHistory>{
 	
@@ -14,4 +16,6 @@ public interface LotteryHistoryService extends BaseService<LotteryHistory>{
 	 * @return
 	 */
 	public List<LotteryHistory> getLastLottery(Integer num);
+
+	public Datagrid getAllInPage(Page page) throws Exception;
 }

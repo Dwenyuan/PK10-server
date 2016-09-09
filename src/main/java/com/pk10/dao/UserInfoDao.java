@@ -49,7 +49,7 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
 	//修改代理商
 	Integer updateAgentByPrimaryKeySelective(AgentInfo agentInfo);
     //查询所有代理商
-	List<AgentInfo> getAllAgent();
+	List<AgentInfo> getAllAgent(AgentInfo agentInfo);
     //通过ID查询指定代理商
 	AgentInfo getAgentById(AgentInfo agentInfo);
     //查询代理商下所有用户

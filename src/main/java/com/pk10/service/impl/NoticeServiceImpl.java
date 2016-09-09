@@ -33,7 +33,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public Datagrid getAllInPage(Page page) throws Exception {
-		PageHelper.startPage(page.getPages(),1);
+		PageHelper.startPage(page.getPages(),10);
 		List<Notice> notices = noticeDao.getAll();
 		PageInfo pageInfo = new PageInfo(notices);
 		Datagrid datagrid = new Datagrid();

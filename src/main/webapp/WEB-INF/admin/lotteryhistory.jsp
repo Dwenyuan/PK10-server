@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js">
 
@@ -25,6 +27,21 @@
         padding-top: 11px;
     }
     </style>
+    <style>
+        *{ margin:0; padding:0; list-style:none;}
+        a{ text-decoration:none;}
+        a:hover{ text-decoration:none;}
+        .tcdPageCode{padding: 15px 20px;text-align: left;color: #ccc;text-align:center;}
+        .tcdPageCode a{display: inline-block;color: #428bca;display: inline-block;height: 25px;	line-height: 25px;	padding: 0 10px;border: 1px solid #ddd;	margin: 0 2px;border-radius: 4px;vertical-align: middle;}
+        .tcdPageCode a:hover{text-decoration: none;border: 1px solid #428bca;}
+        .tcdPageCode span.current{display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;color: #fff;background-color: #428bca;	border: 1px solid #428bca;border-radius: 4px;vertical-align: middle;}
+        .tcdPageCode span.disabled{	display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;	color: #bfbfbf;background: #f2f2f2;border: 1px solid #bfbfbf;border-radius: 4px;vertical-align: middle;}
+    </style>
+    <script type="text/javascript">
+
+
+
+    </script>
 </head>
 
 <body>
@@ -34,7 +51,8 @@
     <hr>
     <div class="am-g">
         <div class="am-u-sm-12 ">
-            
+            <input type="hidden" id="currentPage" value="${lhData.currentPage}">
+            <input type="hidden" id="totalPage" value="${lhData.totalPage}">
         </div>
         <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-4 am-u-end">
             <div class="am-input-group am-input-group-sm">
@@ -50,88 +68,31 @@
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                     <tr>
-                        <th class="table-check">
-                            <input type="checkbox" />
-                        </th>
                         <th class="table-id">开奖期数</th>
                         <th class="table-title">开奖时间</th>
                         <th class="table-type">开奖结果</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-                        <td>123456</td>
-                        <td><a href="#">2016/12/12 12:12</a></td>
-                        <td>10,20,08,08,07</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-                        <td>123456</td>
-                        <td><a href="#">2016/12/12 12:12</a></td>
-                        <td>10,20,08,08,07</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-                        <td>123456</td>
-                        <td><a href="#">2016/12/12 12:12</a></td>
-                        <td>10,20,08,08,07</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-                        <td>123456</td>
-                        <td><a href="#">2016/12/12 12:12</a></td>
-                        <td>10,20,08,08,07</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-                        <td>123456</td>
-                        <td><a href="#">2016/12/12 12:12</a></td>
-                        <td>10,20,08,08,07</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-                        <td>123456</td>
-                        <td><a href="#">2016/12/12 12:12</a></td>
-                        <td>10,20,08,08,07</td>
-                        
-                    </tr>
-                    
+                    <c:forEach varStatus="vs" items="${lhData.rows}" var="lottery">
+                        <tr>
+                            <td>${lottery.id}</td>
+                            <td><a href="#"><fmt:formatDate value="${lottery.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
+                            <td>${lottery.lotterynums}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
             <div class="am-cf">
-                共 10 条记录
+                <spen class="total">共${lhData.total}条记录</spen>
                 <div class="am-fr">
-                    <ul class="am-pagination">
-                        <li class="am-disabled"><a href="#">«</a></li>
-                        <li class="am-active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
+                    <div class="tcdPageCode"></div>
                 </div>
             </div>
+
         </div>
     </div>
+
     </div>
     <!-- content end -->
     
@@ -143,16 +104,38 @@
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/amazeui.ie8polyfill.min.js"></script>
+
 <![endif]-->
     <!--[if (gte IE 9)|!(IE)]><!-->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!--<![endif]-->
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
     <script type="text/javascript">
        function recharge(id) {
             $("#recharge").modal();
        }
+
+       function gotoPage(pages) {
+           window.location = 'toLotteryHistory?pages='+pages;
+       }
+       $(function(){
+
+           // var current = $("#currentPage").val();
+           // var total = $("#totalPage").val();
+           // alert(current +"==" + total);
+           $(".tcdPageCode").createPage({
+               pageCount: Number(${lhData.totalPage}),
+               current: Number(${lhData.currentPage}),
+               backFn:function(p){
+
+                   gotoPage(p);
+               }
+           });
+
+       });
     </script>
 </body>
 

@@ -26,26 +26,19 @@
         padding-top: 11px;
     }
     </style>
+    <style>
+        *{ margin:0; padding:0; list-style:none;}
+        a{ text-decoration:none;}
+        a:hover{ text-decoration:none;}
+        .tcdPageCode{padding: 15px 20px;text-align: left;color: #ccc;text-align:center;}
+        .tcdPageCode a{display: inline-block;color: #428bca;display: inline-block;height: 25px;	line-height: 25px;	padding: 0 10px;border: 1px solid #ddd;	margin: 0 2px;border-radius: 4px;vertical-align: middle;}
+        .tcdPageCode a:hover{text-decoration: none;border: 1px solid #428bca;}
+        .tcdPageCode span.current{display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;color: #fff;background-color: #428bca;	border: 1px solid #428bca;border-radius: 4px;vertical-align: middle;}
+        .tcdPageCode span.disabled{	display: inline-block;height: 25px;line-height: 25px;padding: 0 10px;margin: 0 2px;	color: #bfbfbf;background: #f2f2f2;border: 1px solid #bfbfbf;border-radius: 4px;vertical-align: middle;}
+    </style>
     <script type="text/javascript">
 
-        function gotoPage(pages) {
-            alert(pages);
 
-            $.ajax({
-                type: 'POST',
-                contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/getNoticeInPage',
-                processData: false,
-                dataType: 'json',
-                data : "{\"pages\":\""+ pages+"\"}",
-                success: function(data) {
-                     alert(data);
-                },
-                error: function() {
-                    alert('Err...');
-                }
-            });
-        }
 
     </script>
 
@@ -75,9 +68,9 @@
                 </thead>
                 <tbody>
 
-                    <c:forEach items="${notices.rows}" var="notice">
+                    <c:forEach varStatus="vs" items="${notices.rows}" var="notice">
                         <tr>
-                            <td>${notice.id}</td>
+                            <td>${vs.index+1}</td>
                             <td>${notice.title}</td>
                             <td><a href="#">${notice.content}</a></td>
                             <td><span class="am-lg ">${notice.createdAt}</span></td>
@@ -85,8 +78,8 @@
                                 <div class="am-dropdown" data-am-dropdown>
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                                     <ul class="am-dropdown-content">
-                                        <li><a href="#" onclick="change('${notice.title}','${notice.content}')">1. 编辑</a></li>
-                                        <li><a href="#">2. 删除</a></li>
+                                        <li><a href="#" onclick="change(${notice.id},'${notice.title}','${notice.content}')">1. 编辑</a></li>
+                                        <li><a href="#" onclick="deleteNotice(${notice.id})">2. 删除</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -105,6 +98,7 @@
                             标题
                         </div>
                         <div class="am-u-sm-8 am-u-md-8 am-u-end">
+                            <input type="hidden" id="id">
                             <input type="text" class="am-input-sm" id="title">
                         </div>
                     </div>
@@ -126,11 +120,7 @@
         <div class="am-cf">
             <spen class="total">共${notices.total}条记录</spen>
             <div class="am-fr">
-                <ul class="am-pagination">
-                    <c:forEach varStatus="vs" begin="1" end="${notices.totalPage}">
-                        <li><a href="#" onclick="gotoPage(${vs.current})">${vs.current}</a></li>
-                    </c:forEach>
-                </ul>
+                <div class="tcdPageCode"></div>
             </div>
         </div>
 
@@ -149,22 +139,62 @@
         <!--<![endif]-->
         <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
-        <script src="${pageContext.request.contextPath}/jquerypage/jquery.page.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
         <script type="text/javascript">
         function add() { showmodel();}
-        function change(title,content) {
+        function change(id,title,content) {
+
             $("#title").val(title);
             $("#content").val(content);
+            $("#id").val(id);
+
+
             showmodel();
         }
         function showmodel() {
             $('#add_notify').modal({
                 relatedTarget: this,
                 onConfirm: function(options) {
+                    var id = $("#id").val();
                     var title_val = $("#title").val();
                     var content_val = $("#content").val();
                     $("#title").val("");
                     $("#content").val("");
+                    $("#id").val("");
+
+                    if(id == "" || id == undefined || id == null){
+                        $.ajax({
+                            type: 'POST',
+                            contentType: 'application/json',
+                            url: 'http://localhost:8081/pk10/savaNotice',
+                            processData: false,
+                            dataType: 'json',
+                            data : '{"title":\"'+title_val+'\","content":\"'+content_val+'\"}',
+                            success: function(data) {
+                                window.location = 'toNotice?pages='+${notices.totalPage};
+                            },
+                            error: function() {
+                                alert('Err...');
+                            }
+                        });
+                    }else {
+                        $.ajax({
+                            type: 'POST',
+                            contentType: 'application/json',
+                            url: 'http://localhost:8081/pk10/updateNotice',
+                            processData: false,
+                            dataType: 'json',
+                            data : '{"id":\"'+id+'\","title":\"'+title_val+'\","content":\"'+content_val+'\"}',
+                            success: function(data) {
+                                window.location = 'toNotice?pages='+${notices.currentPage};
+                            },
+                            error: function() {
+                                alert('Err...');
+                            }
+                        });
+                    }
                 },
                 // closeOnConfirm: false,
                 onCancel: function() {
@@ -173,6 +203,43 @@
                 }
             });
         }
+
+        function gotoPage(pages) {
+
+            window.location = 'toNotice?pages='+pages;
+        }
+
+        function deleteNotice(id){
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: 'http://localhost:8081/pk10/deleteNotice',
+                processData: false,
+                dataType: 'json',
+                data : '{"id":\"'+id+'\"}',
+                success: function(data) {
+                    window.location = 'toNotice?pages='+${notices.currentPage};
+                },
+                error: function() {
+                    alert('Err...');
+                }
+            });
+        }
+        $(function(){
+
+            // var current = $("#currentPage").val();
+            // var total = $("#totalPage").val();
+            // alert(current +"==" + total);
+            $(".tcdPageCode").createPage({
+                pageCount: Number(${notices.totalPage}),
+                current: Number(${notices.currentPage}),
+                backFn:function(p){
+
+                    gotoPage(p);
+                }
+            });
+
+        });
         </script>
         </div>
  </body>

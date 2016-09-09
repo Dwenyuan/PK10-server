@@ -2,6 +2,10 @@ package com.pk10.service.impl;
 
 import java.util.List;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.pk10.bean.Datagrid;
+import com.pk10.bean.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,5 +66,18 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 	public List<LotteryHistory> getLastLottery(Integer num) {
 		return lotteryHistoryDao.getLastNumLottery(num);
 	}
-	
+
+	@Override
+	public Datagrid getAllInPage(Page page) throws Exception {
+		PageHelper.startPage(page.getPages(),10);
+		List<LotteryHistory> lotteryHistories = lotteryHistoryDao.getAll();
+		PageInfo pageInfo = new PageInfo(lotteryHistories);
+		Datagrid datagrid = new Datagrid();
+		datagrid.setRows(lotteryHistories);
+		datagrid.setTotal(pageInfo.getTotal());
+		datagrid.setCurrentPage(page.getPages());
+		datagrid.setTotalPage(pageInfo.getPages());
+
+		return datagrid;
+	}
 }

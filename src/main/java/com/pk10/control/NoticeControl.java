@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.pk10.service.NoticeService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -39,10 +40,13 @@ public class NoticeControl {
 	@RequestMapping("toNotice")
 	public Object toNotice(Model model, Page page){
 		try{
-
-				page.setPages(1);
-				Datagrid notices = noticeService.getAllInPage(page);
-
+			Datagrid notices = new Datagrid();
+             if(page.getPages() == 0) {
+				 page.setPages(1);
+				 notices = noticeService.getAllInPage(page);
+			 }else {
+				 notices = noticeService.getAllInPage(page);
+			 }
 			model.addAttribute("notices",notices);
 			return "admin/notify";
 		}catch (Exception e){
@@ -51,14 +55,40 @@ public class NoticeControl {
 		}
 	}
 
-	@RequestMapping("getNoticeInPage")
+	@RequestMapping("savaNotice")
 	@ResponseBody
-	public Object getNoticeInPage(@RequestBody Model model, Page page){
+	public Object savaNotice(@RequestBody Notice notice){
+			try{
+				 notice.setCreatedAt(new Date());
+				 return noticeService.save(notice);
+			}catch (Exception e){
+				logger.error(e.getMessage());
+				return JSON.parse("{errmsg:" + e.getMessage() + "}");
+			}
+		}
+	@RequestMapping("updateNotice")
+	@ResponseBody
+	public Object updateNotice(@RequestBody Notice notice){
+			try{
+				return noticeService.updateByPrimaryKey(notice);
+			}catch (Exception e){
+				logger.error(e.getMessage());
+				return JSON.parse("{errmsg:" + e.getMessage() + "}");
+			}
+
+	}
+
+	@RequestMapping("deleteNotice")
+	@ResponseBody
+	public Object deleteNotice(@RequestBody Notice notice){
 		try{
-			return noticeService.getAllInPage(page);
+			return noticeService.deleteOneById(notice);
 		}catch (Exception e){
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
+
 	}
+
+
 }

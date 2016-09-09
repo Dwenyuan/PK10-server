@@ -25,6 +25,36 @@
         padding-top: 11px;
     }
     </style>
+    <script language="javascript" type="text/javascript">
+        function agentSava() {
+
+            var username = $("#username").val();
+            var nickname = $("#nickname").val();
+            var password = $("#password").val();
+            var tel = $("#tel").val();
+            var rebate = $("#rebate").val();
+            var isagent = $("#isagent").val();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: 'http://localhost:8081/pk10/registerAgent',
+                processData: false,
+                dataType: 'json',
+                data : '{"username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","rebate":\"'+rebate+'\","isagent":\"'+isagent+'\"}',
+                success: function(data) {
+                    if(data){
+                        alert("添加成功");
+                    }else{
+                        alert("用户名已经存在");
+                    }
+                },
+                error: function() {
+                    alert('返点请用数字');
+                }
+            });
+        }
+    </script>
+
 </head>
 
 <body>
@@ -38,7 +68,7 @@
                 用户ID
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-               <input type="text" name="id" >
+               <input id="username" type="text" name="id" >
           </div>
     </div>
     <div class="am-g am-margin-top">
@@ -46,7 +76,7 @@
                 昵称
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-               <input type="text" name="name" >
+               <input id="nickname" type="text" name="name" >
           </div>
     </div>
     <div class="am-g am-margin-top">
@@ -54,15 +84,24 @@
                 密码
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-               <input type="text" name="password" >
+               <input id="password" type="text" name="password" >
           </div>
     </div>
+        <div class="am-g am-margin-top">
+            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                手机
+            </div>
+            <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                <input id="tel" type="text" name="password" >
+            </div>
+        </div>
     <div class="am-g am-margin-top">
           <div class="am-u-sm-4 am-u-md-2 am-text-right">
                 返点
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-               <input type="text" name="rebate" >
+               <input id="rebate" type="text" name="rebate" >
+               <input type="hidden" id="isagent" value="2">
           </div>
     </div>
     
@@ -71,7 +110,7 @@
 
     <div class="am-g am-margin-top">
       <div class="am-u-sm-offset-3 am-u-sm-6 am-u-md-offset-2 am-u-md-4">
-      <button type="button"  onclick="sub()" class="am-btn am-btn-primary am-btn-xs" >创建</button>
+      <button type="button"  onclick="agentSava()" class="am-btn am-btn-primary am-btn-xs" >创建</button>
       <button type="reset" class="am-btn am-btn-primary am-btn-xs">取消</button>
       </div>
     </div>
