@@ -54,9 +54,9 @@
         </div>
         <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-4 am-u-end">
             <div class="am-input-group am-input-group-sm">
-                <input type="text" class="am-form-field">
+                <input type="text" class="am-form-field" id="agentUsername">
                 <span class="am-input-group-btn">
-            <button class="am-btn am-btn-default" type="button">搜索</button>
+            <button class="am-btn am-btn-default" type="button" onclick="searchFor()">搜索</button>
           </span>
             </div>
         </div>
@@ -162,6 +162,37 @@
     </div>
 
     <!-- content end -->
+    <div class="am-modal am-modal-alert" tabindex="-1" id="recharge">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <table class="am-table am-table-striped am-table-hover table-main">
+                    <thead>
+                    <tr>
+                        <th class="table-type">代理商</th>
+                        <th class="table-type">昵称</th>
+                        <th class="table-type">密码</th>
+                        <th class="table-type">手机</th>
+                        <th class="table-type">返点</th>
+                        <th class="table-type">创建时间</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="tb">
+                        <td id="td1"></td>
+                        <td id="td2"></td>
+                        <td id="td3"></td>
+                        <td id="td4"></td>
+                        <td id="td5"></td>
+                        <td id="td6"></td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
    
     <footer class="admin-content-footer">
         <hr>
@@ -177,7 +208,6 @@
     <!--<![endif]-->
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
     <script type="text/javascript">
        function recharge(id) {
@@ -216,12 +246,12 @@
                        $.ajax({
                            type: 'POST',
                            contentType: 'application/json',
-                           url: 'http://localhost:8081/pk10/updateAgentInfo',
+                           url: '${pageContext.request.contextPath}/updateAgentInfo',
                            processData: false,
                            dataType: 'json',
                            data : '{"id":\"'+id+'\","username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","rebate":\"'+rebate+'\"}',
                            success: function(data) {
-                               window.location = 'toAgentList?pages='+${agentDatagrid.totalPage};
+                               window.location = 'toAgentList?pages='+${agentDatagrid.currentPage};
                            },
                            error: function() {
                                alert('Err...');
@@ -249,7 +279,7 @@
            $.ajax({
                type: 'POST',
                contentType: 'application/json',
-               url: 'http://localhost:8081/pk10/deleteAgent',
+               url: '${pageContext.request.contextPath}/deleteAgent',
                processData: false,
                dataType: 'json',
                data : '{"username":\"'+username+'\"}',
@@ -277,6 +307,60 @@
            });
 
        });
+
+
+       function searchFor(){
+
+           var username =$("#agentUsername").val();
+           $.ajax({
+               type: 'POST',
+               contentType: 'application/json',
+               url: '${pageContext.request.contextPath}/getUserByUsername',
+               processData: false,
+               dataType: 'json',
+               data : '{"username":\"'+username+'\"}',
+               success: function(data) {
+
+
+
+                   var username = data.username;
+                   var nickname =data.nickname;
+                   var password =data.password;
+                   var tel =data.tel;
+                   var rebate =data.rebate;
+                   var createdAt =data.createdAt;
+                   var mydata = FormatDate(createdAt);
+
+                   document.getElementById('td1').innerHTML = "";
+                   document.getElementById('td2').innerHTML = "";
+                   document.getElementById('td3').innerHTML = "";
+                   document.getElementById('td4').innerHTML = "";
+                   document.getElementById('td5').innerHTML = "";
+                   document.getElementById('td6').innerHTML = "";
+                   document.getElementById('td1').innerHTML += username;
+                   document.getElementById('td2').innerHTML += nickname;
+                   document.getElementById('td3').innerHTML += password;
+                   document.getElementById('td4').innerHTML += tel;
+                   document.getElementById('td5').innerHTML += rebate;
+                   document.getElementById('td6').innerHTML += mydata;
+                   recharge();
+
+               },
+               error: function() {
+                   alert('Err...');
+               }
+           });
+
+           function FormatDate (strTime) {
+               var date = new Date(strTime);
+               return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+"/"+date.getHours()+"时"+date.getMinutes()+"分"+date.getMilliseconds()+"秒";
+           }
+           //var lotteryId = Number($("#lotteryId").val());
+           // window.location = 'getLotteryById?id='+lotteryId;
+       }
+       function recharge() {
+           $("#recharge").modal();
+       }
     </script>
 </body>
 

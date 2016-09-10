@@ -80,4 +80,9 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 
 		return datagrid;
 	}
+
+    @Override
+    public LotteryHistory getHistoryById(LotteryHistory lotteryHistory) throws Exception{
+        return lotteryHistoryDao.getOneById(lotteryHistory);
+    }
 }

@@ -18,4 +18,6 @@ public interface LotteryHistoryService extends BaseService<LotteryHistory>{
 	public List<LotteryHistory> getLastLottery(Integer num);
 
 	public Datagrid getAllInPage(Page page) throws Exception;
+
+    public LotteryHistory getHistoryById(LotteryHistory lotteryHistory) throws Exception;
 }

@@ -37,7 +37,7 @@
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/registerAgent',
+                url: '${pageContext.request.contextPath}/registerAgent',
                 processData: false,
                 dataType: 'json',
                 data : '{"username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","rebate":\"'+rebate+'\","isagent":\"'+isagent+'\"}',

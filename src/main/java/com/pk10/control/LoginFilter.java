@@ -37,12 +37,15 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername|managerlogin\\.do)|userlogin\\.html|managerlogin\\.html|\\/build\\/.+");
+		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|userlogin\\.html|managerlogin\\.html|\\/build\\/.|\\/assets\\/.*+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
 		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
 			// 当用户已登录时，再进入登录界面会直接跳转
 			res.sendRedirect("index.jsp");
+		} else if ("/adminlogin.html".equals(req.getServletPath())
+				&& req.getSession().getAttribute("userinfo") != null) {
+			res.sendRedirect("toAdminHome");
 		} else if ("/managerlogin.html".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("manager.html");
@@ -51,7 +54,9 @@ public class LoginFilter implements Filter {
 		} else {
 			if ("/manager.html".equals(req.getServletPath())) {
 				res.sendRedirect("managerlogin.html");
-			} else {
+			}else if("/toAdminHome".equals(req.getServletPath())) {
+				res.sendRedirect("adminlogin.html");
+			}else {
 				res.sendRedirect("userlogin.html");
 			}
 		}

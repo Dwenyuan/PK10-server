@@ -91,6 +91,12 @@
 		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
 		u where u.tel = #{tel}
 	</select>
+	<select id="getUserUsername" parameterType="com.pk10.bean.UserInfo"
+			resultMap="UserInfo">
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		u where u.username = #{username}
+	</select>
 	<select id="login" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select

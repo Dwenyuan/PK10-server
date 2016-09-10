@@ -15,6 +15,9 @@ import com.alibaba.fastjson.JSON;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.service.LotteryHistoryService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 下注和获奖相关
  * 
@@ -77,8 +80,9 @@ public class BounsAndBets {
 	 * 开奖管理
 	 */
 	@RequestMapping("toLotteryHistory")
-	public Object toLotteryHistory(Model model, Page page){
 
+
+	public Object toLotteryHistory(Model model, Page page){
 		try {
 			if (page.getPages() == 0) {
 				page.setPages(1);
@@ -95,5 +99,17 @@ public class BounsAndBets {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+	@RequestMapping("getRecordById")
+	@ResponseBody
+	public Object getRecordById(@RequestBody LotteryHistory lotteryHistory){
+		try {
+				return JSON.toJSONString(lotteryHistoryService.getHistoryById(lotteryHistory));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
 
 }

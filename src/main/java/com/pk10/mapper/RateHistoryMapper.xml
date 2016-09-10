@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pk10.dao.RateHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.pk10.bean.RateHistory" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="normaluser" property="normaluser" jdbcType="VARCHAR" />
+    <result column="distributorget" property="distributorget" jdbcType="DOUBLE" />
+    <result column="agentget" property="agentget" jdbcType="DOUBLE" />
+    <result column="user_add" property="userAdd" jdbcType="DOUBLE" />
+    <result column="agent" property="agent" jdbcType="VARCHAR" />
+    <result column="distributor" property="distributor" jdbcType="VARCHAR" />
+    <result column="creatat" property="creatat" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, normaluser, distributorget, agentget, user_add, agent, distributor, creatat
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pk10.bean.RateHistoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RateHistory
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from RateHistory
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="com.pk10.bean.RateHistory" >
+    select
+    <include refid="Base_Column_List" />
+    from RateHistory
+    where normaluser = #{normaluser,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from RateHistory
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from RateHistory
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pk10.bean.RateHistoryExample" >
+    delete from RateHistory
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pk10.bean.RateHistory" >
+    insert into RateHistory (id, normaluser, distributorget, 
+      agentget, user_add, agent, 
+      distributor, creatat)
+    values (#{id,jdbcType=INTEGER}, #{normaluser,jdbcType=VARCHAR}, #{distributorget,jdbcType=DOUBLE}, 
+      #{agentget,jdbcType=DOUBLE}, #{userAdd,jdbcType=DOUBLE}, #{agent,jdbcType=VARCHAR}, 
+      #{distributor,jdbcType=VARCHAR}, #{creatat,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pk10.bean.RateHistory" >
+    insert into RateHistory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="normaluser != null" >
+        normaluser,
+      </if>
+      <if test="distributorget != null" >
+        distributorget,
+      </if>
+      <if test="agentget != null" >
+        agentget,
+      </if>
+      <if test="userAdd != null" >
+        user_add,
+      </if>
+      <if test="agent != null" >
+        agent,
+      </if>
+      <if test="distributor != null" >
+        distributor,
+      </if>
+      <if test="creatat != null" >
+        creatat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="normaluser != null" >
+        #{normaluser,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorget != null" >
+        #{distributorget,jdbcType=DOUBLE},
+      </if>
+      <if test="agentget != null" >
+        #{agentget,jdbcType=DOUBLE},
+      </if>
+      <if test="userAdd != null" >
+        #{userAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="agent != null" >
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="distributor != null" >
+        #{distributor,jdbcType=VARCHAR},
+      </if>
+      <if test="creatat != null" >
+        #{creatat,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pk10.bean.RateHistoryExample" resultType="java.lang.Integer" >
+    select count(*) from RateHistory
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RateHistory
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.normaluser != null" >
+        normaluser = #{record.normaluser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.distributorget != null" >
+        distributorget = #{record.distributorget,jdbcType=DOUBLE},
+      </if>
+      <if test="record.agentget != null" >
+        agentget = #{record.agentget,jdbcType=DOUBLE},
+      </if>
+      <if test="record.userAdd != null" >
+        user_add = #{record.userAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="record.agent != null" >
+        agent = #{record.agent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.distributor != null" >
+        distributor = #{record.distributor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatat != null" >
+        creatat = #{record.creatat,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RateHistory
+    set id = #{record.id,jdbcType=INTEGER},
+      normaluser = #{record.normaluser,jdbcType=VARCHAR},
+      distributorget = #{record.distributorget,jdbcType=DOUBLE},
+      agentget = #{record.agentget,jdbcType=DOUBLE},
+      user_add = #{record.userAdd,jdbcType=DOUBLE},
+      agent = #{record.agent,jdbcType=VARCHAR},
+      distributor = #{record.distributor,jdbcType=VARCHAR},
+      creatat = #{record.creatat,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.RateHistory" >
+    update RateHistory
+    <set >
+      <if test="normaluser != null" >
+        normaluser = #{normaluser,jdbcType=VARCHAR},
+      </if>
+      <if test="distributorget != null" >
+        distributorget = #{distributorget,jdbcType=DOUBLE},
+      </if>
+      <if test="agentget != null" >
+        agentget = #{agentget,jdbcType=DOUBLE},
+      </if>
+      <if test="userAdd != null" >
+        user_add = #{userAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="agent != null" >
+        agent = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="distributor != null" >
+        distributor = #{distributor,jdbcType=VARCHAR},
+      </if>
+      <if test="creatat != null" >
+        creatat = #{creatat,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pk10.bean.RateHistory" >
+    update RateHistory
+    set normaluser = #{normaluser,jdbcType=VARCHAR},
+      distributorget = #{distributorget,jdbcType=DOUBLE},
+      agentget = #{agentget,jdbcType=DOUBLE},
+      user_add = #{userAdd,jdbcType=DOUBLE},
+      agent = #{agent,jdbcType=VARCHAR},
+      distributor = #{distributor,jdbcType=VARCHAR},
+      creatat = #{creatat,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

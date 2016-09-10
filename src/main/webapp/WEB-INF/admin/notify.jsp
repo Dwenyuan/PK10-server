@@ -140,8 +140,6 @@
         <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
         <script type="text/javascript">
         function add() { showmodel();}
         function change(id,title,content) {
@@ -168,7 +166,7 @@
                         $.ajax({
                             type: 'POST',
                             contentType: 'application/json',
-                            url: 'http://localhost:8081/pk10/savaNotice',
+                            url: '${pageContext.request.contextPath}/savaNotice',
                             processData: false,
                             dataType: 'json',
                             data : '{"title":\"'+title_val+'\","content":\"'+content_val+'\"}',
@@ -183,7 +181,7 @@
                         $.ajax({
                             type: 'POST',
                             contentType: 'application/json',
-                            url: 'http://localhost:8081/pk10/updateNotice',
+                            url: '${pageContext.request.contextPath}/updateNotice',
                             processData: false,
                             dataType: 'json',
                             data : '{"id":\"'+id+'\","title":\"'+title_val+'\","content":\"'+content_val+'\"}',
@@ -213,7 +211,7 @@
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/deleteNotice',
+                url: '${pageContext.request.contextPath}/deleteNotice',
                 processData: false,
                 dataType: 'json',
                 data : '{"id":\"'+id+'\"}',

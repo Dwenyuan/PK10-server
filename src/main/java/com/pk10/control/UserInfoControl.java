@@ -45,7 +45,7 @@ public class UserInfoControl {
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
 	 *
-	 * @param userInfo
+	 * @param
 	 * @return
 	 */
 	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
@@ -89,7 +89,7 @@ public class UserInfoControl {
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
 	 *
-	 * @param map
+	 * @param
 	 * @return
 	 */
 	@RequestMapping("getUserCode")
@@ -212,6 +212,26 @@ public class UserInfoControl {
 		}
 	}
 
+
+	@RequestMapping(value = "adminlogin.do", method = RequestMethod.POST)
+	public Object adminlogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
+		UserInfo safeUserinfo;
+		try {
+			safeUserinfo = userInfoService.managerLogin(userInfo);
+			if (safeUserinfo != null) {
+				request.getSession().setAttribute("userinfo", safeUserinfo);
+				return "admin/admin-index";
+			} else {
+				return "redirect:adminlogin.html";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "redirect:adminlogin.html";
+		}
+	}
+
+
+
 	// 获取所有代理商
 	@RequestMapping("getAllAgent")
 	@ResponseBody
@@ -277,6 +297,39 @@ public class UserInfoControl {
 		return agentInfo;
 	}
 
+	@RequestMapping("registerDistributor")
+	@ResponseBody
+	public Object registerDistributor(@RequestBody UserModel userModel) {
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUsername(userModel.getUsername());
+		try {
+			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
+			if (hasExitUser != null) {
+				return false;
+			} else {
+				userInfo.setCreatedAt(new Date());
+				userInfo.setNickname(userModel.getNickname());
+				userInfo.setUsername(userModel.getUsername());
+				userInfo.setPassword(userModel.getPassword());
+				userInfo.setTel(userModel.getTel());
+				userInfo.setRebate(userModel.getRebate());
+				userInfo.setIsagent(userModel.getIsagent());
+				UserInfo m = new UserInfo();
+				m.setUsername(userModel.getAgentId());
+				userInfo.setOwner((userInfoService.getUserInfoByUsername(m).getId()));
+				Integer save = userInfoService.save(userInfo);
+				if (save > 0) {
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+		return userModel;
+	}
+
+
 	// 修改代理商信息
 	@RequestMapping("updateAgentInfo")
 	@ResponseBody
@@ -296,6 +349,11 @@ public class UserInfoControl {
 	@RequestMapping("toAddAgent")
 	public Object toAddAgent(){
 		return "admin/add_agent";
+	}
+
+	@RequestMapping("toAddDistributor")
+	public Object toAddDistributor(){
+		return "admin/add_distributor";
 	}
 
 	@RequestMapping("toAgentList")
@@ -331,5 +389,10 @@ public class UserInfoControl {
 		}
 	}
 
+	@RequestMapping("getUserByUsername")
+	@ResponseBody
+	public UserInfo getUserByUsername(@RequestBody UserInfo userInfo){
+		return userInfoService.getUserUsername(userInfo);
+	}
 
 }
