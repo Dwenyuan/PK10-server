@@ -18,7 +18,7 @@ public class MoneyAddRecordServiceImpl implements MoneyAddRecordService {
     MoneyAddRecordMapper moneyAddRecordMapper;
 
     @Override
-    public MoneyAddRecord getMoneyAddRecordByUserId(int userId) {
+    public List<MoneyAddRecord> getMoneyAddRecordByUserId(int userId) {
         return moneyAddRecordMapper.selectByUserId(userId);
     }
 

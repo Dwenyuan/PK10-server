@@ -10,8 +10,7 @@ import java.util.List;
 public interface UserInfoService extends BaseService<UserInfo> {
 	/**
 	 * 用户兑奖操作
-	 * 
-	 * @param lotteryHistory
+	 *
 	 * @param userInfo
 	 * @return
 	 * @throws Exception
@@ -84,6 +83,11 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	 */
 	public List<UserInfo> getUserForAgent(UserInfo userInfo);
 
+	List<UserInfo> getAgentsById(Integer id);
+
+	List<UserInfo> getAgentsByOwnerId(Integer ownerId);
+
+        List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner);
 
 	public UserInfo getUserUsername(UserInfo userInfo);
 }

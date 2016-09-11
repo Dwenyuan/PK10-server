@@ -78,7 +78,7 @@
 		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
 	</select>
 
-	<select id="getOneById" parameterType="com.pk10.bean.UserInfo"
+	<select id="getOneById" parameterType="int"
 		resultMap="UserInfo">
 		select
 		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
@@ -128,10 +128,30 @@
 	<select id="getUserForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
 		select id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
 	</select>
+	<select id="getAgentsById" resultType="com.pk10.bean.UserInfo" parameterType="integer">
+		SELECT * FROM userinfo
+		WHERE isagent = #{id}
+	</select>
+
+	<select id="getAgentsByOwnerId" resultType="com.pk10.bean.UserInfo" parameterType="integer">
+		SELECT * FROM userinfo
+		WHERE owner = #{ownerId}
+	</select>
+	<select id="getUsersByAgentIdAndOwnerId" resultType="com.pk10.bean.UserInfo">
+		SELECT * FROM userinfo
+		WHERE isagent = #{isagent}
+		<if test="owner != null">
+			AND owner = #{owner}
+		</if>
+		<if test="username != null">
+          and username = #{username}
+        </if>
+	</select>
+
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserInfo">
 		delete from userinfo
-		where username = #{username}
+		where id = #{id}
 	</delete>
 
 </mapper>

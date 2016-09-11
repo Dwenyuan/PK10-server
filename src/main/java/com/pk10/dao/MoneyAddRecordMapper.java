@@ -20,7 +20,7 @@ public interface MoneyAddRecordMapper {
 
     MoneyAddRecord selectByPrimaryKey(Integer id);
 
-    MoneyAddRecord selectByUserId(Integer id);
+    List<MoneyAddRecord> selectByUserId(Integer id);
 
     int updateByExampleSelective(@Param("record") MoneyAddRecord record, @Param("example") MoneyAddRecordExample example);
 

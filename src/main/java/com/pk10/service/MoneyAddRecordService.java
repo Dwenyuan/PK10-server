@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface MoneyAddRecordService {
 
-    public MoneyAddRecord getMoneyAddRecordByUserId(int userId);
+    public List<MoneyAddRecord> getMoneyAddRecordByUserId(int userId);
 
     public int insertMoneyAddRecord(MoneyAddRecord moneyAddRecord);
 

@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSON;
 import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
@@ -189,6 +188,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
+	public List<UserInfo> getAgentsById(Integer id) {
+		return userInfoDao.getAgentsById(id);
+	}
+
+	@Override
+	public List<UserInfo> getAgentsByOwnerId(Integer ownerId) {
+		return userInfoDao.getAgentsByOwnerId(ownerId);
+	}
+
+	@Override
+	public List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner) {
+		return userInfoDao.getUsersByAgentIdAndOwnerId(username, isagent, owner);
+	}
 	public UserInfo getUserUsername(UserInfo userInfo) {
 		return userInfoDao.getUserUsername(userInfo);
 	}
