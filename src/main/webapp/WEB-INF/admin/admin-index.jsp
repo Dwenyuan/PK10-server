@@ -64,8 +64,8 @@
         </li>
         <li><a  class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-table"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
             <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
-            <li><a href="/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
-            <li><a href="/users?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 用户列表</a></li>
+            <li><a href="${pageContext.request.contextPath}/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/users?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 用户列表</a></li>
           </ul>
         </li>
         <li class="admin-parent">
@@ -79,7 +79,7 @@
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">
             <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建分销商</a></li>
-            <li><a href="/junior/users/${sessionScope.userinfo.id} " class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
+            <li><a href="${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id} " class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
             <li><a href="toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
           </ul>
         </li>

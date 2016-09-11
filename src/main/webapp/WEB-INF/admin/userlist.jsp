@@ -147,7 +147,7 @@
                             current:${pn},
                             backFn:function(p){
                                 // 单击回调方法，p是当前页码
-                                location.href = "/users?pn=" + p;
+                                location.href = "${pageContext.request.contextPath}/users?pn=" + p;
                             }
                         });
 
