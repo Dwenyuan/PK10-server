@@ -1,13 +1,11 @@
+package com.pk10.control;
 
-
-<<<<<<< HEAD
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import com.github.pagehelper.PageHelper;
@@ -15,13 +13,6 @@ import com.github.pagehelper.PageInfo;
 import com.pk10.bean.*;
 import com.pk10.service.MoneyAddRecordService;
 import com.pk10.util.Const;
-=======
-import com.alibaba.fastjson.JSON;
-import com.pk10.bean.*;
-import com.pk10.service.BetInitService;
-import com.pk10.service.UserInfoService;
-import com.pk10.util.UserInfoFormWeChat;
->>>>>>> upstream/master
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,16 +22,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
 import com.alibaba.fastjson.JSON;
 import com.pk10.service.BetInitService;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
-=======
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.util.Date;
->>>>>>> upstream/master
+
 
 import static com.pk10.util.Const.ERROR_MSG;
 
@@ -52,7 +38,6 @@ import static com.pk10.util.Const.ERROR_MSG;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("userinfo")
 public class UserInfoControl {
 
     private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
@@ -234,14 +219,23 @@ public class UserInfoControl {
 
         return "admin/userlist";
     }
+
+    @RequestMapping(value = "/junior/users/{owner}", method = RequestMethod.GET)
+    public String getJuniorUsersForAgent(Model model, @PathVariable("owner")Integer owner) {
+        UserInfo ownerUser = new UserInfo();
+        ownerUser.setOwner(owner);
+        List<UserInfo> juniorUsers = userInfoService.getUserForAgent(ownerUser);
+        if (juniorUsers != null && juniorUsers.size() > 0)
+            model.addAttribute("users", juniorUsers);
+        else
+            model.addAttribute(Const.ERROR_MSG, "当前用户无下级用户列表!");
+
+        return "admin/junior-userlist";
+    }
+
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
 	 *
-<<<<<<< HEAD
-=======
-	 * @param
-	 * @return
->>>>>>> upstream/master
 	 */
 	@RequestMapping("getUserCode")
 	@ResponseBody
@@ -378,25 +372,6 @@ public class UserInfoControl {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return "redirect:adminlogin.html";
-		}
-	}
-
-
-
-	// 获取所有代理商
-	@RequestMapping("getAllAgent")
-	@ResponseBody
-	public Object getAllAgent(Model model,Page page) {
-		try {
-			page.setPages(1);
-			AgentInfo agentInfo = new AgentInfo();
-			agentInfo.setIsagent(2);
-			long total = userInfoService.getAllAgent(page,agentInfo).getTotal();
-			page.setRows((int)total);
-			return userInfoService.getAllAgent(page,agentInfo);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
 

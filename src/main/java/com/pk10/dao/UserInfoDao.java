@@ -56,14 +56,11 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
     //查询代理商下所有用户
 	List<UserInfo> getUserForAgent(UserInfo userInfo);
 
-<<<<<<< HEAD
     List<UserInfo> getAgentsById(Integer id);
 
     List<UserInfo> getAgentsByOwnerId(Integer ownerId);
 
     List<UserInfo> getUsersByAgentIdAndOwnerId(@Param("username")String username, @Param("isagent") Integer isagent, @Param("owner") Integer owner);
-=======
 	UserInfo getUserUsername(UserInfo userInfo);
 
->>>>>>> upstream/master
 }

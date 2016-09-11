@@ -44,7 +44,7 @@
     <hr>
 
     <div class="am-g">
-        <form id="search_user" method="get" action="/userinfo/user">
+        <form id="search_user" method="get" action="/user">
 
            <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-2 am-u-end">
                 ${errorMsg}
@@ -58,7 +58,7 @@
         </form>
     </div>
 
-    <form id="add_user" method="post" action="/userinfo/user">
+    <form id="add_user" method="post" action="/user">
         <input type="hidden" name="id" value="${user.id}">
         <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">

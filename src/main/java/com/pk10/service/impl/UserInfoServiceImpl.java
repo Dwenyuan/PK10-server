@@ -200,6 +200,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner) {
 		return userInfoDao.getUsersByAgentIdAndOwnerId(username, isagent, owner);
+	}
 	public UserInfo getUserUsername(UserInfo userInfo) {
 		return userInfoDao.getUserUsername(userInfo);
 	}

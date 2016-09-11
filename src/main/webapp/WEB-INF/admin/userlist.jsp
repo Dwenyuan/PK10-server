@@ -11,7 +11,7 @@
 <!--<![endif]-->
 <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
-<script src="${pageContext.request.contextPath}/jquerypage/jquery.page.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
 
 <html class="no-js">
 
@@ -147,7 +147,7 @@
                             current:${pn},
                             backFn:function(p){
                                 // 单击回调方法，p是当前页码
-                                location.href = "/userinfo/users?pn=" + p;
+                                location.href = "/users?pn=" + p;
                             }
                         });
 
@@ -217,7 +217,7 @@
         <div class="am-modal-dialog">
             <div class="am-modal-hd">编辑用户信息</div>
             <div class="am-modal-bd">
-                <form id="edit_user" method="post" action="/userinfo/user">
+                <form id="edit_user" method="post" action="/user">
                     <input id="ui_id" type="hidden" name="id" value="">
                     <div class="am-g am-margin-top">
                         <div class="am-u-sm-4 am-u-md-2 am-text-right">
@@ -345,7 +345,7 @@
        function delete_c(id) {
            $.ajax({
                type: 'delete',
-                url:  "<%=request.getContextPath()%>/userinfo/user/" + id,
+                url:  "<%=request.getContextPath()%>/user/" + id,
                dataType: 'json',
                success: function (data) {
                    console.log(data);
@@ -365,7 +365,7 @@
            $("#agent").append("<option value='0'>所有代理商</option>");
            $.ajax({
                type: 'get',
-               url: '<%=request.getContextPath()%>/userinfo/isagent/' + 2,
+               url: '<%=request.getContextPath()%>/isagent/' + 2,
                processData: false,
                dataType: 'json',
                success: function(data) {
@@ -390,7 +390,7 @@
            }
            $.ajax({
                type: 'get',
-               url: '<%=request.getContextPath()%>/userinfo/owner/' + id,
+               url: '<%=request.getContextPath()%>/owner/' + id,
                processData: false,
                dataType: 'json',
                success: function(data) {
@@ -418,13 +418,13 @@
            if (isagent == "") {
                alert('请选择代理商');
            } else if (owner == "undefined" && s_name != "") {
-               location.href = '<%=request.getContextPath()%>/userinfo/' + s_name + '/agent/' + isagent + '/owner/null';
+               location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent + '/owner/null';
            } else if (isagent != "" && owner == "undefined") {
                alert('请选择分销商');
            }  else if (isagent != "" && owner != "" && s_name != "") {
-               location.href = '<%=request.getContextPath()%>/userinfo/' + s_name + '/agent/' + isagent + '/owner/' + owner;
+               location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent + '/owner/' + owner;
            } else if (isagent != "" && owner != "" && s_name == "") {
-               location.href = '<%=request.getContextPath()%>/userinfo/null/agent/' + isagent + '/owner/' + owner;
+               location.href = '<%=request.getContextPath()%>/null/agent/' + isagent + '/owner/' + owner;
            }
        }
 
