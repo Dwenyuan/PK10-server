@@ -50,15 +50,20 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
 	//修改代理商
 	Integer updateAgentByPrimaryKeySelective(AgentInfo agentInfo);
     //查询所有代理商
-	List<AgentInfo> getAllAgent();
+	List<AgentInfo> getAllAgent(AgentInfo agentInfo);
     //通过ID查询指定代理商
 	AgentInfo getAgentById(AgentInfo agentInfo);
     //查询代理商下所有用户
 	List<UserInfo> getUserForAgent(UserInfo userInfo);
 
+<<<<<<< HEAD
     List<UserInfo> getAgentsById(Integer id);
 
     List<UserInfo> getAgentsByOwnerId(Integer ownerId);
 
     List<UserInfo> getUsersByAgentIdAndOwnerId(@Param("username")String username, @Param("isagent") Integer isagent, @Param("owner") Integer owner);
+=======
+	UserInfo getUserUsername(UserInfo userInfo);
+
+>>>>>>> upstream/master
 }

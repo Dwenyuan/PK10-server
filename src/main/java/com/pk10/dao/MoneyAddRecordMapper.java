@@ -29,4 +29,6 @@ public interface MoneyAddRecordMapper {
     int updateByPrimaryKeySelective(MoneyAddRecord record);
 
     int updateByPrimaryKey(MoneyAddRecord record);
+
+    List<MoneyAddRecord> selectAll();
 }

@@ -1,6 +1,8 @@
 package com.pk10.service;
 
 import com.pk10.bean.AgentInfo;
+import com.pk10.bean.Datagrid;
+import com.pk10.bean.Page;
 import com.pk10.bean.UserInfo;
 
 import java.util.List;
@@ -51,7 +53,7 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	 * 查询所有代理商
 	 * @return
 	 */
-	public List<AgentInfo> getAllAgent();
+	public Datagrid getAllAgent(Page page,AgentInfo agentInfo);
 
 	/**
 	 * 通过ID查询代理商
@@ -85,5 +87,7 @@ public interface UserInfoService extends BaseService<UserInfo> {
 
 	List<UserInfo> getAgentsByOwnerId(Integer ownerId);
 
-    List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner);
+        List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner);
+
+	public UserInfo getUserUsername(UserInfo userInfo);
 }

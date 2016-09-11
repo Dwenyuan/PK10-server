@@ -1,15 +1,22 @@
 package com.pk10.control;
 
+import com.pk10.bean.Datagrid;
+import com.pk10.bean.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.service.LotteryHistoryService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 下注和获奖相关
@@ -68,5 +75,41 @@ public class BounsAndBets {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+	/**
+	 * 开奖管理
+	 */
+	@RequestMapping("toLotteryHistory")
+
+
+	public Object toLotteryHistory(Model model, Page page){
+		try {
+			if (page.getPages() == 0) {
+				page.setPages(1);
+			    Datagrid datagrid = lotteryHistoryService.getAllInPage(page);
+				model.addAttribute("lhData",datagrid);
+				return "admin/lotteryhistory";
+			}else {
+				Datagrid datagrid = lotteryHistoryService.getAllInPage(page);
+				model.addAttribute("lhData",datagrid);
+				return "admin/lotteryhistory";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+	@RequestMapping("getRecordById")
+	@ResponseBody
+	public Object getRecordById(@RequestBody LotteryHistory lotteryHistory){
+		try {
+				return JSON.toJSONString(lotteryHistoryService.getHistoryById(lotteryHistory));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
 
 }

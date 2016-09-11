@@ -35,7 +35,7 @@
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/getAllGameTypeByGname',
+                url: '${pageContext.request.contextPath}/getAllGameTypeByGname',
                 processData: false,
                 dataType: 'json',
                 data : "{\"gName\":\""+ gameName+"\"}",
@@ -67,7 +67,7 @@
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/getBetinitByTypeAndGName',
+                url: '${pageContext.request.contextPath}/getBetinitByTypeAndGName',
                 processData: false,
                 dataType: 'json',
                 data : '{"gName":\"'+gameName+'\","type":\"'+gameType+'\"}',
@@ -86,12 +86,10 @@
             var gameName = $("#selectGame option:selected").text();
             var gameType = $("#selectType option:selected").text();
             var gameRate = $("#rate").val();
-            alert(gameName +"==" +gameType+"=="+gameRate);
-            alert('{"gName":\"'+gameName+'\","type":\"'+gameType+'\","rate":\"'+gameRate+'\"}');
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/updateGameInitDate',
+                url: '${pageContext.request.contextPath}/updateGameInitDate',
                 processData: false,
                 dataType: 'json',
                 data : '{"gName":\"'+gameName+'\","type":\"'+gameType+'\","rate":\"'+gameRate+'\"}',

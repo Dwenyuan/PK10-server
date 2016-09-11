@@ -68,9 +68,10 @@
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                     <tr>
-                        <th class="table-id">开奖期数</th>
-                        <th class="table-title">开奖时间</th>
-                        <th class="table-type">开奖结果</th>
+                        <th class="table-id">用户名</th>
+                        <th class="table-title">充值时间</th>
+                        <th class="table-type">充值金额</th>
+                        <th class="table-type">充值办理人</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,6 +79,7 @@
                         <tr>
                             <td>${lottery.id}</td>
                             <td><a href="#"><fmt:formatDate value="${lottery.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
+                            <td>${lottery.lotterynums}</td>
                             <td>${lottery.lotterynums}</td>
                         </tr>
                     </c:forEach>
@@ -97,37 +99,7 @@
 
     </div>
     <!-- content end -->
-
-
-    <div class="am-modal am-modal-alert" tabindex="-1" id="recharge">
-        <div class="am-modal-dialog">
-            <div class="am-modal-hd"></div>
-            <div class="am-modal-bd">
-                <table class="am-table am-table-striped am-table-hover table-main">
-                    <thead>
-                    <tr>
-                        <th>用户名</th>
-                        <th>充值时间</th>
-                        <th>充值金额</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td id="td1"></td>
-                        <td id="td2"></td>
-                        <td id="td3"></td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn">确定</span>
-            </div>
-        </div>
-    </div>
-
+    
     <footer class="admin-content-footer">
         <hr>
         <p class="am-padding-left">© 中远方舟 ©版权所有.</p>
@@ -143,10 +115,10 @@
     <!--<![endif]-->
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
-
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.8.3.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
     <script type="text/javascript">
-       function recharge() {
+       function recharge(id) {
             $("#recharge").modal();
        }
 
@@ -185,13 +157,8 @@
                     var createdAt =obj.createdAt;
                     var mydata = FormatDate(createdAt);
                     var lottery = obj.lotterynums;
-                    document.getElementById('td1').innerHTML = "";
-                    document.getElementById('td2').innerHTML = "";
-                    document.getElementById('td3').innerHTML = "";
-                    document.getElementById('td1').innerHTML += id;
-                    document.getElementById('td2').innerHTML += mydata;
-                    document.getElementById('td3').innerHTML += lottery;
-                    recharge();
+                    alert("开奖期数："+id+",开奖时间："+mydata + "，开奖号码："+lottery);
+
 
                 },
                 error: function() {
@@ -201,7 +168,7 @@
 
             function FormatDate (strTime) {
                 var date = new Date(strTime);
-                return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+"/"+date.getHours()+"时"+date.getMinutes()+"分"+date.getMilliseconds()+"秒";
+                return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
             }
             //var lotteryId = Number($("#lotteryId").val());
            // window.location = 'getLotteryById?id='+lotteryId;

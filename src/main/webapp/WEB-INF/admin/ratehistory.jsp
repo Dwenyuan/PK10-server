@@ -56,7 +56,7 @@
         </div>
         <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-4 am-u-end">
             <div class="am-input-group am-input-group-sm">
-                <input id="lotteryId" type="text" class="am-form-field" placeholder="期数">
+                <input id="username" type="text" class="am-form-field" placeholder="充值账号">
                 <span class="am-input-group-btn" >
             <button class="am-btn am-btn-default" type="button" onclick="searchFor()">搜索</button>
           </span>
@@ -68,17 +68,25 @@
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                     <tr>
-                        <th class="table-id">开奖期数</th>
-                        <th class="table-title">开奖时间</th>
-                        <th class="table-type">开奖结果</th>
+                        <th class="table-type">用户名</th>
+                        <th class="table-type">充值时间</th>
+                        <th class="table-type">充值金额</th>
+                        <th class="table-type">分销商</th>
+                        <th class="table-type">分销商返点金额</th>
+                        <th class="table-type">代理商</th>
+                        <th class="table-type">代理商返点金额</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach varStatus="vs" items="${lhData.rows}" var="lottery">
+                    <c:forEach varStatus="vs" items="${rateHistory.rows}" var="rateRecord">
                         <tr>
-                            <td>${lottery.id}</td>
-                            <td><a href="#"><fmt:formatDate value="${lottery.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
-                            <td>${lottery.lotterynums}</td>
+                            <td>${rateRecord.normaluser}</td>
+                            <td><a href="#"><fmt:formatDate value="${rateRecord.creatat}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
+                            <td>${rateRecord.userAdd}</td>
+                            <td>${rateRecord.distributor}</td>
+                            <td>${rateRecord.distributorget}</td>
+                            <td>${rateRecord.agent}</td>
+                            <td>${rateRecord.agentget}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -86,7 +94,7 @@
 
 
             <div class="am-cf">
-                <spen class="total">共${lhData.total}条记录</spen>
+                <spen class="total">共${rateHistory.total}条记录</spen>
                 <div class="am-fr">
                     <div class="tcdPageCode"></div>
                 </div>
@@ -98,7 +106,6 @@
     </div>
     <!-- content end -->
 
-
     <div class="am-modal am-modal-alert" tabindex="-1" id="recharge">
         <div class="am-modal-dialog">
             <div class="am-modal-hd"></div>
@@ -106,19 +113,17 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-                        <th>用户名</th>
-                        <th>充值时间</th>
-                        <th>充值金额</th>
-
+                        <th class="table-type">用户名</th>
+                        <th class="table-type">充值时间</th>
+                        <th class="table-type">充值金额</th>
+                        <th class="table-type">分销商</th>
+                        <th class="table-type">分销商返点</th>
+                        <th class="table-type">代理商</th>
+                        <th class="table-type">代理商返点</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td id="td1"></td>
-                        <td id="td2"></td>
-                        <td id="td3"></td>
+                    <tbody id="tb">
 
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -128,21 +133,22 @@
         </div>
     </div>
 
+
     <footer class="admin-content-footer">
         <hr>
         <p class="am-padding-left">© 中远方舟 ©版权所有.</p>
     </footer>
     <!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/amazeui.ie8polyfill.min.js"></script>
-
-<![endif]-->
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
     <!--[if (gte IE 9)|!(IE)]><!-->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!--<![endif]-->
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+    <
 
     <script src="${pageContext.request.contextPath}/assets/js/jquery.page.js"></script>
     <script type="text/javascript">
@@ -151,7 +157,7 @@
        }
 
        function gotoPage(pages) {
-           window.location = 'toLotteryHistory?pages='+pages;
+           window.location = 'toRateHistory?pages='+pages;
        }
        $(function(){
 
@@ -159,8 +165,8 @@
            // var total = $("#totalPage").val();
            // alert(current +"==" + total);
            $(".tcdPageCode").createPage({
-               pageCount: Number(${lhData.totalPage}),
-               current: Number(${lhData.currentPage}),
+               pageCount: Number(${rateHistory.totalPage}),
+               current: Number(${rateHistory.currentPage}),
                backFn:function(p){
 
                    gotoPage(p);
@@ -171,31 +177,38 @@
 
         function searchFor(){
 
-            var lotteryId =Number($("#lotteryId").val());
+            var normaluser =Number($("#username").val());
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: '${pageContext.request.contextPath}/getRecordById',
+                url: '${pageContext.request.contextPath}/getRateHistoryByUsername',
                 processData: false,
                 dataType: 'json',
-                data : '{"id":\"'+lotteryId+'\"}',
+                data : '{"normaluser":\"'+normaluser+'\"}',
                 success: function(data) {
-                    var obj = eval('('+data+')');
-                    var id = obj.id;
-                    var createdAt =obj.createdAt;
-                    var mydata = FormatDate(createdAt);
-                    var lottery = obj.lotterynums;
-                    document.getElementById('td1').innerHTML = "";
-                    document.getElementById('td2').innerHTML = "";
-                    document.getElementById('td3').innerHTML = "";
-                    document.getElementById('td1').innerHTML += id;
-                    document.getElementById('td2').innerHTML += mydata;
-                    document.getElementById('td3').innerHTML += lottery;
+
+
+                    $("#tb").html("");
+
+                    for(var j=0;j<data.length;j++)
+                    {
+
+                       var tString= "<tr>"+
+                                            "<td>"+(data[j].normaluser)+"</td>" +
+                                            "<td>"+(FormatDate(data[j].creatat))+"</td>" +
+                                            "<td>"+(data[j].userAdd)+"</td>" +
+                                            "<td>"+(data[j].distributor)+"</td>" +
+                                            "<td>"+(data[j].distributorget)+"</td>" +
+                                            "<td>"+(data[j].agent)+"</td>" +
+                                            "<td>"+(data[j].agentget)+"</td>" +
+                                     "</tr>";
+                        $("#tb").append(tString);
+                    }
                     recharge();
 
                 },
                 error: function() {
-                    alert('Err...');
+                    alert('请输入正确用户名');
                 }
             });
 
@@ -206,6 +219,7 @@
             //var lotteryId = Number($("#lotteryId").val());
            // window.location = 'getLotteryById?id='+lotteryId;
         }
+
 
 
     </script>

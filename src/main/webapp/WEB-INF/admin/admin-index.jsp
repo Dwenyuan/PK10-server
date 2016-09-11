@@ -71,21 +71,20 @@
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-pencil-square-o"></span> 代理商管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-            <li><a href="add_agent.jsp" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加代理商</a></li>
-            <li><a href="agentlist.jsp" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
+            <li><a href="toAddAgent" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加代理商</a></li>
+            <li><a href="toAgentList" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
           </ul>
         </li>
          <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">
-            <li><a href="type-add.html" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建分销商</a></li>
+            <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建分销商</a></li>
             <li><a href="type-add.html" class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 用户消费记录</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
+            <li><a href="toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
           </ul>
         </li>
         <li class="admin-parent">
-          <a href="lotteryhistory.jsp" target="subject"><span class="am-icon-pencil-square-o"></span> 开奖管理 </a>
+          <a href="toLotteryHistory" target="subject"><span class="am-icon-pencil-square-o"></span> 开奖管理 </a>
         </li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-pencil-square-o"></span>商城管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
@@ -134,7 +133,7 @@
   <!-- content start -->
   <div class="admin-content" style="overflow-y:hidden;">
 
-    <iframe src="${pageContext.request.contextPath}/admin/index.jsp" name="subject" class="admin-content-body"></iframe>
+    <iframe src="" name="subject" class="admin-content-body"></iframe>
   
    <!-- <div class="admin-content-body">
   <div class="am-cf am-padding">
@@ -255,5 +254,6 @@
 <!--<![endif]-->
 <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+  </div>
 </body>
 </html>

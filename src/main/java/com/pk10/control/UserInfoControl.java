@@ -1,5 +1,6 @@
-package com.pk10.control;
 
+
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +15,13 @@ import com.github.pagehelper.PageInfo;
 import com.pk10.bean.*;
 import com.pk10.service.MoneyAddRecordService;
 import com.pk10.util.Const;
+=======
+import com.alibaba.fastjson.JSON;
+import com.pk10.bean.*;
+import com.pk10.service.BetInitService;
+import com.pk10.service.UserInfoService;
+import com.pk10.util.UserInfoFormWeChat;
+>>>>>>> upstream/master
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +31,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import com.alibaba.fastjson.JSON;
 import com.pk10.service.BetInitService;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
+=======
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Date;
+>>>>>>> upstream/master
 
 import static com.pk10.util.Const.ERROR_MSG;
 
@@ -95,7 +109,11 @@ public class UserInfoControl {
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
 	 *
+<<<<<<< HEAD
 	 * @param request
+=======
+	 * @param
+>>>>>>> upstream/master
 	 * @return
 	 */
 	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
@@ -219,6 +237,11 @@ public class UserInfoControl {
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
 	 *
+<<<<<<< HEAD
+=======
+	 * @param
+	 * @return
+>>>>>>> upstream/master
 	 */
 	@RequestMapping("getUserCode")
 	@ResponseBody
@@ -340,12 +363,37 @@ public class UserInfoControl {
 		}
 	}
 
+
+	@RequestMapping(value = "adminlogin.do", method = RequestMethod.POST)
+	public Object adminlogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
+		UserInfo safeUserinfo;
+		try {
+			safeUserinfo = userInfoService.managerLogin(userInfo);
+			if (safeUserinfo != null) {
+				request.getSession().setAttribute("userinfo", safeUserinfo);
+				return "admin/admin-index";
+			} else {
+				return "redirect:adminlogin.html";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "redirect:adminlogin.html";
+		}
+	}
+
+
+
 	// 获取所有代理商
 	@RequestMapping("getAllAgent")
 	@ResponseBody
-	public Object getAllAgent() {
+	public Object getAllAgent(Model model,Page page) {
 		try {
-			return userInfoService.getAllAgent();
+			page.setPages(1);
+			AgentInfo agentInfo = new AgentInfo();
+			agentInfo.setIsagent(2);
+			long total = userInfoService.getAllAgent(page,agentInfo).getTotal();
+			page.setRows((int)total);
+			return userInfoService.getAllAgent(page,agentInfo);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -387,7 +435,6 @@ public class UserInfoControl {
 				return false;
 			} else {
 				agentInfo.setCreatedAt(new Date());
-				agentInfo.setMoney(tokenConfig.getMoney());
 				Integer save = userInfoService.savaAgent(agentInfo);
 				if (save > 0) {
 					return true;
@@ -400,10 +447,43 @@ public class UserInfoControl {
 		return agentInfo;
 	}
 
-	// 修改代理商信息
-	@RequestMapping(value = "updateagentinfo", method = RequestMethod.POST)
+	@RequestMapping("registerDistributor")
 	@ResponseBody
-	public Object updateUserInfo(@RequestBody AgentInfo agentInfo, HttpServletRequest request) {
+	public Object registerDistributor(@RequestBody UserModel userModel) {
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUsername(userModel.getUsername());
+		try {
+			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
+			if (hasExitUser != null) {
+				return false;
+			} else {
+				userInfo.setCreatedAt(new Date());
+				userInfo.setNickname(userModel.getNickname());
+				userInfo.setUsername(userModel.getUsername());
+				userInfo.setPassword(userModel.getPassword());
+				userInfo.setTel(userModel.getTel());
+				userInfo.setRebate(userModel.getRebate());
+				userInfo.setIsagent(userModel.getIsagent());
+				UserInfo m = new UserInfo();
+				m.setUsername(userModel.getAgentId());
+				userInfo.setOwner((userInfoService.getUserInfoByUsername(m).getId()));
+				Integer save = userInfoService.save(userInfo);
+				if (save > 0) {
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+		return userModel;
+	}
+
+
+	// 修改代理商信息
+	@RequestMapping("updateAgentInfo")
+	@ResponseBody
+	public Object updateAgentInfo(@RequestBody AgentInfo agentInfo, HttpServletRequest request) {
 		try {
 			Integer update = userInfoService.updateAgent(agentInfo);
 			if (update > 0) {
@@ -415,4 +495,54 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+	@RequestMapping("toAddAgent")
+	public Object toAddAgent(){
+		return "admin/add_agent";
+	}
+
+	@RequestMapping("toAddDistributor")
+	public Object toAddDistributor(){
+		return "admin/add_distributor";
+	}
+
+	@RequestMapping("toAgentList")
+	public Object toAgentList(Model model, Page page){
+
+		try {
+			if (page.getPages() == 0) {
+				page.setPages(1);
+				AgentInfo agentInfo = new AgentInfo();
+				agentInfo.setIsagent(2);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
+				model.addAttribute("agentDatagrid",agentDatagrid);
+				return "admin/agentlist";
+			}else {
+				AgentInfo agentInfo = new AgentInfo();
+				agentInfo.setIsagent(2);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
+				model.addAttribute("agentDatagrid",agentDatagrid);
+				return "admin/agentlist";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+	@RequestMapping("deleteAgent")
+	@ResponseBody
+	public Object deleteAgent(@RequestBody UserInfo userInfo){
+		try {
+			return userInfoService.deleteOneById(userInfo);
+		} catch (Exception e) {
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+	@RequestMapping("getUserByUsername")
+	@ResponseBody
+	public UserInfo getUserByUsername(@RequestBody UserInfo userInfo){
+		return userInfoService.getUserUsername(userInfo);
+	}
+
 }

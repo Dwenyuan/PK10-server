@@ -91,6 +91,12 @@
 		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
 		u where u.tel = #{tel}
 	</select>
+	<select id="getUserUsername" parameterType="com.pk10.bean.UserInfo"
+			resultMap="UserInfo">
+		select
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		u where u.username = #{username}
+	</select>
 	<select id="login" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
@@ -111,8 +117,8 @@
 		select id from userinfo u where u.username = #{username}
 	</select>
 
-	<select id="getAllAgent" resultMap="AgentInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.isagent != 0
+	<select id="getAllAgent" resultMap="AgentInfo" parameterType="com.pk10.bean.AgentInfo">
+		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.isagent = #{isagent,jdbcType=INTEGER}
 	</select>
 
 	<select id="getAgentById" parameterType="com.pk10.bean.AgentInfo" resultMap="AgentInfo">

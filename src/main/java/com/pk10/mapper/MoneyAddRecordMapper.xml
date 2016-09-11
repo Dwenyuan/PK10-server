@@ -8,6 +8,7 @@
     <result column="add_money" property="addMoney" jdbcType="DOUBLE" />
     <result column="add_agent_name" property="addAgentName" jdbcType="VARCHAR" />
     <result column="add_agent_id" property="addAgentId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, add_time, add_money, add_agent_name, add_agent_id
+    id, user_id, add_time, add_money, add_agent_name, add_agent_id,user_name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pk10.bean.MoneyAddRecordExample" >
     select
@@ -99,6 +100,12 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from money_add_record
+  </select>
+
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
@@ -118,10 +125,10 @@
   </delete>
   <insert id="insert" parameterType="com.pk10.bean.MoneyAddRecord" >
     insert into money_add_record (id, user_id, add_time, 
-      add_money, add_agent_name, add_agent_id
+      add_money, add_agent_name, add_agent_id,user_name
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
-      #{addMoney,jdbcType=DOUBLE}, #{addAgentName,jdbcType=VARCHAR}, #{addAgentId,jdbcType=INTEGER}
+      #{addMoney,jdbcType=DOUBLE}, #{addAgentName,jdbcType=VARCHAR}, #{addAgentId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pk10.bean.MoneyAddRecord" >
@@ -206,7 +213,8 @@
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       add_money = #{record.addMoney,jdbcType=DOUBLE},
       add_agent_name = #{record.addAgentName,jdbcType=VARCHAR},
-      add_agent_id = #{record.addAgentId,jdbcType=INTEGER}
+      add_agent_id = #{record.addAgentId,jdbcType=INTEGER},
+      user_name = #{record.userName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -238,7 +246,8 @@
       add_time = #{addTime,jdbcType=TIMESTAMP},
       add_money = #{addMoney,jdbcType=DOUBLE},
       add_agent_name = #{addAgentName,jdbcType=VARCHAR},
-      add_agent_id = #{addAgentId,jdbcType=INTEGER}
+      add_agent_id = #{addAgentId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
