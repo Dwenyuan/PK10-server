@@ -45,7 +45,7 @@ public class LoginFilter implements Filter {
 			res.sendRedirect("index.jsp");
 		} else if ("/adminlogin.html".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
-			res.sendRedirect("toAdminHome");
+			//res.sendRedirect("toAdminHome");
 		} else if ("/managerlogin.html".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("manager.html");
