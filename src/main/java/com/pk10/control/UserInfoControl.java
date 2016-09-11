@@ -2,30 +2,33 @@ package com.pk10.control;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.pk10.bean.*;
+import com.pk10.service.MoneyAddRecordService;
+import com.pk10.util.Const;
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
-import com.pk10.bean.AgentInfo;
-import com.pk10.bean.BetInit;
-import com.pk10.bean.TokenConfig;
-import com.pk10.bean.UserInfo;
 import com.pk10.service.BetInitService;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
+
+import static com.pk10.util.Const.ERROR_MSG;
 
 /**
  * 获取用户信息
@@ -35,12 +38,16 @@ import com.pk10.util.UserInfoFormWeChat;
  */
 @Controller
 @Scope("prototype")
+@RequestMapping("userinfo")
 public class UserInfoControl {
 
-	private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
 
-	@Autowired
+    @Autowired
 	private UserInfoService userInfoService;
+
+    @Autowired
+    MoneyAddRecordService moneyAddRecordService;
 
 	@Autowired
 	private UserInfoFormWeChat userInfoFormWeChat;
@@ -51,10 +58,44 @@ public class UserInfoControl {
 	@Autowired
 	private BetInitService betInitService;
 
+    @RequestMapping("/money-manager")
+    public String moneyManager() {
+        return "admin/money";
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String getUserInfoById(@RequestParam("id")int id, Model model) throws Exception {
+        UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
+        if (userInfo.getUsername() == null) {
+            model.addAttribute(ERROR_MSG, "未找到指定的用户信息!");
+        } else {
+            model.addAttribute("user", userInfo);
+        }
+        return "admin/money";
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public String updateUserInfo(@RequestParam("id")int id,
+                                 @RequestParam(value = "charge_money", required = false)Double chargeMoney,
+								 @ModelAttribute UserInfo user) throws Exception {
+        UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
+		if (chargeMoney != null) {
+			double money = userInfo.getMoney() + chargeMoney;
+			userInfo.setMoney(money);
+		}
+
+		userInfo.setUsername(user.getUsername());
+        userInfo.setPassword(user.getPassword());
+        userInfo.setTel(user.getTel());
+        userInfo.setIsagent(user.getIsagent());
+        userInfoService.update(user);
+        return "redirect:users";
+    }
+
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
 	 *
-	 * @param userInfo
+	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
@@ -67,6 +108,42 @@ public class UserInfoControl {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
+	}
+
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public String getUserInfoList(Model model, @RequestParam(value = "pn", required = false)Integer pn) {
+		try {
+		    if (pn == null || pn <= 0)
+		        pn = 1;
+
+            PageHelper.startPage(pn, 10);
+			List<UserInfo> users =  userInfoService.getAll();
+            if (users == null) {
+                model.addAttribute(ERROR_MSG, "用户列表为空!");
+            } else {
+                PageInfo page = new PageInfo(users);
+                if (page.getPageNum() > 0) {
+                    model.addAttribute("users", users);
+                    model.addAttribute("page", page);
+                    model.addAttribute("pn", pn);
+                }
+
+                // 充值记录
+               /* for (int i = 0; i < users.size(); i++) {
+                    List<MoneyAddRecord> records = moneyAddRecordService.getMoneyAddRecordByUserId(users.get(i).getId());
+                    if (records != null)
+                        model.addAttribute("records", records);
+                    else
+                        model.addAttribute(ERROR_MSG, "该用户没有充值记录!");
+                }*/
+            }
+
+		} catch (Exception e) {
+		    model.addAttribute(ERROR_MSG, e.getMessage());
+			logger.error(e.getMessage());
+		}
+
+		return "admin/userlist";
 	}
 
 	@RequestMapping(value = "updateuserinfo", method = RequestMethod.POST)
@@ -84,22 +161,64 @@ public class UserInfoControl {
 		}
 	}
 
-	@RequestMapping("getUserInfoList")
-	@ResponseBody
-	public Object getUserInfoList() {
-		try {
-			return userInfoService.getAll();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return JSON.parse("{errmsg:" + e.getMessage() + "}");
-		}
-	}
 
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+	public Map deleteUser(@PathVariable("id")Integer id) throws Exception {
+        Map map = new HashMap();
+	    Integer affect = userInfoService.deleteOneById(new UserInfo(id));
+        if (affect != null)
+            map.put(Const.SUCCESS_MSG, "删除成功!");
+        else
+            map.put(Const.ERROR_MSG, "删除失败!");
+
+        return map;
+    }
+
+    @RequestMapping(value = "/isagent/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map getAgents(@PathVariable("id")Integer id) throws Exception {
+        Map map = new HashMap();
+
+        List<UserInfo> agents = userInfoService.getAgentsById(id);
+        if (agents != null && agents.size() > 0)
+            map.put("agents", agents);
+        else
+            map.put(Const.ERROR_MSG, "获取失败!");
+
+        return map;
+    }
+
+    @RequestMapping(value = "/owner/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Map getAgentsByOwnerId(@PathVariable("id")Integer id) throws Exception {
+        Map map = new HashMap();
+
+        List<UserInfo> ownersOfAgents = userInfoService.getAgentsByOwnerId(id);
+        if (ownersOfAgents != null && ownersOfAgents.size() > 0)
+            map.put("ownersOfAgents", ownersOfAgents);
+        else
+            map.put(Const.ERROR_MSG, "获取失败!");
+
+        return map;
+    }
+
+    @RequestMapping(value = "/{username}/agent/{isagent}/owner/{owner}", method = RequestMethod.GET)
+    public String getUsersByAgentIdAndOwnerId(Model model, @PathVariable("username")String username,
+                                           @PathVariable("isagent")Integer isagent,
+                                           @PathVariable("owner")Integer owner) throws Exception {
+
+        List<UserInfo> users = userInfoService.getUsersByAgentIdAndOwnerId(username, isagent, owner);
+        if (users != null && users.size() > 0)
+            model.addAttribute("users", users);
+        else
+            model.addAttribute(Const.ERROR_MSG, "获取失败,没有对应用户名!");
+
+        return "admin/userlist";
+    }
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
 	 *
-	 * @param map
-	 * @return
 	 */
 	@RequestMapping("getUserCode")
 	@ResponseBody
@@ -204,7 +323,7 @@ public class UserInfoControl {
 		}
 	}
 
-	@RequestMapping(value = "managerlogin.do", method = RequestMethod.POST)
+	@RequestMapping(value = "managerlogin", method = RequestMethod.POST)
 	public Object managerLogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
 		UserInfo safeUserinfo;
 		try {
@@ -244,8 +363,8 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-	// 获取代理商名下所有用户
 
+	// 获取代理商名下所有用户
 	@RequestMapping(value = "getUserForAgent", method = RequestMethod.POST)
 	@ResponseBody
 	public Object getUserForAgent(@RequestBody UserInfo userInfo) {
@@ -257,7 +376,6 @@ public class UserInfoControl {
 	}
 
 	// 注册代理商
-
 	@RequestMapping("registerAgent")
 	@ResponseBody
 	public Object registerAgent(@RequestBody AgentInfo agentInfo) {

@@ -14,6 +14,10 @@
 		<result column="state" property="state" />
 	</resultMap>
 
+	<select id="getBetsByUserId" parameterType="int" resultMap="UserBet">
+		SELECT * FROM userbet WHERE userid = # {userid}
+	</select>
+	
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
 		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
 		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid})
@@ -39,7 +43,7 @@
 		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{id}
 	</select>
 
-	<select id="getOneByIdnum">
+	<select id="getOneByIdnum" resultType="com.pk10.bean.UserBet">
 		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{idnum}
 	</select>
 

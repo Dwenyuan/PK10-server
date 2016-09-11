@@ -36,7 +36,7 @@ public class MoneyAddRecord {
     }
 
     public void setAddTime(Date addTime) {
-        this.addTime = addTime;
+       this.addTime = addTime;
     }
 
     public Double getAddMoney() {

@@ -6,6 +6,7 @@ import com.pk10.service.MoneyAddRecordService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by ron on 16-9-5.
@@ -17,7 +18,7 @@ public class MoneyAddRecordServiceImpl implements MoneyAddRecordService {
     MoneyAddRecordMapper moneyAddRecordMapper;
 
     @Override
-    public MoneyAddRecord getMoneyAddRecordByUserId(int userId) {
+    public List<MoneyAddRecord> getMoneyAddRecordByUserId(int userId) {
         return moneyAddRecordMapper.selectByUserId(userId);
     }
 

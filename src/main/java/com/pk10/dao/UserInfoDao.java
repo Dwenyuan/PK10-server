@@ -3,6 +3,7 @@ package com.pk10.dao;
 import com.pk10.bean.AgentInfo;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.bean.UserInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -54,4 +55,10 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
 	AgentInfo getAgentById(AgentInfo agentInfo);
     //查询代理商下所有用户
 	List<UserInfo> getUserForAgent(UserInfo userInfo);
+
+    List<UserInfo> getAgentsById(Integer id);
+
+    List<UserInfo> getAgentsByOwnerId(Integer ownerId);
+
+    List<UserInfo> getUsersByAgentIdAndOwnerId(@Param("username")String username, @Param("isagent") Integer isagent, @Param("owner") Integer owner);
 }
