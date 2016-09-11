@@ -91,7 +91,7 @@
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
                                     <ul class="am-dropdown-content">
                                         <li><a href="#" onclick="change(${agent.id},'${agent.username}','${agent.nickname}','${agent.password}','${agent.tel}','${agent.rebate}')">1. 编辑</a></li>
-                                        <li><a href="#" onclick="deleteAgent('${agent.username}')">2. 删除</a></li>
+                                        <li><a href="#" onclick="deleteAgent('${agent.id}')">2. 删除</a></li>
                                     </ul>
                                 </div>
                             </td>
