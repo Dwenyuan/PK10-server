@@ -9,6 +9,8 @@ import com.pk10.bean.UserInfo;
 
 public interface UserBetDao extends BaseDao<UserBet> {
 
+	List<UserBet> getBetsByUserId(int userid);
+
 	List<UserBet> getUserBetByOpenid(UserInfo userInfo);
 
 	Integer saveList(List<UserBet> userBets);

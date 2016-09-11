@@ -65,6 +65,15 @@
 		<!--configLocation属性指定mybatis的核心配置文件 -->
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:com/pk10/mapper/*.xml" />
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+						<value> dialect=mysql</value>
+					</property>
+				</bean>
+			</array>
+		</property>
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />

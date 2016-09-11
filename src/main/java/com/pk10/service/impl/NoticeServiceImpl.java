@@ -2,6 +2,10 @@ package com.pk10.service.impl;
 
 import java.util.List;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.pk10.bean.Datagrid;
+import com.pk10.bean.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +32,21 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
+	public Datagrid getAllInPage(Page page) throws Exception {
+		PageHelper.startPage(page.getPages(),10);
+		List<Notice> notices = noticeDao.getAll();
+		PageInfo pageInfo = new PageInfo(notices);
+		Datagrid datagrid = new Datagrid();
+		datagrid.setRows(notices);
+		datagrid.setTotal(pageInfo.getTotal());
+		datagrid.setTotalPage(pageInfo.getPages());
+		datagrid.setCurrentPage(page.getPages());
+		return datagrid;
+	}
+
+	@Override
 	public List<Notice> getAll() throws Exception {
-		return noticeDao.getAll();
+		return null;
 	}
 
 	@Override
@@ -47,4 +64,8 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.getLastNotice();
 	}
 
+	@Override
+	public int updateByPrimaryKey(Notice notice) {
+		return noticeDao.updateByPrimaryKeySelective(notice);
+	}
 }

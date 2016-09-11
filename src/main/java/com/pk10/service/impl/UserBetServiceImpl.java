@@ -62,6 +62,11 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
 	@Override
+	public List<UserBet> getBetsByUserId(int id) {
+		return userBetDao.getBetsByUserId(id);
+	}
+
+	@Override
 	public List<UserBet> getUserBetByOpenid(UserInfo userInfo) throws Exception {
 		return userBetDao.getUserBetByOpenid(userInfo);
 	}

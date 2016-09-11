@@ -22,6 +22,12 @@ public interface BetInitMapper {
 
     List<BetInit> selectAll();
 
+    List<BetInit> selectAllGameName();
+
+    List<BetInit> selectAllTypeByGName(String gName);
+
+    BetInit selectByGnameAndGtype(BetInit betInit);
+
     BetInit selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") BetInit record, @Param("example") BetInitExample example);

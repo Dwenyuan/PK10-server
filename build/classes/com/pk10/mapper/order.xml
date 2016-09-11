@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.OrdersDao">
+	<resultMap type="com.pk10.bean.Orders" id="Orders">
+		<result column="id" property="id" />
+		<result column="user" property="user" />
+		<result column="price" property="price" />
+		<result column="status" property="status" />
+		<result column="createdAt" property="createdAt" />
+		<result column="userinfo_openid" property="userinfoOpenid" />
+		<collection property="goods" ofType="com.pk10.bean.Goods" resultMap="com.pk10.dao.GoodsDao.Goods">
+		</collection>
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.Orders">
+		insert into orders(user,price,status,createdAt,userinfo_openid)
+		values(#{user},#{price},#{status},#{createdAt},#{userinfoOpenid})
+		<selectKey resultType="int" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() as id
+		</selectKey>
+	</insert>
+
+	<!-- 订单只能创建和删除 不能更新 -->
+	<select id="update" resultType="int">
+		select 0
+	</select>
+
+	<select id="getAll" resultMap="Orders">
+		select id,user,price,status,createdAt,userinfo_openid from orders
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.Orders" resultMap="Orders">
+		<!-- select id,user,price,status,createdAt,userinfo_openid from orders o where o.id = #{id} -->
+		select * from orders_has_goods ohg left join orders o on ohg.order_id = o.id and o.id = #{id} left join goods g on ohg.goods_id = g.id
+	</select>
+
+	<delete id="deleteOneById" parameterType="com.pk10.bean.Orders">
+		delete from orders where id = #{id}
+	</delete>
+
+	<select id="getListByOpenId" parameterType="com.pk10.bean.UserInfo" resultMap="Orders">
+		select * from orders_has_goods ohg left join orders o on ohg.order_id = o.id and o.userinfo_openid = #{openid}
+		left join goods g on ohg.goods_id = g.id
+	</select>
+</mapper>

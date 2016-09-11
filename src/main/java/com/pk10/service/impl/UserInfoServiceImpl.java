@@ -2,13 +2,14 @@ package com.pk10.service.impl;
 
 import java.util.List;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pk10.bean.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSON;
 import com.pk10.dao.LotteryHistoryDao;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
@@ -149,8 +150,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public List<AgentInfo> getAllAgent() {
-		return userInfoDao.getAllAgent();
+	public Datagrid getAllAgent(Page page,AgentInfo agentInfo) {
+		PageHelper.startPage(page.getPages(),10);
+		List<AgentInfo> agentInfos = userInfoDao.getAllAgent(agentInfo);
+		PageInfo pageInfo = new PageInfo(agentInfos);
+		Datagrid datagrid = new Datagrid();
+		datagrid.setRows(agentInfos);
+		datagrid.setTotal(pageInfo.getTotal());
+		datagrid.setTotalPage(pageInfo.getPages());
+		datagrid.setCurrentPage(page.getPages());
+		return datagrid;
 	}
 
 	@Override
@@ -160,7 +169,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public Integer updateAgent(AgentInfo agentInfo) {
-		return userInfoDao.updateAgentByPrimaryKeySelective(agentInfo);
+		AgentInfo myAgentInfo = userInfoDao.getAgentById(agentInfo);
+		myAgentInfo.setNickname(agentInfo.getNickname());
+		myAgentInfo.setPassword(agentInfo.getPassword());
+		myAgentInfo.setTel(agentInfo.getTel());
+		myAgentInfo.setRebate(agentInfo.getRebate());
+		return userInfoDao.updateAgentByPrimaryKeySelective(myAgentInfo);
 	}
 
 	@Override
@@ -171,5 +185,23 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public List<UserInfo> getUserForAgent(UserInfo userInfo) {
 		return userInfoDao.getUserForAgent(userInfo);
+	}
+
+	@Override
+	public List<UserInfo> getAgentsById(Integer id) {
+		return userInfoDao.getAgentsById(id);
+	}
+
+	@Override
+	public List<UserInfo> getAgentsByOwnerId(Integer ownerId) {
+		return userInfoDao.getAgentsByOwnerId(ownerId);
+	}
+
+	@Override
+	public List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner) {
+		return userInfoDao.getUsersByAgentIdAndOwnerId(username, isagent, owner);
+	}
+	public UserInfo getUserUsername(UserInfo userInfo) {
+		return userInfoDao.getUserUsername(userInfo);
 	}
 }

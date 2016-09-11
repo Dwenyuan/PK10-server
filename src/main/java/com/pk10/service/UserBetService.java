@@ -7,6 +7,8 @@ import com.pk10.bean.UserInfo;
 
 public interface UserBetService extends BaseService<UserBet> {
 
+	List<UserBet> getBetsByUserId(int id);
+
 	List<UserBet> getUserBetByOpenid(UserInfo userInfo) throws Exception;
 
 	Integer saveList(List<UserBet> userBets) throws Exception;
