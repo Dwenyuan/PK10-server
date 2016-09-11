@@ -365,7 +365,11 @@ public class UserInfoControl {
 			safeUserinfo = userInfoService.managerLogin(userInfo);
 			if (safeUserinfo != null) {
 				request.getSession().setAttribute("userinfo", safeUserinfo);
-				return "admin/admin-index";
+				if(safeUserinfo.getIsagent() == 3){
+					return "admin/admin-index";
+				}else{
+					return "admin/admin-agent";
+				}
 			} else {
 				return "redirect:adminlogin.html";
 			}
