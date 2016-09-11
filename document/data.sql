@@ -26,3 +26,5 @@ INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`user
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (54,NULL,NULL,0,NULL,'1233333','0.704399168677977','123456',0,NULL,36);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (55,NULL,NULL,0,NULL,'1233333','0.29336508457559163','123456',0,NULL,36);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (56,NULL,NULL,0,NULL,'1233333','0.7956173064940457','123456',0,NULL,36);
+
+select * from pk10.userinfo;
