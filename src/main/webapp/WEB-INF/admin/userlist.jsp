@@ -56,18 +56,18 @@
     <div class="am-g">
         <div class="am-u-sm-12 am-u-md-2">
             <div class="am-form-group">
-                <select data-am-selected="{btnSize: 'sm'}" id="agent" onchange="agentclick()">
+                <select data-am-selected="{btnSize: 'sm'}" id="agent">
                     <option value="option1">所有代理商</option>
                 </select>
             </div>
         </div>
-        <div class="am-u-sm-12 am-u-md-2 am-u-md-offset-1" >
+  <%--      <div class="am-u-sm-12 am-u-md-2 am-u-md-offset-1" >
             <div class="am-form-group">
                 <select data-am-selected="{btnSize: 'sm'}" id="nextagent">
                     <option value="option1">所有分销商</option>
                 </select>
             </div>
-        </div>
+        </div>--%>
         <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
             <div class="am-input-group am-input-group-sm">
                 <input type="text" class="am-form-field" id="search_username">
@@ -412,20 +412,18 @@
        function search_user() {
 
            var isagent = $("#agent_id").val();
-           var owner = $("#nextagent_id").val();
            var s_name = $("#search_username").val();
-           console.log("agent:" + isagent + "\towner:" + owner + "\ts_name:" + s_name);
+           // console.log("agent:" + isagent + "\ts_name:" + s_name);
+           // var owner = $("#nextagent_id").val();
            if (isagent == "") {
                alert('请选择代理商');
-           } else if (owner == "undefined" && s_name != "") {
-               location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent + '/owner/null';
-           } else if (isagent != "" && owner == "undefined") {
-               alert('请选择分销商');
-           }  else if (isagent != "" && owner != "" && s_name != "") {
-               location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent + '/owner/' + owner;
-           } else if (isagent != "" && owner != "" && s_name == "") {
-               location.href = '<%=request.getContextPath()%>/null/agent/' + isagent + '/owner/' + owner;
+           } else if (s_name == "") {
+               location.href = '<%=request.getContextPath()%>/null/agent/' + isagent;
+           } else {
+               location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent;
            }
+
+
        }
 
     </script>

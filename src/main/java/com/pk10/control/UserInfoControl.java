@@ -206,12 +206,11 @@ public class UserInfoControl {
         return map;
     }
 
-    @RequestMapping(value = "/{username}/agent/{isagent}/owner/{owner}", method = RequestMethod.GET)
-    public String getUsersByAgentIdAndOwnerId(Model model, @PathVariable("username")String username,
-                                           @PathVariable("isagent")Integer isagent,
-                                           @PathVariable("owner")Integer owner) throws Exception {
+    @RequestMapping(value = "/{username}/agent/{isagent}", method = RequestMethod.GET)
+    public String getUsersByAgentId(Model model, @PathVariable("username")String username,
+                                           @PathVariable("isagent")Integer isagent) throws Exception {
 
-        List<UserInfo> users = userInfoService.getUsersByAgentIdAndOwnerId(username, isagent, owner);
+        List<UserInfo> users = userInfoService.getUsersByAgentId(username, isagent);
         if (users != null && users.size() > 0)
             model.addAttribute("users", users);
         else

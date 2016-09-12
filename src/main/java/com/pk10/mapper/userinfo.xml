@@ -137,14 +137,11 @@
 		SELECT * FROM userinfo
 		WHERE owner = #{ownerId}
 	</select>
-	<select id="getUsersByAgentIdAndOwnerId" resultType="com.pk10.bean.UserInfo">
+	<select id="getUsersByAgentId" resultType="com.pk10.bean.UserInfo">
 		SELECT * FROM userinfo
 		WHERE isagent = #{isagent}
-		<if test="owner != null">
-			AND owner = #{owner}
-		</if>
 		<if test="username != null">
-          and username = #{username}
+          and username like concat('%', #{username}, '%')
         </if>
 	</select>
 
