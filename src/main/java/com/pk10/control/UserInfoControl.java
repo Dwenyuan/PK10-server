@@ -81,13 +81,16 @@ public class UserInfoControl {
 		if (chargeMoney != null) {
 			double money = userInfo.getMoney() + chargeMoney;
 			userInfo.setMoney(money);
-		}
+            userInfoService.update(userInfo);
+        } else {
 
-		userInfo.setUsername(user.getUsername());
-        userInfo.setPassword(user.getPassword());
-        userInfo.setTel(user.getTel());
-        userInfo.setIsagent(user.getIsagent());
-        userInfoService.update(user);
+            userInfo.setUsername(user.getUsername());
+            userInfo.setPassword(user.getPassword());
+            userInfo.setTel(user.getTel());
+            userInfo.setIsagent(user.getIsagent());
+            userInfoService.update(user);
+        }
+
         return "redirect:users";
     }
 
@@ -130,15 +133,6 @@ public class UserInfoControl {
                     model.addAttribute("page", page);
                     model.addAttribute("pn", pn);
                 }
-
-                // 充值记录
-               /* for (int i = 0; i < users.size(); i++) {
-                    List<MoneyAddRecord> records = moneyAddRecordService.getMoneyAddRecordByUserId(users.get(i).getId());
-                    if (records != null)
-                        model.addAttribute("records", records);
-                    else
-                        model.addAttribute(ERROR_MSG, "该用户没有充值记录!");
-                }*/
             }
 
 		} catch (Exception e) {

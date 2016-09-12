@@ -15,7 +15,7 @@
 	</resultMap>
 
 	<select id="getBetsByUserId" parameterType="int" resultMap="UserBet">
-		SELECT * FROM userbet WHERE userid = #{userid}
+		SELECT * FROM userbet WHERE userid = #{userid}  order by createdAt desc
 	</select>
 	
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
@@ -36,7 +36,7 @@
 	</update>
 
 	<select id="getAll" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet order by createdAt desc
 	</select>
 
 	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
@@ -49,8 +49,7 @@
 
 	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
 		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
-		ub.userid =
-		#{id}
+		ub.userid = #{id} order by createdAt
 	</select>
 	<!-- 获取指定用户未兑奖的订单 -->
 	<select id="getUnCashPrize" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
