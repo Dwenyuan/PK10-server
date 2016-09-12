@@ -71,10 +71,10 @@
                 <%--<th class="table-check">
                     <input type="checkbox" />
                 </th>--%>
-                <th class="table-id">代理商ID</th>
-                <th class="table-title">代理商用户名</th>
-                <th class="table-type">充值金额</th>
-                <th class="table-date am-hide-sm-only">充值时间</th>
+                <th>充值用户</th>
+                <th>代理商用户名</th>
+                <th>充值金额</th>
+                <th>充值时间</th>
             </tr>
             </thead>
             <tbody id="users">
@@ -88,7 +88,7 @@
                 <c:otherwise>
                     <c:forEach items="${records}" var="record" varStatus="vs">
                         <tr>
-                            <td>${record.addAgentId}</td>
+                            <td>${record.userName}</td>
                             <td>${record.addAgentName}</td>
                             <td class="am-hide-sm-only">${record.addMoney}</td>
                             <td class="am-hide-sm-only">
