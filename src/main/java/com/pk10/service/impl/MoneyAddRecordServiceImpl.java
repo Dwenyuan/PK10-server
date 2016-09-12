@@ -31,4 +31,9 @@ public class MoneyAddRecordServiceImpl implements MoneyAddRecordService {
     public List<MoneyAddRecord> getAll() {
         return moneyAddRecordMapper.selectAll();
     }
+
+    @Override
+    public void save(MoneyAddRecord moneyAddRecord) {
+        moneyAddRecordMapper.insert(moneyAddRecord);
+    }
 }

@@ -166,8 +166,8 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                         <tr>
-                            <th>代理商ID</th>
-                            <th>代理商用户名</th>
+                            <th>用户名</th>
+                            <th>充值人用户名</th>
                             <th>充值金额</th>
                             <th>充值时间</th>
                         </tr>
@@ -282,7 +282,7 @@
                    var html = "";
                    $.each(jsonData.records, function (idx, item) {
                        html += '<tr>'
-                       html += '<td>' + item.addAgentId + '</td>'
+                       html += '<td>' + item.userName + '</td>'
                        html += '<td>' + item.addAgentName + '</td>'
                        html += '<td>' + item.addMoney + '</td>'
                        html += '<td>' + item.addTime + '</td>'

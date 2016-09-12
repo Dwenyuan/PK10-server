@@ -1,10 +1,8 @@
 package com.pk10.control;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -74,7 +72,8 @@ public class UserInfoControl {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public String updateUserInfo(@RequestParam("id")int id,
+    public String updateUserInfo(HttpServletRequest request,
+                                 @RequestParam("id")int id,
                                  @RequestParam(value = "charge_money", required = false)Double chargeMoney,
 								 @ModelAttribute UserInfo user) throws Exception {
         UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
@@ -82,6 +81,16 @@ public class UserInfoControl {
 			double money = userInfo.getMoney() + chargeMoney;
 			userInfo.setMoney(money);
             userInfoService.update(userInfo);
+			// 添加充值记录
+			UserInfo sessionUser = (UserInfo) request.getSession().getAttribute("userinfo");
+			MoneyAddRecord moneyAddRecord = new MoneyAddRecord();
+            moneyAddRecord.setUserId(userInfo.getId());
+			moneyAddRecord.setUserName(userInfo.getUsername());
+			moneyAddRecord.setAddMoney(chargeMoney);
+			moneyAddRecord.setAddAgentName(sessionUser.getUsername());
+            moneyAddRecord.setAddAgentId(sessionUser.getId());
+            moneyAddRecord.setAddTime(new Date());
+			moneyAddRecordService.save(moneyAddRecord);
         } else {
 
             userInfo.setUsername(user.getUsername());

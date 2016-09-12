@@ -14,4 +14,6 @@ public interface MoneyAddRecordService {
     public int insertMoneyAddRecord(MoneyAddRecord moneyAddRecord);
 
     public List<MoneyAddRecord> getAll();
+
+    void save(MoneyAddRecord moneyAddRecord);
 }
