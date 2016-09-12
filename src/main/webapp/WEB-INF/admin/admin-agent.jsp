@@ -52,6 +52,12 @@
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
 
+        <li><a  class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 充值管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
+            <li><a href="${pageContext.request.contextPath}/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
+          </ul>
+        </li>
+
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">

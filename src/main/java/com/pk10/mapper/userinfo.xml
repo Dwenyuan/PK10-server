@@ -80,7 +80,7 @@
 
 	<select id="getAll" resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo WHERE isagent = 0
 	</select>
 
 	<select id="getOneById" parameterType="int"
@@ -119,7 +119,7 @@
 	</select>
 	<select id="getUserInfoByUsername" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
-		select id from userinfo u where u.username = #{username}
+		select * from userinfo u where u.username = #{username}
 	</select>
 
 	<select id="getAllAgent" resultMap="AgentInfo" parameterType="com.pk10.bean.AgentInfo">

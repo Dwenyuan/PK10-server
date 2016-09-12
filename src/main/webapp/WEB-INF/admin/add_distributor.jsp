@@ -82,7 +82,7 @@
 <form>
     <div class="am-g am-margin-top">
         <div  class="am-u-sm-4 am-u-md-2 am-text-right">
-            代理商ID
+            上级ID
         </div>
         <div class="am-u-sm-8 am-u-md-4 am-u-end">
             <input id="agentId" type="text" name="id" >

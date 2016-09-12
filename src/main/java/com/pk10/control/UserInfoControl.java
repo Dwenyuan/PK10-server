@@ -63,8 +63,10 @@ public class UserInfoControl {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String getUserInfoById(@RequestParam("id")int id, Model model) throws Exception {
-        UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
+    public String getUserInfoById(@RequestParam("username")String username, Model model) throws Exception {
+    	UserInfo muserInfo = new UserInfo();
+		muserInfo.setUsername(username);
+        UserInfo userInfo = userInfoService.getUserInfoByUsername(muserInfo);
         if (userInfo.getUsername() == null) {
             model.addAttribute(ERROR_MSG, "未找到指定的用户信息!");
         } else {
