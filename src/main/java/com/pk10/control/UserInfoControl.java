@@ -379,6 +379,18 @@ public class UserInfoControl {
 		}
 	}
 
+	@RequestMapping("adminloginout")
+	public Object adminloginout(HttpServletRequest request) {
+		UserInfo safeUserinfo;
+		try {
+			request.getSession().removeAttribute("userinfo");
+			return "redirect:adminlogin.html";
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return "redirect:adminlogin.html";
+		}
+	}
+
 	// 通过ID获取代理商
 	@RequestMapping("getAgentById")
 	@ResponseBody
@@ -442,10 +454,15 @@ public class UserInfoControl {
 				userInfo.setPassword(userModel.getPassword());
 				userInfo.setTel(userModel.getTel());
 				userInfo.setRebate(userModel.getRebate());
+				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
 				UserInfo m = new UserInfo();
-				m.setUsername(userModel.getAgentId());
-				userInfo.setOwner((userInfoService.getUserInfoByUsername(m).getId()));
+				if(userModel.getAgentId() == ""||userModel.getAgentId() == null){
+					userInfo.setOwner(0);
+				}else{
+					m.setUsername(userModel.getAgentId());
+					userInfo.setOwner((userInfoService.getUserInfoByUsername(m).getId()));
+				}
 				Integer save = userInfoService.save(userInfo);
 				if (save > 0) {
 					return true;
@@ -479,9 +496,10 @@ public class UserInfoControl {
 	public Object toAddAgent(){
 		return "admin/add_agent";
 	}
-
+    //增加普通用户
 	@RequestMapping("toAddDistributor")
-	public Object toAddDistributor(){
+	public Object toAddDistributor(Model model,HttpServletRequest request){
+		model.addAttribute("userinfo",request.getSession().getAttribute("userinfo"));
 		return "admin/add_distributor";
 	}
 
@@ -508,6 +526,32 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
+
+	@RequestMapping("toSuperList")
+	public Object toSuperList(Model model, Page page){
+
+		try {
+			if (page.getPages() == 0) {
+				page.setPages(1);
+				AgentInfo agentInfo = new AgentInfo();
+				agentInfo.setIsagent(3);
+				Datagrid superDatagrid = userInfoService.getAllAgent(page,agentInfo);
+				model.addAttribute("superDatagrid",superDatagrid);
+				return "admin/superuserlist";
+			}else {
+				AgentInfo agentInfo = new AgentInfo();
+				agentInfo.setIsagent(3);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
+				model.addAttribute("superDatagrid",agentDatagrid);
+				return "admin/superuserlist";
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+
 	@RequestMapping("deleteAgent")
 	@ResponseBody
 	public Object deleteAgent(@RequestBody UserInfo userInfo){

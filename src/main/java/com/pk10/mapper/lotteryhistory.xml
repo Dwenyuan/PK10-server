@@ -29,7 +29,7 @@
 		select id,createdAt,lotterynums from lotteryhistory order by id desc limit #{param};
 	</select>
 	<select id="getAll" resultMap="LotteryHistory">
-		select id,createdAt,lotterynums from lotteryhistory
+		select id,createdAt,lotterynums from lotteryhistory order by createdAt desc
 	</select>
 	<delete id="deleteOneById" parameterType="com.pk10.bean.LotteryHistory">
 		delete from lotteryhistory where id = #{id}

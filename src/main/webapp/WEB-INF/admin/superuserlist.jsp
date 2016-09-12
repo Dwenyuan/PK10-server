@@ -49,17 +49,9 @@
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理/用户列表</strong> </div>
     </div>
     <hr>
-    <div class="am-g">
-        <div class="am-u-sm-12 ">
-            
-        </div>
-        <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-4 am-u-end">
-            <div class="am-input-group am-input-group-sm">
-                <input type="text" class="am-form-field" id="agentUsername">
-                <span class="am-input-group-btn">
-            <button class="am-btn am-btn-default" type="button" onclick="searchFor()">搜索</button>
-          </span>
-            </div>
+    <div class="am-g am-margin-top">
+        <div class=" am-u-sm-6 am-u-md-4">
+            <button type="button" onclick="add()" class="am-btn am-btn-primary am-btn-xs">新增超级用户</button>
         </div>
     </div>
     <div class="am-g">
@@ -78,7 +70,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach varStatus="vs" items="${agentDatagrid.rows}" var="agent">
+                    <c:forEach varStatus="vs" items="${superDatagrid.rows}" var="agent">
                         <tr>
                             <td>${vs.index+1}</td>
                             <td>${agent.username}</td>
@@ -111,7 +103,7 @@
                         </div>
                         <div class="am-u-sm-8 am-u-md-8 am-u-end">
                             <input type="hidden" id="id">
-                            <input type="text" readOnly="true" class="am-input-sm" id="username">
+                            <input type="text"   class="am-input-sm" id="username">
                         </div>
                     </div>
                     <div class="am-g am-margin-top">
@@ -154,7 +146,7 @@
             </div>
         </div>
         <div class="am-cf">
-            <spen class="total">共${agentDatagrid.total}条记录</spen>
+            <spen class="total">共${superDatagrid.total}条记录</spen>
             <div class="am-fr">
                 <div class="tcdPageCode"></div>
             </div>
@@ -214,6 +206,7 @@
        function recharge(id) {
             $("#recharge").modal();
        }
+       function add() { showmodel();}
        function change(id,username,nickname,password,tel,detail) {
 
 
@@ -237,13 +230,34 @@
                    var password = $("#password").val();
                    var tel = $("#tel").val();
                    var detail = $("#detail").val();
+                   var isagent = 3;
                    $("#id").val("");
                    $("#username").val("");
                    $("#nickname").val("");
                    $("#password").val("");
                    $("#tel").val("");
                    $("#detail").val("");
+                   if(id == "" || id == undefined || id == null){
+                       $.ajax({
+                           type: 'POST',
+                           contentType: 'application/json',
+                           url: '${pageContext.request.contextPath}/registerDistributor',
+                           processData: false,
+                           dataType: 'json',
+                           data : '{"username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","detail":\"'+detail+'\","isagent":\"'+isagent+'\"}',
+                           success: function(data) {
+                               if(data){
+                                   window.location = 'toSuperList?pages='+${superDatagrid.totalPage};
+                               }else{
+                                   alert("用户名存在");
+                               }
 
+                           },
+                           error: function() {
+                               alert('Err...');
+                           }
+                       });
+                   }else{
                        $.ajax({
                            type: 'POST',
                            contentType: 'application/json',
@@ -252,12 +266,13 @@
                            dataType: 'json',
                            data : '{"id":\"'+id+'\","username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","detail":\"'+detail+'\"}',
                            success: function(data) {
-                               window.location = 'toAgentList?pages='+${agentDatagrid.currentPage};
+                               window.location = 'toSuperList?pages='+${superDatagrid.currentPage};
                            },
                            error: function() {
                                alert('Err...');
                            }
                        });
+                   }
                },
                // closeOnConfirm: false,
                onCancel: function() {
@@ -285,7 +300,7 @@
                dataType: 'json',
                data : '{"id":\"'+id+'\"}',
                success: function(data) {
-                   window.location = 'toAgentList?pages='+${agentDatagrid.currentPage};
+                   window.location = 'toSuperList?pages='+${superDatagrid.currentPage};
                },
                error: function() {
                    alert('Err...');
@@ -299,8 +314,8 @@
            // var total = $("#totalPage").val();
            // alert(current +"==" + total);
            $(".tcdPageCode").createPage({
-               pageCount: Number(${agentDatagrid.totalPage}),
-               current: Number(${agentDatagrid.currentPage}),
+               pageCount: Number(${superDatagrid.totalPage}),
+               current: Number(${superDatagrid.currentPage}),
                backFn:function(p){
 
                    gotoPage(p);

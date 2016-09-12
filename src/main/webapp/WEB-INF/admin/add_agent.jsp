@@ -32,15 +32,21 @@
             var nickname = $("#nickname").val();
             var password = $("#password").val();
             var tel = $("#tel").val();
-            var rebate = $("#rebate").val();
+            var detail = $("#detail").val();
             var isagent = $("#isagent").val();
+            $("#username").val("");
+            $("#nickname").val("");
+            $("#password").val("");
+            $("#tel").val("");
+            $("#detail").val("");
+            $("#isagent").val("");
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
                 url: '${pageContext.request.contextPath}/registerAgent',
                 processData: false,
                 dataType: 'json',
-                data : '{"username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","rebate":\"'+rebate+'\","isagent":\"'+isagent+'\"}',
+                data : '{"username":\"'+username+'\","nickname":\"'+nickname+'\","password":\"'+password+'\","tel":\"'+tel+'\","detail":\"'+detail+'\","isagent":\"'+isagent+'\"}',
                 success: function(data) {
                     if(data){
                         alert("添加成功");
@@ -97,10 +103,10 @@
         </div>
     <div class="am-g am-margin-top">
           <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                返点
+                备注
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-               <input id="rebate" type="text" name="rebate" >
+               <input id="detail" type="text" name="detail" >
                <input type="hidden" id="isagent" value="2">
           </div>
     </div>

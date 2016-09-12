@@ -13,6 +13,7 @@
 		<result column="owner" property="owner" />
 		<result column="openid" property="openid" />
 		<result column="nickname" property="nickname" />
+		<result column="detail" property="detail" />
 	</resultMap>
 
 	<resultMap type="com.pk10.bean.AgentInfo" id="AgentInfo">
@@ -24,26 +25,27 @@
 		<result column="createdAt" property="createdAt" />
 		<result column="isagent" property="isagent" />
 		<result column="rebate" property="rebate" />
+		<result column="detail" property="detail" />
 	</resultMap>
 
 
 	<insert id="save" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
 		insert into
-		userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate},#{owner})
+		userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate},#{owner},#{detail})
 	</insert>
 
 	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
-		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate})
+		insert into userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate,detail)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate},#{detail})
 	</insert>
 
 
 	<update id="update" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
 		update userinfo u set u.money = #{money},u.nickname
-		=#{nickname},username=#{username},password=#{password},tel=#{tel},isagent=#{isagent},rebate=#{rebate},owner=#{owner}
+		=#{nickname},username=#{username},password=#{password},tel=#{tel},isagent=#{isagent},rebate=#{rebate},owner=#{owner},detail=#{detail}
 		where u.id = #{id}
 	</update>
 
@@ -68,6 +70,9 @@
 			<if test="rebate != null" >
 				rebate = #{rebate,jdbcType=DOUBLE},
 			</if>
+			<if test="detail != null" >
+				detail = #{detail,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
@@ -75,39 +80,39 @@
 
 	<select id="getAll" resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
 	</select>
 
 	<select id="getOneById" parameterType="int"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
 		u where u.id = #{id}
 	</select>
 
 	<select id="getUserInfoByTel" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
 		u where u.tel = #{tel}
 	</select>
 	<select id="getUserUsername" parameterType="com.pk10.bean.UserInfo"
 			resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
 		u where u.username = #{username}
 	</select>
 	<select id="login" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
 		u where u.username = #{username} and
 		u.password = #{password}
 	</select>
 	<select id="managerLogin" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo
 		u where u.username = #{username} and
 		u.password = #{password} and
 		u.isagent != 0
@@ -118,15 +123,15 @@
 	</select>
 
 	<select id="getAllAgent" resultMap="AgentInfo" parameterType="com.pk10.bean.AgentInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.isagent = #{isagent,jdbcType=INTEGER}
+		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent,detail from userinfo u WHERE  u.isagent = #{isagent,jdbcType=INTEGER}
 	</select>
 
 	<select id="getAgentById" parameterType="com.pk10.bean.AgentInfo" resultMap="AgentInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
+		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent,detail from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
 	</select>
 
 	<select id="getUserForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
+		select id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
 	</select>
 	<select id="getAgentsById" resultType="com.pk10.bean.UserInfo" parameterType="integer">
 		SELECT * FROM userinfo

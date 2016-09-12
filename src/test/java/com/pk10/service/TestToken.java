@@ -73,8 +73,8 @@ public class TestToken {
 		BetInit betInit = new BetInit();
 		betInit.setId(21);
 		betInit.setgName("猜字游戏");
-		betInit.setInitMoney(10000);
-		betInit.setRate(9);
+		betInit.setInitMoney(10000D);
+		betInit.setRate(9D);
 		betInit.setType("数字");
 		Integer betInitByName = betInitService.saveBetInit(betInit);
 		System.out.println(betInitByName);

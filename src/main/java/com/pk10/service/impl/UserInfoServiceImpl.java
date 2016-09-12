@@ -174,6 +174,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		myAgentInfo.setPassword(agentInfo.getPassword());
 		myAgentInfo.setTel(agentInfo.getTel());
 		myAgentInfo.setRebate(agentInfo.getRebate());
+		myAgentInfo.setDetail(agentInfo.getDetail());
 		return userInfoDao.updateAgentByPrimaryKeySelective(myAgentInfo);
 	}
 
