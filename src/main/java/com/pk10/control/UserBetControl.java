@@ -4,16 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.pk10.bean.MoneyAddRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserBetService;
+
+import static com.pk10.util.Const.ERROR_MSG;
 
 @Controller
 @RequestMapping("userbet")
@@ -75,4 +81,31 @@ public class UserBetControl {
 		map.put("userbets", userBets);
 		return JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss");
 	}
+
+    @RequestMapping(value = "/bets", method = RequestMethod.GET)
+    public String getBetList(Model model, @RequestParam(value = "pn", required = false)Integer pn) {
+        try {
+            if (pn == null || pn <= 0)
+                pn = 1;
+
+            PageHelper.startPage(pn, 10);
+            List<UserBet> bets =  userBetService.getAll();
+            if (bets == null) {
+                model.addAttribute(ERROR_MSG, "投注列表为空!");
+            } else {
+                PageInfo page = new PageInfo(bets);
+                if (page.getPageNum() > 0) {
+                    model.addAttribute("bets", bets);
+                    model.addAttribute("page", page);
+                    model.addAttribute("pn", pn);
+                }
+            }
+
+        } catch (Exception e) {
+            model.addAttribute(ERROR_MSG, e.getMessage());
+            logger.error(e.getMessage());
+        }
+
+        return "admin/bet-list";
+    }
 }
