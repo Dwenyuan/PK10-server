@@ -141,7 +141,7 @@
 		SELECT * FROM userinfo
 		WHERE isagent = #{isagent}
 		<if test="username != null">
-          and username like cancat('%', #{username}, '%')
+          and username like concat('%', #{username}, '%')
         </if>
 	</select>
 
