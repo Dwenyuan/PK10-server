@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.OrdersHasGoodsDao">
+	<resultMap type="com.pk10.bean.OrdersHasGoods" id="OrdersHasGoods">
+		<result column="order_id" property="orderId" />
+		<result column="goods_id" property="goodsId" />
+	</resultMap>
+
+<!-- 	<insert id="save" parameterType="com.pk10.bean.OrdersHasGoods">
+		insert into orders_has_goods(order_id,order_id)
+		values(#{orderId},#{goodsId})
+	</insert> -->
+
+	<insert id="save" parameterType="com.pk10.bean.Orders">
+		insert into orders_has_goods(order_id,goods_id) values
+		<foreach collection="goods" separator="," item="good">
+			(#{id},#{good.id})
+		</foreach>
+	</insert>
+
+	<select id="update" parameterType="com.pk10.bean.OrdersHasGoods">
+		select 0
+	</select>
+
+	<select id="getAll" resultMap="OrdersHasGoods">
+		select order_id,goods_id from orders_has_goods
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.OrdersHasGoods" resultMap="OrdersHasGoods">
+		select order_id,goods_id from orders_has_goods ohg where ohg.order_id = #{orderId}
+	</select>
+
+	<delete id="deleteOneById" parameterType="com.pk10.bean.OrdersHasGoods">
+		delete from orders_has_goods ohg where ohg.order_id = #{orderId}
+	</delete>
+</mapper>

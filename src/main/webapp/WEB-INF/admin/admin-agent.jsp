@@ -54,11 +54,11 @@
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
 
-         <li class="admin-parent">
+        <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">
             <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建分销商</a></li>
-            <li><a href="type-add.html" class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
+            <li><a href="${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id} " class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
             <li><a href="toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
           </ul>
         </li>

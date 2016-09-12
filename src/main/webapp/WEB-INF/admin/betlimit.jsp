@@ -86,8 +86,7 @@
             var gameName = $("#selectGame option:selected").text();
             var gameType = $("#selectType option:selected").text();
             var moneyLimit = $("#limit").val();
-            alert(gameName +"==" +gameType+"=="+moneyLimit);
-            alert('{"gName":\"'+gameName+'\","type":\"'+gameType+'\","moneyLimit":\"'+moneyLimit+'\"}');
+
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',

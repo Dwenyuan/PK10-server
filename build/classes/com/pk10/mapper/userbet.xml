@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.UserBetDao">
+	<resultMap type="com.pk10.bean.UserBet" id="UserBet">
+		<result column="id" property="id" />
+		<result column="idnum" property="idnum" />
+		<result column="type" property="type" />
+		<result column="betmoney" property="betmoney" />
+		<result column="odds" property="odds" />
+		<result column="mulit" property="mulit" />
+		<result column="betnum" property="betnum" />
+		<result column="createdAt" property="createdAt" />
+		<result column="userid" property="userid" />
+		<result column="state" property="state" />
+	</resultMap>
+
+	<select id="getBetsByUserId" parameterType="int" resultMap="UserBet">
+		SELECT * FROM userbet WHERE userid = # {userid}
+	</select>
+	
+	<insert id="save" parameterType="com.pk10.bean.UserBet">
+		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid})
+	</insert>
+
+	<insert id="saveList" parameterType="list">
+		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		values
+		<foreach collection="list" item="item" separator=",">
+			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid})
+		</foreach>
+	</insert>
+
+	<update id="update" parameterType="com.pk10.bean.UserBet">
+		update userbet set state = 1 where id = #{id}
+	</update>
+
+	<select id="getAll" resultMap="UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{id}
+	</select>
+
+	<select id="getOneByIdnum" resultType="com.pk10.bean.UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{idnum}
+	</select>
+
+	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
+		ub.userid =
+		#{id}
+	</select>
+	<!-- 获取指定用户未兑奖的订单 -->
+	<select id="getUnCashPrize" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
+		ub.userid =
+		#{id} and
+		ub.state = 0
+	</select>
+	<select id="getRecentlyBets" resultMap="UserBet">
+		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state
+		from userbet order by idnum desc
+		limit
+		<choose>
+			<when test="limit">#{limit}</when>
+			<otherwise>100</otherwise>
+		</choose>
+	</select>
+
+	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
+		delete from userbet where id = #{id}
+	</delete>
+</mapper>
