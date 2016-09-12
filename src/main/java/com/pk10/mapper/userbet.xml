@@ -15,7 +15,7 @@
 	</resultMap>
 
 	<select id="getBetsByUserId" parameterType="int" resultMap="UserBet">
-		SELECT * FROM userbet WHERE userid = # {userid}
+		SELECT * FROM userbet WHERE userid = #{userid}
 	</select>
 	
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
