@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html class="no-js">
 
@@ -73,7 +74,7 @@
                             <td>${vs.index+1}</td>
                             <td>${notice.title}</td>
                             <td><a href="#">${notice.content}</a></td>
-                            <td><span class="am-lg ">${notice.createdAt}</span></td>
+                            <td>${notice.createdAt}<fmt:formatDate value="${agent.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
                                 <div class="am-dropdown" data-am-dropdown>
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>

@@ -37,7 +37,7 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|userlogin\\.html|managerlogin\\.html|\\/build\\/.|\\/assets\\/.*+");
+		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|\\/build\\/.|\\/assets\\/.*+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
 		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。

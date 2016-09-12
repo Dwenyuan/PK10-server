@@ -7,11 +7,11 @@ public class BetInit {
 
     private String type;
 
-    private Integer rate;
+    private Double rate;
 
-    private Integer moneyLimit;
+    private Double moneyLimit;
 
-    private Integer initMoney;
+    private Double initMoney;
 
     public BetInit() {
 		super();
@@ -41,32 +41,32 @@ public class BetInit {
         this.type = type;
     }
 
-    public Integer getRate() {
-        return rate;
-    }
-
-    public void setRate(Integer rate) {
-        this.rate = rate;
-    }
-
-    public Integer getMoneyLimit() {
-        return moneyLimit;
-    }
-
-    public void setMoneyLimit(Integer moneyLimit) {
-        this.moneyLimit = moneyLimit;
-    }
-
-    public Integer getInitMoney() {
-        return initMoney;
-    }
-
     public BetInit(String gName) {
 		super();
 		this.gName = gName;
 	}
 
-	public void setInitMoney(Integer initMoney) {
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public Double getMoneyLimit() {
+        return moneyLimit;
+    }
+
+    public void setMoneyLimit(Double moneyLimit) {
+        this.moneyLimit = moneyLimit;
+    }
+
+    public Double getInitMoney() {
+        return initMoney;
+    }
+
+    public void setInitMoney(Double initMoney) {
         this.initMoney = initMoney;
     }
 }

@@ -21,8 +21,10 @@ public class AdminHomeControl {
         if (userInfo != null) {
             if(userInfo.getIsagent() == 3){
                 return "admin/admin-index";
-            }else{
+            }else if(userInfo.getIsagent() != 0){
                 return "admin/admin-agent";
+            }else {
+                return "redirect:userlogin.html";
             }
         } else {
             return "redirect:adminlogin.html";

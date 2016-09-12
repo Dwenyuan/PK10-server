@@ -38,9 +38,7 @@
           <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
-          <li><a href="info.html" target="subject"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="info.html" target="subject"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+          <li><a href="${pageContext.request.contextPath}/adminloginout"><span class="am-icon-power-off"></span> 退出</a></li>
         </ul>
       </li>
       <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
@@ -54,16 +52,22 @@
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
 
+        <li><a  class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 充值管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
+            <li><a href="${pageContext.request.contextPath}/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
+          </ul>
+        </li>
+
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">
-            <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建分销商</a></li>
+            <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建普通会员</a></li>
             <li><a href="${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id} " class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
             <li><a href="toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
           </ul>
         </li>
 
-        <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+        <li><a href="${pageContext.request.contextPath}/adminloginout"><span class="am-icon-sign-out"></span> 注销</a></li>
       </ul>
 
       <div class="am-panel am-panel-default admin-sidebar-panel">

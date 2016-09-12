@@ -5,9 +5,9 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="g_name" property="gName" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
-    <result column="rate" property="rate" jdbcType="INTEGER" />
-    <result column="money_limit" property="moneyLimit" jdbcType="INTEGER" />
-    <result column="init_money" property="initMoney" jdbcType="INTEGER" />
+    <result column="rate" property="rate" jdbcType="DOUBLE" />
+    <result column="money_limit" property="moneyLimit" jdbcType="DOUBLE" />
+    <result column="init_money" property="initMoney" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -145,7 +145,7 @@
       rate, money_limit, init_money
       )
     values (#{id,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{rate,jdbcType=INTEGER}, #{moneyLimit,jdbcType=INTEGER}, #{initMoney,jdbcType=INTEGER}
+      #{rate,jdbcType=DOUBLE}, #{moneyLimit,jdbcType=DOUBLE}, #{initMoney,jdbcType=DOUBLE}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pk10.bean.BetInit" >
@@ -181,13 +181,13 @@
         #{type,jdbcType=VARCHAR},
       </if>
       <if test="rate != null" >
-        #{rate,jdbcType=INTEGER},
+        #{rate,jdbcType=DOUBLE},
       </if>
       <if test="moneyLimit != null" >
-        #{moneyLimit,jdbcType=INTEGER},
+        #{moneyLimit,jdbcType=DOUBLE},
       </if>
       <if test="initMoney != null" >
-        #{initMoney,jdbcType=INTEGER},
+        #{initMoney,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -210,13 +210,13 @@
         type = #{record.type,jdbcType=VARCHAR},
       </if>
       <if test="record.rate != null" >
-        rate = #{record.rate,jdbcType=INTEGER},
+        rate = #{record.rate,jdbcType=DOUBLE},
       </if>
       <if test="record.moneyLimit != null" >
-        money_limit = #{record.moneyLimit,jdbcType=INTEGER},
+        money_limit = #{record.moneyLimit,jdbcType=DOUBLE},
       </if>
       <if test="record.initMoney != null" >
-        init_money = #{record.initMoney,jdbcType=INTEGER},
+        init_money = #{record.initMoney,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -228,9 +228,9 @@
     set id = #{record.id,jdbcType=INTEGER},
       g_name = #{record.gName,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
-      rate = #{record.rate,jdbcType=INTEGER},
-      money_limit = #{record.moneyLimit,jdbcType=INTEGER},
-      init_money = #{record.initMoney,jdbcType=INTEGER}
+      rate = #{record.rate,jdbcType=DOUBLE},
+      money_limit = #{record.moneyLimit,jdbcType=DOUBLE},
+      init_money = #{record.initMoney,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -245,13 +245,13 @@
         type = #{type,jdbcType=VARCHAR},
       </if>
       <if test="rate != null" >
-        rate = #{rate,jdbcType=INTEGER},
+        rate = #{rate,jdbcType=DOUBLE},
       </if>
       <if test="moneyLimit != null" >
-        money_limit = #{moneyLimit,jdbcType=INTEGER},
+        money_limit = #{moneyLimit,jdbcType=DOUBLE},
       </if>
       <if test="initMoney != null" >
-        init_money = #{initMoney,jdbcType=INTEGER},
+        init_money = #{initMoney,jdbcType=DOUBLE},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -260,9 +260,9 @@
     update betInit
     set g_name = #{gName,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
-      rate = #{rate,jdbcType=INTEGER},
-      money_limit = #{moneyLimit,jdbcType=INTEGER},
-      init_money = #{initMoney,jdbcType=INTEGER}
+      rate = #{rate,jdbcType=DOUBLE},
+      money_limit = #{moneyLimit,jdbcType=DOUBLE},
+      init_money = #{initMoney,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

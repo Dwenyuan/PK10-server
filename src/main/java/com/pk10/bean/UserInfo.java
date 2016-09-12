@@ -26,6 +26,15 @@ public class UserInfo {
     Integer isagent;  // 用户等级 0-普通用户 1-二级代理商 2-一级代理商 3-超级管理员
     Double rebate; // 返点
     Integer owner;// 本用户属于哪个代理商
+    String detail;// 备注
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 
     public Integer getId() {
         return id;

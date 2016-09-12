@@ -19,6 +19,15 @@ public class UserModel {
     Double rebate; //返点
     Integer owner;// 本用户数据哪个代理商
     String agentId;
+    String detail;
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
 
     public Integer getId() {
         return id;

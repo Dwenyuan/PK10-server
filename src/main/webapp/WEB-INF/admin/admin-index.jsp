@@ -38,9 +38,7 @@
           <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
-          <li><a href="info.html" target="subject"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="info.html" target="subject"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+          <li><a href="${pageContext.request.contextPath}/adminloginout"><span class="am-icon-power-off"></span> 退出</a></li>
         </ul>
       </li>
       <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
@@ -53,36 +51,41 @@
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
-        <li><a href="/toAdminHome"><span class="am-icon-home"></span> 首页</a></li>
+
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 系统设置 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav">
-            <li><a href="toRate" class="am-cf" target="subject"><span class="am-icon-check"></span> 倍率设置</a></li>
-            <li><a href="toNotice" target="subject"><span class="am-icon-puzzle-piece"></span> 通知设置</a></li>
-            <li><a href="toLimit" target="subject"><span class="am-icon-puzzle-piece"></span> 投注限制设置</a></li>
+            <li><a href="${pageContext.request.contextPath}/toRate" class="am-cf" target="subject"><span class="am-icon-check"></span> 倍率设置</a></li>
+            <li><a href="${pageContext.request.contextPath}/toNotice" target="subject"><span class="am-icon-puzzle-piece"></span> 通知设置</a></li>
+            <li><a href="${pageContext.request.contextPath}/toLimit" target="subject"><span class="am-icon-puzzle-piece"></span> 投注限制设置</a></li>
+          </ul>
+        </li>
+        <li><a  class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 充值管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav1">
+            <li><a href="${pageContext.request.contextPath}/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/money-add-record/list?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 充值记录</a></li>
           </ul>
         </li>
         <li><a  class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-table"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
             <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
-            <li><a href="${pageContext.request.contextPath}/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
             <li><a href="${pageContext.request.contextPath}/users?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 用户列表</a></li>
             <li><a href="${pageContext.request.contextPath}/userbet/bets?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 投注记录</a></li>
-            <li><a href="${pageContext.request.contextPath}/money-add-record/list?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 充值记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/toSuperList" target="subject"><span class="am-icon-puzzle-piece"></span>超级管理员</a></li>
           </ul>
         </li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-pencil-square-o"></span> 代理商管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav3">
-            <li><a href="toAddAgent" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加代理商</a></li>
-            <li><a href="toAgentList" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
+            <li><a href="${pageContext.request.contextPath}/toAddAgent" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加代理商</a></li>
+            <li><a href="${pageContext.request.contextPath}/toAgentList" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
           </ul>
         </li>
          <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">
-            <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建分销商</a></li>
+            <li><a href="${pageContext.request.contextPath}/toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建用户</a></li>
             <li><a href="${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id} " class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
-            <li><a href="toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
+            <!--li><a href="${pageContext.request.contextPath}/toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li-->
           </ul>
         </li>
         <li class="admin-parent">
@@ -91,25 +94,25 @@
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-pencil-square-o"></span>商城管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav5">
-            <li><a href="type-add.html" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加商品</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 商品信息</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 交易支付</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 订单管理</a></li>
+            <li><a href="#" class="am-cf" target="subject"><span class="am-icon-check"></span> 增加商品</a></li>
+            <li><a href="#" target="subject"><span class="am-icon-puzzle-piece"></span> 商品信息</a></li>
+            <li><a href="#" target="subject"><span class="am-icon-puzzle-piece"></span> 交易支付</a></li>
+            <li><a href="#" target="subject"><span class="am-icon-puzzle-piece"></span> 订单管理</a></li>
           </ul>
         </li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav6'}"><span class="am-icon-pencil-square-o"></span>宝箱系统 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav6">
-            <li><a href="type-add.html" class="am-cf" target="subject"><span class="am-icon-check"></span> 宝箱信息管理</a></li>
+            <li><a href="#" class="am-cf" target="subject"><span class="am-icon-check"></span> 宝箱信息管理</a></li>
           </ul>
         </li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav7'}"><span class="am-icon-pencil-square-o"></span>权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav7">
-            <li><a href="type-add.html" class="am-cf" target="subject"><span class="am-icon-check"></span> 登录权限</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 查看用户权限</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 修改用户信息权限</a></li>
-            <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 展示用户信息权限</a></li>
+            <li><a href="#" class="am-cf" target="subject"><span class="am-icon-check"></span> 登录权限</a></li>
+            <li><a href="#" target="subject"><span class="am-icon-puzzle-piece"></span> 查看用户权限</a></li>
+            <li><a href="#" target="subject"><span class="am-icon-puzzle-piece"></span> 修改用户信息权限</a></li>
+            <li><a href="#" target="subject"><span class="am-icon-puzzle-piece"></span> 展示用户信息权限</a></li>
           </ul>
         </li>
         <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
