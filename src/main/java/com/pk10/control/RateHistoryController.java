@@ -4,7 +4,6 @@ import com.pk10.bean.Datagrid;
 import com.pk10.bean.Page;
 import com.pk10.bean.RateHistory;
 import com.pk10.service.RateHistoryService;
-import com.sun.javafx.sg.prism.NGShape;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
