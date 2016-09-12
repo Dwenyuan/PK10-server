@@ -97,20 +97,20 @@
     select 
     <include refid="Base_Column_List" />
     from money_add_record
-    where id = #{id,jdbcType=INTEGER} ORDER BY add_time desc
+    where id = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from money_add_record ORDER BY add_time desc
+    from money_add_record
   </select>
 
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     from money_add_record
-    where user_id = #{userId,jdbcType=INTEGER} ORDER BY add_time desc
+    where user_id = #{userId,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

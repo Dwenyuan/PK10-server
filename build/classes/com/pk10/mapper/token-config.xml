@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.TokenConfigDao">
+	<resultMap type="com.pk10.bean.TokenConfig" id="TokenConfig">
+		<result column="id" property="id" />
+		<result column="tokenurl" property="tokenUrl" />
+		<result column="appid" property="appID" />
+		<result column="appsecret" property="appsecret" />
+		<result column="numberodd" property="numberOdd" />
+		<result column="singleodd" property="singleOdd" />
+		<result column="bigodd" property="bigOdd" />
+		<result column="initmoney" property="money" />
+		<result column="gamename" property="gamename" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.pk10.bean.TokenConfig">
+		insert into
+		tokenconfig(tokenurl,appid,appsecret,numberodd,singleodd,bigodd,initmoney,gamename)
+		values(#{tokenUrl},#{appID},#{appsecret},#{numberOdd},#{singleOdd},#{bigOdd},#{money},#{gamename})
+	</insert>
+
+	<!-- 订单只能创建和删除 不能更新 -->
+	<update id="update">
+		update tokenconfig t set t.tokenurl =
+		#{tokenUrl},t.appsecret = #{appsecret},t.numberodd =
+		#{numberOdd},t.singleodd = #{singleOdd},t.bigodd =
+		#{bigOdd},t.initmoney = #{money} where t.appid = #{appID}
+	</update>
+
+	<update id="updateById">
+		update tokenconfig t set t.numberodd =
+		#{numberOdd},t.singleodd = #{singleOdd},t.bigodd =
+		#{singleOdd},t.initmoney = #{money} where t.id = #{id}
+	</update>
+
+	<select id="getLastTokenConfig" resultMap="TokenConfig">
+		select
+		id,tokenurl,appid,appsecret,numberodd,singleodd,bigodd,initmoney from
+		tokenconfig limit 1
+	</select>
+
+	<select id="getAll" resultMap="TokenConfig">
+		select
+		id,tokenurl,appid,appsecret,numberodd,singleodd,bigodd,initmoney,gamename
+		from tokenconfig
+	</select>
+
+	<select id="getOneById" parameterType="com.pk10.bean.TokenConfig"
+		resultMap="TokenConfig">
+		select
+		id,tokenurl,appid,appsecret,numberodd,singleodd,bigodd,initmoney,gamename
+		from tokenconfig where id = #{id}
+	</select>
+</mapper>

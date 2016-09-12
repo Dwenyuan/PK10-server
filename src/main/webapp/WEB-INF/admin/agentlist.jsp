@@ -276,14 +276,14 @@
            window.location = 'toAgentList?pages='+pages;
        }
 
-       function deleteAgent(id){
+       function deleteAgent(username){
            $.ajax({
                type: 'POST',
                contentType: 'application/json',
                url: '${pageContext.request.contextPath}/deleteAgent',
                processData: false,
                dataType: 'json',
-               data : '{"id":\"'+id+'\"}',
+               data : '{"username":\"'+username+'\"}',
                success: function(data) {
                    window.location = 'toAgentList?pages='+${agentDatagrid.currentPage};
                },

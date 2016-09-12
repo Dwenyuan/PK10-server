@@ -51,6 +51,7 @@
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
+        <li><a href="/toAdminHome"><span class="am-icon-home"></span> 首页</a></li>
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 系统设置 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav">
@@ -63,6 +64,8 @@
             <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
             <li><a href="${pageContext.request.contextPath}/money-manager" class="am-cf" target="subject"><span class="am-icon-check"></span> 用户金币管理</a></li>
             <li><a href="${pageContext.request.contextPath}/users?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 用户列表</a></li>
+            <li><a href="${pageContext.request.contextPath}/userbet/bets?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 投注记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/money-add-record/list?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 充值记录</a></li>
             <li><a href="${pageContext.request.contextPath}/toSuperList" target="subject"><span class="am-icon-puzzle-piece"></span>超级管理员</a></li>
           </ul>
         </li>
@@ -108,7 +111,7 @@
             <li><a href="type-select.html" target="subject"><span class="am-icon-puzzle-piece"></span> 展示用户信息权限</a></li>
           </ul>
         </li>
-        <li><a href="${pageContext.request.contextPath}/adminloginout"><span class="am-icon-sign-out"></span> 注销</a></li>
+        <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
       </ul>
 
       <div class="am-panel am-panel-default admin-sidebar-panel">

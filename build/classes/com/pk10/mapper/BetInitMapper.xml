@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pk10.dao.MoneyAddRecordMapper" >
-  <resultMap id="BaseResultMap" type="com.pk10.bean.MoneyAddRecord" >
+<mapper namespace="com.pk10.dao.BetInitMapper" >
+  <resultMap id="BaseResultMap" type="com.pk10.bean.BetInit" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
-    <result column="add_money" property="addMoney" jdbcType="DOUBLE" />
-    <result column="add_agent_name" property="addAgentName" jdbcType="VARCHAR" />
-    <result column="add_agent_id" property="addAgentId" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="g_name" property="gName" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="rate" property="rate" jdbcType="INTEGER" />
+    <result column="money_limit" property="moneyLimit" jdbcType="INTEGER" />
+    <result column="init_money" property="initMoney" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, add_time, add_money, add_agent_name, add_agent_id,user_name
+    id, g_name, type, rate, money_limit, init_money
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pk10.bean.MoneyAddRecordExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInitExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from money_add_record
+    from betInit
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -96,110 +95,128 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from money_add_record
-    where id = #{id,jdbcType=INTEGER} ORDER BY add_time desc
+    from betInit
+    where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByGameName" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInitExample" >
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+    where g_name = #{gName,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="selectAllGameName" resultMap="BaseResultMap">
+    SELECT distinct(bi.g_name) FROM pk10.betInit bi
+  </select>
+
+  <select id="selectAllTypeByGName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT bi.type FROM pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByGnameAndGtype" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInit">
+    SELECT * from pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR} and bi.type = #{type,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getOneBetInitByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+    where g_name = #{gName,jdbcType=VARCHAR} group by g_name
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from money_add_record ORDER BY add_time desc
+    from betInit
   </select>
-
-  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select
-    <include refid="Base_Column_List" />
-    from money_add_record
-    where user_id = #{userId,jdbcType=INTEGER} ORDER BY add_time desc
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from money_add_record
+    delete from betInit
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pk10.bean.MoneyAddRecordExample" >
-    delete from money_add_record
+  <delete id="deleteByExample" parameterType="com.pk10.bean.BetInitExample" >
+    delete from betInit
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pk10.bean.MoneyAddRecord" >
-    insert into money_add_record (id, user_id, add_time, 
-      add_money, add_agent_name, add_agent_id,user_name
+  <insert id="insert" parameterType="com.pk10.bean.BetInit" >
+    insert into betInit (id, g_name, type, 
+      rate, money_limit, init_money
       )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
-      #{addMoney,jdbcType=DOUBLE}, #{addAgentName,jdbcType=VARCHAR}, #{addAgentId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{rate,jdbcType=INTEGER}, #{moneyLimit,jdbcType=INTEGER}, #{initMoney,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.pk10.bean.MoneyAddRecord" >
-    insert into money_add_record
+  <insert id="insertSelective" parameterType="com.pk10.bean.BetInit" >
+    insert into betInit
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="gName != null" >
+        g_name,
       </if>
-      <if test="addTime != null" >
-        add_time,
+      <if test="type != null" >
+        type,
       </if>
-      <if test="addMoney != null" >
-        add_money,
+      <if test="rate != null" >
+        rate,
       </if>
-      <if test="addAgentName != null" >
-        add_agent_name,
+      <if test="moneyLimit != null" >
+        money_limit,
       </if>
-      <if test="addAgentId != null" >
-        add_agent_id,
+      <if test="initMoney != null" >
+        init_money,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+      <if test="gName != null" >
+        #{gName,jdbcType=VARCHAR},
       </if>
-      <if test="addTime != null" >
-        #{addTime,jdbcType=TIMESTAMP},
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
       </if>
-      <if test="addMoney != null" >
-        #{addMoney,jdbcType=DOUBLE},
+      <if test="rate != null" >
+        #{rate,jdbcType=INTEGER},
       </if>
-      <if test="addAgentName != null" >
-        #{addAgentName,jdbcType=VARCHAR},
+      <if test="moneyLimit != null" >
+        #{moneyLimit,jdbcType=INTEGER},
       </if>
-      <if test="addAgentId != null" >
-        #{addAgentId,jdbcType=INTEGER},
+      <if test="initMoney != null" >
+        #{initMoney,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pk10.bean.MoneyAddRecordExample" resultType="java.lang.Integer" >
-    select count(*) from money_add_record
+  <select id="countByExample" parameterType="com.pk10.bean.BetInitExample" resultType="java.lang.Integer" >
+    select count(*) from betInit
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update money_add_record
+    update betInit
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.gName != null" >
+        g_name = #{record.gName,jdbcType=VARCHAR},
       </if>
-      <if test="record.addTime != null" >
-        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
       </if>
-      <if test="record.addMoney != null" >
-        add_money = #{record.addMoney,jdbcType=DOUBLE},
+      <if test="record.rate != null" >
+        rate = #{record.rate,jdbcType=INTEGER},
       </if>
-      <if test="record.addAgentName != null" >
-        add_agent_name = #{record.addAgentName,jdbcType=VARCHAR},
+      <if test="record.moneyLimit != null" >
+        money_limit = #{record.moneyLimit,jdbcType=INTEGER},
       </if>
-      <if test="record.addAgentId != null" >
-        add_agent_id = #{record.addAgentId,jdbcType=INTEGER},
+      <if test="record.initMoney != null" >
+        init_money = #{record.initMoney,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -207,47 +224,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update money_add_record
+    update betInit
     set id = #{record.id,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      add_time = #{record.addTime,jdbcType=TIMESTAMP},
-      add_money = #{record.addMoney,jdbcType=DOUBLE},
-      add_agent_name = #{record.addAgentName,jdbcType=VARCHAR},
-      add_agent_id = #{record.addAgentId,jdbcType=INTEGER},
-      user_name = #{record.userName,jdbcType=VARCHAR}
+      g_name = #{record.gName,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      rate = #{record.rate,jdbcType=INTEGER},
+      money_limit = #{record.moneyLimit,jdbcType=INTEGER},
+      init_money = #{record.initMoney,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.MoneyAddRecord" >
-    update money_add_record
+  <update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.BetInit" >
+    update betInit
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="gName != null" >
+        g_name = #{gName,jdbcType=VARCHAR},
       </if>
-      <if test="addTime != null" >
-        add_time = #{addTime,jdbcType=TIMESTAMP},
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="addMoney != null" >
-        add_money = #{addMoney,jdbcType=DOUBLE},
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=INTEGER},
       </if>
-      <if test="addAgentName != null" >
-        add_agent_name = #{addAgentName,jdbcType=VARCHAR},
+      <if test="moneyLimit != null" >
+        money_limit = #{moneyLimit,jdbcType=INTEGER},
       </if>
-      <if test="addAgentId != null" >
-        add_agent_id = #{addAgentId,jdbcType=INTEGER},
+      <if test="initMoney != null" >
+        init_money = #{initMoney,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pk10.bean.MoneyAddRecord" >
-    update money_add_record
-    set user_id = #{userId,jdbcType=INTEGER},
-      add_time = #{addTime,jdbcType=TIMESTAMP},
-      add_money = #{addMoney,jdbcType=DOUBLE},
-      add_agent_name = #{addAgentName,jdbcType=VARCHAR},
-      add_agent_id = #{addAgentId,jdbcType=INTEGER},
-      user_name = #{userName,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.pk10.bean.BetInit" >
+    update betInit
+    set g_name = #{gName,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=INTEGER},
+      money_limit = #{moneyLimit,jdbcType=INTEGER},
+      init_money = #{initMoney,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

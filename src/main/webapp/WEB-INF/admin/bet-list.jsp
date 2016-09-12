@@ -23,7 +23,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <title>下级用户列表</title>
+    <title>投注记录列表</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/i/app-icon72x72@2x.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/amazeui.min.css" />
@@ -42,7 +42,7 @@
     </style>
 </head>
 
-<body onload="agent()">
+<body>
 <c:if test="${requestScope.errorMsg != null}">
     <script>
         alert('${errorMsg}');
@@ -50,24 +50,10 @@
     </script>
 </c:if>
 <div class="am-cf am-padding am-padding-bottom-0">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">代理商功能/下级用户列表</strong> </div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理/投注记录</strong> </div>
 </div>
 <hr>
-<div class="am-g">
-    <div class="am-u-sm-12 am-u-md-2">
-        <div class="am-form-group">
-            <select data-am-selected="{btnSize: 'sm'}" id="agent">
-                <option value="option1">所有代理商</option>
-            </select>
-        </div>
-    </div>
-    <%--<div class="am-u-sm-12 am-u-md-2 am-u-md-offset-1" >
-        <div class="am-form-group">
-            <select data-am-selected="{btnSize: 'sm'}" id="nextagent">
-                <option value="option1">所有分销商</option>
-            </select>
-        </div>
-    </div>--%>
+<%--<div class="am-g">
     <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
         <div class="am-input-group am-input-group-sm">
             <input type="text" class="am-form-field" id="search_username">
@@ -76,58 +62,42 @@
           </span>
         </div>
     </div>
-</div>
+</div>--%>
 <div class="am-g">
     <div class="am-u-sm-12">
         <table class="am-table am-table-striped am-table-hover table-main">
             <thead>
             <tr>
-                <%--<th class="table-check">
-                    <input type="checkbox" />
-                </th>--%>
-                <th class="table-id">用户ID</th>
-                <th class="table-title">姓名</th>
-                <th class="table-type">用户名</th>
-                <th class="table-author am-hide-sm-only">金币</th>
-                <th class="table-date am-hide-sm-only">创建时间</th>
-                <th class="table-set">操作</th>
+                <th>ID</th>
+                <th>开奖期数</th>
+                <th>玩法</th>
+                <th>下注金额</th>
+                <th>下注倍数</th>
+                <th>此次下注赔率</th>
+                <th>下注号码</th>
+                <th>投注时间</th>
             </tr>
             </thead>
             <tbody id="users">
             <c:choose>
-                <c:when test="${requestScope.users == null} && ${requestScope.records == null}">
+                <c:when test="${requestScope.bets == null}">
                     <script>
-                        alert("无用户信息可显示!");
+                        alert("无投注记录信息可显示!");
 
                     </script>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${users}" var="user" varStatus="vs">
+                    <c:forEach items="${bets}" var="bet" varStatus="vs">
                         <tr>
-                                <%--<td>
-                                    <input type="checkbox" />
-                                </td>--%>
-                            <td>${user.id}</td>
-                            <td><a href="#">${user.nickname}</a></td>
-                            <td>${user.username}</td>
-                            <td class="am-hide-sm-only">${user.money}</td>
+                            <td>bet.id</td>
+                            <td>bet.idnum</td>
+                            <td>bet.type</td>
+                            <td>bet.betmoney</td>
+                            <td>bet.mulit </td>
+                            <td>bet.odds </td>
+                            <td>bet.betnum </td>
                             <td class="am-hide-sm-only">
-                                <f:formatDate value="${user.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
-                            </td>
-                            <td>
-                                <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="recharge_c(${user.id})">
-                                            <span class="am-icon-pencil-square-o"></span>充值</button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="userbet_c(${user.id})">
-                                            <span class="am-icon-pencil-square-o"></span>投注</button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"
-                                                onclick="edit_user_c('${user.id}', '${user.username}', '${user.password}', '${user.tel}', '${user.isagent}')">
-                                            <span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="delete_c(${user.id})">
-                                            <span class="am-icon-trash-o"></span> 删除</button>
-                                    </div>
-                                </div>
+                                <f:formatDate value="${bet.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </td>
                         </tr>
 
@@ -147,7 +117,7 @@
                         current:${pn},
                         backFn:function(p){
                             // 单击回调方法，p是当前页码
-                            location.href = "/users?pn=" + p;
+                            location.href = "${pageContext.request.contextPath}/userbet/bets?pn=" + p;
                         }
                     });
 
@@ -410,6 +380,7 @@
     }
 
     function search_user() {
+
         var isagent = $("#agent_id").val();
         var s_name = $("#search_username").val();
         // console.log("agent:" + isagent + "\ts_name:" + s_name);
@@ -421,10 +392,11 @@
         } else {
             location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent;
         }
+
+
     }
 
 </script>
 </body>
 
 </html>
-

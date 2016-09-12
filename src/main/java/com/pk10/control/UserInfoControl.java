@@ -81,13 +81,16 @@ public class UserInfoControl {
 		if (chargeMoney != null) {
 			double money = userInfo.getMoney() + chargeMoney;
 			userInfo.setMoney(money);
-		}
+            userInfoService.update(userInfo);
+        } else {
 
-		userInfo.setUsername(user.getUsername());
-        userInfo.setPassword(user.getPassword());
-        userInfo.setTel(user.getTel());
-        userInfo.setIsagent(user.getIsagent());
-        userInfoService.update(user);
+            userInfo.setUsername(user.getUsername());
+            userInfo.setPassword(user.getPassword());
+            userInfo.setTel(user.getTel());
+            userInfo.setIsagent(user.getIsagent());
+            userInfoService.update(user);
+        }
+
         return "redirect:users";
     }
 
@@ -130,15 +133,6 @@ public class UserInfoControl {
                     model.addAttribute("page", page);
                     model.addAttribute("pn", pn);
                 }
-
-                // 充值记录
-               /* for (int i = 0; i < users.size(); i++) {
-                    List<MoneyAddRecord> records = moneyAddRecordService.getMoneyAddRecordByUserId(users.get(i).getId());
-                    if (records != null)
-                        model.addAttribute("records", records);
-                    else
-                        model.addAttribute(ERROR_MSG, "该用户没有充值记录!");
-                }*/
             }
 
 		} catch (Exception e) {
@@ -206,12 +200,11 @@ public class UserInfoControl {
         return map;
     }
 
-    @RequestMapping(value = "/{username}/agent/{isagent}/owner/{owner}", method = RequestMethod.GET)
-    public String getUsersByAgentIdAndOwnerId(Model model, @PathVariable("username")String username,
-                                           @PathVariable("isagent")Integer isagent,
-                                           @PathVariable("owner")Integer owner) throws Exception {
+    @RequestMapping(value = "/{username}/agent/{isagent}", method = RequestMethod.GET)
+    public String getUsersByAgentId(Model model, @PathVariable("username")String username,
+                                           @PathVariable("isagent")Integer isagent) throws Exception {
 
-        List<UserInfo> users = userInfoService.getUsersByAgentIdAndOwnerId(username, isagent, owner);
+        List<UserInfo> users = userInfoService.getUsersByAgentId(username, isagent);
         if (users != null && users.size() > 0)
             model.addAttribute("users", users);
         else

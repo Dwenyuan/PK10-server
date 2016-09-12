@@ -87,7 +87,7 @@ public interface UserInfoService extends BaseService<UserInfo> {
 
 	List<UserInfo> getAgentsByOwnerId(Integer ownerId);
 
-        List<UserInfo> getUsersByAgentIdAndOwnerId(String username, Integer isagent, Integer owner);
+	List<UserInfo> getUsersByAgentId(String username, Integer isagent);
 
 	public UserInfo getUserUsername(UserInfo userInfo);
 }
