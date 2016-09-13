@@ -53,16 +53,16 @@
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理/投注记录</strong> </div>
 </div>
 <hr>
-<%--<div class="am-g">
+<div class="am-g">
     <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
         <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field" id="search_username">
+            <input type="text" class="am-form-field" id="search_bet">
             <span class="am-input-group-btn">
-            <button class="am-btn am-btn-default" type="button" onclick="search_user()">搜索</button>
+            <button class="am-btn am-btn-default" type="button" onclick="search_bet()">搜索</button>
           </span>
         </div>
     </div>
-</div>--%>
+</div>
 <div class="am-g">
     <div class="am-u-sm-12">
         <table class="am-table am-table-striped am-table-hover table-main">
@@ -379,18 +379,14 @@
 
     }
 
-    function search_user() {
+    function search_bet() {
 
-        var isagent = $("#agent_id").val();
-        var s_name = $("#search_username").val();
+        var idnum = $("#search_bet").val();
         // console.log("agent:" + isagent + "\ts_name:" + s_name);
-        // var owner = $("#nextagent_id").val();
-        if (isagent == "") {
-            alert('请选择代理商');
-        } else if (s_name == "") {
-            location.href = '<%=request.getContextPath()%>/null/agent/' + isagent;
+        if (idnum == "") {
+            alert('请输入开奖期数');
         } else {
-            location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent;
+            location.href = '<%=request.getContextPath()%>/userbet/' + idnum;
         }
 
 

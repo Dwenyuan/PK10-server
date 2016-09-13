@@ -108,4 +108,32 @@ public class UserBetControl {
 
         return "admin/bet-list";
     }
+
+	@RequestMapping(value = "/{idnum}", method = RequestMethod.GET)
+	public String getBetsByIdnum(Model model, @RequestParam(value = "pn", required = false)Integer pn,
+								 @PathVariable("idnum")Integer idnum) {
+		try {
+			if (pn == null || pn <= 0)
+				pn = 1;
+
+			PageHelper.startPage(pn, 10);
+			List<UserBet> bets =  userBetService.getBetsByIdnum(idnum);
+			if (bets == null) {
+				model.addAttribute(ERROR_MSG, "投注列表为空!");
+			} else {
+				PageInfo page = new PageInfo(bets);
+				if (page.getPageNum() > 0) {
+					model.addAttribute("bets", bets);
+					model.addAttribute("page", page);
+					model.addAttribute("pn", pn);
+				}
+			}
+
+		} catch (Exception e) {
+			model.addAttribute(ERROR_MSG, e.getMessage());
+			logger.error(e.getMessage());
+		}
+
+		return "admin/bet-list";
+	}
 }
