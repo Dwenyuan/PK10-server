@@ -89,13 +89,13 @@
                 <c:otherwise>
                     <c:forEach items="${bets}" var="bet" varStatus="vs">
                         <tr>
-                            <td>bet.id</td>
-                            <td>bet.idnum</td>
-                            <td>bet.type</td>
-                            <td>bet.betmoney</td>
-                            <td>bet.mulit </td>
-                            <td>bet.odds </td>
-                            <td>bet.betnum </td>
+                            <td>${bet.id}</td>
+                            <td>${bet.idnum}</td>
+                            <td>${bet.type}</td>
+                            <td>${bet.betmoney}</td>
+                            <td>${bet.mulit}</td>
+                            <td>${bet.odds}</td>
+                            <td>${bet.betnum}</td>
                             <td class="am-hide-sm-only">
                                 <f:formatDate value="${bet.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </td>
