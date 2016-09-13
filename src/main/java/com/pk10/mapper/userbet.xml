@@ -68,6 +68,10 @@
 		</choose>
 	</select>
 
+	<select id="getBetsByIdnum" resultMap="UserBet" parameterType="integer">
+		SELECT * FROM userbet WHERE idnum=#{idnum} order by createdAt desc
+	</select>
+
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
 		delete from userbet where id = #{id}
 	</delete>

@@ -25,4 +25,6 @@ public interface UserBetService extends BaseService<UserBet> {
 	List<UserBet> getUnCashPrize(UserInfo userInfo) throws Exception;
 	
 	List<UserBet> getRecentlyBets(Integer limit);
+
+    List<UserBet> getBetsByIdnum(Integer idnum);
 }
