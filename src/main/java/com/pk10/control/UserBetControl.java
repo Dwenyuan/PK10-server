@@ -90,7 +90,7 @@ public class UserBetControl {
 
             PageHelper.startPage(pn, 10);
             List<UserBet> bets =  userBetService.getAll();
-            if (bets == null) {
+            if (bets.size() <= 0) {
                 model.addAttribute(ERROR_MSG, "投注列表为空!");
             } else {
                 PageInfo page = new PageInfo(bets);
@@ -118,7 +118,7 @@ public class UserBetControl {
 
 			PageHelper.startPage(pn, 10);
 			List<UserBet> bets =  userBetService.getBetsByIdnum(idnum);
-			if (bets == null) {
+			if (bets.size() <= 0) {
 				model.addAttribute(ERROR_MSG, "投注列表为空!");
 			} else {
 				PageInfo page = new PageInfo(bets);

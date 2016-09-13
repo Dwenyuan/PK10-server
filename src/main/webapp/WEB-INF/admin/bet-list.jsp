@@ -45,7 +45,7 @@
 <body>
 <c:if test="${requestScope.errorMsg != null}">
     <script>
-        alert('${errorMsg}');
+        alert(${errorMsg});
 
     </script>
 </c:if>
@@ -56,7 +56,10 @@
 <div class="am-g">
     <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
         <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field" id="search_bet">
+            <input type="text" class="am-form-field" id="search_bet" placeholder="这里输入开奖期数"
+                   onkeyup="(this.v=function(){
+                       this.value=this.value.replace(/[^0-9-]+/,'');
+                   }).call(this)" onblur="this.v();">
             <span class="am-input-group-btn">
             <button class="am-btn am-btn-default" type="button" onclick="search_bet()">搜索</button>
           </span>
