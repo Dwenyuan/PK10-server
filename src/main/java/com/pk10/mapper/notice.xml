@@ -40,7 +40,7 @@
 	</select>
 	
 	<select id="getAll" resultMap="Notice">
-		select id,title,content,createdAt from notice
+		select id,title,content,createdAt from notice ORDER BY createdAt desc
 	</select>
 	<delete id="deleteOneById" parameterType="com.pk10.bean.Notice">
 		delete from notice where id = #{id}
