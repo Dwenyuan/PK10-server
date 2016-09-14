@@ -109,9 +109,10 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-                        <th>用户名</th>
-                        <th>充值时间</th>
-                        <th>充值金额</th>
+                        <th>期数</th>
+                        <th>开奖时间</th>
+                        <th>开奖结果</th>
+                        <th>开奖特码</th>
 
                     </tr>
                     </thead>
@@ -120,6 +121,7 @@
                         <td id="td1"></td>
                         <td id="td2"></td>
                         <td id="td3"></td>
+                        <td id="td4"></td>
 
                     </tr>
                     </tbody>
@@ -212,9 +214,11 @@
                     document.getElementById('td1').innerHTML = "";
                     document.getElementById('td2').innerHTML = "";
                     document.getElementById('td3').innerHTML = "";
+                    document.getElementById('td4').innerHTML = "";
                     document.getElementById('td1').innerHTML += id;
                     document.getElementById('td2').innerHTML += mydata;
                     document.getElementById('td3').innerHTML += lottery;
+                    document.getElementById('td4').innerHTML += addnum(lottery);
                     recharge();
 
                 },
