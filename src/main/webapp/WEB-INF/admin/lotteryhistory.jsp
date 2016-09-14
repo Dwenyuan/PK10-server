@@ -184,7 +184,13 @@
            var num1 = Number(mnum[0]);
            var num2 = Number(mnum[9]);
            var total = num1 +num2;
-           return total;
+           var snum = 0;
+           if(total >= 10){
+               snum = total - 10;
+           }else{
+               snum = total;
+           }
+           return snum;
        }
 
         function searchFor(){
