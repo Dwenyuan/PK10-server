@@ -36,36 +36,40 @@
 	</update>
 
 	<select id="getAll" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet order by createdAt desc
+		select * from userbet order by createdAt desc
 	</select>
 
 	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{id}
+		select * from userbet ub where ub.id = #{id}
 	</select>
 
 	<select id="getOneByIdnum" resultType="com.pk10.bean.UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where ub.id = #{idnum}
+		select * from userbet ub where ub.id = #{idnum}
 	</select>
 
 	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
+		select * from userbet ub where
 		ub.userid = #{id} order by createdAt
 	</select>
 	<!-- 获取指定用户未兑奖的订单 -->
 	<select id="getUnCashPrize" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state from userbet ub where
+		select * from userbet ub where
 		ub.userid =
 		#{id} and
 		ub.state = 0
 	</select>
 	<select id="getRecentlyBets" resultMap="UserBet">
-		select id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,state
+		select *
 		from userbet order by idnum desc
 		limit
 		<choose>
 			<when test="limit">#{limit}</when>
 			<otherwise>100</otherwise>
 		</choose>
+	</select>
+
+	<select id="getBetsByIdnum" resultMap="UserBet" parameterType="integer">
+		SELECT * FROM userbet WHERE idnum=#{idnum} order by createdAt desc
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">

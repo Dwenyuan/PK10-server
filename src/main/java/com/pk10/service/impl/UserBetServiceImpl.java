@@ -105,4 +105,9 @@ public class UserBetServiceImpl implements UserBetService {
 		return userBetDao.getRecentlyBets(limit);
 	}
 
+	@Override
+	public List<UserBet> getBetsByIdnum(Integer idnum) {
+		return userBetDao.getBetsByIdnum(idnum);
+	}
+
 }

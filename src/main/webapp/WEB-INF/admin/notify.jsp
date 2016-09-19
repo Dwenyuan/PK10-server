@@ -74,7 +74,7 @@
                             <td>${vs.index+1}</td>
                             <td>${notice.title}</td>
                             <td><a href="#">${notice.content}</a></td>
-                            <td>${notice.createdAt}<fmt:formatDate value="${agent.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                            <td><fmt:formatDate value="${notice.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
                                 <div class="am-dropdown" data-am-dropdown>
                                     <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>

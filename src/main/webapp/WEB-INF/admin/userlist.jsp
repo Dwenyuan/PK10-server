@@ -45,7 +45,7 @@
 <body onload="agent()">
     <c:if test="${requestScope.errorMsg != null}">
         <script>
-            alert('${errorMsg}');
+            alert(${errorMsg});
 
         </script>
     </c:if>
@@ -70,7 +70,7 @@
         </div>--%>
         <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
             <div class="am-input-group am-input-group-sm">
-                <input type="text" class="am-form-field" id="search_username">
+                <input type="text" class="am-form-field" id="search_username" placeholder="这里输入用户名">
                 <span class="am-input-group-btn">
             <button class="am-btn am-btn-default" type="button" onclick="search_user()">搜索</button>
           </span>

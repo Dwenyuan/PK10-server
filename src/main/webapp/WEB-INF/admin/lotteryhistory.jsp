@@ -28,6 +28,7 @@
     }
     </style>
     <style>
+        .end{}
         *{ margin:0; padding:0; list-style:none;}
         a{ text-decoration:none;}
         a:hover{ text-decoration:none;}
@@ -68,9 +69,10 @@
             <table class="am-table am-table-striped am-table-hover table-main">
                 <thead>
                     <tr>
-                        <th class="table-id">开奖期数</th>
-                        <th class="table-title">开奖时间</th>
+                        <th class="table-type">开奖期数</th>
+                        <th class="table-type">开奖时间</th>
                         <th class="table-type">开奖结果</th>
+                        <th class="table-type">开奖特码</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,6 +81,7 @@
                             <td>${lottery.id}</td>
                             <td><a href="#"><fmt:formatDate value="${lottery.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></a></td>
                             <td>${lottery.lotterynums}</td>
+                            <td class="end"></td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -106,9 +109,10 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-                        <th>用户名</th>
-                        <th>充值时间</th>
-                        <th>充值金额</th>
+                        <th>期数</th>
+                        <th>开奖时间</th>
+                        <th>开奖结果</th>
+                        <th>开奖特码</th>
 
                     </tr>
                     </thead>
@@ -117,6 +121,7 @@
                         <td id="td1"></td>
                         <td id="td2"></td>
                         <td id="td3"></td>
+                        <td id="td4"></td>
 
                     </tr>
                     </tbody>
@@ -166,8 +171,29 @@
                    gotoPage(p);
                }
            });
+           count();
 
        });
+       function count() {
+           $(".end").each(function(){
+               var a = $(this).prev().text();
+               var b = addnum(a);
+               $(this).text(b);
+           });
+       }
+       function addnum(nums) {
+           var mnum = nums.split(",");
+           var num1 = Number(mnum[0]);
+           var num2 = Number(mnum[9]);
+           var total = num1 +num2;
+           var snum = 0;
+           if(total >= 10){
+               snum = total - 10;
+           }else{
+               snum = total;
+           }
+           return snum;
+       }
 
         function searchFor(){
 
@@ -188,9 +214,11 @@
                     document.getElementById('td1').innerHTML = "";
                     document.getElementById('td2').innerHTML = "";
                     document.getElementById('td3').innerHTML = "";
+                    document.getElementById('td4').innerHTML = "";
                     document.getElementById('td1').innerHTML += id;
                     document.getElementById('td2').innerHTML += mydata;
                     document.getElementById('td3').innerHTML += lottery;
+                    document.getElementById('td4').innerHTML += addnum(lottery);
                     recharge();
 
                 },
