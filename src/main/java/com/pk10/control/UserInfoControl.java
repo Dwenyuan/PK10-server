@@ -108,11 +108,7 @@ public class UserInfoControl {
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
 	 *
-<<<<<<< HEAD
 	 * @param request
-=======
-	 * @param
->>>>>>> upstream/master
 	 * @return
 	 */
 	@RequestMapping(value = "getuserinfo", method = RequestMethod.POST)
@@ -343,7 +339,17 @@ public class UserInfoControl {
 			return false;
 		}
 	}
-
+	@RequestMapping("logout")
+	@ResponseBody
+	public Object logout(HttpServletRequest request) {
+		try {
+			request.getSession().setAttribute("userinfo", null);
+			return "redirect:userlogin.html";
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return false;
+		}
+	}
 	@RequestMapping(value = "managerlogin", method = RequestMethod.POST)
 	public Object managerLogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
 		UserInfo safeUserinfo;
