@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by ron on 16-9-7.
  */
+@Deprecated
 @Controller
 public class AdminHomeControl {
-    private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
+    private static final Logger log = LoggerFactory.getLogger(UserInfoControl.class);
+
     @RequestMapping("toAdminHome")
-    public String toAdminHome(HttpServletRequest request)
-    {
+    public String toAdminHome(HttpServletRequest request) {
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
+        log.debug("toAdminHome: userInfo = " + userInfo);
         if (userInfo != null) {
             if(userInfo.getIsagent() == 3){
                 return "admin/admin-index";
@@ -27,7 +29,7 @@ public class AdminHomeControl {
                 return "redirect:userlogin.html";
             }
         } else {
-            return "redirect:adminlogin.html";
+            return "redirect:admin-login.htm";
         }
     }
 

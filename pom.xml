@@ -212,6 +212,14 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/sae-local-1.1.0.jar</systemPath>
 		</dependency>
+		<!-- 阿里大于短信发送 -->
+		<dependency>
+			<groupId>com.taobao</groupId>
+			<artifactId>taobao-api</artifactId>
+			<version>20160607</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/taobao-api-20160607.jar</systemPath>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>annotations-api</artifactId>
@@ -228,7 +236,12 @@
 			<artifactId>pagehelper</artifactId>
 			<version>4.0.0</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.2.4.Final</version>
+        </dependency>
+    </dependencies>
 	<build>
 		<finalName>pk10</finalName>
 		<plugins>
