@@ -80,7 +80,7 @@
 
 	<select id="getAll" resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo WHERE isagent = 0
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner,detail from userinfo WHERE isagent = 0 ORDER BY createdAt DESC
 	</select>
 
 	<select id="getOneById" parameterType="int"
@@ -123,7 +123,7 @@
 	</select>
 
 	<select id="getAllAgent" resultMap="AgentInfo" parameterType="com.pk10.bean.AgentInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent,detail from userinfo u WHERE  u.isagent = #{isagent,jdbcType=INTEGER}
+		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent,detail from userinfo u WHERE  u.isagent = #{isagent,jdbcType=INTEGER} ORDER BY createdAt DESC
 	</select>
 
 	<select id="getAgentById" parameterType="com.pk10.bean.AgentInfo" resultMap="AgentInfo">
