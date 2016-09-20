@@ -25,7 +25,6 @@ import com.pk10.service.BetInitService;
 import com.pk10.service.UserInfoService;
 import com.pk10.util.UserInfoFormWeChat;
 
-
 import static com.pk10.util.Const.ERROR_MSG;
 
 /**
@@ -38,13 +37,13 @@ import static com.pk10.util.Const.ERROR_MSG;
 @Scope("prototype")
 public class UserInfoControl {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserInfoControl.class);
 
-    @Autowired
+	@Autowired
 	private UserInfoService userInfoService;
 
-    @Autowired
-    MoneyAddRecordService moneyAddRecordService;
+	@Autowired
+	MoneyAddRecordService moneyAddRecordService;
 
 	@Autowired
 	private UserInfoFormWeChat userInfoFormWeChat;
@@ -55,55 +54,54 @@ public class UserInfoControl {
 	@Autowired
 	private BetInitService betInitService;
 
-    @RequestMapping("/money-manager")
-    public String moneyManager() {
-        return "admin/money";
-    }
+	@RequestMapping("/money-manager")
+	public String moneyManager() {
+		return "admin/money";
+	}
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String getUserInfoById(@RequestParam("username")String username, Model model) throws Exception {
-    	UserInfo muserInfo = new UserInfo();
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String getUserInfoById(@RequestParam("username") String username, Model model) throws Exception {
+		UserInfo muserInfo = new UserInfo();
 		muserInfo.setUsername(username);
-        UserInfo userInfo = userInfoService.getUserInfoByUsername(muserInfo);
-        if (userInfo.getUsername() == null) {
-            model.addAttribute(ERROR_MSG, "未找到指定的用户信息!");
-        } else {
-            model.addAttribute("user", userInfo);
-        }
-        return "admin/money";
-    }
+		UserInfo userInfo = userInfoService.getUserInfoByUsername(muserInfo);
+		if (userInfo.getUsername() == null) {
+			model.addAttribute(ERROR_MSG, "未找到指定的用户信息!");
+		} else {
+			model.addAttribute("user", userInfo);
+		}
+		return "admin/money";
+	}
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public String updateUserInfo(HttpServletRequest request,
-                                 @RequestParam("id")int id,
-                                 @RequestParam(value = "charge_money", required = false)Double chargeMoney,
-								 @ModelAttribute UserInfo user) throws Exception {
-        UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
+	@RequestMapping(value = "/user", method = RequestMethod.POST)
+	public String updateUserInfo(HttpServletRequest request, @RequestParam("id") int id,
+			@RequestParam(value = "charge_money", required = false) Double chargeMoney, @ModelAttribute UserInfo user)
+			throws Exception {
+		UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
 		if (chargeMoney != null) {
 			double money = userInfo.getMoney() + chargeMoney;
 			userInfo.setMoney(money);
-            userInfoService.update(userInfo);
+			userInfoService.update(userInfo);
 			// 添加充值记录
 			UserInfo sessionUser = (UserInfo) request.getSession().getAttribute("userinfo");
 			MoneyAddRecord moneyAddRecord = new MoneyAddRecord();
-            moneyAddRecord.setUserId(userInfo.getId());
+			moneyAddRecord.setUserId(userInfo.getId());
 			moneyAddRecord.setUserName(userInfo.getUsername());
 			moneyAddRecord.setAddMoney(chargeMoney);
 			moneyAddRecord.setAddAgentName(sessionUser.getUsername());
-            moneyAddRecord.setAddAgentId(sessionUser.getId());
-            moneyAddRecord.setAddTime(new Date());
+			moneyAddRecord.setAddAgentId(sessionUser.getId());
+			moneyAddRecord.setAddTime(new Date());
 			moneyAddRecordService.save(moneyAddRecord);
-        } else {
+		} else {
 
-            userInfo.setUsername(user.getUsername());
-            userInfo.setPassword(user.getPassword());
-            userInfo.setTel(user.getTel());
-            userInfo.setIsagent(user.getIsagent());
-            userInfoService.update(user);
-        }
+			userInfo.setUsername(user.getUsername());
+			userInfo.setPassword(user.getPassword());
+			userInfo.setTel(user.getTel());
+			userInfo.setIsagent(user.getIsagent());
+			userInfoService.update(user);
+		}
 
-        return "redirect:users";
-    }
+		return "redirect:users";
+	}
 
 	/**
 	 * 获取用户信息 在1.0 版本中直接从session中获取
@@ -124,26 +122,26 @@ public class UserInfoControl {
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String getUserInfoList(Model model, @RequestParam(value = "pn", required = false)Integer pn) {
+	public String getUserInfoList(Model model, @RequestParam(value = "pn", required = false) Integer pn) {
 		try {
-		    if (pn == null || pn <= 0)
-		        pn = 1;
+			if (pn == null || pn <= 0)
+				pn = 1;
 
-            PageHelper.startPage(pn, 10);
-			List<UserInfo> users =  userInfoService.getAll();
-            if (users == null) {
-                model.addAttribute(ERROR_MSG, "用户列表为空!");
-            } else {
-                PageInfo page = new PageInfo(users);
-                if (page.getPageNum() > 0) {
-                    model.addAttribute("users", users);
-                    model.addAttribute("page", page);
-                    model.addAttribute("pn", pn);
-                }
-            }
+			PageHelper.startPage(pn, 10);
+			List<UserInfo> users = userInfoService.getAll();
+			if (users == null) {
+				model.addAttribute(ERROR_MSG, "用户列表为空!");
+			} else {
+				PageInfo page = new PageInfo(users);
+				if (page.getPageNum() > 0) {
+					model.addAttribute("users", users);
+					model.addAttribute("page", page);
+					model.addAttribute("pn", pn);
+				}
+			}
 
 		} catch (Exception e) {
-		    model.addAttribute(ERROR_MSG, e.getMessage());
+			model.addAttribute(ERROR_MSG, e.getMessage());
 			logger.error(e.getMessage());
 		}
 
@@ -165,73 +163,72 @@ public class UserInfoControl {
 		}
 	}
 
-
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
-	public Map deleteUser(@PathVariable("id")Integer id) throws Exception {
-        Map map = new HashMap();
-	    Integer affect = userInfoService.deleteOneById(new UserInfo(id));
-        if (affect != null)
-            map.put(Const.SUCCESS_MSG, "删除成功!");
-        else
-            map.put(Const.ERROR_MSG, "删除失败!");
+	@ResponseBody
+	public Map deleteUser(@PathVariable("id") Integer id) throws Exception {
+		Map map = new HashMap();
+		Integer affect = userInfoService.deleteOneById(new UserInfo(id));
+		if (affect != null)
+			map.put(Const.SUCCESS_MSG, "删除成功!");
+		else
+			map.put(Const.ERROR_MSG, "删除失败!");
 
-        return map;
-    }
+		return map;
+	}
 
-    @RequestMapping(value = "/isagent/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Map getAgents(@PathVariable("id")Integer id) throws Exception {
-        Map map = new HashMap();
+	@RequestMapping(value = "/isagent/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Map getAgents(@PathVariable("id") Integer id) throws Exception {
+		Map map = new HashMap();
 
-        List<UserInfo> agents = userInfoService.getAgentsById(id);
-        if (agents != null && agents.size() > 0)
-            map.put("agents", agents);
-        else
-            map.put(Const.ERROR_MSG, "获取失败!");
+		List<UserInfo> agents = userInfoService.getAgentsById(id);
+		if (agents != null && agents.size() > 0)
+			map.put("agents", agents);
+		else
+			map.put(Const.ERROR_MSG, "获取失败!");
 
-        return map;
-    }
+		return map;
+	}
 
-    @RequestMapping(value = "/owner/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Map getAgentsByOwnerId(@PathVariable("id")Integer id) throws Exception {
-        Map map = new HashMap();
+	@RequestMapping(value = "/owner/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Map getAgentsByOwnerId(@PathVariable("id") Integer id) throws Exception {
+		Map map = new HashMap();
 
-        List<UserInfo> ownersOfAgents = userInfoService.getAgentsByOwnerId(id);
-        if (ownersOfAgents != null && ownersOfAgents.size() > 0)
-            map.put("ownersOfAgents", ownersOfAgents);
-        else
-            map.put(Const.ERROR_MSG, "获取失败!");
+		List<UserInfo> ownersOfAgents = userInfoService.getAgentsByOwnerId(id);
+		if (ownersOfAgents != null && ownersOfAgents.size() > 0)
+			map.put("ownersOfAgents", ownersOfAgents);
+		else
+			map.put(Const.ERROR_MSG, "获取失败!");
 
-        return map;
-    }
+		return map;
+	}
 
-    @RequestMapping(value = "/{username}/agent/{isagent}", method = RequestMethod.GET)
-    public String getUsersByAgentId(Model model, @PathVariable("username")String username,
-                                           @PathVariable("isagent")Integer isagent) throws Exception {
+	@RequestMapping(value = "/{username}/agent/{isagent}", method = RequestMethod.GET)
+	public String getUsersByAgentId(Model model, @PathVariable("username") String username,
+			@PathVariable("isagent") Integer isagent) throws Exception {
 
-        List<UserInfo> users = userInfoService.getUsersByAgentId(username, isagent);
-        if (users != null && users.size() > 0)
-            model.addAttribute("users", users);
-        else
-            model.addAttribute(Const.ERROR_MSG, "获取失败,没有对应用户名!");
+		List<UserInfo> users = userInfoService.getUsersByAgentId(username, isagent);
+		if (users != null && users.size() > 0)
+			model.addAttribute("users", users);
+		else
+			model.addAttribute(Const.ERROR_MSG, "获取失败,没有对应用户名!");
 
-        return "admin/userlist";
-    }
+		return "admin/userlist";
+	}
 
-    @RequestMapping(value = "/junior/users/{owner}", method = RequestMethod.GET)
-    public String getJuniorUsersForAgent(Model model, @PathVariable("owner")Integer owner) {
-        UserInfo ownerUser = new UserInfo();
-        ownerUser.setOwner(owner);
-        List<UserInfo> juniorUsers = userInfoService.getUserForAgent(ownerUser);
-        if (juniorUsers != null && juniorUsers.size() > 0)
-            model.addAttribute("users", juniorUsers);
-        else
-            model.addAttribute(Const.ERROR_MSG, "当前用户无下级用户列表!");
+	@RequestMapping(value = "/junior/users/{owner}", method = RequestMethod.GET)
+	public String getJuniorUsersForAgent(Model model, @PathVariable("owner") Integer owner) {
+		UserInfo ownerUser = new UserInfo();
+		ownerUser.setOwner(owner);
+		List<UserInfo> juniorUsers = userInfoService.getUserForAgent(ownerUser);
+		if (juniorUsers != null && juniorUsers.size() > 0)
+			model.addAttribute("users", juniorUsers);
+		else
+			model.addAttribute(Const.ERROR_MSG, "当前用户无下级用户列表!");
 
-        return "admin/junior-userlist";
-    }
+		return "admin/junior-userlist";
+	}
 
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
@@ -272,7 +269,7 @@ public class UserInfoControl {
 			return safeUserInfo;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return JSON.parse("{\"errmsg\":" + e.getMessage() + "}");
+			return JSON.parse("{\"errmsg\":\"" + e.getMessage() + "\"}");
 		}
 	}
 
@@ -339,6 +336,7 @@ public class UserInfoControl {
 			return false;
 		}
 	}
+
 	@RequestMapping("logout")
 	@ResponseBody
 	public Object logout(HttpServletRequest request) {
@@ -350,6 +348,7 @@ public class UserInfoControl {
 			return false;
 		}
 	}
+
 	@RequestMapping(value = "managerlogin", method = RequestMethod.POST)
 	public Object managerLogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
 		UserInfo safeUserinfo;
@@ -367,7 +366,6 @@ public class UserInfoControl {
 		}
 	}
 
-
 	@RequestMapping(value = "adminlogin.do", method = RequestMethod.POST)
 	public Object adminlogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
 		UserInfo safeUserinfo;
@@ -375,9 +373,9 @@ public class UserInfoControl {
 			safeUserinfo = userInfoService.managerLogin(userInfo);
 			if (safeUserinfo != null) {
 				request.getSession().setAttribute("userinfo", safeUserinfo);
-				if(safeUserinfo.getIsagent() == 3){
+				if (safeUserinfo.getIsagent() == 3) {
 					return "admin/admin-index";
-				}else{
+				} else {
 					return "admin/admin-agent";
 				}
 			} else {
@@ -467,9 +465,9 @@ public class UserInfoControl {
 				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
 				UserInfo m = new UserInfo();
-				if(userModel.getAgentId() == ""||userModel.getAgentId() == null){
+				if (userModel.getAgentId() == "" || userModel.getAgentId() == null) {
 					userInfo.setOwner(0);
-				}else{
+				} else {
 					m.setUsername(userModel.getAgentId());
 					userInfo.setOwner((userInfoService.getUserInfoByUsername(m).getId()));
 				}
@@ -484,7 +482,6 @@ public class UserInfoControl {
 		}
 		return userModel;
 	}
-
 
 	// 修改代理商信息
 	@RequestMapping("updateAgentInfo")
@@ -503,32 +500,33 @@ public class UserInfoControl {
 	}
 
 	@RequestMapping("toAddAgent")
-	public Object toAddAgent(){
+	public Object toAddAgent() {
 		return "admin/add_agent";
 	}
-    //增加普通用户
+
+	// 增加普通用户
 	@RequestMapping("toAddDistributor")
-	public Object toAddDistributor(Model model,HttpServletRequest request){
-		model.addAttribute("userinfo",request.getSession().getAttribute("userinfo"));
+	public Object toAddDistributor(Model model, HttpServletRequest request) {
+		model.addAttribute("userinfo", request.getSession().getAttribute("userinfo"));
 		return "admin/add_distributor";
 	}
 
 	@RequestMapping("toAgentList")
-	public Object toAgentList(Model model, Page page){
+	public Object toAgentList(Model model, Page page) {
 
 		try {
 			if (page.getPages() == 0) {
 				page.setPages(1);
 				AgentInfo agentInfo = new AgentInfo();
 				agentInfo.setIsagent(2);
-				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
-				model.addAttribute("agentDatagrid",agentDatagrid);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page, agentInfo);
+				model.addAttribute("agentDatagrid", agentDatagrid);
 				return "admin/agentlist";
-			}else {
+			} else {
 				AgentInfo agentInfo = new AgentInfo();
 				agentInfo.setIsagent(2);
-				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
-				model.addAttribute("agentDatagrid",agentDatagrid);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page, agentInfo);
+				model.addAttribute("agentDatagrid", agentDatagrid);
 				return "admin/agentlist";
 			}
 		} catch (Exception e) {
@@ -538,21 +536,21 @@ public class UserInfoControl {
 	}
 
 	@RequestMapping("toSuperList")
-	public Object toSuperList(Model model, Page page){
+	public Object toSuperList(Model model, Page page) {
 
 		try {
 			if (page.getPages() == 0) {
 				page.setPages(1);
 				AgentInfo agentInfo = new AgentInfo();
 				agentInfo.setIsagent(3);
-				Datagrid superDatagrid = userInfoService.getAllAgent(page,agentInfo);
-				model.addAttribute("superDatagrid",superDatagrid);
+				Datagrid superDatagrid = userInfoService.getAllAgent(page, agentInfo);
+				model.addAttribute("superDatagrid", superDatagrid);
 				return "admin/superuserlist";
-			}else {
+			} else {
 				AgentInfo agentInfo = new AgentInfo();
 				agentInfo.setIsagent(3);
-				Datagrid agentDatagrid = userInfoService.getAllAgent(page,agentInfo);
-				model.addAttribute("superDatagrid",agentDatagrid);
+				Datagrid agentDatagrid = userInfoService.getAllAgent(page, agentInfo);
+				model.addAttribute("superDatagrid", agentDatagrid);
 				return "admin/superuserlist";
 			}
 		} catch (Exception e) {
@@ -561,10 +559,9 @@ public class UserInfoControl {
 		}
 	}
 
-
 	@RequestMapping("deleteAgent")
 	@ResponseBody
-	public Object deleteAgent(@RequestBody UserInfo userInfo){
+	public Object deleteAgent(@RequestBody UserInfo userInfo) {
 		try {
 			return userInfoService.deleteOneById(userInfo);
 		} catch (Exception e) {
@@ -574,7 +571,7 @@ public class UserInfoControl {
 
 	@RequestMapping("getUserByUsername")
 	@ResponseBody
-	public UserInfo getUserByUsername(@RequestBody UserInfo userInfo){
+	public UserInfo getUserByUsername(@RequestBody UserInfo userInfo) {
 		return userInfoService.getUserUsername(userInfo);
 	}
 
