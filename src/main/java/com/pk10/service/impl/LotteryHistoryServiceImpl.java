@@ -40,7 +40,7 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 
 	@Override
 	public LotteryHistory getOneById(LotteryHistory t) throws Exception {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 40; i++) {
 			LotteryHistory lottery = lotteryHistoryDao.getOneById(t);
 			if (lottery == null) { //还没有获取到最新的开奖结果，等待收集器收集结果
 				Thread.sleep(3000);
