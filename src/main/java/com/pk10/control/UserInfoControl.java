@@ -235,22 +235,34 @@ public class UserInfoControl {
     }
 
     @RequestMapping(value = "/reg-user", method = RequestMethod.POST)
-    @ResponseBody
-    public ModelMap register(ModelMap map, @ModelAttribute UserInfo userInfo) {
+    public String register(ModelMap map, @ModelAttribute UserInfo userInfo, String code) {
         if (userInfo == null) {
             map.addAttribute("error_response", "无效参数!");
-            return map;
+        } else {
+            try {
+                if (map.get("captcha").equals(code)) {
+                    userInfo.setIsagent(0);
+                    userInfo.setCreatedAt(new Date());
+                    userInfo.setNickname(userInfo.getUsername());
+                    userInfoService.save(userInfo);
+                    map.addAttribute("success_response", "注册成功!");
+                } else {
+                    map.addAttribute("error_response", "验证码失效,请稍后重试!");
+                }
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+                map.addAttribute("error_response", "服务器异常,请稍后重试!");
+            }
         }
-
-        try {
-            userInfoService.save(userInfo);
-            map.addAttribute("success_response", "注册成功!");
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            map.addAttribute("error_response", "服务器异常,请稍后重试!");
-        }
-        return map;
+        return "admin/register";
     }
+
+	@RequestMapping(value = "/reg-ui/{owner}", method = RequestMethod.GET)
+	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner) {
+	    map.addAttribute("owner", owner);
+		return "admin/register";
+	}
+
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
 	 *
@@ -318,9 +330,9 @@ public class UserInfoControl {
 		return userInfo;
 	}
 
-	@RequestMapping("checkTel")
+	@RequestMapping("check-tel/{tel}")
 	@ResponseBody
-	public Object checkTel(String tel) {
+	public Object checkTel(@PathVariable("tel")String tel) {
 		UserInfo safeUserInfo = userInfoService.getUserInfoByTel(new UserInfo(null, null, tel));
 		if (safeUserInfo != null) { // 查找到记录，表示已经占用
 			return false;
@@ -332,6 +344,7 @@ public class UserInfoControl {
 	@RequestMapping("checkusername")
 	@ResponseBody
 	public Object checkusername(String username) {
+	    logger.debug("checkusername: username = " + username);
 		UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(new UserInfo(username, null));
 		if (safeUserInfo != null) {
 			return false; // 用户名占用

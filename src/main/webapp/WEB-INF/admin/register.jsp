@@ -35,10 +35,10 @@
 <body>
 <header>
     <div class="log-header">
-        <h1><a href="#">数字互娱</a> </h1>
+        <h1><a href="/">数字互娱</a> </h1>
     </div>
     <div class="log-re">
-        <a href="#" class="am-btn am-btn-default am-radius log-button" style="color:#fff;">登 录</a>
+        <a href="/userlogin.html" class="am-btn am-btn-default am-radius log-button" style="color:#fff;">登 录</a>
     </div>
 </header>
 <div class="log">
@@ -46,16 +46,17 @@
         <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
             <h1 class="log-title am-animation-slide-top">数字互娱</h1>
             <br>
-            <form class="am-form" id="log-form" action="${pageContext.request.contextPath}/reg-user" method="post">
-                <input type="number" name="owner" id="owner" value="">
+            ${success_response} ${error_response}
+            <form class="am-form" id="log-form" action="reg-user" method="post">
+                <input type="hidden" name="owner" id="owner" value="${owner}">
 
                 <div class="am-input-group am-radius am-animation-slide-left" id="vld-username">
-                    <input type="text" id="doc-vld-username" name="username" class="am-radius" data-validation-message="请输入正确用户名" placeholder="请输入字母、数字" onblur="userv()" />
+                    <input type="text" id="doc-vld-username" name="username" class="am-radius" data-validation-message="请输入正确用户名" placeholder="字母和数字组合的用户名" onblur="userv()" />
                     <span class="am-input-group-label log-icon am-radius"><i class="am-icon-user am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
                 <div class="am-input-group am-animation-slide-left log-animation-delay">
-                    <input type="password" id="log-password" name="password" class="am-form-field am-radius log-input" placeholder="密码" minlength="1">
+                    <input type="password" id="log-password" name="password" class="am-form-field am-radius log-input" placeholder="密码" minlength="6" maxlength="16" required>
                     <span class="am-input-group-label log-icon am-radius"><i class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
@@ -65,12 +66,13 @@
                 </div>
                 <br>
                 <div class="am-input-group am-animation-slide-left log-animation-delay-a" id="vphone">
-                    <input type="tel" id="vld-phone" name="tel" class="am-form-field am-radius log-input" placeholder="手机号" data-validation-message="请正确的手机号" pattern="^\s*1\d{10}\s*$" required>
+                    <input type="tel" id="vld-phone" name="tel" class="am-form-field am-radius log-input" placeholder="手机号" data-validation-message="请输入正确的手机号" pattern="^\s*1\d{10}\s*$" required>
                     <span class="am-input-group-label log-icon am-radius"><i class="am-icon-phone am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
                 <div class="am-input-group am-animation-slide-left log-animation-delay-a">
-                    <input type="text" class="am-form-field am-radius log-input" placeholder="验证码" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" width="50%">
+                    <input type="text" name="code" class="am-form-field am-radius log-input"  data-validation-message="请输入4位的验证码" placeholder="验证码" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" width="50%" minlength="4" required>
+
                     <span class="am-input-group-label log-icon am-radius" onclick="vldcode()" id="code">获取验证码</span>
                 </div>
                 <br>
@@ -91,13 +93,13 @@
 <!--[if lte IE 8 ]>
 <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/amazeui.ie8polyfill.min.js"></script>
+
 <![endif]-->
 <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/register.js"></script>
 <script type="text/javascript">
     var check = true;
-    // 用户名验证
+
     function userv() {
         if($("#usererror").length <= 0 ) {
             $alert = $('<div class="log-alert am-alert am-alert-danger am-radius" id="usererror"></div>').hide();
@@ -110,34 +112,38 @@
         var zhcheck = /^[A-Za-z0-9]+$/;
         var msg = $("#doc-vld-username").data("validationMessage");
         if (!zhcheck.test(value)) {
-            msg = "请输入字母、数字";
+            msg = "请输入字母和数字的组合";
             $alert.html(msg).show();
             check = false;
         } else {
-            $.ajax({
-                url: ${pageContext.request.contextPath} + '/',
-                data: ["username", value],
-                dataType: "json",
-                success: function(data) {
-                    if (data.check) {
-                        check = true;
-                    } else {
-                        msg = "该用户名不可用";
-                        $alert.html(msg).show();
-                        check = false;
+            if (value.length < 3) {
+                msg = "请输入至少2位的字母和数字的组合";
+                $alert.html(msg).show();
+                check = false;
+            } else {
+
+                $.ajax({
+                    type: 'get',
+                    url: '<%=request.getContextPath()%>/checkusername',
+                    data: ["username", value],
+                    dataType: "json",
+                    success: function(data) {
+                        console.log("userv ==> success: data = " + eval(data));
+                        if (data) {
+                            check = true;
+                        } else {
+                            msg = "该用户名不可用";
+                            $alert.html(msg).show();
+                            check = false;
+                        }
                     }
-                },
-                error: function() {
-                    msg = "网络超时";
-                    $alert.html(msg).show();
-                    check = false;
-                }
-            });
+                });
+            }
         }
 
     }
 
-    // 提交验证
+
     function vld() {
         userv();
         return check;
@@ -146,37 +152,50 @@
     var b_code = true;
     var t;
     var c = 60;
-    // 获取验证码点击事件
+
+    function sendCaptcha(tel) {
+        console.log("sendCaptcha: tel = " + tel);
+        $.ajax({
+            type: 'post',
+            url: '<%=request.getContextPath()%>/sms/captcha/' + tel,
+            dataType: "json",
+            success: function (data) {
+                console.log("sendCaptcha ==> success: data = " + eval(data));
+                if (data) {
+                    countdown();
+                    b_code = false;
+                } else {
+                    alert("您发送的频率过快!");
+                }
+            },
+            error: function (data) {
+                console.log("sendCaptcha ==> error: data = " + eval(data));
+                alert("网络超时");
+                clearTimeout(t);
+                b_code = true;
+                var msg = "获取验证码";
+                $("#code").text(msg);
+                c = 60;
+            }
+        });
+    }
+
     function vldcode() {
         if (b_code) {
             var cc = /^\s*1\d{10}\s*$/;
             var value = $("#vld-phone").val();
             if (cc.test(value)) {
                 $.ajax({
-                    url: ${pageContext.request.contextPath} + '/sms/captcha/' + value,
-                    dataType: "json",
+                    type: 'get',
+                    url:'<%=request.getContextPath()%>/check-tel/' + value,
+                    dataType: 'json',
                     success: function(data) {
-                        var successResp = typeof(data.alibaba_aliqin_fc_sms_num_send_response);
-                        if (successResp != "undefined") {
-                            if (data.alibaba_aliqin_fc_sms_num_send_response.result.success) {
-                                countdown();
-                                b_code = false;
-                            }
+                        console.log("vldcode ==> success: data = " + eval(data));
+                        if (data) {
+                            sendCaptcha(value);
                         } else {
-                            var errorResp = data.error_response;
-                            if (errorResp.sub_code == "isv.BUSINESS_LIMIT_CONTROL") {
-                                alert("您发送的频率过快!");
-                            }
+                            alert("手机号已被占用!")
                         }
-
-                    },
-                    error: function() {
-                        alert("网络超时");
-                        clearTimeout(t);
-                        b_code = true;
-                        var msg = "获取验证码";
-                        $("#code").text(msg);
-                        c = 60;
                     }
                 });
 
@@ -185,7 +204,6 @@
         }
     }
 
-    // 倒计时
     function countdown() {
         var msg = c + "秒后重新获取";
         $("#code").text(msg);

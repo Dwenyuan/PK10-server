@@ -37,11 +37,11 @@ public class SmsCaptchaController {
 
 
     @RequestMapping(value = "captcha/{recPhoneNum}", method = RequestMethod.POST)
-    public ModelMap getSmsCaptcha(ModelMap model, @PathVariable("recPhoneNum")String recPhoneNum) {
+    public Object getSmsCaptcha(ModelMap model, @PathVariable("recPhoneNum")String recPhoneNum) {
         String responseBody = null;
         if (recPhoneNum == null || recPhoneNum.trim().length() < 0 || recPhoneNum.trim().length() > 11) {
             model.addAttribute("error_msg", "请输入正确手机号!");
-            return model;
+            return model.toString();
         }
 
         String captcha  = Generator.generateCaptcha();
@@ -56,24 +56,34 @@ public class SmsCaptchaController {
         req.setSmsFreeSignName(Const.SMS_FREE_SIGN_NAME);
         req.setSmsTemplateCode(Const.SMS_TEMPLATE_CODE);
         req.setRecNum(recPhoneNum);
-        log.debug("getSmsCaptcha: smsParamString=" + jsonObject.toJSONString());
-        req.setSmsParamString(jsonObject.toJSONString());
+        smsParam = jsonObject.toJSONString();
+        log.debug("getSmsCaptcha: smsParam=" + smsParam);
+        req.setSmsParamString(smsParam);
 
         try {
             AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);
             model.addAttribute("captcha", captcha);
 
             responseBody = rsp.getBody();
+            log.debug("getSmsCaptcha: responseBody = " + responseBody);
             if (rsp.getResult() != null) {
-                model.addAttribute("success_msg", rsp.getResult());
+                model.addAttribute("success_response", rsp.getResult());
             } else {
-                model.addAttribute("error_msg", rsp.getSubMsg());
+                model.addAttribute("error_response", rsp.getSubMsg());
             }
         } catch (ApiException e) {
             log.error("getSmsCaptcha :" + e.getErrMsg());
         }
 
-        return model;
+        JSONObject jsonBody = JSONObject.parseObject(responseBody);
+        JSONObject successJson = jsonBody.getJSONObject("alibaba_aliqin_fc_sms_num_send_response");
+        if (successJson != null) {
+            successJson = successJson.getJSONObject("result");
+            return successJson.getBoolean("success");
+        } else {
+            return false;
+        }
+
     }
 
 
