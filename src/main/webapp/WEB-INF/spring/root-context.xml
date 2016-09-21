@@ -93,9 +93,6 @@
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
-			<tx:method name="find" read-only="true" />
-			<tx:method name="get" read-only="true" />
-			<tx:method name="*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 
