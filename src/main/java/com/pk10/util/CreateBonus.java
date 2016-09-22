@@ -75,7 +75,7 @@ public class CreateBonus implements InitializingBean {
 
 	/**
 	 * 距离当前最近的开奖时间的倒计时
-	 * 
+	 * 逢三逢八开奖
 	 * @param date
 	 *            当前时间
 	 * @return
@@ -85,14 +85,14 @@ public class CreateBonus implements InitializingBean {
 		Integer min = Integer.parseInt(new SimpleDateFormat("mm").format(date));
 		Integer sec = Integer.parseInt(new SimpleDateFormat("ss").format(date));
 		if (hour >= 0 && hour < 9) {// 不在开奖时间
-			count = (9 * 60 * 60 + 7 * 60) - (hour * 60 * 60 + min * 60 + sec);
+			count = (9 * 60 * 60 + 8 * 60) - (hour * 60 * 60 + min * 60 + sec);
 		} else { // 寻找最近的开奖时间
-			if (min % 10 < 2) {// 否则为逢2
+			if (min % 10 < 3) {// 否则为逢3
 				count = (1 - (min % 10)) * 60 + (60 - sec);
-			} else if (min % 10 < 7 && min % 10 >= 2) { // 在2和7之间，则下次开奖为逢7
-				count = (6 - (min % 10)) * 60 + (60 - sec);
-			} else { // 否则为逢2
-				count = (11 - (min % 10)) * 60 + (60 - sec);
+			} else if (min % 10 < 8 && min % 10 >= 3) { // 在2和7之间，则下次开奖为逢8
+				count = (7 - (min % 10)) * 60 + (60 - sec);
+			} else { // 否则为逢3
+				count = (12 - (min % 10)) * 60 + (60 - sec);
 			}
 		}
 	}
