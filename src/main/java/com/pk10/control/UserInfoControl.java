@@ -245,6 +245,8 @@ public class UserInfoControl {
                     userInfo.setCreatedAt(new Date());
                     userInfo.setNickname(userInfo.getUsername());
                     userInfoService.save(userInfo);
+
+                    map.put("captcha", "");
                     map.addAttribute("success_response", "注册成功!");
                 } else {
                     map.addAttribute("error_response", "验证码失效,请稍后重试!");

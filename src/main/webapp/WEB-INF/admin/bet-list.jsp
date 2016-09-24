@@ -71,7 +71,7 @@
         <table class="am-table am-table-striped am-table-hover table-main">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>用户ID</th>
                 <th>开奖期数</th>
                 <th>玩法</th>
                 <th>下注金额</th>
@@ -92,7 +92,7 @@
                 <c:otherwise>
                     <c:forEach items="${bets}" var="bet" varStatus="vs">
                         <tr>
-                            <td>${bet.id}</td>
+                            <td>${bet.userid}</td>
                             <td>${bet.idnum}</td>
                             <td>${bet.type}</td>
                             <td>${bet.betmoney}</td>
