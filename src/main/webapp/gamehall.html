@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>游戏大厅 | 数字互娱</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+  <link rel="canonical" href="http://www.example.com/">
+  -->
+    <link rel="stylesheet" href="assets/css/amazeui.min.css">
+    <style type="text/css">
+    body {
+        background: url(assets/i/indexbg.png) #000 no-repeat;
+    }
+    
+    .borders {
+        border: 1px solid #5A7A9A;
+    }
+    
+    hr {
+        background-color: #5A7A9A;
+        height: 1px;
+    }
+    
+    .bottomline {
+        border-bottom: 1px solid #5A7A9A;
+    }
+    
+    .rightline {
+        border-right: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .am-navbar-default .am-navbar-nav {
+        background-color: #445B83;
+    }
+    </style>
+</head>
+
+<body onload="get_session()">
+    <div class="am-g">
+        <div class="am-slider am-slider-default" data-am-flexslider id="demo-slider-0">
+            <ul class="am-slides">
+                <li><img src="assets/i/l1.jpg" /></li>
+                <li><img src="assets/i/l2.jpg" /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="am-g" style="background-color:#45688A;margin-bottom:5px;">
+        <div class="am-u-sm-3" align="center" style="color:#fff;">
+            <i class="am-icon-home am-icon-sm"></i>
+            <br>
+            <span>主页</span>
+        </div>
+        <div class="am-u-sm-3" align="center" style="color:#fff;">
+            <i class="am-icon-gift am-icon-sm"></i>
+            <br>
+            <span>有奖</span>
+        </div>
+        <div class="am-u-sm-3" align="center" style="color:#fff;">
+            <i class="am-icon-trophy am-icon-sm"></i>
+            <br>
+            <span>排行</span>
+        </div>
+        <div class="am-u-sm-3" align="center" style="color:#fff;">
+            <i class="am-icon-tasks am-icon-sm"></i>
+            <br>
+            <span>任务</span>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-6 borders ">
+            <div style="background-color:#45688A;padding:5px;margin-top:5px;margin-bottom:5px;" class="am-vertical-align ">
+                <img src="assets/i/money.png" height="30px"><span style="color:#fff;margin-left:10px;" class="am-vertical-align-middle" id="money"> <i class="am-icon-plus-square am-icon-sm " style="color:#Fff;float:right;margin-left:10px;"></i></span>
+            </div>
+        </div>
+        <div class="am-u-sm-6 borders">
+            <div style="background-color:#45688A;padding:5px;margin-top:5px;margin-bottom:5px;" class="am-vertical-align">
+                <a href="sendmoney.html" data-am-modal="{target: '#my-alert'}"><img src="assets/i/send.png" height="30px"></a>
+            </div>
+        </div>
+    </div>
+    <div class="am-g bottomline">
+        <div style="margin-top:10px;margin-bottom:10px;" class="am-u-sm-6 rightline ">
+            <a href="http://game.szhy360.com/pk10/index.html">
+            <div class="am-u-sm-4">
+                <img src="assets/i/588057017589180047.jpg" height="50px">
+            </div>
+            <div class="am-u-sm-7 am-u-sm-offset-1">
+                <span style="color:#Fff;font-size:12px;">数字竞猜</span>
+                <br>
+                <span style="color:#Fff;font-size:10px;">asd2313</span>
+            </div>
+            </a>
+        </div>
+    </div>
+    
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default " id="" style="">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4">
+            <li>
+                <a href="" class="">
+                    <span class="am-icon-question-circle-o"></span>
+                    <span class="am-navbar-label">帮助中心</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <footer data-am-widget="footer" class="am-footer ">
+        © 2016 AllMobilize, Inc. Licensed under MIT license.
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+
+    <script type="text/javascript">
+        function get_session() {
+            $.ajax({
+                type: 'post',
+                url: 'getuserinfo',
+                dataType: 'json',
+                success: function (data) {
+                    console.log("get_session ==> success");
+                    console.log(data.money);
+                    $("#money").empty().append(data.money);
+                },
+                error: function (data) {
+                    console.log("get_session ==> error");
+                    console.log(data);
+                    alert("您未登录!");
+                    location.href = "userlogin.html";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

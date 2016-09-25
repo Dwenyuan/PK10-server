@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pk10.dao.GivenMoneyRecordDao">
+    <resultMap id="BaseResultMap" type="com.pk10.bean.GivenMoneyRecord">
+        <result column="id" property="id" javaType="long"/>
+        <result column="current_username" property="currentUsername" javaType="String"/>
+        <result column="opposing_username" property="opposingUsername" javaType="String"/>
+        <result column="given_money" property="givenMoney" javaType="String"/>
+        <result column="time" property="time" javaType="java.util.Date"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.pk10.bean.GivenMoneyRecord">
+        INSERT INTO givenmoneyrecord(current_username, opposing_username, given_money, time)
+        VALUE (#{currentUsername}, #{opposingUsername}, #{givenMoney}, #{time})
+    </insert>
+</mapper>

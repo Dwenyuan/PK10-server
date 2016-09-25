@@ -41,7 +41,7 @@
             $("#tel").val("");
             $("#detail").val("");
             $("#isagent").val("");
-            $("#agentId").val("");
+
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
@@ -57,7 +57,7 @@
                     }
                 },
                 error: function() {
-                    alert('返点请用数字');
+                    alert('注册失败');
                 }
             });
         };
@@ -79,10 +79,15 @@
     <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">代理商管理/增加普通用户</strong></div>
 </div>
 <hr>
+<div class="am-g">
+    <div class="am-u-md-6">
+
+
+
 <form>
     <div class="am-g am-margin-top">
         <div  class="am-u-sm-4 am-u-md-2 am-text-right">
-            上级ID
+            上级用户名
         </div>
         <div class="am-u-sm-8 am-u-md-4 am-u-end">
             <input id="agentId" type="text" name="id" >
@@ -90,7 +95,7 @@
     </div>
     <div class="am-g am-margin-top">
         <div class="am-u-sm-4 am-u-md-2 am-text-right">
-            用户ID
+            用户用户名
         </div>
         <div class="am-u-sm-8 am-u-md-4 am-u-end">
             <input id="username" type="text" name="id" >
@@ -140,6 +145,12 @@
         </div>
     </div>
 </form>
+    </div>
+    <div class="am-u-md-6">
+        推广链接:<span id="qrlink">http://${pageContext.request.localName}:${pageContext.request.localPort}${pageContext.request.contextPath}/reg-ui/${sessionScope.userinfo.id} </span><br><button class="am-btn am-btn-primary am-btn-xs" onclick="createqrcode()"> 生成二维码</button>
+        <div id="qrcode"></div>
+    </div>
+</div>
 <footer class="admin-content-footer">
     <hr>
     <p class="am-padding-left">© 中远方舟 ©版权所有.</p>
@@ -154,6 +165,14 @@
 <!--<![endif]-->
 <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.qrcode.min.js"></script>
+<script type="text/javascript">
+    function createqrcode() {
+        var str = $("#qrlink").text();
+        $('#qrcode').empty();
+        $('#qrcode').qrcode(str);
+    }
+</script>
 </body>
 
 </html>

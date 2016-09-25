@@ -12,12 +12,12 @@
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script language="javascript" type="text/javascript">
         function test() {
-            var mydata = '{"gName":"猜字游戏","type":"大小单双"}';
+            var mydata = '{"userid":29,"betnum":7,"betmoney":1000,"idnum":576158,"type":"NUMBER"}';
             alert(mydata);
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: 'http://localhost:8081/pk10/getBetinitByTypeAndGName',
+                url: 'http://localhost:8081/pk10/createUserBets',
                 processData: false,
                 dataType: 'json',
                 data: mydata,

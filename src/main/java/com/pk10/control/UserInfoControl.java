@@ -1,16 +1,14 @@
 package com.pk10.control;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pk10.bean.*;
+import com.pk10.service.BetInitService;
 import com.pk10.service.MoneyAddRecordService;
+import com.pk10.service.UserInfoService;
 import com.pk10.util.Const;
+import com.pk10.util.UserInfoFormWeChat;
 import org.apache.http.client.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,12 +16,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import com.alibaba.fastjson.JSON;
-import com.pk10.service.BetInitService;
-import com.pk10.service.UserInfoService;
-import com.pk10.util.UserInfoFormWeChat;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.pk10.util.Const.ERROR_MSG;
 
@@ -33,6 +34,7 @@ import static com.pk10.util.Const.ERROR_MSG;
  * @author Administrator
  *
  */
+@SessionAttributes("captcha")
 @Controller
 @Scope("prototype")
 public class UserInfoControl {
@@ -230,6 +232,37 @@ public class UserInfoControl {
 		return "admin/junior-userlist";
 	}
 
+    @RequestMapping(value = "/reg-user", method = RequestMethod.POST)
+    public String register(ModelMap map, @ModelAttribute UserInfo userInfo, String code) {
+        if (userInfo == null) {
+            map.addAttribute("error_response", "无效参数!");
+        } else {
+            try {
+                if (map.get("captcha").equals(code)) {
+                    userInfo.setIsagent(0);
+                    userInfo.setCreatedAt(new Date());
+                    userInfo.setNickname(userInfo.getUsername());
+                    userInfoService.save(userInfo);
+
+                    map.put("captcha", "");
+                    map.addAttribute("success_response", "注册成功!");
+                } else {
+                    map.addAttribute("error_response", "验证码失效,请稍后重试!");
+                }
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+                map.addAttribute("error_response", "服务器异常,请稍后重试!");
+            }
+        }
+        return "admin/register";
+    }
+
+	@RequestMapping(value = "/reg-ui/{owner}", method = RequestMethod.GET)
+	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner) {
+	    map.addAttribute("owner", owner);
+		return "admin/register";
+	}
+
 	/**
 	 * 获取微信传过来的code，此code用来获取用户的openid
 	 *
@@ -297,9 +330,9 @@ public class UserInfoControl {
 		return userInfo;
 	}
 
-	@RequestMapping("checkTel")
+	@RequestMapping("check-tel/{tel}")
 	@ResponseBody
-	public Object checkTel(String tel) {
+	public Object checkTel(@PathVariable("tel")String tel) {
 		UserInfo safeUserInfo = userInfoService.getUserInfoByTel(new UserInfo(null, null, tel));
 		if (safeUserInfo != null) { // 查找到记录，表示已经占用
 			return false;
@@ -311,6 +344,7 @@ public class UserInfoControl {
 	@RequestMapping("checkusername")
 	@ResponseBody
 	public Object checkusername(String username) {
+	    logger.debug("checkusername: username = " + username);
 		UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(new UserInfo(username, null));
 		if (safeUserInfo != null) {
 			return false; // 用户名占用
@@ -366,7 +400,7 @@ public class UserInfoControl {
 		}
 	}
 
-	@RequestMapping(value = "adminlogin.do", method = RequestMethod.POST)
+	@RequestMapping(value = "adminlogin", method = RequestMethod.POST)
 	public Object adminlogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
 		UserInfo safeUserinfo;
 		try {
@@ -379,11 +413,11 @@ public class UserInfoControl {
 					return "admin/admin-agent";
 				}
 			} else {
-				return "redirect:adminlogin.html";
+				return "redirect:admin-login.htm";
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "redirect:adminlogin.html";
+			return "redirect:admin-login.htm";
 		}
 	}
 
@@ -392,10 +426,10 @@ public class UserInfoControl {
 		UserInfo safeUserinfo;
 		try {
 			request.getSession().removeAttribute("userinfo");
-			return "redirect:adminlogin.html";
+			return "redirect:admin-login.htm";
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "redirect:adminlogin.html";
+			return "redirect:admin-login.htm";
 		}
 	}
 
@@ -453,6 +487,7 @@ public class UserInfoControl {
 		userInfo.setUsername(userModel.getUsername());
 		try {
 			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
+			BetInit betInit = betInitService.getBetInitByName(new BetInit("PK10")).get(1);
 			if (hasExitUser != null) {
 				return false;
 			} else {
@@ -464,6 +499,7 @@ public class UserInfoControl {
 				userInfo.setRebate(userModel.getRebate());
 				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
+				userInfo.setMoney(betInit.getInitMoney() + 0.0);
 				UserInfo m = new UserInfo();
 				if (userModel.getAgentId() == "" || userModel.getAgentId() == null) {
 					userInfo.setOwner(0);

@@ -1,17 +1,11 @@
 package com.pk10.control;
 
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet Filter implementation class LoginFilter
@@ -35,15 +29,16 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|\\/build\\/.|\\/assets\\/.*+");
+		Pattern compile = Pattern.compile("/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|/build/.|/assets/.*+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
 		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
 			// 当用户已登录时，再进入登录界面会直接跳转
 			res.sendRedirect("index.jsp");
-		} else if ("/adminlogin.html".equals(req.getServletPath())
+		} else if ("/admin-login.htm".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("toAdminHome");
 		} else if ("/managerlogin.html".equals(req.getServletPath())
@@ -55,7 +50,7 @@ public class LoginFilter implements Filter {
 			if ("/manager.html".equals(req.getServletPath())) {
 				res.sendRedirect("managerlogin.html");
 			}else if("/toAdminHome".equals(req.getServletPath())) {
-				res.sendRedirect("adminlogin.html");
+				res.sendRedirect("admin-login.htm");
 			}else {
 				res.sendRedirect("userlogin.html");
 			}
