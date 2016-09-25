@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>中远方舟优惠券</title>
+  <title>数字互娱</title>
   <meta name="description" content="后台管理页面">
   <meta name="keywords" content="index">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list"> 
       <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+          <span class="am-icon-users"></span> ${sessionScope.userinfo.username} <span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
           <li><a href="${pageContext.request.contextPath}/adminloginout"><span class="am-icon-power-off"></span> 退出</a></li>

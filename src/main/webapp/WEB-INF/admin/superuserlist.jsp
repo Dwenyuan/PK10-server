@@ -189,7 +189,7 @@
    
     <footer class="admin-content-footer">
         <hr>
-        <p class="am-padding-left">© 中远方舟 ©版权所有.</p>
+        <p class="am-padding-left">©中远方舟版权所有</p>
     </footer>
     <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
