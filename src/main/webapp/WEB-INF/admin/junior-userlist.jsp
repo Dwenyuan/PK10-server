@@ -56,7 +56,7 @@
 <div class="am-g">
     <div class="am-u-sm-12 am-u-md-2">
         <div class="am-form-group">
-            <select data-am-selected="{btnSize: 'sm'}" id="agent">
+            <select data-am-selected="{btnSize: 'sm'}" id="agent" onchange="agentclick()">
                 <option value="option1">所有代理商</option>
             </select>
         </div>
@@ -361,6 +361,7 @@
     }
 
     function agent() {
+
         $("#agent").empty();
         $("#agent").append("<option value='0'>所有代理商</option>");
         $.ajax({
@@ -384,28 +385,31 @@
 
     function agentclick() {
 
+
+
         var id = $("#agent").val();
         if(id== 0) {
             return;
         }
-        $.ajax({
-            type: 'get',
-            url: '<%=request.getContextPath()%>/owner/' + id,
-            processData: false,
-            dataType: 'json',
-            success: function(data) {
-                var html="";
-                $("#nextagent").empty();
-                $("#nextagent").append("<option value='0'>所有分销商</option>");
-                $.each(data.ownersOfAgents, function(idx, item) {
-                    html = '<option value="'+item.id+'" id="nextagent_id">'+item.username+'</option>';
-                    $("#nextagent").append(html);
-                });
-            },
-            error: function(data) {
-                alert('agentclick: 没有记录!');
-            }
-        });
+        window.location="<%=request.getContextPath()%>/junior/users/" + id;
+        <%--$.ajax({--%>
+            <%--type: 'get',--%>
+            <%--url: '<%=request.getContextPath()%>/junior/users/' + id,--%>
+            <%--processData: false,--%>
+            <%--dataType: 'json',--%>
+            <%--success: function(data) {--%>
+                <%--var html="";--%>
+                <%--$("#nextagent").empty();--%>
+                <%--$("#nextagent").append("<option value='0'>所有分销商</option>");--%>
+                <%--$.each(data.ownersOfAgents, function(idx, item) {--%>
+                    <%--html = '<option value="'+item.id+'" id="nextagent_id">'+item.username+'</option>';--%>
+                    <%--$("#nextagent").append(html);--%>
+                <%--});--%>
+            <%--},--%>
+            <%--error: function(data) {--%>
+                <%--alert('agentclick: 没有记录!');--%>
+            <%--}--%>
+        <%--});--%>
 
     }
 
