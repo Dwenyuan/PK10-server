@@ -33,4 +33,6 @@ public interface UserBetDao extends BaseDao<UserBet> {
 	List<UserBet> getRecentlyBets(@Param("limit") Integer limit);
 
     List<UserBet> getBetsByIdnum(Integer idnum);
+
+	List<UserBet> getlastBets(@Param("idnum") Integer idnum);
 }

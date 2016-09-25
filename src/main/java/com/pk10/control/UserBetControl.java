@@ -1,25 +1,36 @@
 package com.pk10.control;
 
+import static com.pk10.util.Const.ERROR_MSG;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.pk10.bean.MoneyAddRecord;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.User;
+import org.aspectj.weaver.ast.Var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserBetService;
-
-import static com.pk10.util.Const.ERROR_MSG;
 
 @Controller
 @RequestMapping("userbet")
@@ -42,12 +53,50 @@ public class UserBetControl {
 
 	@RequestMapping(value = "createUserBets", method = RequestMethod.POST)
 	@ResponseBody
-	public Object createUserBets(@RequestBody List<UserBet> userBets) {
+	public Object createUserBets(@RequestBody List<UserBet> userBets, HttpSession session) {
 		try {
-			return userBetService.saveList(userBets);
+			session.setAttribute("userBets", userBets);
+			return userBetService.saveList(mergebets(userBets));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+	public static List<UserBet> mergebets(List<UserBet> userBets) {
+		List<UserBet> result = new ArrayList<UserBet>();
+		UserBet temp = null;
+		try {
+			for (UserBet userBet : userBets) {
+				if (result.size() == 0) {
+					result.add(userBet.clone());
+				} else {
+					for (UserBet value : result) {
+						if (checkEqule(userBet, value)) {
+							temp = value;
+						}
+					}
+					if (temp != null) {
+						temp.setBetmoney(temp.getBetmoney() + userBet.getBetmoney());
+						temp = null;
+					} else {
+						result.add(userBet.clone());
+					}
+				}
+			}
+			return result;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+
+	public static boolean checkEqule(UserBet key1, UserBet key2) {
+		if (key1.getUserid().equals(key2.getUserid()) && key1.getBetnum().equals(key2.getBetnum())
+				&& key1.getIdnum().equals(key2.getIdnum()) && key1.getType().equals(key2.getType())) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -73,51 +122,69 @@ public class UserBetControl {
 		}
 	}
 
+	/**
+	 * 获取最近一期下注，并且未开奖
+	 * 
+	 * @return
+	 */
+	@RequestMapping("getlastBets")
+	@ResponseBody
+	public Object getlastBets(HttpSession session) {
+		try {
+			Object userbets = session.getAttribute("userBets");
+			return userbets==null?new ArrayList<Object>():userbets;
+//			return userBetService.getlastBets(session.getAttribute("userBets"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
 	@RequestMapping("/list")
 	@ResponseBody
-	public String getBetsByUserId(@RequestParam("id")int id) {
+	public String getBetsByUserId(@RequestParam("id") int id) {
 		Map<String, Object> map = new HashMap<>();
 		List<UserBet> userBets = userBetService.getBetsByUserId(id);
 		map.put("userbets", userBets);
 		return JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss");
 	}
 
-    @RequestMapping(value = "/bets", method = RequestMethod.GET)
-    public String getBetList(Model model, @RequestParam(value = "pn", required = false)Integer pn) {
-        try {
-            if (pn == null || pn <= 0)
-                pn = 1;
-
-            PageHelper.startPage(pn, 10);
-            List<UserBet> bets =  userBetService.getAll();
-            if (bets.size() <= 0) {
-                model.addAttribute(ERROR_MSG, "投注列表为空!");
-            } else {
-                PageInfo page = new PageInfo(bets);
-                if (page.getPageNum() > 0) {
-                    model.addAttribute("bets", bets);
-                    model.addAttribute("page", page);
-                    model.addAttribute("pn", pn);
-                }
-            }
-
-        } catch (Exception e) {
-            model.addAttribute(ERROR_MSG, e.getMessage());
-            logger.error(e.getMessage());
-        }
-
-        return "admin/bet-list";
-    }
-
-	@RequestMapping(value = "/{idnum}", method = RequestMethod.GET)
-	public String getBetsByIdnum(Model model, @RequestParam(value = "pn", required = false)Integer pn,
-								 @PathVariable("idnum")Integer idnum) {
+	@RequestMapping(value = "/bets", method = RequestMethod.GET)
+	public String getBetList(Model model, @RequestParam(value = "pn", required = false) Integer pn) {
 		try {
 			if (pn == null || pn <= 0)
 				pn = 1;
 
 			PageHelper.startPage(pn, 10);
-			List<UserBet> bets =  userBetService.getBetsByIdnum(idnum);
+			List<UserBet> bets = userBetService.getAll();
+			if (bets.size() <= 0) {
+				model.addAttribute(ERROR_MSG, "投注列表为空!");
+			} else {
+				PageInfo page = new PageInfo(bets);
+				if (page.getPageNum() > 0) {
+					model.addAttribute("bets", bets);
+					model.addAttribute("page", page);
+					model.addAttribute("pn", pn);
+				}
+			}
+
+		} catch (Exception e) {
+			model.addAttribute(ERROR_MSG, e.getMessage());
+			logger.error(e.getMessage());
+		}
+
+		return "admin/bet-list";
+	}
+
+	@RequestMapping(value = "/{idnum}", method = RequestMethod.GET)
+	public String getBetsByIdnum(Model model, @RequestParam(value = "pn", required = false) Integer pn,
+			@PathVariable("idnum") Integer idnum) {
+		try {
+			if (pn == null || pn <= 0)
+				pn = 1;
+
+			PageHelper.startPage(pn, 10);
+			List<UserBet> bets = userBetService.getBetsByIdnum(idnum);
 			if (bets.size() <= 0) {
 				model.addAttribute(ERROR_MSG, "投注列表为空!");
 			} else {

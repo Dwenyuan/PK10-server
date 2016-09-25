@@ -78,4 +78,64 @@ public class TestUserBetService {
 	public void TestgetRecentlyBets(){
 		System.out.println(userBetService.getRecentlyBets(5));
 	}
+	
+	@Test
+	public void merge() throws CloneNotSupportedException{
+		List<UserBet> userBets = new ArrayList<UserBet>();
+		userBets.add(new UserBet(10, 577791, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(11, 577791, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(12, 577792, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 2000D, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 3000D, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 4000D, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "1", new Date(), 29, tokenConfig));
+		System.out.println(mergebets(userBets).size());
+		for (UserBet userBet : mergebets(userBets)) {
+			System.out.println(userBet);
+		}
+	}
+	
+	@Test
+	public void TestClone() throws CloneNotSupportedException{
+		UserBet userBet = new UserBet(10, 577791, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig);
+		UserBet userBet2 = userBet.clone();
+		System.out.println(userBet == userBet2);
+		System.out.println(userBet.getBetmoney()+"==="+userBet2.getBetmoney());
+		userBet.setBetmoney(2D);
+		System.out.println(userBet.getBetmoney()+"==="+userBet2.getBetmoney());
+	}
+	public static List<UserBet> mergebets(List<UserBet> userBets) throws CloneNotSupportedException {
+		List<UserBet> result = new ArrayList<UserBet>();
+		UserBet temp = null;
+		for (UserBet userBet : userBets) {
+			if (result.size()==0) {
+				result.add(userBet.clone());
+			}else{
+				for (UserBet value : result) {
+					if (checkEqule(userBet, value)) {
+						temp = value;
+					}
+				}
+				if (temp!=null) {
+					temp.setBetmoney(temp.getBetmoney()+userBet.getBetmoney());
+					temp = null;
+				}else{
+					result.add(userBet.clone());
+				}
+			}
+		}
+		return result;
+	}
+
+	public static boolean checkEqule(UserBet key1, UserBet key2) {
+		if (key1.getUserid().equals(key2.getUserid()) && key1.getBetnum().equals(key2.getBetnum())
+				&& key1.getIdnum().equals(key2.getIdnum()) && key1.getType().equals(key2.getType())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

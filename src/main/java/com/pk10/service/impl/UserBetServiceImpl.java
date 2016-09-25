@@ -110,4 +110,9 @@ public class UserBetServiceImpl implements UserBetService {
 		return userBetDao.getBetsByIdnum(idnum);
 	}
 
+	@Override
+	public List<UserBet> getlastBets(Integer idnum) {
+		return userBetDao.getlastBets(idnum);
+	}
+
 }

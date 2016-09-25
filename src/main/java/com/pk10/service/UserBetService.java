@@ -27,4 +27,6 @@ public interface UserBetService extends BaseService<UserBet> {
 	List<UserBet> getRecentlyBets(Integer limit);
 
     List<UserBet> getBetsByIdnum(Integer idnum);
+
+	List<UserBet> getlastBets(Integer idnum);
 }

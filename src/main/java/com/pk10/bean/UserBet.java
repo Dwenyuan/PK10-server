@@ -2,7 +2,7 @@ package com.pk10.bean;
 
 import java.util.Date;
 
-public class UserBet {
+public class UserBet implements Cloneable{
 	private Integer id;
 	private Integer idnum; // 开奖期数
 	private BetType type;// ` VARCHAR(45) NULL COMMENT '玩法，主要分 ‘单双’ ‘数字’ ‘大小’'
@@ -150,5 +150,8 @@ public class UserBet {
 		this.userid = userid;
 		this.tokenConfig = tokenConfig;
 	}
-
+	@Override
+	public UserBet clone() throws CloneNotSupportedException {
+		return (UserBet) super.clone();
+	}
 }

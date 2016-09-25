@@ -97,7 +97,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					userBetDao.update(userBet); // 重置兑奖标志位
 				}
 				break;
-			case BIG_OR_SMALL:
+			case SINGLE_OR_DOUBLE:
 				if ("single".equals(userBet.getBetnum()) && lotterynum % 2 == 1) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
@@ -106,7 +106,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					userBetDao.update(userBet);
 				}
 				break;
-			case SINGLE_OR_DOUBLE:
+			case BIG_OR_SMALL:
 				if ("big".equals(userBet.getBetnum()) && lotterynum >= 5) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
