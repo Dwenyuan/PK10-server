@@ -73,18 +73,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 		for (UserBet userBet : userBets) {
 			// 获取档期开奖结果 如果获取不到说明还没有从网上下载下来，则等待3秒钟再去查询
 			LotteryHistory lotteryHistory = null;
-			for (int i = 0; i < 30; i++) {
+//			for (int i = 0; i < 30; i++) {
 				lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
-				if (lotteryHistory == null) {
-					Thread.sleep(3000);
-					continue;
-				} else {
-					break;
-				}
-			}
+//				if (lotteryHistory == null) {
+//					Thread.sleep(3000);
+//					continue;
+//				} else {
+//					break;
+//				}
+//			}
 			// 如果60秒后还是查不到 则放弃
 			if (lotteryHistory == null) {
-				throw new Exception("get bouns result error");
+				continue;
+//				throw new Exception("get bouns result error");
 			}
 			String[] split = lotteryHistory.getLotterynums().split(",");
 			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10; // 计算中奖号码
