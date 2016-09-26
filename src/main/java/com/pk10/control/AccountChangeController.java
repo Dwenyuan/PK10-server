@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by dengfengdecao on 16/9/26.
@@ -37,7 +34,7 @@ public class AccountChangeController {
                                                 @RequestParam("endTime") String endTime) throws Exception {
 
         Map<String, Object> map = new HashMap<String, Object>();
-        List<AccountChange> accountChanges = Collections.emptyList();
+        List<AccountChange> accountChanges = new LinkedList<AccountChange>();
         UserInfo user = userInfoService.getOneById(new UserInfo(curUserId));
         List<MoneyAddRecord> moneyAddRecords = moneyAddRecordService.getMoneyAddRecordList(curUserId, startTime, endTime);
         List<UserBet> bets = userBetService.getBetList(curUserId, startTime, endTime);
