@@ -11,4 +11,8 @@ public enum AccountChangeType {
     private AccountChangeType(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
 }
