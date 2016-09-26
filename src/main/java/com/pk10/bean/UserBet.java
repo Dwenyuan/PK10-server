@@ -12,7 +12,7 @@ public class UserBet {
 	private String betnum;// '下注号码, 也可以是 \'single\' \'double\' \'big\' \'small\'
 	private Date createdAt;// ` DATETIME NULL,
 	private Integer userid;// ` VARCHAR(255) NOT NULL,
-	private Integer state;
+	private Integer state; // 0:未兑奖 1:已兑奖
 	private TokenConfig tokenConfig;
 
 	@Override

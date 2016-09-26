@@ -110,4 +110,10 @@ public class UserBetServiceImpl implements UserBetService {
 		return userBetDao.getBetsByIdnum(idnum);
 	}
 
+	@Override
+	public List<UserBet> getBetList(Integer curUserId, String startTime, String endTime) {
+
+		return userBetDao.getBetList(curUserId, startTime, endTime);
+	}
+
 }

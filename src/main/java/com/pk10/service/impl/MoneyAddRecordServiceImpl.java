@@ -36,4 +36,9 @@ public class MoneyAddRecordServiceImpl implements MoneyAddRecordService {
     public void save(MoneyAddRecord moneyAddRecord) {
         moneyAddRecordMapper.insert(moneyAddRecord);
     }
+
+    @Override
+    public List<MoneyAddRecord> getMoneyAddRecordList(Integer curUserId, String startTime, String endTime) {
+        return moneyAddRecordMapper.getMoneyAddRecordList(curUserId, startTime, endTime);
+    }
 }

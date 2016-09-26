@@ -2,9 +2,10 @@ package com.pk10.dao;
 
 import com.pk10.bean.MoneyAddRecord;
 import com.pk10.bean.MoneyAddRecordExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface MoneyAddRecordMapper {
@@ -33,4 +34,7 @@ public interface MoneyAddRecordMapper {
     int updateByPrimaryKey(MoneyAddRecord record);
 
     List<MoneyAddRecord> selectAll();
+
+    List<MoneyAddRecord> getMoneyAddRecordList(@Param("curUserId") Integer curUserId, @Param("startTime") String startTime,
+                                               @Param("endTime") String endTime);
 }
