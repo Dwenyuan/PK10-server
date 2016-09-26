@@ -10,7 +10,7 @@ public class AccountChange implements Serializable {
 
     private long id;
     private String username;
-    private AccountChangeType type;
+    private String type;
     private double money;
     private Date time;
 
@@ -30,11 +30,11 @@ public class AccountChange implements Serializable {
         this.username = username;
     }
 
-    public AccountChangeType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(AccountChangeType type) {
+    public void setType(String type) {
         this.type = type;
     }
 

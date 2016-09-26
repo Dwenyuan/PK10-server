@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
@@ -112,7 +112,7 @@
                                 <td>${user.username}</td>
                                 <td class="am-hide-sm-only">${user.money}</td>
                                 <td class="am-hide-sm-only">
-                                    <f:formatDate value="${user.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                    <fmt:formatDate value="${user.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </td>
                                 <td>
                                     <div class="am-btn-toolbar">
@@ -231,14 +231,13 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-                        <th>用户ID</th>
+                        <th>用户名</th>
                         <th>帐变类型</th>
                         <th>金额</th>
                         <th>时间</th>
-
                     </tr>
                     </thead>
-                    <tbody id="moneychange_record">
+                    <tbody id="account_change_record">
                     ${errorMsg}
                     </tbody>
                 </table>
@@ -372,6 +371,7 @@
        var curUserId;
        function moneychange_c(id) {
            curUserId = id;
+           $("#account_change_record").empty();
            $("#moneychange").modal();
        }
 
@@ -400,7 +400,7 @@
                        html += '<td>'+item.time +'</td>'
                        html += '</tr> ';
 
-                       $("#userbet_record").empty().append(html);
+                       $("#account_change_record").empty().append(html);
                    });
                },
                error: function (result) {
