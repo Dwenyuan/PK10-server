@@ -29,4 +29,6 @@ public interface UserBetService extends BaseService<UserBet> {
     List<UserBet> getBetsByIdnum(Integer idnum);
 
     List<UserBet> getBetList(Integer curUserId, String startTime, String endTime);
+
+	List<UserBet> getlastBets(Integer idnum);
 }

@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `pk10`.`userinfo` (
   `tel` VARCHAR(21) NULL DEFAULT NULL,
   `username` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(45) NULL DEFAULT NULL,
-  `isagent` INT(1) NULL DEFAULT '0' COMMENT '是否是代理商 或者管理员',
+  `isagent` INT(1) NULL DEFAULT '0' COMMENT '是否是代理商 或者管理员,普通用户0，代理商2,超级管理员3',
   `rebate` DOUBLE NULL DEFAULT NULL COMMENT '返点',
   `owner` INT(11) NULL DEFAULT '0' COMMENT '此用户属于哪个代理商 默认为0 即不属于任何代理商',
   PRIMARY KEY (`id`))

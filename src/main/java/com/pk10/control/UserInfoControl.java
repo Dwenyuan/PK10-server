@@ -164,7 +164,7 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-
+ 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public Map deleteUser(@PathVariable("id") Integer id) throws Exception {
@@ -487,6 +487,7 @@ public class UserInfoControl {
 		userInfo.setUsername(userModel.getUsername());
 		try {
 			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
+			BetInit betInit = betInitService.getBetInitByName(new BetInit("PK10")).get(1);
 			if (hasExitUser != null) {
 				return false;
 			} else {
@@ -498,6 +499,7 @@ public class UserInfoControl {
 				userInfo.setRebate(userModel.getRebate());
 				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
+				userInfo.setMoney(betInit.getInitMoney() + 0.0);
 				UserInfo m = new UserInfo();
 				if (userModel.getAgentId() == "" || userModel.getAgentId() == null) {
 					userInfo.setOwner(0);

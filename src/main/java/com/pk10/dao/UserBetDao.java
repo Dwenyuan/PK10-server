@@ -33,6 +33,10 @@ public interface UserBetDao extends BaseDao<UserBet> {
 
     List<UserBet> getBetsByIdnum(Integer idnum);
 
+
     List<UserBet> getBetList(@Param("curUserId") Integer curUserId, @Param("startTime") String startTime,
 							 @Param("endTime") String endTime);
+
+	List<UserBet> getlastBets(@Param("idnum") Integer idnum);
+
 }

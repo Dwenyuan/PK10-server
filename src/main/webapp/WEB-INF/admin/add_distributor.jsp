@@ -41,7 +41,7 @@
             $("#tel").val("");
             $("#detail").val("");
             $("#isagent").val("");
-            $("#agentId").val("");
+
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
@@ -57,7 +57,7 @@
                     }
                 },
                 error: function() {
-                    alert('返点请用数字');
+                    alert('注册失败');
                 }
             });
         };
@@ -87,7 +87,7 @@
 <form>
     <div class="am-g am-margin-top">
         <div  class="am-u-sm-4 am-u-md-2 am-text-right">
-            上级ID
+            上级用户名
         </div>
         <div class="am-u-sm-8 am-u-md-4 am-u-end">
             <input id="agentId" type="text" name="id" >
@@ -95,7 +95,7 @@
     </div>
     <div class="am-g am-margin-top">
         <div class="am-u-sm-4 am-u-md-2 am-text-right">
-            用户ID
+            用户用户名
         </div>
         <div class="am-u-sm-8 am-u-md-4 am-u-end">
             <input id="username" type="text" name="id" >
