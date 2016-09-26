@@ -250,4 +250,8 @@
       user_name = #{userName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getMoneyAddRecordList" resultMap="BaseResultMap">
+    SELECT * FROM money_add_record WHERE add_time BETWEEN #{startTime} and #{endTime} and user_id=#{curUserId}
+  </select>
 </mapper>

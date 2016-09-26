@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by ron on 16-9-7.
  */
-@Deprecated
 @Controller
 public class AdminHomeControl {
     private static final Logger log = LoggerFactory.getLogger(UserInfoControl.class);

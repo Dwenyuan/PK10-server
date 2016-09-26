@@ -111,6 +111,10 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
 	@Override
+	public List<UserBet> getBetList(Integer curUserId, String startTime, String endTime) {
+		return userBetDao.getBetList(curUserId, startTime, endTime);
+	}
+
 	public List<UserBet> getlastBets(Integer idnum) {
 		return userBetDao.getlastBets(idnum);
 	}

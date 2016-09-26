@@ -98,4 +98,8 @@
 		delete from userbet
 		where id = #{id}
 	</delete>
+
+	<select id="getBetList" resultMap="UserBet">
+    SELECT * FROM userbet WHERE createdAt BETWEEN #{startTime} and #{endTime} and userid=#{curUserId}
+	</select>
 </mapper>

@@ -1,9 +1,9 @@
 package com.pk10.service;
 
-import java.util.List;
-
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
+
+import java.util.List;
 
 public interface UserBetService extends BaseService<UserBet> {
 
@@ -27,6 +27,8 @@ public interface UserBetService extends BaseService<UserBet> {
 	List<UserBet> getRecentlyBets(Integer limit);
 
     List<UserBet> getBetsByIdnum(Integer idnum);
+
+    List<UserBet> getBetList(Integer curUserId, String startTime, String endTime);
 
 	List<UserBet> getlastBets(Integer idnum);
 }
