@@ -78,15 +78,15 @@
             <br>
             <span>有奖</span>
         </div>
-        <div class="am-u-sm-3" align="center" style="color:#fff;">
-            <i class="am-icon-trophy am-icon-sm"></i>
+        <div class="am-u-sm-3" align="center" style="color:#fff;" onclick="showchangepwd()">
+            <i class="am-icon-cogs am-icon-sm"></i>
             <br>
-            <span>排行</span>
+            <span>改密</span>
         </div>
-        <div class="am-u-sm-3" align="center" style="color:#fff;">
-            <i class="am-icon-tasks am-icon-sm"></i>
+        <div class="am-u-sm-3" align="center" style="color:#fff;" onclick="outlogin()">
+            <i class="am-icon-sign-out am-icon-sm"></i>
             <br>
-            <span>任务</span>
+            <span>退出</span>
         </div>
     </div>
     <div class="am-g">
@@ -127,6 +127,39 @@
         </ul>
 
     </div>
+    <!--改密码-->
+    <div class="am-modal am-modal-alert" tabindex="-1" id="changepwd">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">修改密码</div>
+            <div class="am-modal-bd">
+                <form>
+                <table class="am-table am-table-striped am-table-hover table-main">
+
+                    <tbody >
+                        <tr>
+                            <td>原密码</td>
+                            <td><input type="password"name="" id="oldpwd"></td>
+                        </tr>
+                        <tr>
+                            <td>新密码</td>
+                            <td><input type="password"name="" id="newpwd"></td>
+                        </tr>
+                        <tr>
+                            <td>确认密码</td>
+                            <td><input type="password"name="" id="pwd"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center"><button class="am-btn am-btn-primary" onclick="changepwd()">保存</button>
+                                <button class="am-btn am-btn-primary" onclick="remove()">取消</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+            `
+        </div>
+    </div>
     <footer data-am-widget="footer" class="am-footer ">
         © 2016 AllMobilize, Inc. Licensed under MIT license.
     </footer>
@@ -151,6 +184,41 @@
                     location.href = "userlogin.html";
                 }
             });
+        }
+        function changepwd() {
+            var newpwd = $("#newpwd").val();
+            var oldpwd = $("#oldpwd").val();
+            var pwd = $("#pwd").val();
+            $("#newpwd").val('');
+            $("#pwd").val('');
+            $("#oldpwd").val('');
+            if(newpwd != pwd) {
+                alert("两次密码不一致");
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: 'updateuserpassword?oldPwd=' + oldpwd + '&newPwd=' + newpwd ,
+                dataType: 'json',
+                success: function () {
+                    alert("修改成功!");
+                },
+                error: function (data) {
+                    alert("修改成功!");
+                }
+            });
+        }
+        function showchangepwd() {
+            $("#changepwd").modal();
+        }
+        function outlogin() {
+            window.location = "/pk10/logout";
+        }
+        function remove() {
+            $("#newpwd").val('');
+            $("#pwd").val('');
+            $("#oldpwd").val('');
+            $("#changepwd").modal('close');
         }
     </script>
 </body>
