@@ -3,7 +3,6 @@ package com.pk10.control;
 import com.alibaba.fastjson.JSONObject;
 import com.pk10.util.Const;
 import com.pk10.util.Generator;
-import com.sun.istack.internal.Nullable;
 import com.taobao.api.ApiException;
 import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
@@ -32,7 +31,7 @@ public class SmsCaptchaController {
     @NotBlank
     private String smsParam;
 
-    @Nullable
+
     private String extend;
 
 

@@ -30,7 +30,6 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		Pattern compile = Pattern.compile("/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|/build/.|/assets/.*+");
@@ -42,6 +41,9 @@ public class LoginFilter implements Filter {
 		} else if ("/admin-login.htm".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("toAdminHome");
+		} else if ("/agentlogin.html".equals(req.getServletPath())
+				&& req.getSession().getAttribute("userinfo") != null) {
+			res.sendRedirect("/agentlogin.html");
 		} else if ("/managerlogin.html".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("manager.html");
@@ -51,7 +53,9 @@ public class LoginFilter implements Filter {
 			if ("/manager.html".equals(req.getServletPath())) {
 				res.sendRedirect("managerlogin.html");
 			}else if("/toAdminHome".equals(req.getServletPath())) {
-				res.sendRedirect("admin-login.htm");
+				request.getRequestDispatcher("admin-login.htm").forward(request,response);
+			}else if("/agentlogin.html".equals(req.getServletPath())) {
+				res.sendRedirect("/agentlogin.html");
 			}else {
 				res.sendRedirect("userlogin.html");
 			}
