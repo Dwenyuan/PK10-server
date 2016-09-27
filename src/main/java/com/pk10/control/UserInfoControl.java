@@ -164,7 +164,7 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-
+ 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public Map deleteUser(@PathVariable("id") Integer id) throws Exception {

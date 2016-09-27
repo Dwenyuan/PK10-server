@@ -15,16 +15,18 @@
 	</resultMap>
 
 	<select id="getBetsByUserId" parameterType="int" resultMap="UserBet">
-		SELECT * FROM userbet WHERE userid = #{userid}  order by createdAt desc
+		SELECT * FROM userbet WHERE userid = #{userid} order by createdAt desc
 	</select>
-	
+
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
-		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		insert into
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
 		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid})
 	</insert>
 
 	<insert id="saveList" parameterType="list">
-		insert into userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		insert into
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
 		values
 		<foreach collection="list" item="item" separator=",">
 			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid})
@@ -32,31 +34,51 @@
 	</insert>
 
 	<update id="update" parameterType="com.pk10.bean.UserBet">
-		update userbet set state = 1 where id = #{id}
+		update userbet set state = 1
+		where id = #{id}
 	</update>
 
 	<select id="getAll" resultMap="UserBet">
-		select * from userbet order by createdAt desc
+		select * from userbet order by
+		createdAt desc
 	</select>
 
-	<select id="getOneById" parameterType="com.pk10.bean.UserBet" resultMap="UserBet">
+	<select id="getOneById" parameterType="com.pk10.bean.UserBet"
+		resultMap="UserBet">
 		select * from userbet ub where ub.id = #{id}
 	</select>
 
 	<select id="getOneByIdnum" resultType="com.pk10.bean.UserBet">
-		select * from userbet ub where ub.id = #{idnum}
+		select * from userbet ub
+		where ub.id = #{idnum}
 	</select>
 
-	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
+	<select id="getUserBetByOpenid" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserBet">
 		select * from userbet ub where
-		ub.userid = #{id} order by createdAt
+		ub.userid = #{id} order by
+		createdAt
 	</select>
 	<!-- 获取指定用户未兑奖的订单 -->
-	<select id="getUnCashPrize" parameterType="com.pk10.bean.UserInfo" resultMap="UserBet">
+	<select id="getUnCashPrize" parameterType="com.pk10.bean.UserInfo"
+		resultMap="UserBet">
 		select * from userbet ub where
 		ub.userid =
 		#{id} and
-		ub.state = 0
+		ub.state =
+		0
+	</select>
+	<select id="getlastBets" resultMap="UserBet">
+		<choose>
+			<when test="idnum != null">
+				select * from pk10.userbet where idnum = #{idnum} and
+				state = 0
+			</when>
+			<otherwise>
+				select * from pk10.userbet ub ,(select max(idnum) max from
+				pk10.userbet) mub where ub.idnum = mub.max and state = 0
+			</otherwise>
+		</choose>
 	</select>
 	<select id="getRecentlyBets" resultMap="UserBet">
 		select *
@@ -73,6 +95,11 @@
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
-		delete from userbet where id = #{id}
+		delete from userbet
+		where id = #{id}
 	</delete>
+
+	<select id="getBetList" resultMap="UserBet">
+    SELECT * FROM userbet WHERE createdAt BETWEEN #{startTime} and #{endTime} and userid=#{curUserId}
+	</select>
 </mapper>

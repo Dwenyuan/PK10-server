@@ -16,4 +16,6 @@ public interface MoneyAddRecordService {
     public List<MoneyAddRecord> getAll();
 
     void save(MoneyAddRecord moneyAddRecord);
+
+    List<MoneyAddRecord> getMoneyAddRecordList(Integer curUserId, String startTime, String endTime);
 }

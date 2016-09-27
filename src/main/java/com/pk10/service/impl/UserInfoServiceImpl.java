@@ -1,19 +1,18 @@
 package com.pk10.service.impl;
 
-import java.util.List;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pk10.bean.*;
+import com.pk10.dao.LotteryHistoryDao;
+import com.pk10.dao.UserBetDao;
+import com.pk10.dao.UserInfoDao;
+import com.pk10.service.UserInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pk10.dao.LotteryHistoryDao;
-import com.pk10.dao.UserBetDao;
-import com.pk10.dao.UserInfoDao;
-import com.pk10.service.UserInfoService;
+import java.util.List;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -97,7 +96,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					userBetDao.update(userBet); // 重置兑奖标志位
 				}
 				break;
-			case BIG_OR_SMALL:
+			case SINGLE_OR_DOUBLE:
 				if ("single".equals(userBet.getBetnum()) && lotterynum % 2 == 1) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
@@ -106,7 +105,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					userBetDao.update(userBet);
 				}
 				break;
-			case SINGLE_OR_DOUBLE:
+			case BIG_OR_SMALL:
 				if ("big".equals(userBet.getBetnum()) && lotterynum >= 5) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {

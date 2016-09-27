@@ -10,6 +10,9 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
+import com.pk10.bean.BetType;
+import com.pk10.bean.UserBet;
+
 public class TestDate {
 
 	@Test

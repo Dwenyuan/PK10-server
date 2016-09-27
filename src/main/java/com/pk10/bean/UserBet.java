@@ -2,7 +2,7 @@ package com.pk10.bean;
 
 import java.util.Date;
 
-public class UserBet {
+public class UserBet implements Cloneable{
 	private Integer id;
 	private Integer idnum; // 开奖期数
 	private BetType type;// ` VARCHAR(45) NULL COMMENT '玩法，主要分 ‘单双’ ‘数字’ ‘大小’'
@@ -12,7 +12,7 @@ public class UserBet {
 	private String betnum;// '下注号码, 也可以是 \'single\' \'double\' \'big\' \'small\'
 	private Date createdAt;// ` DATETIME NULL,
 	private Integer userid;// ` VARCHAR(255) NOT NULL,
-	private Integer state;
+	private Integer state; // 0:未兑奖 1:已兑奖
 	private TokenConfig tokenConfig;
 
 	@Override
@@ -150,5 +150,8 @@ public class UserBet {
 		this.userid = userid;
 		this.tokenConfig = tokenConfig;
 	}
-
+	@Override
+	public UserBet clone() throws CloneNotSupportedException {
+		return (UserBet) super.clone();
+	}
 }

@@ -1,11 +1,10 @@
 package com.pk10.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserBetDao extends BaseDao<UserBet> {
 
@@ -33,4 +32,11 @@ public interface UserBetDao extends BaseDao<UserBet> {
 	List<UserBet> getRecentlyBets(@Param("limit") Integer limit);
 
     List<UserBet> getBetsByIdnum(Integer idnum);
+
+
+    List<UserBet> getBetList(@Param("curUserId") Integer curUserId, @Param("startTime") String startTime,
+							 @Param("endTime") String endTime);
+
+	List<UserBet> getlastBets(@Param("idnum") Integer idnum);
+
 }
