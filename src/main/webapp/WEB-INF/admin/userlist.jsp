@@ -410,7 +410,7 @@
                error: function (result) {
                    console.log("error: result <== ");
                    console.log(result);
-                   alert(result.errorMsg);
+                   alert("服务器异常,请稍后重试!");
                }
 
            });
