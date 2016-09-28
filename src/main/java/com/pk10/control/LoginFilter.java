@@ -50,7 +50,8 @@ public class LoginFilter implements Filter {
 			if ("/manager.html".equals(req.getServletPath())) {
 				res.sendRedirect("managerlogin.html");
 			}else if("/toAdminHome".equals(req.getServletPath())) {
-				res.sendRedirect("admin-login.htm");
+				request.getRequestDispatcher("admin-login.htm").forward(request, response);
+				// res.sendRedirect("admin-login.htm");
 			}else {
 				res.sendRedirect("userlogin.html");
 			}

@@ -1,5 +1,7 @@
 package com.pk10.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,6 +14,8 @@ public class AccountChange implements Serializable {
     private String username;
     private String type;
     private double money;
+    private double balance;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date time;
 
     public long getId() {
@@ -44,6 +48,14 @@ public class AccountChange implements Serializable {
 
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public Date getTime() {

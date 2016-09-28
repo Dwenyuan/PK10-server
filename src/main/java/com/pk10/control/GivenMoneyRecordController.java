@@ -2,12 +2,11 @@ package com.pk10.control;
 
 import com.pk10.bean.GivenMoneyRecord;
 import com.pk10.bean.UserInfo;
-import com.pk10.service.GivenMoneyRecordService;
-import com.pk10.service.UserInfoService;
+import com.pk10.service.impl.GivenMoneyRecordServiceImpl;
+import com.pk10.service.impl.UserInfoServiceImpl;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -24,14 +23,14 @@ import java.util.Date;
 public class GivenMoneyRecordController {
 
     @Resource
-    private UserInfoService userInfoService;
+    private UserInfoServiceImpl userInfoService;
 
     @Resource
-    private GivenMoneyRecordService givenMoneyRecordService;
+    private GivenMoneyRecordServiceImpl givenMoneyRecordService;
 
     // 当前用户赠送金币给对方用户
     @RequestMapping(value = "given-money", method = RequestMethod.POST)
-    public synchronized String givenMoney(ModelMap map, @ModelAttribute GivenMoneyRecord givenMoneyRecord, String code) throws Exception {
+    public synchronized String givenMoney(ModelMap map, GivenMoneyRecord givenMoneyRecord, String code) throws Exception {
         if (map.get("captcha").equals(code)) {
             UserInfo currentUser = userInfoService.getUserInfoByUsername(new UserInfo(givenMoneyRecord.getCurrentUsername(), null));
             UserInfo opposingUser = userInfoService.getUserInfoByUsername(new UserInfo(givenMoneyRecord.getOpposingUsername(), null));
@@ -44,6 +43,8 @@ public class GivenMoneyRecordController {
                 userInfoService.save(currentUser);
                 userInfoService.save(opposingUser);
 
+                givenMoneyRecord.setCurrentMoney(currentUser.getMoney());
+                givenMoneyRecord.setOpposingMoney(opposingUser.getMoney());
                 givenMoneyRecord.setTime(new Date());
                 givenMoneyRecordService.save(givenMoneyRecord);
 

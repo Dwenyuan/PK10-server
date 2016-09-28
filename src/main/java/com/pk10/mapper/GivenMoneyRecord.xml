@@ -10,7 +10,11 @@
     </resultMap>
 
     <insert id="save" parameterType="com.pk10.bean.GivenMoneyRecord">
-        INSERT INTO givenmoneyrecord(current_username, opposing_username, given_money, time)
-        VALUE (#{currentUsername}, #{opposingUsername}, #{givenMoney}, #{time})
+        INSERT INTO givenmoneyrecord(current_username, opposing_username, given_money, time,
+         current_money, opposing_money)
+        VALUE (#{currentUsername}, #{opposingUsername}, #{givenMoney}, #{time}, #{currentMoney}, #{opposingMoney})
     </insert>
+    <select id="getGivenMoneyList" resultType="com.pk10.bean.GivenMoneyRecord">
+        SELECT * FROM givenmoneyrecord WHERE current_username=#{curUsername} and time between #{startTime} and #{endTime}
+    </select>
 </mapper>

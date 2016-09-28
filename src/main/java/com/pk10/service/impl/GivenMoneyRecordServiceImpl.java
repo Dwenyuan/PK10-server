@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by dengfengdecao on 16/9/24.
@@ -21,5 +22,10 @@ public class GivenMoneyRecordServiceImpl implements GivenMoneyRecordService {
     @Override
     public void save(GivenMoneyRecord givenMoneyRecord) {
         givenMoneyRecordDao.save(givenMoneyRecord);
+    }
+
+    @Override
+    public List<GivenMoneyRecord> getGivenMoneyList(String curUsername, String startTime, String endTime) {
+        return givenMoneyRecordDao.getGivenMoneyList(curUsername, startTime, endTime);
     }
 }
