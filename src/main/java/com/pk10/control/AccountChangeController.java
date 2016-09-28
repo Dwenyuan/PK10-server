@@ -114,7 +114,6 @@ public class AccountChangeController {
             map.put("accountChanges", accountChanges);
        }
 
-       // JSON.parse(JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss"));
-        return map;
+       return map;
     }
 }

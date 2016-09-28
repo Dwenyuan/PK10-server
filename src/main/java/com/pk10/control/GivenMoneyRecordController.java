@@ -2,8 +2,8 @@ package com.pk10.control;
 
 import com.pk10.bean.GivenMoneyRecord;
 import com.pk10.bean.UserInfo;
-import com.pk10.service.impl.GivenMoneyRecordServiceImpl;
-import com.pk10.service.impl.UserInfoServiceImpl;
+import com.pk10.service.GivenMoneyRecordService;
+import com.pk10.service.UserInfoService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,10 +23,10 @@ import java.util.Date;
 public class GivenMoneyRecordController {
 
     @Resource
-    private UserInfoServiceImpl userInfoService;
+    private UserInfoService userInfoService;
 
     @Resource
-    private GivenMoneyRecordServiceImpl givenMoneyRecordService;
+    private GivenMoneyRecordService givenMoneyRecordService;
 
     // 当前用户赠送金币给对方用户
     @RequestMapping(value = "given-money", method = RequestMethod.POST)
