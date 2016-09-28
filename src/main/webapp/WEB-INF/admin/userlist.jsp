@@ -256,7 +256,7 @@
         <div class="am-modal-dialog">
             <div class="am-modal-hd">编辑用户信息</div>
             <div class="am-modal-bd">
-                <form id="edit_user" method="post" action="/user">
+                <form id="edit_user" method="post" action="/pk10/user">
                     <input id="ui_id" type="hidden" name="id" value="">
                     <div class="am-g am-margin-top">
                         <div class="am-u-sm-4 am-u-md-2 am-text-right">

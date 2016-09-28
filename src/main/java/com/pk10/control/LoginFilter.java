@@ -41,6 +41,9 @@ public class LoginFilter implements Filter {
 		} else if ("/admin-login.htm".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("toAdminHome");
+		} else if ("/agentlogin.html".equals(req.getServletPath())
+				&& req.getSession().getAttribute("userinfo") != null) {
+			res.sendRedirect("/agentlogin.html");
 		} else if ("/managerlogin.html".equals(req.getServletPath())
 				&& req.getSession().getAttribute("userinfo") != null) {
 			res.sendRedirect("manager.html");
@@ -50,8 +53,9 @@ public class LoginFilter implements Filter {
 			if ("/manager.html".equals(req.getServletPath())) {
 				res.sendRedirect("managerlogin.html");
 			}else if("/toAdminHome".equals(req.getServletPath())) {
-				request.getRequestDispatcher("admin-login.htm").forward(request, response);
-				// res.sendRedirect("admin-login.htm");
+				request.getRequestDispatcher("admin-login.htm").forward(request,response);
+			}else if("/agentlogin.html".equals(req.getServletPath())) {
+				res.sendRedirect("/agentlogin.html");
 			}else {
 				res.sendRedirect("userlogin.html");
 			}

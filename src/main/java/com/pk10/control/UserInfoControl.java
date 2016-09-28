@@ -164,7 +164,26 @@ public class UserInfoControl {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
- 
+
+	@RequestMapping("updateuserpassword")
+	@ResponseBody
+	public Object updateuserpassword(String newPwd,String oldPwd,HttpServletRequest request) {
+		try {
+			Integer update = 0;
+			UserInfo currentUser = (UserInfo) request.getSession().getAttribute("userinfo");
+
+			if(oldPwd.intern() == currentUser.getPassword().intern()) {
+				currentUser.setPassword(newPwd);
+				update = userInfoService.update(currentUser);
+			}
+				request.getSession().setAttribute("userinfo", currentUser);
+			return update;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public Map deleteUser(@PathVariable("id") Integer id) throws Exception {
@@ -372,7 +391,6 @@ public class UserInfoControl {
 	}
 
 	@RequestMapping("logout")
-	@ResponseBody
 	public Object logout(HttpServletRequest request) {
 		try {
 			request.getSession().setAttribute("userinfo", null);
@@ -425,8 +443,17 @@ public class UserInfoControl {
 	public Object adminloginout(HttpServletRequest request) {
 		UserInfo safeUserinfo;
 		try {
+			UserInfo mUser = (UserInfo) request.getSession().getAttribute("userinfo");
 			request.getSession().removeAttribute("userinfo");
-			return "redirect:admin-login.htm";
+			if(mUser != null){
+				if (mUser.getIsagent() == 3) {
+					return "redirect:toAdminHome";
+				} else {
+					return "redirect:agentlogin.html";
+				}
+			}else {
+				return "redirect:agentlogin.html";
+			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return "redirect:admin-login.htm";
