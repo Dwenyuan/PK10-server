@@ -31,7 +31,6 @@ public class SmsCaptchaController {
     @NotBlank
     private String smsParam;
 
-
     private String extend;
 
 

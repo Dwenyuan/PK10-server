@@ -1,7 +1,7 @@
 package com.pk10.control;
 
-import com.alibaba.fastjson.JSON;
 import com.pk10.bean.*;
+import com.pk10.service.GivenMoneyRecordService;
 import com.pk10.service.MoneyAddRecordService;
 import com.pk10.service.UserBetService;
 import com.pk10.service.UserInfoService;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +25,14 @@ public class AccountChangeController {
     private UserInfoService userInfoService;
 
     @Resource
-    MoneyAddRecordService moneyAddRecordService;
+    private MoneyAddRecordService moneyAddRecordService;
 
     @Resource
     private UserBetService userBetService;
+
+    @Resource
+    private GivenMoneyRecordService givenMoneyRecordService;
+
 
     // 映射的Map不能作为返回值
     @RequestMapping(value = "{curUserId}", method = RequestMethod.GET)
@@ -37,18 +41,26 @@ public class AccountChangeController {
                                                 @RequestParam("startTime") String startTime,
                                                 @RequestParam("endTime") String endTime) throws Exception {
 
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+
         List<AccountChange> accountChanges = new LinkedList<AccountChange>();
+
         UserInfo user = userInfoService.getOneById(new UserInfo(curUserId));
-        List<MoneyAddRecord> moneyAddRecords = moneyAddRecordService.getMoneyAddRecordList(curUserId, startTime, endTime);
         List<UserBet> bets = userBetService.getBetList(curUserId, startTime, endTime);
 
+        List<MoneyAddRecord> moneyAddRecords = moneyAddRecordService.getMoneyAddRecordList(curUserId, startTime, endTime);
+
+        List<GivenMoneyRecord> givenMoneyRecords = givenMoneyRecordService.getGivenMoneyList(user.getUsername(), startTime, endTime);
+
+        // 充值
         for (MoneyAddRecord moneyAddRecord : moneyAddRecords) {
             AccountChange accountChange = new AccountChange();
             accountChange.setType(AccountChangeType.RECHARGE.getName());
             accountChange.setUsername(user.getUsername());
             accountChange.setMoney(moneyAddRecord.getAddMoney());
             accountChange.setTime(moneyAddRecord.getAddTime());
+            accountChange.setBalance(user.getMoney());
+
             accountChanges.add(accountChange);
         }
 
@@ -61,6 +73,8 @@ public class AccountChangeController {
                 // 中奖金额
                 accountChange.setMoney(bet.getBetmoney() * bet.getOdds());
                 accountChange.setTime(bet.getCreatedAt());
+                accountChange.setBalance(user.getMoney());
+
                 accountChanges.add(accountChange);
             }
 
@@ -70,8 +84,29 @@ public class AccountChangeController {
             accountChange.setUsername(user.getUsername());
             accountChange.setMoney(bet.getBetmoney());
             accountChange.setTime(bet.getCreatedAt());
+            accountChange.setBalance(user.getMoney());
+
             accountChanges.add(accountChange);
         }
+
+        // 收入,支出
+        for (GivenMoneyRecord givenMoneyRecord : givenMoneyRecords) {
+            AccountChange accountChange = new AccountChange();
+            // 当前用户和赠送记录表的用户相同则为支出
+            if (user.getUsername().equals(givenMoneyRecord.getCurrentUsername())) {
+                accountChange.setType(AccountChangeType.DEFRAY.getName());
+            } else if (user.getUsername().equals(givenMoneyRecord.getOpposingUsername())) {
+                accountChange.setType(AccountChangeType.INCOME.getName());
+            }
+            accountChange.setUsername(user.getUsername());
+            accountChange.setMoney(givenMoneyRecord.getGivenMoney());
+            accountChange.setTime(givenMoneyRecord.getTime());
+            accountChange.setBalance(user.getMoney());
+
+            accountChanges.add(accountChange);
+        }
+
+
 
         if (accountChanges.size() < 1) {
             map.put("errorMsg", "该用户无帐变记录");
@@ -79,6 +114,7 @@ public class AccountChangeController {
             map.put("accountChanges", accountChanges);
        }
 
-        return JSON.parse(JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss"));
+       // JSON.parse(JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss"));
+        return map;
     }
 }

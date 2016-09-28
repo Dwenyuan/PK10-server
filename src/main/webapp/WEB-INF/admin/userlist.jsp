@@ -86,6 +86,7 @@
                             <input type="checkbox" />
                         </th>--%>
                         <th class="table-id">用户ID</th>
+                        <th class="table-id">上级ID</th>
                         <th class="table-title">姓名</th>
                         <th class="table-type">用户名</th>
                         <th class="table-author am-hide-sm-only">金币</th>
@@ -108,6 +109,7 @@
                                     <input type="checkbox" />
                                 </td>--%>
                                 <td>${user.id}</td>
+                                <td>${user.owner}</td>
                                 <td><a href="#">${user.nickname}</a></td>
                                 <td>${user.username}</td>
                                 <td class="am-hide-sm-only">${user.money}</td>
@@ -193,7 +195,7 @@
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>用户ID</th>
                         <th>开奖期数</th>
                         <th>玩法</th>
                         <th>下注金额</th>
@@ -234,6 +236,7 @@
                         <th>用户名</th>
                         <th>帐变类型</th>
                         <th>金额</th>
+                        <th>余额</th>
                         <th>时间</th>
                     </tr>
                     </thead>
@@ -347,7 +350,7 @@
                    var html="";
                    $.each(jsonData.userbets, function(idx, item) {
                        html += '<tr>'
-                       html += '<td>'+item.id+'</td>'
+                       html += '<td>'+item.userid+'</td>'
                        html += '<td>'+item.idnum+'</td>'
                        html += '<td>'+item.type+'</td>'
                        html += '<td>'+item.betmoney +'</td>'
@@ -397,6 +400,7 @@
                        html += '<td>'+item.username+'</td>'
                        html += '<td>'+item.type+'</td>'
                        html += '<td>'+item.money+'</td>'
+                       html += '<td>'+item.balance+'</td>'
                        html += '<td>'+item.time +'</td>'
                        html += '</tr> ';
 
