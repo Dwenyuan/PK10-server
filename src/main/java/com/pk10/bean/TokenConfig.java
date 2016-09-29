@@ -17,11 +17,11 @@ public class TokenConfig {
 	Double singleOdd;// 选择单双的赔率
 	Double bigOdd;// 选择大小的赔率
 
-	Double money;// 初始化用户时 赠送金币的数量
+	Integer money;// 初始化用户时 赠送金币的数量
 	Integer lotteryTime;// 开奖时间间隔 单位 分钟
 
 	public TokenConfig(String tokenUrl, String appID, String appsecret, Double numberOdd, Double singleOdd,
-			Double bigOdd, Double money, Integer lotteryTime) {
+			Double bigOdd, Integer money, Integer lotteryTime) {
 		super();
 		this.tokenUrl = tokenUrl;
 		this.appID = appID;
@@ -34,7 +34,7 @@ public class TokenConfig {
 	}
 
 	public TokenConfig(Integer id, String tokenUrl, String appID, String appsecret, String gamename, Double numberOdd,
-			Double singleOdd, Double bigOdd, Double money, Integer lotteryTime) {
+			Double singleOdd, Double bigOdd, Integer money, Integer lotteryTime) {
 		super();
 		this.id = id;
 		this.tokenUrl = tokenUrl;
@@ -49,7 +49,7 @@ public class TokenConfig {
 	}
 
 	public TokenConfig(String tokenUrl, String appID, String appsecret, String gamename, Double numberOdd,
-			Double singleOdd, Double bigOdd, Double money, Integer lotteryTime) {
+			Double singleOdd, Double bigOdd, Integer money, Integer lotteryTime) {
 		super();
 		this.tokenUrl = tokenUrl;
 		this.appID = appID;
@@ -78,11 +78,11 @@ public class TokenConfig {
 		this.id = id;
 	}
 
-	public Double getMoney() {
+	public Integer getMoney() {
 		return money;
 	}
 
-	public void setMoney(Double money) {
+	public void setMoney(Integer money) {
 		this.money = money;
 	}
 

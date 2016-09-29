@@ -312,13 +312,14 @@ CREATE TABLE `userbet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idnum` char(14) DEFAULT NULL COMMENT '下注期数',
   `type` varchar(45) DEFAULT NULL COMMENT '下注类型 ‘NUMBER’ ‘BIG_OR_SMALL’ ‘SINGLE_OR_DOUBLE’',
-  `betmoney` double DEFAULT NULL COMMENT '下注金额',
+  `betmoney` int(11) DEFAULT NULL COMMENT '下注金额',
   `mulit` int(11) DEFAULT NULL COMMENT '????',
   `betnum` varchar(10) DEFAULT NULL COMMENT '下注数字, 数字或者是 ''single'' ''double'' ''big'' ''small'' ',
   `createdAt` datetime DEFAULT NULL,
   `userid` int(11) DEFAULT NULL COMMENT '用户id',
   `odds` double DEFAULT NULL COMMENT '赔率',
   `balance` int(11) default 0 commit '当前下注完之后的余额',
+  `result` varchar(45) default '未开奖' commit '当前下注是否中奖 三种状态 未开奖 | 未中奖 | 中奖金额',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '下注状态，1表示已兑奖 0 表示未兑奖',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户下注信息表';
@@ -375,3 +376,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-09-08 15:48:06
+

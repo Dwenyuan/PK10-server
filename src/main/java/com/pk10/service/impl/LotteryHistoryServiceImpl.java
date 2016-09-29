@@ -85,4 +85,9 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
     public LotteryHistory getHistoryById(LotteryHistory lotteryHistory) throws Exception{
         return lotteryHistoryDao.getOneById(lotteryHistory);
     }
+
+	@Override
+	public List<LotteryHistory> getNumsById(List<Integer> nums) {
+		return lotteryHistoryDao.getNumsById(nums);
+	}
 }

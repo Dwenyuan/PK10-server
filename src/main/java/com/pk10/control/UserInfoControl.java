@@ -80,7 +80,7 @@ public class UserInfoControl {
 			throws Exception {
 		UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
 		if (chargeMoney != null) {
-			double money = userInfo.getMoney() + chargeMoney;
+			Integer money = (int)(userInfo.getMoney() + chargeMoney);
 			userInfo.setMoney(money);
 			userInfoService.update(userInfo);
 			// 添加充值记录
@@ -336,7 +336,7 @@ public class UserInfoControl {
 				return false;
 			} else {
 				userInfo.setCreatedAt(new Date());
-				userInfo.setMoney(safeBetInit.getInitMoney() + 0.0);
+				userInfo.setMoney(safeBetInit.getInitMoney());
 				Integer save = userInfoService.save(userInfo);
 				if (save > 0) { // 保存成功
 					return true;
@@ -526,7 +526,7 @@ public class UserInfoControl {
 				userInfo.setRebate(userModel.getRebate());
 				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
-				userInfo.setMoney(betInit.getInitMoney() + 0.0);
+				userInfo.setMoney(betInit.getInitMoney());
 				UserInfo m = new UserInfo();
 				if (userModel.getAgentId() == "" || userModel.getAgentId() == null) {
 					userInfo.setOwner(0);

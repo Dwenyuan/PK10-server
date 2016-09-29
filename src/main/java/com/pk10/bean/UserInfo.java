@@ -18,7 +18,7 @@ public class UserInfo {
     String openid;
     String nickname;
     String headimgurl;// 用户头像路径，不保存到数据库中
-    Double money = 0D;
+    Integer money = 0;
     Date createdAt;
     String username;
     String password;
@@ -108,11 +108,11 @@ public class UserInfo {
         this.createdAt = createdAt;
     }
 
-    public Double getMoney() {
+    public Integer getMoney() {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(Integer money) {
         this.money = money;
     }
 
@@ -132,7 +132,7 @@ public class UserInfo {
         this.nickname = nickname;
     }
 
-    public UserInfo(String openid, String nickname, Double money, Date createdAt) {
+    public UserInfo(String openid, String nickname, Integer money, Date createdAt) {
         super();
         this.openid = openid;
         this.nickname = nickname;
@@ -140,7 +140,7 @@ public class UserInfo {
         this.createdAt = createdAt;
     }
 
-    public UserInfo(String openid, String nickname, String headimgurl, Double money, Date createdAt) {
+    public UserInfo(String openid, String nickname, String headimgurl, Integer money, Date createdAt) {
         super();
         this.openid = openid;
         this.nickname = nickname;

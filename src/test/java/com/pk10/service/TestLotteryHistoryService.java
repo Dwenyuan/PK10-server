@@ -1,5 +1,6 @@
 package com.pk10.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.Test;
@@ -48,10 +49,19 @@ public class TestLotteryHistoryService {
 	public void TestGetNumLastLotteryHistory() {
 		System.out.println(lotteryHistoryService.getLastLottery(5));
 	}
-	
+
 	@Test
 	public void TestdeleteOneById() throws Exception {
 		System.out.println(lotteryHistoryService.deleteOneById(lotteryHistory));
 	}
 
+	@Test
+	public void TestGetNumsById() throws Exception {
+		// int[] list = { 574355, 574356, 574357 };
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.add(574355);
+		list.add(574356);
+		list.add(574357);
+		System.out.println(lotteryHistoryService.getNumsById(list));
+	}
 }
