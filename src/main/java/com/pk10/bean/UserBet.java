@@ -2,7 +2,7 @@ package com.pk10.bean;
 
 import java.util.Date;
 
-public class UserBet implements Cloneable{
+public class UserBet implements Cloneable {
 	private Integer id;
 	private Integer idnum; // 开奖期数
 	private BetType type;// ` VARCHAR(45) NULL COMMENT '玩法，主要分 ‘单双’ ‘数字’ ‘大小’'
@@ -13,12 +13,14 @@ public class UserBet implements Cloneable{
 	private Date createdAt;// ` DATETIME NULL,
 	private Integer userid;// ` VARCHAR(255) NOT NULL,
 	private Integer state; // 0:未兑奖 1:已兑奖
+	private Integer balance;// 当前下注完之后的余额
 	private TokenConfig tokenConfig;
 
 	@Override
 	public String toString() {
-		return "UserBet [id=" + id + ", idnum=" + idnum + ", type=" + type + ", betmoney=" + betmoney + ", mulit=" + mulit + ", odds=" + odds + ", betnum=" + betnum
-				+ ", createdAt=" + createdAt + ", userid=" + userid + ", state=" + state + ", tokenConfig=" + tokenConfig + "]";
+		return "UserBet [id=" + id + ", idnum=" + idnum + ", type=" + type + ", betmoney=" + betmoney + ", mulit="
+				+ mulit + ", odds=" + odds + ", betnum=" + betnum + ", createdAt=" + createdAt + ", userid=" + userid
+				+ ", state=" + state + ", balance=" + balance + ", tokenConfig=" + tokenConfig + "]";
 	}
 
 	public Integer getState() {
@@ -27,6 +29,14 @@ public class UserBet implements Cloneable{
 
 	public void setState(Integer state) {
 		this.state = state;
+	}
+
+	public Integer getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Integer balance) {
+		this.balance = balance;
 	}
 
 	public Integer getId() {
@@ -125,7 +135,8 @@ public class UserBet implements Cloneable{
 		super();
 	}
 
-	public UserBet(Integer id, Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, Integer userid, TokenConfig tokenConfig) {
+	public UserBet(Integer id, Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum,
+			Date createdAt, Integer userid, TokenConfig tokenConfig) {
 		super();
 		this.id = id;
 		this.idnum = idnum;
@@ -139,7 +150,8 @@ public class UserBet implements Cloneable{
 		this.setOdds();
 	}
 
-	public UserBet(Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt, Integer userid, TokenConfig tokenConfig) {
+	public UserBet(Integer idnum, BetType type, Double betmoney, Integer mulit, String betnum, Date createdAt,
+			Integer userid, TokenConfig tokenConfig) {
 		super();
 		this.idnum = idnum;
 		this.type = type;
@@ -150,6 +162,7 @@ public class UserBet implements Cloneable{
 		this.userid = userid;
 		this.tokenConfig = tokenConfig;
 	}
+
 	@Override
 	public UserBet clone() throws CloneNotSupportedException {
 		return (UserBet) super.clone();

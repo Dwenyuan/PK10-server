@@ -318,6 +318,7 @@ CREATE TABLE `userbet` (
   `createdAt` datetime DEFAULT NULL,
   `userid` int(11) DEFAULT NULL COMMENT '用户id',
   `odds` double DEFAULT NULL COMMENT '赔率',
+  `balance` int(11) default 0 commit '当前下注完之后的余额',
   `state` int(1) NOT NULL DEFAULT '0' COMMENT '下注状态，1表示已兑奖 0 表示未兑奖',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户下注信息表';

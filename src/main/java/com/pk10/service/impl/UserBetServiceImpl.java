@@ -37,6 +37,7 @@ public class UserBetServiceImpl implements UserBetService {
 		if (balance < 0)
 			throw new Exception("余额不足");
 		userInfo.setMoney(balance);
+		t.setBetmoney(balance);
 		userInfoDao.update(userInfo);
 		return userBetDao.save(t);
 	}
@@ -84,6 +85,7 @@ public class UserBetServiceImpl implements UserBetService {
 			Double balance = safeUserInfo.getMoney() - userBet.getBetmoney();
 			if (balance < 0)
 				throw new Exception("balance is not enough");
+			userBet.setBalance(balance.intValue());
 			safeUserInfo.setMoney(balance);
 			userInfoDao.update(safeUserInfo);
 		}

@@ -11,6 +11,7 @@
 		<result column="betnum" property="betnum" />
 		<result column="createdAt" property="createdAt" />
 		<result column="userid" property="userid" />
+		<result column="balance" property="balance" />
 		<result column="state" property="state" />
 	</resultMap>
 
@@ -20,16 +21,16 @@
 
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
 		insert into
-		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
-		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid})
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance)
+		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid},#{balance})
 	</insert>
 
 	<insert id="saveList" parameterType="list">
 		insert into
-		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance)
 		values
 		<foreach collection="list" item="item" separator=",">
-			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid})
+			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid},#{item.balance})
 		</foreach>
 	</insert>
 
