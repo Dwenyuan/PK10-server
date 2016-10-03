@@ -20,6 +20,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -311,12 +313,13 @@ public class UserInfoControl {
 
 	@RequestMapping("cashPrize")
 	@ResponseBody
-	public Object cashPrize(@RequestBody UserInfo userInfo, HttpServletRequest request) {
+	public Object cashPrize(@RequestBody UserInfo userInfo, HttpSession session) {
 		try {
 			UserInfo safeUserInfo = userInfoService.cashPrize(userInfo);
 			if (safeUserInfo != null) {
 				// 兑奖后更新 session 中的用户
-				request.getSession().setAttribute("userinfo", safeUserInfo);
+				session.setAttribute("userinfo", safeUserInfo);
+				session.setAttribute("userBets", null);
 			}
 			return safeUserInfo;
 		} catch (Exception e) {
@@ -331,7 +334,7 @@ public class UserInfoControl {
 		try {
 			UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(userInfo);
 			// TODO 等待添加游戏类型设定
-			BetInit safeBetInit = betInitService.getOneBetInitByName(new BetInit("PK10"));
+			BetInit safeBetInit = betInitService.getOneBetInitByName(new BetInit("猜字游戏"));
 			if (safeUserInfo != null) { // 账号已经占用
 				return false;
 			} else {
@@ -514,7 +517,7 @@ public class UserInfoControl {
 		userInfo.setUsername(userModel.getUsername());
 		try {
 			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
-			BetInit betInit = betInitService.getBetInitByName(new BetInit("PK10")).get(1);
+			BetInit betInit = betInitService.getBetInitByName(new BetInit("猜字游戏")).get(1);
 			if (hasExitUser != null) {
 				return false;
 			} else {
