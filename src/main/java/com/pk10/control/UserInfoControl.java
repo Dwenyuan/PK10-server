@@ -459,7 +459,7 @@ public class UserInfoControl {
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "redirect:admin-login.htm";
+			return "redirect:admin-login.html";
 		}
 	}
 
