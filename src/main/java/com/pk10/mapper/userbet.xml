@@ -84,7 +84,7 @@
 	</select>
 	<select id="getRecentlyBets" resultMap="UserBet">
 		select *
-		from userbet order by idnum desc
+		from userbet where userid = #{userid} order by idnum desc
 		limit
 		<choose>
 			<when test="limit">#{limit}</when>
@@ -93,7 +93,11 @@
 	</select>
 
 	<select id="getBetsByIdnum" resultMap="UserBet" parameterType="integer">
-		SELECT * FROM userbet WHERE idnum=#{idnum} order by createdAt desc
+		SELECT * FROM userbet WHERE
+		<if test="userid != null">
+			userid = #{userid} and
+		</if>
+		idnum=#{idnum} order by createdAt desc
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
@@ -102,7 +106,8 @@
 	</delete>
 
 	<select id="getBetList" resultMap="UserBet">
-		SELECT * FROM userbet WHERE createdAt BETWEEN #{startTime} and #{endTime}
+		SELECT * FROM userbet WHERE
+		createdAt BETWEEN #{startTime} and #{endTime}
 		and userid=#{curUserId}
 	</select>
 </mapper>

@@ -103,13 +103,13 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
 	@Override
-	public List<UserBet> getRecentlyBets(Integer limit) {
-		return userBetDao.getRecentlyBets(limit);
+	public List<UserBet> getRecentlyBets(Integer userid, Integer limit) {
+		return userBetDao.getRecentlyBets(userid, limit);
 	}
 
 	@Override
-	public List<UserBet> getBetsByIdnum(Integer idnum) {
-		return userBetDao.getBetsByIdnum(idnum);
+	public List<UserBet> getBetsByIdnum(Integer idnum, Integer userid) {
+		return userBetDao.getBetsByIdnum(idnum, userid);
 	}
 
 	@Override
@@ -119,6 +119,11 @@ public class UserBetServiceImpl implements UserBetService {
 
 	public List<UserBet> getlastBets(Integer idnum) {
 		return userBetDao.getlastBets(idnum);
+	}
+
+	@Override
+	public List<UserBet> getBetsByIdnum(Integer idnum) {
+		return userBetDao.getBetsByIdnum(idnum, null);
 	}
 
 }

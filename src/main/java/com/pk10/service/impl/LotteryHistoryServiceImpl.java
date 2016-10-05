@@ -1,5 +1,6 @@
 package com.pk10.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.github.pagehelper.PageHelper;
@@ -21,9 +22,9 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 
 	@Override
 	public Integer save(LotteryHistory t) throws Exception {
-		if (lotteryHistoryDao.update(t)>0) {
+		if (lotteryHistoryDao.update(t) > 0) {
 			return 0;
-		}else{			
+		} else {
 			return lotteryHistoryDao.save(t);
 		}
 	}
@@ -42,10 +43,10 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 	public LotteryHistory getOneById(LotteryHistory t) throws Exception {
 		for (int i = 0; i < 40; i++) {
 			LotteryHistory lottery = lotteryHistoryDao.getOneById(t);
-			if (lottery == null) { //还没有获取到最新的开奖结果，等待收集器收集结果
+			if (lottery == null) { // 还没有获取到最新的开奖结果，等待收集器收集结果
 				Thread.sleep(3000);
 				continue;
-			}else{
+			} else {
 				return lottery;
 			}
 		}
@@ -59,7 +60,15 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 
 	@Override
 	public LotteryHistory getLastLottery() throws Exception {
-		return lotteryHistoryDao.getLastLottery();
+		LotteryHistory lastLottery = lotteryHistoryDao.getLastLottery();
+		Date createdAt = lastLottery.getCreatedAt();
+		long time = System.currentTimeMillis() - createdAt.getTime(); // 查看获取的开奖记录是否是最近的开奖记录
+		if (time < 1000 * 60 * 5) {
+			return lotteryHistoryDao.getLastLottery();
+		} else {
+			Thread.sleep(1000); // 如果获取开奖记录时间超过5分钟 说明还没有 收集到开奖记录 等待2秒钟重新获取
+			return this.getLastLottery();
+		}
 	}
 
 	@Override
@@ -69,7 +78,7 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 
 	@Override
 	public Datagrid getAllInPage(Page page) throws Exception {
-		PageHelper.startPage(page.getPages(),10);
+		PageHelper.startPage(page.getPages(), 10);
 		List<LotteryHistory> lotteryHistories = lotteryHistoryDao.getAll();
 		PageInfo pageInfo = new PageInfo(lotteryHistories);
 		Datagrid datagrid = new Datagrid();
@@ -81,10 +90,10 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 		return datagrid;
 	}
 
-    @Override
-    public LotteryHistory getHistoryById(LotteryHistory lotteryHistory) throws Exception{
-        return lotteryHistoryDao.getOneById(lotteryHistory);
-    }
+	@Override
+	public LotteryHistory getHistoryById(LotteryHistory lotteryHistory) throws Exception {
+		return lotteryHistoryDao.getOneById(lotteryHistory);
+	}
 
 	@Override
 	public List<LotteryHistory> getNumsById(List<Integer> nums) {

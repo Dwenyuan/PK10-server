@@ -102,9 +102,10 @@ public class UserBetControl {
 
 	@RequestMapping("getRecentlyBets")
 	@ResponseBody
-	public Object getRecentlyBets(Integer num) {
+	public Object getRecentlyBets(Integer num, HttpSession session) {
 		try {
-			return userBetService.getRecentlyBets(num);
+			UserInfo userInfo = (UserInfo) session.getAttribute("userinfo");
+			return userBetService.getRecentlyBets(userInfo.getId(), num);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -121,8 +122,9 @@ public class UserBetControl {
 	public Object getlastBets(HttpSession session) {
 		try {
 			Object userbets = session.getAttribute("userBets");
-			return userbets==null?new ArrayList<Object>():userbets;
-//			return userBetService.getlastBets(session.getAttribute("userBets"));
+			return userbets == null ? new ArrayList<Object>() : userbets;
+			// return
+			// userBetService.getlastBets(session.getAttribute("userBets"));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");

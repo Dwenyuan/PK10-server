@@ -41,7 +41,7 @@ public class TestLotteryHistoryService {
 	}
 
 	@Test
-	public void TestGetLastNotice() throws Exception {
+	public void TestgetLastLottery() throws Exception {
 		System.out.println(lotteryHistoryService.getLastLottery());
 	}
 
