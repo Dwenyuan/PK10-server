@@ -9,11 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.pk10.bean.LotteryHistory;
 import com.pk10.service.LotteryHistoryService;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +59,31 @@ public class BounsAndBets {
 	}
 
 	/**
+	 * 根据id列表批量获取 获取开奖结果
+	 * 
+	 * @param num
+	 *            开奖期数
+	 * @return
+	 */
+	@RequestMapping(value = "getBonusNums", method = RequestMethod.POST)
+	@ResponseBody
+	public Object getBonusNums(@RequestBody ArrayList<Integer> nums) {
+		try {
+			if (nums == null) {
+				return lotteryHistoryService.getLastLottery();
+			} else if (nums.size() == 0) {
+				return new ArrayList<LotteryHistory>();
+			} else {
+				return lotteryHistoryService.getNumsById(nums);
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			JSON.parse("{errmsg:" + e.getMessage() + "}");
+			return JSON.parse("{errmsg:" + e.getMessage() + "}");
+		}
+	}
+
+	/**
 	 * 获取开奖记录，
 	 * 
 	 * @param num
@@ -81,17 +109,16 @@ public class BounsAndBets {
 	 */
 	@RequestMapping("toLotteryHistory")
 
-
-	public Object toLotteryHistory(Model model, Page page){
+	public Object toLotteryHistory(Model model, Page page) {
 		try {
 			if (page.getPages() == 0) {
 				page.setPages(1);
-			    Datagrid datagrid = lotteryHistoryService.getAllInPage(page);
-				model.addAttribute("lhData",datagrid);
-				return "admin/lotteryhistory";
-			}else {
 				Datagrid datagrid = lotteryHistoryService.getAllInPage(page);
-				model.addAttribute("lhData",datagrid);
+				model.addAttribute("lhData", datagrid);
+				return "admin/lotteryhistory";
+			} else {
+				Datagrid datagrid = lotteryHistoryService.getAllInPage(page);
+				model.addAttribute("lhData", datagrid);
 				return "admin/lotteryhistory";
 			}
 		} catch (Exception e) {
@@ -102,14 +129,13 @@ public class BounsAndBets {
 
 	@RequestMapping("getRecordById")
 	@ResponseBody
-	public Object getRecordById(@RequestBody LotteryHistory lotteryHistory){
+	public Object getRecordById(@RequestBody LotteryHistory lotteryHistory) {
 		try {
-				return JSON.toJSONString(lotteryHistoryService.getHistoryById(lotteryHistory));
+			return JSON.toJSONString(lotteryHistoryService.getHistoryById(lotteryHistory));
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}
 	}
-
 
 }

@@ -10,4 +10,6 @@ public interface LotteryHistoryDao extends BaseDao<LotteryHistory> {
 	public LotteryHistory getLastLottery() throws Exception;
 
 	public List<LotteryHistory> getLastNumLottery(@Param("param") Integer num);
+
+	public List<LotteryHistory> getNumsById(@Param("param")List<Integer> nums);
 }

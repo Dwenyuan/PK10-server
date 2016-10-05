@@ -17,7 +17,7 @@ public class TestUserInfoService {
 	@Autowired
 	private UserInfoService userInfoService; 
 	
-	private UserInfo userInfo = new UserInfo("xxxxxxxxxxxx", "测试用名字222", 10000D,new Date());
+	private UserInfo userInfo = new UserInfo("xxxxxxxxxxxx", "测试用名字222", 10000,new Date());
 	
 	@Test
 	public void Testsave() throws Exception {

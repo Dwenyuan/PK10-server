@@ -51,7 +51,7 @@ public class TestToken {
 
 	@Test
 	public void TestTokenConfigSave() throws Exception {
-		TokenConfig tokenConfig = new TokenConfig(null, null, null, "PK10", 9D, 1.5, 1.5, 10000D, null);
+		TokenConfig tokenConfig = new TokenConfig(null, null, null, "PK10", 9D, 1.5, 1.5, 10000, null);
 		Integer save = tokenConfigService.save(tokenConfig);
 		System.out.println(save);
 	}
@@ -63,7 +63,7 @@ public class TestToken {
 
 	@Test
 	public void TestUpdateTokenConfig() throws Exception {
-		TokenConfig tokenConfig = new TokenConfig(2, null, null, null, "PK10", 5D, 1.5, 1.5, 223300D, null);
+		TokenConfig tokenConfig = new TokenConfig(2, null, null, null, "PK10", 5D, 1.5, 1.5, 223300, null);
 		Integer updateById = tokenConfigService.updateById(tokenConfig);
 		System.out.println(updateById);
 	}
@@ -73,7 +73,7 @@ public class TestToken {
 		BetInit betInit = new BetInit();
 		betInit.setId(21);
 		betInit.setgName("猜字游戏");
-		betInit.setInitMoney(10000D);
+		betInit.setInitMoney(10000);
 		betInit.setRate(9D);
 		betInit.setType("数字");
 		Integer betInitByName = betInitService.saveBetInit(betInit);

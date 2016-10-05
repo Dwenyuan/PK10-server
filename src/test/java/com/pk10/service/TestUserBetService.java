@@ -34,14 +34,14 @@ public class TestUserBetService {
 	@Test
 	public void TestSave() throws Exception {
 		System.out.println("");
-		userBet = new UserBet(10, null, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig);
+		userBet = new UserBet(10, null, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig);
 		System.out.println(userBetService.save(userBet));
 	}
 
 	@Test
 	public void TestSaves() throws Exception {
-		list.add(new UserBet(571175, BetType.NUMBER, 1000D, 5, "single", new Date(), 29, tokenConfig));
-		list.add(new UserBet(571175, BetType.NUMBER, 1000D, 5, "single", new Date(), 29, tokenConfig));
+		list.add(new UserBet(571175, BetType.NUMBER, 1000, 5, "single", new Date(), 29, tokenConfig));
+		list.add(new UserBet(571175, BetType.NUMBER, 1000, 5, "single", new Date(), 29, tokenConfig));
 		System.out.println(userBetService.saveList(list));
 	}
 
@@ -82,16 +82,17 @@ public class TestUserBetService {
 	@Test
 	public void merge() throws CloneNotSupportedException{
 		List<UserBet> userBets = new ArrayList<UserBet>();
-		userBets.add(new UserBet(10, 577791, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(11, 577791, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(12, 577792, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "1", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 2000D, 5, "1", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 3000D, 5, "1", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 4000D, 5, "1", new Date(), 29, tokenConfig));
-		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000D, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(10, 577791, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(10, 577791, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(11, 577791, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(12, 577792, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 2000, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 3000, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 4000, 5, "1", new Date(), 29, tokenConfig));
+		userBets.add(new UserBet(13, 577792, BetType.NUMBER, 1000, 5, "1", new Date(), 29, tokenConfig));
 		System.out.println(mergebets(userBets).size());
 		for (UserBet userBet : mergebets(userBets)) {
 			System.out.println(userBet);
@@ -100,11 +101,11 @@ public class TestUserBetService {
 	
 	@Test
 	public void TestClone() throws CloneNotSupportedException{
-		UserBet userBet = new UserBet(10, 577791, BetType.NUMBER, 1000D, 5, "单", new Date(), 29, tokenConfig);
+		UserBet userBet = new UserBet(10, 577791, BetType.NUMBER, 1000, 5, "单", new Date(), 29, tokenConfig);
 		UserBet userBet2 = userBet.clone();
 		System.out.println(userBet == userBet2);
 		System.out.println(userBet.getBetmoney()+"==="+userBet2.getBetmoney());
-		userBet.setBetmoney(2D);
+		userBet.setBetmoney(2);
 		System.out.println(userBet.getBetmoney()+"==="+userBet2.getBetmoney());
 	}
 	public static List<UserBet> mergebets(List<UserBet> userBets) throws CloneNotSupportedException {

@@ -20,4 +20,11 @@ public interface LotteryHistoryService extends BaseService<LotteryHistory>{
 	public Datagrid getAllInPage(Page page) throws Exception;
 
     public LotteryHistory getHistoryById(LotteryHistory lotteryHistory) throws Exception;
+
+    /**
+     * 根据id 批量获取开奖结果
+     * @param nums
+     * @return
+     */
+	public List<LotteryHistory> getNumsById(List<Integer> nums);
 }

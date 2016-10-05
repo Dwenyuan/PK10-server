@@ -33,10 +33,11 @@ public class UserBetServiceImpl implements UserBetService {
 	public Integer save(UserBet t) throws Exception {
 		// 下注的同时，减去用户的金币
 		UserInfo userInfo = userInfoDao.getOneById(new UserInfo(t.getUserid()));
-		Double balance = userInfo.getMoney() - t.getBetmoney();
+		Integer balance = userInfo.getMoney() - t.getBetmoney();
 		if (balance < 0)
 			throw new Exception("余额不足");
 		userInfo.setMoney(balance);
+		t.setBetmoney(balance);
 		userInfoDao.update(userInfo);
 		return userBetDao.save(t);
 	}
@@ -81,9 +82,10 @@ public class UserBetServiceImpl implements UserBetService {
 			userBet.setOdds(); // 设置倍率single
 			userBet.setCreatedAt(new Date());
 			UserInfo safeUserInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserid()));
-			Double balance = safeUserInfo.getMoney() - userBet.getBetmoney();
+			int balance = safeUserInfo.getMoney() - userBet.getBetmoney();
 			if (balance < 0)
 				throw new Exception("balance is not enough");
+			userBet.setBalance(balance);
 			safeUserInfo.setMoney(balance);
 			userInfoDao.update(safeUserInfo);
 		}

@@ -20,6 +20,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -80,7 +82,7 @@ public class UserInfoControl {
 			throws Exception {
 		UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
 		if (chargeMoney != null) {
-			double money = userInfo.getMoney() + chargeMoney;
+			Integer money = (int)(userInfo.getMoney() + chargeMoney);
 			userInfo.setMoney(money);
 			userInfoService.update(userInfo);
 			// 添加充值记录
@@ -311,12 +313,13 @@ public class UserInfoControl {
 
 	@RequestMapping("cashPrize")
 	@ResponseBody
-	public Object cashPrize(@RequestBody UserInfo userInfo, HttpServletRequest request) {
+	public Object cashPrize(@RequestBody UserInfo userInfo, HttpSession session) {
 		try {
 			UserInfo safeUserInfo = userInfoService.cashPrize(userInfo);
 			if (safeUserInfo != null) {
 				// 兑奖后更新 session 中的用户
-				request.getSession().setAttribute("userinfo", safeUserInfo);
+				session.setAttribute("userinfo", safeUserInfo);
+				session.setAttribute("userBets", null);
 			}
 			return safeUserInfo;
 		} catch (Exception e) {
@@ -331,12 +334,12 @@ public class UserInfoControl {
 		try {
 			UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(userInfo);
 			// TODO 等待添加游戏类型设定
-			BetInit safeBetInit = betInitService.getOneBetInitByName(new BetInit("PK10"));
+			BetInit safeBetInit = betInitService.getOneBetInitByName(new BetInit("猜字游戏"));
 			if (safeUserInfo != null) { // 账号已经占用
 				return false;
 			} else {
 				userInfo.setCreatedAt(new Date());
-				userInfo.setMoney(safeBetInit.getInitMoney() + 0.0);
+				userInfo.setMoney(safeBetInit.getInitMoney());
 				Integer save = userInfoService.save(userInfo);
 				if (save > 0) { // 保存成功
 					return true;
@@ -456,7 +459,7 @@ public class UserInfoControl {
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "redirect:admin-login.htm";
+			return "redirect:admin-login.html";
 		}
 	}
 
@@ -514,7 +517,7 @@ public class UserInfoControl {
 		userInfo.setUsername(userModel.getUsername());
 		try {
 			UserInfo hasExitUser = userInfoService.getUserInfoByUsername(userInfo);
-			BetInit betInit = betInitService.getBetInitByName(new BetInit("PK10")).get(1);
+			BetInit betInit = betInitService.getBetInitByName(new BetInit("猜字游戏")).get(1);
 			if (hasExitUser != null) {
 				return false;
 			} else {
@@ -526,7 +529,7 @@ public class UserInfoControl {
 				userInfo.setRebate(userModel.getRebate());
 				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
-				userInfo.setMoney(betInit.getInitMoney() + 0.0);
+				userInfo.setMoney(betInit.getInitMoney());
 				UserInfo m = new UserInfo();
 				if (userModel.getAgentId() == "" || userModel.getAgentId() == null) {
 					userInfo.setOwner(0);

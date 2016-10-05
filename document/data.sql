@@ -4,7 +4,7 @@ LIMIT 0, 1000
 
 -- Date: 2016-09-05 01:28
 */
-INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (31,NULL,NULL,2000,'2016-09-03 04:03:03','12345678901','liushao121','12333333',3,4444,0);
+INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (31,NULL,NULL,20000000,'2016-09-03 04:03:03','12345678901','liushao121','12333333',3,4444,0);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (36,NULL,NULL,0,NULL,'1233333','liushao','123456',2,NULL,0);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (37,NULL,NULL,0,NULL,'1233333','0.0738474819305166','123456',0,NULL,36);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (38,NULL,NULL,0,NULL,'1233333','0.7099869803896717','123456',0,NULL,36);
@@ -26,5 +26,12 @@ INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`user
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (54,NULL,NULL,0,NULL,'1233333','0.704399168677977','123456',0,NULL,36);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (55,NULL,NULL,0,NULL,'1233333','0.29336508457559163','123456',0,NULL,36);
 INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (56,NULL,NULL,0,NULL,'1233333','0.7956173064940457','123456',0,NULL,36);
+INSERT INTO `userinfo` (`id`,`openid`,`nickname`,`money`,`createdAt`,`tel`,`username`,`password`,`isagent`,`rebate`,`owner`) VALUES (57,NULL,NULL,0,NULL,'1233333','liushao121','12333333',0,NULL,36);
 
 select * from pk10.userinfo;
+
+delete from pk10.userinfo where id  = 57;
+
+update pk10.userinfo set money = 10000000 where id = 31;
+
+select * from userbet;

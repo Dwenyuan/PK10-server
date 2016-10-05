@@ -96,6 +96,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 				if (Integer.parseInt(userBet.getBetnum()) == lotterynum) { // 中奖了
 					cashUpdateUser(safeUserInfo, userBet);
 				} else { // 未中奖
+					userBet.setResult("0");
 					userBetDao.update(userBet); // 重置兑奖标志位
 				}
 				break;
@@ -105,6 +106,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else {
+					userBet.setResult("0");
 					userBetDao.update(userBet);
 				}
 				break;
@@ -114,6 +116,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else {
+					userBet.setResult("0");
 					userBetDao.update(userBet);
 				}
 				break;
@@ -126,7 +129,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	private void cashUpdateUser(UserInfo safeUserInfo, UserBet userBet) throws Exception {
 		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");
-		safeUserInfo.setMoney(safeUserInfo.getMoney() + userBet.getBetmoney() * userBet.getOdds());
+		safeUserInfo.setMoney(safeUserInfo.getMoney() + (int)(userBet.getBetmoney() * userBet.getOdds()));
+		userBet.setResult("+"+(int)(userBet.getBetmoney() * userBet.getOdds()));
 		userInfoDao.update(safeUserInfo);
 		userBetDao.update(userBet);// 兑奖后重置标志位表示已兑奖
 		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");

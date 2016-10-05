@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,7 +33,8 @@ public class LoginFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		Pattern compile = Pattern.compile("/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|/build/.|/assets/.*+");
+		Pattern compile = Pattern.compile(
+				"/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|/build/.|/assets/.*+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
 		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
@@ -52,11 +54,11 @@ public class LoginFilter implements Filter {
 		} else {
 			if ("/manager.html".equals(req.getServletPath())) {
 				res.sendRedirect("managerlogin.html");
-			}else if("/toAdminHome".equals(req.getServletPath())) {
-				request.getRequestDispatcher("admin-login.htm").forward(request,response);
-			}else if("/agentlogin.html".equals(req.getServletPath())) {
+			} else if ("/toAdminHome".equals(req.getServletPath())) {
+				request.getRequestDispatcher("admin-login.htm").forward(request, response);
+			} else if ("/agentlogin.html".equals(req.getServletPath())) {
 				res.sendRedirect("/agentlogin.html");
-			}else {
+			} else {
 				res.sendRedirect("userlogin.html");
 			}
 		}

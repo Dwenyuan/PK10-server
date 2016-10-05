@@ -21,6 +21,13 @@
 		select id,createdAt,lotterynums from lotteryhistory n where n.id = #{id}
 	</select>
 	
+	<select id="getNumsById" parameterType="list" resultMap="LotteryHistory">
+		select * from lotteryhistory n where n.id in 
+		<foreach collection="param" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</select>
+	
 	<select id="getLastLottery" resultMap="LotteryHistory">
 		select id,createdAt,lotterynums from lotteryhistory n,
 			(select max(createdAt) c from lotteryhistory) m where n.createdAt = m.c

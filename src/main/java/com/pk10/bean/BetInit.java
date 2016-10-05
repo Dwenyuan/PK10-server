@@ -11,7 +11,7 @@ public class BetInit {
 
     private Double moneyLimit;
 
-    private Double initMoney;
+    private Integer initMoney;
 
     public BetInit() {
 		super();
@@ -62,11 +62,11 @@ public class BetInit {
         this.moneyLimit = moneyLimit;
     }
 
-    public Double getInitMoney() {
+    public Integer getInitMoney() {
         return initMoney;
     }
 
-    public void setInitMoney(Double initMoney) {
+    public void setInitMoney(Integer initMoney) {
         this.initMoney = initMoney;
     }
 }

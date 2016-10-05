@@ -11,6 +11,7 @@
 		<result column="betnum" property="betnum" />
 		<result column="createdAt" property="createdAt" />
 		<result column="userid" property="userid" />
+		<result column="balance" property="balance" />
 		<result column="state" property="state" />
 	</resultMap>
 
@@ -20,21 +21,22 @@
 
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
 		insert into
-		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
-		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid})
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance)
+		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid},#{balance})
 	</insert>
 
 	<insert id="saveList" parameterType="list">
 		insert into
-		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid)
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance)
 		values
 		<foreach collection="list" item="item" separator=",">
-			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid})
+			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid},#{item.balance})
 		</foreach>
 	</insert>
 
 	<update id="update" parameterType="com.pk10.bean.UserBet">
-		update userbet set state = 1
+		update userbet set state =
+		1,result=#{result}
 		where id = #{id}
 	</update>
 
@@ -100,6 +102,7 @@
 	</delete>
 
 	<select id="getBetList" resultMap="UserBet">
-    SELECT * FROM userbet WHERE createdAt BETWEEN #{startTime} and #{endTime} and userid=#{curUserId}
+		SELECT * FROM userbet WHERE createdAt BETWEEN #{startTime} and #{endTime}
+		and userid=#{curUserId}
 	</select>
 </mapper>

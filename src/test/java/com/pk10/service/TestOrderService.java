@@ -27,7 +27,7 @@ public class TestOrderService {
 	private List<Goods> goods = new ArrayList<Goods>();
 	private Orders order = new Orders("", 200D, "ready", new Date(), goods, "liushao");
 
-	private UserInfo userInfo = new UserInfo("xxxxxxxxxxxx", "测试用名字222", 10000D, new Date());
+	private UserInfo userInfo = new UserInfo("xxxxxxxxxxxx", "测试用名字222", 10000, new Date());
 
 	@Test
 	public void TestSave() throws Exception {
