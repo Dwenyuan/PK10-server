@@ -99,7 +99,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="selectByGameName" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInitExample" >
+  <select id="selectByGameName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
     from betInit
@@ -109,6 +109,10 @@
 
   <select id="selectAllGameName" resultMap="BaseResultMap">
     SELECT distinct(bi.g_name) FROM pk10.betInit bi
+  </select>
+
+  <select id="selectGameInitMoney" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT distinct(bi.g_name),bi.init_money FROM pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
   </select>
 
   <select id="selectAllTypeByGName" resultMap="BaseResultMap" parameterType="java.lang.String">

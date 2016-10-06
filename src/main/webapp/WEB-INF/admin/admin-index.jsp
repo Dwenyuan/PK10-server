@@ -58,6 +58,7 @@
             <li><a href="${pageContext.request.contextPath}/toRate" class="am-cf" target="subject"><span class="am-icon-check"></span> 倍率设置</a></li>
             <li><a href="${pageContext.request.contextPath}/toNotice" target="subject"><span class="am-icon-puzzle-piece"></span> 通知设置</a></li>
             <li><a href="${pageContext.request.contextPath}/toLimit" target="subject"><span class="am-icon-puzzle-piece"></span> 投注限制设置</a></li>
+            <li><a href="${pageContext.request.contextPath}/toInitMoney" target="subject"><span class="am-icon-puzzle-piece"></span> 初始化金币设置</a></li>
           </ul>
         </li>
         <li><a  class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 充值管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
