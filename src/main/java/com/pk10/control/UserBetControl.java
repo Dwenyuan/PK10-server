@@ -47,6 +47,7 @@ public class UserBetControl {
 			session.setAttribute("userBets", userBets);
 			return userBetService.saveList(mergebets(userBets));
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}

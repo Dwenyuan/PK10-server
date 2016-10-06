@@ -1,5 +1,6 @@
 package com.pk10.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -63,7 +64,8 @@ public class LotteryHistoryServiceImpl implements LotteryHistoryService {
 		LotteryHistory lastLottery = lotteryHistoryDao.getLastLottery();
 		Date createdAt = lastLottery.getCreatedAt();
 		long time = System.currentTimeMillis() - createdAt.getTime(); // 查看获取的开奖记录是否是最近的开奖记录
-		if (time < 1000 * 60 * 5) {
+		int hour = Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
+		if (time < 1000 * 60 * 5||hour >= 0 && hour < 9) {
 			return lotteryHistoryDao.getLastLottery();
 		} else {
 			Thread.sleep(1000); // 如果获取开奖记录时间超过5分钟 说明还没有 收集到开奖记录 等待2秒钟重新获取

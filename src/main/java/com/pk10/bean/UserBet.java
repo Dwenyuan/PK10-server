@@ -1,6 +1,7 @@
 package com.pk10.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserBet implements Cloneable {
 	private Integer id;
@@ -15,14 +16,33 @@ public class UserBet implements Cloneable {
 	private Integer state; // 0:未兑奖 1:已兑奖
 	private String result; // 当前下注是否中奖 三种状态 未开奖 | 未中奖 | 中奖金额
 	private Integer balance;// 当前下注完之后的余额
+	private Integer crashbalance; //兑奖后的余额
 	private TokenConfig tokenConfig;
+	private List<BetInit> betInits ;
 
+	
 	@Override
 	public String toString() {
 		return "UserBet [id=" + id + ", idnum=" + idnum + ", type=" + type + ", betmoney=" + betmoney + ", mulit="
 				+ mulit + ", odds=" + odds + ", betnum=" + betnum + ", createdAt=" + createdAt + ", userid=" + userid
-				+ ", state=" + state + ", result=" + result + ", balance=" + balance + ", tokenConfig=" + tokenConfig
-				+ "]";
+				+ ", state=" + state + ", result=" + result + ", balance=" + balance + ", crashbalance=" + crashbalance
+				+ ", tokenConfig=" + tokenConfig + ", betInits=" + betInits + "]";
+	}
+
+	public Integer getCrashbalance() {
+		return crashbalance;
+	}
+
+	public void setCrashbalance(Integer crashbalance) {
+		this.crashbalance = crashbalance;
+	}
+
+	public List<BetInit> getBetInits() {
+		return betInits;
+	}
+	
+	public void setBetInits(List<BetInit> betInits) {
+		this.betInits = betInits;
 	}
 
 	public String getResult() {
@@ -132,13 +152,31 @@ public class UserBet implements Cloneable {
 	public void setOdds() {
 		switch (this.type) {
 		case NUMBER:
-			this.odds = tokenConfig.getNumberOdd();
+			for (BetInit betInit : betInits) {
+				String type = betInit.getType();
+				if("数字".equals(type)){					
+					this.odds = betInit.getRate();
+					break;
+				}
+			}
 			break;
 		case SINGLE_OR_DOUBLE:
-			this.odds = tokenConfig.getSingleOdd();
+			for (BetInit betInit : betInits) {
+				String type = betInit.getType();
+				if("大小单双".equals(type)){					
+					this.odds = betInit.getRate();
+					break;
+				}
+			}
 			break;
 		case BIG_OR_SMALL:
-			this.odds = tokenConfig.getBigOdd();
+			for (BetInit betInit : betInits) {
+				String type = betInit.getType();
+				if("大小单双".equals(type)){					
+					this.odds = betInit.getRate();
+					break;
+				}
+			}
 			break;
 		default:
 			break;
