@@ -81,11 +81,33 @@ public class BetInitController {
         }
     }
 
+    @RequestMapping("getInitMoney")
+    @ResponseBody
+    public Object getInitMoney(@RequestBody BetInit betInit){
+        try {
+            return JSON.toJSONString(betInitService.getGameInitMoney(betInit.getgName()));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return JSON.parse("{errmsg:" + e.getMessage() + "}");
+        }
+    }
+
     @RequestMapping("updateGameInitDate")
     @ResponseBody
     public Object updateGameInitDate(@RequestBody BetInit betInit){
         try {
             return betInitService.updateBetInit(betInit);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return JSON.parse("{errmsg:" + e.getMessage() + "}");
+        }
+    }
+
+    @RequestMapping("updateGameInitMoney")
+    @ResponseBody
+    public Object updateGameInitMoney(@RequestBody BetInit betInit){
+        try {
+            return betInitService.updateBetInitMoney(betInit);
         } catch (Exception e) {
             logger.error(e.getMessage());
             return JSON.parse("{errmsg:" + e.getMessage() + "}");
@@ -104,5 +126,12 @@ public class BetInitController {
         List<BetInit> betInits = betInitService.getAllGname();
         model.addAttribute("betInits",betInits);
         return "admin/betlimit";
+    }
+
+    @RequestMapping("toInitMoney")
+    public String toInitMoney(Model model){
+        List<BetInit> betInits = betInitService.getAllGname();
+        model.addAttribute("betInits",betInits);
+        return "admin/init-money";
     }
 }

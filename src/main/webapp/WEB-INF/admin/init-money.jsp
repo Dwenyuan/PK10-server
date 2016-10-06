@@ -29,37 +29,9 @@
 
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script language="javascript" type="text/javascript">
-        function getGameType() {
 
-            var gameName = $("#selectGame option:selected").text();
-            $.ajax({
-                type: 'POST',
-                contentType: 'application/json',
-                url: '${pageContext.request.contextPath}/getAllGameTypeByGname',
-                processData: false,
-                dataType: 'json',
-                data : "{\"gName\":\""+ gameName+"\"}",
-                success: function(data) {
-                    if($("#selectType")[0].options.length == 0){
-                        var GType = eval("(" + data + ")");
 
-                        $.each(GType, function (index, value) {
-                            $("#selectType").append("<option value='"+value.type+"'>"+value.type+"</option>");
-                        });
-                    }
-                    betlimit.jsp
-                },
-                error: function() {
-                    alert('Err...');
-                }
-            });
-        }
-
-        function clearSelect(){
-            $("#selectType").empty();
-        }
-
-        function getGameDate() {
+        function getInitMoney() {
 
             var gameName = $("#selectGame option:selected").text();
             var gameType = $("#selectType option:selected").text();
@@ -67,33 +39,32 @@
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: '${pageContext.request.contextPath}/getBetinitByTypeAndGName',
+                url: '${pageContext.request.contextPath}/getInitMoney',
                 processData: false,
                 dataType: 'json',
-                data : '{"gName":\"'+gameName+'\","type":\"'+gameType+'\"}',
+                data : '{"gName":\"'+gameName+'\"}',
                 success: function(data) {
 
                     var betinit = eval("(" + data + ")");
-                    $("#limit").val(betinit.moneyLimit)
+                    $("#init").val(betinit.initMoney)
                 },
                 error: function() {
                     alert('Err...');
                 }
             });
         }
-        function LimitSava() {
+        function InitMoneySava() {
 
             var gameName = $("#selectGame option:selected").text();
-            var gameType = $("#selectType option:selected").text();
-            var moneyLimit = $("#limit").val();
+            var initMoney = $("#init").val();
 
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json',
-                url: '${pageContext.request.contextPath}/updateGameInitDate',
+                url: '${pageContext.request.contextPath}/updateGameInitMoney',
                 processData: false,
                 dataType: 'json',
-                data : '{"gName":\"'+gameName+'\","type":\"'+gameType+'\","moneyLimit":\"'+moneyLimit+'\"}',
+                data : '{"gName":\"'+gameName+'\","initMoney":\"'+initMoney+'\"}',
                 success: function(data) {
                     alert("修改成功");
                 },
@@ -107,7 +78,7 @@
 
 <body>
     <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置/投注限制</strong></div>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统设置/初始化金币</strong></div>
     </div>
     <hr>
     <form>
@@ -116,7 +87,7 @@
                 游戏
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-              <select id="selectGame" data-am-selected onchange="clearSelect()">
+              <select id="selectGame" data-am-selected onchange="getInitMoney()">
                   <c:forEach items="${betInits}" var="betInit">
                       <option  value="${betInit.gName}">${betInit.gName}</option>
                   </c:forEach>
@@ -125,26 +96,16 @@
     </div>
     <div class="am-g am-margin-top">
           <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                类型
-          </div>
-          <div class="am-u-sm-8 am-u-md-4 am-u-end" onclick="getGameType()">
-               <select  id="selectType" data-am-selected onchange="getGameDate()">
-
-                </select>
-          </div>
-    </div>
-    <div class="am-g am-margin-top">
-          <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                限制
+                初始化金币
           </div>
           <div class="am-u-sm-8 am-u-md-4 am-u-end">
-              <input  id="limit" type="text" class="am-input-sm">
+              <input  id="init" type="text" class="am-input-sm">
           </div>
     </div>
 
     <div class="am-g am-margin-top">
       <div class="am-u-sm-offset-3 am-u-sm-6 am-u-md-offset-2 am-u-md-4">
-      <button type="button"  onclick="LimitSava()" class="am-btn am-btn-primary am-btn-xs" >提交保存</button>
+      <button type="button"  onclick="InitMoneySava()" class="am-btn am-btn-primary am-btn-xs" >提交保存</button>
       <button type="reset" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
       </div>
     </div>

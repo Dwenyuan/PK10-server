@@ -1,282 +1,272 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pk10.dao.BetInitMapper">
-	<resultMap id="BaseResultMap" type="com.pk10.bean.BetInit">
-		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="g_name" property="gName" jdbcType="VARCHAR" />
-		<result column="type" property="type" jdbcType="VARCHAR" />
-		<result column="rate" property="rate" jdbcType="DOUBLE" />
-		<result column="money_limit" property="moneyLimit" jdbcType="DOUBLE" />
-		<result column="init_money" property="initMoney" jdbcType="DOUBLE" />
-	</resultMap>
-	<sql id="Example_Where_Clause">
-		<where>
-			<foreach collection="oredCriteria" item="criteria" separator="or">
-				<if test="criteria.valid">
-					<trim prefix="(" suffix=")" prefixOverrides="and">
-						<foreach collection="criteria.criteria" item="criterion">
-							<choose>
-								<when test="criterion.noValue">
-									and ${criterion.condition}
-								</when>
-								<when test="criterion.singleValue">
-									and ${criterion.condition} #{criterion.value}
-								</when>
-								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
-									#{criterion.secondValue}
-								</when>
-								<when test="criterion.listValue">
-									and ${criterion.condition}
-									<foreach collection="criterion.value" item="listItem"
-										open="(" close=")" separator=",">
-										#{listItem}
-									</foreach>
-								</when>
-							</choose>
-						</foreach>
-					</trim>
-				</if>
-			</foreach>
-		</where>
-	</sql>
-	<sql id="Update_By_Example_Where_Clause">
-		<where>
-			<foreach collection="example.oredCriteria" item="criteria"
-				separator="or">
-				<if test="criteria.valid">
-					<trim prefix="(" suffix=")" prefixOverrides="and">
-						<foreach collection="criteria.criteria" item="criterion">
-							<choose>
-								<when test="criterion.noValue">
-									and ${criterion.condition}
-								</when>
-								<when test="criterion.singleValue">
-									and ${criterion.condition} #{criterion.value}
-								</when>
-								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
-									#{criterion.secondValue}
-								</when>
-								<when test="criterion.listValue">
-									and ${criterion.condition}
-									<foreach collection="criterion.value" item="listItem"
-										open="(" close=")" separator=",">
-										#{listItem}
-									</foreach>
-								</when>
-							</choose>
-						</foreach>
-					</trim>
-				</if>
-			</foreach>
-		</where>
-	</sql>
-	<sql id="Base_Column_List">
-		id, g_name, type, rate, money_limit, init_money
-	</sql>
-	<select id="selectByExample" resultMap="BaseResultMap"
-		parameterType="com.pk10.bean.BetInitExample">
-		select
-		<if test="distinct">
-			distinct
-		</if>
-		<include refid="Base_Column_List" />
-		from betInit
-		<if test="_parameter != null">
-			<include refid="Example_Where_Clause" />
-		</if>
-		<if test="orderByClause != null">
-			order by ${orderByClause}
-		</if>
-		<if test="limit != null">
-			<if test="offset != null">
-				limit ${offset}, ${limit}
-			</if>
-			<if test="offset == null">
-				limit ${limit}
-			</if>
-		</if>
-	</select>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
-		parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		from betInit
-		where id = #{id,jdbcType=INTEGER}
-	</select>
+<mapper namespace="com.pk10.dao.BetInitMapper" >
+  <resultMap id="BaseResultMap" type="com.pk10.bean.BetInit" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="g_name" property="gName" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="rate" property="rate" jdbcType="DOUBLE" />
+    <result column="money_limit" property="moneyLimit" jdbcType="DOUBLE" />
+    <result column="init_money" property="initMoney" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, g_name, type, rate, money_limit, init_money
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInitExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from betInit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from betInit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 
-	<select id="selectByGameName" resultMap="BaseResultMap"
-		parameterType="com.pk10.bean.BetInit">
-		select
-		<include refid="Base_Column_List" />
-		from betInit
-		where g_name = #{gName,jdbcType=VARCHAR}
-	</select>
+  <select id="selectByGameName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+    where g_name = #{gName,jdbcType=VARCHAR}
+  </select>
 
 
-	<select id="selectAllGameName" resultMap="BaseResultMap">
-		SELECT distinct(bi.g_name) FROM pk10.betInit bi
-	</select>
+  <select id="selectAllGameName" resultMap="BaseResultMap">
+    SELECT distinct(bi.g_name) FROM pk10.betInit bi
+  </select>
 
-	<select id="selectAllTypeByGName" resultMap="BaseResultMap"
-		parameterType="java.lang.String">
-		SELECT bi.type FROM pk10.betInit bi where bi.g_name =
-		#{gName,jdbcType=VARCHAR}
-	</select>
+  <select id="selectGameInitMoney" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT distinct(bi.g_name),bi.init_money FROM pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
+  </select>
 
-	<select id="selectByGnameAndGtype" resultMap="BaseResultMap"
-		parameterType="com.pk10.bean.BetInit">
-		SELECT * from pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
-		and bi.type = #{type,jdbcType=VARCHAR}
-	</select>
+  <select id="selectAllTypeByGName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT bi.type FROM pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
+  </select>
 
-	<select id="getOneBetInitByName" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from betInit
-		where g_name = #{gName,jdbcType=VARCHAR} group by g_name
-	</select>
-	<select id="selectAll" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from betInit
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from betInit
-		where id = #{id,jdbcType=INTEGER}
-	</delete>
-	<delete id="deleteByExample" parameterType="com.pk10.bean.BetInitExample">
-		delete from betInit
-		<if test="_parameter != null">
-			<include refid="Example_Where_Clause" />
-		</if>
-	</delete>
-	<insert id="insert" parameterType="com.pk10.bean.BetInit">
-		insert into betInit (id, g_name, type,
-		rate, money_limit, init_money
-		)
-		values (#{id,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR},
-		#{type,jdbcType=VARCHAR},
-		#{rate,jdbcType=DOUBLE}, #{moneyLimit,jdbcType=DOUBLE}, #{initMoney,jdbcType=DOUBLE}
-		)
-	</insert>
-	<insert id="insertSelective" parameterType="com.pk10.bean.BetInit">
-		insert into betInit
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="gName != null">
-				g_name,
-			</if>
-			<if test="type != null">
-				type,
-			</if>
-			<if test="rate != null">
-				rate,
-			</if>
-			<if test="moneyLimit != null">
-				money_limit,
-			</if>
-			<if test="initMoney != null">
-				init_money,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="gName != null">
-				#{gName,jdbcType=VARCHAR},
-			</if>
-			<if test="type != null">
-				#{type,jdbcType=VARCHAR},
-			</if>
-			<if test="rate != null">
-				#{rate,jdbcType=DOUBLE},
-			</if>
-			<if test="moneyLimit != null">
-				#{moneyLimit,jdbcType=DOUBLE},
-			</if>
-			<if test="initMoney != null">
-				#{initMoney,jdbcType=DOUBLE},
-			</if>
-		</trim>
-	</insert>
-	<select id="countByExample" parameterType="com.pk10.bean.BetInitExample"
-		resultType="java.lang.Integer">
-		select count(*) from betInit
-		<if test="_parameter != null">
-			<include refid="Example_Where_Clause" />
-		</if>
-	</select>
-	<update id="updateByExampleSelective" parameterType="map">
-		update betInit
-		<set>
-			<if test="record.id != null">
-				id = #{record.id,jdbcType=INTEGER},
-			</if>
-			<if test="record.gName != null">
-				g_name = #{record.gName,jdbcType=VARCHAR},
-			</if>
-			<if test="record.type != null">
-				type = #{record.type,jdbcType=VARCHAR},
-			</if>
-			<if test="record.rate != null">
-				rate = #{record.rate,jdbcType=DOUBLE},
-			</if>
-			<if test="record.moneyLimit != null">
-				money_limit = #{record.moneyLimit,jdbcType=DOUBLE},
-			</if>
-			<if test="record.initMoney != null">
-				init_money = #{record.initMoney,jdbcType=DOUBLE},
-			</if>
-		</set>
-		<if test="_parameter != null">
-			<include refid="Update_By_Example_Where_Clause" />
-		</if>
-	</update>
-	<update id="updateByExample" parameterType="map">
-		update betInit
-		set id = #{record.id,jdbcType=INTEGER},
-		g_name = #{record.gName,jdbcType=VARCHAR},
-		type = #{record.type,jdbcType=VARCHAR},
-		rate = #{record.rate,jdbcType=DOUBLE},
-		money_limit = #{record.moneyLimit,jdbcType=DOUBLE},
-		init_money = #{record.initMoney,jdbcType=DOUBLE}
-		<if test="_parameter != null">
-			<include refid="Update_By_Example_Where_Clause" />
-		</if>
-	</update>
-	<update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.BetInit">
-		update betInit
-		<set>
-			<if test="gName != null">
-				g_name = #{gName,jdbcType=VARCHAR},
-			</if>
-			<if test="type != null">
-				type = #{type,jdbcType=VARCHAR},
-			</if>
-			<if test="rate != null">
-				rate = #{rate,jdbcType=DOUBLE},
-			</if>
-			<if test="moneyLimit != null">
-				money_limit = #{moneyLimit,jdbcType=DOUBLE},
-			</if>
-			<if test="initMoney != null">
-				init_money = #{initMoney,jdbcType=DOUBLE},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.pk10.bean.BetInit">
-		update betInit
-		set g_name = #{gName,jdbcType=VARCHAR},
-		type = #{type,jdbcType=VARCHAR},
-		rate = #{rate,jdbcType=DOUBLE},
-		money_limit = #{moneyLimit,jdbcType=DOUBLE},
-		init_money = #{initMoney,jdbcType=DOUBLE}
-		where id = #{id,jdbcType=INTEGER}
-	</update>
+  <select id="selectByGnameAndGtype" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInit">
+    SELECT * from pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR} and bi.type = #{type,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getOneBetInitByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+    where g_name = #{gName,jdbcType=VARCHAR} group by g_name
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from betInit
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from betInit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pk10.bean.BetInitExample" >
+    delete from betInit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pk10.bean.BetInit" >
+    insert into betInit (id, g_name, type, 
+      rate, money_limit, init_money
+      )
+    values (#{id,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{rate,jdbcType=DOUBLE}, #{moneyLimit,jdbcType=DOUBLE}, #{initMoney,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pk10.bean.BetInit" >
+    insert into betInit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gName != null" >
+        g_name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="moneyLimit != null" >
+        money_limit,
+      </if>
+      <if test="initMoney != null" >
+        init_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gName != null" >
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DOUBLE},
+      </if>
+      <if test="moneyLimit != null" >
+        #{moneyLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="initMoney != null" >
+        #{initMoney,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pk10.bean.BetInitExample" resultType="java.lang.Integer" >
+    select count(*) from betInit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update betInit
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.gName != null" >
+        g_name = #{record.gName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rate != null" >
+        rate = #{record.rate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.moneyLimit != null" >
+        money_limit = #{record.moneyLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="record.initMoney != null" >
+        init_money = #{record.initMoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update betInit
+    set id = #{record.id,jdbcType=INTEGER},
+      g_name = #{record.gName,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      rate = #{record.rate,jdbcType=DOUBLE},
+      money_limit = #{record.moneyLimit,jdbcType=DOUBLE},
+      init_money = #{record.initMoney,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.BetInit" >
+    update betInit
+    <set >
+      <if test="gName != null" >
+        g_name = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=DOUBLE},
+      </if>
+      <if test="moneyLimit != null" >
+        money_limit = #{moneyLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="initMoney != null" >
+        init_money = #{initMoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pk10.bean.BetInit" >
+    update betInit
+    set g_name = #{gName,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=DOUBLE},
+      money_limit = #{moneyLimit,jdbcType=DOUBLE},
+      init_money = #{initMoney,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

@@ -80,8 +80,7 @@ public class UserBetServiceImpl implements UserBetService {
 	@Override
 	public Integer saveList(List<UserBet> userBets) throws Exception {
 		TokenConfig safeTokenConfig = tokenConfigService.getLastTokenConfig();
-		BetInit betInit = new BetInit("猜字游戏");
-		List<BetInit> betInits = betInitMapper.selectByGameName(betInit);
+		List<BetInit> betInits = betInitMapper.selectByGameName("猜字游戏");
 		if (userBets.size() < 0)
 			throw new Exception("user bet nothing or has a mistake");
 		for (UserBet userBet : userBets) {
