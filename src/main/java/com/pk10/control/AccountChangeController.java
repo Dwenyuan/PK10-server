@@ -59,7 +59,7 @@ public class AccountChangeController {
             accountChange.setUsername(user.getUsername());
             accountChange.setMoney(moneyAddRecord.getAddMoney());
             accountChange.setTime(moneyAddRecord.getAddTime());
-            accountChange.setBalance(user.getMoney());
+            accountChange.setBalance(moneyAddRecord.getBalance());
 
             accountChanges.add(accountChange);
         }
@@ -73,7 +73,7 @@ public class AccountChangeController {
                 // 中奖金额
                 accountChange.setMoney(bet.getBetmoney() * bet.getOdds());
                 accountChange.setTime(bet.getCreatedAt());
-                accountChange.setBalance(user.getMoney());
+                accountChange.setBalance(bet.getCrashbalance());
 
                 accountChanges.add(accountChange);
             }
@@ -84,7 +84,7 @@ public class AccountChangeController {
             accountChange.setUsername(user.getUsername());
             accountChange.setMoney(bet.getBetmoney());
             accountChange.setTime(bet.getCreatedAt());
-            accountChange.setBalance(user.getMoney());
+            accountChange.setBalance(bet.getBalance());
 
             accountChanges.add(accountChange);
         }
@@ -95,13 +95,14 @@ public class AccountChangeController {
             // 当前用户和赠送记录表的用户相同则为支出
             if (user.getUsername().equals(givenMoneyRecord.getCurrentUsername())) {
                 accountChange.setType(AccountChangeType.DEFRAY.getName());
+                accountChange.setBalance(givenMoneyRecord.getCurrentMoney());
             } else if (user.getUsername().equals(givenMoneyRecord.getOpposingUsername())) {
                 accountChange.setType(AccountChangeType.INCOME.getName());
+                accountChange.setBalance(givenMoneyRecord.getOpposingMoney());
             }
             accountChange.setUsername(user.getUsername());
             accountChange.setMoney(givenMoneyRecord.getGivenMoney());
             accountChange.setTime(givenMoneyRecord.getTime());
-            accountChange.setBalance(user.getMoney());
 
             accountChanges.add(accountChange);
         }

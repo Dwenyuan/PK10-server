@@ -17,6 +17,8 @@ public class MoneyAddRecord {
 
     private String userName;
 
+    private int balance; // 充值后的余额
+
     public String getUserName() {
         return userName;
     }
@@ -71,5 +73,13 @@ public class MoneyAddRecord {
 
     public void setAddAgentId(Integer addAgentId) {
         this.addAgentId = addAgentId;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }
