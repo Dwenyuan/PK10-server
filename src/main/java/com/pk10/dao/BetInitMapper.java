@@ -18,7 +18,7 @@ public interface BetInitMapper {
 
     List<BetInit> selectByExample(BetInitExample example);
 
-    List<BetInit> selectByGameName(BetInit betInit);
+    List<BetInit> selectByGameName(String gName);
 
     List<BetInit> selectAll();
 
@@ -39,5 +39,7 @@ public interface BetInitMapper {
     int updateByPrimaryKey(BetInit record);
 
 	BetInit getOneBetInitByName(BetInit betInit);
+
+    BetInit selectGameInitMoney(String gName);
 
 }

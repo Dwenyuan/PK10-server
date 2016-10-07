@@ -29,13 +29,12 @@ public interface UserBetDao extends BaseDao<UserBet> {
 	 * 
 	 * @return
 	 */
-	List<UserBet> getRecentlyBets(@Param("limit") Integer limit);
+	List<UserBet> getRecentlyBets(@Param("userid") Integer userid, @Param("limit") Integer limit);
 
-    List<UserBet> getBetsByIdnum(Integer idnum);
+	List<UserBet> getBetsByIdnum(@Param("idnum") Integer idnum, @Param("userid") Integer userid);
 
-
-    List<UserBet> getBetList(@Param("curUserId") Integer curUserId, @Param("startTime") String startTime,
-							 @Param("endTime") String endTime);
+	List<UserBet> getBetList(@Param("curUserId") Integer curUserId, @Param("startTime") String startTime,
+			@Param("endTime") String endTime);
 
 	List<UserBet> getlastBets(@Param("idnum") Integer idnum);
 

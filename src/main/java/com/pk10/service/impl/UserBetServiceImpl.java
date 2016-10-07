@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pk10.bean.BetInit;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
+import com.pk10.dao.BetInitMapper;
 import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
 import com.pk10.service.TokenConfigService;
@@ -25,7 +27,10 @@ public class UserBetServiceImpl implements UserBetService {
 
 	@Autowired
 	private TokenConfig tokenConfig;
-
+	
+	@Autowired
+	private BetInitMapper betInitMapper;
+	
 	@Autowired
 	private TokenConfigService tokenConfigService;
 
@@ -75,10 +80,12 @@ public class UserBetServiceImpl implements UserBetService {
 	@Override
 	public Integer saveList(List<UserBet> userBets) throws Exception {
 		TokenConfig safeTokenConfig = tokenConfigService.getLastTokenConfig();
+		List<BetInit> betInits = betInitMapper.selectByGameName("猜字游戏");
 		if (userBets.size() < 0)
 			throw new Exception("user bet nothing or has a mistake");
 		for (UserBet userBet : userBets) {
-			userBet.setTokenConfig(safeTokenConfig);
+//			userBet.setTokenConfig(safeTokenConfig);
+			userBet.setBetInits(betInits);
 			userBet.setOdds(); // 设置倍率single
 			userBet.setCreatedAt(new Date());
 			UserInfo safeUserInfo = userInfoDao.getOneById(new UserInfo(userBet.getUserid()));
@@ -103,13 +110,13 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
 	@Override
-	public List<UserBet> getRecentlyBets(Integer limit) {
-		return userBetDao.getRecentlyBets(limit);
+	public List<UserBet> getRecentlyBets(Integer userid, Integer limit) {
+		return userBetDao.getRecentlyBets(userid, limit);
 	}
 
 	@Override
-	public List<UserBet> getBetsByIdnum(Integer idnum) {
-		return userBetDao.getBetsByIdnum(idnum);
+	public List<UserBet> getBetsByIdnum(Integer idnum, Integer userid) {
+		return userBetDao.getBetsByIdnum(idnum, userid);
 	}
 
 	@Override
@@ -119,6 +126,11 @@ public class UserBetServiceImpl implements UserBetService {
 
 	public List<UserBet> getlastBets(Integer idnum) {
 		return userBetDao.getlastBets(idnum);
+	}
+
+	@Override
+	public List<UserBet> getBetsByIdnum(Integer idnum) {
+		return userBetDao.getBetsByIdnum(idnum, null);
 	}
 
 }

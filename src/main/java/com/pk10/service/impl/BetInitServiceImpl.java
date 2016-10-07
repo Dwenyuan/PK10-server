@@ -36,7 +36,7 @@ public class BetInitServiceImpl implements BetInitService{
 
     @Override
     public List<BetInit> getBetInitByName(BetInit betInit) {
-        return betInitMapper.selectByGameName(betInit);
+        return betInitMapper.selectByGameName(betInit.getgName());
     }
 
     @Override
@@ -64,4 +64,19 @@ public class BetInitServiceImpl implements BetInitService{
         return betInitMapper.getOneBetInitByName(betInit);
     }
 
+    @Override
+    public BetInit getGameInitMoney(String gName) {
+        return betInitMapper.selectGameInitMoney(gName);
+    }
+
+    @Override
+    public int updateBetInitMoney(BetInit betInit) {
+        int count = 0;
+        List<BetInit> betinits = betInitMapper.selectByGameName(betInit.getgName());
+        for (BetInit betInit1 : betinits){
+            betInit1.setInitMoney(betInit.getInitMoney());
+            betInitMapper.updateByPrimaryKeySelective(betInit1);
+        }
+        return count++;
+    }
 }

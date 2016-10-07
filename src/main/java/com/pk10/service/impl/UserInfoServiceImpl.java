@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Service
 @Transactional
 public class UserInfoServiceImpl implements UserInfoService {
@@ -75,19 +74,19 @@ public class UserInfoServiceImpl implements UserInfoService {
 		for (UserBet userBet : userBets) {
 			// 获取档期开奖结果 如果获取不到说明还没有从网上下载下来，则等待3秒钟再去查询
 			LotteryHistory lotteryHistory = null;
-//			for (int i = 0; i < 30; i++) {
-				lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
-//				if (lotteryHistory == null) {
-//					Thread.sleep(3000);
-//					continue;
-//				} else {
-//					break;
-//				}
-//			}
+			// for (int i = 0; i < 30; i++) {
+			lotteryHistory = lotteryHistoryDao.getOneById(new LotteryHistory(userBet.getIdnum(), null, null));
+			// if (lotteryHistory == null) {
+			// Thread.sleep(3000);
+			// continue;
+			// } else {
+			// break;
+			// }
+			// }
 			// 如果60秒后还是查不到 则放弃
 			if (lotteryHistory == null) {
 				continue;
-//				throw new Exception("get bouns result error");
+				// throw new Exception("get bouns result error");
 			}
 			String[] split = lotteryHistory.getLotterynums().split(",");
 			Integer lotterynum = (Integer.parseInt(split[0]) + Integer.parseInt(split[split.length - 1])) % 10; // 计算中奖号码
@@ -97,6 +96,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else { // 未中奖
 					userBet.setResult("0");
+					userBet.setCrashbalance(userBet.getBalance());
 					userBetDao.update(userBet); // 重置兑奖标志位
 				}
 				break;
@@ -106,6 +106,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 				} else if ("double".equals(userBet.getBetnum()) && lotterynum % 2 == 0) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else {
+					userBet.setCrashbalance(userBet.getBalance());
 					userBet.setResult("0");
 					userBetDao.update(userBet);
 				}
@@ -116,6 +117,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 				} else if ("small".equals(userBet.getBetnum()) && lotterynum < 5) {
 					cashUpdateUser(safeUserInfo, userBet);
 				} else {
+					userBet.setCrashbalance(userBet.getBalance());
 					userBet.setResult("0");
 					userBetDao.update(userBet);
 				}
@@ -129,8 +131,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	private void cashUpdateUser(UserInfo safeUserInfo, UserBet userBet) throws Exception {
 		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");
-		safeUserInfo.setMoney(safeUserInfo.getMoney() + (int)(userBet.getBetmoney() * userBet.getOdds()));
-		userBet.setResult("+"+(int)(userBet.getBetmoney() * userBet.getOdds()));
+		safeUserInfo.setMoney(safeUserInfo.getMoney() + (int) (userBet.getBetmoney() * userBet.getOdds()));
+		userBet.setCrashbalance(safeUserInfo.getMoney() + (int) (userBet.getBetmoney() * userBet.getOdds()));
+		userBet.setResult("+" + (int) (userBet.getBetmoney() * userBet.getOdds()));
 		userInfoDao.update(safeUserInfo);
 		userBetDao.update(userBet);// 兑奖后重置标志位表示已兑奖
 		logger.info("bonus number:" + userBet.getBetnum() + "cash a prizeing....");
@@ -157,8 +160,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public Datagrid getAllAgent(Page page,AgentInfo agentInfo) {
-		PageHelper.startPage(page.getPages(),10);
+	public Datagrid getAllAgent(Page page, AgentInfo agentInfo) {
+		PageHelper.startPage(page.getPages(), 10);
 		List<AgentInfo> agentInfos = userInfoDao.getAllAgent(agentInfo);
 		PageInfo pageInfo = new PageInfo(agentInfos);
 		Datagrid datagrid = new Datagrid();
@@ -209,6 +212,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public List<UserInfo> getUsersByAgentId(String username, Integer isagent) {
 		return userInfoDao.getUsersByAgentId(username, isagent);
 	}
+
 	public UserInfo getUserUsername(UserInfo userInfo) {
 		return userInfoDao.getUserUsername(userInfo);
 	}

@@ -21,22 +21,22 @@
 
 	<insert id="save" parameterType="com.pk10.bean.UserBet">
 		insert into
-		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance)
-		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid},#{balance})
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance,crashbalance)
+		values(#{id},#{idnum},#{type},#{betmoney},#{odds},#{mulit},#{betnum},#{createdAt},#{userid},#{balance},#{crashbalance})
 	</insert>
 
 	<insert id="saveList" parameterType="list">
 		insert into
-		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance)
+		userbet(id,idnum,type,betmoney,odds,mulit,betnum,createdAt,userid,balance,crashbalance)
 		values
 		<foreach collection="list" item="item" separator=",">
-			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid},#{item.balance})
+			(#{item.id},#{item.idnum},#{item.type},#{item.betmoney},#{item.odds},#{item.mulit},#{item.betnum},#{item.createdAt},#{item.userid},#{item.balance},#{item.crashbalance})
 		</foreach>
 	</insert>
 
 	<update id="update" parameterType="com.pk10.bean.UserBet">
 		update userbet set state =
-		1,result=#{result}
+		1,result=#{result},crashbalance=#{crashbalance}
 		where id = #{id}
 	</update>
 
@@ -84,7 +84,7 @@
 	</select>
 	<select id="getRecentlyBets" resultMap="UserBet">
 		select *
-		from userbet order by idnum desc
+		from userbet where userid = #{userid} order by idnum desc
 		limit
 		<choose>
 			<when test="limit">#{limit}</when>
@@ -93,7 +93,11 @@
 	</select>
 
 	<select id="getBetsByIdnum" resultMap="UserBet" parameterType="integer">
-		SELECT * FROM userbet WHERE idnum=#{idnum} order by createdAt desc
+		SELECT * FROM userbet WHERE
+		<if test="userid != null">
+			userid = #{userid} and
+		</if>
+		idnum=#{idnum} order by createdAt desc
 	</select>
 
 	<delete id="deleteOneById" parameterType="com.pk10.bean.UserBet">
@@ -102,7 +106,8 @@
 	</delete>
 
 	<select id="getBetList" resultMap="UserBet">
-		SELECT * FROM userbet WHERE createdAt BETWEEN #{startTime} and #{endTime}
+		SELECT * FROM userbet WHERE
+		createdAt BETWEEN #{startTime} and #{endTime}
 		and userid=#{curUserId}
 	</select>
 </mapper>

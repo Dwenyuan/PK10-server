@@ -18,17 +18,18 @@ public interface UserBetService extends BaseService<UserBet> {
 	/**
 	 * 获取未兑奖的下注
 	 * 
-	 * @param userInfo 查询此用户的下注
+	 * @param userInfo
+	 *            查询此用户的下注
 	 * @return
 	 * @throws Exception
 	 */
 	List<UserBet> getUnCashPrize(UserInfo userInfo) throws Exception;
-	
-	List<UserBet> getRecentlyBets(Integer limit);
 
-    List<UserBet> getBetsByIdnum(Integer idnum);
+	List<UserBet> getBetList(Integer curUserId, String startTime, String endTime);
 
-    List<UserBet> getBetList(Integer curUserId, String startTime, String endTime);
+	List<UserBet> getRecentlyBets(Integer userid, Integer limit);
 
-	List<UserBet> getlastBets(Integer idnum);
+	List<UserBet> getBetsByIdnum(Integer idnum, Integer userid);
+
+	List<UserBet> getBetsByIdnum(Integer idnum);
 }

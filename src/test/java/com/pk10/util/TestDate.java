@@ -50,30 +50,38 @@ public class TestDate {
 		list.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2016-08-21 11:58:00"));
 		list.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2016-08-21 14:36:00"));
 		list.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2016-08-21 11:56:00"));
-		
-		
+
 		Boolean isLastDate = this.getIsLastDate(list);
 		System.out.println(isLastDate);
-		
-//		Date lastDate = this.getLastDate(list);
-//		System.out.println(lastDate);
-//		long sec = (new Date().getTime() - lastDate.getTime()) / (1000);
-//		System.out.println(sec);
+
+		// Date lastDate = this.getLastDate(list);
+		// System.out.println(lastDate);
+		// long sec = (new Date().getTime() - lastDate.getTime()) / (1000);
+		// System.out.println(sec);
 		// System.out.println(new SimpleDateFormat("yyyy-MM-dd
 		// HH:mm:ss").format(this.getLastDate(list)));
 	}
-	
+
 	@Test
-	public void TestRegix(){
-		Pattern compile = Pattern.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/\\w+\\.\\w+");
+	public void TestRegix() {
+		Pattern compile = Pattern
+				.compile("\\/(login|register|checkTel|checkusername)|userlogin\\.html|\\/build\\/\\w+\\.\\w+");
 		Matcher matcher = compile.matcher("/getLastNotice");
 		boolean find = matcher.find();
 		System.out.println(find);
 	}
-	
+
 	@Test
-	public void TestTime() throws ParseException{
+	public void TestTime() throws ParseException {
 		Date now = new SimpleDateFormat("HH:mm:ss").parse(new SimpleDateFormat("HH:mm:ss").format(new Date()));
 		System.out.println(new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(now));
+	}
+
+	@Test
+	public void TestDate() throws Exception {
+		Date date1 = new Date();
+		Thread.sleep(2000);
+		Date date2 = new Date();
+		System.out.println(System.currentTimeMillis() - date1.getTime());
 	}
 }
