@@ -177,7 +177,7 @@ COMMENT = '微信相关配置表 —弃用';
 -- -----------------------------------------------------
 -- Table `pk10`.`userbet`
 -- -----------------------------------------------------
-drop table if exists `pk10`.`userbet;
+drop table if exists `pk10`.`userbet`;
 CREATE TABLE IF NOT EXISTS `pk10`.`userbet` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `idnum` CHAR(14) NULL DEFAULT NULL COMMENT '下注期数',

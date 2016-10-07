@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pk10.dao.GivenMoneyRecordDao">
     <resultMap id="BaseResultMap" type="com.pk10.bean.GivenMoneyRecord">
-        <result column="id" property="id" javaType="long"/>
-        <result column="current_username" property="currentUsername" javaType="String"/>
-        <result column="opposing_username" property="opposingUsername" javaType="String"/>
-        <result column="current_money" property="currentMoney" javaType="Double"/>
-        <result column="opposing_money" property="opposingMoney" javaType="Double"/>
-        <result column="given_money" property="givenMoney" javaType="Double"/>
+        <result column="id" property="id"/>
+        <result column="current_username" property="currentUsername"/>
+        <result column="opposing_username" property="opposingUsername"/>
+        <result column="current_money" property="currentMoney"/>
+        <result column="opposing_money" property="opposingMoney"/>
+        <result column="given_money" property="givenMoney"/>
         <result column="time" property="time" javaType="java.util.Date"/>
     </resultMap>
 

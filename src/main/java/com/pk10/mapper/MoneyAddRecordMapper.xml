@@ -9,6 +9,7 @@
     <result column="add_agent_name" property="addAgentName" jdbcType="VARCHAR" />
     <result column="add_agent_id" property="addAgentId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
