@@ -30,6 +30,11 @@ public class TestUserInfoService {
 	}
 
 	@Test
+	public  void Testinsert() throws Exception{
+		UserInfo info = new UserInfo("liushao121", "12333333");
+		System.out.println(userInfoService.save(info));
+	}
+	@Test
 	public void Testupdate() throws Exception {
 		System.out.println(userInfoService.update(userInfo));
 	}
