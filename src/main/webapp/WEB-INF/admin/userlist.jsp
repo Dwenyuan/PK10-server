@@ -326,9 +326,10 @@
                        html += '<td>' + item.addMoney + '</td>'
                        html += '<td>' + item.addTime + '</td>'
                        html += '</tr> ';
-                       $("#recharge_record").empty().append(html);
+
                    });
-                       $("#recharge").modal();
+                   $("#recharge_record").empty().append(html);
+                   $("#recharge").modal();
 
                },
                error: function () {
@@ -404,8 +405,8 @@
                        html += '<td>'+item.time +'</td>'
                        html += '</tr> ';
 
-                       $("#account_change_record").empty().append(html);
                    });
+                   $("#account_change_record").empty().append(html);
                },
                error: function (result) {
                    console.log("error: result <== ");
@@ -457,8 +458,8 @@
                    var html="";
                    $.each(data.agents, function(idx, item) {
                        html = '<option value="'+item.id+'" id="agent_id">'+item.username+'</option>';
-                       $("#agent").append(html);
                    });
+                   $("#agent").append(html);
 
                },
                error: function() {
@@ -484,8 +485,8 @@
                    $("#nextagent").append("<option value='0'>所有分销商</option>");
                    $.each(data.ownersOfAgents, function(idx, item) {
                        html = '<option value="'+item.id+'" id="nextagent_id">'+item.username+'</option>';
-                       $("#nextagent").append(html);
                    });
+                   $("#nextagent").append(html);
                },
                error: function(data) {
                    alert('agentclick: 没有记录!');
