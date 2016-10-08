@@ -121,6 +121,8 @@
                                             <span class="am-icon-pencil-square-o"></span>充值</button>
                                         <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="userbet_c(${user.id})">
                                             <span class="am-icon-pencil-square-o"></span>投注</button>
+                                        <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="moneychange_c(${user.id})">
+                                            <span class="am-icon-pencil-square-o"></span>帐变</button>
                                         <button class="am-btn am-btn-default am-btn-xs am-text-secondary"
                                                 onclick="edit_user_c('${user.id}', '${user.username}', '${user.password}', '${user.tel}', '${user.isagent}')">
                                             <span class="am-icon-pencil-square-o"></span> 编辑</button>
@@ -208,6 +210,41 @@
         </div>
         <div class="am-modal-footer">
             <span class="am-modal-btn" id="bet-ok">确定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 帐变 -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="moneychange">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">帐变记录</div>
+        <div class="am-modal-bd">
+            <div>
+                <div class="am-u-md-4">
+                    <input type="text" id="startTime" class="am-form-field" placeholder="开始时间" data-am-datepicker readonly required />
+                </div>
+                <div class="am-u-md-4">
+                    <input type="text" id="endTime" class="am-form-field" placeholder="结束时间" data-am-datepicker readonly required />
+                </div>
+                <div class="am-u-md-4"><button class="am-btn am-btn-primary" onclick="account_change()">搜索</button></div>
+            </div>
+            <table class="am-table am-table-striped am-table-hover table-main">
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>帐变类型</th>
+                    <th>金额</th>
+                    <th>余额</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody id="account_change_record">
+                ${errorMsg}
+                </tbody>
+            </table>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" id="change-ok">确定</span>
         </div>
     </div>
 </div>
@@ -427,6 +464,51 @@
         }
     }
 
+    //帐变
+    var curUserId;
+    function moneychange_c(id) {
+        curUserId = id;
+        $("#account_change_record").empty();
+        $("#moneychange").modal();
+    }
+
+    function account_change() {
+        var startTime = $("#startTime").val();
+        var endTime = $("#endTime").val();
+        console.log("account_change: startTime ==> " + startTime + ", endTime ==> " + endTime);
+
+        $.ajax({
+            url: "<%=request.getContextPath()%>/account-change/" + curUserId,
+            type: "GET",
+            data: {
+                startTime: startTime,
+                endTime: endTime
+            },
+            dataType: "json",
+            success: function (result) {
+                console.log("success: result <== ");
+                console.log(result);
+                var html = "";
+                $.each(result.accountChanges, function(i, item) {
+                    html += '<tr>'
+                    html += '<td>'+item.username+'</td>'
+                    html += '<td>'+item.type+'</td>'
+                    html += '<td>'+item.money+'</td>'
+                    html += '<td>'+item.balance+'</td>'
+                    html += '<td>'+item.time +'</td>'
+                    html += '</tr> ';
+
+                });
+                $("#account_change_record").empty().append(html);
+            },
+            error: function (result) {
+                console.log("error: result <== ");
+                console.log(result);
+                alert("服务器异常,请稍后重试!");
+            }
+
+        });
+    }
 </script>
 </body>
 
