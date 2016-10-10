@@ -232,8 +232,8 @@ public class UserInfoControl {
                                     @PathVariable("username") String username,
                                     @PathVariable("agentId") Integer agentId) throws Exception {
 
-		if ("null".equals(username) || "".equals(username.trim())) {
-			model.addAttribute(Const.ERROR_MSG, "无效用户名!");
+		if (null == agentId || agentId == 0) {
+			model.addAttribute(Const.ERROR_MSG, "请选择代理商!");
 			return "admin/userlist";
 		}
 
@@ -244,7 +244,8 @@ public class UserInfoControl {
         } else {
             PageInfo page = new PageInfo(users);
             if (page.getPageNum() > 0) {
-                model.addAttribute("users", users);
+				model.addAttribute("ownerId", agentId);
+				model.addAttribute("users", users);
                 model.addAttribute("page", page);
                 model.addAttribute("pn", 1);
             }
