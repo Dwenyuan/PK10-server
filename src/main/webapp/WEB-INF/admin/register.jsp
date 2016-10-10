@@ -49,6 +49,7 @@
             ${success_response} ${error_response}
             <form class="am-form" id="log-form" action="${pageContext.request.contextPath}/reg-user" method="post">
                 <input type="hidden" name="owner" id="owner" value="${owner}">
+                <input type="hidden" name="ownerUsername" id="ownerUsername" value="${ownerUsername}">
 
                 <div class="am-input-group am-radius am-animation-slide-left" id="vld-username">
                     <input type="text" id="doc-vld-username" name="username" class="am-radius" data-validation-message="请输入正确用户名" placeholder="字母和数字组合的用户名" onblur="userv()" />

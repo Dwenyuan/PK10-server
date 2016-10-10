@@ -42,10 +42,10 @@
     </style>
 </head>
 
-<body onload="agent()">
+<body>
 <c:if test="${requestScope.errorMsg != null}">
     <script>
-        alert('${errorMsg}');
+        alert(${errorMsg});
 
     </script>
 </c:if>
@@ -54,14 +54,14 @@
 </div>
 <hr>
 <div class="am-g">
-    <div class="am-u-sm-12 am-u-md-2">
+    <%--<div class="am-u-sm-12 am-u-md-2">
         <div class="am-form-group">
             <select data-am-selected="{btnSize: 'sm'}" id="agent" onchange="agentclick()">
                 <option value="option1">所有代理商</option>
             </select>
         </div>
     </div>
-    <%--<div class="am-u-sm-12 am-u-md-2 am-u-md-offset-1" >
+    <div class="am-u-sm-12 am-u-md-2 am-u-md-offset-1" >
         <div class="am-form-group">
             <select data-am-selected="{btnSize: 'sm'}" id="nextagent">
                 <option value="option1">所有分销商</option>
@@ -70,7 +70,7 @@
     </div>--%>
     <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
         <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field" id="search_username">
+            <input type="text" class="am-form-field" id="search_username" placeholder="请输入要搜索的用户名">
             <span class="am-input-group-btn">
             <button class="am-btn am-btn-default" type="button" onclick="search_user()">搜索</button>
           </span>
@@ -254,7 +254,7 @@
     <div class="am-modal-dialog">
         <div class="am-modal-hd">编辑用户信息</div>
         <div class="am-modal-bd">
-            <form id="edit_user" method="post" action="/user">
+            <form id="edit_user" method="post" action="/pk10/user">
                 <input id="ui_id" type="hidden" name="id" value="">
                 <div class="am-g am-margin-top">
                     <div class="am-u-sm-4 am-u-md-2 am-text-right">
@@ -387,70 +387,14 @@
         });
     }
 
-    function agent() {
-
-        $("#agent").empty();
-        $("#agent").append("<option value='0'>所有代理商</option>");
-        $.ajax({
-            type: 'get',
-            url: '<%=request.getContextPath()%>/isagent/' + 2,
-            processData: false,
-            dataType: 'json',
-            success: function(data) {
-                var html="";
-                $.each(data.agents, function(idx, item) {
-                    html = '<option value="'+item.id+'" id="agent_id">'+item.username+'</option>';
-                    $("#agent").append(html);
-                });
-
-            },
-            error: function() {
-                alert('agent: 没有记录!');
-            }
-        });
-    }
-
-    function agentclick() {
-
-
-
-        var id = $("#agent").val();
-        if(id== 0) {
-            return;
-        }
-        window.location="<%=request.getContextPath()%>/junior/users/" + id;
-        <%--$.ajax({--%>
-            <%--type: 'get',--%>
-            <%--url: '<%=request.getContextPath()%>/junior/users/' + id,--%>
-            <%--processData: false,--%>
-            <%--dataType: 'json',--%>
-            <%--success: function(data) {--%>
-                <%--var html="";--%>
-                <%--$("#nextagent").empty();--%>
-                <%--$("#nextagent").append("<option value='0'>所有分销商</option>");--%>
-                <%--$.each(data.ownersOfAgents, function(idx, item) {--%>
-                    <%--html = '<option value="'+item.id+'" id="nextagent_id">'+item.username+'</option>';--%>
-                    <%--$("#nextagent").append(html);--%>
-                <%--});--%>
-            <%--},--%>
-            <%--error: function(data) {--%>
-                <%--alert('agentclick: 没有记录!');--%>
-            <%--}--%>
-        <%--});--%>
-
-    }
-
     function search_user() {
-        var isagent = $("#agent_id").val();
         var s_name = $("#search_username").val();
         // console.log("agent:" + isagent + "\ts_name:" + s_name);
         // var owner = $("#nextagent_id").val();
-        if (isagent == "") {
-            alert('请选择代理商');
-        } else if (s_name == "") {
-            location.href = '<%=request.getContextPath()%>/null/agent/' + isagent;
+        if (s_name == "" || s_name == undefined) {
+            alert("请输入要搜索的用户名");
         } else {
-            location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent;
+            location.href = '<%=request.getContextPath()%>/true/' + s_name + '/agent/' + ${ownerId};
         }
     }
 

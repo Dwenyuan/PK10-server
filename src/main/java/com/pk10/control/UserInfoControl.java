@@ -227,19 +227,43 @@ public class UserInfoControl {
 		return map;
 	}
 
-	@RequestMapping(value = "/{username}/agent/{isagent}", method = RequestMethod.GET)
-	public String getUsersByAgentId(Model model, @PathVariable("username") String username,
-			@PathVariable("isagent") Integer isagent) throws Exception {
+	@RequestMapping(value = "/{junior}/{username}/agent/{agentId}", method = RequestMethod.GET)
+	public String getUsersByAgentId(Model model, @PathVariable("junior")Boolean isJunior,
+                                    @PathVariable("username") String username,
+                                    @PathVariable("agentId") Integer agentId) throws Exception {
 
-		List<UserInfo> users = userInfoService.getUsersByAgentId(username, isagent);
-		if (users != null && users.size() > 0)
-			model.addAttribute("users", users);
-		else
-			model.addAttribute(Const.ERROR_MSG, "获取失败,没有对应用户名!");
+		if ("null".equals(username) || "".equals(username.trim())) {
+			model.addAttribute(Const.ERROR_MSG, "无效用户名!");
+			return "admin/userlist";
+		}
 
-		return "admin/userlist";
+        PageHelper.startPage(1, 10);
+		List<UserInfo> users = userInfoService.getUsersByAgentId(username, agentId);
+        if (users == null) {
+            model.addAttribute(Const.ERROR_MSG, "获取失败,没有对应用户名!");
+        } else {
+            PageInfo page = new PageInfo(users);
+            if (page.getPageNum() > 0) {
+                model.addAttribute("users", users);
+                model.addAttribute("page", page);
+                model.addAttribute("pn", 1);
+            }
+        }
+
+        if (!isJunior) {
+            return "admin/userlist";
+        } else {
+            return "admin/junior-userlist";
+        }
 	}
 
+    /**
+     * 查看代理商下得所有下级用户
+     * @param model
+     * @param owner
+     * @param pn
+     * @return
+     */
 	@RequestMapping(value = "/junior/users/{owner}/{pn}", method = RequestMethod.GET)
 	public String getJuniorUsersForAgent(Model model, @PathVariable("owner") Integer owner,
                                          @PathVariable("pn")Integer pn) {
@@ -255,6 +279,7 @@ public class UserInfoControl {
 		if (juniorUsers != null && juniorUsers.size() > 0) {
             PageInfo page = new PageInfo(juniorUsers);
             if (page.getPageNum() > 0) {
+                model.addAttribute("ownerId", owner);
                 model.addAttribute("users", juniorUsers);
                 model.addAttribute("page", page);
                 model.addAttribute("pn", pn);
@@ -290,9 +315,10 @@ public class UserInfoControl {
         return "admin/register";
     }
 
-	@RequestMapping(value = "/reg-ui/{owner}", method = RequestMethod.GET)
-	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner) {
+	@RequestMapping(value = "/reg-ui/{owner}/{ownerUsername}", method = RequestMethod.GET)
+	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner, @PathVariable("ownerUsername")String ownerUsername) {
 	    map.addAttribute("owner", owner);
+	    map.addAttribute("ownerUsername", ownerUsername);
 		return "admin/register";
 	}
 
