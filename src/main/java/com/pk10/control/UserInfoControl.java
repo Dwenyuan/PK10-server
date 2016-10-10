@@ -82,7 +82,7 @@ public class UserInfoControl {
 			throws Exception {
 		UserInfo userInfo = userInfoService.getOneById(new UserInfo(id));
 		if (chargeMoney != null) {
-			Integer money = (int)(userInfo.getMoney() + chargeMoney);
+			Integer money = (int) (userInfo.getMoney() + chargeMoney);
 			userInfo.setMoney(money);
 			userInfoService.update(userInfo);
 			// 添加充值记录
@@ -169,16 +169,16 @@ public class UserInfoControl {
 
 	@RequestMapping("updateuserpassword")
 	@ResponseBody
-	public Object updateuserpassword(String newPwd,String oldPwd,HttpServletRequest request) {
+	public Object updateuserpassword(String newPwd, String oldPwd, HttpServletRequest request) {
 		try {
 			Integer update = 0;
 			UserInfo currentUser = (UserInfo) request.getSession().getAttribute("userinfo");
 
-			if(oldPwd.intern() == currentUser.getPassword().intern()) {
+			if (oldPwd.intern() == currentUser.getPassword().intern()) {
 				currentUser.setPassword(newPwd);
 				update = userInfoService.update(currentUser);
 			}
-				request.getSession().setAttribute("userinfo", currentUser);
+			request.getSession().setAttribute("userinfo", currentUser);
 			return update;
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -290,30 +290,30 @@ public class UserInfoControl {
 		return "admin/junior-userlist";
 	}
 
-    @RequestMapping(value = "/reg-user", method = RequestMethod.POST)
-    public String register(ModelMap map, @ModelAttribute UserInfo userInfo, String code) {
-        if (userInfo == null) {
-            map.addAttribute("error_response", "无效参数!");
-        } else {
-            try {
-                if (map.get("captcha").equals(code)) {
-                    userInfo.setIsagent(0);
-                    userInfo.setCreatedAt(new Date());
-                    userInfo.setNickname(userInfo.getUsername());
-                    userInfoService.save(userInfo);
+	@RequestMapping(value = "/reg-user", method = RequestMethod.POST)
+	public String register(ModelMap map, @ModelAttribute UserInfo userInfo, String code) {
+		if (userInfo == null) {
+			map.addAttribute("error_response", "无效参数!");
+		} else {
+			try {
+				if (map.get("captcha").equals(code)) {
+					userInfo.setIsagent(0);
+					userInfo.setCreatedAt(new Date());
+					userInfo.setNickname(userInfo.getUsername());
+					userInfoService.save(userInfo);
 
-                    map.put("captcha", "");
-                    map.addAttribute("success_response", "注册成功!");
-                } else {
-                    map.addAttribute("error_response", "验证码失效,请稍后重试!");
-                }
-            } catch (Exception e) {
-                logger.error(e.getMessage());
-                map.addAttribute("error_response", "服务器异常,请稍后重试!");
-            }
-        }
-        return "admin/register";
-    }
+					map.put("captcha", "");
+					map.addAttribute("success_response", "注册成功!");
+				} else {
+					map.addAttribute("error_response", "验证码失效,请稍后重试!");
+				}
+			} catch (Exception e) {
+				logger.error(e.getMessage());
+				map.addAttribute("error_response", "服务器异常,请稍后重试!");
+			}
+		}
+		return "admin/register";
+	}
 
 	@RequestMapping(value = "/reg-ui/{owner}/{ownerUsername}", method = RequestMethod.GET)
 	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner, @PathVariable("ownerUsername")String ownerUsername) {
@@ -392,7 +392,7 @@ public class UserInfoControl {
 
 	@RequestMapping("check-tel/{tel}")
 	@ResponseBody
-	public Object checkTel(@PathVariable("tel")String tel) {
+	public Object checkTel(@PathVariable("tel") String tel) {
 		UserInfo safeUserInfo = userInfoService.getUserInfoByTel(new UserInfo(null, null, tel));
 		if (safeUserInfo != null) { // 查找到记录，表示已经占用
 			return false;
@@ -404,7 +404,7 @@ public class UserInfoControl {
 	@RequestMapping("checkusername")
 	@ResponseBody
 	public Object checkusername(String username) {
-	    logger.debug("checkusername: username = " + username);
+		logger.debug("checkusername: username = " + username);
 		UserInfo safeUserInfo = userInfoService.getUserInfoByUsername(new UserInfo(username, null));
 		if (safeUserInfo != null) {
 			return false; // 用户名占用
@@ -486,13 +486,13 @@ public class UserInfoControl {
 		try {
 			UserInfo mUser = (UserInfo) request.getSession().getAttribute("userinfo");
 			request.getSession().removeAttribute("userinfo");
-			if(mUser != null){
+			if (mUser != null) {
 				if (mUser.getIsagent() == 3) {
 					return "redirect:toAdminHome";
 				} else {
 					return "redirect:agentlogin.html";
 				}
-			}else {
+			} else {
 				return "redirect:agentlogin.html";
 			}
 		} catch (Exception e) {

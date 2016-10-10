@@ -6,6 +6,8 @@ import com.github.pagehelper.PageInfo;
 import com.pk10.bean.UserBet;
 import com.pk10.bean.UserInfo;
 import com.pk10.service.UserBetService;
+import com.pk10.service.UserInfoService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class UserBetControl {
 
 	@Autowired
 	private UserBetService userBetService;
+	
+	@Autowired
+	private UserInfoService userInfoService;
 
 	@RequestMapping(value = "createUserBet", method = RequestMethod.POST)
 	@ResponseBody
@@ -45,7 +50,11 @@ public class UserBetControl {
 	public Object createUserBets(@RequestBody List<UserBet> userBets, HttpSession session) {
 		try {
 			session.setAttribute("userBets", userBets);
-			return userBetService.saveList(mergebets(userBets));
+			Integer saveList = userBetService.saveList(mergebets(userBets));
+			if (saveList != null && saveList > 0) {
+				session.setAttribute("userinfo", userInfoService.getOneById((UserInfo)session.getAttribute("userinfo")));
+			}
+			return saveList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
