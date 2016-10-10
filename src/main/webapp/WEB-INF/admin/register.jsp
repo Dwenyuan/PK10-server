@@ -47,7 +47,7 @@
             <h1 class="log-title am-animation-slide-top">数字互娱</h1>
             <br>
             ${success_response} ${error_response}
-            <form class="am-form" id="log-form" action="reg-user" method="post">
+            <form class="am-form" id="log-form" action="${pageContext.request.contextPath}/reg-user" method="post">
                 <input type="hidden" name="owner" id="owner" value="${owner}">
 
                 <div class="am-input-group am-radius am-animation-slide-left" id="vld-username">
