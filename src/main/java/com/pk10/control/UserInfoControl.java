@@ -240,14 +240,26 @@ public class UserInfoControl {
 		return "admin/userlist";
 	}
 
-	@RequestMapping(value = "/junior/users/{owner}", method = RequestMethod.GET)
-	public String getJuniorUsersForAgent(Model model, @PathVariable("owner") Integer owner) {
+	@RequestMapping(value = "/junior/users/{owner}/{pn}", method = RequestMethod.GET)
+	public String getJuniorUsersForAgent(Model model, @PathVariable("owner") Integer owner,
+                                         @PathVariable("pn")Integer pn) {
+
+        if (pn == null || pn <= 0)
+            pn = 1;
+
 		UserInfo ownerUser = new UserInfo();
 		ownerUser.setOwner(owner);
+
+        PageHelper.startPage(pn, 10);
 		List<UserInfo> juniorUsers = userInfoService.getUserForAgent(ownerUser);
-		if (juniorUsers != null && juniorUsers.size() > 0)
-			model.addAttribute("users", juniorUsers);
-		else
+		if (juniorUsers != null && juniorUsers.size() > 0) {
+            PageInfo page = new PageInfo(juniorUsers);
+            if (page.getPageNum() > 0) {
+                model.addAttribute("users", juniorUsers);
+                model.addAttribute("page", page);
+                model.addAttribute("pn", pn);
+            }
+        } else
 			model.addAttribute(Const.ERROR_MSG, "当前用户无下级用户列表!");
 
 		return "admin/junior-userlist";
@@ -529,6 +541,7 @@ public class UserInfoControl {
 				userInfo.setRebate(userModel.getRebate());
 				userInfo.setDetail(userModel.getDetail());
 				userInfo.setIsagent(userModel.getIsagent());
+				userInfo.setOwnerUsername(userModel.getAgentId());
 				userInfo.setMoney(betInit.getInitMoney());
 				UserInfo m = new UserInfo();
 				if (userModel.getAgentId() == "" || userModel.getAgentId() == null) {
