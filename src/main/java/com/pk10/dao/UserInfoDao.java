@@ -60,7 +60,7 @@ public interface UserInfoDao extends BaseDao<UserInfo> {
 
     List<UserInfo> getAgentsByOwnerId(Integer ownerId);
 
-    List<UserInfo> getUsersByAgentId(@Param("username") String username, @Param("isagent") Integer isagent);
+    List<UserInfo> getUsersByAgentId(@Param("username") String username, @Param("agentId") Integer agentId);
 	UserInfo getUserUsername(UserInfo userInfo);
 
 }

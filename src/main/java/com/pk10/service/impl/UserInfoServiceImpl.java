@@ -209,8 +209,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public List<UserInfo> getUsersByAgentId(String username, Integer isagent) {
-		return userInfoDao.getUsersByAgentId(username, isagent);
+	public List<UserInfo> getUsersByAgentId(String username, Integer agentId) {
+		return userInfoDao.getUsersByAgentId(username, agentId);
 	}
 
 	public UserInfo getUserUsername(UserInfo userInfo) {

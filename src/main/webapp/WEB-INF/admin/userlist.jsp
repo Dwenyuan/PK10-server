@@ -451,7 +451,7 @@
                success: function(data) {
                    var html="";
                    $.each(data.agents, function(idx, item) {
-                       html = '<option value="'+item.id+'" id="agent_id">'+item.username+'</option>';
+                       html += '<option value="'+item.id+'">'+item.username+'</option>';
                    });
                    $("#agent").append(html);
 
@@ -462,45 +462,18 @@
            });
        }
 
-       function agentclick() {
-
-          var id = $("#agent").val();
-           if(id== 0) {
-               return;
-           }
-           $.ajax({
-               type: 'get',
-               url: '<%=request.getContextPath()%>/owner/' + id,
-               processData: false,
-               dataType: 'json',
-               success: function(data) {
-                   var html="";
-                   $("#nextagent").empty();
-                   $("#nextagent").append("<option value='0'>所有分销商</option>");
-                   $.each(data.ownersOfAgents, function(idx, item) {
-                       html = '<option value="'+item.id+'" id="nextagent_id">'+item.username+'</option>';
-                   });
-                   $("#nextagent").append(html);
-               },
-               error: function(data) {
-                   alert('agentclick: 没有记录!');
-               }
-           });
-
-       }
-
        function search_user() {
 
-           var isagent = $("#agent_id").val();
+           var agent_id = $("#agent").val();
            var s_name = $("#search_username").val();
            // console.log("agent:" + isagent + "\ts_name:" + s_name);
            // var owner = $("#nextagent_id").val();
-           if (isagent == "") {
+           if (agent_id == "" || agent_id == undefined) {
                alert('请选择代理商');
            } else if (s_name == "") {
-               location.href = '<%=request.getContextPath()%>/null/agent/' + isagent;
+               location.href = '<%=request.getContextPath()%>/false/null/agent/' + agent_id;
            } else {
-               location.href = '<%=request.getContextPath()%>/' + s_name + '/agent/' + isagent;
+               location.href = '<%=request.getContextPath()%>/false/' + s_name + '/agent/' + agent_id;
            }
 
 
