@@ -46,7 +46,6 @@
     <c:if test="${requestScope.errorMsg != null}">
         <script>
             alert(${errorMsg});
-
         </script>
     </c:if>
     <div class="am-cf am-padding am-padding-bottom-0">
@@ -86,7 +85,7 @@
                             <input type="checkbox" />
                         </th>--%>
                         <th class="table-id">用户ID</th>
-                        <th class="table-id">上级ID</th>
+                        <th class="table-id">上级用户名</th>
                         <th class="table-title">姓名</th>
                         <th class="table-type">用户名</th>
                         <th class="table-author am-hide-sm-only">金币</th>
@@ -109,7 +108,7 @@
                                     <input type="checkbox" />
                                 </td>--%>
                                 <td>${user.id}</td>
-                                <td>${user.owner}</td>
+                                <td>${user.ownerUsername}</td>
                                 <td><a href="#">${user.nickname}</a></td>
                                 <td>${user.username}</td>
                                 <td class="am-hide-sm-only">${user.money}</td>
@@ -282,19 +281,10 @@
                             <input id="ui_tel" type="text" name="tel" value="">
                         </div>
                     </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                            等级
-                        </div>
-                        <div class="am-u-sm-8 am-u-md-4 am-u-end">
-                            <input id="ui_isa" type="text" name="isagent" value="">
-                        </div>
-                    </div>
 
                     <div class="am-g am-margin-top">
                         <div class="am-u-sm-offset-3 am-u-sm-6 am-u-md-offset-2 am-u-md-4">
                             <button type="submit" class="am-btn am-btn-primary am-btn-xs" >更新</button>
-                            <button type="reset" class="am-btn am-btn-primary am-btn-xs">重置</button>
                         </div>
                     </div>
                 </form>
@@ -400,6 +390,11 @@
                        html += '<tr>'
                        html += '<td>'+item.username+'</td>'
                        html += '<td>'+item.type+'</td>'
+                       if(item.type == "充值记录" || item.type == "中奖记录" || item.type == "(赠送)收入") {
+                           html += '<td>' + '+' +item.money+'</td>'
+                       } else {
+                           html += '<td>' + '-' +item.money+'</td>'
+                       }
                        html += '<td>'+item.money+'</td>'
                        html += '<td>'+item.balance+'</td>'
                        html += '<td>'+item.time +'</td>'
@@ -424,8 +419,7 @@
             $("#ui_un")[0].value = username;
             $("#ui_pwd")[0].value = password;
             $("#ui_tel")[0].value = tel;
-            $("#ui_isa")[0].value = isagent;
-           $("#userinfo").modal();
+            $("#userinfo").modal();
        }
 
        function delete_c(id) {

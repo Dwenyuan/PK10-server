@@ -1,11 +1,6 @@
 package com.pk10.bean;
 
-import java.text.ParseException;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * 用户信息 由于用户信息全部从微信服务器获取，所以我们只保存 openid , nickname,用以后台管理 还有金币
@@ -23,9 +18,10 @@ public class UserInfo {
     String username;
     String password;
     String tel;
-    Integer isagent;  // 用户等级 0-普通用户 1-二级代理商 2-一级代理商 3-超级管理员
+    Integer isagent;  // 用户等级 0-普通用户 2-一级代理商 3-超级管理员
     Double rebate; // 返点
     Integer owner;// 本用户属于哪个代理商
+    String ownerUsername; // 上级用户名
     String detail;// 备注
 
     public String getDetail() {
@@ -122,6 +118,14 @@ public class UserInfo {
 
     public void setOpenid(String openid) {
         this.openid = openid;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
     }
 
     public String getNickname() {
