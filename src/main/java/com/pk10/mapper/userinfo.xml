@@ -151,7 +151,7 @@
 	<select id="getUsersByAgentId" resultMap="UserInfo">
 		SELECT * FROM userinfo
 		WHERE owner = #{agentId}
-		<if test="username != null">
+		<if test="!username.equals('null')">
           and username like concat('%', #{username}, '%')
         </if>
 	</select>
