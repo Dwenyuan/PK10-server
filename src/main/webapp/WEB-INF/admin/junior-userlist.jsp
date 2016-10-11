@@ -379,9 +379,20 @@
                     html += '<tr>'
                     html += '<td>'+item.id+'</td>'
                     html += '<td>'+item.idnum+'</td>'
-                    html += '<td>'+item.type+'</td>'
+                    if (item.type == "NUMBER") {
+                        html += '<td>数字</td>'
+                    } else if (item.type == "SINGLE_OR_DOUBLE") {
+                        html += '<td>单双</td>'
+                    } else {
+                        html += '<td>大小</td>'
+                    }
+
                     html += '<td>'+item.betmoney +'</td>'
-                    html += '<td>'+item.mulit +'</td>'
+                    if (item.mulit == undefined) {
+                        html += '<td>0</td>'
+                    } else {
+                        html += '<td>'+item.mulit +'</td>'
+                    }
                     html += '<td>'+item.odds +'</td>'
                     html += '<td>'+item.betnum +'</td>'
                     html += '<td>'+item.createdAt +'</td>'
