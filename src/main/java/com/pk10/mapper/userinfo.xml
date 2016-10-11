@@ -88,8 +88,7 @@
 		WHERE isagent = 0 ORDER BY createdAt DESC
 	</select>
 
-	<select id="getOneById" parameterType="int"
-		resultMap="UserInfo">
+	<select id="getOneById" resultMap="UserInfo">
 		select
 		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username,detail from userinfo
 		u where u.id = #{id}
