@@ -36,7 +36,12 @@ public class LoginFilter implements Filter {
 				"/(login|register|checkTel|checkusername|adminlogin|managerlogin\\.do)|adminlogin\\.html|agentlogin\\.html|userlogin\\.html|managerlogin\\.html|/build/.|/assets/.*+");
 		Matcher matcher = compile.matcher(req.getServletPath());
 		boolean isFilter = matcher.find();
-		if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
+
+        System.out.println("LoginFilter.doFilter ServerPath <== " + req.getServletPath());
+        if (isFilter || req.getServletPath().contains("/reg-ui") || req.getServletPath().contains("/check-tel") ||
+            req.getServletPath().contains("/sms/") || req.getServletPath().contains("/reg-user")) {
+            chain.doFilter(request, response);
+        } else if ("/userlogin.html".equals(req.getServletPath()) && req.getSession().getAttribute("userinfo") != null) { // 除去不需要过滤的静态资源或者已登录。。。
 			// 当用户已登录时，再进入登录界面会直接跳转
 			res.sendRedirect("index.jsp");
 		} else if ("/admin-login.htm".equals(req.getServletPath())

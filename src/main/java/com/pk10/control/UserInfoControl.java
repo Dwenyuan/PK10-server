@@ -301,6 +301,7 @@ public class UserInfoControl {
 					userInfo.setIsagent(0);
 					userInfo.setCreatedAt(new Date());
 					userInfo.setNickname(userInfo.getUsername());
+                    // userInfo.setOwnerUsername(userInfo.getOwnerUsername());
 					userInfoService.save(userInfo);
 
 					map.put("captcha", "");
@@ -316,10 +317,18 @@ public class UserInfoControl {
 		return "admin/register";
 	}
 
-	@RequestMapping(value = "/reg-ui/{owner}/{ownerUsername}", method = RequestMethod.GET)
-	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner, @PathVariable("ownerUsername")String ownerUsername) {
-	    map.addAttribute("owner", owner);
-	    map.addAttribute("ownerUsername", ownerUsername);
+	@RequestMapping(value = "/reg-ui/{owner}", method = RequestMethod.GET)
+	public String registerUI(ModelMap map, @PathVariable("owner")Integer owner) {
+
+	    logger.debug("registerUI: owner <== " + owner);
+        UserInfo userInfo = null;
+        try {
+            userInfo = userInfoService.getOneById(new UserInfo(owner));
+            map.addAttribute("owner", owner);
+            map.addAttribute("ownerUsername", userInfo.getUsername());
+        } catch (Exception e) {
+            logger.error("registerUI: e <== " + e.getMessage());
+        }
 		return "admin/register";
 	}
 
@@ -391,7 +400,7 @@ public class UserInfoControl {
 		return userInfo;
 	}
 
-	@RequestMapping("check-tel/{tel}")
+	@RequestMapping(value = "check-tel/{tel}", method = RequestMethod.POST)
 	@ResponseBody
 	public Object checkTel(@PathVariable("tel") String tel) {
 		UserInfo safeUserInfo = userInfoService.getUserInfoByTel(new UserInfo(null, null, tel));
