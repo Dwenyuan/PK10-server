@@ -101,7 +101,7 @@ public class UserInfoControl {
 			userInfo.setPassword(user.getPassword());
 			userInfo.setTel(user.getTel());
 			userInfo.setIsagent(user.getIsagent());
-			userInfoService.update(user);
+			userInfoService.update(userInfo);
 		}
 
 		return "redirect:users";
