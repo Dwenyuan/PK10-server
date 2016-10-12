@@ -122,6 +122,8 @@
                                                 <span class="am-icon-pencil-square-o"></span>充值</button>
                                             <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="userbet_c(${user.id})">
                                                 <span class="am-icon-pencil-square-o"></span>投注</button>
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="given_c('${user.username}')">
+                                                <span class="am-icon-pencil-square-o"></span>赠送</button>
                                             <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="moneychange_c(${user.id})">
                                                 <span class="am-icon-pencil-square-o"></span>帐变</button>
                                             <button class="am-btn am-btn-default am-btn-xs am-text-secondary"
@@ -250,13 +252,50 @@
         </div>
     </div>
 
+    <!-- 赠送记录 -->
+    <div class="am-modal am-modal-alert" tabindex="-1" id="given">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">赠送记录</div>
+            <div class="am-modal-bd">
+                <div>
+                    <div class="am-u-md-4">
+                        <input type="text" id="given_start_time" class="am-form-field" placeholder="开始时间" data-am-datepicker readonly required />
+                    </div>
+                    <div class="am-u-md-4">
+                        <input type="text" id="given_end_time" class="am-form-field" placeholder="结束时间" data-am-datepicker readonly required />
+                    </div>
+                    <div class="am-u-md-4"><button class="am-btn am-btn-primary" onclick="given_search()">搜索</button></div>
+                </div>
+                <table class="am-table am-table-striped am-table-hover table-main">
+                    <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>类型</th>
+                        <th>金额</th>
+                        <th>当前用户余额</th>
+                        <th>对方用户名</th>
+                        <th>时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="given_record">
+                    ${errorMsg}
+                    </tbody>
+                </table>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" id="given_ok">确定</span>
+            </div>
+        </div>
+    </div>
     <!-- edit -->
     <div class="am-modal am-modal-alert" tabindex="-1" id="userinfo">
         <div class="am-modal-dialog">
             <div class="am-modal-hd">编辑用户信息</div>
             <div class="am-modal-bd">
-                <form id="edit_user" method="post" action="/pk10/user">
+                <form id="edit_user" method="post" action="${pageContext.request.contextPath}/user">
                     <input id="ui_id" type="hidden" name="id" value="">
+                    <input id="ui_isagent" type="hidden" name="isagent" value="">
+
                     <div class="am-g am-margin-top">
                         <div class="am-u-sm-4 am-u-md-2 am-text-right">
                             用户名
@@ -395,7 +434,6 @@
                        } else {
                            html += '<td>' + '-' +item.money+'</td>'
                        }
-                       html += '<td>'+item.money+'</td>'
                        html += '<td>'+item.balance+'</td>'
                        html += '<td>'+item.time +'</td>'
                        html += '</tr> ';
@@ -411,11 +449,68 @@
 
            });
        }
+       // 赠送记录
+       var given_id;
+       function given_c(id)  {
+           given_id = id;
+           $("#given_record").empty();
+           $("#given").modal();
+       }
+       function given_search() {
+           var start_time = $("#given_start_time").val();
+           var end_time = $("#given_end_time").val();
+           if(start_time == "" || end_time == "") {
+               return ;
+           }
+           $.ajax({
+               url: "given-money/" + given_id,
+               type: "GET",
+               data: {
+                   startTime: start_time,
+                   endTime: end_time
+               },
+               dataType: "json",
+               success: function (result) {
+                   console.log("success: result <== ");
+                   console.log(result);
+                   var html = "";
+                   $.each(result, function(i, item) {
+                       html += '<tr>'
+                       html += '<td>'+given_id+'</td>'
+
+                       if(item.opposingUsername == given_id) {
+                           html += '<td>(赠送)收入</td>'
+                           html += '<td>' + '+' +item.givenMoney+'</td>'
+                           html += '<td>'+item.opposingMoney+'</td>'
+                           html += '<td>'+item.currentUsername +'</td>'
+                       } else {
+                           html += '<td>(赠送)支出</td>'
+                           html += '<td>' + '-' +item.givenMoney+'</td>'
+                           html += '<td>'+item.currentMoney+'</td>'
+                           html += '<td>'+item.opposingUsername +'</td>'
+                       }
+
+                       html += '<td>'+item.time +'</td>'
+                       html += '</tr> ';
+
+                   });
+                   $("#given_record").empty().append(html);
+               },
+               error: function (result) {
+                   console.log("error: result <== ");
+                   console.log(result);
+                   alert("服务器异常,请稍后重试!");
+               }
+
+           });
+
+       }
 
        // 编辑
        function edit_user_c(id, username, password, tel, isagent) {
            console.log(id + ":" + username);
             $("#ui_id")[0].value = id;
+            $("#ui_isagent")[0].value = isagent;
             $("#ui_un")[0].value = username;
             $("#ui_pwd")[0].value = password;
             $("#ui_tel")[0].value = tel;

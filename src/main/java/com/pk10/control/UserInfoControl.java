@@ -101,7 +101,7 @@ public class UserInfoControl {
 			userInfo.setPassword(user.getPassword());
 			userInfo.setTel(user.getTel());
 			userInfo.setIsagent(user.getIsagent());
-			userInfoService.update(user);
+			userInfoService.update(userInfo);
 		}
 
 		return "redirect:users";
@@ -462,24 +462,54 @@ public class UserInfoControl {
 
 	@RequestMapping(value = "adminlogin", method = RequestMethod.POST)
 	public Object adminlogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
+
 		UserInfo safeUserinfo;
 		try {
 			safeUserinfo = userInfoService.managerLogin(userInfo);
 			if (safeUserinfo != null) {
-				request.getSession().setAttribute("userinfo", safeUserinfo);
-				if (safeUserinfo.getIsagent() == 3) {
-					return "admin/admin-index";
-				} else {
+                if (safeUserinfo.getIsagent() == 3 ) {
+                    if(safeUserinfo.getIsagent() != userInfo.getIsagent()) {
+                        return "redirect:agentlogin.html";
+                    }
+                    request.getSession().setAttribute("userinfo", safeUserinfo);
+                    return "admin/admin-index";
+				} else if (safeUserinfo.getIsagent() == userInfo.getIsagent()) {
+                    request.getSession().setAttribute("userinfo", safeUserinfo);
 					return "admin/admin-agent";
 				}
+				else {
+                    return "redirect:agentlogin.html";
+                }
 			} else {
-				return "redirect:admin-login.htm";
+				return "redirect:admin-login.html";
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return "redirect:admin-login.htm";
+			return "redirect:admin-login.html";
 		}
 	}
+
+    /*@RequestMapping(value = "agentlogin", method = RequestMethod.POST)
+    public Object agentlogin(@ModelAttribute UserInfo userInfo, HttpServletRequest request) {
+
+        UserInfo safeUserinfo;
+        try {
+            safeUserinfo = userInfoService.managerLogin(userInfo);
+            if (safeUserinfo != null) {
+                if (safeUserinfo.getIsagent() == 2) {
+                    request.getSession().setAttribute("userinfo", safeUserinfo);
+                    return "admin/admin-agent";
+                } else {
+                    return "redirect:agentlogin.html";
+                }
+            } else {
+                return "redirect:agentlogin.html";
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return "redirect:agentlogin.html";
+        }
+    }*/
 
 	@RequestMapping("adminloginout")
 	public Object adminloginout(HttpServletRequest request) {

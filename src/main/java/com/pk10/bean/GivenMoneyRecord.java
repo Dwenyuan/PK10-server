@@ -1,5 +1,7 @@
 package com.pk10.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,6 +17,7 @@ public class GivenMoneyRecord implements Serializable {
     private Integer currentMoney; // 当前用户赠送之后的余额
     private Integer opposingMoney; // 对方用户增加金币后的余额
     private Integer givenMoney; // 要赠送的金额
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date time;
 
     public long getId() {
