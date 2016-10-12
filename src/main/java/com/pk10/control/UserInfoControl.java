@@ -232,8 +232,7 @@ public class UserInfoControl {
                                     @PathVariable("username") String username,
                                     @PathVariable("agentId") Integer agentId) throws Exception {
 
-		if (null == agentId || agentId == 0) {
-			model.addAttribute(Const.ERROR_MSG, "请选择代理商!");
+		if (agentId == null) {
 			return "admin/userlist";
 		}
 
