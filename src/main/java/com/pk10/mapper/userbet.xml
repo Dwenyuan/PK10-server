@@ -110,4 +110,8 @@
 		createdAt BETWEEN #{startTime} and #{endTime}
 		and userid=#{curUserId}
 	</select>
+
+	<select id="findByBetweenIdnum" resultMap="UserBet">
+		SELECT * FROM userbet WHERE idnum BETWEEN #{startIdnum} and #{endIdnum} order by createdAt desc
+	</select>
 </mapper>

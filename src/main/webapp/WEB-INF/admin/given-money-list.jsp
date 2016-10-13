@@ -23,7 +23,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <title>投注记录列表</title>
+    <title>赠送记录列表</title>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/i/app-icon72x72@2x.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/amazeui.min.css" />
@@ -50,72 +50,51 @@
     </script>
 </c:if>
 <div class="am-cf am-padding am-padding-bottom-0">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理/投注记录</strong> </div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理/赠送记录</strong> </div>
 </div>
 <hr>
 <div class="am-g">
-    <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
-        <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field" id="start_search_bet" placeholder="这里输入起始期数"
-                   onkeyup="(this.v=function(){
-                       this.value=this.value.replace(/[^0-9-]+/,'');
-                   }).call(this)" onblur="this.v();">
-            <input type="text" class="am-form-field" id="end_search_bet" placeholder="这里输入终止期数"
-                   onkeyup="(this.v=function(){
-                       this.value=this.value.replace(/[^0-9-]+/,'');
-                   }).call(this)" onblur="this.v();">
-            <span class="am-input-group-btn">
-            <button class="am-btn am-btn-default" type="button" onclick="search_bet()">搜索</button>
-          </span>
+
+        <div class="am-u-md-4">
+            <input type="text" id="given_start_time" class="am-form-field" placeholder="开始时间" data-am-datepicker readonly required />
         </div>
-    </div>
+        <div class="am-u-md-4">
+            <input type="text" id="given_end_time" class="am-form-field" placeholder="结束时间" data-am-datepicker readonly required />
+        </div>
+        <div class="am-u-md-4"><button class="am-btn am-btn-primary" onclick="given_search()">搜索</button></div>
+
 </div>
 <div class="am-g">
     <div class="am-u-sm-12">
         <table class="am-table am-table-striped am-table-hover table-main">
             <thead>
             <tr>
-                <th>用户ID</th>
-                <th>开奖期数</th>
-                <th>玩法</th>
-                <th>下注金额</th>
-                <th>下注倍数</th>
-                <th>此次下注赔率</th>
-                <th>下注号码</th>
-                <%--<th>是否兑奖</th>--%>
-                <th>投注时间</th>
+                <th>当前用户名</th>
+                <th>对方用户名</th>
+                <th>赠送的金额</th>
+                <th>当前用户余额</th>
+                <th>对方用户余额</th>
+                <th>时间</th>
             </tr>
             </thead>
             <tbody id="users">
             <c:choose>
-                <c:when test="${requestScope.bets == null}">
+                <c:when test="${requestScope.givenMoneyRecordList == null}">
                     <script>
-                        alert("无投注记录信息可显示!");
+                        alert("无赠送记录信息可显示!");
 
                     </script>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${bets}" var="bet" varStatus="vs">
+                    <c:forEach items="${givenMoneyRecordList}" var="item" varStatus="vs">
                         <tr>
-                            <td>${bet.userid}</td>
-                            <td>${bet.idnum}</td>
-                            <td>${bet.type.name}</td>
-                            <td>${bet.betmoney}</td>
-                            <td>${bet.mulit}</td>
-                            <td>${bet.odds}</td>
-                            <td>${bet.betnum}</td>
-                            <%--<c:choose>
-                                <c:when test="${bet.state} == 0">
-                                    <td>未兑奖</td>
-                                </c:when>
-                                <c:otherwise>
-                                    <th>已兑奖</th>
-                                </c:otherwise>
-                            </c:choose>--%>
-
-
+                            <td>${item.currentUsername}</td>
+                            <td>${item.opposingUsername}</td>
+                            <td>${item.givenMoney}</td>
+                            <td>${item.currentMoney}</td>
+                            <td>${item.opposingMoney}</td>
                             <td class="am-hide-sm-only">
-                                <f:formatDate value="${bet.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                <f:formatDate value="${item.time}" pattern="yyyy-MM-dd HH:mm:ss"/>
                             </td>
                         </tr>
 
@@ -135,7 +114,7 @@
                         current:${pn},
                         backFn:function(p){
                             // 单击回调方法，p是当前页码
-                            location.href = "${pageContext.request.contextPath}/userbet/bets?pn=" + p;
+                            location.href = "${pageContext.request.contextPath}/given-money-list/null/null?pn=" + p;
                         }
                     });
 
@@ -153,19 +132,19 @@
 </footer>
 
 <script type="text/javascript">
-    function search_bet() {
+    function given_search() {
 
-        var s_idnum = $("#start_search_bet").val();
-        var e_idnum = $("#end_search_bet").val();
-        console.log("s_idnum ==> " + s_idnum + "\te_idnum ==> "+ e_idnum);
-        if (s_idnum > e_idnum) {
-            alert('请输入正确的开奖期数区间');
-        } else if (s_idnum == "" && e_idnum == ""){
+        var s_time = $("#given_start_time").val();
+        var e_time = $("#given_end_time").val();
+        console.log("s_time ==> " + s_time + "\te_time ==> "+ e_time);
+        if (s_time > e_time) {
+            alert('请选择正确的时间区间');
+        } else if (s_time == "" && e_time == ""){
             window.location.reload();
-        } else if (s_idnum != "" && e_idnum == "" || s_idnum == "" && e_idnum != "") {
-            alert('请输入正确的开奖期数区间');
+        } else if (s_time != "" && e_time == "" || s_time == "" && e_time != "") {
+            alert('请选择正确的时间区间');
         } else {
-            location.href = '<%=request.getContextPath()%>/userbet/' + s_idnum +'/'+ e_idnum + "?pn=1";
+            location.href = '<%=request.getContextPath()%>/given-money-list/' + s_time +'/'+ e_time + "?pn=1";
         }
     }
 

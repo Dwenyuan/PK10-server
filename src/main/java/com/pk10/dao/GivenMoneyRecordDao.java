@@ -17,4 +17,11 @@ public interface GivenMoneyRecordDao {
     List<GivenMoneyRecord> getGivenMoneyList(@Param("curUsername") String curUsername,
                                              @Param("startTime") String startTime,
                                              @Param("endTime") String endTime);
+
+    List<GivenMoneyRecord> findByBetweenTime(@Param("startTime") String startTime,
+                                             @Param("endTime") String endTime);
+
+    List<GivenMoneyRecord> findAll();
+
+    List<GivenMoneyRecord> getGivenMoneyRecordByUserId(Integer id);
 }

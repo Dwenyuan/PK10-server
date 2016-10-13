@@ -177,15 +177,16 @@ public class UserBetControl {
 		return "admin/bet-list";
 	}
 
-	@RequestMapping(value = "/{idnum}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{startIdnum}/{endIdnum}", method = RequestMethod.GET)
 	public String getBetsByIdnum(Model model, @RequestParam(value = "pn", required = false) Integer pn,
-			@PathVariable("idnum") Integer idnum) {
+                                 @PathVariable("startIdnum") Integer startIdnum,
+                                 @PathVariable("endIdnum")Integer endIdnum) {
 		try {
 			if (pn == null || pn <= 0)
 				pn = 1;
 
 			PageHelper.startPage(pn, 10);
-			List<UserBet> bets = userBetService.getBetsByIdnum(idnum);
+			List<UserBet> bets = userBetService.findByBetweenIdnum(startIdnum, endIdnum);
 			if (bets.size() <= 0) {
 				model.addAttribute(ERROR_MSG, "投注列表为空!");
 			} else {

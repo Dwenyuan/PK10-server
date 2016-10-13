@@ -572,10 +572,14 @@
 
            var agent_id = $("#agent").val();
            var s_name = $("#search_username").val();
-           // console.log("agent:" + isagent + "\ts_name:" + s_name);
+           console.log("agent_id:" + agent_id + "\ts_name:" + s_name);
            // var owner = $("#nextagent_id").val();
            if (agent_id == "" || agent_id == undefined) {
                alert('请选择代理商');
+           } else if (agent_id == 0 && s_name == "") {
+               window.location.reload();
+           } else if (agent_id == 0 && s_name != "") {
+               location.href = '<%=request.getContextPath()%>/false/' + s_name + '/agent/0';
            } else if (s_name == "") {
                location.href = '<%=request.getContextPath()%>/false/null/agent/' + agent_id;
            } else {

@@ -12,4 +12,10 @@ public interface GivenMoneyRecordService {
     void save(GivenMoneyRecord givenMoneyRecord);
 
     List<GivenMoneyRecord> getGivenMoneyList(String curUsername, String startTime, String endTime);
+
+    List<GivenMoneyRecord> findByBetweenTime(String startTime, String endTime);
+
+    List<GivenMoneyRecord> findAll();
+
+    List<GivenMoneyRecord> getGivenMoneyRecordByUserId(Integer id);
 }

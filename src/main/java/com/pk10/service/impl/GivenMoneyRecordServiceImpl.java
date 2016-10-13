@@ -28,4 +28,19 @@ public class GivenMoneyRecordServiceImpl implements GivenMoneyRecordService {
     public List<GivenMoneyRecord> getGivenMoneyList(String curUsername, String startTime, String endTime) {
         return givenMoneyRecordDao.getGivenMoneyList(curUsername, startTime, endTime);
     }
+
+    @Override
+    public List<GivenMoneyRecord> findByBetweenTime(String startTime, String endTime) {
+        return givenMoneyRecordDao.findByBetweenTime(startTime, endTime);
+    }
+
+    @Override
+    public List<GivenMoneyRecord> findAll() {
+        return givenMoneyRecordDao.findAll();
+    }
+
+    @Override
+    public List<GivenMoneyRecord> getGivenMoneyRecordByUserId(Integer id) {
+        return givenMoneyRecordDao.getGivenMoneyRecordByUserId(id);
+    }
 }

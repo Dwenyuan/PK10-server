@@ -32,4 +32,6 @@ public interface UserBetService extends BaseService<UserBet> {
 	List<UserBet> getBetsByIdnum(Integer idnum, Integer userid);
 
 	List<UserBet> getBetsByIdnum(Integer idnum);
+
+    List<UserBet> findByBetweenIdnum(Integer startIdnum, Integer endIdnum);
 }

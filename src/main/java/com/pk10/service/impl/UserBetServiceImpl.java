@@ -1,11 +1,5 @@
 package com.pk10.service.impl;
 
-import java.util.Date;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.pk10.bean.BetInit;
 import com.pk10.bean.TokenConfig;
 import com.pk10.bean.UserBet;
@@ -15,6 +9,11 @@ import com.pk10.dao.UserBetDao;
 import com.pk10.dao.UserInfoDao;
 import com.pk10.service.TokenConfigService;
 import com.pk10.service.UserBetService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class UserBetServiceImpl implements UserBetService {
@@ -132,5 +131,10 @@ public class UserBetServiceImpl implements UserBetService {
 	public List<UserBet> getBetsByIdnum(Integer idnum) {
 		return userBetDao.getBetsByIdnum(idnum, null);
 	}
+
+    @Override
+    public List<UserBet> findByBetweenIdnum(Integer startIdnum, Integer endIdnum) {
+        return userBetDao.findByBetweenIdnum(startIdnum, endIdnum);
+    }
 
 }
