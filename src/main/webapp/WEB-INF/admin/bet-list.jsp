@@ -94,7 +94,7 @@
                         <tr>
                             <td>${bet.userid}</td>
                             <td>${bet.idnum}</td>
-                            <td>${bet.type}</td>
+                            <td>${bet.type.name}</td>
                             <td>${bet.betmoney}</td>
                             <td>${bet.mulit}</td>
                             <td>${bet.odds}</td>

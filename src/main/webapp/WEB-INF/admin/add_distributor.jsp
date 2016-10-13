@@ -147,7 +147,7 @@
 </form>
     </div>
     <div class="am-u-md-6">
-        推广链接:<span id="qrlink">http://game.szhy360.com${pageContext.request.contextPath}/reg-ui/${sessionScope.userinfo.id}/${sessionScope.userinfo.username} </span><br><button class="am-btn am-btn-primary am-btn-xs" onclick="createqrcode()"> 生成二维码</button>
+        推广链接:<span id="qrlink">http://game.szhy360.com${pageContext.request.contextPath}/reg-ui/${sessionScope.userinfo.id} </span><br><button class="am-btn am-btn-primary am-btn-xs" onclick="createqrcode()"> 生成二维码</button>
         <div id="qrcode"></div>
     </div>
 </div>

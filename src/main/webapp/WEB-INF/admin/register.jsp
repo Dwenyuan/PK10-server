@@ -38,7 +38,7 @@
         <h1><a href="/">数字互娱</a> </h1>
     </div>
     <div class="log-re">
-        <a href="/userlogin.html" class="am-btn am-btn-default am-radius log-button" style="color:#fff;">登 录</a>
+        <a href="${pageContext.request.contextPath}/userlogin.html" class="am-btn am-btn-default am-radius log-button" style="color:#fff;">登 录</a>
     </div>
 </header>
 <div class="log">
@@ -187,7 +187,7 @@
             var value = $("#vld-phone").val();
             if (cc.test(value)) {
                 $.ajax({
-                    type: 'get',
+                    type: 'post',
                     url:'<%=request.getContextPath()%>/check-tel/' + value,
                     dataType: 'json',
                     success: function(data) {
@@ -197,6 +197,9 @@
                         } else {
                             alert("手机号已被占用!")
                         }
+                    },
+                    error: function(data) {
+                        console.log("vldcode ==> error: data = " + eval(data));
                     }
                 });
 

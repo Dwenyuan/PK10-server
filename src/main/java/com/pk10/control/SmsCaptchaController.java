@@ -53,7 +53,7 @@ public class SmsCaptchaController {
         req.setSmsType(Const.SMS_TYPE);
         req.setSmsFreeSignName(Const.SMS_FREE_SIGN_NAME);
         req.setSmsTemplateCode(Const.SMS_TEMPLATE_CODE);
-        req.setRecNum(recPhoneNum);
+        req.setRecNum(recPhoneNum.trim());
         smsParam = jsonObject.toJSONString();
         log.debug("getSmsCaptcha: smsParam=" + smsParam);
         req.setSmsParamString(smsParam);
@@ -63,14 +63,15 @@ public class SmsCaptchaController {
             model.addAttribute("captcha", captcha);
 
             responseBody = rsp.getBody();
-            log.debug("getSmsCaptcha: responseBody = " + responseBody);
+            log.debug("getSmsCaptcha: phone ==> " + recPhoneNum.trim() + " responseBody <== " + responseBody);
+
             if (rsp.getResult() != null) {
                 model.addAttribute("success_response", rsp.getResult());
             } else {
                 model.addAttribute("error_response", rsp.getSubMsg());
             }
         } catch (ApiException e) {
-            log.error("getSmsCaptcha :" + e.getErrMsg());
+            log.error("getSmsCaptcha : e <== " + e.getErrMsg());
         }
 
         JSONObject jsonBody = JSONObject.parseObject(responseBody);
