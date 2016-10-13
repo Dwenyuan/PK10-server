@@ -17,7 +17,19 @@
         VALUE (#{currentUsername}, #{opposingUsername}, #{givenMoney}, #{time}, #{currentMoney}, #{opposingMoney})
     </insert>
     <select id="getGivenMoneyList" resultMap="BaseResultMap">
-        SELECT * FROM givenmoneyrecord WHERE current_username=#{curUsername} or opposing_username=#{curUsername}
-        and time between #{startTime} and #{endTime}
+        SELECT * FROM givenmoneyrecord WHERE
+        time between #{startTime} and #{endTime}
+        and (current_username=#{curUsername} or opposing_username=#{curUsername})
+
+    </select>
+    <select id="findByBetweenTime" resultMap="BaseResultMap">
+        SELECT * FROM givenmoneyrecord WHERE
+        time between #{startTime} and #{endTime}
+    </select>
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM givenmoneyrecord ORDER BY time DESC
+    </select>
+    <select id="getGivenMoneyRecordByUserId" resultMap="BaseResultMap">
+        SELECT * FROM givenmoneyrecord WHERE id=#{id}
     </select>
 </mapper>

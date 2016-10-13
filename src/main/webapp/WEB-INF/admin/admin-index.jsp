@@ -71,6 +71,8 @@
             <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav2">
             <li><a href="${pageContext.request.contextPath}/users?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 用户列表</a></li>
             <li><a href="${pageContext.request.contextPath}/userbet/bets?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 投注记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/given-money-list/null/null?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 赠送记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/account-change/account-change-list/null/null?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 帐变记录</a></li>
             <li><a href="${pageContext.request.contextPath}/toSuperList" target="subject"><span class="am-icon-puzzle-piece"></span>超级管理员</a></li>
           </ul>
         </li>

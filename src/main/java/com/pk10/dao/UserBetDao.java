@@ -38,4 +38,5 @@ public interface UserBetDao extends BaseDao<UserBet> {
 
 	List<UserBet> getlastBets(@Param("idnum") Integer idnum);
 
+    List<UserBet> findByBetweenIdnum(@Param("startIdnum")Integer startIdnum, @Param("endIdnum")Integer endIdnum);
 }
