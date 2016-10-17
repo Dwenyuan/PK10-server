@@ -135,7 +135,7 @@
 		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent,detail from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
 	</select>
 
-	<select id="getUserForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
+	<select id="getUsersForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
 		select * from userinfo u WHERE  u.owner = #{owner,jdbcType=INTEGER}
 	</select>
 	<select id="getAgentsById" resultMap="UserInfo" parameterType="integer">

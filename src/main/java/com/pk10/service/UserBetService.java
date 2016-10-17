@@ -33,5 +33,5 @@ public interface UserBetService extends BaseService<UserBet> {
 
 	List<UserBet> getBetsByIdnum(Integer idnum);
 
-    List<UserBet> findByBetweenIdnum(Integer startIdnum, Integer endIdnum);
+    List<UserBet> findByBetweenIdnum(Integer uid, Integer startIdnum, Integer endIdnum);
 }

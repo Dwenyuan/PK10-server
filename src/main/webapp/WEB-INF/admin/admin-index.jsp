@@ -72,7 +72,7 @@
             <li><a href="${pageContext.request.contextPath}/users?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 用户列表</a></li>
             <li><a href="${pageContext.request.contextPath}/userbet/bets?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 投注记录</a></li>
             <li><a href="${pageContext.request.contextPath}/given-money-list/null/null?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 赠送记录</a></li>
-            <li><a href="${pageContext.request.contextPath}/account-change/account-change-list/null/null?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span> 帐变记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/account-change/account-change-list/null/null?pn=1" target="subject"><span class="am-icon-puzzle-piece"></span>统计帐变记录</a></li>
             <li><a href="${pageContext.request.contextPath}/toSuperList" target="subject"><span class="am-icon-puzzle-piece"></span>超级管理员</a></li>
           </ul>
         </li>
@@ -83,14 +83,15 @@
             <li><a href="${pageContext.request.contextPath}/toAgentList" target="subject"><span class="am-icon-puzzle-piece"></span> 代理商信息</a></li>
           </ul>
         </li>
-         <li class="admin-parent">
+        <%--<li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-pencil-square-o"></span> 代理商功能 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list am-collapse admin-sidebar-sub " id="collapse-nav4">
             <li><a href="${pageContext.request.contextPath}/toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建用户</a></li>
             <li><a href="${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id}/1 " class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
-            <!--li><a href="${pageContext.request.contextPath}/toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li-->
+
+
           </ul>
-        </li>
+        </li>--%>
         <li class="admin-parent">
           <a href="toLotteryHistory" target="subject"><span class="am-icon-pencil-square-o"></span> 开奖管理 </a>
         </li>

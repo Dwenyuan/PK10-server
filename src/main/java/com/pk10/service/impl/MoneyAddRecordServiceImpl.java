@@ -41,4 +41,19 @@ public class MoneyAddRecordServiceImpl implements MoneyAddRecordService {
     public List<MoneyAddRecord> getMoneyAddRecordList(Integer curUserId, String startTime, String endTime) {
         return moneyAddRecordMapper.getMoneyAddRecordList(curUserId, startTime, endTime);
     }
+
+    @Override
+    public List<MoneyAddRecord> findByTimeBetween(String startTime, String endTime) {
+        return moneyAddRecordMapper.findByTimeBetween(startTime, endTime);
+    }
+
+    @Override
+    public List<MoneyAddRecord> findByIdAndTime(Integer id, String startTime, String endTime) {
+        return moneyAddRecordMapper.findByIdAndTime(id, startTime, endTime);
+    }
+
+    @Override
+    public List<MoneyAddRecord> findByAgentIdAndTime(Integer curAgentId, String startTime, String endTime) {
+        return moneyAddRecordMapper.findByAgentIdAndTime(curAgentId, startTime, endTime);
+    }
 }

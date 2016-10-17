@@ -118,7 +118,7 @@
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="recharge_c(${user.id})">
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="recharge_c('${user.id}', '')">
                                                 <span class="am-icon-pencil-square-o"></span>充值</button>
                                             <button class="am-btn am-btn-default am-btn-xs am-text-warning" onclick="userbet_c(${user.id})">
                                                 <span class="am-icon-pencil-square-o"></span>投注</button>
@@ -167,6 +167,15 @@
     <div class="am-modal am-modal-alert" tabindex="-1" id="recharge">
         <div class="am-modal-dialog">
             <div class="am-modal-hd">充值记录</div>
+            <div>
+                <div class="am-u-md-4">
+                    <input type="text" id="recharge_start_time" class="am-form-field" placeholder="开始时间" data-am-datepicker readonly required />
+                </div>
+                <div class="am-u-md-4">
+                    <input type="text" id="recharge_end_time" class="am-form-field" placeholder="结束时间" data-am-datepicker readonly required />
+                </div>
+                <div class="am-u-md-4"><button class="am-btn am-btn-primary" onclick="recharge_search()">搜索</button></div>
+            </div>
             <div class="am-modal-bd">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
@@ -181,6 +190,7 @@
                     ${errorMsg}
                     </tbody>
                 </table>
+                <span  id="recharge_totle"></span>
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" id="btn-ok">确定</span>
@@ -192,6 +202,15 @@
     <div class="am-modal am-modal-alert" tabindex="-1" id="userbet">
         <div class="am-modal-dialog">
             <div class="am-modal-hd">投注记录</div>
+                <div>
+                    <div class="am-u-md-4">
+                        <input type="number" id="startIdnum" class="am-form-field" placeholder="开始期數"  required />
+                    </div>
+                    <div class="am-u-md-4">
+                        <input type="number" id="endIdnum" class="am-form-field" placeholder="结束期數"  required />
+                    </div>
+                    <div class="am-u-md-4"><button class="am-btn am-btn-primary" onclick="userbet_search()">搜索</button></div>
+                </div>
             <div class="am-modal-bd">
                 <table class="am-table am-table-striped am-table-hover table-main">
                     <thead>
@@ -210,6 +229,7 @@
                     ${errorMsg}
                     </tbody>
                 </table>
+                <span  id="bet_totle"></span>
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" id="bet-ok">确定</span>
@@ -245,6 +265,7 @@
                     ${errorMsg}
                     </tbody>
                 </table>
+                <span  id="change_totle"></span>
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" id="change-ok">确定</span>
@@ -281,6 +302,7 @@
                     ${errorMsg}
                     </tbody>
                 </table>
+                <span  id="given_totle"></span>
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" id="given_ok">确定</span>
@@ -338,48 +360,91 @@
     </footer>
 
     <script type="text/javascript">
-       function recharge_c(id) {
-           $.ajax({
-               type: 'get',
-               contentType: 'application/json',
-               url: '<%=request.getContextPath()%>/money-add-record/record-list?id=' + id,
-               processData: false,
-               dataType: 'json',
-               success: function (data) {
-                   var jsonData = eval('(' + data + ')');
-                   var html = "";
-                   $.each(jsonData.records, function (idx, item) {
-                       html += '<tr>'
-                       html += '<td>' + item.userName + '</td>'
-                       html += '<td>' + item.addAgentName + '</td>'
-                       html += '<td>' + item.addMoney + '</td>'
-                       html += '<td>' + item.addTime + '</td>'
-                       html += '</tr> ';
+        var uid;
+        function recharge_c(id) {
+            uid = id;
+            $("#recharge").modal();
+        }
+       /*function recharge_s(id) {
+           var s_time = $("#recharge_start_time").val();
+           var e_time = $("#recharge_end_time").val();
+           if (s_time == "" && e_time == "") {
+               url = /money-add-record/record-list/null/null?id=' + uid;
+           }
+           uid = id;
 
-                   });
-                   $("#recharge_record").empty().append(html);
-                   $("#recharge").modal();
+       }*/
 
-               },
-               error: function () {
-                   alert('没有记录!');
-               }
-           });
+       function recharge_search() {
+           var s_time = $("#recharge_start_time").val();
+           var e_time = $("#recharge_end_time").val();
+           console.log("recharge_c: s_time ==> " + s_time + ", e_time ==> " + e_time);
+           if (s_time > e_time || s_time != "" && e_time == "" || s_time == "" && e_time != "") {
+               alert('请选择正确的时间区间');
+           } else if (s_time == "" && e_time == ""){
+              return;
+           } else {
+               var url = '<%=request.getContextPath()%>/money-add-record/record-list/' +
+                       s_time + '/' +e_time +'?id=' + uid;
+
+               $.ajax({
+                   type: 'get',
+                   contentType: 'application/json',
+                   url: url,
+                   processData: false,
+                   dataType: 'json',
+                   success: function (data) {
+                       var jsonData = eval('(' + data + ')');
+                       var html = "";
+                       $.each(jsonData.records, function (idx, item) {
+                           html += '<tr>'
+                           html += '<td>' + item.userName + '</td>'
+                           html += '<td>' + item.addAgentName + '</td>'
+                           html += '<td class="recharge_money">' + item.addMoney + '</td>'
+                           html += '<td>' + item.addTime + '</td>'
+                           html += '</tr> ';
+
+                       });
+                       $("#recharge_record").empty().append(html);
+                       var totle = 0;
+
+                       $(".recharge_money").each(function () {
+                           var x = parseInt($(this).text());
+                           totle += x;
+
+                       });
+                       $("#recharge_totle").text("该页充值总金额:"+totle);
+
+
+                   },
+                   error: function () {
+                       alert('没有记录!');
+                   }
+               });
+           }
        }
 
        // 投注
-       function userbet_c(id) {
+        function userbet_c(id) {
+            uid = id;
+            $("#userbet").modal();
+        }
+       function userbet_search() {
+           var startIdnum = $("#startIdnum").val();
+           var endIdnum = $("#endIdnum").val();
+           console.log("userbet_c: startTime ==> " + startIdnum + ", endTime ==> " + endIdnum);
+
            $.ajax({
                type: 'get',
                contentType: 'application/json',
-               url: '<%=request.getContextPath()%>/userbet/list?id=' + id,
+               url: '<%=request.getContextPath()%>/userbet/'+uid+'/'+startIdnum+'/'+endIdnum,
                processData: false,
                dataType: 'json',
                success: function(data) {
                    var jsonData = eval('('+data+')');
                    var html="";
                    console.log(jsonData);
-                   $.each(jsonData.userbets, function(idx, item) {
+                   $.each(jsonData, function(idx, item) {
                        html += '<tr>'
                        html += '<td>'+item.userid+'</td>'
                        html += '<td>'+item.idnum+'</td>'
@@ -390,7 +455,7 @@
                        } else {
                            html += '<td>大小</td>'
                        }
-                       html += '<td>'+item.betmoney +'</td>'
+                       html += '<td class="bet_money">'+item.betmoney +'</td>'
                        if (item.mulit == undefined) {
                            html += '<td>0</td>'
                        } else {
@@ -403,7 +468,15 @@
                    });
 
                    $("#userbet_record").empty().append(html);
-                   $("#userbet").modal();
+                   var totle = 0;
+
+                   $(".bet_money").each(function () {
+                       var x = parseInt($(this).text());
+                       totle += x;
+
+                   });
+                   $("#bet_totle").text("该页下注总金额:"+totle);
+
                },
                error: function() {
                    alert('没有记录!');
@@ -441,9 +514,9 @@
                        html += '<td>'+item.username+'</td>'
                        html += '<td>'+item.type+'</td>'
                        if(item.type == "充值记录" || item.type == "中奖记录" || item.type == "(赠送)收入") {
-                           html += '<td>' + '+' +item.money+'</td>'
+                           html += '<td class="change_money">' + '+' +item.money+'</td>'
                        } else {
-                           html += '<td>' + '-' +item.money+'</td>'
+                           html += '<td class="change_money">' + '-' +item.money+'</td>'
                        }
                        html += '<td>'+item.balance+'</td>'
                        html += '<td>'+item.time +'</td>'
@@ -451,6 +524,14 @@
 
                    });
                    $("#account_change_record").empty().append(html);
+                   var totle = 0;
+
+                   $(".change_money").each(function () {
+                       var x = parseInt($(this).text());
+                       totle += x;
+
+                   });
+                   $("#change_totle").text("该页帐变总金额:"+totle);
                },
                error: function (result) {
                    console.log("error: result <== ");
@@ -491,12 +572,12 @@
 
                        if(item.opposingUsername == given_id) {
                            html += '<td>(赠送)收入</td>'
-                           html += '<td>' + '+' +item.givenMoney+'</td>'
+                           html += '<td class="given_money">' + '+' +item.givenMoney+'</td>'
                            html += '<td>'+item.opposingMoney+'</td>'
                            html += '<td>'+item.currentUsername +'</td>'
                        } else {
                            html += '<td>(赠送)支出</td>'
-                           html += '<td>' + '-' +item.givenMoney+'</td>'
+                           html += '<td class="given_money">' + '-' +item.givenMoney+'</td>'
                            html += '<td>'+item.currentMoney+'</td>'
                            html += '<td>'+item.opposingUsername +'</td>'
                        }
@@ -506,6 +587,14 @@
 
                    });
                    $("#given_record").empty().append(html);
+                   var totle = 0;
+
+                   $(".given_money").each(function () {
+                       var x = parseInt($(this).text());
+                       totle += x;
+
+                   });
+                   $("#given_totle").text("该页赠送总金额:"+totle);
                },
                error: function (result) {
                    console.log("error: result <== ");

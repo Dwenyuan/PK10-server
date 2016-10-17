@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pk10.dao.AccountChangeDao">
+    <resultMap id="BaseResultMap" type="com.pk10.bean.AccountChange">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="agent_id" property="agentId"/>
+        <result column="username" property="username"/>
+        <result column="type" property="type"/>
+        <result column="money" property="money"/>
+        <result column="balance" property="balance"/>
+        <result column="time" property="time"/>
+    </resultMap>
+
+    <sql id="BaseColumn">
+        user_id, agent_id, username, type, money, balance, time
+    </sql>
+
+    <sql id="BaseColumnValue">
+        #{userId}, #{agentId}, #{username}, #{type}, #{money}, #{balance}, #{time}
+    </sql>
+
+    <sql id="BaseColumnValues">
+        #{item.userId}, #{item.agentId}, #{item.username}, #{item.type}, #{item.money},
+         #{item.balance}, #{item.time}
+    </sql>
+
+    <insert id="save" parameterType="com.pk10.bean.AccountChange">
+        INSERT INTO account_change(<include refid="BaseColumn"/>)
+        VALUES (<include refid="BaseColumnValue"/>)
+    </insert>
+    <insert id="saveCollection" parameterType="list">
+        INSERT INTO account_change(<include refid="BaseColumn"/>)
+        VALUES
+        <foreach collection="collection" index="index" item="item" separator=",">
+            (<include refid="BaseColumnValues"/>)
+        </foreach>
+
+    </insert>
+
+    <delete id="deleteOneById" parameterType="com.pk10.bean.AccountChange">
+        DELETE FROM account_change WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.pk10.bean.AccountChange">
+        UPDATE account_change SET user_id=#{userId}, agent_id=#{agentId}, username=#{username},
+        type=#{type}, money=#{money}, balance=#{balance}, time=#{time}
+        WHERE id=#{id}
+    </update>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumn"/> FROM account_change
+    </select>
+
+    <select id="getOneById" parameterType="com.pk10.bean.AccountChange" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumn"/> FROM account_change WHERE id=#{id}
+    </select>
+
+    <select id="findByUserId" resultType="integer" resultMap="BaseResultMap">
+      SELECT <include refid="BaseColumn"/> FROM account_change WHERE user_id=#{curUserId}
+    </select>
+
+    <select id="findByUserIdAndInTime" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumn"/> FROM account_change WHERE user_id=#{userId}
+        <if test="startTime != '' and endTime != ''">
+            and time between #{startTime} and #{endTime}
+        </if>
+    </select>
+
+    <select id="findByAgentId" resultType="integer" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumn"/> FROM account_change WHERE agent_id=#{agentId}
+    </select>
+
+    <select id="findByAgentIdAndInTime" resultType="integer" resultMap="BaseResultMap">
+
+        SELECT <include refid="BaseColumn"/> FROM account_change WHERE agent_id=#{agentId}
+        and time between #{startTime} and #{endTime}
+    </select>
+    <select id="findInTime" resultType="integer" resultMap="BaseResultMap">
+        SELECT <include refid="BaseColumn"/> FROM account_change WHERE
+        time between #{startTime} and #{endTime}
+    </select>
+</mapper>

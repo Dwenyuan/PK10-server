@@ -11,6 +11,8 @@ import java.util.Date;
 public class AccountChange implements Serializable {
 
     private long id;
+    private long userId;
+    private long agentId;
     private String username;
     private String type;
     private double money;
@@ -24,6 +26,22 @@ public class AccountChange implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
     }
 
     public String getUsername() {

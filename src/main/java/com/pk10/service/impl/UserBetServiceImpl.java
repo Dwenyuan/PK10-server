@@ -133,8 +133,8 @@ public class UserBetServiceImpl implements UserBetService {
 	}
 
     @Override
-    public List<UserBet> findByBetweenIdnum(Integer startIdnum, Integer endIdnum) {
-        return userBetDao.findByBetweenIdnum(startIdnum, endIdnum);
+    public List<UserBet> findByBetweenIdnum(Integer uid, Integer startIdnum, Integer endIdnum) {
+        return userBetDao.findByBetweenIdnum(uid,startIdnum, endIdnum);
     }
 
 }

@@ -230,13 +230,17 @@ public class UserInfoControl {
 	@RequestMapping(value = "/{junior}/{username}/agent/{agentId}", method = RequestMethod.GET)
 	public String getUsersByAgentId(Model model, @PathVariable("junior")Boolean isJunior,
                                     @PathVariable("username") String username,
-                                    @PathVariable("agentId") Integer agentId) throws Exception {
+                                    @PathVariable("agentId") Integer agentId,
+                                    @RequestParam(value = "pn", required = false)Integer pn) throws Exception {
 
 		if (agentId == null) {
 			return "admin/userlist";
 		}
 
-        PageHelper.startPage(1, 10);
+        if (pn == null || pn <= 0)
+            pn = 1;
+
+        PageHelper.startPage(pn, 10);
 		List<UserInfo> users = userInfoService.getUsersByAgentId(username, agentId);
         if (users == null) {
             model.addAttribute(Const.ERROR_MSG, "获取失败,没有对应用户名!");
@@ -245,8 +249,9 @@ public class UserInfoControl {
             if (page.getPageNum() > 0) {
 				model.addAttribute("ownerId", agentId);
 				model.addAttribute("users", users);
+				model.addAttribute("s_username", username);
                 model.addAttribute("page", page);
-                model.addAttribute("pn", 1);
+                model.addAttribute("pn", pn);
             }
         }
 
@@ -275,7 +280,7 @@ public class UserInfoControl {
 		ownerUser.setOwner(owner);
 
         PageHelper.startPage(pn, 10);
-		List<UserInfo> juniorUsers = userInfoService.getUserForAgent(ownerUser);
+		List<UserInfo> juniorUsers = userInfoService.getUsersForAgent(ownerUser);
 		if (juniorUsers != null && juniorUsers.size() > 0) {
             PageInfo page = new PageInfo(juniorUsers);
             if (page.getPageNum() > 0) {
@@ -557,7 +562,7 @@ public class UserInfoControl {
 	@ResponseBody
 	public Object getUserForAgent(@RequestBody UserInfo userInfo) {
 		try {
-			return userInfoService.getUserForAgent(userInfo);
+			return userInfoService.getUsersForAgent(userInfo);
 		} catch (Exception e) {
 			return JSON.parse("{errmsg:" + e.getMessage() + "}");
 		}

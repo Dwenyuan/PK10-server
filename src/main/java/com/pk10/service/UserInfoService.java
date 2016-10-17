@@ -81,7 +81,7 @@ public interface UserInfoService extends BaseService<UserInfo> {
 	 * @param userInfo
 	 * @return
 	 */
-	public List<UserInfo> getUserForAgent(UserInfo userInfo);
+	public List<UserInfo> getUsersForAgent(UserInfo userInfo);
 
 	List<UserInfo> getAgentsById(Integer id);
 

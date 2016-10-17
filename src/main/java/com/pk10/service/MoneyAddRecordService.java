@@ -18,4 +18,10 @@ public interface MoneyAddRecordService {
     void save(MoneyAddRecord moneyAddRecord);
 
     List<MoneyAddRecord> getMoneyAddRecordList(Integer curUserId, String startTime, String endTime);
+
+    List<MoneyAddRecord> findByTimeBetween(String startTime, String endTime);
+
+    List<MoneyAddRecord> findByIdAndTime(Integer id, String startTime, String endTime);
+
+    List<MoneyAddRecord> findByAgentIdAndTime(Integer curAgentId, String startTime, String endTime);
 }

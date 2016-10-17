@@ -112,6 +112,14 @@
 	</select>
 
 	<select id="findByBetweenIdnum" resultMap="UserBet">
-		SELECT * FROM userbet WHERE idnum BETWEEN #{startIdnum} and #{endIdnum} order by createdAt desc
+		SELECT * FROM userbet
+		<where>
+			<if test="uid != 0">
+				userid=#{uid}
+			</if>
+			<if test="startIdnum != 0 and endIdnum != 0">
+				and idnum BETWEEN #{startIdnum} and #{endIdnum} order by createdAt desc
+			</if>
+		</where>
 	</select>
 </mapper>

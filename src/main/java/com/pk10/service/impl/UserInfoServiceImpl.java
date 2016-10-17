@@ -193,9 +193,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoDao.saveAgent(agentInfo);
 	}
 
+	/**
+	 * 查找指定代理商下的所有用户
+	 * @param userInfo
+	 * @return
+	 */
 	@Override
-	public List<UserInfo> getUserForAgent(UserInfo userInfo) {
-		return userInfoDao.getUserForAgent(userInfo);
+	public List<UserInfo> getUsersForAgent(UserInfo userInfo) {
+		return userInfoDao.getUsersForAgent(userInfo);
 	}
 
 	@Override
