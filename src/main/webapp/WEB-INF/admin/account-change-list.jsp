@@ -101,10 +101,10 @@
 
                             <c:choose>
                                 <c:when test="${item.type eq '充值记录' or '中奖记录' or '(赠送)收入'}">
-                                    <td> +${item.money}</td>
+                                    <td class="money"> +${item.money}</td>
                                 </c:when>
                                 <c:otherwise>
-                                    <td> -${item.money}</td>
+                                    <td class="money"> -${item.money}</td>
                                 </c:otherwise>
                             </c:choose>
                             <td>${item.balance}</td>
@@ -120,7 +120,7 @@
         </table>
 
         <div>
-            <div class="am-al">共 ${page.total} 条记录</div>
+            <div class="am-al">共 ${page.total} 条记录 <span id="totle"></span></div>
             <div class="tcdPageCode">
 
                 <script>
@@ -177,7 +177,18 @@
             location.href = '<%=request.getContextPath()%>/account-change/account-change-list/' + s_time +'/'+ e_time + "?pn=1";
         }
     }
+    window.onload = totle();
+    function totle() {
+        var totle = 0;
+        $(".money").each(function () {
 
+            var x = parseInt($(this).text());
+
+            totle += x;
+
+        });
+        $("#totle").text("该页帐变总金额:"+totle);
+    }
 </script>
 </body>
 

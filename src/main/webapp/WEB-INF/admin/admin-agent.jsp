@@ -64,6 +64,9 @@
             <li><a href="toAddDistributor" class="am-cf" target="subject"><span class="am-icon-check"></span> 创建普通会员</a></li>
             <li><a href="${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id}/1" class="am-cf" target="subject"><span class="am-icon-check"></span> 查看下级用户</a></li>
             <li><a href="toRateHistory" target="subject"><span class="am-icon-puzzle-piece"></span>返点信息记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/money-add-record/null/null?curAgentId=${sessionScope.userinfo.id}&pn=1" class="am-cf" target="subject"><span class="am-icon-check"></span> 下级充值记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/userbet/junior/${sessionScope.userinfo.id}/0/0?pn=1 " class="am-cf" target="subject"><span class="am-icon-check"></span> 下级投注记录</a></li>
+            <li><a href="${pageContext.request.contextPath}/account-change/junior/null/null?curAgentId=${sessionScope.userinfo.id}&pn=1 " class="am-cf" target="subject"><span class="am-icon-check"></span> 下级帐变记录</a></li>
           </ul>
         </li>
 

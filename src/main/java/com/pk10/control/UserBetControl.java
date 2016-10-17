@@ -1,6 +1,7 @@
 package com.pk10.control;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pk10.bean.UserBet;
@@ -16,10 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.pk10.util.Const.ERROR_MSG;
 
@@ -161,10 +159,10 @@ public class UserBetControl {
 			if (bets.size() <= 0) {
 				model.addAttribute(ERROR_MSG, "投注列表为空!");
 			} else {
-				PageInfo page = new PageInfo(bets);
-				if (page.getPageNum() > 0) {
+				PageInfo pageInfo = new PageInfo(bets);
+				if (pageInfo.getPageNum() > 0) {
 					model.addAttribute("bets", bets);
-					model.addAttribute("page", page);
+					model.addAttribute("page", pageInfo);
 					model.addAttribute("pn", pn);
 				}
 			}
@@ -186,14 +184,16 @@ public class UserBetControl {
 				pn = 1;
 
 			PageHelper.startPage(pn, 10);
-			List<UserBet> bets = userBetService.findByBetweenIdnum(startIdnum, endIdnum);
+			List<UserBet> bets = userBetService.findByBetweenIdnum(0,startIdnum, endIdnum);
 			if (bets.size() <= 0) {
 				model.addAttribute(ERROR_MSG, "投注列表为空!");
 			} else {
-				PageInfo page = new PageInfo(bets);
-				if (page.getPageNum() > 0) {
+				PageInfo pageInfo = new PageInfo(bets);
+				if (pageInfo.getPageNum() > 0) {
 					model.addAttribute("bets", bets);
-					model.addAttribute("page", page);
+                    model.addAttribute("startIdnum", startIdnum);
+                    model.addAttribute("endIdnum", endIdnum);
+					model.addAttribute("page", pageInfo);
 					model.addAttribute("pn", pn);
 				}
 			}
@@ -205,4 +205,130 @@ public class UserBetControl {
 
 		return "admin/bet-list";
 	}
+	@ResponseBody
+	@RequestMapping(value = "/{uid}/{startIdnum}/{endIdnum}", method = RequestMethod.GET)
+	public String getBetsByIdnumJson(Model model, @RequestParam(value = "pn", required = false) Integer pn,
+								 @PathVariable("startIdnum") Integer startIdnum,
+									 @PathVariable("uid") Integer uid,
+								 @PathVariable("endIdnum")Integer endIdnum) {
+		List<UserBet> bets= new ArrayList<>();
+
+		try {
+			if (pn == null || pn <= 0)
+				pn = 1;
+
+			PageHelper.startPage(pn, 10);
+			bets = userBetService.findByBetweenIdnum(uid, startIdnum, endIdnum);
+			if (bets.size() <= 0) {
+				model.addAttribute(ERROR_MSG, "投注列表为空!");
+			} else {
+				PageInfo pageInfo = new PageInfo(bets);
+				if (pageInfo.getPageNum() > 0) {
+					model.addAttribute("bets", bets);
+
+				}
+			}
+
+		} catch (Exception e) {
+			model.addAttribute(ERROR_MSG, e.getMessage());
+			logger.error(e.getMessage());
+		}
+
+		return JSON.toJSONStringWithDateFormat(bets, "yyyy-MM-dd HH:mm:ss");
+	}
+
+
+	/*
+	代理商下级投注列表
+	 */
+	@RequestMapping(value = "junior/{curAgentId}/{startIdnum}/{endIdnum}", method = RequestMethod.GET)
+	public String getBetsByIdnum(Model model, @PathVariable("curAgentId")Integer curAgentId,
+								 @PathVariable("startIdnum") Integer startIdnum,
+								 @PathVariable("endIdnum")Integer endIdnum,
+								 @RequestParam(value = "pn", required = false) Integer pn) {
+		try {
+			if (pn == null || pn <= 0)
+				pn = 1;
+
+            List<UserBet> fromBetList = new LinkedList<>();
+            List<UserBet> toBetList = new LinkedList<>();
+
+			UserInfo ui = new UserInfo();
+			ui.setOwner(curAgentId);
+			List<UserInfo> users = userInfoService.getUsersForAgent(ui);
+			List<UserBet> bets = null;
+			for (UserInfo user : users) {
+				bets = userBetService.findByBetweenIdnum(user.getId(), startIdnum, endIdnum);
+
+                for (int i = 0; i < bets.size(); i++) {
+                    fromBetList.add(bets.get(i));
+                }
+            }
+
+            if (fromBetList.size() <= 0) {
+                model.addAttribute(ERROR_MSG, "投注列表为空!");
+            } else {
+                com.github.pagehelper.Page<UserBet> page = new Page<>();
+                page.addAll(fromBetList);
+                PageInfo pageInfo = new PageInfo(page);
+                pageInfo.setList(fromBetList);
+                pageInfo.setPageNum(pn);
+                pageInfo.setPageSize(10);
+                pageInfo.setTotal(fromBetList.size());
+                pageInfo.setFirstPage(pn);
+                pageInfo.setPrePage(pn-1);
+                if (fromBetList.size() / 10 == 0) {
+                    pageInfo.setLastPage(fromBetList.size() / 10);
+                    pageInfo.setPages(fromBetList.size() / 10);
+                } else {
+                    pageInfo.setLastPage(fromBetList.size() / 10 + 1);
+                    pageInfo.setPages(fromBetList.size() / 10 + 1);
+                }
+                if (pn == 1) {
+                    pageInfo.setIsFirstPage(true);
+                } else {
+                    pageInfo.setIsFirstPage(false);
+                }
+
+                if (pn == fromBetList.size() % 10) {
+                    pageInfo.setIsLastPage(true);
+                } else {
+                    pageInfo.setIsLastPage(false);
+                }
+
+                if (pn - 1 > 0) {
+                    pageInfo.setHasPreviousPage(true);
+                } else {
+                    pageInfo.setHasNextPage(false);
+                }
+
+                if (pn + 1 < fromBetList.size() % 10) {
+                    pageInfo.setHasNextPage(true);
+                } else {
+                    pageInfo.setHasNextPage(false);
+                }
+                
+                // 对betList分页
+                int j;
+                j = pn > 1 ? (pn - 1) * 10 : 0;
+                for (int i = j, c = 0; i < fromBetList.size() && c < 10; i++, c++) {
+                    toBetList.add(fromBetList.get(i));
+                }
+
+                model.addAttribute("bets", toBetList);
+                model.addAttribute("startIdnum", startIdnum);
+                model.addAttribute("endIdnum", endIdnum);
+                model.addAttribute("page", pageInfo);
+                model.addAttribute("pn", pn);
+				
+			}
+
+		} catch (Exception e) {
+			model.addAttribute(ERROR_MSG, e.getMessage());
+			logger.error(e.getMessage());
+		}
+
+		return "admin/junior-bet-list";
+	}
 }
+

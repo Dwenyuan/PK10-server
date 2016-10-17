@@ -50,7 +50,7 @@
     </script>
 </c:if>
 <div class="am-cf am-padding am-padding-bottom-0">
-    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">用户管理/投注记录</strong> </div>
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">代理商功能/下级投注记录</strong> </div>
 </div>
 <hr>
 <div class="am-g">
@@ -130,21 +130,19 @@
             <div class="tcdPageCode">
 
                 <script>
+                    var s_idnum = '${startIdnum}';
+                    var e_idnum = '${endIdnum}';
                     $(".tcdPageCode").createPage({
                         pageCount:${page.pages},
                         current:${pn},
                         backFn:function(p){
-
-                            var s_idnum = '${startIdnum}';
-                            var e_idnum = '${endIdnum}';
                             if (s_idnum == "" || s_idnum == undefined || e_idnum == "" || e_idnum == undefined) {
                                 s_idnum = 0;
                                 e_idnum = 0;
                             }
-
-                            location.href = '<%=request.getContextPath()%>/userbet/' + s_idnum +'/'+ e_idnum +
-                                    "?pn=" + p;
-
+                            // 单击回调方法，p是当前页码
+                            location.href = '<%=request.getContextPath()%>/userbet/junior/${sessionScope.userinfo.id}/'
+                                    + s_idnum +'/'+ e_idnum + "?pn=" + p;
                         }
                     });
 
@@ -163,7 +161,6 @@
 
 <script type="text/javascript">
     function search_bet() {
-
         var s_idnum = $("#start_search_bet").val();
         var e_idnum = $("#end_search_bet").val();
         console.log("s_idnum ==> " + s_idnum + "\te_idnum ==> "+ e_idnum);
@@ -174,7 +171,8 @@
         } else if (s_idnum != "" && e_idnum == "" || s_idnum == "" && e_idnum != "") {
             alert('请输入正确的开奖期数区间');
         } else {
-            location.href = '<%=request.getContextPath()%>/userbet/' + s_idnum +'/'+ e_idnum + "?pn=1";
+            location.href = '<%=request.getContextPath()%>/userbet/junior/${sessionScope.userinfo.id}/'
+                    + s_idnum +'/'+ e_idnum + "?pn=1";
         }
     }
     window.onload = totle();
@@ -187,7 +185,6 @@
 
         });
         $("#totle").text("该页下注总金额:"+totle);
-
 
         $("#start_search_bet").val(${startIdnum});
         $("#end_search_bet").val(${endIdnum});

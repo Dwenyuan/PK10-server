@@ -11,6 +11,7 @@
 		<result column="isagent" property="isagent" />
 		<result column="rebate" property="rebate" />
 		<result column="owner" property="owner" />
+		<result column="owner_username" property="ownerUsername" />
 		<result column="openid" property="openid" />
 		<result column="nickname" property="nickname" />
 	</resultMap>
@@ -30,8 +31,9 @@
 	<insert id="save" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
 		insert into
-		userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner)
-		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate},#{owner})
+		userinfo(openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username)
+		values(#{openid},#{nickname},#{money},#{createdAt},#{username},#{password},#{tel},#{isagent},#{rebate},
+		#{owner}, #{ownerUsername})
 	</insert>
 
 	<insert id="saveAgent" parameterType="com.pk10.bean.AgentInfo" flushCache="true">
@@ -43,7 +45,8 @@
 	<update id="update" parameterType="com.pk10.bean.UserInfo"
 		flushCache="true">
 		update userinfo u set u.money = #{money},u.nickname
-		=#{nickname},username=#{username},password=#{password},tel=#{tel},isagent=#{isagent},rebate=#{rebate},owner=#{owner}
+		=#{nickname},username=#{username},password=#{password},tel=#{tel},isagent=#{isagent},rebate=#{rebate},
+		owner=#{owner}, owner_username=#{ownerUsername}
 		where u.id = #{id}
 	</update>
 
@@ -75,39 +78,41 @@
 
 	<select id="getAll" resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, ownerUsername
+		from userinfo
 	</select>
 
 	<select id="getOneById" parameterType="int"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username
+		from userinfo
 		u where u.id = #{id}
 	</select>
 
 	<select id="getUserInfoByTel" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username from userinfo
 		u where u.tel = #{tel}
 	</select>
 	<select id="getUserUsername" parameterType="com.pk10.bean.UserInfo"
 			resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username from userinfo
 		u where u.username = #{username}
 	</select>
 	<select id="login" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username from userinfo
 		u where u.username = #{username} and
 		u.password = #{password}
 	</select>
 	<select id="managerLogin" parameterType="com.pk10.bean.UserInfo"
 		resultMap="UserInfo">
 		select
-		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo
+		id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner, owner_username from userinfo
 		u where u.username = #{username} and
 		u.password = #{password} and
 		u.isagent != 0
@@ -125,8 +130,8 @@
 		select id,openid,nickname,money,createdAt,username,password,tel,rebate ,isagent from userinfo u WHERE  u.id = #{id,jdbcType=INTEGER}
 	</select>
 
-	<select id="getUserForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
-		select id,openid,nickname,money,createdAt,username,password,tel,isagent,rebate,owner from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
+	<select id="getUsersForAgent" parameterType="com.pk10.bean.UserInfo" resultMap="UserInfo">
+		select * from userinfo u WHERE  u.owner = #{id,jdbcType=INTEGER}
 	</select>
 	<select id="getAgentsById" resultType="com.pk10.bean.UserInfo" parameterType="integer">
 		SELECT * FROM userinfo

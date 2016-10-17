@@ -42,7 +42,7 @@
     </style>
 </head>
 
-<body>
+<body onload="set_username()">
 <c:if test="${requestScope.errorMsg != null}">
     <script>
         alert(${errorMsg});
@@ -70,7 +70,7 @@
     </div>--%>
     <div class="am-u-sm-12 am-u-md-3 am-u-md-offset-1 am-u-end">
         <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field" id="search_username" placeholder="请输入要搜索的用户名">
+            <input type="text" class="am-form-field" id="search_username" value="" placeholder="请输入要搜索的用户名">
             <span class="am-input-group-btn">
             <button class="am-btn am-btn-default" type="button" onclick="search_user()">搜索</button>
           </span>
@@ -146,12 +146,20 @@
             <div class="tcdPageCode">
 
                 <script>
+                    var s_name = ${s_username};
                     $(".tcdPageCode").createPage({
                         pageCount:${page.pages},
                         current:${pn},
                         backFn:function(p){
                             // 单击回调方法，p是当前页码
-                            location.href = "${pageContext.request.contextPath}/junior/users/${sessionScope.userinfo.id}/" + p;
+                            console.log("分页: s_name ==> " + s_name);
+                            if (s_name == "" || s_name == undefined) {
+                                location.href = "${pageContext.request.contextPath}/junior" +
+                                        "/users/${sessionScope.userinfo.id}/" + p;
+                            } else {
+                                location.href = '<%=request.getContextPath()%>/true/' + s_name + '/agent/'
+                                        + ${ownerId} + "?pn=" + p;
+                            }
                         }
                     });
 
@@ -436,6 +444,11 @@
         });
     }
 
+    function set_username() {
+        console.log("search_user: s_username <== ${s_username}");
+        $("#search_username").val(${s_username});
+    }
+
     function search_user() {
         var s_name = $("#search_username").val();
         // console.log("agent:" + isagent + "\ts_name:" + s_name);
@@ -443,7 +456,7 @@
         if (s_name == "" || s_name == undefined) {
             alert("请输入要搜索的用户名");
         } else {
-            location.href = '<%=request.getContextPath()%>/true/' + s_name + '/agent/' + ${ownerId};
+            location.href = '<%=request.getContextPath()%>/true/' + s_name + '/agent/' + ${ownerId} + "?pn=1";
         }
     }
 

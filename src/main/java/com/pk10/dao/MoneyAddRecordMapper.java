@@ -37,4 +37,15 @@ public interface MoneyAddRecordMapper {
 
     List<MoneyAddRecord> getMoneyAddRecordList(@Param("curUserId") Integer curUserId, @Param("startTime") String startTime,
                                                @Param("endTime") String endTime);
+
+    List<MoneyAddRecord> findByTimeBetween(@Param("startTime") String startTime,
+                                           @Param("endTime") String endTime);
+
+    List<MoneyAddRecord> findByIdAndTime(@Param("userId") Integer userId,
+                                         @Param("startTime") String startTime,
+                                         @Param("endTime") String endTime);
+
+    List<MoneyAddRecord> findByAgentIdAndTime(@Param("curAgentId") Integer curAgentId,
+                                              @Param("startTime") String startTime,
+                                              @Param("endTime") String endTime);
 }

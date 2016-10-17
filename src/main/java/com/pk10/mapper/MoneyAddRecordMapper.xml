@@ -255,4 +255,24 @@
   <select id="getMoneyAddRecordList" resultMap="BaseResultMap">
     SELECT * FROM money_add_record WHERE add_time BETWEEN #{startTime} and #{endTime} and user_id=#{curUserId}
   </select>
+
+  <select id="findByTimeBetween" resultMap="BaseResultMap">
+    SELECT * FROM money_add_record WHERE add_time between #{startTime} and #{endTime}
+  </select>
+
+  <select id="findByIdAndTime" resultMap="BaseResultMap">
+    SELECT * FROM money_add_record WHERE user_id=#{userId}
+    <if test="startTime != 'null' and endTime != 'null' " >
+      and add_time between #{startTime} and #{endTime}
+    </if>
+
+  </select>
+
+  <select id="findByAgentIdAndTime" resultMap="BaseResultMap">
+    SELECT * FROM money_add_record WHERE add_agent_id=#{curAgentId}
+    <if test="startTime != 'null' and endTime != 'null' " >
+      and add_time between #{startTime} and #{endTime}
+    </if>
+
+  </select>
 </mapper>
