@@ -102,8 +102,26 @@
                             <td>${bet.type.name}</td>
                             <td class="momey">${bet.betmoney}</td>
                             <td>${bet.mulit}</td>
+
                             <td>${bet.odds}</td>
-                            <td>${bet.betnum}</td>
+                            <c:choose>
+                                <c:when test="${bet.betnum == 'double'}">
+                                    <td>双</td>
+                                </c:when>
+                                <c:when test="${bet.betnum == 'single'}">
+                                    <td>单</td>
+                                </c:when>
+                                <c:when test="${bet.betnum == 'small'}">
+                                    <td>小</td>
+                                </c:when>
+                                <c:when test="${bet.betnum == 'big'}">
+                                    <td>大</td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td>${bet.betnum}</td>
+                                </c:otherwise>
+                            </c:choose>
+
                             <%--<c:choose>
                                 <c:when test="${bet.state} == 0">
                                     <td>未兑奖</td>

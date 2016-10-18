@@ -102,8 +102,8 @@
                             <td>${bet.type.name}</td>
                             <td class="momey">${bet.betmoney}</td>
                             <td>${bet.mulit}</td>
-                            <td>${bet.odds}</td>
-                            <td>${bet.betnum}</td>
+                            <td >${bet.odds}</td>
+                            <td class="num">${bet.betnum}</td>
                             <%--<c:choose>
                                 <c:when test="${bet.state} == 0">
                                     <td>未兑奖</td>
@@ -188,6 +188,21 @@
 
         $("#start_search_bet").val(${startIdnum});
         $("#end_search_bet").val(${endIdnum});
+        $(".num").each(function(){
+
+            if($(this).html() == 'double') {
+                $(this).html('双');
+            }else if($(this).html() == 'single'){
+                $(this).html('单');
+            }
+            else if($(this).html() == 'small'){
+                $(this).html('小');
+            }
+            else if($(this).html() == 'big'){
+                $(this).html('大');
+            }
+        });
+
     }
 </script>
 </body>
