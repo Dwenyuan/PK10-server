@@ -27,10 +27,23 @@ import static com.pk10.util.Const.ERROR_MSG;
 public class GivenMoneyRecordController {
 
     @Resource
-    private UserInfoService userInfoService;
+    private GivenMoneyRecordService givenMoneyRecordService;
 
     @Resource
-    private GivenMoneyRecordService givenMoneyRecordService;
+    private UserInfoService userInfoService;
+
+    @RequestMapping(value = "given-money/{curUsername}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object givenMoneyRecord(@PathVariable("curUsername")String curUsername,
+                                   @RequestParam("startTime")String startTime,
+                                   @RequestParam("endTime")String endTime) {
+        List<GivenMoneyRecord> givenMoneyRecords = givenMoneyRecordService.getGivenMoneyList(curUsername, startTime,
+            endTime);
+
+
+
+        return givenMoneyRecords;
+    }
 
     // 当前用户赠送金币给对方用户
     @RequestMapping(value = "given-money", method = RequestMethod.POST)

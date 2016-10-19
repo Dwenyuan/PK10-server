@@ -76,7 +76,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from betInit
+    from betinit
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,57 +95,57 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from betInit
+    from betinit
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="selectByGameName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
-    from betInit
+    from betinit
     where g_name = #{gName,jdbcType=VARCHAR}
   </select>
 
 
   <select id="selectAllGameName" resultMap="BaseResultMap">
-    SELECT distinct(bi.g_name) FROM pk10.betInit bi
+    SELECT distinct(bi.g_name) FROM pk10.betinit bi
   </select>
 
   <select id="selectGameInitMoney" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT distinct(bi.g_name),bi.init_money FROM pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
+    SELECT distinct(bi.g_name),bi.init_money FROM pk10.betinit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
   </select>
 
   <select id="selectAllTypeByGName" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT bi.type FROM pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
+    SELECT bi.type FROM pk10.betinit bi where bi.g_name = #{gName,jdbcType=VARCHAR}
   </select>
 
   <select id="selectByGnameAndGtype" resultMap="BaseResultMap" parameterType="com.pk10.bean.BetInit">
-    SELECT * from pk10.betInit bi where bi.g_name = #{gName,jdbcType=VARCHAR} and bi.type = #{type,jdbcType=VARCHAR}
+    SELECT * from pk10.betinit bi where bi.g_name = #{gName,jdbcType=VARCHAR} and bi.type = #{type,jdbcType=VARCHAR}
   </select>
 
   <select id="getOneBetInitByName" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from betInit
+    from betinit
     where g_name = #{gName,jdbcType=VARCHAR} group by g_name
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from betInit
+    from betinit
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from betInit
+    delete from betinit
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.pk10.bean.BetInitExample" >
-    delete from betInit
+    delete from betinit
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.pk10.bean.BetInit" >
-    insert into betInit (id, g_name, type, 
+    insert into betinit (id, g_name, type,
       rate, money_limit, init_money
       )
     values (#{id,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
@@ -153,7 +153,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pk10.bean.BetInit" >
-    insert into betInit
+    insert into betinit
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -196,13 +196,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.pk10.bean.BetInitExample" resultType="java.lang.Integer" >
-    select count(*) from betInit
+    select count(*) from betinit
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update betInit
+    update betinit
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
@@ -228,7 +228,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update betInit
+    update betinit
     set id = #{record.id,jdbcType=INTEGER},
       g_name = #{record.gName,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
@@ -240,7 +240,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.pk10.bean.BetInit" >
-    update betInit
+    update betinit
     <set >
       <if test="gName != null" >
         g_name = #{gName,jdbcType=VARCHAR},
@@ -261,7 +261,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pk10.bean.BetInit" >
-    update betInit
+    update betinit
     set g_name = #{gName,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       rate = #{rate,jdbcType=DOUBLE},
